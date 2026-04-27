@@ -145,7 +145,33 @@ const FastagEngine = {
 
         FastagEngine.updateUI();
         Utils.showToast(`Toll ${Utils.formatCurrency(cost)} deducted via FASTag.`);
+
+        // Check for low balance alerts
+        if (balance < 500) {
+            const userPhone = '9876543210'; // Simulated user phone
+            if (window.PushNotifications) PushNotifications.notifyLowBalance(balance);
+            if (window.SMSAlerts) SMSAlerts.alertLowBalance(userPhone, balance);
+        }
+
         return true;
+    },
+
+    creditBalance: (amount) => {
+        let balance = Storage.get(Storage.KEYS.FASTAG_BALANCE, 0);
+        balance += amount;
+        Storage.set(Storage.KEYS.FASTAG_BALANCE, balance);
+        
+        const history = Storage.get(Storage.KEYS.RECHARGE_HISTORY, []);
+        history.unshift({
+            id: Utils.generateId('TXN'),
+            date: new Date().toISOString(),
+            amount: amount,
+            fee: 0,
+            net: amount,
+            gateway: 'Razorpay'
+        });
+        Storage.set(Storage.KEYS.RECHARGE_HISTORY, history);
+        FastagEngine.updateUI();
     }
 };
 

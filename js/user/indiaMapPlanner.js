@@ -910,8 +910,20 @@ const IndiaMapPlanner = {
         
         if (IndiaMapPlanner.currentTripId && IndiaMapPlanner.isTripLive) {
             const dist = IndiaMapPlanner.selectedRouteData?.totalDist || 0;
+            const tripData = {
+                id: IndiaMapPlanner.currentTripId,
+                origin: IndiaMapPlanner.selectedRouteData?.originName,
+                dest: IndiaMapPlanner.selectedRouteData?.destName,
+                tolls: IndiaMapPlanner.tripTollsPassed,
+                cost: IndiaMapPlanner.tripTotalCost,
+                distance: dist
+            };
+            
             Storage.logTripEnd(IndiaMapPlanner.currentTripId, IndiaMapPlanner.tripTollsPassed, IndiaMapPlanner.tripTotalCost, dist);
+            
+            if (window.EmailAlerts) EmailAlerts.sendTripEmail(tripData);
             if (window.TripAnalytics) TripAnalytics.init();
+            
             IndiaMapPlanner.currentTripId = null;
         }
         
@@ -941,10 +953,16 @@ const IndiaMapPlanner = {
                 let cost = TollData.getTollCost(toll.id, vehicleType);
                 if (IndiaMapPlanner.isSpecialVerified) cost = 0;
                 if (cost > 0) {
-                    FastagEngine.deductSummaryToll(cost, `Toll: ${toll.name}`);
-                    IndiaMapPlanner.tripTollsPassed.push(toll.name);
-                    IndiaMapPlanner.tripTotalCost += cost;
-                    if (IndiaMapPlanner.currentTripId) Storage.logTollPassage(IndiaMapPlanner.currentTripId, toll.name, cost);
+                    // Trigger Alerts
+                    if (window.PushNotifications) PushNotifications.notifyTollAhead(toll.name);
+                    if (window.SMSAlerts) SMSAlerts.alertTollAhead('9876543210', toll.name);
+
+                    const success = FastagEngine.deductSummaryToll(cost, `Toll: ${toll.name}`);
+                    if (success) {
+                        IndiaMapPlanner.tripTollsPassed.push(toll.name);
+                        IndiaMapPlanner.tripTotalCost += cost;
+                        if (IndiaMapPlanner.currentTripId) Storage.logTollPassage(IndiaMapPlanner.currentTripId, toll.name, cost);
+                    }
                 }
             }
         });

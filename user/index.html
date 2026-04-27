@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SNHOP - Traveller Portal</title>
-    <!-- FontAwesome Library -->
+    <!-- Analytics & Notifications -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="../js/shared/realtimeConnector.js"></script>
+    <script src="../js/user/trafficEngine.js"></script>
+    <script src="../js/shared/emailAlerts.js"></script>
+    <script src="../js/shared/smsAlerts.js"></script>
+    <script src="../js/shared/pushNotifications.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     
@@ -193,12 +199,25 @@
                     <!-- Recharge Panel -->
                     <div class="glass-panel" style="margin-bottom: 0;">
                         <p class="recharge-section-title"><i class="fa-solid fa-rotate" style="color:var(--primary)"></i> 3rd-Party Recharge Simulation</p>
+                        <p style="font-size: 11px; color: var(--accent-yellow); margin-bottom: 10px; display:flex; align-items:center; gap:5px;">
+                            <i class="fa-solid fa-circle-info"></i> Platform deducts 1% convenience fee.
+                        </p>
                         <div class="flex-col gap-2">
                             <input type="number" id="recharge-amount" placeholder="Enter Amount (Min &#8377;500)" min="500">
-                            <div class="recharge-fee-row" style="font-weight: bold; font-size: 13px;">
+                            <div class="recharge-fee-row" style="font-size: 11px; color: var(--text-sec);">
+                                <span>Platform Fee (1%):</span>
+                                <span id="recharge-fee" style="color: var(--accent-red); font-weight:700;">- &#8377;0.00</span>
+                            </div>
+                            <div class="recharge-fee-row" style="font-weight: bold; font-size: 13px; margin-bottom: 5px;">
                                 <span>Net Credited:</span>
                                 <span id="recharge-net" style="color: var(--primary);">&#8377;0.00</span>
                             </div>
+                            <select id="recharge-gateway" style="font-size: 11px; margin-bottom: 5px;">
+                                <option>PhonePe UPI</option>
+                                <option>Google Pay UPI</option>
+                                <option>Paytm</option>
+                                <option>Net Banking</option>
+                            </select>
                             <button id="btn-recharge" class="btn btn-primary w-full" style="justify-content: center; height: 36px; font-size: 11px;">
                                 <i class="fa-solid fa-lock"></i> Proceed to Pay
                             </button>
@@ -258,7 +277,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
 
             <!-- ========================
@@ -538,8 +556,7 @@
     <script src="../js/user/emergencyReporter.js?v=2"></script>
     <script src="../js/user/notifications.js?v=2"></script>
     <script src="../js/user/indiaMapPlanner.js?v=2"></script>
-    <script src="../js/user/tripAnalytics.js?v=2"></script>
+    <script src="../js/user/tripAnalytics.js"></script>
     <script src="../js/user/userApp.js?v=2"></script>
 </body>
 </html>
-

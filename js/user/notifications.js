@@ -31,14 +31,22 @@ const Notifications = {
             currentState = IndiaMapPlanner.selectedOrigin.state;
         }
 
-        Notifications.activeAlerts = alerts.filter(a => {
+        const newAlerts = alerts.filter(a => {
             const at = new Date(a.timestamp).getTime();
             const isRecent = (now - at) < (2 * 60 * 60 * 1000);
-            
             const isTargeted = (!a.region || a.region === 'ALL' || a.region === currentState);
-            
             return isRecent && isTargeted;
         });
+
+        // If we found a new alert that wasn't in our active list, notify
+        if (newAlerts.length > Notifications.activeAlerts.length) {
+            const latest = newAlerts[0];
+            if (window.PushNotifications) {
+                PushNotifications.sendNotification(`NHAI: ${latest.title}`, latest.message);
+            }
+        }
+
+        Notifications.activeAlerts = newAlerts;
 
         const panel = document.getElementById('admin-broadcasts-panel');
         if (Notifications.activeAlerts.length > 0) {

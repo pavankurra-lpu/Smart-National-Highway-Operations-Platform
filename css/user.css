@@ -307,17 +307,27 @@ body.light-mode .sidebar-header {
 /* ===== NAV TABS ===== */
 .nav-tabs {
     display: flex;
+    flex-wrap: nowrap;
     background: rgba(0, 0, 0, 0.2);
-    padding: 6px;
-    margin: 10px 20px 20px;
+    padding: 4px;
+    margin: 10px 12px 15px;
     border-radius: var(--radius-lg);
-    gap: 4px;
+    gap: 2px;
     border: 1px solid var(--border-light);
+    overflow: hidden;
 }
 
 .tab-btn {
     flex: 1;
-    padding: 12px 0;
+    min-width: 0;
+    padding: 10px 2px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     border: none;
     background: transparent;
     color: var(--text-muted);
