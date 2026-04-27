@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHAI Smart Traveller Portal</title>
+    <!-- FontAwesome Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+
+    <!-- ==============================
+         PREMIUM ENTRY / SPLASH SCREEN
+         ============================== -->
+    <div id="entry-screen">
+        <div class="entry-logo-box">
+            <div class="entry-logo-inner">
+                <i class="fa-solid fa-car-side" style="font-size:26px;"></i>
+            </div>
+        </div>
+
+        <p class="entry-tagline">National Highways Authority of India</p>
+        <h1 class="entry-title">SMART NHAI PORTAL</h1>
+        <p class="entry-subtitle">Advanced routing, toll intelligence, and FASTag operations across India's national highway network.</p>
+
+        <div class="entry-badges">
+            <span class="entry-badge-pill"><i class="fa-solid fa-satellite-dish"></i> Live Tracking</span>
+            <span class="entry-badge-pill"><i class="fa-solid fa-wallet"></i> FASTag Ready</span>
+            <span class="entry-badge-pill"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
+            <span class="entry-badge-pill"><i class="fa-solid fa-map-location-dot"></i> All-India Coverage</span>
+        </div>
+
+        <button id="btn-unlock-portal" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Open Traveller Dashboard
+        </button>
+    </div>
+
+    <!-- ==============================
+         MAIN APP CONTAINER
+         ============================== -->
+    <div id="user-app" class="hidden">
+
+        <!-- FULL SCREEN MAP (behind everything) -->
+        <div id="map"></div>
+
+        <!-- Sidebar Toggle Button -->
+        <button id="sidebar-toggle" class="sidebar-toggle" title="Close NHAI Panel">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- ==============================
+             NHAI ACCESS: RIGHT SIDEBAR
+             ============================== -->
+        <aside class="sidebar" id="nhai-sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fa-solid fa-car-side"></i> NHAI Access</h2>
+                <div style="display:flex;gap:8px;align-items:center;">
+                    <button class="theme-toggle-btn btn btn-outline" id="theme-btn" title="Toggle Theme">
+                        <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <a href="../index.html" style="color:var(--text-sec);font-size:11px;text-decoration:none;display:flex;align-items:center;gap:4px;padding:6px 8px;border-radius:6px;border:1px solid var(--border-light);">
+                        <i class="fa-solid fa-right-from-bracket"></i> Exit
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="nav-tabs">
+                <button class="tab-btn active" data-tab="tab-plan" id="tab-btn-plan">
+                    <i class="fa-solid fa-route"></i> Route
+                </button>
+                <button class="tab-btn" data-tab="tab-fastag" id="tab-btn-fastag">
+                    <i class="fa-solid fa-wallet"></i> FASTag
+                </button>
+                <button class="tab-btn" data-tab="tab-sos" id="tab-btn-sos">
+                    <i class="fa-solid fa-truck-medical"></i> SOS
+                </button>
+            </div>
+
+            <!-- ========================
+                 TAB: ROUTE PLANNER
+                 ======================== -->
+            <div id="tab-plan" class="tab-content active">
+                <div class="flex-col gap-3">
+                    <div>
+                        <span class="field-label"><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Origin</span>
+                        <input type="text" id="route-origin-input" placeholder="Type origin city..." autocomplete="off">
+                        <div id="origin-suggestions" class="autocomplete-dropdown"></div>
+                    </div>
+
+                    <div>
+                        <span class="field-label"><i class="fa-solid fa-flag-checkered" style="color:var(--accent-red)"></i> Destination</span>
+                        <input type="text" id="route-dest-input" placeholder="Type destination city..." autocomplete="off">
+                        <div id="dest-suggestions" class="autocomplete-dropdown"></div>
+                    </div>
+
+                    <div>
+                        <span class="field-label"><i class="fa-solid fa-truck" style="color:var(--accent-yellow)"></i> Vehicle Category</span>
+                        <select id="vehicle-type">
+                            <optgroup label="Standard Categories">
+                                <option value="LMV">Car / Jeep / Van (LMV)</option>
+                                <option value="LCV">Light Commercial Vehicle (LCV)</option>
+                                <option value="BUS_2AXLE">Bus / Truck (2 Axles)</option>
+                                <option value="COM_3AXLE">Commercial (3 Axles)</option>
+                                <option value="MAV_4_6">MAV (4-6 Axles)</option>
+                                <option value="OVERSIZED">Oversized (7+ Axles)</option>
+                            </optgroup>
+                            <optgroup label="Priority / Exempt">
+                                <option value="GOVT">Government Vehicle</option>
+                                <option value="PRESS">Press / Media</option>
+                                <option value="ARMY">Army / Defense</option>
+                                <option value="AMBULANCE">Ambulance</option>
+                                <option value="FIRE">Fire &amp; Rescue</option>
+                                <option value="POLICE">Police</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Special Vehicle Verification Box -->
+                    <div id="special-vehicle-box" class="special-vehicle-box hidden">
+                        <p class="special-vehicle-title">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Pre-Registered Verification Required
+                        </p>
+                        <input type="text" id="special-plate-id" placeholder="Enter Registration / Tag ID..." style="margin-bottom: 8px;">
+                        <button id="btn-verify-special" class="btn btn-outline w-full" style="justify-content: center; font-size: 12px;">
+                            <i class="fa-solid fa-shield-halved"></i> Verify ID
+                        </button>
+                        <p id="special-verify-res" style="font-size: 11px; margin-top: 6px;"></p>
+                    </div>
+
+                    <!-- Travel Preferences -->
+                    <div class="pref-box">
+                        <p class="pref-label"><i class="fa-solid fa-sliders"></i> Travel Preferences</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <div>
+                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Use FASTag</span>
+                                <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Deduct toll from wallet</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="pref-fastag" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Avoid Tolls</span>
+                                <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Prefer toll-free routes</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="pref-avoid-tolls">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button id="btn-calc-route" class="btn btn-primary w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
+                        <i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========================
+                 TAB: FASTAG
+                 ======================== -->
+            <div id="tab-fastag" class="tab-content">
+                <!-- Balance Card -->
+                <div class="fastag-card">
+                    <p class="fastag-live-label">
+                        <span class="fastag-live-dot"></span> Live FASTag Balance
+                    </p>
+                    <div id="ui-fastag-bal" class="balance-text">&#8377;0.00</div>
+                    <span id="ui-fastag-status" class="badge"></span>
+                </div>
+
+                <!-- Recharge Panel -->
+                <div class="glass-panel" style="margin-bottom: 16px;">
+                    <p class="recharge-section-title"><i class="fa-solid fa-rotate" style="color:var(--primary)"></i> 3rd-Party Recharge Simulation</p>
+                    <p style="font-size: 11px; color: var(--accent-yellow); margin-bottom: 14px; display:flex; align-items:center; gap:5px;">
+                        <i class="fa-solid fa-circle-info"></i> Platform deducts 1% convenience fee.
+                    </p>
+                    <div class="flex-col gap-2">
+                        <input type="number" id="recharge-amount" placeholder="Enter Amount (Min &#8377;500)" min="500">
+                        <div class="recharge-fee-row">
+                            <span style="color: var(--text-sec);">Platform Fee (1%):</span>
+                            <span id="recharge-fee" style="color: var(--accent-red); font-weight:700;">- &#8377;0.00</span>
+                        </div>
+                        <div class="recharge-fee-row" style="font-weight: bold; font-size: 13px; margin-bottom: 8px;">
+                            <span>Net Credited:</span>
+                            <span id="recharge-net" style="color: var(--primary);">&#8377;0.00</span>
+                        </div>
+                        <select id="recharge-gateway">
+                            <option>PhonePe UPI</option>
+                            <option>Google Pay UPI</option>
+                            <option>Paytm</option>
+                            <option>Net Banking</option>
+                        </select>
+                        <button id="btn-recharge" class="btn btn-primary w-full" style="justify-content: center;">
+                            <i class="fa-solid fa-lock"></i> Proceed to Pay
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Transaction History -->
+                <div>
+                    <h4 style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 12px; display:flex; align-items:center; gap:6px;">
+                        <i class="fa-solid fa-clock-rotate-left"></i> Recent Transactions
+                    </h4>
+                    <div id="fastag-history-list" style="font-size: 11px;"></div>
+                </div>
+            </div>
+
+            <!-- ========================
+                 TAB: SOS EMERGENCY
+                 ======================== -->
+            <div id="tab-sos" class="tab-content">
+                <div class="sos-panel">
+                    <h3 class="sos-title">
+                        <i class="fa-solid fa-tower-broadcast"></i> Incident Report
+                    </h3>
+                    <div class="flex-col gap-3">
+                        <div>
+                            <span class="field-label">Incident Type</span>
+                            <select id="sos-type">
+                                <option value="BREAKDOWN">Vehicle Breakdown</option>
+                                <option value="ACCIDENT">Accident</option>
+                                <option value="MEDICAL">Health Emergency</option>
+                                <option value="FIRE">Fire Emergency</option>
+                                <option value="OBSTRUCTION">Road Obstruction</option>
+                                <option value="OTHER">Other Issue</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="field-label">Your Location</span>
+                            <input type="text" id="sos-location" placeholder="Highway / Nearest milestone...">
+                        </div>
+                        <div>
+                            <span class="field-label">Description</span>
+                            <textarea id="sos-desc" rows="3" placeholder="Brief description of the emergency..."></textarea>
+                        </div>
+                        <div>
+                            <span class="field-label">Callback Number</span>
+                            <input type="tel" id="sos-phone" placeholder="Your phone number">
+                        </div>
+                        <button id="btn-submit-sos" class="btn btn-danger w-full" style="justify-content: center; font-size: 13px;">
+                            <i class="fa-solid fa-paper-plane"></i> Dispatch SOS to Admin
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Active Cases -->
+                <div>
+                    <h4 style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 12px; display:flex; align-items:center; gap:6px;">
+                        <i class="fa-solid fa-list-check"></i> Your Active Cases
+                    </h4>
+                    <div id="sos-cases-list"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==============================
+             FLOATING ROUTE SUMMARY (top-left)
+             ============================== -->
+        <div id="route-summary-panel" class="map-header hidden">
+            <div class="route-summary-float">
+                <!-- Title -->
+                <h3 class="summary-route-title" id="summary-title">
+                    <i class="fa-solid fa-route"></i> Route Summary
+                </h3>
+
+                <!-- Stats Pills -->
+                <div class="summary-pills">
+                    <div class="summary-pill">
+                        <i class="fa-solid fa-road"></i>
+                        <span id="sum-dist">—</span> km
+                    </div>
+                    <div class="summary-pill">
+                        <i class="fa-solid fa-clock"></i>
+                        <span id="sum-eta">—</span> hr
+                    </div>
+                    <div class="summary-pill">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        <span id="sum-toll">—</span> tolls
+                    </div>
+                </div>
+
+                <!-- Weather Context -->
+                <div id="route-weather-summary" class="hidden">
+                    <div style="font-size: 11px; display:flex; justify-content:space-between; margin-bottom:4px; color:var(--text-sec);">
+                        <span>Origin: <span id="w-orig" style="color:var(--text-main);"></span></span>
+                        <span>Dest: <span id="w-dest" style="color:var(--text-main);"></span></span>
+                    </div>
+                    <div style="font-size: 11px; font-weight:bold; margin-bottom:2px;">
+                        <i id="w-icon" class="fa-solid"></i> <span id="w-cond"></span>
+                        <span style="color:var(--text-sec);"> | Risk: </span><span id="w-risk"></span>
+                    </div>
+                    <div style="font-size: 9px; color:var(--text-sec);" id="w-advisory"></div>
+                </div>
+
+                <!-- Toll Cost -->
+                <div class="summary-cost-row">
+                    <span class="summary-cost-label"><i class="fa-solid fa-tag"></i> Estimated Toll Cost</span>
+                    <span id="sum-cost" class="summary-cost-value">₹—</span>
+                </div>
+
+                <!-- Trip Status Badge -->
+                <div class="trip-status-row">
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                        <span id="trip-badge" class="badge" style="background:var(--text-muted); color:#000;">PREVIEW MODE</span>
+                    </div>
+                    <p style="font-size: 10px; color: var(--text-muted); line-height:1.5;" id="trip-disclaimer">
+                        Estimated preview. FASTag balance only deducted when trip starts and toll crossed.
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="summary-actions">
+                    <button id="btn-view-pass" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px;">
+                        <i class="fa-solid fa-tags"></i> Passes
+                    </button>
+                    <button id="btn-view-lanes" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px;">
+                        <i class="fa-solid fa-signs-post"></i> Lanes
+                    </button>
+                    <button id="btn-gps-mode" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px; color:var(--accent-yellow);" title="Use Real Phone GPS">
+                        <i class="fa-solid fa-location-crosshairs"></i> GPS
+                    </button>
+                    <button id="btn-follow-me" class="btn btn-outline active" style="font-size: 11px; padding: 8px 10px;" title="Auto-center Map">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                    <button id="btn-start-trip" class="btn" style="flex:1; justify-content:center; font-size: 12px; background:linear-gradient(135deg,#10b981,#059669); color:#fff; box-shadow:0 4px 14px rgba(16,185,129,0.35);">
+                        <i class="fa-solid fa-play"></i> Start Trip
+                    </button>
+                    <button id="btn-end-trip" class="btn btn-danger hidden" style="flex:1; justify-content:center; font-size: 12px;">
+                        <i class="fa-solid fa-stop"></i> End Trip
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin Broadcasts Panel -->
+            <div id="admin-broadcasts-panel">
+                <h4 style="font-size: 12px; color: var(--accent-red); margin-bottom: 6px; display:flex; align-items:center; gap:6px;">
+                    <i class="fa-solid fa-bullhorn"></i> Live NHAI Advisory
+                </h4>
+                <div id="advisory-text" style="font-size: 12px; color: var(--text-sec); line-height:1.5;">Listening for admin alerts...</div>
+            </div>
+        </div>
+
+        <!-- ==============================
+             PASS PLAN MODAL
+             ============================== -->
+        <div id="pass-plan-modal" class="hidden">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-tags"></i> Pass Recommendations</h3>
+                <button class="modal-close" onclick="Utils.toggleVisibility('pass-plan-modal', false)" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="pass-plan-content" style="font-size: 12px;"></div>
+        </div>
+
+        <!-- ==============================
+             LANE ADVISOR MODAL
+             ============================== -->
+        <div id="lane-advisor-modal" class="hidden">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-signs-post"></i> Live Lane Allocation</h3>
+                <button class="modal-close" onclick="Utils.toggleVisibility('lane-advisor-modal', false)" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p id="lane-vehicle-status" style="font-size: 11px; margin-bottom: 12px; color: var(--accent-yellow);"></p>
+            <div id="lane-advisor-content" style="font-size: 12px;"></div>
+        </div>
+
+    </div><!-- /#user-app -->
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Config (must load first) -->
+    <script src="../js/config.js?v=2"></script>
+
+    <!-- Shared JS -->
+    <script src="../js/shared/utils.js?v=2"></script>
+    <script src="../js/shared/storage.js?v=2"></script>
+    <script src="../js/shared/indiaMapData.js?v=2"></script>
+    <script src="../js/shared/tollSeedData.js?v=2"></script>
+    <script src="../js/shared/tollData.js?v=2"></script>
+    <script src="../js/shared/routeGraph.js?v=2"></script>
+    <script src="../js/shared/serviceData.js?v=2"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=2"></script>
+    <script src="../js/shared/weatherEngine.js?v=2"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=2"></script>
+    <script src="../js/shared/themeManager.js?v=2"></script>
+
+    <!-- User JS -->
+    <script src="../js/user/entryScreen.js?v=2"></script>
+    <script src="../js/user/routeEngine.js?v=2"></script>
+    <script src="../js/user/fastagEngine.js?v=2"></script>
+    <script src="../js/user/passPlanEngine.js?v=2"></script>
+    <script src="../js/user/laneAdvisor.js?v=2"></script>
+    <script src="../js/user/emergencyReporter.js?v=2"></script>
+    <script src="../js/user/notifications.js?v=2"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=2"></script>
+    <script src="../js/user/userApp.js?v=2"></script>
+</body>
+</html>
+

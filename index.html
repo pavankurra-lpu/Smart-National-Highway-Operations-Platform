@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHAI Smart Highway Mobility Platform</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            background: linear-gradient(135deg, #0a192f 0%, #020c1b 100%);
+            color: white; text-align: center; overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 16px;
+            backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px; width: 90%;
+            animation: fadeIn 1s ease-out;
+        }
+        h1 { font-size: 28px; margin-bottom: 10px; color: #64ffda; }
+        p { font-size: 16px; color: #8892b0; margin-bottom: 30px; line-height: 1.5; }
+        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            text-decoration: none; padding: 15px 30px; border-radius: 8px;
+            font-weight: bold; font-size: 16px; transition: all 0.3s;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-user {
+            background: #64ffda; color: #0a192f;
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+        }
+        .btn-user:hover {
+            background: #52e0c4; transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(100, 255, 218, 0.4);
+        }
+        .btn-admin {
+            background: transparent; color: #64ffda;
+            border: 2px solid #64ffda;
+        }
+        .btn-admin:hover {
+            background: rgba(100, 255, 218, 0.1); transform: translateY(-3px);
+        }
+        .disclaimer { margin-top: 30px; font-size: 12px; color: #495670; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>NHAI Smart Highway Mobility</h1>
+        <p>Welcome to the National Highway Authority of India simulated mobility platform. Select your portal to proceed.</p>
+        
+        <div class="btn-group">
+            <a href="user/index.html" class="btn" style="background: #10b981; color: #fff; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); width: 100%;">Launch Smart Traveller Portal</a>
+            <a href="user/index.html" class="btn btn-user">Enter Traveller Portal</a>
+            <a href="admin/login.html" class="btn btn-admin">Admin Secure Access</a>
+        </div>
+
+        <p class="disclaimer">
+            *This platform is a simulation-based portfolio project inspired by Indian NHAI/FASTag highway operations. Data is representative.
+        </p>
+    </div>
+</body>
+</html>

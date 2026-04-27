@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHAI Interactive Toll Route Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/toll-route.css">
+</head>
+<body>
+
+    <!-- Main Map Container -->
+    <div id="map"></div>
+
+    <!-- Floating UI Panel -->
+    <div id="ui-panel" class="glass-panel">
+        <div class="panel-header">
+            <h2><i class="fa-solid fa-route"></i> Route Planner</h2>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        </div>
+
+        <div class="control-group">
+            <label for="state-select">Select State</label>
+            <select id="state-select">
+                <option value="">-- Choose a State --</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="start-input">Start Point</label>
+            <input type="text" id="start-input" placeholder="Enter starting city/village..." autocomplete="off">
+            <div id="start-suggestions" class="autocomplete-dropdown"></div>
+        </div>
+
+        <div class="control-group">
+            <label for="end-input">End Point</label>
+            <input type="text" id="end-input" placeholder="Enter destination..." autocomplete="off">
+            <div id="end-suggestions" class="autocomplete-dropdown"></div>
+        </div>
+
+        <!-- Route Summary Details -->
+        <div id="route-details" class="hidden">
+            <h3 id="route-name" class="route-title"></h3>
+            <div class="route-stats">
+                <div class="stat-item">
+                    <span class="stat-label">State</span>
+                    <span class="stat-value" id="stat-state">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Tolls</span>
+                    <span class="stat-value highlight" id="stat-tolls-count">0</span>
+                </div>
+            </div>
+
+            <div class="toll-list-container">
+                <h4><i class="fa-solid fa-bars-staggered"></i> Toll Plazas in Order</h4>
+                <ul id="toll-list" class="toll-list">
+                    <!-- Dynamic toll items go here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Shared JS -->
+    <script src="js/shared/utils.js"></script>
+    <script src="js/shared/indiaMapData.js"></script>
+    <script src="js/shared/tollSeedData.js"></script>
+    <!-- Map Logic -->
+    <script src="js/toll-route.js"></script>
+</body>
+</html>

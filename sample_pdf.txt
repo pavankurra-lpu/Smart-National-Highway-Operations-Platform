@@ -1,0 +1,243 @@
+S.No 
+Plaza Name 
+Plaza Type 
+Type 
+Concessionaire 
+Plaza State 
+1 Narayanpura Toll Plaza 
+National 
+Conc. 
+NHAI 
+Rajasthan 
+2 Kathpur Toll Plaza 
+National 
+PF 
+NHAI 
+Gujarat 
+3 Kappalur 
+National 
+PF 
+Raima Toll Road(MEP) 
+Tamil Nadu 
+4 Daroada 
+National 
+PF 
+Anuj Kumar Aggarwal 
+Maharashtra 
+5 AIT Toll Plaza 
+National 
+Conc. 
+M/s Welcome Infra 
+Uttar Pradesh 
+6 SEMRI Toll Plaza 
+National 
+Conc. 
+M/s Bhargavendra Nath 
+Upadhyaya 
+Uttar Pradesh 
+7 Milanpur Toll Plaza 
+National 
+PF 
+Oriental 
+Madhya Pradesh 
+8 Surathkal Toll Plaza 
+National 
+PF 
+NHAI 
+Karnataka 
+9 Patanswangi Toll Plaza 
+National 
+PF 
+NHAI 
+Maharashtra 
+10 Runni Shaidpur Toll Plaza 
+National 
+PF 
+NHAI 
+Bihar 
+11 Diengpasoh Toll Plaza  
+National 
+PF 
+Nandini Talukdar 
+Meghalaya 
+12 Shedung Toll Plaza 
+State 
+Conc. 
+IRB 
+Maharashtra 
+13 Khalapur Toll Plaza 
+State 
+Conc. 
+IRB 
+Maharashtra 
+14 Kusgaon Toll Plaza 
+State 
+Conc. 
+IRB 
+Maharashtra 
+15 Saukala Toll Plaza 
+National 
+PF 
+NHAI 
+Bihar 
+16 KHEMANA TOLL PLAZA 
+National 
+PF 
+NHAI 
+Gujarat 
+17 Paschim Madati 
+National 
+PF 
+NHAI 
+West Bengal 
+18 Raibha toll plaza 
+National 
+PF 
+NHAI 
+Uttar Pradesh 
+19 Khuian Malkna 
+National 
+PF 
+NHAI 
+Haryana 
+20 Kalajhar Toll Plaza 
+National 
+PF 
+NHAI 
+Punjab 
+21 Kot Karora Kalan Plaza 
+National 
+PF 
+NHAI 
+Punjab 
+22 Zidda Toll Plaza 
+National 
+PF 
+NHAI 
+Punjab 
+23 Nimbasar 
+National 
+PF 
+NHAI 
+Rajasthan 
+24 Chinthapally 
+National 
+PF 
+NHAI 
+Telangana 
+25 Pasyih 
+National 
+PF 
+NHAI 
+Meghalaya 
+26 Omalur Toll Plaza 
+National 
+Conc. 
+IRB 
+Tamil Nadu 
+27 Baswant  Toll Plaza 
+National 
+PF 
+NHAI 
+Maharashtra 
+28 Palempalli Toll Plaza 
+National 
+Conc. 
+Rayalasema Expressway 
+Private Limited  
+Andhra Pradesh 
+29 Fulara 
+National 
+PF 
+NHAI 
+Madhya Pradesh 
+30 Narwana 
+National 
+Conc. 
+IRB 
+Haryana 
+31 Bado patti 
+National 
+Conc. 
+IRB 
+Haryana 
+32 Nannur 
+National 
+Conc. 
+Rayalaseema Expressways 
+Private ltd 
+Andhra Pradesh 
+33 Rajora Khurd 
+National 
+PF 
+NHAI 
+Rajasthan 
+34 Chapirevula 
+National 
+Conc. 
+NHAI 
+Andhra pradesh 
+35 Nanguneri 
+National 
+PF 
+Raima Toll Road(MEP) 
+Tamil Nadu 
+36 Maranga 
+National 
+PF 
+NHAI 
+Bihar 
+37 UNDVARIYA TOLL PLAZA  
+National 
+PF 
+NHAI 
+Rajasthan 
+38 IDTL Toll Plaza-A 
+National 
+Conc. 
+Indore Dewas Tollways 
+Madhya Pradesh 
+39 SERGARH TOLL PLAZA 
+National 
+PF 
+NHAI 
+Odisha 
+40 Nawabganj Toll Plaza 
+National 
+Conc. 
+PNC Kanpur-Ayodhya 
+Tollways Pvt. Ltd. 
+Uttar Pradesh 
+41 Ahmadpur Toll Plaza 
+National 
+Conc. 
+PNC Kanpur-Ayodhya 
+Tollways Pvt. Ltd. 
+Uttar Pradesh 
+42 Ronahi Toll Plaza 
+National 
+Conc. 
+PNC Kanpur-Ayodhya 
+Tollways Pvt. Ltd. 
+Uttar Pradesh 
+43 Aliyapur Toll Plaza 
+National 
+Conc. 
+PNC Kanpur Highways Ltd. 
+Uttar Pradesh 
+44 Khanna Toll Plaza 
+National 
+Conc. 
+PNC Kanpur Highways Ltd. 
+Uttar Pradesh 
+45 Banajodi 
+National 
+PF 
+SAI MAATARINI TOLLWAYS 
+LIMITED 
+Odisha 
+46 Hathitala Toll Plaza  
+National 
+PF 
+NHAI (QualiX) 
+Rajasthan 

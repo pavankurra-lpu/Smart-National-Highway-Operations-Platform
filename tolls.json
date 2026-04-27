@@ -1,0 +1,8012 @@
+[
+  {
+    "name": "Palempalli Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Rayalasema Expressway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_0"
+  },
+  {
+    "name": "Nannur",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Rayalaseema Expressways Private ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_1"
+  },
+  {
+    "name": "Madapam",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_2"
+  },
+  {
+    "name": "Chillakallu",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GMR",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_3"
+  },
+  {
+    "name": "Amakthadu toll plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "MEP Infra Projects",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_4"
+  },
+  {
+    "name": "Kasepalli toll plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "MEP Infra Projects",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_5"
+  },
+  {
+    "name": "Marur toll plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "MEP Infra Projects",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_6"
+  },
+  {
+    "name": "Sullurpet Plaza (NH- 16), (old",
+    "state": "Andhra Pradesh",
+    "plazaType": "NH-5)",
+    "type": "National",
+    "concessionaire": "Conc. SWARNA TOLLWAY PRIVATE LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_7"
+  },
+  {
+    "name": "Budhanam Plaza (NH-",
+    "state": "Andhra Pradesh",
+    "plazaType": "16),(old NH-5)",
+    "type": "National",
+    "concessionaire": "Conc. SWARNA TOLLWAY PRIVATE LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_8"
+  },
+  {
+    "name": "Nellore Plaza (NH- 16), (old",
+    "state": "Andhra Pradesh",
+    "plazaType": "NH-5)",
+    "type": "National",
+    "concessionaire": "Conc. SWARNA TOLLWAY PRIVATE LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_9"
+  },
+  {
+    "name": "Keesara Plaza (NH-65), (old",
+    "state": "Andhra Pradesh",
+    "plazaType": "NH-9)",
+    "type": "National",
+    "concessionaire": "Conc. SWARNA TOLLWAY PRIVATE LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_10"
+  },
+  {
+    "name": "Kaza Toll Plaza Mangalgiri",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IJM",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_11"
+  },
+  {
+    "name": "Agnampadi",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_12"
+  },
+  {
+    "name": "Bellupada",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_13"
+  },
+  {
+    "name": "Vempadu",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_14"
+  },
+  {
+    "name": "Krishnavaram",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_15"
+  },
+  {
+    "name": "Laxmipuram",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_16"
+  },
+  {
+    "name": "Unguturu Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_17"
+  },
+  {
+    "name": "Eethakota at Km.946.300",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_18"
+  },
+  {
+    "name": "Chilakpelam",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_19"
+  },
+  {
+    "name": "Nathavalasa",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_20"
+  },
+  {
+    "name": "S.V Puram Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Transtroy",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_21"
+  },
+  {
+    "name": "Kalaparru",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_22"
+  },
+  {
+    "name": "Bollapalli Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Saimbhapuri Expressway Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_23"
+  },
+  {
+    "name": "Tangatur Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Saimbhapuri Expressway Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_24"
+  },
+  {
+    "name": "Musunur Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Saimbhapuri Expressway Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_25"
+  },
+  {
+    "name": "Panchvati Colony",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_26"
+  },
+  {
+    "name": "Goshtani Gate",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_27"
+  },
+  {
+    "name": "Chagalmarri Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Rayalasema Expressway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_28"
+  },
+  {
+    "name": "Bhramanapalli",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_29"
+  },
+  {
+    "name": "Mekalavaripalli",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_30"
+  },
+  {
+    "name": "Raviguntapalli",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_31"
+  },
+  {
+    "name": "Pottipadu",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_32"
+  },
+  {
+    "name": "Chinthalapalem toll plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_33"
+  },
+  {
+    "name": "Rapur toll plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_34"
+  },
+  {
+    "name": "Badava",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_35"
+  },
+  {
+    "name": "Durgamvaripalli Toll Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_36"
+  },
+  {
+    "name": "Millampali",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_37"
+  },
+  {
+    "name": "Gollaprolu",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_38"
+  },
+  {
+    "name": "Chinaganjam Fee Plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_39"
+  },
+  {
+    "name": "Mahasamudram",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_40"
+  },
+  {
+    "name": "Yerradoddi",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_41"
+  },
+  {
+    "name": "Jellipalli",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_42"
+  },
+  {
+    "name": "Bandapalli",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_43"
+  },
+  {
+    "name": "Chittimitti Chinthala",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_44"
+  },
+  {
+    "name": "Medapi Fee plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_45"
+  },
+  {
+    "name": "Pandillapalli fee plaza",
+    "state": "Andhra Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_46"
+  },
+  {
+    "name": "Chapirevula",
+    "state": "Andhra pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_47"
+  },
+  {
+    "name": "Davaluru",
+    "state": "Andhra pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_48"
+  },
+  {
+    "name": "Basapuram",
+    "state": "Andhra pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_49"
+  },
+  {
+    "name": "Halaharvi",
+    "state": "Andhra pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_50"
+  },
+  {
+    "name": "Raha",
+    "state": "Assam",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_51"
+  },
+  {
+    "name": "Dahalapara",
+    "state": "Assam",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_52"
+  },
+  {
+    "name": "Patgaon Toll Plaza",
+    "state": "Assam",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_53"
+  },
+  {
+    "name": "Mikirati Hawgaon Toll Plaza",
+    "state": "Assam",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_54"
+  },
+  {
+    "name": "Nazirakhat Toll Plaza",
+    "state": "Assam",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_55"
+  },
+  {
+    "name": "Madanpur Toll Plaza",
+    "state": "Assam",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_56"
+  },
+  {
+    "name": "Manderdisa",
+    "state": "Assam",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_57"
+  },
+  {
+    "name": "Runni Shaidpur Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_58"
+  },
+  {
+    "name": "Saukala Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_59"
+  },
+  {
+    "name": "Maranga",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_60"
+  },
+  {
+    "name": "Mohania Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "KNR Tollways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_61"
+  },
+  {
+    "name": "Sasaram Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Khed -Sinnar Expressway Project (HAHPU)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_62"
+  },
+  {
+    "name": "Barsoni Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_63"
+  },
+  {
+    "name": "Balgudar Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_64"
+  },
+  {
+    "name": "Hariabara",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "SMS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_65"
+  },
+  {
+    "name": "Asanpur  Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "SMS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_66"
+  },
+  {
+    "name": "Maithi",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "SMS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_67"
+  },
+  {
+    "name": "Raje Toll Plaza (T-2)",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "SMS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_68"
+  },
+  {
+    "name": "DidarGanj",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "BPAPA",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_69"
+  },
+  {
+    "name": "Mahant Maniyari",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "KNR Muzaffarpur Baraunitollway Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_70"
+  },
+  {
+    "name": "Murlitol",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "KNR Tollways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_71"
+  },
+  {
+    "name": "Saidpur Patedha",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_72"
+  },
+  {
+    "name": "Kharik",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_73"
+  },
+  {
+    "name": "Parsoni Khem",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_74"
+  },
+  {
+    "name": "Sonho Fee Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_75"
+  },
+  {
+    "name": "Pokhraira Fee Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_76"
+  },
+  {
+    "name": "Chapraitha Fee Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_77"
+  },
+  {
+    "name": "Chapwa",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_78"
+  },
+  {
+    "name": "Brindawan Fee Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_79"
+  },
+  {
+    "name": "Bhagalpur Toll plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_80"
+  },
+  {
+    "name": "Bishunpurwa",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_81"
+  },
+  {
+    "name": "Khaikhat Toll Plaza",
+    "state": "Bihar",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_82"
+  },
+  {
+    "name": "Jagtara",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_83"
+  },
+  {
+    "name": "Mashora",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_84"
+  },
+  {
+    "name": "Badaiyiguda",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_85"
+  },
+  {
+    "name": "Lakholi Toll Plaza",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Raipur Expressways Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_86"
+  },
+  {
+    "name": "Durg Bypass",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s SMS Shivnath Infrastructure Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_87"
+  },
+  {
+    "name": "Thakurtolla toll plaza",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ashoka Buildcon",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_88"
+  },
+  {
+    "name": "Chhuhipali Toll Plaza",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "BSCPL Aurang Tollway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_89"
+  },
+  {
+    "name": "Dhank Toll Plaza",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "BSCPL Aurang Tollway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_90"
+  },
+  {
+    "name": "Bhojpuri  Toll Plaza",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_91"
+  },
+  {
+    "name": "Kumhari",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_92"
+  },
+  {
+    "name": "Mudhipar Toll Plaza",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_93"
+  },
+  {
+    "name": "Chotiya",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_94"
+  },
+  {
+    "name": "Pachira",
+    "state": "Chhattisgarh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_95"
+  },
+  {
+    "name": "IGI Toll Plaza",
+    "state": "Delhi",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Millinieum City Expressway(MCEPL)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_96"
+  },
+  {
+    "name": "Kathpur Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_97"
+  },
+  {
+    "name": "KHEMANA TOLL PLAZA",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_98"
+  },
+  {
+    "name": "Vantada Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_99"
+  },
+  {
+    "name": "Kuchadi Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_100"
+  },
+  {
+    "name": "Okhamadi Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_101"
+  },
+  {
+    "name": "L&T Vadodra",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_102"
+  },
+  {
+    "name": "IRB Boriach",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_103"
+  },
+  {
+    "name": "IRB Bhagwada",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_104"
+  },
+  {
+    "name": "IRB Choryasi",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_105"
+  },
+  {
+    "name": "Ahmedabad Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_106"
+  },
+  {
+    "name": "Ahmedabad (Ring Road) Toll",
+    "state": "Gujarat",
+    "plazaType": "Plaza",
+    "type": "National",
+    "concessionaire": "Conc. IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_107"
+  },
+  {
+    "name": "Nadiad Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_108"
+  },
+  {
+    "name": "Anand Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_109"
+  },
+  {
+    "name": "Vadodara Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_110"
+  },
+  {
+    "name": "Kheda",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_111"
+  },
+  {
+    "name": "Vasad",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_112"
+  },
+  {
+    "name": "Mandal Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Soma Isolux",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_113"
+  },
+  {
+    "name": "Dari  Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Jetpur Somnath Tollways Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_114"
+  },
+  {
+    "name": "Bhatia  Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Soma Isolux",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_115"
+  },
+  {
+    "name": "HSTL TP01- Khadki",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T HSTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_116"
+  },
+  {
+    "name": "HSTL TP02- Gaman Bariya na",
+    "state": "Gujarat",
+    "plazaType": "muvada",
+    "type": "State",
+    "concessionaire": "Conc. L&T HSTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_117"
+  },
+  {
+    "name": "HSTL TP03- Galiya Danti",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T HSTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_118"
+  },
+  {
+    "name": "HSTL TP04- Gajan",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T HSTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_119"
+  },
+  {
+    "name": "Surajbari Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_120"
+  },
+  {
+    "name": "Vaghasiya Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "Safeway Concessions",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_121"
+  },
+  {
+    "name": "Vanana Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "Safeway Concessions",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_122"
+  },
+  {
+    "name": "Dhumiyani Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_123"
+  },
+  {
+    "name": "Bhatwada Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Highway Concessions",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_124"
+  },
+  {
+    "name": "Varahi Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "PATEL HIGHWAY MANAGEMENT PVT. LTD.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_125"
+  },
+  {
+    "name": "Makhel Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "PATEL HIGHWAY MANAGEMENT PVT. LTD.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_126"
+  },
+  {
+    "name": "Bhiladi Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "PATEL HIGHWAY MANAGEMENT PVT. LTD.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_127"
+  },
+  {
+    "name": "Bhalgam Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "PATEL HIGHWAY MANAGEMENT PVT. LTD.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_128"
+  },
+  {
+    "name": "Pithadiya Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "ILFS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_129"
+  },
+  {
+    "name": "Bharudi Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "ILFS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_130"
+  },
+  {
+    "name": "Samakhiali",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_131"
+  },
+  {
+    "name": "Mokha Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_132"
+  },
+  {
+    "name": "Mujras Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Bhilwara Rajsamand Tollway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_133"
+  },
+  {
+    "name": "Pithai Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Essel Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_134"
+  },
+  {
+    "name": "Vavadi Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Essel Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_135"
+  },
+  {
+    "name": "Mandva Toll Plaza (Narmada",
+    "state": "Gujarat",
+    "plazaType": "Bridge)",
+    "type": "National",
+    "concessionaire": "PF NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_136"
+  },
+  {
+    "name": "Gadoi  Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Jetpur Somnath Tollways Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_137"
+  },
+  {
+    "name": "Bamanbore",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "PWD Rajkot",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_138"
+  },
+  {
+    "name": "Bagodara",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "PWD Rajkot",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_139"
+  },
+  {
+    "name": "AMTL-TP-01 Vasna-Iyava",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T Ahmedabad-Maliya Tollway Limited.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_140"
+  },
+  {
+    "name": "AMTL-TP02-Malvan",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T Ahmedabad-Maliya Tollway Limited.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_141"
+  },
+  {
+    "name": "AMTL-TP03-Soldi",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T Ahmedabad-Maliya Tollway Limited.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_142"
+  },
+  {
+    "name": "AMTL-TP04-Aniyari",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T Ahmedabad-Maliya Tollway Limited.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_143"
+  },
+  {
+    "name": "Vanpari-Paddhari",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_144"
+  },
+  {
+    "name": "Soyal",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_145"
+  },
+  {
+    "name": "Jamnagar Bypass- Vadinar",
+    "state": "Gujarat",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_146"
+  },
+  {
+    "name": "Nageshri Toll Plaza",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_147"
+  },
+  {
+    "name": "Kobadi",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_148"
+  },
+  {
+    "name": "Gorsar",
+    "state": "Gujarat",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Kalthia Infra Projects Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_149"
+  },
+  {
+    "name": "Khuian Malkna",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_150"
+  },
+  {
+    "name": "Narwana",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_151"
+  },
+  {
+    "name": "Bado patti",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_152"
+  },
+  {
+    "name": "L&T PANIPAT",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_153"
+  },
+  {
+    "name": "Srinagar Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_154"
+  },
+  {
+    "name": "Makrauli Kalan Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sadbhav",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_155"
+  },
+  {
+    "name": "Dahar Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sadbhav",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_156"
+  },
+  {
+    "name": "Gharonda Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Soma Isolux NH One Tollway Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_157"
+  },
+  {
+    "name": "Chandimandir Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "JP Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_158"
+  },
+  {
+    "name": "Madina Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Rohtak Hissar Tollway Private Limited/",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_159"
+  },
+  {
+    "name": "Mayar Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Rohtak Hissar Tollway Private Limited/",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_160"
+  },
+  {
+    "name": "Jat Gangaicha Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Kurukshetra Expressways Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_161"
+  },
+  {
+    "name": "Dighal Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Kurukshetra Expressways Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_162"
+  },
+  {
+    "name": "Badarpur faridabad  Toll",
+    "state": "Haryana",
+    "plazaType": "plaza",
+    "type": "National",
+    "concessionaire": "PF Badarpur Faridabad Tollway ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_163"
+  },
+  {
+    "name": "Bhagan Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_164"
+  },
+  {
+    "name": "Bhavdeen Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_165"
+  },
+  {
+    "name": "Main Plaza Village Jakhauli",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_166"
+  },
+  {
+    "name": "Maujpur",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_167"
+  },
+  {
+    "name": "Chhajju Nagar",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_168"
+  },
+  {
+    "name": "Manesar Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Millinieum City Expressway(MCEPL)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_169"
+  },
+  {
+    "name": "Chaudhariwas",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_170"
+  },
+  {
+    "name": "MilkMajra",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_171"
+  },
+  {
+    "name": "Landhari Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_172"
+  },
+  {
+    "name": "Ghagghar Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Soma Isolux NH One Tollway Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_173"
+  },
+  {
+    "name": "Mada Fee Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI J&K 552 Rohad Toll Plaza National Conc. West Haryana Highways Project Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_174"
+  },
+  {
+    "name": "Khatkar Toll plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_175"
+  },
+  {
+    "name": "Saini Majra Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_176"
+  },
+  {
+    "name": "Thana Village Toll Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_177"
+  },
+  {
+    "name": "Jaloli  Fee Plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_178"
+  },
+  {
+    "name": "Kitlana",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Unique BuildMart Pvt  Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_179"
+  },
+  {
+    "name": "Lakhanpur",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI J&K 707 Chhara National PF NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_180"
+  },
+  {
+    "name": "Peont",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_181"
+  },
+  {
+    "name": "Sirohi Bahali plaza",
+    "state": "Haryana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_182"
+  },
+  {
+    "name": "Dolhu Nallah Fee Plaza",
+    "state": "Himachal Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_183"
+  },
+  {
+    "name": "Beliyad toll plaza",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s IL&FS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_184"
+  },
+  {
+    "name": "Rasoiya Dhamna Toll Plaza",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_185"
+  },
+  {
+    "name": "Pundag",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_186"
+  },
+  {
+    "name": "Tand Balidih",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_187"
+  },
+  {
+    "name": "Ghanghri Toll Plaza",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_188"
+  },
+  {
+    "name": "Sosokhurd",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_189"
+  },
+  {
+    "name": "Navasari",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_190"
+  },
+  {
+    "name": "Kothiya",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_191"
+  },
+  {
+    "name": "KOKPARA TOLL PLAZA",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_192"
+  },
+  {
+    "name": "Murma Toll Plaza",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_193"
+  },
+  {
+    "name": "Nagwan Toll Plaza",
+    "state": "Jharkhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_194"
+  },
+  {
+    "name": "Surathkal Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_195"
+  },
+  {
+    "name": "Bagepalli Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_196"
+  },
+  {
+    "name": "Bijapur Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sadbhav",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_197"
+  },
+  {
+    "name": "Nagarhalla Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sadbhav",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_198"
+  },
+  {
+    "name": "Kognoli",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_199"
+  },
+  {
+    "name": "Devanahalli Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Navayuga",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_200"
+  },
+  {
+    "name": "Kadabhalli (Kirasave) Toll",
+    "state": "Karnataka",
+    "plazaType": "Plaza",
+    "type": "National",
+    "concessionaire": "Conc. L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_201"
+  },
+  {
+    "name": "Shantigrama  Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_202"
+  },
+  {
+    "name": "Nangli Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "JSRMTPL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_203"
+  },
+  {
+    "name": "Kadathanamale Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "YELAHANKA AP BORDER TOLL WAYS PVT LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_204"
+  },
+  {
+    "name": "Gunjur Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "YELAHANKA AP BORDER TOLL WAYS PVT LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_205"
+  },
+  {
+    "name": "BYADARAHALLI",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_206"
+  },
+  {
+    "name": "NILAVAGILU",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_207"
+  },
+  {
+    "name": "COORGAL",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_208"
+  },
+  {
+    "name": "GUDEMARANAHALLI",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_209"
+  },
+  {
+    "name": "TUMBADI",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_210"
+  },
+  {
+    "name": "BUDDAREDDYHALLI",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_211"
+  },
+  {
+    "name": "DODDAMAVATHURU",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_212"
+  },
+  {
+    "name": "OBALAPURA",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_213"
+  },
+  {
+    "name": "ELECTRONIC  CITY Phase 1",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NAVAYUGA UDUPI TOLLWAY PVT LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_214"
+  },
+  {
+    "name": "ATTIBELLE",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "BETL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_215"
+  },
+  {
+    "name": "Bankapur",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_216"
+  },
+  {
+    "name": "Mangalgi",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Deccan Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_217"
+  },
+  {
+    "name": "Karjeevanhally Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_218"
+  },
+  {
+    "name": "Guilalu Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_219"
+  },
+  {
+    "name": "Laxamannath Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_220"
+  },
+  {
+    "name": "Hirebgewadi toll plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ashoka Buildcon",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_221"
+  },
+  {
+    "name": "Chalageri",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_222"
+  },
+  {
+    "name": "Hebbalu",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_223"
+  },
+  {
+    "name": "Kachkoot Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI J&K 468 Vanagiri National Conc. GMR",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_224"
+  },
+  {
+    "name": "Shahapur",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GMR",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_225"
+  },
+  {
+    "name": "Hitnal",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GMR",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_226"
+  },
+  {
+    "name": "Sasthan Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Navayuga",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_227"
+  },
+  {
+    "name": "Talapady Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NAVAYUGA UDUPI TOLLWAY PVT LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_228"
+  },
+  {
+    "name": "Hejamadi Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NAVAYUGA UDUPI TOLLWAY PVT LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_229"
+  },
+  {
+    "name": "Hattargi",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_230"
+  },
+  {
+    "name": "Kulumapalya toll plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "(Neelmangla Tumkur) Jass Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_231"
+  },
+  {
+    "name": "Chokkenahalli toll plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "(Neelmangla Tumkur) Jass Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_232"
+  },
+  {
+    "name": "Navayuga Bangalooru",
+    "state": "Karnataka",
+    "plazaType": "Tollway Pvt Ltd",
+    "type": "National",
+    "concessionaire": "Conc. Navayuga",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_233"
+  },
+  {
+    "name": "Nelamangala Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "LANCO DEVANHALI TOLLWAY LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_234"
+  },
+  {
+    "name": "Bellur Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "LANCO DEVANHALI TOLLWAY LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_235"
+  },
+  {
+    "name": "Hoskote Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "LANCO HOSKOTE TOLLWAY LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_236"
+  },
+  {
+    "name": "Mulbagal Toll Plaza",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "LANCO HOSKOTE TOLLWAY LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_237"
+  },
+  {
+    "name": "Brahamarakotlu",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_238"
+  },
+  {
+    "name": "K N Huindy",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_239"
+  },
+  {
+    "name": "Kannole",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_240"
+  },
+  {
+    "name": "Harwal",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_241"
+  },
+  {
+    "name": "Kannegala",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_242"
+  },
+  {
+    "name": "Yeddore",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_243"
+  },
+  {
+    "name": "Belekeri",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB Westcoast Tollway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_244"
+  },
+  {
+    "name": "Holgegadde",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB Westcoast Tollway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_245"
+  },
+  {
+    "name": "Shirur",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB Westcoast Tollway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_246"
+  },
+  {
+    "name": "Thimmalapura",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Hampi Expressways PVT. LTD.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_247"
+  },
+  {
+    "name": "Kananakatte",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Hampi Expressways PVT. LTD.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_248"
+  },
+  {
+    "name": "Gabbur",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Nandi Highway Developers Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_249"
+  },
+  {
+    "name": "Karwar",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Nandi Highway Developers Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_250"
+  },
+  {
+    "name": "Tarihal",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Nandi Highway Developers Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_251"
+  },
+  {
+    "name": "Kalghatgi",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Nandi Highway Developers Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_252"
+  },
+  {
+    "name": "Goa",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Nandi Highway Developers Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_253"
+  },
+  {
+    "name": "Narendra",
+    "state": "Karnataka",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Nandi Highway Developers Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_254"
+  },
+  {
+    "name": "Sherewada",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_255"
+  },
+  {
+    "name": "Chattar",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_256"
+  },
+  {
+    "name": "Tippanal",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MITRA INFRA SOLUTIONS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_257"
+  },
+  {
+    "name": "Papanashi",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "Kesar Investment and Securities",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_258"
+  },
+  {
+    "name": "Hiremannapur",
+    "state": "Karnataka",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "Kesar Investment and",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_259"
+  },
+  {
+    "name": "PamPamPallam Toll Plaza",
+    "state": "Kerala",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "KNR Walayar Tollways Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_260"
+  },
+  {
+    "name": "Kumbalam Toll Plaza",
+    "state": "Kerala",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Kochi Aror Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_261"
+  },
+  {
+    "name": "Paliyekkara Toll plaza",
+    "state": "Kerala",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Guruvayoor",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_262"
+  },
+  {
+    "name": "Poonarimangalam",
+    "state": "Kerala",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_263"
+  },
+  {
+    "name": "Kollam Bypass",
+    "state": "Kerala",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_264"
+  },
+  {
+    "name": "Milanpur Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Oriental",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_265"
+  },
+  {
+    "name": "Fulara",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_266"
+  },
+  {
+    "name": "IDTL Toll Plaza-A",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Indore Dewas Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_267"
+  },
+  {
+    "name": "Sonvarsha",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_268"
+  },
+  {
+    "name": "Khadda",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_269"
+  },
+  {
+    "name": "Mungwari",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_270"
+  },
+  {
+    "name": "Ujara",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_271"
+  },
+  {
+    "name": "Saliwada",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_272"
+  },
+  {
+    "name": "Madai Fee Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_273"
+  },
+  {
+    "name": "Baretha KM 21.120",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "MP Highways Pvt. Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_274"
+  },
+  {
+    "name": "Phoop (Barahi) KM 105.300",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "MP Highways Pvt. Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_275"
+  },
+  {
+    "name": "Dagrai Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_276"
+  },
+  {
+    "name": "Khalghat Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_277"
+  },
+  {
+    "name": "Choundha",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Agra Gwalior Pathways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_278"
+  },
+  {
+    "name": "Mehra",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Path",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_279"
+  },
+  {
+    "name": "Ramnagar",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Jhansi Baran Pathways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_280"
+  },
+  {
+    "name": "Guna",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Guna Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_281"
+  },
+  {
+    "name": "Jamli Toll Pllaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Khalghat Sendhwa Tollways Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_282"
+  },
+  {
+    "name": "Chikhalikala",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_283"
+  },
+  {
+    "name": "SONWAY Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Oriental Pathways(Indore) PVT LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_284"
+  },
+  {
+    "name": "Purankhedi Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ircon",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_285"
+  },
+  {
+    "name": "Fanda Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MPRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_286"
+  },
+  {
+    "name": "Amlaha Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MPRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_287"
+  },
+  {
+    "name": "Bhourasa Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MPRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_288"
+  },
+  {
+    "name": "Pagara Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Dilip Buildcon Limited , Metro infrasys",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_289"
+  },
+  {
+    "name": "Jogipur Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Dilip Buildcon Limited , Metro infrasys",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_290"
+  },
+  {
+    "name": "Panihar",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Essel Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_291"
+  },
+  {
+    "name": "Mud Kheda",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Essel Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_292"
+  },
+  {
+    "name": "Rathara",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "M/s Path India Pvt.Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_293"
+  },
+  {
+    "name": "Choratha",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "M/s Path India Pvt.Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_294"
+  },
+  {
+    "name": "Katni Bypass Road Ltd - Entry",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "Ashoka Concessions",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_295"
+  },
+  {
+    "name": "Katni Bypass Road Ltd - Exit",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "Ashoka Concessions",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_296"
+  },
+  {
+    "name": "Jungawani",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_297"
+  },
+  {
+    "name": "Jaitpur",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_298"
+  },
+  {
+    "name": "IDTL Toll Plaza-B",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Indore Dewas Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_299"
+  },
+  {
+    "name": "Khambara Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Oriental",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_300"
+  },
+  {
+    "name": "Chapra New Delhi",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Oriental",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_301"
+  },
+  {
+    "name": "Rojwas",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Oriental",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_302"
+  },
+  {
+    "name": "Malthone",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "DPJ DRA Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_303"
+  },
+  {
+    "name": "Chitora",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "DPJ DRA Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_304"
+  },
+  {
+    "name": "Titarpani",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "DPJ DRA Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_305"
+  },
+  {
+    "name": "Bakori",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "DPJ DRA Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_306"
+  },
+  {
+    "name": "Allonia",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_307"
+  },
+  {
+    "name": "Methwada",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IIGTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_308"
+  },
+  {
+    "name": "Dattigaon",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IIGTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_309"
+  },
+  {
+    "name": "Odaki Pipkhar",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_310"
+  },
+  {
+    "name": "Pathoroundi",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_311"
+  },
+  {
+    "name": "Sehatganj",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_312"
+  },
+  {
+    "name": "Pandutala",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_313"
+  },
+  {
+    "name": "Mohtara Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_314"
+  },
+  {
+    "name": "Jognihai",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Vindhyachal Expressway pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_315"
+  },
+  {
+    "name": "Masuriha",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Vindhyachal Expressway pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_316"
+  },
+  {
+    "name": "Jhiriya Toll Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Bansal Pathways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_317"
+  },
+  {
+    "name": "Heeran Khedi",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Agroh Biaora Tollways Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_318"
+  },
+  {
+    "name": "Bahoripar Fee Plaza",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_319"
+  },
+  {
+    "name": "Bilantri",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "M/s Suryawavshi Infrastructure Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_320"
+  },
+  {
+    "name": "Ghoradongri",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "M/s DBL Betul-Sarni Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_321"
+  },
+  {
+    "name": "Hatta",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "M/s DBL Hatta-dargoan Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_322"
+  },
+  {
+    "name": "Devkhedi",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "M/s DBL Ashoknagar-Vidisha Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_323"
+  },
+  {
+    "name": "Singhpur",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "M/s DBL Uchera-Nagod Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_324"
+  },
+  {
+    "name": "Kherkheda",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "DBL Sitamau-Suwasra Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_325"
+  },
+  {
+    "name": "Sanawad",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "M/s DBL Mundi-Sanawad Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_326"
+  },
+  {
+    "name": "Tikitoria",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "DBL Patan-Rehli Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_327"
+  },
+  {
+    "name": "Gadaghat",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "DBL Patan-Rehli Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_328"
+  },
+  {
+    "name": "Silwani",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "DBL Silwani-Sultanganj Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_329"
+  },
+  {
+    "name": "Talchiri",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "DBL Silwani-Sultanganj",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_330"
+  },
+  {
+    "name": "Eklehra",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "Betul-Sarni Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_331"
+  },
+  {
+    "name": "Bela",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "DBL Tikamgarh-Nowgoav",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_332"
+  },
+  {
+    "name": "Mawai",
+    "state": "Madhya Pradesh",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "DBL Tikamgarh-Nowgoav",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_333"
+  },
+  {
+    "name": "Johariya Sheikh",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_334"
+  },
+  {
+    "name": "Sonkacch",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_335"
+  },
+  {
+    "name": "Kachnaria",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_336"
+  },
+  {
+    "name": "Khawasa",
+    "state": "Madhya Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_337"
+  },
+  {
+    "name": "Kherwasani",
+    "state": "MadhyaPradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_338"
+  },
+  {
+    "name": "Majhgawan",
+    "state": "MadhyaPradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_339"
+  },
+  {
+    "name": "Daroada",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Anuj Kumar Aggarwal",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_340"
+  },
+  {
+    "name": "Patanswangi Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_341"
+  },
+  {
+    "name": "Shedung Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_342"
+  },
+  {
+    "name": "Khalapur Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_343"
+  },
+  {
+    "name": "Kusgaon Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_344"
+  },
+  {
+    "name": "Baswant  Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_345"
+  },
+  {
+    "name": "Dhoki",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_346"
+  },
+  {
+    "name": "Dumbarwadi",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_347"
+  },
+  {
+    "name": "Husnapur",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_348"
+  },
+  {
+    "name": "Talegaon Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_349"
+  },
+  {
+    "name": "Vashi",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MEP Infrastructure Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_350"
+  },
+  {
+    "name": "Airoli",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MEP Infrastructure Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_351"
+  },
+  {
+    "name": "Mulund(EEH)",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MEP Infrastructure Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_352"
+  },
+  {
+    "name": "Mulund(LBS)",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MEP Infrastructure Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_353"
+  },
+  {
+    "name": "Dahisar",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MEP Infrastructure Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_354"
+  },
+  {
+    "name": "IRB Charoti",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_355"
+  },
+  {
+    "name": "Nandgaon Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_356"
+  },
+  {
+    "name": "Karanja Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_357"
+  },
+  {
+    "name": "Khaniwade Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_358"
+  },
+  {
+    "name": "TASAWADE TOLL PLAZA",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "MSRDCL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_359"
+  },
+  {
+    "name": "Kini Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "MSRDCL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_360"
+  },
+  {
+    "name": "Gondkhairi Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Atlanata Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_361"
+  },
+  {
+    "name": "Patas Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "TRIL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_362"
+  },
+  {
+    "name": "Sardewadi Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "TRIL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_363"
+  },
+  {
+    "name": "Anewadi Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_364"
+  },
+  {
+    "name": "Khed-Shivapur Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_365"
+  },
+  {
+    "name": "Sendurwafa toll plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ashoka Buildcon",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_366"
+  },
+  {
+    "name": "Shirpur",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "DPTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_367"
+  },
+  {
+    "name": "Songir",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "DPTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_368"
+  },
+  {
+    "name": "Chandwad toll plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ircon Soma",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_369"
+  },
+  {
+    "name": "Laling toll plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ircon Soma",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_370"
+  },
+  {
+    "name": "Kelwad",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_371"
+  },
+  {
+    "name": "Sawaleshwar Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "ILFS & ITNL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_372"
+  },
+  {
+    "name": "Varwade Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "ILFS & ITNL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_373"
+  },
+  {
+    "name": "Mathni",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "JMC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_374"
+  },
+  {
+    "name": "Nashik Sinner Tollways",
+    "state": "Maharashtra",
+    "plazaType": "Limited",
+    "type": "National",
+    "concessionaire": "BOT NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_375"
+  },
+  {
+    "name": "MANSAR TOLL PLAZA",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_376"
+  },
+  {
+    "name": "KAMPTEE KANHAN BYPASS",
+    "state": "Maharashtra",
+    "plazaType": "CHECK TOLL PLAZA",
+    "type": "National",
+    "concessionaire": "Conc. NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_377"
+  },
+  {
+    "name": "NAGPUR BYPASS CHECK",
+    "state": "Maharashtra",
+    "plazaType": "TOLL PLAZA",
+    "type": "National",
+    "concessionaire": "Conc. NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_378"
+  },
+  {
+    "name": "BORKHEDI TOLL PLAZA",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_379"
+  },
+  {
+    "name": "Kelapur",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_380"
+  },
+  {
+    "name": "Ghoti toll plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Gammon India",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_381"
+  },
+  {
+    "name": "Arjunalli toll plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Gammon India",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_382"
+  },
+  {
+    "name": "Hiwargaon pavasa",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Khed -Sinnar Expressway Project (HAHPU)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_383"
+  },
+  {
+    "name": "Chalakwadi  toll plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Khed -Sinnar Expressway Project (CPUAH)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_384"
+  },
+  {
+    "name": "Tamalwadi Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_385"
+  },
+  {
+    "name": "Yedashi Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_386"
+  },
+  {
+    "name": "Pargaon TP",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "YABOT (IRB)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_387"
+  },
+  {
+    "name": "Padalshingi TP",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "YABOT (IRB)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_388"
+  },
+  {
+    "name": "Maliwadi TP",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "YABOT (IRB)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_389"
+  },
+  {
+    "name": "Shadol/Dhuwar",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI Bhopal 579 Badewadi National PF NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_390"
+  },
+  {
+    "name": "Shilphata NH48 Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_391"
+  },
+  {
+    "name": "Shedung NH48 Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_392"
+  },
+  {
+    "name": "Kusgaon NH48 Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_393"
+  },
+  {
+    "name": "Kardha Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Abhijeet Ashoka Infrastructure Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_394"
+  },
+  {
+    "name": "Dehuroad NH48 Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_395"
+  },
+  {
+    "name": "Rajiv Gandhi Sea Link",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "MEP Infrastructure Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_396"
+  },
+  {
+    "name": "Ashiv Fee Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_397"
+  },
+  {
+    "name": "Moshi Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_398"
+  },
+  {
+    "name": "Rajgurunagar Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_399"
+  },
+  {
+    "name": "Haladgao Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_400"
+  },
+  {
+    "name": "Phulwadi Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Solapur Tollways Pvt ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_401"
+  },
+  {
+    "name": "Talmod Toll Plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Solapur Tollways Pvt ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_402"
+  },
+  {
+    "name": "Arambha",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "ECA INFRASTRUCTURE INDIA PVT. LTD.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_403"
+  },
+  {
+    "name": "Bhamb Raja",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_404"
+  },
+  {
+    "name": "Mhasane Phata",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "Chetak Enterprises Limited.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_405"
+  },
+  {
+    "name": "Selu Amba",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_406"
+  },
+  {
+    "name": "Fekari",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Fekari Infrastructure",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_407"
+  },
+  {
+    "name": "Nanduri",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "WCB Toll Road Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_408"
+  },
+  {
+    "name": "Visapur",
+    "state": "Maharashtra",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "WCB Toll Road Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_409"
+  },
+  {
+    "name": "Kharbi toll plaza",
+    "state": "Maharashtra",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_410"
+  },
+  {
+    "name": "Diengpasoh Toll Plaza",
+    "state": "Meghalaya",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Nandini Talukdar",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_411"
+  },
+  {
+    "name": "Pasyih",
+    "state": "Meghalaya",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_412"
+  },
+  {
+    "name": "Pahammawlein Toll Plaza",
+    "state": "Meghalaya",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Sahakar Global Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_413"
+  },
+  {
+    "name": "Lomshinong",
+    "state": "Meghalaya",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_414"
+  },
+  {
+    "name": "SERGARH TOLL PLAZA",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_415"
+  },
+  {
+    "name": "Banajodi",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "SAI MAATARINI TOLLWAYS LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_416"
+  },
+  {
+    "name": "Gurapali",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_417"
+  },
+  {
+    "name": "Pipili",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_418"
+  },
+  {
+    "name": "Manguli Toll Plaza",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Shree Jagannath Expressway Pvt Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_419"
+  },
+  {
+    "name": "Srirampur toll plaza",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_420"
+  },
+  {
+    "name": "Gudipada or Gangapada Toll",
+    "state": "Odisha",
+    "plazaType": "Plaza",
+    "type": "National",
+    "concessionaire": "PF NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_421"
+  },
+  {
+    "name": "Sambalpur Baragarh",
+    "state": "Odisha",
+    "plazaType": "Tollways",
+    "type": "National",
+    "concessionaire": "Conc. Ashoka Buildcon",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_422"
+  },
+  {
+    "name": "Hasanpur",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "SAI MAATARINI TOLLWAYS LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_423"
+  },
+  {
+    "name": "Kantaghar",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "SAI MAATARINI TOLLWAYS LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_424"
+  },
+  {
+    "name": "PANIKOILI TOLL PLAZA",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_425"
+  },
+  {
+    "name": "Brajarajnagar (Nuadeeh)",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_426"
+  },
+  {
+    "name": "Brajrajnagar Toll Plaza",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_427"
+  },
+  {
+    "name": "Khamara Fee Plaza",
+    "state": "Odisha",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_428"
+  },
+  {
+    "name": "Kalajhar Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_429"
+  },
+  {
+    "name": "Kot Karora Kalan Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_430"
+  },
+  {
+    "name": "Zidda Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_431"
+  },
+  {
+    "name": "Ambala Chandigarh",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GMR",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_432"
+  },
+  {
+    "name": "BSC-C&C Kurali Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "BSC-C&C Kurali Toll Plaza Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_433"
+  },
+  {
+    "name": "Harsa Mansar Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_434"
+  },
+  {
+    "name": "Chollang Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_435"
+  },
+  {
+    "name": "Badbar",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_436"
+  },
+  {
+    "name": "Lehra Begga",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_437"
+  },
+  {
+    "name": "Usma Toll plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_438"
+  },
+  {
+    "name": "Dharer Azizpur Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_439"
+  },
+  {
+    "name": "Dhareri Jattan Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_440"
+  },
+  {
+    "name": "Paind Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_441"
+  },
+  {
+    "name": "LADPALWAN TOLL PLAZA",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_442"
+  },
+  {
+    "name": "WARYAM NANGAL TOLL",
+    "state": "Punjab",
+    "plazaType": "PLAZA",
+    "type": "National",
+    "concessionaire": "Conc. IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_443"
+  },
+  {
+    "name": "JATL Dhilwan Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IVRCL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_444"
+  },
+  {
+    "name": "JATL Nijjerpura Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IVRCL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_445"
+  },
+  {
+    "name": "Chiddan Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_446"
+  },
+  {
+    "name": "Ladowal Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Soma Isolux NH One Tollway Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_447"
+  },
+  {
+    "name": "Thandikhui Toll Plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Rakesh Kumar Choudhary J&K 557 Chak Bamniya Toll Plaza National PF NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_448"
+  },
+  {
+    "name": "BHAGOMAJRA TOLL PLAZA",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_449"
+  },
+  {
+    "name": "Behram",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_450"
+  },
+  {
+    "name": "Bachhwan",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_451"
+  },
+  {
+    "name": "GHULAL TOLL PLAZA",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_452"
+  },
+  {
+    "name": "Chaukiman Toll plaza",
+    "state": "Punjab",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ludhiana -Talwandi Toll Road Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_453"
+  },
+  {
+    "name": "Narayanpura Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_454"
+  },
+  {
+    "name": "Nimbasar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_455"
+  },
+  {
+    "name": "Rajora Khurd",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_456"
+  },
+  {
+    "name": "UNDVARIYA TOLL PLAZA",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_457"
+  },
+  {
+    "name": "Hathitala Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI (QualiX)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_458"
+  },
+  {
+    "name": "Bor Charnan Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI (QualiX)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_459"
+  },
+  {
+    "name": "Kair Fakir Ki Dhani toll plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "QualiX",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_460"
+  },
+  {
+    "name": "Lathi",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "GR Infra / NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_461"
+  },
+  {
+    "name": "Ramdevara",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "GR Infra / NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_462"
+  },
+  {
+    "name": "Jasnathnagar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_463"
+  },
+  {
+    "name": "Para Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_464"
+  },
+  {
+    "name": "Leelamba Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_465"
+  },
+  {
+    "name": "Akhepura",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_466"
+  },
+  {
+    "name": "Netra",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_467"
+  },
+  {
+    "name": "Tankala",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_468"
+  },
+  {
+    "name": "Rashidpura",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sikar Bikaner Highway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_469"
+  },
+  {
+    "name": "Tidiayasar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sikar Bikaner Highway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_470"
+  },
+  {
+    "name": "Lakhasar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sikar Bikaner Highway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_471"
+  },
+  {
+    "name": "Udairamsar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sikar Bikaner Highway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_472"
+  },
+  {
+    "name": "Gegal",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Soma Isolux",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_473"
+  },
+  {
+    "name": "Pipalaz",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Soma Isolux",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_474"
+  },
+  {
+    "name": "Jaipur Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GVK",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_475"
+  },
+  {
+    "name": "Kishangarh Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GVK",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_476"
+  },
+  {
+    "name": "Manoharpura Toll plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Pink City Expressway",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_477"
+  },
+  {
+    "name": "Daulatpura Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Pink City Expressway",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_478"
+  },
+  {
+    "name": "Tatiawas Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_479"
+  },
+  {
+    "name": "Bassi",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Chittorgarh Kota Toll Ways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_480"
+  },
+  {
+    "name": "Aroli",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Chittorgarh Kota Toll Ways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_481"
+  },
+  {
+    "name": "Dhaneshwar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Chittorgarh Kota Toll Ways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_482"
+  },
+  {
+    "name": "Malera",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Udaipur Pathways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_483"
+  },
+  {
+    "name": "Gogunda",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Udaipur Pathways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_484"
+  },
+  {
+    "name": "Sikandra Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "JAIPUR MAHUA TOLLWAY PRIVATE LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_485"
+  },
+  {
+    "name": "Rajadhok Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "JAIPUR MAHUA TOLLWAY PRIVATE LIMITED",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_486"
+  },
+  {
+    "name": "Mundiyar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Jhansi Baran Pathways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_487"
+  },
+  {
+    "name": "Raipur",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_488"
+  },
+  {
+    "name": "Indranagar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_489"
+  },
+  {
+    "name": "BIRAMI",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_490"
+  },
+  {
+    "name": "Methoon Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_491"
+  },
+  {
+    "name": "Kishorepura Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "GVK",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_492"
+  },
+  {
+    "name": "Mandawara Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Shreenathji Udaipur Tollway Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_493"
+  },
+  {
+    "name": "Negadiya Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Shreenathji Udaipur Tollway Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_494"
+  },
+  {
+    "name": "Shahjahanpur Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Pink City Expressway",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_495"
+  },
+  {
+    "name": "Lasedi",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Salasar Highways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_496"
+  },
+  {
+    "name": "Dhadhar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Salasar Highways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_497"
+  },
+  {
+    "name": "Sobhasar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Salasar Highways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_498"
+  },
+  {
+    "name": "Banthri",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_499"
+  },
+  {
+    "name": "Tamdoli",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_500"
+  },
+  {
+    "name": "Kota Bypass Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_501"
+  },
+  {
+    "name": "Kondar",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_502"
+  },
+  {
+    "name": "Chilla Chond",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_503"
+  },
+  {
+    "name": "Nimbi Jodha",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_504"
+  },
+  {
+    "name": "Harimma",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_505"
+  },
+  {
+    "name": "Jojro Ka Kheda Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_506"
+  },
+  {
+    "name": "Khandi Obri Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_507"
+  },
+  {
+    "name": "Barkheda Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_508"
+  },
+  {
+    "name": "Sonwa Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_509"
+  },
+  {
+    "name": "Ludhwai Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Madhucon Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_510"
+  },
+  {
+    "name": "Amoli Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Madhucon Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_511"
+  },
+  {
+    "name": "UTHMAN",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_512"
+  },
+  {
+    "name": "Rupakheda Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Bhilwara Rajsamand Tollway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_513"
+  },
+  {
+    "name": "Khedi",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_514"
+  },
+  {
+    "name": "Lambiya Kalan",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_515"
+  },
+  {
+    "name": "Nekawala",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_516"
+  },
+  {
+    "name": "Khara Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "MoRTH",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_517"
+  },
+  {
+    "name": "Bhadera Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "MoRTH",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_518"
+  },
+  {
+    "name": "Hindore Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "MoRTH",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_519"
+  },
+  {
+    "name": "Salasar Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ircon PBTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_520"
+  },
+  {
+    "name": "Nokhra Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ircon PBTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_521"
+  },
+  {
+    "name": "Kheerwa Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ircon PBTL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_522"
+  },
+  {
+    "name": "Limdi Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_523"
+  },
+  {
+    "name": "Similiya",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/S Kota Baran Toll Ways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_524"
+  },
+  {
+    "name": "Fatehpur",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/S Kota Baran Toll Ways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_525"
+  },
+  {
+    "name": "Nimbayani",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_526"
+  },
+  {
+    "name": "Doli toll plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_527"
+  },
+  {
+    "name": "Gumanpura",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_528"
+  },
+  {
+    "name": "Khanori",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_529"
+  },
+  {
+    "name": "Morani",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_530"
+  },
+  {
+    "name": "Khachrol",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_531"
+  },
+  {
+    "name": "Mandana Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_532"
+  },
+  {
+    "name": "Hanumangarh",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_533"
+  },
+  {
+    "name": "Nimbali",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Jodhpur Pali Expressway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_534"
+  },
+  {
+    "name": "Gajangarh",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Jodhpur Pali Expressway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_535"
+  },
+  {
+    "name": "Ochadi",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "Chetak Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_536"
+  },
+  {
+    "name": "Badi Ghati Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "B.S. Group (MoRTH)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_537"
+  },
+  {
+    "name": "Kuchera Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "B.S. Group (MoRTH)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_538"
+  },
+  {
+    "name": "Nimbaheda",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "Chetak Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_539"
+  },
+  {
+    "name": "Sidhpura",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "Chetak Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_540"
+  },
+  {
+    "name": "Narsingharh",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "Chetak Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_541"
+  },
+  {
+    "name": "Bagaliya Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "ITNL Road infrastructure Development Company Ltd. (MoRTH)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_542"
+  },
+  {
+    "name": "Baggar Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "BOT",
+    "concessionaire": "ITNL Road infrastructure Development Company Ltd. (MoRTH)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_543"
+  },
+  {
+    "name": "Titoli",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s PNC Rajasthan Highways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_544"
+  },
+  {
+    "name": "Rabawata",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s PNC Rajasthan Highways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_545"
+  },
+  {
+    "name": "Pallai",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_546"
+  },
+  {
+    "name": "Kadisahena",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_547"
+  },
+  {
+    "name": "Hingonia",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_548"
+  },
+  {
+    "name": "Sitarampura",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_549"
+  },
+  {
+    "name": "Lal ka Khera",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_550"
+  },
+  {
+    "name": "Raisinghnagar toll plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_551"
+  },
+  {
+    "name": "Patroda Toll Plaza",
+    "state": "Rajasthan",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_552"
+  },
+  {
+    "name": "Kappalur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Raima Toll Road(MEP)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_553"
+  },
+  {
+    "name": "Omalur Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_554"
+  },
+  {
+    "name": "Nanguneri",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Raima Toll Road(MEP)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_555"
+  },
+  {
+    "name": "Salaipudur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Raima Toll Road(MEP)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_556"
+  },
+  {
+    "name": "Paranur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_557"
+  },
+  {
+    "name": "Lembalakudi",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_558"
+  },
+  {
+    "name": "Lechchumanapatti",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_559"
+  },
+  {
+    "name": "Etturvattam",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Raima Toll Road(MEP)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_560"
+  },
+  {
+    "name": "Boothakudi",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_561"
+  },
+  {
+    "name": "Chittampatti",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_562"
+  },
+  {
+    "name": "Mathur Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_563"
+  },
+  {
+    "name": "SriPerumbadur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_564"
+  },
+  {
+    "name": "Chennasamaduram",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_565"
+  },
+  {
+    "name": "Vikkravandi Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ulundurpet Expressway(IDFC)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_566"
+  },
+  {
+    "name": "SENGURICHI TOLL PLAZA",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Trichy Tollways Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_567"
+  },
+  {
+    "name": "THIRUMANDURAI TOLL",
+    "state": "Tamil Nadu",
+    "plazaType": "PLAZA",
+    "type": "National",
+    "concessionaire": "Conc. Trichy Tollways Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_568"
+  },
+  {
+    "name": "Samayapuram Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Indu Navayuga",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_569"
+  },
+  {
+    "name": "Vijayamangalam Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IVRCL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_570"
+  },
+  {
+    "name": "Ponnambalapatti Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_571"
+  },
+  {
+    "name": "Kozhinjiipatti Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_572"
+  },
+  {
+    "name": "Rasampalayam Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_573"
+  },
+  {
+    "name": "Mettupatti Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_574"
+  },
+  {
+    "name": "Nathakkarai Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_575"
+  },
+  {
+    "name": "Thiruparaithurai Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_576"
+  },
+  {
+    "name": "Manavasi Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_577"
+  },
+  {
+    "name": "Krishnagiri Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_578"
+  },
+  {
+    "name": "Vaniyambadi Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_579"
+  },
+  {
+    "name": "Pallikonda Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_580"
+  },
+  {
+    "name": "L&T Krishnagiri Thopur Toll",
+    "state": "Tamil Nadu",
+    "plazaType": "Plaza",
+    "type": "National",
+    "concessionaire": "Conc. L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_581"
+  },
+  {
+    "name": "Velanchettiyur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Madhucon Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_582"
+  },
+  {
+    "name": "Valvanthankottai",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Madhucon Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_583"
+  },
+  {
+    "name": "Elliyarpathy",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Madhucon Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_584"
+  },
+  {
+    "name": "Pudurpandiyapuram",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Madhucon Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_585"
+  },
+  {
+    "name": "IVRCL Chengapally Tollways",
+    "state": "Tamil Nadu",
+    "plazaType": "Limited",
+    "type": "National",
+    "concessionaire": "Conc. IVRCL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_586"
+  },
+  {
+    "name": "SURAPATTU TOLL PLAZA",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_587"
+  },
+  {
+    "name": "Pattarai Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_588"
+  },
+  {
+    "name": "VANAGARAM TOLL PLAZA",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_589"
+  },
+  {
+    "name": "Nallur Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_590"
+  },
+  {
+    "name": "Veeracholapuram Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_591"
+  },
+  {
+    "name": "Athur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_592"
+  },
+  {
+    "name": "Pondicherry Tindivanam Toll",
+    "state": "Tamil Nadu",
+    "plazaType": "Plaza",
+    "type": "National",
+    "concessionaire": "Conc. Pondicherry Tollways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_593"
+  },
+  {
+    "name": "Palaya Gandharvakottai",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_594"
+  },
+  {
+    "name": "Shenbagampettai toll plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_595"
+  },
+  {
+    "name": "Vaiguntham Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IVRCL",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_596"
+  },
+  {
+    "name": "VAGAIKULAM TOLL PLAZA",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_597"
+  },
+  {
+    "name": "D C Palli",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_598"
+  },
+  {
+    "name": "Tirupachethi",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_599"
+  },
+  {
+    "name": "Buchireddypalem",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_600"
+  },
+  {
+    "name": "Bogalur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_601"
+  },
+  {
+    "name": "Perungudi",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_602"
+  },
+  {
+    "name": "Central Server Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_603"
+  },
+  {
+    "name": "Thoraipakkam",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_604"
+  },
+  {
+    "name": "Medavakkam",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_605"
+  },
+  {
+    "name": "ECRlink Road",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_606"
+  },
+  {
+    "name": "Egatur",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_607"
+  },
+  {
+    "name": "Neelambur",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_608"
+  },
+  {
+    "name": "Trichy Salem",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_609"
+  },
+  {
+    "name": "Trichy Cochin",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_610"
+  },
+  {
+    "name": "Madukkarai",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_611"
+  },
+  {
+    "name": "Pollachi Cochin Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_612"
+  },
+  {
+    "name": "Pollachi Salem Toll Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_613"
+  },
+  {
+    "name": "Vandiyur",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "SRI BALAJI TOLLWAYS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_614"
+  },
+  {
+    "name": "Chinthamani",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "SRI BALAJI TOLLWAYS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_615"
+  },
+  {
+    "name": "Valayangulam",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "Conc.",
+    "concessionaire": "SRI BALAJI TOLLWAYS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_616"
+  },
+  {
+    "name": "Uthandi",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC (ECR)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_617"
+  },
+  {
+    "name": "Central Server plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC (ECR)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_618"
+  },
+  {
+    "name": "Anumandhai",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC (ECR)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_619"
+  },
+  {
+    "name": "Mahabalipuram Plaza",
+    "state": "Tamil Nadu",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "TNRDC (ECR)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_620"
+  },
+  {
+    "name": "Chinthapally",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_621"
+  },
+  {
+    "name": "Muthojipet",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_622"
+  },
+  {
+    "name": "Pantangi",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GMR",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_623"
+  },
+  {
+    "name": "Koralaphad",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "GMR",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_624"
+  },
+  {
+    "name": "Raikal Toll Plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NAVAYUGA UDUPI TOLLWAY PVT LTD",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_625"
+  },
+  {
+    "name": "Indalwai",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Navayuga",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_626"
+  },
+  {
+    "name": "Sakapur Toll plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "L&T",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_627"
+  },
+  {
+    "name": "Kokapet",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_628"
+  },
+  {
+    "name": "Edulanagulapally",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_629"
+  },
+  {
+    "name": "Patancheru",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_630"
+  },
+  {
+    "name": "Sultanpur",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_631"
+  },
+  {
+    "name": "Dundigal",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_632"
+  },
+  {
+    "name": "Medchal",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_633"
+  },
+  {
+    "name": "Shamirpet",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_634"
+  },
+  {
+    "name": "Keesara",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_635"
+  },
+  {
+    "name": "Ghatkesar",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_636"
+  },
+  {
+    "name": "Taramatipet",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_637"
+  },
+  {
+    "name": "Pedda Amberpet",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_638"
+  },
+  {
+    "name": "Bongulur",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_639"
+  },
+  {
+    "name": "Ravi Ryal",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_640"
+  },
+  {
+    "name": "Tukkuguda",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_641"
+  },
+  {
+    "name": "Peddagolconda",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_642"
+  },
+  {
+    "name": "Shamshabad",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_643"
+  },
+  {
+    "name": "Rajendra Nagar",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_644"
+  },
+  {
+    "name": "TSPA",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_645"
+  },
+  {
+    "name": "Nanakramguda",
+    "state": "Telangana",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_646"
+  },
+  {
+    "name": "Guduru Toll Plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Sadbhav",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_647"
+  },
+  {
+    "name": "Kamkole",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Deccan Tollways Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_648"
+  },
+  {
+    "name": "Kadthal",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_649"
+  },
+  {
+    "name": "Gamjal",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_650"
+  },
+  {
+    "name": "Pullur",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_651"
+  },
+  {
+    "name": "Rolmamda",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_652"
+  },
+  {
+    "name": "Pippalwada",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_653"
+  },
+  {
+    "name": "Bhiknoor Toll Plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_654"
+  },
+  {
+    "name": "Manoharabad",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_655"
+  },
+  {
+    "name": "Konetipuram",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_656"
+  },
+  {
+    "name": "Dilawarpur fee plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_657"
+  },
+  {
+    "name": "Gowraram Fee plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_658"
+  },
+  {
+    "name": "Komalla Fee Plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_659"
+  },
+  {
+    "name": "Komatipalli Fee  Plaza",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_660"
+  },
+  {
+    "name": "Singarajupally",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_661"
+  },
+  {
+    "name": "Yerkaram",
+    "state": "Telangana",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_662"
+  },
+  {
+    "name": "AIT Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Welcome Infra",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_663"
+  },
+  {
+    "name": "SEMRI Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Bhargavendra Nath Upadhyaya",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_664"
+  },
+  {
+    "name": "Raibha toll plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_665"
+  },
+  {
+    "name": "Nawabganj Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "PNC Kanpur-Ayodhya Tollways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_666"
+  },
+  {
+    "name": "Ahmadpur Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "PNC Kanpur-Ayodhya Tollways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_667"
+  },
+  {
+    "name": "Ronahi Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "PNC Kanpur-Ayodhya Tollways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_668"
+  },
+  {
+    "name": "Aliyapur Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "PNC Kanpur Highways Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_669"
+  },
+  {
+    "name": "Khanna Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "PNC Kanpur Highways Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_670"
+  },
+  {
+    "name": "Korai Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Bhubaneswar Expressway Pvt. Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_671"
+  },
+  {
+    "name": "Barajore toll plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_672"
+  },
+  {
+    "name": "Anantram Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_673"
+  },
+  {
+    "name": "Daffi Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Bhilwara Rajsamand Tollway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_674"
+  },
+  {
+    "name": "Mahuvan Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Reliance",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_675"
+  },
+  {
+    "name": "Baretha or Jajau",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Agra Gwalior Pathways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_676"
+  },
+  {
+    "name": "Raksha",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Jhansi Baran Pathways",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_677"
+  },
+  {
+    "name": "Tundla Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_678"
+  },
+  {
+    "name": "Gurau (Formerly Semra",
+    "state": "Uttar Pradesh",
+    "plazaType": "Atikabad) Toll Plaza",
+    "type": "National",
+    "concessionaire": "Conc. IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_679"
+  },
+  {
+    "name": "Vighakhet Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "M/s Balaji Enterprises",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_680"
+  },
+  {
+    "name": "Itaunja Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Lucknow Sitapur Expressways Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_681"
+  },
+  {
+    "name": "Khairabad Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Lucknow Sitapur Expressways Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_682"
+  },
+  {
+    "name": "KOKHRAJ (Sirohi) Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_683"
+  },
+  {
+    "name": "HANDIYA (Sujala ) Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_684"
+  },
+  {
+    "name": "Nawabganj Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_685"
+  },
+  {
+    "name": "SORAON Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_686"
+  },
+  {
+    "name": "SAHSON Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_687"
+  },
+  {
+    "name": "Sivaya Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Western UP Tollway Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_688"
+  },
+  {
+    "name": "LUHARLI Toll plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Gaziabad Aligarh Expressway Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_689"
+  },
+  {
+    "name": "GABHANA Tollplaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Gaziabad Aligarh Expressway Pvt Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_690"
+  },
+  {
+    "name": "Nuruddinpur toll plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Khalatkaar Constructions",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_691"
+  },
+  {
+    "name": "Kunwarpur",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Vinayendranath Upadhyay",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_692"
+  },
+  {
+    "name": "Chhajarsi",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_693"
+  },
+  {
+    "name": "Niyamatpur Ekrotiya Toll",
+    "state": "Uttar Pradesh",
+    "plazaType": "Plaza",
+    "type": "National",
+    "concessionaire": "Conc. Moradabad Bareilly Expressway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_694"
+  },
+  {
+    "name": "Thiriya Khetal Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Moradabad Bareilly Expressway Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_695"
+  },
+  {
+    "name": "Salemgarh Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Gorakhpur Kasia Tollways Pvt Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_696"
+  },
+  {
+    "name": "Muzaina Hetim Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Gorakhpur Kasia Tollways Pvt Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_697"
+  },
+  {
+    "name": "Tendua Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s Gorakhpur Kasia Tollways Pvt Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_698"
+  },
+  {
+    "name": "Chaukadi Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ayodhya Gorakhpur SMS Toll Pvt. Ltd. (AGSTPL)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_699"
+  },
+  {
+    "name": "Mandawnagar Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ayodhya Gorakhpur SMS Toll Pvt. Ltd. (AGSTPL)",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_700"
+  },
+  {
+    "name": "Naini Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Bholanath Rajpati Shukla",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_701"
+  },
+  {
+    "name": "Madrak Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Brijbhoomi Expressway Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_702"
+  },
+  {
+    "name": "Baros Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Brijbhoomi Expressway Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_703"
+  },
+  {
+    "name": "Aaini Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_704"
+  },
+  {
+    "name": "Mavikala",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_705"
+  },
+  {
+    "name": "Duhai",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_706"
+  },
+  {
+    "name": "Dasana",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_707"
+  },
+  {
+    "name": "Bilakbarpur",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_708"
+  },
+  {
+    "name": "Fatehpur Rampur",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_709"
+  },
+  {
+    "name": "Brijghat Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_710"
+  },
+  {
+    "name": "Joya Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "IRB",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_711"
+  },
+  {
+    "name": "Badauri Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Bholanath Rajpati Shukla",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_712"
+  },
+  {
+    "name": "Jindpur Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_713"
+  },
+  {
+    "name": "Aihar Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_714"
+  },
+  {
+    "name": "Babina Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "Sh. Keshav Agarwal",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_715"
+  },
+  {
+    "name": "Katoghan Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Bholanath Rajpati Shukla",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_716"
+  },
+  {
+    "name": "Lalanagar Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Bholanath Rajpati Shukla",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_717"
+  },
+  {
+    "name": "Bara Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_718"
+  },
+  {
+    "name": "Asroga Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_719"
+  },
+  {
+    "name": "Gulalpurva",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_720"
+  },
+  {
+    "name": "Dakhina Shekpur Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "TOT",
+    "concessionaire": "Arya Toll Infra Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_721"
+  },
+  {
+    "name": "Chamari Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "M/s Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_722"
+  },
+  {
+    "name": "Harro Toll Plaza near Ganne",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_723"
+  },
+  {
+    "name": "Amreha",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_724"
+  },
+  {
+    "name": "Mungari",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_725"
+  },
+  {
+    "name": "Sahahbpur",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_726"
+  },
+  {
+    "name": "Nainsar",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_727"
+  },
+  {
+    "name": "Bharatkhund",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_728"
+  },
+  {
+    "name": "Akshda",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_729"
+  },
+  {
+    "name": "Mohammad Ibrahimpur",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_730"
+  },
+  {
+    "name": "Belon",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_731"
+  },
+  {
+    "name": "Hadwa",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_732"
+  },
+  {
+    "name": "Amdi Fee Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_733"
+  },
+  {
+    "name": "Pidhi Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_734"
+  },
+  {
+    "name": "Aindhi Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_735"
+  },
+  {
+    "name": "Andiyari",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Raebareilly Allahabad Highway Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_736"
+  },
+  {
+    "name": "ALEP Main Plaza 21",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_737"
+  },
+  {
+    "name": "ALEP Ramp Plaza 27",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_738"
+  },
+  {
+    "name": "ALEP Ramp Plaza 54",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_739"
+  },
+  {
+    "name": "Sabli Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_740"
+  },
+  {
+    "name": "ALEP Ramp Plaza 77",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_741"
+  },
+  {
+    "name": "ALEP Ramp Plaza 92",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_742"
+  },
+  {
+    "name": "ALEP Ramp Plaza 108",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_743"
+  },
+  {
+    "name": "ALEP Ramp Plaza 116",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_744"
+  },
+  {
+    "name": "ALEP Ramp Plaza 154",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_745"
+  },
+  {
+    "name": "ALEP Ramp Plaza 171",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_746"
+  },
+  {
+    "name": "ALEP Ramp Plaza 193",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_747"
+  },
+  {
+    "name": "ALEP Ramp Plaza220",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_748"
+  },
+  {
+    "name": "ALEP Ramp Plaza 238",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_749"
+  },
+  {
+    "name": "ALEP Main Plaza 290",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_750"
+  },
+  {
+    "name": "ALEP Ramp Plaza 269",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_751"
+  },
+  {
+    "name": "ALEP Ramp Plaza 284",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_752"
+  },
+  {
+    "name": "ALEP Ramp Plaza 204",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_753"
+  },
+  {
+    "name": "ALEP Ramp Plaza 101",
+    "state": "Uttar Pradesh",
+    "plazaType": "State",
+    "type": "PF",
+    "concessionaire": "Eagle Infra India Ltd",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_754"
+  },
+  {
+    "name": "Kurana Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_755"
+  },
+  {
+    "name": "Sherpur Chamraha",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_756"
+  },
+  {
+    "name": "Sayyad Mazra",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_757"
+  },
+  {
+    "name": "Sarsawa Toll Plaza",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "MBL (GSY) Road Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_758"
+  },
+  {
+    "name": "Ramnagar Gansiyari",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_759"
+  },
+  {
+    "name": "Dularpur",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_760"
+  },
+  {
+    "name": "Umapur",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_761"
+  },
+  {
+    "name": "Chhapar",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Raj Shyama",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_762"
+  },
+  {
+    "name": "Koyla",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_763"
+  },
+  {
+    "name": "Jiwana",
+    "state": "Uttar Pradesh",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_764"
+  },
+  {
+    "name": "Banushi",
+    "state": "Uttarakhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_765"
+  },
+  {
+    "name": "DEORIYA",
+    "state": "Uttarakhand",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Kashipur Sitarganj Highways Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_766"
+  },
+  {
+    "name": "Bhagwanpur",
+    "state": "Uttarakhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_767"
+  },
+  {
+    "name": "Bhadarabad Toll Plaza",
+    "state": "Uttarakhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_768"
+  },
+  {
+    "name": "Lachiwala Toll Plaza",
+    "state": "Uttarakhand",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Riddhi Siddhi Associates",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_769"
+  },
+  {
+    "name": "Paschim Madati",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_770"
+  },
+  {
+    "name": "Palsit",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_771"
+  },
+  {
+    "name": "Surjapur",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_772"
+  },
+  {
+    "name": "Rajchandrapur Toll Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Second Vivekananda Bridge Tollway Company Private Limited",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_773"
+  },
+  {
+    "name": "Jaladhulagori toll plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ashoka Buildcon",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_774"
+  },
+  {
+    "name": "Debra toll plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Ashoka Buildcon",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_775"
+  },
+  {
+    "name": "Sonapetya",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_776"
+  },
+  {
+    "name": "Chandermore Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Barahmpur-Farakka Tollway Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_777"
+  },
+  {
+    "name": "Shibpur Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Barahmpur-Farakka Tollway Pvt. Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_778"
+  },
+  {
+    "name": "Guabari Toll Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_779"
+  },
+  {
+    "name": "Bann Toll Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "Rakesh Kumar Choudhary J&K 257 18th Mile Toll Plaza National Conc. Farakka Raiganj Highways Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_780"
+  },
+  {
+    "name": "Gazole Toll Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "Farakka Raiganj Highways Ltd.",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_781"
+  },
+  {
+    "name": "Banskopa Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "M/s IL&FS",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_782"
+  },
+  {
+    "name": "Rampura Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "Conc.",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_783"
+  },
+  {
+    "name": "Dankuni",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_784"
+  },
+  {
+    "name": "KM 267.250 of NH 60",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_785"
+  },
+  {
+    "name": "KM 801.120 of NH 31",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_786"
+  },
+  {
+    "name": "KM 114.430 of NH 117",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_787"
+  },
+  {
+    "name": "KM 9.640 of NH 2",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_788"
+  },
+  {
+    "name": "KM 74.49 of AH 48",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_789"
+  },
+  {
+    "name": "KM 117.050 of NH 31 C",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_790"
+  },
+  {
+    "name": "KM 14.550 of NH 60 A",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_791"
+  },
+  {
+    "name": "Sali Bamandanga",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_792"
+  },
+  {
+    "name": "Balibhasa Toll Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_793"
+  },
+  {
+    "name": "Rangalibazna Fee Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_794"
+  },
+  {
+    "name": "Namkhana Fee Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_795"
+  },
+  {
+    "name": "Mejia",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_796"
+  },
+  {
+    "name": "Kalapathar",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_797"
+  },
+  {
+    "name": "Sulkhapara Fee Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_798"
+  },
+  {
+    "name": "Ghogarkuthi Fee Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_799"
+  },
+  {
+    "name": "Satbhaiya Fee Plaza",
+    "state": "West Bengal",
+    "plazaType": "National",
+    "type": "PF",
+    "concessionaire": "NHAI",
+    "nhCorridor": "Unknown",
+    "baseRate": 50,
+    "id": "TP_800"
+  }
+]
