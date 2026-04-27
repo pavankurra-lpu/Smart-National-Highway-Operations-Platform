@@ -171,6 +171,14 @@
     outline: none !important;
 }
 
+/* Remove default focus outline from map features (SVG paths) */
+.leaflet-interactive:focus,
+path.leaflet-interactive:focus,
+.leaflet-container svg:focus,
+.leaflet-marker-icon:focus {
+    outline: none !important;
+}
+
 .leaflet-control-attribution {
     background: transparent !important;
     font-size: 9px !important;
