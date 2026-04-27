@@ -19,8 +19,7 @@ const NHAI_CONFIG = {
             east: 97.5
         }
     },
-
-    /* ── TILE LAYERS ──────────────────────────────────────── */
+/* ── TILE LAYERS ──────────────────────────────────────── */
     tiles: {
         satellite: {
             url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -90,6 +89,12 @@ const NHAI_CONFIG = {
     trip: {
         intervalMs: 400,       // step update interval
         pointsPerStep: null    // computed dynamically based on route length
+    },
+
+    /* ── ADMIN CREDENTIALS (SECURITY NOTE: Demo only) ──────── */
+    admin: {
+        id: 'admin@nhai',
+        pass: 'NHAI@2026'
     }
 };
 

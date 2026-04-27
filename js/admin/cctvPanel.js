@@ -64,7 +64,7 @@ window.CCTVPanel = CCTVPanel;
 
 // Periodic Refresh for Real-Time feel
 setInterval(() => {
-    if(document.getElementById('view-cctv')?.classList.contains('active')) {
-        CCTVPanel.init(); // Simply re-rendering updates the time stamp and queue length safely.
+    if(document.getElementById('view-cctv')?.classList?.contains('active')) {
+        CCTVPanel.init(); 
     }
 }, 7000);

@@ -24,8 +24,12 @@ const PassPlanEngine = {
             </div>
         `;
 
+        const getPassMultiplier = (passType, defaultMultiplier) => {
+            return TollData.passes[passType]?.multiplier || defaultMultiplier;
+        };
+
         // Return Trip (usually 1.5x of single)
-        const returnCost = Math.floor(routeData.totalTollCost * (TollData.passes.RETURN.multiplier || 1.5));
+        const returnCost = Math.floor(routeData.totalTollCost * getPassMultiplier('RETURN', 1.5));
         html += `
             <div class="plan-card">
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
@@ -60,7 +64,7 @@ const PassPlanEngine = {
         }
 
         // Monthly Sim (Plaza specific max)
-        const monthlyCost = Math.floor(routeData.totalTollCost * (TollData.passes.MONTHLY_PLAZA.multiplier || 33));
+        const monthlyCost = Math.floor(routeData.totalTollCost * getPassMultiplier('MONTHLY_PLAZA', 33));
         html += `
             <div class="plan-card" style="border-color: rgba(59, 130, 246, 0.5);">
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">

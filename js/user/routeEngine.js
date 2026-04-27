@@ -26,7 +26,8 @@ const RouteEngine = {
                 }
             });
 
-            if (u === null || u === endNode) break; 
+            if (u === null || dist[u] === Infinity) break; 
+            if (u === endNode) break; 
             pq.delete(u);
 
             const neighbors = RouteGraph.edges[u] || [];
@@ -92,7 +93,11 @@ const RouteEngine = {
                 if (prefs.avoidTolls && edge.tolls && edge.tolls.length > 0) cost += 10000;
                 
                 let time = edge.distance / edge.speedLimit;
-                let congestion = Math.random() * 0.5; // Simulate traffic on edge
+                
+                // Deterministic congestion simulation based on edge to/from names
+                const seed = (edge.from || u).length + (edge.to || '').length;
+                let congestion = (seed % 5) / 10; // 0.0 to 0.4 based on edge name length
+                
                 let risk = edge.distance * 0.05;
                 let fuel = edge.distance * 0.5;
 

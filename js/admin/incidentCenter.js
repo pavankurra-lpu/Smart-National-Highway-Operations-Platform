@@ -113,10 +113,12 @@ const IncidentCenter = {
         const noteInput = document.getElementById('res-note');
         
         if (!imgInput.files || imgInput.files.length === 0) {
-            Utils.showToast("Error: Resolution proof image is mandatory.", "error"); return;
+            Utils.showToast("Error: Resolution proof image is mandatory.", "error"); 
+            return;
         }
         if (!noteInput.value.trim()) {
-            Utils.showToast("Error: Admin Summary Note is mandatory.", "error"); return;
+            Utils.showToast("Error: Admin Summary Note is mandatory.", "error"); 
+            return;
         }
 
         const note = `[RESOLVED + PROOF UPLOADED] ${noteInput.value.trim()}`;

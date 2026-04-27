@@ -23,7 +23,8 @@ const FastagEngine = {
 
         if (btnRecharge) {
             btnRecharge.addEventListener('click', () => {
-                const amount = parseFloat(inputAmount.value);
+                const inputAmount = document.getElementById('recharge-amount');
+                const amount = inputAmount ? parseFloat(inputAmount.value) : 0;
                 const gateway = document.getElementById('recharge-gateway').value;
                 if (!amount || amount < 500) {
                     Utils.showToast("Minimum recharge is ₹500", "error");

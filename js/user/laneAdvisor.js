@@ -71,7 +71,8 @@ const LaneAdvisor = {
 
         // Show info for the *first* toll plaza on the route
         const nextPlazaId = routeData.tolls[0];
-        const plazaName = TollData.plazas[nextPlazaId]?.name || 'Unknown Toll';
+        const plaza = TollData.getTollById(nextPlazaId);
+        const plazaName = plaza?.name || plaza?.tollName || plaza?.plazaName || 'Unknown Toll';
 
         let html = `<h4 style="margin-bottom:10px; color:#fff;">Upcoming: ${plazaName}</h4>`;
         

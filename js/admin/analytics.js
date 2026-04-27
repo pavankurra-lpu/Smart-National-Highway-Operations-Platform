@@ -42,7 +42,7 @@ const Analytics = {
 
         // Active incidents stat
         const incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
-        const activeCount = incidents.filter(i => Object.values(['RAISED', 'ACKNOWLEDGED', 'DISPATCHED']).includes(i.status)).length;
+        const activeCount = incidents.filter(i => ['RAISED', 'ACKNOWLEDGED', 'DISPATCHED'].includes(i.status)).length;
         document.getElementById('stat-incidents').innerText = activeCount;
     }
 };

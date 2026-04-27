@@ -7,7 +7,8 @@ const Auth = {
     },
 
     login: (id, pass) => {
-        if (id === Auth.CREDENTIALS.id && pass === Auth.CREDENTIALS.pass) {
+        const creds = (window.NHAI_CONFIG && window.NHAI_CONFIG.admin) ? window.NHAI_CONFIG.admin : Auth.CREDENTIALS;
+        if (id === creds.id && pass === creds.pass) {
             sessionStorage.setItem('nhai_admin_auth', 'authenticated');
             sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
             return true;
