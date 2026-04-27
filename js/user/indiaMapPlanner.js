@@ -42,6 +42,14 @@ const IndiaMapPlanner = {
     trailPolyline: null,
     isFollowing: true,
     gpsWatchId: null,
+    
+    // Toll Explorer / Selection Mode
+    isSelectionMode: false,
+    selectionStart: null,
+    selectionEnd: null,
+    selectionLayer: null, // visual line/corridor
+    selectionMarkers: [], // start/end markers
+
 
     // ── All-India city list for built-in autocomplete ───────────────────────────
     cities: window.IndiaMapData?.cities || [],
@@ -185,6 +193,12 @@ const IndiaMapPlanner = {
         });
 
         safe('btn-gps-mode', () => IndiaMapPlanner.toggleGpsMode());
+        
+        // Toll Explorer Tool
+        safe('btn-toll-explorer', () => IndiaMapPlanner.toggleSelectionMode());
+        safe('btn-close-explorer', () => IndiaMapPlanner.closeTollExplorer());
+        safe('btn-explorer-avoid', () => IndiaMapPlanner.routeAndAvoidTolls());
+
         safe('btn-follow-me', () => {
             IndiaMapPlanner.isFollowing = !IndiaMapPlanner.isFollowing;
             const btn = document.getElementById('btn-follow-me');
@@ -213,7 +227,13 @@ const IndiaMapPlanner = {
                     IndiaMapPlanner._moveTimer = setTimeout(() => IndiaMapPlanner.renderTollMarkers(), 400);
                 }
             });
+
+            // Selection Mode Events
+            IndiaMapPlanner.map.on('mousedown', e => IndiaMapPlanner._onMapMouseDown(e));
+            IndiaMapPlanner.map.on('mousemove', e => IndiaMapPlanner._onMapMouseMove(e));
+            IndiaMapPlanner.map.on('mouseup',   e => IndiaMapPlanner._onMapMouseUp(e));
         });
+
 
         // Fallback render
         setTimeout(() => {
@@ -388,8 +408,21 @@ const IndiaMapPlanner = {
                 }
 
                 IndiaMapPlanner.allRoutes = data.routes;
+                
+                // If Avoid Tolls is checked, sort routes by toll count
+                const avoidTolls = document.getElementById('pref-avoid-tolls')?.checked;
+                if (avoidTolls) {
+                    IndiaMapPlanner.allRoutes.sort((a, b) => {
+                        const tollsA = IndiaMapPlanner.estimateTollsOnRoute(a.geometry.coordinates).tolls.length;
+                        const tollsB = IndiaMapPlanner.estimateTollsOnRoute(b.geometry.coordinates).tolls.length;
+                        return tollsA - tollsB;
+                    });
+                    Utils.showToast('Routes optimized to minimize tolls.', 'info');
+                }
+
                 IndiaMapPlanner.selectedRouteIndex = 0;
                 IndiaMapPlanner._applyRoute(0, o, d);
+
             })
             .catch(err => {
                 console.error('OSRM error:', err);
@@ -1105,7 +1138,206 @@ const IndiaMapPlanner = {
         
         const mapEl = document.getElementById('map');
         if (mapEl) mapEl.appendChild(container);
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // TOLL EXPLORER / AREA SCANNER
+    // ═══════════════════════════════════════════════════════════════
+    toggleSelectionMode: () => {
+        IndiaMapPlanner.isSelectionMode = !IndiaMapPlanner.isSelectionMode;
+        
+        const btn = document.getElementById('btn-toll-explorer');
+        const app = document.getElementById('user-app');
+        
+        if (IndiaMapPlanner.isSelectionMode) {
+            btn.classList.add('active');
+            app.classList.add('selection-mode-active');
+            IndiaMapPlanner.map.dragging.disable();
+            Utils.showToast('Selection Mode: Click and drag on map to scan tolls.', 'info');
+            Utils.toggleVisibility('toll-explorer-panel', true);
+        } else {
+            IndiaMapPlanner.closeTollExplorer();
+        }
+    },
+
+    closeTollExplorer: () => {
+        IndiaMapPlanner.isSelectionMode = false;
+        const btn = document.getElementById('btn-toll-explorer');
+        const app = document.getElementById('user-app');
+        
+        if (btn) btn.classList.remove('active');
+        if (app) app.classList.remove('selection-mode-active');
+        
+        IndiaMapPlanner.map.dragging.enable();
+        Utils.toggleVisibility('toll-explorer-panel', false);
+        
+        // Clear visuals
+        if (IndiaMapPlanner.selectionLayer) IndiaMapPlanner.selectionLayer.remove();
+        IndiaMapPlanner.selectionMarkers.forEach(m => m.remove());
+        IndiaMapPlanner.selectionMarkers = [];
+        IndiaMapPlanner.selectionStart = null;
+        IndiaMapPlanner.selectionEnd = null;
+    },
+
+    _onMapMouseDown: e => {
+        if (!IndiaMapPlanner.isSelectionMode) return;
+        
+        IndiaMapPlanner.selectionStart = e.latlng;
+        IndiaMapPlanner.selectionEnd = e.latlng;
+        
+        // Clear previous
+        if (IndiaMapPlanner.selectionLayer) IndiaMapPlanner.selectionLayer.remove();
+        IndiaMapPlanner.selectionMarkers.forEach(m => m.remove());
+        IndiaMapPlanner.selectionMarkers = [];
+        
+        const startIcon = L.divIcon({
+            className: '',
+            html: '<div style="background:var(--primary);width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 10px var(--primary-glow)"></div>',
+            iconSize: [12,12], iconAnchor: [6,6]
+        });
+        const m = L.marker(e.latlng, { icon: startIcon }).addTo(IndiaMapPlanner.map);
+        IndiaMapPlanner.selectionMarkers.push(m);
+        
+        IndiaMapPlanner._updateSelectionVisuals();
+    },
+
+    _onMapMouseMove: e => {
+        if (!IndiaMapPlanner.isSelectionMode || !IndiaMapPlanner.selectionStart) return;
+        
+        IndiaMapPlanner.selectionEnd = e.latlng;
+        IndiaMapPlanner._updateSelectionVisuals();
+    },
+
+    _onMapMouseUp: e => {
+        if (!IndiaMapPlanner.isSelectionMode || !IndiaMapPlanner.selectionStart) return;
+        
+        IndiaMapPlanner.selectionEnd = e.latlng;
+        IndiaMapPlanner._updateSelectionVisuals();
+        
+        const dist = IndiaMapPlanner.selectionStart.distanceTo(IndiaMapPlanner.selectionEnd);
+        if (dist > 500) { // minimum 500m drag
+            IndiaMapPlanner._calculateTollsInSelection();
+        }
+        
+        IndiaMapPlanner.selectionStart = null; // stop tracking move
+    },
+
+    _updateSelectionVisuals: () => {
+        if (IndiaMapPlanner.selectionLayer) IndiaMapPlanner.selectionLayer.remove();
+        
+        if (!IndiaMapPlanner.selectionStart || !IndiaMapPlanner.selectionEnd) return;
+        
+        const points = [IndiaMapPlanner.selectionStart, IndiaMapPlanner.selectionEnd];
+        
+        // Create a 'corridor' look using a polyline with high weight and low opacity + a sharp core
+        IndiaMapPlanner.selectionLayer = L.layerGroup([
+            L.polyline(points, { 
+                color: 'var(--primary)', 
+                weight: 40, 
+                opacity: 0.1, 
+                lineCap: 'round',
+                className: 'selection-line-glow'
+            }),
+            L.polyline(points, { 
+                color: 'var(--primary)', 
+                weight: 2, 
+                opacity: 0.8, 
+                dashArray: '5, 10'
+            })
+        ]).addTo(IndiaMapPlanner.map);
+    },
+
+    _calculateTollsInSelection: () => {
+        const start = IndiaMapPlanner.selectionMarkers[0].getLatLng();
+        const end = IndiaMapPlanner.selectionEnd;
+        
+        if (!window.TollSeedData) return;
+        
+        let count = 0;
+        let totalCost = 0;
+        const vType = document.getElementById('vehicle-type')?.value || 'LMV';
+        
+        // Define a 5km buffer (approx 0.045 degrees)
+        const bufferKm = 5;
+        
+        TollSeedData.forEach(toll => {
+            if (!toll.lat || !toll.lng) return;
+            
+            const tollLatLng = L.latLng(toll.lat, toll.lng);
+            const distToLine = IndiaMapPlanner._distToSegment(tollLatLng, start, end);
+            
+            if (distToLine < bufferKm) {
+                count++;
+                let cost = 0;
+                if (toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vType] !== undefined) {
+                    cost = toll.tollRatesByVehicleClass[vType];
+                } else {
+                    const base = toll.baseRate || 50;
+                    const mult = window.TollData?.categoryMultipliers?.[vType] || 1.0;
+                    cost = Math.floor(base * mult);
+                }
+                totalCost += cost;
+            }
+        });
+        
+        // Update UI
+        const countEl = document.getElementById('explorer-toll-count');
+        const costEl = document.getElementById('explorer-toll-cost');
+        if (countEl) countEl.innerText = count;
+        if (costEl) costEl.innerText = `₹${totalCost}`;
+        
+        Utils.showToast(`Scan Complete: ${count} tolls detected in this area.`, 'success');
+    },
+
+    // Helper: Distance from point P to segment AB in km
+    _distToSegment: (p, a, b) => {
+        const distToA = p.distanceTo(a) / 1000;
+        const distToB = p.distanceTo(b) / 1000;
+        const lineLen = a.distanceTo(b) / 1000;
+        
+        if (lineLen === 0) return distToA;
+        
+        // Project point onto line
+        const t = ((p.lat - a.lat) * (b.lat - a.lat) + (p.lng - a.lng) * (b.lng - a.lng)) / 
+                  (Math.pow(b.lat - a.lat, 2) + Math.pow(b.lng - a.lng, 2));
+        
+        if (t < 0) return distToA;
+        if (t > 1) return distToB;
+        
+        const projection = L.latLng(
+            a.lat + t * (b.lat - a.lat),
+            a.lng + t * (b.lng - a.lng)
+        );
+        
+        return p.distanceTo(projection) / 1000;
+    },
+
+    routeAndAvoidTolls: () => {
+        if (IndiaMapPlanner.selectionMarkers.length === 0 || !IndiaMapPlanner.selectionEnd) {
+            Utils.showToast('Please drag a selection on the map first.', 'error');
+            return;
+        }
+        
+        const start = IndiaMapPlanner.selectionMarkers[0].getLatLng();
+        const end = IndiaMapPlanner.selectionEnd;
+        
+        // Set inputs to coordinates (since we don't have names)
+        IndiaMapPlanner.selectedOrigin = { name: 'Selected Start', lat: start.lat, lng: start.lng };
+        IndiaMapPlanner.selectedDest = { name: 'Selected End', lat: end.lat, lng: end.lng };
+        
+        const origInput = document.getElementById('route-origin-input');
+        const destInput = document.getElementById('route-dest-input');
+        if (origInput) origInput.value = `${start.lat.toFixed(4)}, ${start.lng.toFixed(4)}`;
+        if (destInput) destInput.value = `${end.lat.toFixed(4)}, ${end.lng.toFixed(4)}`;
+        
+        // Force 'Avoid Tolls' checkbox
+        const avoidCheck = document.getElementById('pref-avoid-tolls');
+        if (avoidCheck) avoidCheck.checked = true;
+        
+        IndiaMapPlanner.closeTollExplorer();
+        IndiaMapPlanner.processRoute();
     }
 };
 
 window.IndiaMapPlanner = IndiaMapPlanner;
+

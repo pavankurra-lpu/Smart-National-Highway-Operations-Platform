@@ -54,6 +54,39 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
 
+        <!-- Map Tools (Floating Group) -->
+        <div class="map-tools-group">
+            <button id="btn-toll-explorer" class="map-tool-btn" title="Toll Explorer (Drag on Map)">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span class="tool-label">Toll Explorer</span>
+            </button>
+        </div>
+
+        <!-- Toll Explorer Result Panel -->
+        <div id="toll-explorer-panel" class="toll-explorer-panel hidden">
+            <div class="explorer-header">
+                <h4><i class="fa-solid fa-magnifying-glass-chart"></i> Area Scan Result</h4>
+                <button class="close-explorer" id="btn-close-explorer"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="explorer-body">
+                <div class="explorer-stats">
+                    <div class="ex-stat">
+                        <span class="ex-label">Toll Plazas</span>
+                        <span id="explorer-toll-count" class="ex-value">0</span>
+                    </div>
+                    <div class="ex-stat">
+                        <span class="ex-label">Est. Cost</span>
+                        <span id="explorer-toll-cost" class="ex-value">₹0</span>
+                    </div>
+                </div>
+                <p class="ex-hint">Drag from origin to destination on the map to scan.</p>
+            </div>
+            <button id="btn-explorer-avoid" class="btn btn-primary w-full" style="justify-content: center; margin-top: 12px; font-size: 12px;">
+                <i class="fa-solid fa-route"></i> Avoid Tolls & Route
+            </button>
+        </div>
+
+
         <!-- ==============================
              NHAI ACCESS: RIGHT SIDEBAR
              ============================== -->
