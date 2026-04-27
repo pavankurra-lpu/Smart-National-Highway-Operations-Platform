@@ -26,36 +26,35 @@ const Utils = {
 
     showToast: (message, type = 'success') => {
         const toast = document.createElement('div');
-        toast.style.position = 'fixed';
-        toast.style.bottom = '20px';
-        toast.style.right = '20px';
-        toast.style.padding = '12px 24px';
-        toast.style.borderRadius = '8px';
-        toast.style.background = type === 'success' ? '#020c1b' : '#330000';
-        toast.style.color = type === 'success' ? '#64ffda' : '#ff5e5e';
-        toast.style.border = `1px solid ${type === 'success' ? '#64ffda' : '#ff5e5e'}`;
-        toast.style.boxShadow = '0 4px 15px rgba(0,0,0,0.5)';
-        toast.style.zIndex = '99999';
-        toast.style.transform = 'translateY(100px)';
-        toast.style.opacity = '0';
-        toast.style.transition = 'all 0.3s ease';
-        toast.innerText = message;
+        Object.assign(toast.style, {
+            position: 'fixed', bottom: '30px', right: '30px',
+            padding: '16px 28px', borderRadius: 'var(--radius)',
+            background: 'var(--bg-panel)', backdropFilter: 'var(--glass)',
+            color: type === 'success' ? 'var(--primary)' : 'var(--accent-red)',
+            border: `1px solid ${type === 'success' ? 'var(--border)' : 'var(--accent-red)'}`,
+            boxShadow: 'var(--shadow-lg)', zIndex: '99999',
+            transform: 'translateX(100px)', opacity: '0',
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            fontSize: '13px', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '12px'
+        });
+        
+        const icon = type === 'success' ? '<i class="fa-solid fa-circle-check"></i>' : '<i class="fa-solid fa-circle-exclamation"></i>';
+        toast.innerHTML = `${icon} <span>${message}</span>`;
 
         document.body.appendChild(toast);
 
-        // Animate in
         setTimeout(() => {
-            toast.style.transform = 'translateY(0)';
+            toast.style.transform = 'translateX(0)';
             toast.style.opacity = '1';
         }, 100);
 
-        // Remove
         setTimeout(() => {
-            toast.style.transform = 'translateY(100px)';
+            toast.style.transform = 'translateX(100px)';
             toast.style.opacity = '0';
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
+            setTimeout(() => toast.remove(), 400);
+        }, 4000);
     },
+
 
     toggleVisibility: (elementId, show) => {
         const el = document.getElementById(elementId);

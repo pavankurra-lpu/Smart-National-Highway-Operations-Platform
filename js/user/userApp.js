@@ -28,7 +28,7 @@ const UserApp = {
 
         // Welcome Message
         setTimeout(() => {
-            Utils.showToast("Connected to NHAI Live Services.", "success");
+            Utils.showToast("Connected to LIVE SNHOP SERVER.", "success");
         }, 2000);
     }
 };

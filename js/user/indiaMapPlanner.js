@@ -195,9 +195,8 @@ const IndiaMapPlanner = {
         safe('btn-gps-mode', () => IndiaMapPlanner.toggleGpsMode());
         
         // Toll Explorer Tool
-        safe('btn-toll-explorer', () => IndiaMapPlanner.toggleSelectionMode());
-        safe('btn-close-explorer', () => IndiaMapPlanner.closeTollExplorer());
-        safe('btn-explorer-avoid', () => IndiaMapPlanner.routeAndAvoidTolls());
+        safe('btn-toll-explorer-toggle', () => IndiaMapPlanner.toggleSelectionMode());
+        safe('btn-explorer-avoid-tab', () => IndiaMapPlanner.routeAndAvoidTolls());
 
         safe('btn-follow-me', () => {
             IndiaMapPlanner.isFollowing = !IndiaMapPlanner.isFollowing;
@@ -1009,20 +1008,23 @@ const IndiaMapPlanner = {
     // ADMINISTRATIVE BOUNDARIES (GeoJSON)
     // ═══════════════════════════════════════════════════════════════
     loadBoundaries: async () => {
-        const stateUrl = 'https://raw.githubusercontent.com/geohacker/india/master/state/india_state.geojson';
+        // Updated to verified 2019+ modern GeoJSON sources
+        const stateUrl = 'https://raw.githubusercontent.com/india-in-data/india-states-2019/master/india_states.geojson';
         const distUrl  = 'https://raw.githubusercontent.com/geohacker/india/master/district/india_district.geojson';
 
         try {
+
             // Load States
             const sRes = await fetch(stateUrl);
             const sData = await sRes.json();
             IndiaMapPlanner._stateLayer = L.geoJSON(sData, {
                 style: {
                     color: '#ffffff',
-                    weight: 2,
-                    opacity: 0.6,
+                    weight: 1,
+                    opacity: 0.4,
                     fillOpacity: 0
                 },
+
                 onEachFeature: (feature, layer) => {
                     const name = feature.properties.NAME || feature.properties.ST_NM || "State";
                     layer.bindTooltip(name, { sticky: true, className: 'boundary-tooltip' });
@@ -1095,16 +1097,16 @@ const IndiaMapPlanner = {
 
         const styleBtn = (b) => {
             Object.assign(b.style, {
-                background: 'rgba(2,12,27,0.90)', backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(0,229,179,0.35)', color: '#00e5b3',
-                fontFamily: 'Inter,sans-serif', fontSize: '11px', fontWeight: '600',
-                padding: '8px 12px', borderRadius: '8px', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', gap: '7px',
-                transition: 'all 0.2s', boxShadow: '0 4px 16px rgba(0,0,0,0.5)',
-                minWidth: '130px', justifyContent: 'center'
+                background: 'var(--bg-panel)', backdropFilter: 'var(--glass)',
+                border: '1px solid var(--border)', color: 'var(--primary)',
+                fontFamily: 'var(--font-main)', fontSize: '11px', fontWeight: '600',
+                padding: '10px 14px', borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: '8px',
+                transition: 'var(--transition)', boxShadow: 'var(--shadow)',
+                minWidth: '140px', justifyContent: 'center'
             });
-            b.addEventListener('mouseenter', () => { b.style.background = 'rgba(0,229,179,0.15)'; b.style.borderColor = '#00e5b3'; });
-            b.addEventListener('mouseleave', () => { b.style.background = 'rgba(2,12,27,0.90)'; b.style.borderColor = 'rgba(0,229,179,0.35)'; });
+            b.addEventListener('mouseenter', () => { b.style.background = 'var(--primary-dim)'; b.style.borderColor = 'var(--primary)'; });
+            b.addEventListener('mouseleave', () => { b.style.background = 'var(--bg-panel)'; b.style.borderColor = 'var(--border)'; });
         };
 
         styleBtn(btnView);
@@ -1112,6 +1114,8 @@ const IndiaMapPlanner = {
 
         btnView.addEventListener('click', () => {
             IndiaMapPlanner._isSatellite = !IndiaMapPlanner._isSatellite;
+            document.body.classList.toggle('street-mode-active', !IndiaMapPlanner._isSatellite);
+            
             if (IndiaMapPlanner._isSatellite) {
                 IndiaMapPlanner._streetLayer.remove();
                 IndiaMapPlanner._satelliteLayer.addTo(IndiaMapPlanner.map);
@@ -1124,6 +1128,7 @@ const IndiaMapPlanner = {
                 btnView.innerHTML = '<i class="fa-solid fa-map"></i> <span>Satellite</span>';
             }
         });
+
 
         btnBounds.addEventListener('click', () => {
             IndiaMapPlanner._showBoundaries = !IndiaMapPlanner._showBoundaries;
@@ -1146,15 +1151,18 @@ const IndiaMapPlanner = {
     toggleSelectionMode: () => {
         IndiaMapPlanner.isSelectionMode = !IndiaMapPlanner.isSelectionMode;
         
-        const btn = document.getElementById('btn-toll-explorer');
+        const btn = document.getElementById('btn-toll-explorer-toggle');
         const app = document.getElementById('user-app');
         
         if (IndiaMapPlanner.isSelectionMode) {
-            btn.classList.add('active');
+            if (btn) {
+                btn.classList.add('active');
+                btn.innerHTML = '<i class="fa-solid fa-xmark"></i> Disable Selection Mode';
+            }
             app.classList.add('selection-mode-active');
             IndiaMapPlanner.map.dragging.disable();
-            Utils.showToast('Selection Mode: Click and drag on map to scan tolls.', 'info');
-            Utils.toggleVisibility('toll-explorer-panel', true);
+            Utils.showToast('Selection Mode Active: Drag on map to scan road tolls.', 'info');
+            Utils.toggleVisibility('explorer-idle-msg', false);
         } else {
             IndiaMapPlanner.closeTollExplorer();
         }
@@ -1162,14 +1170,18 @@ const IndiaMapPlanner = {
 
     closeTollExplorer: () => {
         IndiaMapPlanner.isSelectionMode = false;
-        const btn = document.getElementById('btn-toll-explorer');
+        const btn = document.getElementById('btn-toll-explorer-toggle');
         const app = document.getElementById('user-app');
         
-        if (btn) btn.classList.remove('active');
+        if (btn) {
+            btn.classList.remove('active');
+            btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Enable Selection Mode';
+        }
         if (app) app.classList.remove('selection-mode-active');
         
         IndiaMapPlanner.map.dragging.enable();
-        Utils.toggleVisibility('toll-explorer-panel', false);
+        Utils.toggleVisibility('explorer-results-sidebar', false);
+        Utils.toggleVisibility('explorer-idle-msg', true);
         
         // Clear visuals
         if (IndiaMapPlanner.selectionLayer) IndiaMapPlanner.selectionLayer.remove();
@@ -1212,11 +1224,10 @@ const IndiaMapPlanner = {
         if (!IndiaMapPlanner.isSelectionMode || !IndiaMapPlanner.selectionStart) return;
         
         IndiaMapPlanner.selectionEnd = e.latlng;
-        IndiaMapPlanner._updateSelectionVisuals();
         
         const dist = IndiaMapPlanner.selectionStart.distanceTo(IndiaMapPlanner.selectionEnd);
-        if (dist > 500) { // minimum 500m drag
-            IndiaMapPlanner._calculateTollsInSelection();
+        if (dist > 1000) { // minimum 1km drag
+            IndiaMapPlanner._calculateRoadTolls(IndiaMapPlanner.selectionStart, IndiaMapPlanner.selectionEnd);
         }
         
         IndiaMapPlanner.selectionStart = null; // stop tracking move
@@ -1224,45 +1235,83 @@ const IndiaMapPlanner = {
 
     _updateSelectionVisuals: () => {
         if (IndiaMapPlanner.selectionLayer) IndiaMapPlanner.selectionLayer.remove();
-        
         if (!IndiaMapPlanner.selectionStart || !IndiaMapPlanner.selectionEnd) return;
         
         const points = [IndiaMapPlanner.selectionStart, IndiaMapPlanner.selectionEnd];
-        
-        // Create a 'corridor' look using a polyline with high weight and low opacity + a sharp core
         IndiaMapPlanner.selectionLayer = L.layerGroup([
             L.polyline(points, { 
-                color: 'var(--primary)', 
-                weight: 40, 
-                opacity: 0.1, 
-                lineCap: 'round',
-                className: 'selection-line-glow'
+                color: 'var(--primary)', weight: 40, opacity: 0.1, lineCap: 'round', className: 'selection-line-glow' 
             }),
             L.polyline(points, { 
-                color: 'var(--primary)', 
-                weight: 2, 
-                opacity: 0.8, 
-                dashArray: '5, 10'
+                color: 'var(--primary)', weight: 2, opacity: 0.8, dashArray: '5, 10' 
             })
         ]).addTo(IndiaMapPlanner.map);
     },
 
-    _calculateTollsInSelection: () => {
-        const start = IndiaMapPlanner.selectionMarkers[0].getLatLng();
-        const end = IndiaMapPlanner.selectionEnd;
+
+    _calculateRoadTolls: (start, end) => {
+        Utils.showToast('Fetching road path...', 'info');
         
+        // Fetch OSRM route for the selection to get REAL roads
+        const url = `https://router.project-osrm.org/route/v1/driving/${start.lng},${start.lat};${end.lng},${end.lat}?overview=full&geometries=geojson`;
+        
+        fetch(url)
+            .then(r => r.json())
+            .then(data => {
+                if (data.code !== 'Ok' || !data.routes?.length) {
+                    Utils.showToast('Could not find road path. Using straight line fallback.', 'warning');
+                    IndiaMapPlanner._calculateTollsInSelection(start, end); // Fallback
+                    return;
+                }
+                
+                const route = data.routes[0];
+                const coords = route.geometry.coordinates; // [[lng, lat], ...]
+                
+                // Show road path visually
+                if (IndiaMapPlanner.selectionLayer) IndiaMapPlanner.selectionLayer.remove();
+                
+                const latLngs = coords.map(c => [c[1], c[0]]);
+                IndiaMapPlanner.selectionLayer = L.polyline(latLngs, {
+                    color: 'var(--primary)',
+                    weight: 6,
+                    opacity: 0.8,
+                    dashArray: '10, 10',
+                    className: 'selection-road-path'
+                }).addTo(IndiaMapPlanner.map);
+                
+                // Calculate tolls along this path
+                const rData = IndiaMapPlanner.estimateTollsOnRoute(coords);
+                
+                // Update Sidebar UI
+                Utils.toggleVisibility('explorer-idle-msg', false);
+                Utils.toggleVisibility('explorer-results-sidebar', true);
+                
+                const countEl = document.getElementById('explorer-toll-count-tab');
+                const costEl = document.getElementById('explorer-toll-cost-tab');
+                const infoEl = document.getElementById('explorer-path-info');
+                
+                if (countEl) countEl.innerText = rData.tolls.length;
+                if (costEl) costEl.innerText = `₹${rData.totalTollCost}`;
+                if (infoEl) infoEl.innerText = `${(route.distance/1000).toFixed(1)} km road path analyzed.`;
+                
+                Utils.showToast(`Scan Complete: ${rData.tolls.length} tolls found on road.`, 'success');
+            })
+            .catch(() => {
+                IndiaMapPlanner._calculateTollsInSelection(start, end);
+            });
+    },
+
+    _calculateTollsInSelection: (start, end) => {
+        // Fallback straight-line calculation if OSRM fails
         if (!window.TollSeedData) return;
         
         let count = 0;
         let totalCost = 0;
         const vType = document.getElementById('vehicle-type')?.value || 'LMV';
-        
-        // Define a 5km buffer (approx 0.045 degrees)
         const bufferKm = 5;
         
         TollSeedData.forEach(toll => {
             if (!toll.lat || !toll.lng) return;
-            
             const tollLatLng = L.latLng(toll.lat, toll.lng);
             const distToLine = IndiaMapPlanner._distToSegment(tollLatLng, start, end);
             
@@ -1280,13 +1329,13 @@ const IndiaMapPlanner = {
             }
         });
         
-        // Update UI
-        const countEl = document.getElementById('explorer-toll-count');
-        const costEl = document.getElementById('explorer-toll-cost');
+        Utils.toggleVisibility('explorer-idle-msg', false);
+        Utils.toggleVisibility('explorer-results-sidebar', true);
+        
+        const countEl = document.getElementById('explorer-toll-count-tab');
+        const costEl = document.getElementById('explorer-toll-cost-tab');
         if (countEl) countEl.innerText = count;
         if (costEl) costEl.innerText = `₹${totalCost}`;
-        
-        Utils.showToast(`Scan Complete: ${count} tolls detected in this area.`, 'success');
     },
 
     // Helper: Distance from point P to segment AB in km
