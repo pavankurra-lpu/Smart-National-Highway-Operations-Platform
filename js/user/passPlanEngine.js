@@ -24,12 +24,11 @@ const PassPlanEngine = {
             </div>
         `;
 
-        const getPassMultiplier = (passType, defaultMultiplier) => {
-            return TollData.passes[passType]?.multiplier || defaultMultiplier;
-        };
+
 
         // Return Trip (usually 1.5x of single)
-        const returnCost = Math.floor(routeData.totalTollCost * getPassMultiplier('RETURN', 1.5));
+        const returnPass = TollData.passes?.RETURN;
+        const returnCost = Math.floor(routeData.totalTollCost * (returnPass?.multiplier || 1.5));
         html += `
             <div class="plan-card">
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
@@ -42,21 +41,23 @@ const PassPlanEngine = {
 
         // NHAI Annual Pass (for LMV only)
         if (routeData.vehicleType === 'LMV') {
+            const annualPass = TollData.passes?.ANNUAL_NH;
             html += `
                 <div class="plan-card" style="border-color: rgba(0, 229, 179, 0.4); background: rgba(0, 229, 179, 0.05);">
                     <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
                         <strong style="color:var(--primary);">Annual Pass (FY 2026-27)</strong>
-                        <span style="color:#fff; font-weight:bold;">${Utils.formatCurrency(TollData.passes.ANNUAL_NH.price)}</span>
+                        <span style="color:#fff; font-weight:bold;">${Utils.formatCurrency(annualPass?.price || 0)}</span>
                     </div>
                     <p style="font-size:10px;">Valid for 1 year or 200 transactions across all NH plazas.</p>
                 </div>
             `;
             
+            const localPass = TollData.passes?.MONTHLY_LOCAL;
             html += `
                 <div class="plan-card" style="border-color: rgba(252, 211, 77, 0.4);">
                     <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
                         <strong style="color:var(--accent-yellow);">Monthly Pass (Local Plaza)</strong>
-                        <span style="color:#fff; font-weight:bold;">${Utils.formatCurrency(TollData.passes.MONTHLY_LOCAL.price)}</span>
+                        <span style="color:#fff; font-weight:bold;">${Utils.formatCurrency(localPass?.price || 0)}</span>
                     </div>
                     <p style="font-size:10px;">For residents within 20km of a specific plaza.</p>
                 </div>
@@ -64,7 +65,8 @@ const PassPlanEngine = {
         }
 
         // Monthly Sim (Plaza specific max)
-        const monthlyCost = Math.floor(routeData.totalTollCost * getPassMultiplier('MONTHLY_PLAZA', 33));
+        const monthlyPass = TollData.passes?.MONTHLY_PLAZA;
+        const monthlyCost = Math.floor(routeData.totalTollCost * (monthlyPass?.multiplier || 33));
         html += `
             <div class="plan-card" style="border-color: rgba(59, 130, 246, 0.5);">
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">

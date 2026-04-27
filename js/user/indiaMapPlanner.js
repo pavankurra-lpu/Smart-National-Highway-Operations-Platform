@@ -909,7 +909,9 @@ const IndiaMapPlanner = {
         IndiaMapPlanner.stopRealGps();
         
         if (IndiaMapPlanner.currentTripId && IndiaMapPlanner.isTripLive) {
-            Storage.logTripEnd(IndiaMapPlanner.currentTripId, IndiaMapPlanner.tripTollsPassed, IndiaMapPlanner.tripTotalCost);
+            const dist = IndiaMapPlanner.selectedRouteData?.totalDist || 0;
+            Storage.logTripEnd(IndiaMapPlanner.currentTripId, IndiaMapPlanner.tripTollsPassed, IndiaMapPlanner.tripTotalCost, dist);
+            if (window.TripAnalytics) TripAnalytics.init();
             IndiaMapPlanner.currentTripId = null;
         }
         

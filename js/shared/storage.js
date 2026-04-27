@@ -102,17 +102,28 @@ const Storage = {
         Storage.set(Storage.KEYS.ACTIVE_TRIPS, trips);
     },
 
-    logTripEnd: (tripId, tollsPassed, totalCost) => {
-        // Update vehicle log entry
+    logTripEnd: (tripId, tollsPassed, totalCost, totalDistance = 0) => {
+        // Update vehicle log entry for Admin
         const logs = Storage.get(Storage.KEYS.VEHICLE_LOGS, []);
         const logIdx = logs.findIndex(l => l.id === tripId);
+        let tripRecord = null;
+
         if (logIdx !== -1) {
             logs[logIdx].status = 'COMPLETED';
             logs[logIdx].tollsPassed = tollsPassed;
             logs[logIdx].cost = totalCost;
             logs[logIdx].endTime = new Date().toISOString();
+            tripRecord = { ...logs[logIdx], totalDistance: parseFloat(totalDistance) };
             Storage.set(Storage.KEYS.VEHICLE_LOGS, logs);
         }
+
+        // Persist to User Trip History for Analytics
+        if (tripRecord) {
+            const history = Storage.get(Storage.KEYS.TRIP_HISTORY, []);
+            history.unshift(tripRecord);
+            Storage.set(Storage.KEYS.TRIP_HISTORY, history);
+        }
+
         // Remove from active trips
         const trips = Storage.get(Storage.KEYS.ACTIVE_TRIPS, []);
         const tidx = trips.findIndex(t => t.id === tripId);

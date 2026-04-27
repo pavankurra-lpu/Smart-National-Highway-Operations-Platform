@@ -26,9 +26,9 @@ const RouteEngine = {
                 }
             });
 
-            if (u === null || dist[u] === Infinity) break; 
-            if (u === endNode) break; 
+            if (u === null || dist[u] === Infinity) break;
             pq.delete(u);
+            if (u === endNode) break; 
 
             const neighbors = RouteGraph.edges[u] || [];
             neighbors.forEach(edge => {
@@ -95,7 +95,7 @@ const RouteEngine = {
                 let time = edge.distance / edge.speedLimit;
                 
                 // Deterministic congestion simulation based on edge to/from names
-                const seed = (edge.from || u).length + (edge.to || '').length;
+                const seed = (edge.from || '').length + (edge.to || '').length;
                 let congestion = (seed % 5) / 10; // 0.0 to 0.4 based on edge name length
                 
                 let risk = edge.distance * 0.05;

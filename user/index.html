@@ -6,6 +6,7 @@
     <title>SNHOP - Traveller Portal</title>
     <!-- FontAwesome Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
@@ -86,6 +87,9 @@
                 </button>
                 <button class="tab-btn" data-tab="tab-explorer" id="tab-btn-explorer">
                     <i class="fa-solid fa-wand-magic-sparkles"></i> Explorer
+                </button>
+                <button class="tab-btn" data-tab="tab-analytics" id="tab-btn-analytics">
+                    <i class="fa-solid fa-chart-line"></i> Analytics
                 </button>
             </div>
 
@@ -174,51 +178,87 @@
             <!-- ========================
                  TAB: FASTAG
                  ======================== -->
-            <div id="tab-fastag" class="tab-content">
-                <!-- Balance Card -->
-                <div class="fastag-card">
-                    <p class="fastag-live-label">
-                        <span class="fastag-live-dot"></span> Live FASTag Balance
-                    </p>
-                    <div id="ui-fastag-bal" class="balance-text">&#8377;0.00</div>
-                    <span id="ui-fastag-status" class="badge"></span>
-                </div>
+            <div id="tab-fastag" class="tab-content" style="padding-top: 0;">
+                <!-- Sticky Top Section -->
+                <div style="position: sticky; top: 0; background: var(--bg-panel); z-index: 10; padding-top: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light);">
+                    <!-- Balance Card -->
+                    <div class="fastag-card" style="margin-bottom: 16px;">
+                        <p class="fastag-live-label">
+                            <span class="fastag-live-dot"></span> Live FASTag Balance
+                        </p>
+                        <div id="ui-fastag-bal" class="balance-text">&#8377;0.00</div>
+                        <span id="ui-fastag-status" class="badge"></span>
+                    </div>
 
-                <!-- Recharge Panel -->
-                <div class="glass-panel" style="margin-bottom: 16px;">
-                    <p class="recharge-section-title"><i class="fa-solid fa-rotate" style="color:var(--primary)"></i> 3rd-Party Recharge Simulation</p>
-                    <p style="font-size: 11px; color: var(--accent-yellow); margin-bottom: 14px; display:flex; align-items:center; gap:5px;">
-                        <i class="fa-solid fa-circle-info"></i> Platform deducts 1% convenience fee.
-                    </p>
-                    <div class="flex-col gap-2">
-                        <input type="number" id="recharge-amount" placeholder="Enter Amount (Min &#8377;500)" min="500">
-                        <div class="recharge-fee-row">
-                            <span style="color: var(--text-sec);">Platform Fee (1%):</span>
-                            <span id="recharge-fee" style="color: var(--accent-red); font-weight:700;">- &#8377;0.00</span>
+                    <!-- Recharge Panel -->
+                    <div class="glass-panel" style="margin-bottom: 0;">
+                        <p class="recharge-section-title"><i class="fa-solid fa-rotate" style="color:var(--primary)"></i> 3rd-Party Recharge Simulation</p>
+                        <div class="flex-col gap-2">
+                            <input type="number" id="recharge-amount" placeholder="Enter Amount (Min &#8377;500)" min="500">
+                            <div class="recharge-fee-row" style="font-weight: bold; font-size: 13px;">
+                                <span>Net Credited:</span>
+                                <span id="recharge-net" style="color: var(--primary);">&#8377;0.00</span>
+                            </div>
+                            <button id="btn-recharge" class="btn btn-primary w-full" style="justify-content: center; height: 36px; font-size: 11px;">
+                                <i class="fa-solid fa-lock"></i> Proceed to Pay
+                            </button>
                         </div>
-                        <div class="recharge-fee-row" style="font-weight: bold; font-size: 13px; margin-bottom: 8px;">
-                            <span>Net Credited:</span>
-                            <span id="recharge-net" style="color: var(--primary);">&#8377;0.00</span>
-                        </div>
-                        <select id="recharge-gateway">
-                            <option>PhonePe UPI</option>
-                            <option>Google Pay UPI</option>
-                            <option>Paytm</option>
-                            <option>Net Banking</option>
-                        </select>
-                        <button id="btn-recharge" class="btn btn-primary w-full" style="justify-content: center;">
-                            <i class="fa-solid fa-lock"></i> Proceed to Pay
-                        </button>
                     </div>
                 </div>
 
-                <!-- Transaction History -->
-                <div>
-                    <h4 style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 12px; display:flex; align-items:center; gap:6px;">
-                        <i class="fa-solid fa-clock-rotate-left"></i> Recent Transactions
-                    </h4>
-                    <div id="fastag-history-list" style="font-size: 11px;"></div>
+                <div style="padding: 18px 0;">
+                    <!-- Transaction History -->
+                    <div>
+                        <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; display:flex; align-items:center; gap:6px;">
+                            <i class="fa-solid fa-clock-rotate-left"></i> Recent Transactions
+                        </h4>
+                        <div id="fastag-history-list" style="font-size: 11px;"></div>
+                    </div>
                 </div>
+            </div>
+
+            <!-- ========================
+                 TAB: TRIP ANALYTICS
+                 ======================== -->
+            <div id="tab-analytics" class="tab-content">
+                <div id="analytics-section">
+                    <h3 style="font-size: 14px; color: var(--primary); font-family: var(--font-display); margin-bottom: 20px; display:flex; align-items:center; gap:10px;">
+                        <i class="fa-solid fa-chart-pie"></i> Trip Analytics Dashboard
+                    </h3>
+
+                    <!-- Stats Cards -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
+                        <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid var(--border-light); text-align: center;">
+                            <p style="color: var(--text-sec); margin: 0; font-size: 9px; text-transform: uppercase;">Total Trips</p>
+                            <p id="total-trips" style="color: var(--primary); font-size: 20px; margin: 5px 0; font-weight: bold;">0</p>
+                        </div>
+                        <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid var(--border-light); text-align: center;">
+                            <p style="color: var(--text-sec); margin: 0; font-size: 9px; text-transform: uppercase;">Distance</p>
+                            <p id="total-distance" style="color: var(--primary); font-size: 20px; margin: 5px 0; font-weight: bold;">0 km</p>
+                        </div>
+                        <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid var(--border-light); text-align: center;">
+                            <p style="color: var(--text-sec); margin: 0; font-size: 9px; text-transform: uppercase;">Expenditure</p>
+                            <p id="total-cost" style="color: var(--accent-yellow); font-size: 20px; margin: 5px 0; font-weight: bold;">₹0</p>
+                        </div>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div class="glass-panel" style="padding: 15px; margin-bottom: 25px;">
+                        <p style="font-size: 11px; color: var(--text-sec); margin-bottom: 12px;">Daily Spending Patterns</p>
+                        <canvas id="costChart" style="max-height: 180px; width: 100%;"></canvas>
+                    </div>
+
+                    <!-- Detailed Trip History List -->
+                    <div>
+                        <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-sec); margin-bottom: 15px; display:flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-history"></i> Detailed Journey Log
+                        </h4>
+                        <div id="trip-history-list" style="display: flex; flex-direction: column; gap: 10px;">
+                            <p style="color:var(--text-muted); font-size:11px; text-align:center; padding:20px;">No trip history yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
 
             <!-- ========================
@@ -498,6 +538,7 @@
     <script src="../js/user/emergencyReporter.js?v=2"></script>
     <script src="../js/user/notifications.js?v=2"></script>
     <script src="../js/user/indiaMapPlanner.js?v=2"></script>
+    <script src="../js/user/tripAnalytics.js?v=2"></script>
     <script src="../js/user/userApp.js?v=2"></script>
 </body>
 </html>

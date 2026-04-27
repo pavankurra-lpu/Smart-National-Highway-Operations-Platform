@@ -14,7 +14,13 @@ const UserApp = {
                 tabContents.forEach(c => c.classList.remove('active'));
 
                 btn.classList.add('active');
-                document.getElementById(target).classList.add('active');
+                const targetEl = document.getElementById(target);
+                if (targetEl) targetEl.classList.add('active');
+
+                // Special handling for analytics chart rendering
+                if (target === 'tab-analytics' && window.TripAnalytics) {
+                    TripAnalytics.init();
+                }
             });
         });
 
