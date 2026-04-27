@@ -43,12 +43,25 @@ const Storage = {
         Storage.set(Storage.KEYS.EMERGENCIES, emergencies);
     },
 
-    updateEmergencyStatus: (id, newStatus, adminNote = '') => {
+    updateEmergencyStatus: (id, newStatus, adminNote = '', resolutionImage = '') => {
         const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
         const idx = emergencies.findIndex(e => e.id === id);
         if (idx !== -1) {
             emergencies[idx].status = newStatus;
             if (adminNote) emergencies[idx].adminNote = adminNote;
+            if (resolutionImage) emergencies[idx].resolutionImage = resolutionImage;
+            emergencies[idx].updatedAt = new Date().toISOString();
+            Storage.set(Storage.KEYS.EMERGENCIES, emergencies);
+        }
+    },
+
+    addEmergencyFeedback: (id, rating, comment) => {
+        const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
+        const idx = emergencies.findIndex(e => e.id === id);
+        if (idx !== -1) {
+            emergencies[idx].status = 'CLOSED';
+            emergencies[idx].feedbackRating = rating;
+            emergencies[idx].feedbackComment = comment;
             emergencies[idx].updatedAt = new Date().toISOString();
             Storage.set(Storage.KEYS.EMERGENCIES, emergencies);
         }

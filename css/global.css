@@ -328,3 +328,18 @@ body.light-mode option {
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow);
 }
+
+/* ===== MODAL SYSTEM ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-overlay.hidden { display: none !important; }

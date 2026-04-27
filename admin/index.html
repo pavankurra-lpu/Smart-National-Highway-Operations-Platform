@@ -258,8 +258,30 @@
                     </table>
                 </div>
             </section>
-
         </main>
+
+        <!-- Mandatory Resolution Modal -->
+        <div id="resolution-modal" class="modal-overlay hidden">
+            <div class="glass-panel" style="width:400px; max-width:90%; padding:25px;">
+                <h3 style="color:var(--primary); font-size:16px; margin-bottom:15px;"><i class="fa-solid fa-camera"></i> Mandatory Proof of Resolution</h3>
+                <p style="font-size:12px; color:var(--text-sec); margin-bottom:15px;">Incident <b id="res-modal-id-text"></b> requires a valid image proof and resolution notes to be closed.</p>
+                
+                <div style="margin-bottom:15px;">
+                    <label style="font-size:11px; font-weight:bold; color:var(--text-main);">Upload Resolution Image *</label>
+                    <input type="file" id="res-image-upload" accept="image/*" class="w-full" style="font-size:11px; margin-top:5px; padding:10px; background:rgba(0,0,0,0.3); border:1px dashed var(--border); border-radius:4px;">
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <label style="font-size:11px; font-weight:bold; color:var(--text-main);">Admin Summary Note *</label>
+                    <textarea id="res-note" rows="3" class="w-full" style="background:var(--bg-dark); color:#fff; border:1px solid var(--border); border-radius:4px; padding:8px; font-size:12px; margin-top:5px;" placeholder="Detailed actions taken..."></textarea>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px;">
+                    <button class="btn btn-outline" onclick="Utils.toggleVisibility('resolution-modal', false)">Cancel</button>
+                    <button id="btn-confirm-resolution" class="btn btn-primary">Upload & Resolve</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Shared dependencies -->

@@ -21,6 +21,20 @@ const IncidentCenter = {
 
             let rowClass = inc.status === 'RAISED' ? 'style="background: rgba(255, 94, 94, 0.1);"' : '';
             
+            let statusUI = '';
+            if (inc.status === 'CLOSED') {
+                statusUI = `<div style="font-size:11px; color:var(--text-sec);"><i class="fa-solid fa-check-double"></i> Closed (User Accepted)</div><div style="font-size:10px; color:var(--accent-yellow); margin-top:2px;">Rating: ${inc.feedbackRating || 5}★</div>`;
+            } else {
+                statusUI = `
+                    <select onchange="updateIncidentStatus('${inc.id}', this.value)" style="width:auto; padding:4px; font-size:11px;">
+                        <option value="RAISED" ${inc.status === 'RAISED' ? 'selected' : ''}>Raised</option>
+                        <option value="ACKNOWLEDGED" ${inc.status === 'ACKNOWLEDGED' ? 'selected' : ''}>Ack</option>
+                        <option value="DISPATCHED" ${inc.status === 'DISPATCHED' ? 'selected' : ''}>Dispatch</option>
+                        <option value="RESOLVED" ${inc.status === 'RESOLVED' ? 'selected' : ''}>Resolve</option>
+                    </select>
+                `;
+            }
+
             html += `
                 <tr ${rowClass}>
                     <td style="font-size:11px; font-weight:bold;">${inc.id}</td>
@@ -29,14 +43,9 @@ const IncidentCenter = {
                     <td style="max-width: 200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:11px;" title="${inc.description}">
                         ${inc.description || '-'}
                     </td>
-                    <td><span class="badge ${inc.status === 'RESOLVED' ? 'badge-success' : 'badge-danger'}">${inc.status}</span></td>
+                    <td><span class="badge ${inc.status === 'RESOLVED' || inc.status === 'CLOSED' ? 'badge-success' : 'badge-danger'}">${inc.status}</span></td>
                     <td>
-                        <select onchange="updateIncidentStatus('${inc.id}', this.value)" style="width:auto; padding:4px; font-size:11px;">
-                            <option value="RAISED" ${inc.status === 'RAISED' ? 'selected' : ''}>Raised</option>
-                            <option value="ACKNOWLEDGED" ${inc.status === 'ACKNOWLEDGED' ? 'selected' : ''}>Ack</option>
-                            <option value="DISPATCHED" ${inc.status === 'DISPATCHED' ? 'selected' : ''}>Dispatch</option>
-                            <option value="RESOLVED" ${inc.status === 'RESOLVED' ? 'selected' : ''}>Resolve</option>
-                        </select>
+                        ${statusUI}
                     </td>
                 </tr>
             `;
@@ -75,37 +84,17 @@ const IncidentCenter = {
     },
 
     openResolutionModal: (id) => {
-        let m = document.getElementById('resolution-modal');
-        if(!m) {
-            m = document.createElement('div');
-            m.id = 'resolution-modal';
-            m.className = 'modal-overlay';
-            m.style.zIndex = '99999';
-            document.body.appendChild(m);
-        }
+        const m = document.getElementById('resolution-modal');
+        const idText = document.getElementById('res-modal-id-text');
+        const confirmBtn = document.getElementById('btn-confirm-resolution');
         
-        m.innerHTML = `
-            <div class="glass-panel" style="width:400px; max-width:90%;">
-                <h3 style="color:var(--primary); font-size:16px; margin-bottom:15px;"><i class="fa-solid fa-camera"></i> Mandatory Proof of Resolution</h3>
-                <p style="font-size:12px; color:var(--text-sec); margin-bottom:15px;">Incident <b>${id}</b> requires a valid image proof and resolution notes to be closed.</p>
-                
-                <div style="margin-bottom:15px;">
-                    <label style="font-size:11px; font-weight:bold; color:var(--text-main);">Upload Resolution Image *</label>
-                    <input type="file" id="res-image-upload" accept="image/*" class="w-full" style="font-size:11px; margin-top:5px; padding:10px; background:rgba(0,0,0,0.3); border:1px dashed var(--border); border-radius:4px;">
-                </div>
-
-                <div style="margin-bottom:15px;">
-                    <label style="font-size:11px; font-weight:bold; color:var(--text-main);">Admin Summary Note *</label>
-                    <textarea id="res-note" rows="3" class="w-full" style="background:var(--bg-dark); color:#fff; border:1px solid var(--border); border-radius:4px; padding:8px; font-size:12px; margin-top:5px;" placeholder="Detailed actions taken..."></textarea>
-                </div>
-
-                <div style="display:flex; justify-content:flex-end; gap:10px;">
-                    <button class="btn btn-outline" onclick="document.getElementById('resolution-modal').classList.add('hidden')">Cancel</button>
-                    <button class="btn btn-primary" onclick="IncidentCenter.confirmResolution('${id}')">Upload & Resolve</button>
-                </div>
-            </div>
-        `;
+        if (!m || !confirmBtn) return;
+        
+        idText.innerText = id;
         m.classList.remove('hidden');
+        
+        // Use a one-time listener or reset it
+        confirmBtn.onclick = () => IncidentCenter.confirmResolution(id);
     },
 
     confirmResolution: (id) => {
@@ -121,15 +110,25 @@ const IncidentCenter = {
             return;
         }
 
-        const note = `[RESOLVED + PROOF UPLOADED] ${noteInput.value.trim()}`;
+        const note = `[RESOLVED] ${noteInput.value.trim()}`;
         
-        // Mock base64 save could go here
-        Storage.updateEmergencyStatus(id, 'RESOLVED', note);
-        document.getElementById('resolution-modal').classList.add('hidden');
-        Utils.showToast(`Incident ${id} completely resolved. Proof verified.`, "success");
-        
-        IncidentCenter.refresh();
-        Analytics.refresh();
+        const file = imgInput.files[0];
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const base64Image = e.target.result;
+            Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image);
+            
+            // Clear inputs
+            imgInput.value = '';
+            noteInput.value = '';
+            
+            document.getElementById('resolution-modal').classList.add('hidden');
+            Utils.showToast(`Incident ${id} resolved. Awaiting user acceptance.`, "success");
+            
+            IncidentCenter.refresh();
+            Analytics.refresh();
+        };
+        reader.readAsDataURL(file);
     }
 };
 
