@@ -114,13 +114,17 @@ const TrafficControl = {
             const lanes = currentStates[tId]?.lanes || { total: 6, open: 6 };
             
             // Simulated live data
-            const vehicleCount = state === 'HIGH' ? Math.floor(80 + Math.random() * 120) : state === 'MODERATE' ? Math.floor(30 + Math.random() * 50) : Math.floor(5 + Math.random() * 25);
-            const waitTime = state === 'HIGH' ? Math.floor(12 + Math.random() * 20) : state === 'MODERATE' ? Math.floor(5 + Math.random() * 8) : Math.floor(1 + Math.random() * 3);
-            const revenue = Math.floor(vehicleCount * (plaza.baseRate || 50) * (0.8 + Math.random() * 0.4));
+            const seed  = plaza.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+            const rand  = ((seed * 9301 + 49297) % 233280) / 233280;
+            const rand2 = ((seed * 1103515245 + 12345) % 2147483648) / 2147483648;
+
+            const vehicleCount = state === 'HIGH' ? Math.floor(80 + rand * 120) : state === 'MODERATE' ? Math.floor(30 + rand * 50) : Math.floor(5 + rand * 25);
+            const waitTime = state === 'HIGH' ? Math.floor(12 + rand2 * 20) : state === 'MODERATE' ? Math.floor(5 + rand2 * 8) : Math.floor(1 + rand2 * 3);
+            const revenue = Math.floor(vehicleCount * (plaza.baseRate || 50) * (0.8 + rand * 0.4));
             
             const congColors = { NORMAL: '#64ffda', MODERATE: '#fcd34d', HIGH: '#ff5e5e' };
             const congColor = congColors[state];
-            const congPct = state === 'HIGH' ? 85 + Math.floor(Math.random() * 15) : state === 'MODERATE' ? 45 + Math.floor(Math.random() * 25) : 10 + Math.floor(Math.random() * 20);
+            const congPct = state === 'HIGH' ? 85 + Math.floor(rand2 * 15) : state === 'MODERATE' ? 45 + Math.floor(rand2 * 25) : 10 + Math.floor(rand2 * 20);
 
             html += `
                 <div class="tc-card" style="border-left: 3px solid ${congColor};">
