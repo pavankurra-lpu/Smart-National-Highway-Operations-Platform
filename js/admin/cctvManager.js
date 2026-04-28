@@ -97,7 +97,7 @@ const CCTVManager = {
 
         const cams = CCTVManager.getAll();
         const newCam = {
-            id: 'CAM_' + Math.floor(Math.random()*10000),
+            id: 'CAM_' + Date.now() + '_' + Math.floor(Math.random() * 999),
             name: nameInput.value.trim(),
             tollId: tollSel ? tollSel.value : '',
             mode: modeSel ? modeSel.value : 'SIMULATION',
