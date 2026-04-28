@@ -16,6 +16,12 @@ const EmergencyReporter = {
                     return;
                 }
 
+                const phoneRegex = /^[6-9]\d{9}$/;
+                if (phone && !phoneRegex.test(phone)) {
+                    Utils.showToast("Please enter a valid 10-digit Indian mobile number.", "error");
+                    return;
+                }
+
                 const emergencyData = {
                     id: Utils.generateId('SOS'),
                     type: type,
