@@ -526,6 +526,56 @@
             </div>
         </div>
 
+        <!-- ==============================
+             USER PROFILE SETUP MODAL
+             ============================== -->
+        <div id="profile-setup-modal" class="modal-overlay hidden" style="z-index: 9999;">
+            <div class="glass-panel" style="width:400px; max-width:95%; padding:0; overflow:hidden;">
+                <div class="modal-header" style="padding:15px 20px;">
+                    <h3 class="modal-title"><i class="fa-solid fa-user-shield"></i> Complete Your Profile</h3>
+                </div>
+                <div style="font-size: 12px; padding: 20px;">
+                    <p style="color:var(--text-sec); margin-bottom:15px;">Welcome to the SNHOP Traveller Portal! Please set up your profile to enable personalized FASTag logic, SMS alerts, and route planning.</p>
+                    
+                    <div style="margin-bottom: 12px;">
+                        <span class="field-label">Full Name</span>
+                        <input type="text" id="profile-name" placeholder="E.g. Rajesh Kumar" style="width:100%; box-sizing:border-box;">
+                    </div>
+                    
+                    <div style="margin-bottom: 12px;">
+                        <span class="field-label">Vehicle Registration Number</span>
+                        <input type="text" id="profile-reg" placeholder="E.g. DL-1C-AA-1111" style="width:100%; box-sizing:border-box; text-transform: uppercase;">
+                    </div>
+                    
+                    <div style="margin-bottom: 12px;">
+                        <span class="field-label">Phone Number</span>
+                        <input type="tel" id="profile-phone" placeholder="10-digit mobile number" style="width:100%; box-sizing:border-box;">
+                    </div>
+                    
+                    <div style="margin-bottom: 12px;">
+                        <span class="field-label">Email Address</span>
+                        <input type="email" id="profile-email" placeholder="your.email@example.com" style="width:100%; box-sizing:border-box;">
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <span class="field-label">Default Vehicle Type</span>
+                        <select id="profile-vtype" style="width:100%; box-sizing:border-box;">
+                            <option value="LMV">Car / Jeep / Van (LMV)</option>
+                            <option value="LCV">Light Commercial Vehicle (LCV)</option>
+                            <option value="BUS_2AXLE">Bus / Truck (2 Axles)</option>
+                            <option value="COM_3AXLE">Commercial (3 Axles)</option>
+                            <option value="MAV_4_6">MAV (4-6 Axles)</option>
+                            <option value="OVERSIZED">Oversized (7+ Axles)</option>
+                        </select>
+                    </div>
+                    
+                    <button id="btn-save-profile" class="btn btn-primary" style="width:100%; justify-content:center; padding:12px;">
+                        <i class="fa-solid fa-check"></i> Save & Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div><!-- /#user-app -->
 
     <!-- Leaflet JS -->
@@ -557,6 +607,7 @@
     <script src="../js/user/notifications.js?v=2"></script>
     <script src="../js/user/indiaMapPlanner.js?v=2"></script>
     <script src="../js/user/tripAnalytics.js"></script>
+    <script src="../js/user/userProfile.js"></script>
     <script src="../js/user/userApp.js?v=2"></script>
 </body>
 </html>
