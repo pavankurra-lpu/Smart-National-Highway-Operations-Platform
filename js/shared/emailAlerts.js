@@ -6,7 +6,7 @@ const EmailAlerts = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                to: 'user@email.com',
+                to: Storage.get('nhai_user_profile', { email: 'user@email.com' }).email,
                 subject: 'Trip Invoice - ' + new Date().toLocaleDateString(),
                 trip: tripData
             })
@@ -20,7 +20,7 @@ const EmailAlerts = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
-                    to: 'user@email.com',
+                    to: Storage.get('nhai_user_profile', { email: 'user@email.com' }).email,
                     subject: passName + ' expires in ' + expiryDays + ' days',
                     message: 'Your pass will expire soon. Renew now to avoid interruption.'
                 })
