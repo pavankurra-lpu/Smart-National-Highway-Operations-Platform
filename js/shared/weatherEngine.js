@@ -6,7 +6,7 @@ const WeatherEngine = {
         { code: 'RAIN', name: 'Heavy Rain', icon: 'fa-cloud-showers-heavy', color: '#3b82f6', risk: 'MEDIUM', tempMod: -5 },
         { code: 'FOG', name: 'Dense Fog', icon: 'fa-smog', color: '#a8a29e', risk: 'HIGH', tempMod: -3 },
         { code: 'STORM', name: 'Thunderstorm', icon: 'fa-cloud-bolt', color: '#8b5cf6', risk: 'HIGH', tempMod: -8 },
-        { code: 'HEAT', name: 'Extreme HeatWave', icon: 'fa-temperature-arrow-up', color: '#ef4444', risk: 'MEDIUM', tempMod: +8 }
+        { code: 'HEAT', name: 'Extreme HeatWave', icon: 'fa-temperature-arrow-up', color: '#ef4444', risk: 'HIGH', tempMod: +8 }
     ],
 
     // Deterministic simulation based on node coordinates and current hour string
@@ -46,7 +46,7 @@ const WeatherEngine = {
             case 'RAIN': return "Slippery roads. Reduce speed by 20%.";
             case 'FOG': return "Low visibility. Use fog lights & hazard lamps.";
             case 'STORM': return "High winds and lightning hazard. Proceed with caution.";
-            case 'HEAT': return "Check tire pressure and coolant levels.";
+            case 'HEAT': return "Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.";
             default: return "Drive safely.";
         }
     },
