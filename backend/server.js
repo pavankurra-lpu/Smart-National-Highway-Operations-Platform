@@ -7,6 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const rateLimit = require('express-rate-limit');
+app.use(rateLimit({ windowMs: 60000, max: 100 }));
+
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -19,6 +22,14 @@ const PORT = process.env.PORT || 3000;
 
 // Store active sessions in memory
 const activeJourneys = new Map();
+
+// Prevent memory leak by cleaning up stale journeys every 15 minutes
+setInterval(() => {
+    const now = Date.now();
+    for (const [tripId, data] of activeJourneys.entries()) {
+        if (now - data.lastUpdate > 15 * 60 * 1000) activeJourneys.delete(tripId);
+    }
+}, 15 * 60 * 1000);
 
 io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
