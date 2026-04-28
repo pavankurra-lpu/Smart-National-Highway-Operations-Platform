@@ -82,7 +82,14 @@ const TripAnalytics = {
         const labels = Object.keys(dailyCosts);
         const data = Object.values(dailyCosts);
 
-        if (labels.length === 0) return;
+        if (labels.length === 0) {
+            canvas.style.display = 'none';
+            const msg = document.createElement('p');
+            msg.style.cssText = 'color:var(--text-muted); font-size:12px; text-align:center; padding:20px;';
+            msg.innerText = 'Plan your first trip to see spending analytics here.';
+            canvas.parentElement.appendChild(msg);
+            return;
+        }
 
         TripAnalytics.chartInstance = new Chart(ctx, {
             type: 'bar',
