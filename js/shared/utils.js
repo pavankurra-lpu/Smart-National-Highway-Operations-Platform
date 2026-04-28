@@ -25,21 +25,35 @@ const Utils = {
     delay: (ms) => new Promise(resolve => setTimeout(resolve, ms)),
 
     showToast: (message, type = 'success') => {
+        const colors = {
+            success: 'var(--primary)',
+            error:   'var(--accent-red)',
+            warning: '#fcd34d',
+            info:    '#3b82f6'
+        };
+        const icons = {
+            success: '<i class="fa-solid fa-circle-check"></i>',
+            error:   '<i class="fa-solid fa-circle-exclamation"></i>',
+            warning: '<i class="fa-solid fa-triangle-exclamation"></i>',
+            info:    '<i class="fa-solid fa-circle-info"></i>'
+        };
+        const color = colors[type] || colors.success;
+        const iconStr  = icons[type]  || icons.success;
+
         const toast = document.createElement('div');
         Object.assign(toast.style, {
             position: 'fixed', bottom: '30px', right: '30px',
             padding: '16px 28px', borderRadius: 'var(--radius)',
             background: 'var(--bg-panel)', backdropFilter: 'var(--glass)',
-            color: type === 'success' ? 'var(--primary)' : 'var(--accent-red)',
-            border: `1px solid ${type === 'success' ? 'var(--border)' : 'var(--accent-red)'}`,
+            color: color,
+            border: `1px solid ${type === 'success' ? 'var(--border)' : color}`,
             boxShadow: 'var(--shadow-lg)', zIndex: '99999',
             transform: 'translateX(100px)', opacity: '0',
             transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             fontSize: '13px', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '12px'
         });
         
-        const icon = type === 'success' ? '<i class="fa-solid fa-circle-check"></i>' : '<i class="fa-solid fa-circle-exclamation"></i>';
-        toast.innerHTML = `${icon} <span>${message}</span>`;
+        toast.innerHTML = `${iconStr} <span>${message}</span>`;
 
         document.body.appendChild(toast);
 
