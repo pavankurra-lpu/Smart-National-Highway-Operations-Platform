@@ -39,9 +39,13 @@ io.on('connection', (socket) => {
     });
 
     // Handle Admin Broadcasts (Traffic, Weather, etc)
-    socket.on('admin-broadcast', (alertData) => {
-        console.log('Admin Broadcast:', alertData);
-        io.emit('broadcast-alert', alertData);
+    socket.on('admin-broadcast', (data) => {
+        if (!data.token || data.token !== process.env.ADMIN_TOKEN) {
+            socket.emit('error', 'Unauthorized');
+            return;
+        }
+        console.log('Admin Broadcast:', data.alertData);
+        io.emit('broadcast-alert', data.alertData);
     });
 
     // Live Vehicle Position Tracking
