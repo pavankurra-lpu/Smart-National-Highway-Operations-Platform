@@ -2,11 +2,11 @@
 
 const WeatherEngine = {
     conditions: [
-        { code: 'CLEAR', name: 'Clear Skies', icon: 'fa-sun', color: '#fcd34d', riskRisk: 'LOW', tempMod: 0 },
-        { code: 'RAIN', name: 'Heavy Rain', icon: 'fa-cloud-showers-heavy', color: '#3b82f6', riskRisk: 'MEDIUM', tempMod: -5 },
-        { code: 'FOG', name: 'Dense Fog', icon: 'fa-smog', color: '#a8a29e', riskRisk: 'HIGH', tempMod: -3 },
-        { code: 'STORM', name: 'Thunderstorm', icon: 'fa-cloud-bolt', color: '#8b5cf6', riskRisk: 'HIGH', tempMod: -8 },
-        { code: 'HEAT', name: 'Extreme HeatWave', icon: 'fa-temperature-arrow-up', color: '#ef4444', riskRisk: 'MEDIUM', tempMod: +8 }
+        { code: 'CLEAR', name: 'Clear Skies', icon: 'fa-sun', color: '#fcd34d', risk: 'LOW', tempMod: 0 },
+        { code: 'RAIN', name: 'Heavy Rain', icon: 'fa-cloud-showers-heavy', color: '#3b82f6', risk: 'MEDIUM', tempMod: -5 },
+        { code: 'FOG', name: 'Dense Fog', icon: 'fa-smog', color: '#a8a29e', risk: 'HIGH', tempMod: -3 },
+        { code: 'STORM', name: 'Thunderstorm', icon: 'fa-cloud-bolt', color: '#8b5cf6', risk: 'HIGH', tempMod: -8 },
+        { code: 'HEAT', name: 'Extreme HeatWave', icon: 'fa-temperature-arrow-up', color: '#ef4444', risk: 'MEDIUM', tempMod: +8 }
     ],
 
     // Deterministic simulation based on node coordinates and current hour string
@@ -65,8 +65,8 @@ const WeatherEngine = {
 
         routeNodes.forEach(nId => {
             const w = WeatherEngine.getWeatherForNode(nId);
-            if (w && riskValues[w.condition.riskRisk] > riskValues[maxRisk]) {
-                maxRisk = w.condition.riskRisk;
+            if (w && riskValues[w.condition.risk] > riskValues[maxRisk]) {
+                maxRisk = w.condition.risk;
                 worstCondition = w.condition.name;
                 worstNote = w.advisory;
             }
