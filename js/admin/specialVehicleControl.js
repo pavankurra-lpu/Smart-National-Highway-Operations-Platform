@@ -19,13 +19,14 @@ const SpecialVehicleControl = {
                 <tr>
                     <td style="font-size: 11px; font-weight:bold; color:var(--primary);">${log.id}</td>
                     <td>${log.vehicleType}</td>
+                    <td>${log.origin || '—'} → ${log.dest || '—'}</td>
                     <td>${log.tollsPassed.length}</td>
                     <td style="font-size: 11px; color: var(--text-sec);">${Utils.formatDateTime(log.timestamp)}</td>
                 </tr>
             `;
         });
 
-        tbody.innerHTML = html.length ? html : '<tr><td colspan="4" style="text-align:center;">No pre-registered VIP vehicles passed recently.</td></tr>';
+        tbody.innerHTML = html.length ? html : '<tr><td colspan="5" style="text-align:center;">No pre-registered VIP vehicles passed recently.</td></tr>';
     }
 };
 
