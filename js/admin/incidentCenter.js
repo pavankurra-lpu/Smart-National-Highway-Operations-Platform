@@ -17,7 +17,7 @@ const IncidentCenter = {
         let html = '';
 
         incidents.forEach(inc => {
-            if (inc.status === 'RAISED' || inc.status === 'ACKNOWLEDGED') activeCount++;
+            if (inc.status === 'RAISED' || inc.status === 'ACKNOWLEDGED' || inc.status === 'DISPATCHED') activeCount++;
 
             let rowClass = inc.status === 'RAISED' ? 'style="background: rgba(255, 94, 94, 0.1);"' : '';
             
