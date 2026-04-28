@@ -23,13 +23,15 @@ const PORT = process.env.PORT || 3000;
 // Store active sessions in memory
 const activeJourneys = new Map();
 
-// Prevent memory leak by cleaning up stale journeys every 15 minutes
+// Clean up journeys older than 6 hours
 setInterval(() => {
-    const now = Date.now();
+    const cutoff = Date.now() - (6 * 60 * 60 * 1000);
     for (const [tripId, data] of activeJourneys.entries()) {
-        if (now - data.lastUpdate > 15 * 60 * 1000) activeJourneys.delete(tripId);
+        if (data.lastUpdate < cutoff) {
+            activeJourneys.delete(tripId);
+        }
     }
-}, 15 * 60 * 1000);
+}, 30 * 60 * 1000);  // Run every 30 minutes
 
 io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
