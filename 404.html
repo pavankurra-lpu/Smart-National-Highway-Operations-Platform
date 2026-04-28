@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            background: radial-gradient(ellipse at 50% 40%, #1a1f16 0%, #0d100b 70%);
+            color: #f4f7f0; text-align: center; overflow: hidden;
+        }
+        .container {
+            background: rgba(30, 40, 25, 0.7); padding: 50px; border-radius: 24px;
+            backdrop-filter: blur(20px) saturate(180%); 
+            border: 1px solid rgba(141, 166, 114, 0.2);
+            max-width: 600px; width: 90%;
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        h1 { font-size: 80px; font-weight: 700; margin: 0 0 10px 0; color: #8da672; letter-spacing: -2px; }
+        h2 { font-size: 24px; font-weight: 600; margin-bottom: 12px; color: #f4f7f0; }
+        p { font-size: 15px; color: #a3ad9b; margin-bottom: 40px; line-height: 1.6; }
+        .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            text-decoration: none; padding: 14px 32px; border-radius: 12px;
+            font-weight: 600; font-size: 14px; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-user {
+            background: #8da672; color: #121510;
+            box-shadow: 0 4px 12px rgba(141, 166, 114, 0.25);
+        }
+        .btn-user:hover {
+            background: #a3bc88; transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(141, 166, 114, 0.35);
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>The page you are looking for does not exist, has been moved, or is temporarily unavailable.</p>
+        
+        <div class="btn-group">
+            <a href="/" class="btn btn-user" id="home-btn">
+                <i class="fa-solid fa-house"></i> Return to Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('home-btn');
+            if (window.location.hostname.includes('github.io')) {
+                btn.href = '/Smart-National-Highway-Operations-Platform/';
+            } else {
+                btn.href = '/';
+            }
+        });
+    </script>
+</body>
+</html>
