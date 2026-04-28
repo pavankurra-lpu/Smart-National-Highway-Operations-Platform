@@ -50,13 +50,13 @@ const Notifications = {
 
         const panel = document.getElementById('admin-broadcasts-panel');
         if (Notifications.activeAlerts.length > 0) {
-            panel.classList.remove('hidden');
+            if (panel) panel.classList.remove('hidden');
             if(Notifications.currentIndex >= Notifications.activeAlerts.length) {
                 Notifications.currentIndex = 0;
             }
             Notifications.renderCurrent();
         } else {
-            panel.classList.add('hidden');
+            if (panel) panel.classList.add('hidden');
         }
     },
 
@@ -73,15 +73,18 @@ const Notifications = {
 
         const icon = typeIcons[alert.type] || typeIcons['INFO'];
         
-        document.getElementById('advisory-text').innerHTML = `
-            <div style="margin-bottom: 4px; font-weight:bold; color:#fff;">
-                ${icon} ${alert.title}
-            </div>
-            <div>${alert.message}</div>
-            <div style="font-size:9px; color:rgba(255,255,255,0.4); margin-top:4px;">
-                Broadcasted: ${Utils.formatDateTime(alert.timestamp)}
-            </div>
-        `;
+        const advisory = document.getElementById('advisory-text');
+        if (advisory) {
+            advisory.innerHTML = `
+                <div style="margin-bottom: 4px; font-weight:bold; color:#fff;">
+                    ${icon} ${alert.title}
+                </div>
+                <div>${alert.message}</div>
+                <div style="font-size:9px; color:rgba(255,255,255,0.4); margin-top:4px;">
+                    Broadcasted: ${Utils.formatDateTime(alert.timestamp)}
+                </div>
+            `;
+        }
     }
 };
 
