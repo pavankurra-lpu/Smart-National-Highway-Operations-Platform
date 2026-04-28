@@ -148,7 +148,7 @@ const FastagEngine = {
 
         // Check for low balance alerts
         if (balance < 500) {
-            const userPhone = '9876543210'; // Simulated user phone
+            const userPhone = Storage.get('nhai_user_profile', { phone: '9876543210' }).phone;
             if (window.PushNotifications) PushNotifications.notifyLowBalance(balance);
             if (window.SMSAlerts) SMSAlerts.alertLowBalance(userPhone, balance);
         }

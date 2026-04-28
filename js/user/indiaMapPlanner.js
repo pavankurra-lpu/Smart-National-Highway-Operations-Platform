@@ -955,7 +955,8 @@ const IndiaMapPlanner = {
                 if (cost > 0) {
                     // Trigger Alerts
                     if (window.PushNotifications) PushNotifications.notifyTollAhead(toll.name);
-                    if (window.SMSAlerts) SMSAlerts.alertTollAhead('9876543210', toll.name);
+                    const userPhone = Storage.get('nhai_user_profile', { phone: '9876543210' }).phone;
+                    if (window.SMSAlerts) SMSAlerts.alertTollAhead(userPhone, toll.name);
 
                     const success = FastagEngine.deductSummaryToll(cost, `Toll: ${toll.name}`);
                     if (success) {
