@@ -18,7 +18,8 @@ const Storage = {
             const item = localStorage.getItem(key);
             return item ? JSON.parse(item) : defaultValue;
         } catch (e) {
-            console.error('Storage read error for key:', key, e);
+            console.warn('Storage: corrupted data for key', key, '— resetting.');
+            localStorage.removeItem(key);
             return defaultValue;
         }
     },
