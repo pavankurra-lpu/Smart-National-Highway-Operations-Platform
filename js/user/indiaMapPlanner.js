@@ -75,15 +75,15 @@ const IndiaMapPlanner = {
         const tileCfg = cfg.tiles || {};
         IndiaMapPlanner._satelliteLayer = L.tileLayer(
             (tileCfg.satellite || {}).url || 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            { maxZoom: 19, attribution: '© Esri' }
+            { maxZoom: 19, maxNativeZoom: 17, attribution: '© Esri' }
         );
         IndiaMapPlanner._labelsLayer = L.tileLayer(
             (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
-            { maxZoom: 19, opacity: 0.7 }
+            { maxZoom: 19, maxNativeZoom: 18, opacity: 0.7 }
         );
         IndiaMapPlanner._streetLayer = L.tileLayer(
             (tileCfg.street || {}).url || 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-            { maxZoom: 19 }
+            { maxZoom: 19, maxNativeZoom: 18 }
         );
 
         // Default: satellite + labels
@@ -1033,70 +1033,35 @@ const IndiaMapPlanner = {
     // ADMINISTRATIVE BOUNDARIES (GeoJSON)
     // ═══════════════════════════════════════════════════════════════
     loadBoundaries: async () => {
-        // Updated to verified 2019+ modern GeoJSON sources
         const stateUrl = 'https://raw.githubusercontent.com/india-in-data/india-states-2019/master/india_states.geojson';
-        const distUrl  = 'https://raw.githubusercontent.com/geohacker/india/master/district/india_district.geojson';
-
+        // Remove district loading entirely — it is too large for smooth performance
         try {
-
-            // Load States
             const sRes = await fetch(stateUrl);
             const sData = await sRes.json();
             IndiaMapPlanner._stateLayer = L.geoJSON(sData, {
-                style: {
-                    color: '#ffffff',
-                    weight: 1,
-                    opacity: 0.4,
-                    fillOpacity: 0
-                },
-
+                style: { color: '#ffffff', weight: 1, opacity: 0.4, fillOpacity: 0 },
                 onEachFeature: (feature, layer) => {
                     const name = feature.properties.NAME || feature.properties.ST_NM || "State";
                     layer.bindTooltip(name, { sticky: true, className: 'boundary-tooltip' });
                 }
             }).addTo(IndiaMapPlanner.map);
-
-            // Load Districts
-            const dRes = await fetch(distUrl);
-            const dData = await dRes.json();
-            IndiaMapPlanner._districtLayer = L.geoJSON(dData, {
-                style: {
-                    color: '#8892b0',
-                    weight: 1,
-                    opacity: 0.3,
-                    dashArray: '3, 5',
-                    fillOpacity: 0
-                },
-                onEachFeature: (feature, layer) => {
-                    const name = feature.properties.NAME || feature.properties.DISTRICT || "District";
-                    layer.bindTooltip(name, { sticky: true, className: 'boundary-tooltip' });
-                }
-            });
-            
-            IndiaMapPlanner.updateBoundaryVisibility();
-        } catch (e) {
-            console.error("Boundaries load failed", e);
+        } catch(e) {
+            console.warn("State boundaries load failed", e);
         }
+        // _districtLayer stays null — no district rendering
     },
 
     updateBoundaryVisibility: () => {
         if (!IndiaMapPlanner._showBoundaries) {
             if (IndiaMapPlanner._stateLayer) IndiaMapPlanner._stateLayer.remove();
-            if (IndiaMapPlanner._districtLayer) IndiaMapPlanner._districtLayer.remove();
+            // _districtLayer check removed
             return;
         }
 
         const zoom = IndiaMapPlanner.map.getZoom();
         
         if (IndiaMapPlanner._stateLayer) IndiaMapPlanner._stateLayer.addTo(IndiaMapPlanner.map);
-        
-        if (IndiaMapPlanner._districtLayer) {
-            if (zoom >= 7) {
-                IndiaMapPlanner._districtLayer.addTo(IndiaMapPlanner.map);
-            } else {
-                IndiaMapPlanner._districtLayer.remove();
-            }
-        }
+        // _districtLayer check removed
     },
 
     // ═══════════════════════════════════════════════════════════════
