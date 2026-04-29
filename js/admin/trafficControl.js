@@ -114,17 +114,22 @@ const TrafficControl = {
             const lanes = currentStates[tId]?.lanes || { total: 6, open: 6 };
             
             // Simulated live data
-            const seed  = plaza.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-            const rand  = ((seed * 9301 + 49297) % 233280) / 233280;
-            const rand2 = ((seed * 1103515245 + 12345) % 2147483648) / 2147483648;
+            const seed = plaza.id.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+            const r = (seed % 97) / 97;  // 0.0 to 1.0, stable per plaza
 
-            const vehicleCount = state === 'HIGH' ? Math.floor(80 + rand * 120) : state === 'MODERATE' ? Math.floor(30 + rand * 50) : Math.floor(5 + rand * 25);
-            const waitTime = state === 'HIGH' ? Math.floor(12 + rand2 * 20) : state === 'MODERATE' ? Math.floor(5 + rand2 * 8) : Math.floor(1 + rand2 * 3);
-            const revenue = Math.floor(vehicleCount * (plaza.baseRate || 50) * (0.8 + rand * 0.4));
+            const vehicleCount = state === 'HIGH'     ? Math.floor(80  + r * 120) :
+                                 state === 'MODERATE' ? Math.floor(30  + r * 50)  :
+                                                        Math.floor(5   + r * 25);
+            const waitTime     = state === 'HIGH'     ? Math.floor(12  + r * 20)  :
+                                 state === 'MODERATE' ? Math.floor(5   + r * 8)   :
+                                                        Math.floor(1   + r * 3);
+            const revenue      = Math.floor(vehicleCount * (plaza.baseRate || 50) * (0.8 + r * 0.4));
+            const congPct      = state === 'HIGH'     ? Math.floor(85  + r * 15)  :
+                                 state === 'MODERATE' ? Math.floor(45  + r * 25)  :
+                                                        Math.floor(10  + r * 20);
             
             const congColors = { NORMAL: '#64ffda', MODERATE: '#fcd34d', HIGH: '#ff5e5e' };
             const congColor = congColors[state];
-            const congPct = state === 'HIGH' ? 85 + Math.floor(rand2 * 15) : state === 'MODERATE' ? 45 + Math.floor(rand2 * 25) : 10 + Math.floor(rand2 * 20);
 
             html += `
                 <div class="tc-card" style="border-left: 3px solid ${congColor};">
