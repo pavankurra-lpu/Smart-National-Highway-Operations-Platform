@@ -439,17 +439,27 @@ const IndiaMapPlanner = {
 
         const cfg       = (window.NHAI_CONFIG || {}).route || {};
         const routeStyles = [
-            cfg.primary   || { color: '#3b82f6', weight: 6, opacity: 0.9 },
-            cfg.alternate1 || { color: '#6366f1', weight: 4, opacity: 0.6, dashArray: '8 4' },
-            cfg.alternate2 || { color: '#8b5cf6', weight: 4, opacity: 0.5, dashArray: '6 4' }
+            { color: '#3b82f6', weight: 7, opacity: 1.0 },           // primary — bold blue
+            { color: '#f59e0b', weight: 5, opacity: 0.85, dashArray: '10 5' }, // alt1 — amber dashed
+            { color: '#10b981', weight: 5, opacity: 0.85, dashArray: '6 4' }   // alt2 — green dashed
         ];
 
-        // Draw alternate routes FIRST (underneath)
+        // Draw primary route FIRST (underneath)
+        const primary = routes[index];
+        const coords  = primary.geometry.coordinates; // [[lng, lat], …]
+        const primaryLatLngs = coords.map(p => [p[1], p[0]]);
+
+        const primaryPoly = L.polyline(primaryLatLngs, { ...routeStyles[0], lineJoin: 'round' })
+            .addTo(IndiaMapPlanner.map);
+        primaryPoly.bindTooltip('Selected Route', { permanent: false, sticky: true });
+        IndiaMapPlanner.routePolylines.push(primaryPoly);
+
+        // Draw alternate routes on top
         routes.forEach((r, i) => {
-            if (i === index) return; // draw primary last
-            const latLngs = r.geometry.coordinates.map(p => [p[1], p[0]]);
+            if (i === index) return;
+            const altLatLngs = r.geometry.coordinates.map(p => [p[1], p[0]]);
             const style   = routeStyles[i] || routeStyles[2];
-            const poly    = L.polyline(latLngs, { ...style, lineJoin: 'round' })
+            const poly    = L.polyline(altLatLngs, { ...style, lineJoin: 'round' })
                 .addTo(IndiaMapPlanner.map);
 
             // Click → switch to this route
@@ -462,16 +472,6 @@ const IndiaMapPlanner = {
             poly.bindTooltip(`Alternate Route ${altNum}`, { permanent: false, sticky: true });
             IndiaMapPlanner.routePolylines.push(poly);
         });
-
-        // Draw primary route on top
-        const primary = routes[index];
-        const coords  = primary.geometry.coordinates; // [[lng, lat], …]
-        const latLngs = coords.map(p => [p[1], p[0]]);
-
-        const primaryPoly = L.polyline(latLngs, { ...routeStyles[0], lineJoin: 'round' })
-            .addTo(IndiaMapPlanner.map);
-        primaryPoly.bindTooltip('Selected Route', { permanent: false, sticky: true });
-        IndiaMapPlanner.routePolylines.push(primaryPoly);
 
         // Store for trip and toll matching
         IndiaMapPlanner.routeCoordinates = coords;
@@ -541,7 +541,10 @@ const IndiaMapPlanner = {
             if (panel) panel.insertBefore(tabBar, panel.firstChild);
         }
         tabBar.innerHTML = '';
-        if (!routes || routes.length <= 1) return;
+        if (!routes || routes.length <= 1) {
+            tabBar.innerHTML = '<span style="font-size:10px;color:var(--text-muted);padding:6px 0;">No alternate routes available for this journey.</span>';
+            return;
+        }
 
         routes.forEach((r, i) => {
             const btn = document.createElement('button');
