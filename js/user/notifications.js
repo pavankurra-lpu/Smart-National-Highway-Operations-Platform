@@ -27,7 +27,33 @@ const Notifications = {
         const now = new Date().getTime();
         
         let currentState = 'ALL';
-        if (window.IndiaMapPlanner && IndiaMapPlanner.selectedOrigin && IndiaMapPlanner.selectedOrigin.state) {
+
+        // Priority 1: use live position during active trip
+        if (window.IndiaMapPlanner && IndiaMapPlanner.isTripLive &&
+            IndiaMapPlanner.currentLiveLat && IndiaMapPlanner.currentLiveLng) {
+            // Match live position to a state using TollSeedData proximity
+            const lat = IndiaMapPlanner.currentLiveLat;
+            const lng = IndiaMapPlanner.currentLiveLng;
+            
+            // Find nearest toll plaza to determine which state the user is in
+            let nearestState = null;
+            let nearestDist = Infinity;
+            if (window.TollSeedData) {
+                TollSeedData.forEach(toll => {
+                    if (!toll.lat || !toll.lng || !toll.state) return;
+                    const dLat = (toll.lat - lat) * 111;
+                    const dLng = (toll.lng - lng) * 111 * Math.cos(lat * Math.PI / 180);
+                    const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+                    if (dist < nearestDist) {
+                        nearestDist = dist;
+                        nearestState = toll.state;
+                    }
+                });
+            }
+            if (nearestState) currentState = nearestState;
+
+        } else if (window.IndiaMapPlanner && IndiaMapPlanner.selectedOrigin?.state) {
+            // Priority 2: fallback to origin state if not on live trip
             currentState = IndiaMapPlanner.selectedOrigin.state;
         }
 

@@ -50,7 +50,8 @@ const IndiaMapPlanner = {
     selectionLayer: null, // visual line/corridor
     selectionMarkers: [], // start/end markers
 
-
+    currentLiveLat: null,
+    currentLiveLng: null,
     // ── All-India city list for built-in autocomplete ───────────────────────────
     cities: window.IndiaMapData?.cities || [],
 
@@ -871,6 +872,9 @@ const IndiaMapPlanner = {
     },
 
     updateTripPosition: (lat, lng) => {
+        IndiaMapPlanner.currentLiveLat = lat;
+        IndiaMapPlanner.currentLiveLng = lng;
+
         if (!IndiaMapPlanner.carMarker) return;
         
         const newPos = [lat, lng];
