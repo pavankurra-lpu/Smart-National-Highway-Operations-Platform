@@ -21,10 +21,13 @@ const RealtimeService = {
         RealtimeService.socket.on('broadcast-alert', (alert) => {
             console.log('[Realtime] Received Broadcast:', alert);
             if (window.Notifications) {
-                // Manually add to storage or trigger notification UI
+                // Deduplicate: only add if this alert ID doesn't already exist
                 const currentAlerts = Storage.get(Storage.KEYS.ADMIN_ALERTS, []);
-                currentAlerts.unshift(alert);
-                Storage.set(Storage.KEYS.ADMIN_ALERTS, currentAlerts);
+                const alreadyExists = alert.id && currentAlerts.some(a => a.id === alert.id);
+                if (!alreadyExists) {
+                    currentAlerts.unshift(alert);
+                    Storage.set(Storage.KEYS.ADMIN_ALERTS, currentAlerts);
+                }
                 Notifications.updateAdvisory();
             }
             if (window.PushNotifications) {

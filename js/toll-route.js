@@ -345,7 +345,7 @@ function initMap() {
     L.control.zoom({ position: 'topright' }).addTo(map);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OSM contributors &copy; CARTO',
-        subdomains: 'abcd', maxZoom: 20
+        subdomains: 'abcd', maxZoom: 19
     }).addTo(map);
     routeLayerGroup = L.layerGroup().addTo(map);
 }

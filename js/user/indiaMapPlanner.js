@@ -437,7 +437,6 @@ const IndiaMapPlanner = {
 
         IndiaMapPlanner._clearRoutePolylines();
 
-        const cfg       = (window.NHAI_CONFIG || {}).route || {};
         const routeStyles = [
             { color: '#3b82f6', weight: 7, opacity: 1.0 },           // primary — bold blue
             { color: '#f59e0b', weight: 5, opacity: 0.85, dashArray: '10 5' }, // alt1 — amber dashed

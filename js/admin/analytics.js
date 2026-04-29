@@ -33,8 +33,10 @@ const Analytics = {
         });
 
         // Top level stats
-        document.getElementById('stat-vehicles').innerText = count;
-        document.getElementById('stat-revenue').innerText = Utils.formatCurrency(revenue);
+        const statVehicles = document.getElementById('stat-vehicles');
+        const statRevenue = document.getElementById('stat-revenue');
+        if (statVehicles) statVehicles.innerText = count;
+        if (statRevenue) statRevenue.innerText = Utils.formatCurrency(revenue);
         
         if (tbody) {
             tbody.innerHTML = html.length ? html : '<tr><td colspan="7" style="text-align:center;">No vehicle logs yet. Trips will appear when travellers start journeys.</td></tr>';
@@ -43,7 +45,8 @@ const Analytics = {
         // Active incidents stat
         const incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
         const activeCount = incidents.filter(i => ['RAISED', 'ACKNOWLEDGED', 'DISPATCHED'].includes(i.status)).length;
-        document.getElementById('stat-incidents').innerText = activeCount;
+        const statIncidents = document.getElementById('stat-incidents');
+        if (statIncidents) statIncidents.innerText = activeCount;
     }
 };
 

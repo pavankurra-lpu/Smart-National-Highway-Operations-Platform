@@ -24,8 +24,8 @@ const CCTVPanel = {
             const tollObj = (window.TollData && window.TollData.getTollById) ? TollData.getTollById(cam.tollId) : null;
             const tollName = tollObj ? tollObj.name : 'Unassigned';
 
-            // Queue length simulation
-            let queue = cam.mode === 'OFFLINE' ? '-' : Math.floor(Math.random() * 25) + ' cars';
+            const qSeed = cam.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+            let queue = cam.mode === 'OFFLINE' ? '-' : Math.floor((qSeed % 23) + 2) + ' cars';
 
             html += `
                 <div class="cctv-cam">

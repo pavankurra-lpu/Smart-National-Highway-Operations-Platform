@@ -84,12 +84,21 @@ const TripAnalytics = {
 
         if (labels.length === 0) {
             canvas.style.display = 'none';
-            const msg = document.createElement('p');
-            msg.style.cssText = 'color:var(--text-muted); font-size:12px; text-align:center; padding:20px;';
-            msg.innerText = 'Plan your first trip to see spending analytics here.';
-            canvas.parentElement.appendChild(msg);
+            const parent = canvas.parentElement;
+            if (!parent.querySelector('.no-data-msg')) {
+                const msg = document.createElement('p');
+                msg.className = 'no-data-msg';
+                msg.style.cssText = 'color:var(--text-muted); font-size:12px; text-align:center; padding:20px;';
+                msg.innerText = 'Plan your first trip to see spending analytics here.';
+                parent.appendChild(msg);
+            }
             return;
         }
+        
+        // Remove stale no-data message if data now exists
+        const staleMsg = canvas.parentElement.querySelector('.no-data-msg');
+        if (staleMsg) staleMsg.remove();
+        canvas.style.display = '';
 
         TripAnalytics.chartInstance = new Chart(ctx, {
             type: 'bar',

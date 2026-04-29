@@ -94,8 +94,8 @@ const RouteEngine = {
                 
                 let time = edge.distance / edge.speedLimit;
                 
-                // Deterministic congestion simulation based on edge to/from names
-                const seed = (edge.from || '').length + (edge.to || '').length;
+                // Deterministic congestion simulation based on edge properties
+                const seed = edge.to.length + edge.distance;
                 let congestion = (seed % 5) / 10; // 0.0 to 0.4 based on edge name length
                 
                 let risk = edge.distance * 0.05;

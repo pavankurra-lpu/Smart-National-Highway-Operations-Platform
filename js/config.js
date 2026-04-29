@@ -79,11 +79,8 @@ const NHAI_CONFIG = {
     },
 
     /* ── ROUTE DISPLAY ────────────────────────────────────── */
-    route: {
-        primary: { color: '#3b82f6', weight: 6, opacity: 0.90 },
-        alternate1: { color: '#6366f1', weight: 4, opacity: 0.65, dashArray: '8 4' },
-        alternate2: { color: '#8b5cf6', weight: 4, opacity: 0.55, dashArray: '6 4' }
-    },
+    // Route styles are hardcoded in indiaMapPlanner._applyRoute() for visual clarity:
+    //   Primary: bold blue (#3b82f6), Alt1: amber dashed, Alt2: green dashed
 
     /* ── TRIP SIMULATION ──────────────────────────────────── */
     trip: {

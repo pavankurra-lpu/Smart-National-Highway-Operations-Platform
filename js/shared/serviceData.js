@@ -13,23 +13,25 @@ const ServiceData = {
 
     generateServicesForRoute: (nodesList) => {
         const services = [];
-        // Just mock some random services along the path
         for (let i = 0; i < nodesList.length - 1; i++) {
             const start = nodesList[i];
             const end = nodesList[i+1];
             
-            // Add 1-3 services between these two nodes randomly
-            const numServices = Math.floor(Math.random() * 3) + 1;
+            // Deterministic seed from node names
+            const segSeed = `${start}-${end}`.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+            const numServices = (segSeed % 3) + 1; // 1-3 services
+
             for(let j=0; j<numServices; j++) {
-                const typeObj = ServiceData.types[Math.floor(Math.random() * ServiceData.types.length)];
+                const hash = segSeed * (j + 1) + j * 7;
+                const typeObj = ServiceData.types[Math.abs(hash) % ServiceData.types.length];
                 services.push({
-                    id: Utils.generateId('SRV'),
+                    id: `SRV-${start}-${end}-${j}`,
                     segment: `${start}-${end}`,
                     typeId: typeObj.id,
                     name: `${start} Highway ${typeObj.name}`,
                     icon: typeObj.icon,
                     color: typeObj.color,
-                    percentAlongLine: Math.random() // Used to place marker somewhere between nodes
+                    percentAlongLine: ((hash % 80) + 10) / 100 // 0.10 to 0.90, stable
                 });
             }
         }

@@ -27,6 +27,18 @@ const UserProfile = {
             return;
         }
 
+        const phoneRegex = /^[6-9]\d{9}$/;
+        if (!phoneRegex.test(phone)) {
+            Utils.showToast('Please enter a valid 10-digit Indian mobile number.', 'error');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            Utils.showToast('Please enter a valid email address.', 'error');
+            return;
+        }
+
         const profileData = {
             name: name,
             regNum: regNum,

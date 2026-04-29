@@ -33,8 +33,19 @@ const AdminApp = {
             SpecialVehicleControl.refresh();
         });
         
-        // Initial Poll to sync tabs just in case
-        setInterval(() => window.dispatchEvent(new Event('local-storage-update')), 3000);
+        // Change-detection poll: only re-render when data actually changes
+        let _lastSyncHash = '';
+        setInterval(() => {
+            const hash = [
+                Storage.get(Storage.KEYS.VEHICLE_LOGS, []).length,
+                Storage.get(Storage.KEYS.EMERGENCIES, []).length,
+                Storage.get(Storage.KEYS.ADMIN_ALERTS, []).length
+            ].join(',');
+            if (hash !== _lastSyncHash) {
+                _lastSyncHash = hash;
+                window.dispatchEvent(new Event('local-storage-update'));
+            }
+        }, 3000);
     }
 };
 

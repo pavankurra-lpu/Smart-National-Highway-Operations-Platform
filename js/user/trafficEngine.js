@@ -32,16 +32,15 @@ const TrafficEngine = {
 
     updateTrafficOnMap: (data) => {
         // data: { segmentId, intensity, color }
-        // In a real app, this would update polyline colors on the map
-        // For now, we'll log it and ensure the map reflects the change
-        const polyline = IndiaMapPlanner.routeLines?.find(p => p.segmentId === data.segmentId);
+        const polylines = IndiaMapPlanner.routePolylines || [];
+        const polyline = polylines.find(p => p.segmentId === data.segmentId);
         if (polyline) {
             polyline.setStyle({ color: data.color, weight: 8 });
         }
     },
 
     addCongestionMarker: (alert) => {
-        if (!window.map) return;
+        if (!IndiaMapPlanner || !IndiaMapPlanner.map) return;
 
         // alert: { id, lat, lng, type, severity }
         if (TrafficEngine.trafficMarkers.has(alert.id)) {
@@ -57,7 +56,7 @@ const TrafficEngine = {
 
         const marker = L.marker([alert.lat, alert.lng], { icon: icon })
             .bindPopup(`<strong>${alert.type}</strong><br>${alert.message || 'Heavy traffic reported'}`)
-            .addTo(map);
+            .addTo(IndiaMapPlanner.map);
 
         TrafficEngine.trafficMarkers.set(alert.id, marker);
 

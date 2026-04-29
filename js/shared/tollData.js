@@ -2,22 +2,16 @@
 
 const TollData = {
     init: () => {
-        // Seed database if empty or corrupted
-        let existing = Storage.get('nhai_tolls');
-        // Only re-seed if null or explicitly forced (e.g. if we detect old data format)
-        if (!existing || existing.length === 0) {
-            console.log("Seeding Toll Database from static source...");
-            const seed = window.TollSeedData || [];
-            if (seed.length > 0) {
-                Storage.set('nhai_tolls', seed);
-            }
+        // TollSeedData is loaded via <script> tag — no need to duplicate in localStorage
+        // Remove legacy copy if present to free up localStorage budget
+        if (localStorage.getItem('nhai_tolls')) {
+            localStorage.removeItem('nhai_tolls');
+            console.log('TollData: cleared legacy localStorage copy to free space.');
         }
+        console.log(`TollData ready: ${(window.TollSeedData || []).length} plazas loaded.`);
     },
 
     getAllTolls: () => {
-        // Optimization: Try to use window.TollSeedData directly if Storage is empty/slow
-        const stored = Storage.get('nhai_tolls');
-        if (stored && stored.length > 0) return stored;
         return window.TollSeedData || [];
     },
 
@@ -47,11 +41,15 @@ const TollData = {
     },
 
     getTollCongestionStatus: (tollId) => {
-        // Simulate dynamic congestion
-        const rand = Math.random();
-        if (rand > 0.8) return { status: 'HIGH', label: 'Heavy Traffic', color: '#ff5e5e' };
-        if (rand > 0.5) return { status: 'MEDIUM', label: 'Moderate', color: '#fcd34d' };
-        return { status: 'NORMAL', label: 'Normal', color: '#64ffda' };
+        // Read admin-set congestion from shared storage instead of random
+        const states = Storage.get(Storage.KEYS.TOLL_STATES, {});
+        const level = states[tollId]?.congestion || 'NORMAL';
+        const map = {
+            'HIGH':     { status: 'HIGH',   label: 'Heavy Traffic', color: '#ff5e5e' },
+            'MODERATE': { status: 'MEDIUM', label: 'Moderate',      color: '#fcd34d' },
+            'NORMAL':   { status: 'NORMAL', label: 'Normal',        color: '#64ffda' }
+        };
+        return map[level] || map['NORMAL'];
     },
 
     // NHAI Style Multipliers based on vehicle category (FY 2026-27 Updates)
