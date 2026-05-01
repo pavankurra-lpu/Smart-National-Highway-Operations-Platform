@@ -544,7 +544,15 @@ const IndiaMapPlanner = {
         }
         tabBar.innerHTML = '';
         if (!routes || routes.length <= 1) {
-            tabBar.innerHTML = '<span style="font-size:10px;color:var(--text-muted);padding:6px 0;">No alternate routes available for this journey.</span>';
+            tabBar.innerHTML = `
+                <div style="
+                    font-size:11px; color:var(--text-muted);
+                    padding:6px 10px; border:1px solid var(--border);
+                    border-radius:6px; display:flex; align-items:center; gap:6px;
+                ">
+                    <i class="fa-solid fa-circle-info" style="color:#60a5fa;"></i>
+                    Only one route available for this journey
+                </div>`;
             return;
         }
 
