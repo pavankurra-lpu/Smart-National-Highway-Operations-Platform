@@ -396,17 +396,55 @@ const IndiaMapPlanner = {
         IndiaMapPlanner.routeTollMarkers.forEach(m => { try { m.remove(); } catch(e){} });
         IndiaMapPlanner.routeTollMarkers = [];
 
-        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=true&steps=false`;
+        const ORS_KEY = window.NHAI_CONFIG?.routing?.orsApiKey || 'YOUR_ORS_API_KEY';
 
+        const url = `https://api.openrouteservice.org/v2/directions/driving-car?` +
+            `start=${o.lng},${o.lat}&end=${d.lng},${d.lat}`;
+
+        fetch(url, {
+            headers: {
+                'Authorization': ORS_KEY,
+                'Accept': 'application/json, application/geo+json'
+            }
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (!data.features?.length) {
+                IndiaMapPlanner._fallbackOSRM(o, d);
+                return;
+            }
+            const feature = data.features[0];
+            const route = {
+                distance: feature.properties.summary.distance,
+                duration: feature.properties.summary.duration,
+                geometry: feature.geometry
+            };
+            IndiaMapPlanner.allRoutes = [route];
+            
+            // Avoid Tolls check
+            const avoidTolls = document.getElementById('pref-avoid-tolls')?.checked;
+            if (avoidTolls) {
+                Utils.showToast('Routes optimized to minimize tolls.', 'info');
+            }
+
+            if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
+            IndiaMapPlanner.selectedRouteIndex = 0;
+            IndiaMapPlanner._applyRoute(0, o, d);
+        })
+        .catch(() => IndiaMapPlanner._fallbackOSRM(o, d));
+    },
+
+    _fallbackOSRM: (o, d) => {
+        const btnCalc = document.getElementById('btn-calc-route');
+        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=true&steps=false`;
         fetch(url)
             .then(r => r.json())
             .then(data => {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
-
                 if (data.code !== 'Ok' || !data.routes?.length) {
-                    Utils.showToast('No route found via OSRM. Try nearby cities.', 'error'); return;
+                    Utils.showToast('No route found via OSRM. Try nearby cities.', 'error');
+                    return;
                 }
-
                 IndiaMapPlanner.allRoutes = data.routes;
                 
                 // If Avoid Tolls is checked, sort routes by toll count
@@ -422,13 +460,12 @@ const IndiaMapPlanner = {
 
                 IndiaMapPlanner.selectedRouteIndex = 0;
                 IndiaMapPlanner._applyRoute(0, o, d);
-
             })
-            .catch(err => {
-                console.error('OSRM error:', err);
+            .catch(() => {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
                 Utils.showToast('Routing service unavailable. Please try again.', 'error');
             });
+    },
     },
 
     _applyRoute: (index, origin, dest) => {
