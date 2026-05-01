@@ -11,7 +11,7 @@ const Notifications = {
 
         // Listen for native storage events to sync across different tabs on the same device
         window.addEventListener('storage', (e) => {
-            if (e.key === 'nhai_admin_alerts' || !e.key) {
+            if (e.key === Storage.KEYS.ADMIN_ALERTS) {
                 Notifications.updateAdvisory();
             }
         });

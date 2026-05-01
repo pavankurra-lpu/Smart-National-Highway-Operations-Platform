@@ -53,12 +53,13 @@ io.on('connection', (socket) => {
 
     // Handle Admin Broadcasts (Traffic, Weather, etc)
     socket.on('admin-broadcast', (data) => {
-        if (!data.token || data.token !== process.env.ADMIN_TOKEN) {
+        const validToken = process.env.ADMIN_TOKEN || 'NHAI_ADMIN';
+        if (!data.token || data.token !== validToken) {
             socket.emit('error', 'Unauthorized');
             return;
         }
         console.log('Admin Broadcast:', data.alertData);
-        io.emit('broadcast-alert', data.alertData);
+        io.emit('broadcast-alert', { ...data.alertData });
     });
 
     // Live Vehicle Position Tracking
