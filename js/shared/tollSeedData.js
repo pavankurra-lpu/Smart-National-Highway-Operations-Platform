@@ -14505,34 +14505,7 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
-    {
-        id: "TP_1036",
-        name: "Central Server Plaza",
-        state: "Tamil Nadu",
-        plazaType: "State",
-        type: "PF",
-        concessionaire: "TNRDC (ECR)",
-        nhCorridor: "Unknown",
-        lat: 12.8637618908467,
-        lng: 80.1747940293246,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
-    {
-        id: "TP_1037",
-        name: "Central Server Toll Plaza",
-        state: "Tamil Nadu",
-        plazaType: "State",
-        type: "PF",
-        concessionaire: "TNRDC",
-        nhCorridor: "Unknown",
-        lat: 12.9563344236153,
-        lng: 80.2433461368272,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
+
     {
         id: "TP_1038",
         name: "Chabri Toll Plaza",
@@ -20659,7 +20632,7 @@ const TollSeedData = [
     {
         id: "TP_1480",
         name: "Shinoli Check Post",
-        state: "Goa",
+        state: "Maharashtra",
         plazaType: "State",
         type: "Bot",
         concessionaire: "MBCPNL",
