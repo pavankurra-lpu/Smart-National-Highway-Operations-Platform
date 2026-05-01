@@ -622,7 +622,7 @@ const IndiaMapPlanner = {
         if (!window.TollSeedData || coords.length === 0) return { tolls, totalTollCost };
 
         const vehicleType    = document.getElementById('vehicle-type')?.value || 'LMV';
-        const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 3.5;
+        const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 1.5;
         const sampleStep     = Math.max(1, Math.floor(coords.length / 4000));
 
         TollSeedData.forEach(toll => {

@@ -46,7 +46,7 @@ const NHAI_CONFIG = {
         geometries: 'geojson',
         steps: true,
         // Corridor radius (km) for toll matching
-        tollCorridorKm: 2.5
+        tollCorridorKm: 1.5
     },
 
     /* ── GEOCODING (Nominatim — free, OSM-based) ──────────── */
