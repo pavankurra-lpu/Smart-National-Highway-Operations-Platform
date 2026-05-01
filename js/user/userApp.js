@@ -28,6 +28,7 @@ const UserApp = {
         ThemeManager.init();
         EntryScreen.init();
         UserProfile.init();
+        VehicleGarage.init();
         IndiaMapPlanner.init();
         FastagEngine.init();
         EmergencyReporter.init();

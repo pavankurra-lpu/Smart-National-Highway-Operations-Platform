@@ -117,8 +117,13 @@
                     </div>
 
                     <div>
-                        <span class="field-label"><i class="fa-solid fa-truck" style="color:var(--accent-yellow)"></i> Vehicle Category</span>
-                        <select id="vehicle-type">
+                        <span class="field-label">
+                            <i class="fa-solid fa-car-side" style="color:var(--accent-yellow)"></i>
+                            Vehicle Category
+                        </span>
+
+                        <!-- Hidden dropdown still used by all route/toll logic -->
+                        <select id="vehicle-type" style="display:none;">
                             <optgroup label="Standard Categories">
                                 <option value="LMV">Car / Jeep / Van (LMV)</option>
                                 <option value="LCV">Light Commercial Vehicle (LCV)</option>
@@ -136,6 +141,53 @@
                                 <option value="POLICE">Police</option>
                             </optgroup>
                         </select>
+
+                        <!-- Garage list — shows saved vehicles -->
+                        <div id="vehicle-garage-list" style="margin-top:8px;"></div>
+
+                        <!-- Toggle to show add form -->
+                        <button id="btn-show-add-vehicle" class="btn btn-outline w-full"
+                                style="justify-content:center; font-size:11px; margin-top:6px; padding:8px;">
+                            <i class="fa-solid fa-plus"></i> &nbsp;Add / Manage Vehicles
+                        </button>
+
+                        <!-- Add vehicle form — hidden by default -->
+                        <div id="garage-add-form" class="hidden" style="
+                            margin-top:8px; background:rgba(255,255,255,0.02);
+                            border:1px solid var(--border); border-radius:8px; padding:12px;
+                        ">
+                            <p style="font-size:10px; font-weight:700; color:var(--text-muted);
+                                      letter-spacing:0.5px; margin-bottom:8px;">
+                                NEW VEHICLE
+                            </p>
+                            <input type="text" id="garage-nickname"
+                                   placeholder="Nickname  (e.g. My Swift, Papa's SUV)"
+                                   style="margin-bottom:6px; font-size:12px;">
+                            <input type="text" id="garage-reg"
+                                   placeholder="Registration No.  (e.g. DL01AB1234)"
+                                   style="margin-bottom:6px; font-size:12px; text-transform:uppercase;">
+                            <select id="garage-type" style="font-size:12px; margin-bottom:8px;">
+                                <optgroup label="Standard">
+                                    <option value="LMV">Car / Jeep / Van (LMV)</option>
+                                    <option value="LCV">Light Commercial Vehicle</option>
+                                    <option value="BUS_2AXLE">Bus / Truck (2 Axles)</option>
+                                    <option value="COM_3AXLE">Commercial (3 Axles)</option>
+                                    <option value="MAV_4_6">MAV (4-6 Axles)</option>
+                                    <option value="OVERSIZED">Oversized (7+ Axles)</option>
+                                </optgroup>
+                                <optgroup label="Priority / Exempt">
+                                    <option value="GOVT">Government</option>
+                                    <option value="ARMY">Army / Defense</option>
+                                    <option value="AMBULANCE">Ambulance</option>
+                                    <option value="FIRE">Fire &amp; Rescue</option>
+                                    <option value="POLICE">Police</option>
+                                </optgroup>
+                            </select>
+                            <button id="btn-add-vehicle" class="btn btn-primary w-full"
+                                    style="justify-content:center; font-size:12px;">
+                                <i class="fa-solid fa-garage"></i> &nbsp;Save Vehicle
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Special Vehicle Verification Box -->
@@ -608,6 +660,7 @@
     <script src="../js/user/indiaMapPlanner.js?v=2"></script>
     <script src="../js/user/tripAnalytics.js"></script>
     <script src="../js/user/userProfile.js"></script>
+    <script src="../js/user/vehicleGarage.js"></script>
     <script src="../js/user/userApp.js?v=2"></script>
 </body>
 </html>
