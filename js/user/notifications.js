@@ -4,9 +4,16 @@ const Notifications = {
     init: () => {
         Notifications.updateAdvisory();
 
-        // Listen for storage changes to see if admin pushed an alert
+        // Listen for storage changes to see if admin pushed an alert (current window)
         window.addEventListener('local-storage-update', () => {
             Notifications.updateAdvisory();
+        });
+
+        // Listen for native storage events to sync across different tabs on the same device
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'nhai_admin_alerts' || !e.key) {
+                Notifications.updateAdvisory();
+            }
         });
         
         // Auto rotate active alerts if multiple
