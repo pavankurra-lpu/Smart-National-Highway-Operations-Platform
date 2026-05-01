@@ -17627,20 +17627,7 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
-    {
-        id: "TP_1259",
-        name: "Kolha Toll Plaza",
-        state: "Rajasthan",
-        plazaType: "State",
-        type: "Conc.",
-        concessionaire: "RIDCOR Ltd",
-        nhCorridor: "Unknown",
-        lat: 29.5199953338204,
-        lng: 74.3359876067634,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
+
     {
         id: "TP_1260",
         name: "Kolu Toll Plaza",
@@ -18859,20 +18846,7 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
-    {
-        id: "TP_1347",
-        name: "Nagal Toll Plaza",
-        state: "Rajasthan",
-        plazaType: "State",
-        type: "PF",
-        concessionaire: "Galaxy Mining&Ro yalities(P)Lt d",
-        nhCorridor: "Unknown",
-        lat: 27.6633062890113,
-        lng: 75.6675271893084,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
+
     {
         id: "TP_1348",
         name: "Nagarjunasagar EMC Check Post",
@@ -19125,20 +19099,7 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
-    {
-        id: "TP_1366",
-        name: "Nimbahrda (Dhinwa) Toll Plaza",
-        state: "Rajasthan",
-        plazaType: "State",
-        type: "PF",
-        concessionaire: "Top Line Infra Projects (P)Ltd",
-        nhCorridor: "Unknown",
-        lat: 24.6108614529565,
-        lng: 74.6484050087131,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
+
     {
         id: "TP_1367",
         name: "Nimbvali Toll Plaza",
@@ -19559,20 +19520,7 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
-    {
-        id: "TP_1397",
-        name: "Perungudi Toll Plaza",
-        state: "Tamil Nadu",
-        plazaType: "State",
-        type: "PF",
-        concessionaire: "TNRDC",
-        nhCorridor: "Unknown",
-        lat: 12.9563344236153,
-        lng: 80.2433461368272,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
+
     {
         id: "TP_1398",
         name: "Phailipura Toll Plaza",
@@ -20539,20 +20487,7 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
-    {
-        id: "TP_1467",
-        name: "Sewa Toll Plaza",
-        state: "Rajasthan",
-        plazaType: "State",
-        type: "PF",
-        concessionaire: "Galaxy Mining&Ro yalities(P)Lt d",
-        nhCorridor: "Unknown",
-        lat: 26.5330125298651,
-        lng: 76.8479871821055,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
+
     {
         id: "TP_1468",
         name: "Shahpura Toll Plaza",
@@ -21141,20 +21076,7 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
-    {
-        id: "TP_1510",
-        name: "Thoraipakkam Toll Plaza",
-        state: "Tamil Nadu",
-        plazaType: "State",
-        type: "PF",
-        concessionaire: "TNRDC",
-        nhCorridor: "Unknown",
-        lat: 12.9563344236153,
-        lng: 80.2433461368272,
-        baseRate: 50,
-        tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
-        status: "ACTIVE"
-    },
+
     {
         id: "TP_1511",
         name: "Thummalacheru Vu Toll Plaza",
