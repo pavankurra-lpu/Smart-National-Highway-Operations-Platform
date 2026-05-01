@@ -435,6 +435,9 @@ const IndiaMapPlanner = {
         const routes = IndiaMapPlanner.allRoutes;
         if (!routes || !routes[index]) return;
 
+        IndiaMapPlanner.routeTollMarkers.forEach(m => { try { m.remove(); } catch(e){} });
+        IndiaMapPlanner.routeTollMarkers = [];
+
         IndiaMapPlanner._clearRoutePolylines();
 
         const routeStyles = [
