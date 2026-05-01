@@ -33,11 +33,6 @@ const UserApp = {
         FastagEngine.init();
         EmergencyReporter.init();
         Notifications.init();
-
-        // Welcome Message
-        setTimeout(() => {
-            Utils.showToast("Connected to LIVE SNHOP SERVER.", "success");
-        }, 2000);
     }
 };
 

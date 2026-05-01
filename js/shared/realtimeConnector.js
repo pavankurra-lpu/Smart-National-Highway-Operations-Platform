@@ -14,14 +14,15 @@ const RealtimeService = {
 
         RealtimeService.socket.on('connect', () => {
             console.log('[Realtime] Connected to NHAI Live Server');
-            Utils.showToast("Real-time Network Active", "success");
+            Utils.showToast("Live server connected", "success");
+            const badge = document.getElementById('connection-status');
+            if (badge) { badge.style.color = 'var(--primary)'; badge.title = 'Live server: Connected'; }
         });
 
         // Listen for global admin broadcasts
         RealtimeService.socket.on('broadcast-alert', (alert) => {
             console.log('[Realtime] Received Broadcast:', alert);
             if (window.Notifications) {
-                // Deduplicate: only add if this alert ID doesn't already exist
                 const currentAlerts = Storage.get(Storage.KEYS.ADMIN_ALERTS, []);
                 const alreadyExists = alert.id && currentAlerts.some(a => a.id === alert.id);
                 if (!alreadyExists) {
@@ -37,6 +38,14 @@ const RealtimeService = {
 
         RealtimeService.socket.on('disconnect', () => {
             console.log('[Realtime] Disconnected from server');
+            Utils.showToast("Live server disconnected — alerts may be delayed", "warning");
+            const badge = document.getElementById('connection-status');
+            if (badge) { badge.style.color = 'var(--accent-red)'; badge.title = 'Live server: Disconnected'; }
+        });
+
+        RealtimeService.socket.on('connect_error', () => {
+            const badge = document.getElementById('connection-status');
+            if (badge) { badge.style.color = '#fcd34d'; badge.title = 'Live server: Offline'; }
         });
     },
 
