@@ -893,31 +893,37 @@ const IndiaMapPlanner = {
         const newPos = [lat, lng];
         IndiaMapPlanner.carMarker.setLatLng(newPos);
         
-        // Update Trail
         if (IndiaMapPlanner.trailPolyline) {
             IndiaMapPlanner.trailPolyline.addLatLng(newPos);
         }
 
-        // Center map
         if (IndiaMapPlanner.isFollowing) {
             IndiaMapPlanner.map.panTo(newPos, { animate: true, duration: 0.5 });
         }
 
-        // Check distance to destination to auto-stop GPS/simulation
+        // ADD THIS LINE — broadcast live position to server
+        if (IndiaMapPlanner.currentTripId && window.RealtimeService) {
+            RealtimeService.updatePosition(IndiaMapPlanner.currentTripId, lat, lng);
+        }
+
+        // Also update notifications with current position every few seconds
+        // (don't call on every frame — only every ~5 seconds to avoid spam)
+        if (!IndiaMapPlanner._lastNotifUpdate || Date.now() - IndiaMapPlanner._lastNotifUpdate > 5000) {
+            IndiaMapPlanner._lastNotifUpdate = Date.now();
+            if (window.Notifications) Notifications.updateAdvisory();
+        }
+
         const dest = IndiaMapPlanner.selectedDest;
         if (dest) {
             const dLat = (dest.lat - lat) * 111;
             const dLng = (dest.lng - lng) * 111 * Math.cos(lat * Math.PI / 180);
-            const distToEndKm = Math.sqrt(dLat*dLat + dLng*dLng);
-            
-            if (distToEndKm < 0.05) { // Within 50 meters
+            if (Math.sqrt(dLat*dLat + dLng*dLng) < 0.05) {
                 IndiaMapPlanner.endLiveTrip();
                 Utils.showToast('Destination Reached! 🎉', 'success');
                 return;
             }
         }
 
-        // Check Tolls
         IndiaMapPlanner.checkTollGeofence(lat, lng);
     },
 
