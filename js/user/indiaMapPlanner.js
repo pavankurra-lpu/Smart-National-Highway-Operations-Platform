@@ -74,8 +74,8 @@ const IndiaMapPlanner = {
         // ── Tile layers ────────────────────────────────────────────
         const tileCfg = cfg.tiles || {};
         IndiaMapPlanner._satelliteLayer = L.tileLayer(
-            (tileCfg.satellite || {}).url || 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            { maxZoom: 19, maxNativeZoom: 17, attribution: '© Esri' }
+            (tileCfg.satellite || {}).url || 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+            { maxZoom: 19, maxNativeZoom: 19, attribution: '© Google' }
         );
         IndiaMapPlanner._labelsLayer = L.tileLayer(
             (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
@@ -551,8 +551,46 @@ const IndiaMapPlanner = {
         IndiaMapPlanner.map.fitBounds(primaryPoly.getBounds(), { padding: [50, 50] });
         Utils.showToast(`${rData.originName} → ${rData.destName} · ${rData.totalDist} km · ${rData.tolls.length} tolls`, 'success');
 
+        // AI Voice Announcement
+        IndiaMapPlanner._announceRoute(rData);
+
         // Fetch on-route services
         setTimeout(() => IndiaMapPlanner.fetchOnRouteServices(coords, rData), 800);
+    },
+
+    _announceRoute: (rData) => {
+        if (!window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+        
+        let text = `Route mapped from ${rData.originName} to ${rData.destName}. `;
+        
+        // Time
+        text += `The estimated travel time is ${rData.totalEta} hours. `;
+        
+        // Tolls
+        if (rData.tolls.length === 0) {
+            text += `This is a toll-free route. `;
+        } else {
+            text += `There are ${rData.tolls.length} tolls on this route. Total toll amount to be paid is ${rData.totalTollCost} rupees. `;
+        }
+        
+        // FASTag Balance
+        const balance = window.Storage ? window.Storage.get('nhai_fastag_balance', 0) : 0;
+        text += `Your current FASTag account balance is ${balance} rupees. `;
+        
+        // Directions
+        text += `Initial directions: Keep straight for 10 kilometers, and then take a left as per the route. Drive safely.`;
+        
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.rate = 0.95;
+        msg.pitch = 1.0;
+        
+        // Use an Indian English voice if available
+        const voices = window.speechSynthesis.getVoices();
+        const inVoice = voices.find(v => v.lang.includes('en-IN'));
+        if (inVoice) msg.voice = inVoice;
+        
+        window.speechSynthesis.speak(msg);
     },
 
     _tollPopup: (td, cost) => `

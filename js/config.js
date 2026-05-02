@@ -22,8 +22,8 @@ const NHAI_CONFIG = {
 /* ── TILE LAYERS ──────────────────────────────────────── */
     tiles: {
         satellite: {
-            url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            options: { maxZoom: 19, attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN' }
+            url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+            options: { maxZoom: 19, attribution: 'Map data &copy; Google' }
         },
         labels: {
             // Transparent label overlay on top of satellite

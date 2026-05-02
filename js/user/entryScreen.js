@@ -10,6 +10,25 @@ const EntryScreen = {
             btnUnlock.addEventListener('click', () => {
                 // Play animation
                 entryScreen.classList.add('fade-out');
+                
+                // Greeting Voice
+                if (window.speechSynthesis && window.Storage) {
+                    const profile = Storage.get('nhai_user_profile');
+                    const name = profile && profile.name ? profile.name : "Traveller";
+                    const hour = new Date().getHours();
+                    let greeting = "Good evening";
+                    if (hour >= 5 && hour < 12) greeting = "Good morning";
+                    else if (hour >= 12 && hour < 17) greeting = "Good afternoon";
+                    else if (hour >= 17 && hour < 22) greeting = "Good evening";
+                    else greeting = "Wow a night owl came to travel";
+                    
+                    const msg = new SpeechSynthesisUtterance(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
+                    const voices = window.speechSynthesis.getVoices();
+                    const inVoice = voices.find(v => v.lang.includes('en-IN'));
+                    if (inVoice) msg.voice = inVoice;
+                    window.speechSynthesis.speak(msg);
+                }
+
                 setTimeout(() => {
                     entryScreen.classList.add('hidden');
                     appContainer.classList.remove('hidden');
