@@ -24,15 +24,15 @@ const UserApp = {
             });
         });
 
-        // Initialize Services
-        ThemeManager.init();
-        EntryScreen.init();
-        UserProfile.init();
-        VehicleGarage.init();
-        IndiaMapPlanner.init();
-        FastagEngine.init();
-        EmergencyReporter.init();
-        Notifications.init();
+        // Initialize Services with error boundaries
+        try { ThemeManager.init(); } catch(e) { console.error('ThemeManager init error:', e); }
+        try { EntryScreen.init(); } catch(e) { console.error('EntryScreen init error:', e); }
+        try { UserProfile.init(); } catch(e) { console.error('UserProfile init error:', e); }
+        try { VehicleGarage.init(); } catch(e) { console.error('VehicleGarage init error:', e); }
+        try { IndiaMapPlanner.init(); } catch(e) { console.error('IndiaMapPlanner init error:', e); }
+        try { FastagEngine.init(); } catch(e) { console.error('FastagEngine init error:', e); }
+        try { EmergencyReporter.init(); } catch(e) { console.error('EmergencyReporter init error:', e); }
+        try { Notifications.init(); } catch(e) { console.error('Notifications init error:', e); }
     }
 };
 

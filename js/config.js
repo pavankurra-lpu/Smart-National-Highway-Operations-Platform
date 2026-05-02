@@ -27,11 +27,11 @@ const NHAI_CONFIG = {
         },
         labels: {
             // Transparent label overlay on top of satellite
-            url: 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+            url: 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
             options: { maxZoom: 19, pane: 'shadowPane', opacity: 0.8 }
         },
         street: {
-            url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+            url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             options: { maxZoom: 19 }
         }
     },

@@ -15,7 +15,7 @@ const IndiaMapPlanner = {
     _streetLayer: null,
     _stateLayer: null,
     _districtLayer: null,
-    _isSatellite: true,
+    _isSatellite: false,
     _showBoundaries: true,
 
     // Route polylines
@@ -78,18 +78,17 @@ const IndiaMapPlanner = {
             { maxZoom: 19, maxNativeZoom: 17, attribution: '© Esri' }
         );
         IndiaMapPlanner._labelsLayer = L.tileLayer(
-            (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+            (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
             { maxZoom: 19, maxNativeZoom: 18, opacity: 0.7 }
         );
         IndiaMapPlanner._streetLayer = L.tileLayer(
-            (tileCfg.street || {}).url || 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+            (tileCfg.street || {}).url || 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             { maxZoom: 19, maxNativeZoom: 18 }
         );
 
-        // Default: satellite + labels
-        IndiaMapPlanner._satelliteLayer.addTo(IndiaMapPlanner.map);
-        IndiaMapPlanner._labelsLayer.addTo(IndiaMapPlanner.map);
-        IndiaMapPlanner._isSatellite = true;
+        // Default: street layer (OpenStreetMap)
+        IndiaMapPlanner._streetLayer.addTo(IndiaMapPlanner.map);
+        IndiaMapPlanner._isSatellite = false;
 
         window.NHAI_MAP = IndiaMapPlanner.map;
 
@@ -465,7 +464,6 @@ const IndiaMapPlanner = {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
                 Utils.showToast('Routing service unavailable. Please try again.', 'error');
             });
-    },
     },
 
     _applyRoute: (index, origin, dest) => {

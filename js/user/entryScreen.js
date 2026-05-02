@@ -17,6 +17,8 @@ const EntryScreen = {
                     // Trigger map resize since it was hidden
                     if (window.IndiaMapPlanner && IndiaMapPlanner.map) {
                         IndiaMapPlanner.map.invalidateSize();
+                        setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 100);
+                        setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 500);
                     }
                 }, 800);
             });
