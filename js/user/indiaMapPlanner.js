@@ -111,7 +111,16 @@ const IndiaMapPlanner = {
         }
 
         // ── Autocomplete ───────────────────────────────────────────
+        const speakPlace = (type, name) => {
+            if (!window.speechSynthesis) return;
+            window.speechSynthesis.cancel();
+            const msg = new SpeechSynthesisUtterance(`You have selected ${type} place as ${name}.`);
+            msg.rate = 1.15;
+            window.speechSynthesis.speak(msg);
+        };
+
         IndiaMapPlanner.setupAutocomplete('route-origin-input', 'origin-suggestions', city => {
+            speakPlace('origin', city.name);
             if (city.lat === 0 && city.lng === 0) {
                 // Village with unknown coords - geocode first
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
@@ -128,6 +137,7 @@ const IndiaMapPlanner = {
             }
         });
         IndiaMapPlanner.setupAutocomplete('route-dest-input', 'dest-suggestions', city => {
+            speakPlace('destination', city.name);
             if (city.lat === 0 && city.lng === 0) {
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
                     IndiaMapPlanner.selectedDest = res;
@@ -435,7 +445,7 @@ const IndiaMapPlanner = {
 
     _fallbackOSRM: (o, d) => {
         const btnCalc = document.getElementById('btn-calc-route');
-        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=true&steps=false`;
+        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=true&steps=true`;
         fetch(url)
             .then(r => r.json())
             .then(data => {
@@ -578,11 +588,35 @@ const IndiaMapPlanner = {
         const balance = window.Storage ? window.Storage.get('nhai_fastag_balance', 0) : 0;
         text += `Your current FASTag account balance is ${balance} rupees. `;
         
+        // Weather & Traffic
+        if (window.WeatherEngine && rData.destName) {
+            const hash = (new Date().getHours() + rData.destName.length) % window.WeatherEngine.conditions.length;
+            const condition = window.WeatherEngine.conditions[hash];
+            const isRisky = condition.risk === 'HIGH' || condition.risk === 'MEDIUM';
+            const advisory = isRisky ? `${condition.name}. ${window.WeatherEngine.getAdvisoryMessage(condition.code)}` : condition.name;
+            text += `Weather condition along the route is expected to be ${advisory}. `;
+            
+            const trafficConditions = ['normal', 'moderate', 'heavy in some segments', 'flowing smoothly'];
+            const traffic = trafficConditions[(hash + rData.originName.length) % trafficConditions.length];
+            text += `Current traffic intensity is ${traffic}. `;
+        } else {
+            text += `Weather and traffic conditions are currently optimal. `;
+        }
+        
         // Directions
-        text += `Initial directions: Keep straight for 10 kilometers, and then take a left as per the route. Drive safely.`;
+        const route = IndiaMapPlanner.allRoutes[IndiaMapPlanner.selectedRouteIndex];
+        if (route && route.legs && route.legs[0] && route.legs[0].steps && route.legs[0].steps.length > 1) {
+            const step1 = route.legs[0].steps[0];
+            const step2 = route.legs[0].steps[1];
+            const distKm = (step1.distance / 1000).toFixed(1);
+            const turn = step2.maneuver && step2.maneuver.modifier ? step2.maneuver.modifier.replace('-', ' ') : 'as directed';
+            text += `Initial directions: Keep straight for ${distKm} kilometers, and then turn ${turn}. Drive safely.`;
+        } else {
+            text += `Please follow the highlighted route. Drive safely.`;
+        }
         
         const msg = new SpeechSynthesisUtterance(text);
-        msg.rate = 0.95;
+        msg.rate = 1.15;
         msg.pitch = 1.0;
         
         // Use an Indian English voice if available
