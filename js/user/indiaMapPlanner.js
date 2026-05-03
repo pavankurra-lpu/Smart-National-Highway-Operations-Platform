@@ -69,8 +69,6 @@ const IndiaMapPlanner = {
             zoom: cfg.map.defaultZoom
         });
 
-        L.control.zoom({ position: 'topleft' }).addTo(IndiaMapPlanner.map);
-
         // ── Tile layers ────────────────────────────────────────────
         const tileCfg = cfg.tiles || {};
         IndiaMapPlanner._satelliteLayer = L.tileLayer(
@@ -112,11 +110,14 @@ const IndiaMapPlanner = {
 
         // ── Autocomplete ───────────────────────────────────────────
         const speakPlace = (type, name) => {
-            if (!window.speechSynthesis) return;
-            window.speechSynthesis.cancel();
-            const msg = new SpeechSynthesisUtterance(`You have selected ${type} place as ${name}.`);
-            msg.rate = 1.15;
-            window.speechSynthesis.speak(msg);
+            if (window.VoiceAssistant) {
+                window.VoiceAssistant.speak(`You have selected ${type} place as ${name}.`);
+            } else if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+                const msg = new SpeechSynthesisUtterance(`You have selected ${type} place as ${name}.`);
+                msg.rate = 1.15;
+                window.speechSynthesis.speak(msg);
+            }
         };
 
         IndiaMapPlanner.setupAutocomplete('route-origin-input', 'origin-suggestions', city => {
@@ -615,16 +616,20 @@ const IndiaMapPlanner = {
             text += `Please follow the highlighted route. Drive safely.`;
         }
         
-        const msg = new SpeechSynthesisUtterance(text);
-        msg.rate = 1.15;
-        msg.pitch = 1.0;
-        
-        // Use an Indian English voice if available
-        const voices = window.speechSynthesis.getVoices();
-        const inVoice = voices.find(v => v.lang.includes('en-IN'));
-        if (inVoice) msg.voice = inVoice;
-        
-        window.speechSynthesis.speak(msg);
+        if (window.VoiceAssistant) {
+            window.VoiceAssistant.speak(text);
+        } else {
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.rate = 1.15;
+            msg.pitch = 1.0;
+            
+            // Use an Indian English voice if available
+            const voices = window.speechSynthesis.getVoices();
+            const inVoice = voices.find(v => v.lang.includes('en-IN'));
+            if (inVoice) msg.voice = inVoice;
+            
+            window.speechSynthesis.speak(msg);
+        }
     },
 
     _tollPopup: (td, cost) => `

@@ -22,12 +22,18 @@ const EntryScreen = {
                     else if (hour >= 17 && hour < 22) greeting = "Good evening";
                     else greeting = "Wow a night owl came to travel";
                     
-                    const msg = new SpeechSynthesisUtterance(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
-                    const voices = window.speechSynthesis.getVoices();
-                    const inVoice = voices.find(v => v.lang.includes('en-IN'));
-                    if (inVoice) msg.voice = inVoice;
-                    window.speechSynthesis.speak(msg);
+                    // Fallback English if translating is not ready yet, but VoiceAssistant handles it
+                    if (window.VoiceAssistant) {
+                        window.VoiceAssistant.speak(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
+                    } else if (window.speechSynthesis) {
+                        const msg = new SpeechSynthesisUtterance(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
+                        const voices = window.speechSynthesis.getVoices();
+                        const inVoice = voices.find(v => v.lang.includes('en-IN'));
+                        if (inVoice) msg.voice = inVoice;
+                        window.speechSynthesis.speak(msg);
+                    }
                 }
+
 
                 setTimeout(() => {
                     entryScreen.classList.add('hidden');

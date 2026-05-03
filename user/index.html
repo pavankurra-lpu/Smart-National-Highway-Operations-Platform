@@ -61,6 +61,11 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
 
+        <!-- Watermark -->
+        <div style="position: absolute; bottom: 10px; right: 10px; z-index: 1000; font-family: var(--font-display); font-size: 11px; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 1px; pointer-events: none; background: rgba(0, 0, 0, 0.3); padding: 4px 8px; border-radius: 4px; backdrop-filter: blur(2px);">
+            Created by pavan.kurra
+        </div>
+
         <!-- Map Tools (Floating Group) - REMOVED TO MOVE TO TAB -->
 
 
@@ -96,6 +101,9 @@
                 </button>
                 <button class="tab-btn" data-tab="tab-analytics" id="tab-btn-analytics">
                     <i class="fa-solid fa-chart-line"></i> Analytics
+                </button>
+                <button class="tab-btn" data-tab="tab-settings" id="tab-btn-settings">
+                    <i class="fa-solid fa-gear"></i> Settings
                 </button>
             </div>
 
@@ -142,51 +150,9 @@
                             </optgroup>
                         </select>
 
-                        <!-- Garage list — shows saved vehicles -->
-                        <div id="vehicle-garage-list" style="margin-top:8px;"></div>
-
-                        <!-- Toggle to show add form -->
-                        <button id="btn-show-add-vehicle" class="btn btn-outline w-full"
-                                style="justify-content:center; font-size:11px; margin-top:6px; padding:8px;">
-                            <i class="fa-solid fa-plus"></i> &nbsp;Add / Manage Vehicles
-                        </button>
-
-                        <!-- Add vehicle form — hidden by default -->
-                        <div id="garage-add-form" class="hidden" style="
-                            margin-top:8px; background:rgba(255,255,255,0.02);
-                            border:1px solid var(--border); border-radius:8px; padding:12px;
-                        ">
-                            <p style="font-size:10px; font-weight:700; color:var(--text-muted);
-                                      letter-spacing:0.5px; margin-bottom:8px;">
-                                NEW VEHICLE
-                            </p>
-                            <input type="text" id="garage-nickname"
-                                   placeholder="Nickname  (e.g. My Swift, Papa's SUV)"
-                                   style="margin-bottom:6px; font-size:12px;">
-                            <input type="text" id="garage-reg"
-                                   placeholder="Registration No.  (e.g. DL01AB1234)"
-                                   style="margin-bottom:6px; font-size:12px; text-transform:uppercase;">
-                            <select id="garage-type" style="font-size:12px; margin-bottom:8px;">
-                                <optgroup label="Standard">
-                                    <option value="LMV">Car / Jeep / Van (LMV)</option>
-                                    <option value="LCV">Light Commercial Vehicle</option>
-                                    <option value="BUS_2AXLE">Bus / Truck (2 Axles)</option>
-                                    <option value="COM_3AXLE">Commercial (3 Axles)</option>
-                                    <option value="MAV_4_6">MAV (4-6 Axles)</option>
-                                    <option value="OVERSIZED">Oversized (7+ Axles)</option>
-                                </optgroup>
-                                <optgroup label="Priority / Exempt">
-                                    <option value="GOVT">Government</option>
-                                    <option value="ARMY">Army / Defense</option>
-                                    <option value="AMBULANCE">Ambulance</option>
-                                    <option value="FIRE">Fire &amp; Rescue</option>
-                                    <option value="POLICE">Police</option>
-                                </optgroup>
-                            </select>
-                            <button id="btn-add-vehicle" class="btn btn-primary w-full"
-                                    style="justify-content:center; font-size:12px;">
-                                <i class="fa-solid fa-garage"></i> &nbsp;Save Vehicle
-                            </button>
+                        <!-- Garage moved to Settings tab -->
+                        <div style="font-size:11px; color:var(--text-muted); text-align:center; padding:10px; border:1px dashed var(--border); border-radius:6px; margin-top:8px;">
+                            <i class="fa-solid fa-gear"></i> Manage vehicles in the Settings tab
                         </div>
                     </div>
 
@@ -419,6 +385,85 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ========================
+                 TAB: SETTINGS
+                 ======================== -->
+            <div id="tab-settings" class="tab-content">
+                <div class="pref-box" style="margin-bottom: 16px;">
+                    <p class="pref-label"><i class="fa-solid fa-user"></i> Profile</p>
+                    <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+                        <div id="profile-pic-preview" style="width:50px; height:50px; border-radius:50%; background:var(--bg-dark); border:2px solid var(--primary); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                            <i class="fa-solid fa-user" style="font-size:24px; color:var(--text-muted);"></i>
+                        </div>
+                        <div>
+                            <input type="file" id="profile-pic-upload" accept="image/*" style="display:none;">
+                            <button class="btn btn-outline" style="font-size:10px; padding:4px 8px;" onclick="document.getElementById('profile-pic-upload').click()">Change Picture</button>
+                            <p style="font-size:9px; color:var(--text-muted); margin-top:4px;">Max 2MB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pref-box" style="margin-bottom: 16px;">
+                    <p class="pref-label"><i class="fa-solid fa-microphone"></i> AI Voice Assistant</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Language</span>
+                        </div>
+                        <select id="pref-voice-lang" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
+                            <option value="en-IN">English</option>
+                            <option value="hi-IN">Hindi (हिंदी)</option>
+                            <option value="mr-IN">Marathi (मराठी)</option>
+                            <option value="ta-IN">Tamil (தமிழ்)</option>
+                            <option value="te-IN">Telugu (తెలుగు)</option>
+                            <option value="kn-IN">Kannada (ಕನ್ನಡ)</option>
+                            <option value="bn-IN">Bengali (বাংলা)</option>
+                            <option value="gu-IN">Gujarati (ગુજરાતી)</option>
+                            <option value="ml-IN">Malayalam (മലയാളം)</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Voice Type</span>
+                        </div>
+                        <select id="pref-voice-gender" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pref-box">
+                    <p class="pref-label"><i class="fa-solid fa-car"></i> Vehicle Management</p>
+                    <div id="vehicle-garage-list" style="margin-top:8px;"></div>
+                    <button id="btn-show-add-vehicle" class="btn btn-outline w-full" style="justify-content:center; font-size:11px; margin-top:6px; padding:8px;">
+                        <i class="fa-solid fa-plus"></i> &nbsp;Add New Vehicle
+                    </button>
+                    <div id="garage-add-form" class="hidden" style="margin-top:8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:12px;">
+                        <input type="text" id="garage-nickname" placeholder="Nickname (e.g. My Swift)" style="margin-bottom:6px; font-size:12px;">
+                        <input type="text" id="garage-reg" placeholder="Reg No. (e.g. DL01AB1234)" style="margin-bottom:6px; font-size:12px; text-transform:uppercase;">
+                        <select id="garage-type" style="font-size:12px; margin-bottom:8px;">
+                            <optgroup label="Standard"><option value="LMV">Car / Jeep / Van (LMV)</option><option value="LCV">Light Commercial Vehicle</option><option value="BUS_2AXLE">Bus / Truck (2 Axles)</option><option value="COM_3AXLE">Commercial (3 Axles)</option><option value="MAV_4_6">MAV (4-6 Axles)</option><option value="OVERSIZED">Oversized (7+ Axles)</option></optgroup>
+                            <optgroup label="Priority / Exempt"><option value="GOVT">Government</option><option value="ARMY">Army / Defense</option><option value="AMBULANCE">Ambulance</option><option value="FIRE">Fire &amp; Rescue</option><option value="POLICE">Police</option></optgroup>
+                        </select>
+                        <button id="btn-add-vehicle" class="btn btn-primary w-full" style="justify-content:center; font-size:12px;">
+                            <i class="fa-solid fa-garage"></i> &nbsp;Save Vehicle
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="pref-box" style="margin-top: 16px;">
+                    <p class="pref-label"><i class="fa-solid fa-power-off"></i> Account Actions</p>
+                    <div style="display: flex; gap: 10px; margin-top: 8px;">
+                        <button id="btn-switch-account" class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 11px; padding: 8px;">
+                            <i class="fa-solid fa-users"></i> Switch
+                        </button>
+                        <button id="btn-logout" class="btn btn-danger" style="flex: 1; justify-content: center; font-size: 11px; padding: 8px;">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
         </aside>
 
 
@@ -648,6 +693,7 @@
     <script src="../js/shared/weatherEngine.js?v=2"></script>
     <script src="../js/shared/cctvFeedEngine.js?v=2"></script>
     <script src="../js/shared/themeManager.js?v=2"></script>
+    <script src="../js/shared/voiceAssistant.js?v=2"></script>
 
     <!-- User JS -->
     <script src="../js/user/entryScreen.js?v=2"></script>
@@ -661,6 +707,7 @@
     <script src="../js/user/tripAnalytics.js"></script>
     <script src="../js/user/userProfile.js"></script>
     <script src="../js/user/vehicleGarage.js"></script>
+    <script src="../js/user/userSettings.js"></script>
     <script src="../js/user/userApp.js?v=2"></script>
 </body>
 </html>
