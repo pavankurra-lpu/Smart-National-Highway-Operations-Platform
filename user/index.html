@@ -522,6 +522,17 @@
                     </p>
                 </div>
 
+                <!-- Simulation Speed Control -->
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; margin-bottom:12px; padding:6px 10px; background:rgba(0,0,0,0.2); border-radius:6px; border:1px solid var(--border-light);">
+                    <label style="font-size:11px; color:var(--text-sec); display:flex; align-items:center; gap:5px;">
+                        <i class="fa-solid fa-gauge-high" style="color:var(--primary);"></i> Sim Speed
+                    </label>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <input type="range" id="sim-speed" min="100" max="1500" value="400" step="100" style="width:100px; cursor:pointer;" title="Simulation speed" oninput="document.getElementById('sim-speed-val').textContent = this.value + 'ms'">
+                        <span id="sim-speed-val" style="font-size:11px; color:var(--text-main); min-width:35px; font-weight:700; text-align:right;">400ms</span>
+                    </div>
+                </div>
+
                 <!-- Action Buttons -->
                 <div class="summary-actions">
                     <button id="btn-view-pass" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px;">

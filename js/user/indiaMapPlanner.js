@@ -886,6 +886,7 @@ const IndiaMapPlanner = {
 
         Utils.showToast('Live Trip started! FASTag deductions active.', 'success');
 
+        const speedMs = parseInt(document.getElementById('sim-speed')?.value || 600);
         IndiaMapPlanner.tripInterval = setInterval(() => {
             if (step >= coords.length) {
                 IndiaMapPlanner.endLiveTrip();
@@ -898,7 +899,31 @@ const IndiaMapPlanner = {
             
             step += jump;
             if (step >= coords.length && step - jump < coords.length - 1) step = coords.length - 1; 
-        }, 600);
+        }, speedMs);
+
+        // Allow real-time speed adjustment via the slider
+        const simSpeedInput = document.getElementById('sim-speed');
+        if (simSpeedInput) {
+            simSpeedInput.addEventListener('input', (e) => {
+                if (IndiaMapPlanner.isTripLive && IndiaMapPlanner.tripInterval) {
+                    clearInterval(IndiaMapPlanner.tripInterval);
+                    const newSpeed = parseInt(e.target.value || 600);
+                    IndiaMapPlanner.tripInterval = setInterval(() => {
+                        if (step >= coords.length) {
+                            IndiaMapPlanner.endLiveTrip();
+                            Utils.showToast('Destination Reached! 🎉', 'success');
+                            return;
+                        }
+                        
+                        const pt = coords[step];
+                        IndiaMapPlanner.updateTripPosition(pt[1], pt[0]);
+                        
+                        step += jump;
+                        if (step >= coords.length && step - jump < coords.length - 1) step = coords.length - 1; 
+                    }, newSpeed);
+                }
+            });
+        }
     },
 
     toggleGpsMode: () => {
