@@ -59,6 +59,9 @@ const IndiaMapPlanner = {
     // INIT
     // ═══════════════════════════════════════════════════════════════
     init: () => {
+        window.addEventListener('offline', () => Utils.showToast('You are offline. Routing requires internet.', 'warning'));
+        window.addEventListener('online',  () => Utils.showToast('Connection restored.', 'success'));
+
         const cfg = window.NHAI_CONFIG || { map: { defaultCenter: [20.5937, 78.9629], defaultZoom: 5 } };
 
         // Create Leaflet map
@@ -438,7 +441,7 @@ const IndiaMapPlanner = {
             })
             .catch(() => {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
-                Utils.showToast('Routing service unavailable. Please try again.', 'error');
+                Utils.showToast('No internet or routing service offline. Check connection and retry.', 'error');
             });
     },
 
