@@ -558,9 +558,14 @@
 
             <!-- Admin Broadcasts Panel -->
             <div id="admin-broadcasts-panel">
-                <h4 style="font-size: 12px; color: var(--accent-red); margin-bottom: 6px; display:flex; align-items:center; gap:6px;">
-                    <i class="fa-solid fa-bullhorn"></i> Live NHAI Advisory
-                </h4>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+                    <h4 style="font-size: 12px; color: var(--accent-red); display:flex; align-items:center; gap:6px; margin:0;">
+                        <i class="fa-solid fa-bullhorn"></i> Live NHAI Advisory
+                    </h4>
+                    <button onclick="this.closest('#admin-broadcasts-panel').classList.add('hidden')" style="background:none; border:none; color:rgba(255,255,255,0.4); cursor:pointer; font-size:12px; padding:2px 6px;" title="Dismiss advisory">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
                 <div id="advisory-text" style="font-size: 12px; color: var(--text-sec); line-height:1.5;">Listening for admin alerts...</div>
             </div>
         </div>
