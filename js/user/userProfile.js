@@ -56,10 +56,12 @@ const UserProfile = {
     },
 
     applyProfile: (profile) => {
-        // Pre-select vehicle type if present in the route planner dropdown
-        const vTypeSelect = document.getElementById('vehicle-type');
-        if (vTypeSelect && profile.vehicleType) {
-            vTypeSelect.value = profile.vehicleType;
+        // Vehicle type is now managed by VehicleGarage
+        // Only sync if garage is empty (first-time user)
+        const garageVehicles = window.VehicleGarage ? (typeof window.VehicleGarage.getAll === 'function' ? window.VehicleGarage.getAll() : []) : [];
+        if (garageVehicles.length === 0 && profile.vehicleType) {
+            const vTypeSelect = document.getElementById('vehicle-type');
+            if (vTypeSelect) vTypeSelect.value = profile.vehicleType;
         }
     }
 };
