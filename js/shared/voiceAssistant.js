@@ -51,11 +51,7 @@ const VoiceAssistant = {
             return;
         }
 
-        // DEBUG LOGGING
-        console.log("Available voices:", voices.map(v => ({
-            name: v.name,
-            lang: v.lang
-        })));
+
 
         // VOICE SELECTION ENGINE
         // 1. Try exact or partial language match
