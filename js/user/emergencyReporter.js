@@ -37,6 +37,10 @@ const EmergencyReporter = {
                 // Add to Shared Storage (Admin will see it instantly)
                 Storage.addEmergency(emergencyData);
 
+                if (window.RealtimeService) {
+                    RealtimeService.emitSOS(emergencyData);
+                }
+
                 Utils.showToast(`SOS Triggered! Admin notified. Ref NO: ${emergencyData.id}`);
                 
                 // Clear Form
