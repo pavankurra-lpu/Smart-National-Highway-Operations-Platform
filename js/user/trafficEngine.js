@@ -71,10 +71,14 @@ const TrafficEngine = {
     simulateTrafficData: () => {
         if (window.RealtimeService && RealtimeService.socket) {
             RealtimeService.socket.emit('admin-broadcast', {
-                type: 'TRAFFIC',
-                title: 'Congestion Near Panipat',
-                message: 'Heavy traffic due to construction. Expect 20 min delay.',
-                timestamp: new Date().toISOString()
+                token: 'NHAI_ADMIN',
+                alertData: {
+                    type: 'TRAFFIC',
+                    title: 'Congestion Near Panipat',
+                    message: 'Heavy traffic due to construction. Expect 20 min delay.',
+                    region: 'Haryana',
+                    timestamp: new Date().toISOString()
+                }
             });
         }
     }
