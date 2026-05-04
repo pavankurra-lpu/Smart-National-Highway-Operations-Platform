@@ -83,7 +83,12 @@ const Storage = {
 
     addAdminAlert: (alert) => {
         const alerts = Storage.get(Storage.KEYS.ADMIN_ALERTS, []);
-        alerts.unshift({ ...alert, id: Utils.generateId('ALT'), timestamp: new Date().toISOString() });
+        const record = {
+            ...alert,
+            id:        alert.id        || Utils.generateId('ALT'),
+            timestamp: alert.timestamp || new Date().toISOString()
+        };
+        alerts.unshift(record);
         Storage.set(Storage.KEYS.ADMIN_ALERTS, alerts);
     },
 
