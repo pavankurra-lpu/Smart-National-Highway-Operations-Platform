@@ -34,6 +34,8 @@ const EmergencyReporter = {
                     adminNote: ''
                 };
 
+                if (!confirm('Confirm SOS submission? This will alert emergency services.')) return;
+
                 // Add to Shared Storage (Admin will see it instantly)
                 Storage.addEmergency(emergencyData);
 
