@@ -68,11 +68,20 @@ io.on('connection', (socket) => {
         activeJourneys.set(tripId, { lat, lng, lastUpdate: Date.now() });
         // Broadcast to anyone tracking this trip (like an Admin portal)
         socket.to(tripId).emit('vehicle-moved', data);
+        io.emit('vehicle-moved', data);
     });
 
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
     });
+});
+
+app.get('/api/active-journeys', (req, res) => {
+    const journeys = {};
+    for (const [tripId, data] of activeJourneys.entries()) {
+        journeys[tripId] = data;
+    }
+    res.json(journeys);
 });
 
 app.get('/health', (req, res) => {

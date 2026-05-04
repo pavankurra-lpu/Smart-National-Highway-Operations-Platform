@@ -8,6 +8,7 @@
     <!-- Auth Guard -> Redirects immediately before load if no session -->
     <script src="../js/admin/authGuard.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -78,6 +79,11 @@
                         <h3>Active Incidents</h3>
                         <div class="value" id="stat-incidents" style="color: var(--accent-red);">0</div>
                     </div>
+                </div>
+
+                <div class="glass-panel" style="margin-bottom: 20px;">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> Live Active Vehicles</h3>
+                    <div id="admin-live-map" style="height: 350px; border-radius: 8px; border: 1px solid var(--border); margin-top: 10px;"></div>
                 </div>
 
                 <div class="glass-panel">
@@ -317,6 +323,7 @@
     </div>
 
     <!-- Shared dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script src="../js/shared/realtimeConnector.js"></script>
     <script src="../js/shared/utils.js"></script>
