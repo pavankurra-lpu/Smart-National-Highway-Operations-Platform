@@ -846,6 +846,16 @@ const IndiaMapPlanner = {
         if (!IndiaMapPlanner.selectedRouteData) { Utils.showToast('Calculate a route first.', 'error'); return; }
         if (!IndiaMapPlanner.routeCoordinates.length) { Utils.showToast('No route geometry available.', 'error'); return; }
 
+        const estimatedCost = IndiaMapPlanner.selectedRouteData?.totalTollCost || 0;
+        const currentBalance = Storage.get(Storage.KEYS.FASTAG_BALANCE, 0);
+        if (currentBalance < estimatedCost) {
+            Utils.showToast(
+                `Insufficient FASTag balance. Estimated cost: ₹${estimatedCost}, Balance: ₹${currentBalance}. Recharge before starting.`,
+                'warning'
+            );
+            // Don't block — let user decide. Just warn.
+        }
+
         IndiaMapPlanner.isTripLive    = true;
         IndiaMapPlanner.chargedTollIds = new Set();
         IndiaMapPlanner.tripTollsPassed = [];
