@@ -72,8 +72,8 @@ const IndiaMapPlanner = {
         // ── Tile layers ────────────────────────────────────────────
         const tileCfg = cfg.tiles || {};
         IndiaMapPlanner._satelliteLayer = L.tileLayer(
-            (tileCfg.satellite || {}).url || 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-            { maxZoom: 19, maxNativeZoom: 19, attribution: '© Google' }
+            (tileCfg.satellite || {}).url || 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            { maxZoom: 19, maxNativeZoom: 17, attribution: 'Tiles © Esri' }
         );
         IndiaMapPlanner._labelsLayer = L.tileLayer(
             (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
