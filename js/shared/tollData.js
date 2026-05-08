@@ -8,10 +8,26 @@ const TollData = {
             localStorage.removeItem('nhai_tolls');
             console.log('TollData: cleared legacy localStorage copy to free space.');
         }
+        // Filter out any fake/erroneous tolls outside India's bounding box
+        if (window.TollSeedData) {
+            window.TollSeedData = window.TollSeedData.filter(toll => {
+                return toll.lat && toll.lng && 
+                       toll.lat >= 6.5 && toll.lat <= 37.6 && 
+                       toll.lng >= 68.0 && toll.lng <= 97.5;
+            });
+        }
         console.log(`TollData ready: ${(window.TollSeedData || []).length} plazas loaded.`);
     },
 
     getAllTolls: () => {
+        if (window.TollSeedData && !window._tollsFiltered) {
+            window.TollSeedData = window.TollSeedData.filter(toll => {
+                return toll.lat && toll.lng && 
+                       toll.lat >= 6.5 && toll.lat <= 37.6 && 
+                       toll.lng >= 68.0 && toll.lng <= 97.5;
+            });
+            window._tollsFiltered = true;
+        }
         return window.TollSeedData || [];
     },
 

@@ -74,20 +74,19 @@ const IndiaMapPlanner = {
 
         // ── Tile layers ────────────────────────────────────────────
         const tileCfg = cfg.tiles || {};
-        IndiaMapPlanner._satelliteLayer = L.tileLayer(
-            (tileCfg.satellite || {}).url || 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            { maxZoom: 19, maxNativeZoom: 17, attribution: 'Tiles © Esri' }
-        );
-        IndiaMapPlanner._labelsLayer = L.tileLayer(
-            (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-            { maxZoom: 19, maxNativeZoom: 18, opacity: 0.7 }
-        );
-        IndiaMapPlanner._streetLayer = L.tileLayer(
-            (tileCfg.street || {}).url || 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            { maxZoom: 19, maxNativeZoom: 18 }
-        );
+        const satUrl = (tileCfg.satellite || {}).url || 'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';
+        const satOpts = (tileCfg.satellite || {}).options || { maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], attribution: 'Tiles &copy; Google' };
+        IndiaMapPlanner._satelliteLayer = L.tileLayer(satUrl, satOpts);
 
-        // Default: street layer (OpenStreetMap)
+        const labelsUrl = (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png';
+        const labelsOpts = (tileCfg.labels || {}).options || { maxZoom: 19, pane: 'shadowPane', opacity: 0.8 };
+        IndiaMapPlanner._labelsLayer = L.tileLayer(labelsUrl, labelsOpts);
+
+        const streetUrl = (tileCfg.street || {}).url || 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+        const streetOpts = (tileCfg.street || {}).options || { maxZoom: 20, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO' };
+        IndiaMapPlanner._streetLayer = L.tileLayer(streetUrl, streetOpts);
+
+        // Default: street layer
         IndiaMapPlanner._streetLayer.addTo(IndiaMapPlanner.map);
         IndiaMapPlanner._isSatellite = false;
 
@@ -1173,7 +1172,7 @@ const IndiaMapPlanner = {
             const sRes = await fetch(stateUrl);
             const sData = await sRes.json();
             IndiaMapPlanner._stateLayer = L.geoJSON(sData, {
-                style: { color: '#ffffff', weight: 1, opacity: 0.4, fillOpacity: 0 },
+                style: { color: '#8da672', weight: 0.8, opacity: 0.25, fillOpacity: 0 },
                 onEachFeature: (feature, layer) => {
                     const name = feature.properties.NAME || feature.properties.ST_NM || "State";
                     layer.bindTooltip(name, { sticky: true, className: 'boundary-tooltip' });

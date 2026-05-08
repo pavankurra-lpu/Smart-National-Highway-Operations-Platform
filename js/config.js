@@ -22,8 +22,8 @@ const NHAI_CONFIG = {
 /* ── TILE LAYERS ──────────────────────────────────────── */
     tiles: {
         satellite: {
-            url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            options: { maxZoom: 19, maxNativeZoom: 17, attribution: 'Tiles &copy; Esri' }
+            url: 'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+            options: { maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], attribution: 'Tiles &copy; Google' }
         },
         labels: {
             // Transparent label overlay on top of satellite
@@ -31,8 +31,8 @@ const NHAI_CONFIG = {
             options: { maxZoom: 19, pane: 'shadowPane', opacity: 0.8 }
         },
         street: {
-            url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            options: { maxZoom: 19 }
+            url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+            options: { maxZoom: 20, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO' }
         }
     },
 
