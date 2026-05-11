@@ -28,12 +28,7 @@ const VoiceAssistant = {
         window.speechSynthesis.cancel();
         VoiceAssistant.isSpeaking = false;
 
-        const langSelect = document.getElementById('pref-voice-lang');
-        let targetLang = forceLang || (langSelect ? langSelect.value : 'en-IN');
-        
-        if (!forceLang && window.Storage) {
-            targetLang = Storage.get('nhai_voice_lang') || targetLang;
-        }
+        let targetLang = 'en-IN'; // Force English only
 
         let targetGender = 'female';
         if (window.Storage) {

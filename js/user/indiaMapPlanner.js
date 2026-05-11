@@ -91,6 +91,12 @@ const IndiaMapPlanner = {
         IndiaMapPlanner._isSatellite = false;
 
         window.NHAI_MAP = IndiaMapPlanner.map;
+        
+        // Fly to center on open
+        setTimeout(() => {
+            IndiaMapPlanner.map.flyTo(cfg.map.defaultCenter, 5, { animate: true, duration: 1.5 });
+        }, 500);
+
 
         // ── Sidebar toggle ─────────────────────────────────────────
         const toggleBtn = document.getElementById('sidebar-toggle');

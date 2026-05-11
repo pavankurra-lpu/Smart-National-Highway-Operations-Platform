@@ -21778,6 +21778,76 @@ const TollSeedData = [
         tollRatesByVehicleClass: {"LMV": 0, "LCV": 0, "BUS_2AXLE": 0, "COM_3AXLE": 0, "MAV_4_6": 0, "OVERSIZED": 0},
         status: "ACTIVE"
     },
+,
+    {
+        id: "1002",
+        name: "Bharthana Toll Plaza",
+        state: "Gujarat",
+        plazaType: "National",
+        type: "PF",
+        concessionaire: "NHAI",
+        nhCorridor: "N/A",
+        lat: 0,
+        lng: 0,
+        baseRate: 50.0,
+        tollRatesByVehicleClass: {"LMV": 50.0, "LCV": 80.0, "BUS_2AXLE": 160.0, "COM_3AXLE": 180.0, "MAV_4_6": 250.0, "OVERSIZED": 300.0},
+        status: "ACTIVE"
+    },
+    {
+        id: "2001",
+        name: "Boriach Toll Plaza",
+        state: "Gujarat",
+        plazaType: "National",
+        type: "PF",
+        concessionaire: "NHAI",
+        nhCorridor: "N/A",
+        lat: 0,
+        lng: 0,
+        baseRate: 50.0,
+        tollRatesByVehicleClass: {"LMV": 50.0, "LCV": 80.0, "BUS_2AXLE": 160.0, "COM_3AXLE": 180.0, "MAV_4_6": 250.0, "OVERSIZED": 300.0},
+        status: "ACTIVE"
+    },
+    {
+        id: "N/A",
+        name: "Surat",
+        state: "Gandhinagar",
+        plazaType: "National",
+        type: "PF",
+        concessionaire: "NHAI",
+        nhCorridor: "N/A",
+        lat: 0,
+        lng: 0,
+        baseRate: 50.0,
+        tollRatesByVehicleClass: {"LMV": 50.0, "LCV": 80.0, "BUS_2AXLE": 160.0, "COM_3AXLE": 180.0, "MAV_4_6": 250.0, "OVERSIZED": 300.0},
+        status: "ACTIVE"
+    },
+    {
+        id: "2002",
+        name: "Charoti Toll Plaza",
+        state: "Maharashtra",
+        plazaType: "National",
+        type: "PF",
+        concessionaire: "NHAI",
+        nhCorridor: "N/A",
+        lat: 0,
+        lng: 0,
+        baseRate: 50.0,
+        tollRatesByVehicleClass: {"LMV": 50.0, "LCV": 80.0, "BUS_2AXLE": 160.0, "COM_3AXLE": 180.0, "MAV_4_6": 250.0, "OVERSIZED": 300.0},
+        status: "ACTIVE"
+    },
+    {
+        id: "N/A",
+        name: "Thane",
+        state: "Mumbai",
+        plazaType: "National",
+        type: "PF",
+        concessionaire: "NHAI",
+        nhCorridor: "N/A",
+        lat: 0,
+        lng: 0,
+        baseRate: 50.0,
+        tollRatesByVehicleClass: {"LMV": 50.0, "LCV": 80.0, "BUS_2AXLE": 160.0, "COM_3AXLE": 180.0, "MAV_4_6": 250.0, "OVERSIZED": 300.0},
+        status: "ACTIVE"
+    }
 ];
-
 window.TollSeedData = TollSeedData;

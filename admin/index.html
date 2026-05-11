@@ -68,41 +68,16 @@
             <section id="view-overview" class="view-section active">
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h3>Vehicles Passed</h3>
-                        <div class="value" id="stat-vehicles">0</div>
+                        <h3>Revenue (Today)</h3>
+                        <div class="value" id="stat-revenue-today" style="color: var(--primary);">₹0</div>
                     </div>
                     <div class="stat-card">
-                        <h3>Est. Revenue (FASTag)</h3>
-                        <div class="value" id="stat-revenue" style="color: var(--primary);">₹0</div>
+                        <h3>Revenue (This Month)</h3>
+                        <div class="value" id="stat-revenue-month" style="color: var(--primary);">₹0</div>
                     </div>
                     <div class="stat-card">
-                        <h3>Active Incidents</h3>
-                        <div class="value" id="stat-incidents" style="color: var(--accent-red);">0</div>
-                    </div>
-                </div>
-
-                <div class="glass-panel" style="margin-bottom: 20px;">
-                    <h3><i class="fa-solid fa-map-location-dot"></i> Live Active Vehicles</h3>
-                    <div id="admin-live-map" style="height: 350px; border-radius: 8px; border: 1px solid var(--border); margin-top: 10px;"></div>
-                </div>
-
-                <div class="glass-panel">
-                    <h3>Live Pass-Through Logs</h3>
-                    <div style="max-height: 400px; overflow-y: auto;">
-                        <table class="data-table" id="analytics-table">
-                            <thead>
-                                <tr>
-                                    <th>Txn ID</th>
-                                    <th>Ext Node</th>
-                                    <th>Class</th>
-                                    <th>Toll Plazas</th>
-                                    <th>Revenue</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                        <h3>Revenue (This Year)</h3>
+                        <div class="value" id="stat-revenue-year" style="color: var(--primary);">₹0</div>
                     </div>
                 </div>
             </section>

@@ -8,39 +8,31 @@ const Analytics = {
     refresh: () => {
         const logs = Storage.get(Storage.KEYS.VEHICLE_LOGS, []);
         
-        let revenue = 0;
-        let count = logs.length;
+        let revenueToday = 0;
+        let revenueMonth = 0;
+        let revenueYear = 0;
         
-        const tbody = document.querySelector('#analytics-table tbody');
-        let html = '';
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+        const startOfYear = new Date(now.getFullYear(), 0, 1).getTime();
 
         logs.forEach(log => {
-            revenue += (log.cost || 0);
-            const status = log.status || 'COMPLETED';
-            const statusColor = status === 'ACTIVE' ? 'color: #10b981; font-weight:bold;' : 'color: var(--primary);';
-            let rowColor = log.isSpecial ? 'color: var(--accent-yellow);' : '';
-            html += `
-                <tr style="${rowColor}">
-                    <td style="font-size: 11px;">${log.id}</td>
-                    <td>${log.origin} → ${log.dest}</td>
-                    <td>${log.vehicleType}</td>
-                    <td>${(log.tollsPassed || []).length}</td>
-                    <td>${Utils.formatCurrency(log.cost || 0)}</td>
-                    <td style="font-size: 11px; ${statusColor}">${status}</td>
-                    <td style="font-size: 11px; color: var(--text-sec);">${Utils.formatDateTime(log.timestamp)}</td>
-                </tr>
-            `;
+            const cost = log.cost || 0;
+            const time = new Date(log.timestamp).getTime();
+            
+            if (time >= startOfDay) revenueToday += cost;
+            if (time >= startOfMonth) revenueMonth += cost;
+            if (time >= startOfYear) revenueYear += cost;
         });
 
-        // Top level stats
-        const statVehicles = document.getElementById('stat-vehicles');
-        const statRevenue = document.getElementById('stat-revenue');
-        if (statVehicles) statVehicles.innerText = count;
-        if (statRevenue) statRevenue.innerText = Utils.formatCurrency(revenue);
+        const elToday = document.getElementById('stat-revenue-today');
+        const elMonth = document.getElementById('stat-revenue-month');
+        const elYear = document.getElementById('stat-revenue-year');
         
-        if (tbody) {
-            tbody.innerHTML = html.length ? html : '<tr><td colspan="7" style="text-align:center;">No vehicle logs yet. Trips will appear when travellers start journeys.</td></tr>';
-        }
+        if (elToday) elToday.innerText = Utils.formatCurrency(revenueToday);
+        if (elMonth) elMonth.innerText = Utils.formatCurrency(revenueMonth);
+        if (elYear) elYear.innerText = Utils.formatCurrency(revenueYear);
 
         // Active incidents stat
         const incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
