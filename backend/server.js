@@ -11,10 +11,24 @@ app.use(cors());
 app.use(express.json());
 
 const rateLimit = require('express-rate-limit');
-app.use(rateLimit({ windowMs: 60000, max: 200 }));
+app.use(rateLimit({ windowMs: 60000, max: 600 }));
 
 // Path to file database
 const DB_PATH = path.join(__dirname, 'db.json');
+
+// Prune database logs to keep size stable
+function pruneDB(db) {
+    if (db.nhai_vehicle_logs && db.nhai_vehicle_logs.length > 1000) {
+        db.nhai_vehicle_logs = db.nhai_vehicle_logs.slice(0, 1000);
+    }
+    if (db.nhai_trip_history && db.nhai_trip_history.length > 500) {
+        db.nhai_trip_history = db.nhai_trip_history.slice(0, 500);
+    }
+    if (db.nhai_admin_alerts && db.nhai_admin_alerts.length > 100) {
+        db.nhai_admin_alerts = db.nhai_admin_alerts.slice(0, 100);
+    }
+    return db;
+}
 
 // Initialize database with default SNHOP schema
 function loadDB() {
@@ -43,7 +57,7 @@ function loadDB() {
 
 function saveDB(db) {
     try {
-        fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), 'utf8');
+        fs.writeFileSync(DB_PATH, JSON.stringify(pruneDB(db), null, 2), 'utf8');
     } catch (e) {
         console.error('[DB] Error saving database:', e);
     }
@@ -52,8 +66,8 @@ function saveDB(db) {
 // Ensure database file is initialized on startup
 saveDB(loadDB());
 
-// Store active admin sessions in memory
-const activeAdminSessions = new Set();
+// Store active admin sessions in memory (token -> { createdAt })
+const activeAdminSessions = new Map();
 
 // Active vehicle tracking sessions in memory
 const activeJourneys = new Map();
@@ -70,16 +84,50 @@ setInterval(() => {
 
 // API Endpoints for DB Synchronization
 app.get('/api/db', (req, res) => {
-    res.json(loadDB());
+    const token = req.headers['x-admin-token'] || req.query.token;
+    const session = token ? activeAdminSessions.get(token) : null;
+    const SESSION_HOURS = 8;
+
+    const db = loadDB();
+    // Return full DB for authenticated admin, filtered version for users
+    if (session && Date.now() - session.createdAt <= SESSION_HOURS * 3600 * 1000) {
+        return res.json(db);
+    }
+
+    const publicDB = {
+        nhai_trip_history: db.nhai_trip_history || [],
+        nhai_recharge_history: db.nhai_recharge_history || [],
+        nhai_fastag_balance: db.nhai_fastag_balance !== undefined ? db.nhai_fastag_balance : 1500,
+        nhai_emergencies: db.nhai_emergencies || [],
+        nhai_admin_alerts: db.nhai_admin_alerts || [],
+        nhai_active_trips: db.nhai_active_trips || [],
+        nhai_user_profile: db.nhai_user_profile || null,
+        nhai_face_auth_time: db.nhai_face_auth_time || null,
+        nhai_face_auth_interval: db.nhai_face_auth_interval || 12
+    };
+    res.json(publicDB);
 });
 
+// Admin-only keys that require session tokens
+const ADMIN_KEYS = ['nhai_admin_alerts', 'nhai_vehicle_logs', 'nhai_toll_states'];
+
 app.post('/api/db/update', (req, res) => {
-    const { key, value } = req.body;
+    const { key, value, token } = req.body;
     if (!key) return res.status(400).json({ error: 'Missing key parameter' });
     
     // Security validation on key prefix
     if (!key.startsWith('nhai_')) {
         return res.status(400).json({ error: 'Unauthorized key modification' });
+    }
+
+    // Require token check for admin specific updates
+    if (ADMIN_KEYS.includes(key)) {
+        const session = token ? activeAdminSessions.get(token) : null;
+        const SESSION_HOURS = 8;
+        if (!session || Date.now() - session.createdAt > SESSION_HOURS * 3600 * 1000) {
+            if (token) activeAdminSessions.delete(token);
+            return res.status(403).json({ error: 'Forbidden' });
+        }
     }
 
     const db = loadDB();
@@ -89,6 +137,15 @@ app.post('/api/db/update', (req, res) => {
     // Broadcast the update to all active tabs
     io.emit('db-update', { key, value });
     res.json({ success: true });
+});
+
+// Admin API active-journeys for map plotting
+app.get('/api/active-journeys', (req, res) => {
+    const journeys = {};
+    for (const [tripId, data] of activeJourneys.entries()) {
+        journeys[tripId] = { lat: data.lat, lng: data.lng, lastUpdate: data.lastUpdate };
+    }
+    res.json(journeys);
 });
 
 // Secure API endpoints for Admin Authentication
@@ -101,7 +158,7 @@ app.post('/api/auth/login', (req, res) => {
 
     if (id === adminCreds.id && pass === adminCreds.pass) {
         const token = crypto.randomBytes(24).toString('hex');
-        activeAdminSessions.add(token);
+        activeAdminSessions.set(token, { createdAt: Date.now() });
         res.json({ success: true, token });
     } else {
         res.status(401).json({ error: 'ACCESS DENIED. Invalid Credentials.' });
@@ -110,9 +167,12 @@ app.post('/api/auth/login', (req, res) => {
 
 app.post('/api/auth/verify', (req, res) => {
     const { token } = req.body;
-    if (token && activeAdminSessions.has(token)) {
+    const session = token ? activeAdminSessions.get(token) : null;
+    const SESSION_HOURS = 8;
+    if (session && Date.now() - session.createdAt <= SESSION_HOURS * 3600 * 1000) {
         res.json({ valid: true });
     } else {
+        if (token) activeAdminSessions.delete(token);
         res.status(401).json({ valid: false });
     }
 });
@@ -176,8 +236,8 @@ io.on('connection', (socket) => {
     socket.on('update-position', (data) => {
         const { tripId, lat, lng } = data;
         activeJourneys.set(tripId, { lat, lng, lastUpdate: Date.now() });
+        // Emit only to rooms where admins monitor this specific vehicle/trip
         socket.to(tripId).emit('vehicle-moved', data);
-        io.emit('vehicle-moved', data);
     });
 
     socket.on('disconnect', () => {

@@ -58,7 +58,7 @@ const AdminApp = {
             }
         }, 3000);
 
-        // Bind socket listener for vehicle tracking
+        // Bind socket listener for vehicle tracking and SOS alerts
         let socketBound = false;
         const bindSocket = () => {
             if (socketBound) return;
@@ -66,14 +66,31 @@ const AdminApp = {
                 RealtimeService.socket.on('vehicle-moved', (data) => {
                     AdminApp.updateVehicleMarker(data);
                 });
+                
+                RealtimeService.socket.on('new-sos-alert', (sosData) => {
+                    const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
+                    const exists = emergencies.some(e => e.id === sosData.id);
+                    if (!exists) {
+                        emergencies.unshift(sosData);
+                        Storage.set(Storage.KEYS.EMERGENCIES, emergencies);
+                    }
+                    if (window.Utils) {
+                        Utils.showToast(`🚨 SOS Alert: ${sosData.type} at ${sosData.location}`, 'error');
+                    }
+                    if (window.IncidentCenter) {
+                        IncidentCenter.refresh();
+                    }
+                });
+
                 socketBound = true;
             }
         };
         bindSocket();
         setInterval(bindSocket, 1000);
 
-        // Load initial positions
-        fetch('http://localhost:3000/api/active-journeys')
+        // Load initial positions from dynamic backend url
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+        fetch(`${backendUrl}/api/active-journeys`)
             .then(res => res.json())
             .then(data => {
                 for (const tripId in data) {

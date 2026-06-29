@@ -19,11 +19,12 @@ const NHAI_CONFIG = {
             east: 97.5
         }
     },
-/* ── TILE LAYERS ──────────────────────────────────────── */
+    
+    /* ── TILE LAYERS ──────────────────────────────────────── */
     tiles: {
         satellite: {
-            url: 'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-            options: { maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], attribution: 'Tiles &copy; Google' }
+            url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            options: { maxZoom: 19, maxNativeZoom: 17, attribution: 'Tiles &copy; Esri' }
         },
         labels: {
             // Transparent label overlay on top of satellite
@@ -38,7 +39,6 @@ const NHAI_CONFIG = {
 
     /* ── ROUTING (OSRM public demo — India capable) ───────── */
     routing: {
-        // OSRM public demo server — real roads, supports India
         baseUrl: 'https://router.project-osrm.org/route/v1/driving',
         alternatives: true,          // ask for up to 3 alternatives
         maxAlternatives: 2,
@@ -78,20 +78,17 @@ const NHAI_CONFIG = {
         ]
     },
 
-    /* ── ROUTE DISPLAY ────────────────────────────────────── */
-    // Route styles are hardcoded in indiaMapPlanner._applyRoute() for visual clarity:
-    //   Primary: bold blue (#3b82f6), Alt1: amber dashed, Alt2: green dashed
-
     /* ── TRIP SIMULATION ──────────────────────────────────── */
     trip: {
         intervalMs: 400,       // step update interval
         pointsPerStep: null    // computed dynamically based on route length
     },
 
-    /* ── ADMIN CREDENTIALS (SECURITY NOTE: Demo only) ──────── */
-    admin: {
-        id: 'admin@nhai',
-        pass: 'NHAI@2026'
+    /* ── SECURE BACKEND CONFIGURATION ──────────────────────── */
+    backend: {
+        url: (window.location.origin && !window.location.origin.includes('file://')) 
+            ? window.location.origin 
+            : 'http://localhost:3000'
     }
 };
 

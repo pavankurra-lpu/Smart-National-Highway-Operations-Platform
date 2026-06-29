@@ -1,7 +1,7 @@
 // Frontend Connector for the Real-time Backend
 const RealtimeService = {
     socket: null,
-    serverUrl: 'http://localhost:3000',
+    serverUrl: window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000',
 
     init: () => {
         // Only attempt connection if Socket.io client library is loaded

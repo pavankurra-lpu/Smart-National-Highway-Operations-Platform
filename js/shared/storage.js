@@ -36,25 +36,32 @@ const Storage = {
         // Only attempt backend writes for simulation keys starting with nhai_
         if (!key.startsWith('nhai_')) return;
         
-        fetch('http://localhost:3000/api/db/update', {
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+        const token = sessionStorage.getItem('nhai_admin_auth') || '';
+
+        fetch(`${backendUrl}/api/db/update`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ key, value })
+            body: JSON.stringify({ key, value, token })
         }).catch(err => console.warn('[Storage] Backend write sync offline:', err));
     },
 
-    syncFromBackend: () => {
+    syncFromBackend: async () => {
         try {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'http://localhost:3000/api/db', false); // Synchronous GET to block init until data is fetched
-            xhr.send();
-            if (xhr.status === 200) {
-                const dbData = JSON.parse(xhr.responseText);
-                for (const [key, val] of Object.entries(dbData)) {
+            const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+            const token = sessionStorage.getItem('nhai_admin_auth') || '';
+            
+            const res = await fetch(`${backendUrl}/api/db?token=${token}`);
+            if (!res.ok) throw new Error('Network response status was not ok');
+            
+            const dbData = await res.json();
+            for (const [key, val] of Object.entries(dbData)) {
+                if (val !== null && val !== undefined) {
                     localStorage.setItem(key, JSON.stringify(val));
                 }
-                console.log('[Storage] Successfully synced state from backend');
             }
+            console.log('[Storage] Successfully synced state from backend');
+            window.dispatchEvent(new Event('local-storage-update'));
         } catch (e) {
             console.warn('[Storage] Backend server unreachable. Falling back to local offline cache.');
         }
@@ -186,8 +193,7 @@ const Storage = {
 
 window.Storage = Storage;
 
-// Sync database from backend first
-Storage.syncFromBackend();
-
-// Initialize defaults on load
-Storage.initDefaults();
+// Sync database from backend first, then verify defaults
+Storage.syncFromBackend().then(() => {
+    Storage.initDefaults();
+});

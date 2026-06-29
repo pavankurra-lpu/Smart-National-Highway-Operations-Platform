@@ -69,11 +69,11 @@ const FaceAuth = {
                 position: relative;
             ">
                 <!-- Glowing laser scan effects -->
-                <div style="font-size: 24px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; color: #8da672;">
-                    <i class="fa-solid fa-face-viewfinder"></i> BIOMETRIC AUTHENTICATION
+                <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; color: #8da672;">
+                    <i class="fa-solid fa-face-viewfinder"></i> BIOMETRIC SIMULATION (DEMO)
                 </div>
                 <div style="font-size: 13px; color: #a3ad9b; margin-bottom: 25px;">
-                    NHAI Smart Security: Verify driver biometrics before payment
+                    NHAI Smart Security: Simulated driver biometric check
                 </div>
 
                 <!-- Camera/Scan Container -->
@@ -248,19 +248,19 @@ const FaceAuth = {
                 cameraStream = stream;
                 video.srcObject = stream;
                 video.style.display = 'block';
-                statusEl.innerText = 'Scanning Biometrics...';
+                statusEl.innerText = 'Demo Biometric Simulation...';
                 statusEl.style.color = '#8da672';
                 
                 // Audio signal if VoiceAssistant is available
                 if (window.VoiceAssistant) {
-                    window.VoiceAssistant.speak('Biometric scan in progress. Please look directly at the scanner.');
+                    window.VoiceAssistant.speak('Demo biometric scan in progress.');
                 }
 
                 let progress = 0;
                 FaceAuth.canvasInterval = setInterval(() => {
                     progress += 0.02;
                     drawGrid(false, Math.min(progress, 1));
-                    statusEl.innerText = `Analyzing Face Matrix: ${Math.floor(progress * 100)}%`;
+                    statusEl.innerText = `Analyzing Matrix (Demo Simulation): ${Math.floor(progress * 100)}%`;
 
                     if (progress >= 1.0) {
                         clearInterval(FaceAuth.canvasInterval);
@@ -269,14 +269,14 @@ const FaceAuth = {
                 }, 50);
             })
             .catch(err => {
-                console.warn('Camera blocked or unavailable, using high-tech simulation.', err);
-                statusEl.innerText = 'Initializing Simulated Biometrics...';
+                console.warn('Camera blocked or unavailable, using grid simulation.', err);
+                statusEl.innerText = 'Initializing Demo Biometric Simulation...';
                 
                 let progress = 0;
                 FaceAuth.canvasInterval = setInterval(() => {
                     progress += 0.02;
                     drawGrid(false, Math.min(progress, 1));
-                    statusEl.innerText = `Simulating Biometric Scan: ${Math.floor(progress * 100)}%`;
+                    statusEl.innerText = `Simulating Biometric Grid (Demo): ${Math.floor(progress * 100)}%`;
 
                     if (progress >= 1.0) {
                         clearInterval(FaceAuth.canvasInterval);
@@ -318,12 +318,12 @@ const FaceAuth = {
             ctx.fillText('✓', 160, 160);
         }
 
-        statusEl.innerText = 'ACCESS GRANTED. User Identity Verified.';
+        statusEl.innerText = 'DEMO VERIFIED. (Simulation only — not real biometric check)';
         statusEl.style.color = '#10b981';
 
         // Voice confirmation
         if (window.VoiceAssistant) {
-            window.VoiceAssistant.speak('Biometric check complete. Driver identity verified.');
+            window.VoiceAssistant.speak('Demo biometric check complete.');
         }
 
         // Save timestamp to storage (which write-throughs to backend)
