@@ -112,6 +112,15 @@
                  ======================== -->
             <div id="tab-plan" class="tab-content active">
                 <div class="flex-col gap-3">
+                    <!-- Live FASTag Wallet Money -->
+                    <div class="fastag-card" style="margin-bottom: 6px;">
+                        <p class="fastag-live-label">
+                            <span class="fastag-live-dot"></span> Live FASTag Balance
+                        </p>
+                        <div id="ui-fastag-bal" class="balance-text">&#8377;0.00</div>
+                        <span id="ui-fastag-status" class="badge"></span>
+                    </div>
+
                     <div>
                         <span class="field-label"><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Origin</span>
                         <input type="text" id="route-origin-input" placeholder="Type origin city..." autocomplete="off">
@@ -122,75 +131,6 @@
                         <span class="field-label"><i class="fa-solid fa-flag-checkered" style="color:var(--accent-red)"></i> Destination</span>
                         <input type="text" id="route-dest-input" placeholder="Type destination city..." autocomplete="off">
                         <div id="dest-suggestions" class="autocomplete-dropdown"></div>
-                    </div>
-
-                    <div>
-                        <span class="field-label">
-                            <i class="fa-solid fa-car-side" style="color:var(--accent-yellow)"></i>
-                            Vehicle Category
-                        </span>
-
-                        <!-- Hidden dropdown still used by all route/toll logic -->
-                        <select id="vehicle-type" style="display:none;">
-                            <optgroup label="Standard Categories">
-                                <option value="LMV">Car / Jeep / Van (LMV)</option>
-                                <option value="LCV">Light Commercial Vehicle (LCV)</option>
-                                <option value="BUS_2AXLE">Bus / Truck (2 Axles)</option>
-                                <option value="COM_3AXLE">Commercial (3 Axles)</option>
-                                <option value="MAV_4_6">MAV (4-6 Axles)</option>
-                                <option value="OVERSIZED">Oversized (7+ Axles)</option>
-                            </optgroup>
-                            <optgroup label="Priority / Exempt">
-                                <option value="GOVT">Government Vehicle</option>
-                                <option value="PRESS">Press / Media</option>
-                                <option value="ARMY">Army / Defense</option>
-                                <option value="AMBULANCE">Ambulance</option>
-                                <option value="FIRE">Fire &amp; Rescue</option>
-                                <option value="POLICE">Police</option>
-                            </optgroup>
-                        </select>
-
-                        <!-- Garage moved to Settings tab -->
-                        <div style="font-size:11px; color:var(--text-muted); text-align:center; padding:10px; border:1px dashed var(--border); border-radius:6px; margin-top:8px;">
-                            <i class="fa-solid fa-gear"></i> Manage vehicles in the Settings tab
-                        </div>
-                    </div>
-
-                    <!-- Special Vehicle Verification Box -->
-                    <div id="special-vehicle-box" class="special-vehicle-box hidden">
-                        <p class="special-vehicle-title">
-                            <i class="fa-solid fa-triangle-exclamation"></i> Pre-Registered Verification Required
-                        </p>
-                        <input type="text" id="special-plate-id" placeholder="Enter Registration / Tag ID..." style="margin-bottom: 8px;">
-                        <button id="btn-verify-special" class="btn btn-outline w-full" style="justify-content: center; font-size: 12px;">
-                            <i class="fa-solid fa-shield-halved"></i> Verify ID
-                        </button>
-                        <p id="special-verify-res" style="font-size: 11px; margin-top: 6px;"></p>
-                    </div>
-
-                    <!-- Travel Preferences -->
-                    <div class="pref-box">
-                        <p class="pref-label"><i class="fa-solid fa-sliders"></i> Travel Preferences</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                            <div>
-                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Use FASTag</span>
-                                <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Deduct toll from wallet</p>
-                            </div>
-                            <label class="switch">
-                                <input type="checkbox" id="pref-fastag" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Avoid Tolls</span>
-                                <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Prefer toll-free routes</p>
-                            </div>
-                            <label class="switch">
-                                <input type="checkbox" id="pref-avoid-tolls">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
                     </div>
 
                     <button id="btn-calc-route" class="btn btn-primary w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
@@ -404,10 +344,35 @@
                     </div>
                 </div>
 
+                <!-- Travel & Routing Preferences -->
+                <div class="pref-box" style="margin-bottom: 16px;">
+                    <p class="pref-label"><i class="fa-solid fa-sliders"></i> Travel Preferences</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Use FASTag</span>
+                            <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Deduct toll from wallet</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="pref-fastag" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Avoid Tolls</span>
+                            <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Prefer toll-free routes</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="pref-avoid-tolls">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- AI Voice Assistant -->
                 <div class="pref-box" style="margin-bottom: 16px;">
                     <p class="pref-label"><i class="fa-solid fa-microphone"></i> AI Voice Assistant</p>
-                        <input type="hidden" id="pref-voice-lang" value="en-IN">
-                    </div>
+                    <input type="hidden" id="pref-voice-lang" value="en-IN">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Voice Type</span>
@@ -419,50 +384,91 @@
                     </div>
                 </div>
 
+                <!-- Vehicle & Biometric Management -->
                 <div class="pref-box" style="margin-bottom: 16px;">
-                    <p class="pref-label"><i class="fa-solid fa-face-smile"></i> Face Verification Security</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <div>
-                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Require Verification</span>
-                            <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Prompt before starting trip / paying toll</p>
-                        </div>
-                        <label class="switch">
-                            <input type="checkbox" id="pref-face-auth" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Verification Interval</span>
-                        </div>
-                        <select id="pref-face-interval" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
-                            <option value="12">Every 12 Hours</option>
-                            <option value="24">Every 24 Hours</option>
-                            <option value="0.0083">Every 30 Seconds (Demo)</option>
-                        </select>
-                    </div>
-                </div>
+                    <p class="pref-label"><i class="fa-solid fa-car"></i> Vehicle & Biometrics</p>
 
-                <div class="pref-box">
-                    <p class="pref-label"><i class="fa-solid fa-car"></i> Vehicle Management</p>
-                    <div id="vehicle-garage-list" style="margin-top:8px;"></div>
-                    <button id="btn-show-add-vehicle" class="btn btn-outline w-full" style="justify-content:center; font-size:11px; margin-top:6px; padding:8px;">
-                        <i class="fa-solid fa-plus"></i> &nbsp;Add New Vehicle
-                    </button>
-                    <div id="garage-add-form" class="hidden" style="margin-top:8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:12px;">
-                        <input type="text" id="garage-nickname" placeholder="Nickname (e.g. My Swift)" style="margin-bottom:6px; font-size:12px;">
-                        <input type="text" id="garage-reg" placeholder="Reg No. (e.g. DL01AB1234)" style="margin-bottom:6px; font-size:12px; text-transform:uppercase;">
-                        <select id="garage-type" style="font-size:12px; margin-bottom:8px;">
-                            <optgroup label="Standard"><option value="LMV">Car / Jeep / Van (LMV)</option><option value="LCV">Light Commercial Vehicle</option><option value="BUS_2AXLE">Bus / Truck (2 Axles)</option><option value="COM_3AXLE">Commercial (3 Axles)</option><option value="MAV_4_6">MAV (4-6 Axles)</option><option value="OVERSIZED">Oversized (7+ Axles)</option></optgroup>
-                            <optgroup label="Priority / Exempt"><option value="GOVT">Government</option><option value="ARMY">Army / Defense</option><option value="AMBULANCE">Ambulance</option><option value="FIRE">Fire &amp; Rescue</option><option value="POLICE">Police</option></optgroup>
+                    <!-- Active Vehicle Category selector -->
+                    <div style="margin-bottom: 15px;">
+                        <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display:block; margin-bottom:6px;">Active Vehicle Category</span>
+                        <select id="vehicle-type" style="font-size: 12px; padding: 6px; width: 100%; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
+                            <optgroup label="Standard Categories">
+                                <option value="LMV">Car / Jeep / Van (LMV)</option>
+                                <option value="LCV">Light Commercial Vehicle (LCV)</option>
+                                <option value="BUS_2AXLE">Bus / Truck (2 Axles)</option>
+                                <option value="COM_3AXLE">Commercial (3 Axles)</option>
+                                <option value="MAV_4_6">MAV (4-6 Axles)</option>
+                                <option value="OVERSIZED">Oversized (7+ Axles)</option>
+                            </optgroup>
+                            <optgroup label="Priority / Exempt">
+                                <option value="GOVT">Government Vehicle</option>
+                                <option value="PRESS">Press / Media</option>
+                                <option value="ARMY">Army / Defense</option>
+                                <option value="AMBULANCE">Ambulance</option>
+                                <option value="FIRE">Fire &amp; Rescue</option>
+                                <option value="POLICE">Police</option>
+                            </optgroup>
                         </select>
-                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
-                            <input type="checkbox" id="garage-require-face" style="width:auto; margin:0;">
-                            <label for="garage-require-face" style="font-size:11px; color:var(--text-sec); cursor:pointer;">Require Face Verification for this vehicle</label>
-                        </div>
-                        <button id="btn-add-vehicle" class="btn btn-primary w-full" style="justify-content:center; font-size:12px;">
-                            <i class="fa-solid fa-garage"></i> &nbsp;Save Vehicle
+                    </div>
+
+                    <!-- Special Vehicle Verification Box -->
+                    <div id="special-vehicle-box" class="special-vehicle-box hidden" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 15px;">
+                        <p class="special-vehicle-title" style="margin-top:0; font-size:11px; font-weight:700; color:var(--accent-yellow);">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Pre-Registered Verification Required
+                        </p>
+                        <input type="text" id="special-plate-id" placeholder="Enter Registration / Tag ID..." style="margin-bottom: 8px; font-size: 12px; width: 100%; box-sizing: border-box;">
+                        <button id="btn-verify-special" class="btn btn-outline w-full" style="justify-content: center; font-size: 11px; padding: 6px;">
+                            <i class="fa-solid fa-shield-halved"></i> Verify ID
                         </button>
+                        <p id="special-verify-res" style="font-size: 11px; margin-top: 6px; margin-bottom: 0;"></p>
+                    </div>
+
+                    <!-- Face Verification Global Options -->
+                    <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <div>
+                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Require Face Verification</span>
+                                <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Global biometric validation prompt</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="pref-face-auth" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Verification Interval</span>
+                            </div>
+                            <select id="pref-face-interval" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
+                                <option value="12">Every 12 Hours</option>
+                                <option value="24">Every 24 Hours</option>
+                                <option value="0.0083">Every 30 Seconds (Demo)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Garage Management -->
+                    <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                        <span style="font-size: 12px; font-weight: 600; color: var(--text-main); display:block; margin-bottom:8px;">Vehicle Garage</span>
+                        <div id="vehicle-garage-list" style="margin-top:8px;"></div>
+                        <button id="btn-show-add-vehicle" class="btn btn-outline w-full" style="justify-content:center; font-size:11px; margin-top:6px; padding:8px;">
+                            <i class="fa-solid fa-plus"></i> &nbsp;Add New Vehicle
+                        </button>
+                        <div id="garage-add-form" class="hidden" style="margin-top:8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:12px;">
+                            <input type="text" id="garage-nickname" placeholder="Nickname (e.g. My Swift)" style="margin-bottom:6px; font-size:12px;">
+                            <input type="text" id="garage-reg" placeholder="Reg No. (e.g. DL01AB1234)" style="margin-bottom:6px; font-size:12px; text-transform:uppercase;">
+                            <select id="garage-type" style="font-size:12px; margin-bottom:8px;">
+                                <optgroup label="Standard"><option value="LMV">Car / Jeep / Van (LMV)</option><option value="LCV">Light Commercial Vehicle</option><option value="BUS_2AXLE">Bus / Truck (2 Axles)</option><option value="COM_3AXLE">Commercial (3 Axles)</option><option value="MAV_4_6">MAV (4-6 Axles)</option><option value="OVERSIZED">Oversized (7+ Axles)</option></optgroup>
+                                <optgroup label="Priority / Exempt"><option value="GOVT">Government</option><option value="ARMY">Army / Defense</option><option value="AMBULANCE">Ambulance</option><option value="FIRE">Fire &amp; Rescue</option><option value="POLICE">Police</option></optgroup>
+                            </select>
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                                <input type="checkbox" id="garage-require-face" style="width:auto; margin:0;">
+                                <label for="garage-require-face" style="font-size:11px; color:var(--text-sec); cursor:pointer;">Require Face Verification for this vehicle</label>
+                            </div>
+                            <button id="btn-add-vehicle" class="btn btn-primary w-full" style="justify-content:center; font-size:12px;">
+                                <i class="fa-solid fa-garage"></i> &nbsp;Save Vehicle
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
