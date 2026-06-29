@@ -10,6 +10,7 @@ const VOICE_TRANSLATIONS = {
         'Slippery roads. Reduce speed by 20%.': 'फिसलन भरी सड़कें। गति २०% कम करें।',
         'Low visibility. Use fog lights & hazard lamps.': 'कम दृश्यता। फॉग लाइट और हेज़र्ड लाइट का उपयोग करें।',
         'High winds and lightning hazard. Proceed with caution.': 'तेज हवाएं और बिजली का खतरा। सावधानी से आगे बढ़ें।',
+        'Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.': 'अत्यधिक गर्मी का खतरा। अतिरिक्त पानी रखें और टायरों की जांच करें।',
         'Extreme heat risk. Carry extra water and check tyres.': 'अत्यधिक गर्मी का खतरा। अतिरिक्त पानी रखें और टायरों की जांच करें।',
         'Please look directly at the scanner.': 'कृपया सीधे स्कैनर की ओर देखें।',
         'Biometric check complete. Driver identity verified.': 'बायोमेट्रिक जांच पूरी हुई। चालक की पहचान सत्यापित की गई।',
@@ -29,10 +30,11 @@ const VOICE_TRANSLATIONS = {
         'Demo biometric check complete.': 'డెమో బయోమెట్రిక్ తనిఖీ పూర్తయింది.',
         'Starting live journey...': 'లైవ్ ప్రయాణం ప్రారంభమవుతోంది...',
         'Toll payment successful!': 'టోల్ చెల్లింపు విజయవంతమైంది!',
-        'Optimal travel conditions.': 'అనుకూల ప్రయాణ परिस्थितियों.',
+        'Optimal travel conditions.': 'అనుకూల ప్రయాణ పరిస్థితులు.',
         'Slippery roads. Reduce speed by 20%.': 'జారే రోడ్లు. వేగాన్ని 20% తగ్గించండి.',
         'Low visibility. Use fog lights & hazard lamps.': 'తక్కువ దృశ్యమానత. ఫాగ్ లైట్లు మరియు హజార్డ్ లైట్లు ఉపయోగించండి.',
         'High winds and lightning hazard. Proceed with caution.': 'ఈదురు గాలులు మరియు మెరుపుల ప్రమాదం. జాగ్రత్తగా కొనసాగండి.',
+        'Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.': 'తీవ్రమైన ఎండ ప్రమాదం. అదనపు నీటిని తీసుకెళ్లండి మరియు టైర్లను తనిఖీ చేయండి.',
         'Extreme heat risk. Carry extra water and check tyres.': 'తీవ్రమైన ఎండ ప్రమాదం. అదనపు నీటిని తీసుకెళ్లండి మరియు టైర్లను తనిఖీ చేయండి.',
         'Clear Skies': 'నిర్మలమైన ఆకాశం',
         'Heavy Rain': 'భారీ వర్షం',
@@ -49,6 +51,7 @@ const VOICE_TRANSLATIONS = {
         'Slippery roads. Reduce speed by 20%.': 'வழுக்கும் சாலைகள். வேகத்தை 20% குறைக்கவும்.',
         'Low visibility. Use fog lights & hazard lamps.': 'குறைந்த தெரிவுநிலை. பனி விளக்குகள் மற்றும் அபாய விளக்குகளைப் பயன்படுத்தவும்.',
         'High winds and lightning hazard. Proceed with caution.': 'அதிவேக காற்று மற்றும் மின்னல் ஆபத்து. எச்சரிக்கையுடன் தொடரவும்.',
+        'Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.': 'அதிக வெப்ப அபாயம். கூடுதல் தண்ணீர் எடுத்துச் சென்று டயர்களைச் சரிபார்க்கவும்.',
         'Extreme heat risk. Carry extra water and check tyres.': 'அதிக வெப்ப அபாயம். கூடுதல் தண்ணீர் எடுத்துச் சென்று டயர்களைச் சரிபார்க்கவும்.',
         'Clear Skies': 'தெளிவான வானம்',
         'Heavy Rain': 'கனமழை',
@@ -65,9 +68,10 @@ const VOICE_TRANSLATIONS = {
         'Slippery roads. Reduce speed by 20%.': 'ಜಾರುವ ರಸ್ತೆಗಳು. ವೇಗವನ್ನು 20% ರಷ್ಟು ಕಡಿಮೆ ಮಾಡಿ.',
         'Low visibility. Use fog lights & hazard lamps.': 'ಕಡಿಮೆ ಗೋಚರತೆ. ಫಾಗ್ ಲೈಟ್‌ಗಳು ಮತ್ತು ಅಪಾಯದ ದೀಪಗಳನ್ನು ಬಳಸಿ.',
         'High winds and lightning hazard. Proceed with caution.': 'ಬಲವಾದ ಗಾಳಿ ಮತ್ತು ಮಿಂಚಿನ ಅಪಾಯ. ಎಚ್ಚರಿಕೆಯಿಂದ ಮುಂದುವರಿಯಿರಿ.',
+        'Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.': 'ವಿಪರೀತ ಶಾಖದ ಅಪಾಯ. ಹೆಚ್ಚುವರಿ ನೀರನ್ನು ಒಯ್ಯಿರಿ ಮತ್ತು ಟೈರ್‌ಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ.',
         'Extreme heat risk. Carry extra water and check tyres.': 'ವಿಪರೀತ ಶಾಖದ ಅಪಾಯ. ಹೆಚ್ಚುವರಿ ನೀರನ್ನು ಒಯ್ಯಿರಿ ಮತ್ತು ಟೈರ್‌ಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ.',
         'Clear Skies': 'ಸ್ವಚ್ಛ ಆಕಾಶ',
-        'Heavy Rain': 'ಭಾರೀ ಮಳೆ',
+        'Heavy Rain': 'ಭಾರী ಮಳೆ',
         'Dense Fog': 'ದಟ್ಟವಾದ ಮಂಜು',
         'Thunderstorm': 'ಗುಡುಗು ಸಹಿತ ಮಳೆ',
         'Extreme Heat': 'ಅತಿಯಾದ ತಾಪಮಾನ'
@@ -79,8 +83,9 @@ const VOICE_TRANSLATIONS = {
         'Toll payment successful!': 'ടോൾ പേയ്മെന്റ് വിജയകരമായി!',
         'Optimal travel conditions.': 'അനുകൂല യാത്രാ സാഹചര്യങ്ങൾ.',
         'Slippery roads. Reduce speed by 20%.': 'വഴുക്കലുള്ള റോഡുകൾ. വേഗത 20% കുറയ്ക്കുക.',
-        'Low visibility. Use fog lights & hazard lamps.': 'കുറഞ്ഞ കാഴ്ചാ പരിധി. ഫോഗ് ലൈറ്റുകളും ഹസാർഡ് ലൈറ്റുകളും ഉപയോഗിക്കുക.',
+        'Low visibility. Use fog lights & hazard lamps.': 'കുറഞ്ഞ കാഴ്ചാ പരിധി. ഫോഗ് ലൈറ്റുകളും ഹസارڈ ലൈറ്റുകളും ഉപയോഗിക്കുക.',
         'High winds and lightning hazard. Proceed with caution.': 'ശക്തമായ കാറ്റും മിന്നൽ ഭയവും. ശ്രദ്ധയോടെ മുന്നോട്ട് പോവുക.',
+        'Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.': 'കടുത്ത ചൂട് ഭീഷണി. കൂടുതൽ വെള്ളം കരുതുക, ടയറുകൾ പരിശോധിക്കുക.',
         'Extreme heat risk. Carry extra water and check tyres.': 'കടുത്ത ചൂട് ഭീഷണി. കൂടുതൽ വെള്ളം കരുതുക, ടയറുകൾ പരിശോധിക്കുക.',
         'Clear Skies': 'തെളിഞ്ഞ ആകാശം',
         'Heavy Rain': 'ശക്തമായ മഴ',
@@ -116,20 +121,28 @@ const VoiceAssistant = {
         window.speechSynthesis.cancel();
         VoiceAssistant.isSpeaking = false;
 
-        // Retrieve user voice assistant language
         let targetLang = 'en-IN';
         if (window.Storage) {
             targetLang = Storage.get('nhai_voice_lang') || 'en-IN';
         }
         if (forceLang) targetLang = forceLang;
 
-        // Force Female gender only (Male options removed from the site)
-        const targetGender = 'female';
-        
+        const voices = await VoiceAssistant._getVoicesAsync();
+        if (voices.length === 0) {
+            console.warn("No TTS voices available.");
+            return;
+        }
+
+        // Self-healing check: Verify if the system has this specific language voice pack installed
+        let hasNativeVoice = voices.some(v => 
+            v.lang.toLowerCase() === targetLang.toLowerCase() || 
+            v.lang.toLowerCase().replace('_', '-').startsWith(targetLang.split('-')[0].toLowerCase())
+        );
+
         let finalText = text;
 
-        // Apply translations for regional Indian languages
-        if (targetLang !== 'en-IN' && VOICE_TRANSLATIONS[targetLang]) {
+        // Apply translations ONLY if the native voice engine supports it
+        if (hasNativeVoice && targetLang !== 'en-IN' && VOICE_TRANSLATIONS[targetLang]) {
             const dict = VOICE_TRANSLATIONS[targetLang];
             if (dict[text]) {
                 finalText = dict[text];
@@ -187,12 +200,11 @@ const VoiceAssistant = {
                     }
                 }
             }
-        }
-
-        const voices = await VoiceAssistant._getVoicesAsync();
-        if (voices.length === 0) {
-            console.warn("No TTS voices available.");
-            return;
+        } else {
+            // Force English fallback text if the native language voice pack is missing on the client OS/browser
+            // This prevents the TTS engine from trying to read Hindi/Telugu chars with an English voice (which results in silence)
+            targetLang = 'en-IN';
+            finalText = text;
         }
 
         // Voice selector matching lang code
@@ -202,15 +214,21 @@ const VoiceAssistant = {
         );
 
         if (availableVoices.length === 0) {
-            // Fallback to any matching Indian voice if primary language target failed
+            // Fallback to any Indian voice
             availableVoices = voices.filter(v => v.lang.toLowerCase().includes('in'));
         }
         if (availableVoices.length === 0) {
             availableVoices = voices;
         }
 
-        // Select female voice (fallback to first available)
-        let selectedVoice = availableVoices.find(v => v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('google'));
+        // Target high-quality local female speakers
+        let selectedVoice = availableVoices.find(v => 
+            v.name.toLowerCase().includes('female') || 
+            v.name.toLowerCase().includes('zira') || 
+            v.name.toLowerCase().includes('heera') || 
+            v.name.toLowerCase().includes('swara') ||
+            v.name.toLowerCase().includes('google')
+        );
         if (!selectedVoice) {
             selectedVoice = availableVoices[0];
         }
@@ -219,7 +237,7 @@ const VoiceAssistant = {
         utterance.voice = selectedVoice;
         utterance.lang = selectedVoice.lang;
         utterance.rate = 1;
-        utterance.pitch = 1.05; // Slightly higher pitch for clear assistant feedback
+        utterance.pitch = 1.05;
 
         utterance.onstart = () => { VoiceAssistant.isSpeaking = true; };
         utterance.onend = () => { VoiceAssistant.isSpeaking = false; };
