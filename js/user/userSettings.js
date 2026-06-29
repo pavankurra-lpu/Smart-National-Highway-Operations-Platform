@@ -19,9 +19,33 @@ const UserSettings = {
             if (savedPic && picPreview) {
                 picPreview.innerHTML = `<img src="${savedPic}" style="width:100%; height:100%; object-fit:cover;">`;
             }
+
+            const faceEnabled = Storage.get('nhai_face_auth_enabled', true);
+            const faceAuthCheckbox = document.getElementById('pref-face-auth');
+            if (faceAuthCheckbox) faceAuthCheckbox.checked = faceEnabled;
+
+            const faceInterval = Storage.get('nhai_face_auth_interval', 12);
+            const faceIntervalSelect = document.getElementById('pref-face-interval');
+            if (faceIntervalSelect) faceIntervalSelect.value = faceInterval;
         }
 
         // Event listeners
+        const faceAuthCheckbox = document.getElementById('pref-face-auth');
+        if (faceAuthCheckbox) {
+            faceAuthCheckbox.addEventListener('change', (e) => {
+                if (window.Storage) Storage.set('nhai_face_auth_enabled', e.target.checked);
+                if (window.Utils) Utils.showToast(`Face Authentication ${e.target.checked ? 'Enabled' : 'Disabled'}.`, 'info');
+            });
+        }
+
+        const faceIntervalSelect = document.getElementById('pref-face-interval');
+        if (faceIntervalSelect) {
+            faceIntervalSelect.addEventListener('change', (e) => {
+                if (window.Storage) Storage.set('nhai_face_auth_interval', parseFloat(e.target.value));
+                if (window.Utils) Utils.showToast(`Verification interval set.`, 'success');
+            });
+        }
+
         if (langSelect) {
             langSelect.addEventListener('change', (e) => {
                 if (window.Storage) Storage.set('nhai_voice_lang', e.target.value);

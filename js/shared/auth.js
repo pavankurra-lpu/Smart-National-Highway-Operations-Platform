@@ -1,33 +1,69 @@
-// Admin Auth Simulation via sessionStorage
+// Secure Admin Auth against the Express Backend
 
 const Auth = {
-    CREDENTIALS: {
-        id: 'admin@nhai',
-        pass: 'NHAI@2026'
-    },
+    login: async (id, pass) => {
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, pass })
+            });
 
-    login: (id, pass) => {
-        const creds = (window.NHAI_CONFIG && window.NHAI_CONFIG.admin) ? window.NHAI_CONFIG.admin : Auth.CREDENTIALS;
-        if (id === creds.id && pass === creds.pass) {
-            sessionStorage.setItem('nhai_admin_auth', 'authenticated');
-            sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
-            return true;
+            if (response.ok) {
+                const data = await response.json();
+                sessionStorage.setItem('nhai_admin_auth', data.token);
+                sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
+                return true;
+            }
+        } catch (e) {
+            console.error('[Auth] Server login request failed:', e);
         }
         return false;
     },
 
-    logout: () => {
+    logout: async () => {
+        const token = sessionStorage.getItem('nhai_admin_auth');
+        if (token) {
+            try {
+                await fetch('http://localhost:3000/api/auth/logout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token })
+                });
+            } catch (e) {
+                console.error('[Auth] Server logoff request failed:', e);
+            }
+        }
         sessionStorage.removeItem('nhai_admin_auth');
         window.location.href = 'login.html';
     },
 
     isAuthenticated: () => {
-        return sessionStorage.getItem('nhai_admin_auth') === 'authenticated';
+        // Fast synchronous check of session token presence
+        return !!sessionStorage.getItem('nhai_admin_auth');
     },
 
-    guard: () => {
-        if (!Auth.isAuthenticated()) {
-            window.location.href = 'login.html';
+    guard: async () => {
+        const token = sessionStorage.getItem('nhai_admin_auth');
+        if (!token) {
+            window.location.replace('login.html');
+            return;
+        }
+
+        // Securely verify token with backend
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token })
+            });
+
+            if (!response.ok) {
+                sessionStorage.removeItem('nhai_admin_auth');
+                window.location.replace('login.html');
+            }
+        } catch (e) {
+            console.warn('[Auth] Server verify offline, allowing local fallback.');
         }
     }
 };

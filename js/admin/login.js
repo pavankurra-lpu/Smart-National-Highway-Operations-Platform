@@ -22,8 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> VERIFYING...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                if (Auth.login(id, pass)) {
+            setTimeout(async () => {
+                const success = await Auth.login(id, pass);
+                if (success) {
                     window.location.href = 'index.html';
                 } else {
                     errorEl.innerText = "ACCESS DENIED. Invalid Credentials.";

@@ -36,6 +36,17 @@ const RealtimeService = {
             }
         });
 
+        // Listen for server-side database updates
+        RealtimeService.socket.on('db-update', (data) => {
+            const { key, value } = data;
+            const localVal = localStorage.getItem(key);
+            const newVal = JSON.stringify(value);
+            if (localVal !== newVal) {
+                localStorage.setItem(key, newVal);
+                window.dispatchEvent(new Event('local-storage-update'));
+            }
+        });
+
         RealtimeService.socket.on('disconnect', () => {
             console.log('[Realtime] Disconnected from server');
             Utils.showToast("Live server disconnected — alerts may be delayed", "warning");

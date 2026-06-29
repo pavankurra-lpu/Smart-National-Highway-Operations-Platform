@@ -419,6 +419,30 @@
                     </div>
                 </div>
 
+                <div class="pref-box" style="margin-bottom: 16px;">
+                    <p class="pref-label"><i class="fa-solid fa-face-smile"></i> Face Verification Security</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Require Verification</span>
+                            <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Prompt before starting trip / paying toll</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="pref-face-auth" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Verification Interval</span>
+                        </div>
+                        <select id="pref-face-interval" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
+                            <option value="12">Every 12 Hours</option>
+                            <option value="24">Every 24 Hours</option>
+                            <option value="0.0083">Every 30 Seconds (Demo)</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="pref-box">
                     <p class="pref-label"><i class="fa-solid fa-car"></i> Vehicle Management</p>
                     <div id="vehicle-garage-list" style="margin-top:8px;"></div>
@@ -709,6 +733,7 @@
     <script src="../js/user/tripAnalytics.js"></script>
     <script src="../js/user/userProfile.js"></script>
     <script src="../js/user/vehicleGarage.js"></script>
+    <script src="../js/user/faceAuth.js?v=2"></script>
     <script src="../js/user/userSettings.js"></script>
     <script src="../js/user/userApp.js?v=2"></script>
 </body>

@@ -847,9 +847,20 @@ const IndiaMapPlanner = {
     // ═══════════════════════════════════════════════════════════════
     // LIVE TRIP
     // ═══════════════════════════════════════════════════════════════
-    startLiveTrip: () => {
+    startLiveTrip: async () => {
         if (!IndiaMapPlanner.selectedRouteData) { Utils.showToast('Calculate a route first.', 'error'); return; }
         if (!IndiaMapPlanner.routeCoordinates.length) { Utils.showToast('No route geometry available.', 'error'); return; }
+
+        // Enforce Face Recognition security check
+        if (window.FaceAuth) {
+            try {
+                const verified = await FaceAuth.verify();
+                if (!verified) return;
+            } catch (e) {
+                console.error('[FaceAuth] Verification failed:', e);
+                return;
+            }
+        }
 
         const estimatedCost = IndiaMapPlanner.selectedRouteData?.totalTollCost || 0;
         const currentBalance = Storage.get(Storage.KEYS.FASTAG_BALANCE, 0);

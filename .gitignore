@@ -1,0 +1,16 @@
+# Dependency directories
+node_modules/
+backend/node_modules/
+
+# Local databases
+backend/db.json
+pdf_text.txt
+parsed_tolls.json
+append_tolls.py
+scratch_read_pdf.py
+
+# Logs and environment files
+*.log
+.env
+.env.*
+.DS_Store

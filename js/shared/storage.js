@@ -26,8 +26,38 @@ const Storage = {
 
     set: (key, value) => {
         localStorage.setItem(key, JSON.stringify(value));
-        // Cross-tab trigger manually for the current window just in case
         window.dispatchEvent(new Event('local-storage-update'));
+        
+        // Sync writing to backend asynchronously
+        Storage.syncToBackend(key, value);
+    },
+
+    syncToBackend: (key, value) => {
+        // Only attempt backend writes for simulation keys starting with nhai_
+        if (!key.startsWith('nhai_')) return;
+        
+        fetch('http://localhost:3000/api/db/update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ key, value })
+        }).catch(err => console.warn('[Storage] Backend write sync offline:', err));
+    },
+
+    syncFromBackend: () => {
+        try {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:3000/api/db', false); // Synchronous GET to block init until data is fetched
+            xhr.send();
+            if (xhr.status === 200) {
+                const dbData = JSON.parse(xhr.responseText);
+                for (const [key, val] of Object.entries(dbData)) {
+                    localStorage.setItem(key, JSON.stringify(val));
+                }
+                console.log('[Storage] Successfully synced state from backend');
+            }
+        } catch (e) {
+            console.warn('[Storage] Backend server unreachable. Falling back to local offline cache.');
+        }
     },
 
     initDefaults: () => {
@@ -156,5 +186,8 @@ const Storage = {
 
 window.Storage = Storage;
 
-// Initialize on load
+// Sync database from backend first
+Storage.syncFromBackend();
+
+// Initialize defaults on load
 Storage.initDefaults();
