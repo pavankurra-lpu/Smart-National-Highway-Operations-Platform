@@ -71,7 +71,7 @@ const VOICE_TRANSLATIONS = {
         'Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.': 'ವಿಪರೀತ ಶಾಖದ ಅಪಾಯ. ಹೆಚ್ಚುವರಿ ನೀರನ್ನು ಒಯ್ಯಿರಿ ಮತ್ತು ಟೈರ್‌ಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ.',
         'Extreme heat risk. Carry extra water and check tyres.': 'ವಿಪರೀತ ಶಾಖದ ಅಪಾಯ. ಹೆಚ್ಚುವರಿ ನೀರನ್ನು ಒಯ್ಯಿರಿ ಮತ್ತು ಟೈರ್‌ಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ.',
         'Clear Skies': 'ಸ್ವಚ್ಛ ಆಕಾಶ',
-        'Heavy Rain': 'ಭಾರী ಮಳೆ',
+        'Heavy Rain': 'ಭಾರೀ ಮಳೆ',
         'Dense Fog': 'ದಟ್ಟವಾದ ಮಂಜು',
         'Thunderstorm': 'ಗುಡುಗು ಸಹಿತ ಮಳೆ',
         'Extreme Heat': 'ಅತಿಯಾದ ತಾಪಮಾನ'
@@ -83,7 +83,7 @@ const VOICE_TRANSLATIONS = {
         'Toll payment successful!': 'ടോൾ പേയ്മെന്റ് വിജയകരമായി!',
         'Optimal travel conditions.': 'അനുകൂല യാത്രാ സാഹചര്യങ്ങൾ.',
         'Slippery roads. Reduce speed by 20%.': 'വഴുക്കലുള്ള റോഡുകൾ. വേഗത 20% കുറയ്ക്കുക.',
-        'Low visibility. Use fog lights & hazard lamps.': 'കുറഞ്ഞ കാഴ്ചാ പരിധി. ഫോഗ് ലൈറ്റുകളും ഹസارڈ ലൈറ്റുകളും ഉപയോഗിക്കുക.',
+        'Low visibility. Use fog lights & hazard lamps.': 'കുറഞ്ഞ കാഴ്ചാ പരിധി. ഫോഗ് ലൈറ്റുകളും ഹസാർഡ് ലൈറ്റുകളും ഉപയോഗിക്കുക.',
         'High winds and lightning hazard. Proceed with caution.': 'ശക്തമായ കാറ്റും മിന്നൽ ഭയവും. ശ്രദ്ധയോടെ മുന്നോട്ട് പോവുക.',
         'Extreme heat risk. Check tyres, coolant, and carry extra water. Rest every 2 hours.': 'കടുത്ത ചൂട് ഭീഷണി. കൂടുതൽ വെള്ളം കരുതുക, ടയറുകൾ പരിശോധിക്കുക.',
         'Extreme heat risk. Carry extra water and check tyres.': 'കടുത്ത ചൂട് ഭീഷണി. കൂടുതൽ വെള്ളം കരുതുക, ടയറുകൾ പരിശോധിക്കുക.',
@@ -127,22 +127,10 @@ const VoiceAssistant = {
         }
         if (forceLang) targetLang = forceLang;
 
-        const voices = await VoiceAssistant._getVoicesAsync();
-        if (voices.length === 0) {
-            console.warn("No TTS voices available.");
-            return;
-        }
-
-        // Self-healing check: Verify if the system has this specific language voice pack installed
-        let hasNativeVoice = voices.some(v => 
-            v.lang.toLowerCase() === targetLang.toLowerCase() || 
-            v.lang.toLowerCase().replace('_', '-').startsWith(targetLang.split('-')[0].toLowerCase())
-        );
-
         let finalText = text;
 
-        // Apply translations ONLY if the native voice engine supports it
-        if (hasNativeVoice && targetLang !== 'en-IN' && VOICE_TRANSLATIONS[targetLang]) {
+        // Apply translations for regional Indian languages (always translate text for targetLang)
+        if (targetLang !== 'en-IN' && VOICE_TRANSLATIONS[targetLang]) {
             const dict = VOICE_TRANSLATIONS[targetLang];
             if (dict[text]) {
                 finalText = dict[text];
@@ -200,12 +188,9 @@ const VoiceAssistant = {
                     }
                 }
             }
-        } else {
-            // Force English fallback text if the native language voice pack is missing on the client OS/browser
-            // This prevents the TTS engine from trying to read Hindi/Telugu chars with an English voice (which results in silence)
-            targetLang = 'en-IN';
-            finalText = text;
         }
+
+        const voices = await VoiceAssistant._getVoicesAsync();
 
         // Voice selector matching lang code
         let availableVoices = voices.filter(v => 
@@ -213,15 +198,15 @@ const VoiceAssistant = {
             v.lang.toLowerCase().replace('_', '-').startsWith(targetLang.split('-')[0].toLowerCase())
         );
 
+        // Fallback to any Indian voice pack if exact language match is not loaded locally
         if (availableVoices.length === 0) {
-            // Fallback to any Indian voice
             availableVoices = voices.filter(v => v.lang.toLowerCase().includes('in'));
         }
         if (availableVoices.length === 0) {
             availableVoices = voices;
         }
 
-        // Target high-quality local female speakers
+        // Target high-quality female speakers
         let selectedVoice = availableVoices.find(v => 
             v.name.toLowerCase().includes('female') || 
             v.name.toLowerCase().includes('zira') || 
@@ -234,9 +219,11 @@ const VoiceAssistant = {
         }
 
         const utterance = new SpeechSynthesisUtterance(finalText);
-        utterance.voice = selectedVoice;
-        utterance.lang = selectedVoice.lang;
-        utterance.rate = 1;
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+        }
+        utterance.lang = targetLang; // Forces browser online TTS to fetch/render correct accent
+        utterance.rate = 1.0;
         utterance.pitch = 1.05;
 
         utterance.onstart = () => { VoiceAssistant.isSpeaking = true; };
