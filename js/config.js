@@ -11,6 +11,7 @@ const NHAI_CONFIG = {
         defaultZoom: 5,
         minZoom: 4,
         maxZoom: 19,
+        worldCopyJump: true,
         // Soft India bounding box (enforced in UI)
         bounds: {
             north: 37.6,
@@ -24,16 +25,16 @@ const NHAI_CONFIG = {
     tiles: {
         satellite: {
             url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-            options: { maxZoom: 19, maxNativeZoom: 17, attribution: 'Tiles &copy; Esri' }
+            options: { maxZoom: 19, maxNativeZoom: 17, attribution: 'Tiles &copy; Esri', noWrap: false }
         },
         labels: {
             // Transparent label overlay on top of satellite
             url: 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png',
-            options: { maxZoom: 19, pane: 'shadowPane', opacity: 0.8 }
+            options: { maxZoom: 19, pane: 'shadowPane', opacity: 0.8, noWrap: false }
         },
         street: {
             url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-            options: { maxZoom: 20, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO' }
+            options: { maxZoom: 20, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO', noWrap: false }
         }
     },
 

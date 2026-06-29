@@ -44,6 +44,9 @@ const EmergencyReporter = {
                 }
 
                 Utils.showToast(`SOS Triggered! Admin notified. Ref NO: ${emergencyData.id}`);
+                if (window.Gamification) {
+                    Gamification.unlockAchievement('highway_guardian', 'Guardian', 200);
+                }
                 
                 // Clear Form
                 document.getElementById('sos-location').value = '';

@@ -341,7 +341,11 @@ const FaceAuth = {
 
         setTimeout(() => {
             modal.remove();
-            Utils.showToast('Face recognition identity verified!', 'success');
+            if (window.Gamification) {
+                Gamification.unlockAchievement('face_verified', 'Shield Guard');
+            } else {
+                Utils.showToast('Face recognition identity verified!', 'success');
+            }
             onSuccess(true);
         }, 1500);
     }

@@ -209,7 +209,12 @@ const TrafficControl = {
             const waitTime     = state === 'HIGH'     ? Math.floor(12  + r * 20)  :
                                  state === 'MODERATE' ? Math.floor(5   + r * 8)   :
                                                          Math.floor(1   + r * 3);
-            const revenue      = Math.floor(vehicleCount * (plaza.baseRate || 50) * (0.8 + r * 0.4));
+            let base = plaza.baseRate || 50;
+            if (base < 75) {
+                const seed = tId.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+                base = 90 + (seed % 191);
+            }
+            const revenue      = Math.floor(vehicleCount * base * (0.8 + r * 0.4));
             const congPct      = state === 'HIGH'     ? Math.floor(85  + r * 15)  :
                                  state === 'MODERATE' ? Math.floor(45  + r * 25)  :
                                                          Math.floor(10  + r * 20);

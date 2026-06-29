@@ -69,7 +69,8 @@ const IndiaMapPlanner = {
             zoomControl: false,
             attributionControl: false,
             center: cfg.map.defaultCenter,
-            zoom: cfg.map.defaultZoom
+            zoom: cfg.map.defaultZoom,
+            worldCopyJump: true
         });
 
         // ── Tile layers ────────────────────────────────────────────
@@ -915,6 +916,10 @@ const IndiaMapPlanner = {
     _renderServiceMarkers: (elements, categories) => {
         IndiaMapPlanner._clearServiceMarkers();
 
+        if (window.Gamification && elements.length > 0) {
+            Gamification.unlockAchievement('fuel_stop', 'Eco-Drive', 150);
+        }
+
         const catMap = {};
         categories.forEach(c => {
             const key = `${c.tags.split('=')[0]}=${c.tags.split('=')[1]}`;
@@ -999,6 +1004,10 @@ const IndiaMapPlanner = {
         const vType = document.getElementById('vehicle-type')?.value || 'LMV';
 
         Storage.logTripStart({ id: tripId, origin: IndiaMapPlanner.selectedRouteData.originName, dest: IndiaMapPlanner.selectedRouteData.destName, vehicleType: vType, isSpecial: IndiaMapPlanner.isSpecialVerified, timestamp: new Date().toISOString() });
+
+        if (window.Gamification) {
+            Gamification.unlockAchievement('first_trip', 'FASTag Hero', 250);
+        }
 
         Utils.toggleVisibility('btn-start-trip', false);
         Utils.toggleVisibility('btn-end-trip',   true);

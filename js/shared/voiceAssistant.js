@@ -1,4 +1,95 @@
-// NHAI Smart Highway Platform - Universal Local Voice Assistant
+// NHAI Smart Highway Platform - Universal Indian Languages Female Voice Assistant
+
+const VOICE_TRANSLATIONS = {
+    'hi-IN': {
+        'Demo biometric scan in progress.': 'डेमो बायोमेट्रिक स्कैन चल रहा है।',
+        'Demo biometric check complete.': 'डेमो बायोमेट्रिक जांच पूरी हुई।',
+        'Starting live journey...': 'लाइव यात्रा शुरू हो रही है...',
+        'Toll payment successful!': 'टोल भुगतान सफल रहा!',
+        'Optimal travel conditions.': 'यात्रा के लिए अनुकूल परिस्थितियां।',
+        'Slippery roads. Reduce speed by 20%.': 'फिसलन भरी सड़कें। गति २०% कम करें।',
+        'Low visibility. Use fog lights & hazard lamps.': 'कम दृश्यता। फॉग लाइट और हेज़र्ड लाइट का उपयोग करें।',
+        'High winds and lightning hazard. Proceed with caution.': 'तेज हवाएं और बिजली का खतरा। सावधानी से आगे बढ़ें।',
+        'Extreme heat risk. Carry extra water and check tyres.': 'अत्यधिक गर्मी का खतरा। अतिरिक्त पानी रखें और टायरों की जांच करें।',
+        'Please look directly at the scanner.': 'कृपया सीधे स्कैनर की ओर देखें।',
+        'Biometric check complete. Driver identity verified.': 'बायोमेट्रिक जांच पूरी हुई। चालक की पहचान सत्यापित की गई।',
+        'Real-time weather': 'वास्तविक समय मौसम',
+        'Live location tracking active': 'लाइव स्थान ट्रैकिंग सक्रिय',
+        'Alert:': 'चेतावनी:',
+        'Security verification completed successfully.': 'सुरक्षा सत्यापन सफलतापूर्वक पूरा हुआ।',
+        'Verification successful! Processing route...': 'सत्यापन सफल! मार्ग की प्रक्रिया की जा रही है...',
+        'Clear Skies': 'साफ मौसम',
+        'Heavy Rain': 'भारी बारिश',
+        'Dense Fog': 'घना कोहरा',
+        'Thunderstorm': 'गरज के साथ तूफान',
+        'Extreme Heat': 'अत्यधिक गर्मी'
+    },
+    'te-IN': {
+        'Demo biometric scan in progress.': 'డెమో బయోమెట్రిక్ స్కాన్ జరుగుతోంది.',
+        'Demo biometric check complete.': 'డెమో బయోమెట్రిక్ తనిఖీ పూర్తయింది.',
+        'Starting live journey...': 'లైవ్ ప్రయాణం ప్రారంభమవుతోంది...',
+        'Toll payment successful!': 'టోల్ చెల్లింపు విజయవంతమైంది!',
+        'Optimal travel conditions.': 'అనుకూల ప్రయాణ परिस्थितियों.',
+        'Slippery roads. Reduce speed by 20%.': 'జారే రోడ్లు. వేగాన్ని 20% తగ్గించండి.',
+        'Low visibility. Use fog lights & hazard lamps.': 'తక్కువ దృశ్యమానత. ఫాగ్ లైట్లు మరియు హజార్డ్ లైట్లు ఉపయోగించండి.',
+        'High winds and lightning hazard. Proceed with caution.': 'ఈదురు గాలులు మరియు మెరుపుల ప్రమాదం. జాగ్రత్తగా కొనసాగండి.',
+        'Extreme heat risk. Carry extra water and check tyres.': 'తీవ్రమైన ఎండ ప్రమాదం. అదనపు నీటిని తీసుకెళ్లండి మరియు టైర్లను తనిఖీ చేయండి.',
+        'Clear Skies': 'నిర్మలమైన ఆకాశం',
+        'Heavy Rain': 'భారీ వర్షం',
+        'Dense Fog': 'దట్టమైన పొగమంచు',
+        'Thunderstorm': 'పిడుగులతో కూడిన వర్షం',
+        'Extreme Heat': 'తీవ్రమైన వేడి'
+    },
+    'ta-IN': {
+        'Demo biometric scan in progress.': 'டெமோ பயோமெட்ரிக் ஸ்கேன் செயலில் உள்ளது.',
+        'Demo biometric check complete.': 'டெமோ பயோமெட்ரிக் சரிபார்ப்பு முடிந்தது.',
+        'Starting live journey...': 'நேரடி பயணம் தொடங்குகிறது...',
+        'Toll payment successful!': 'சுங்கக் கட்டணம் செலுத்தப்பட்டது!',
+        'Optimal travel conditions.': 'சாதகமான பயண நிலைமைகள்.',
+        'Slippery roads. Reduce speed by 20%.': 'வழுக்கும் சாலைகள். வேகத்தை 20% குறைக்கவும்.',
+        'Low visibility. Use fog lights & hazard lamps.': 'குறைந்த தெரிவுநிலை. பனி விளக்குகள் மற்றும் அபாய விளக்குகளைப் பயன்படுத்தவும்.',
+        'High winds and lightning hazard. Proceed with caution.': 'அதிவேக காற்று மற்றும் மின்னல் ஆபத்து. எச்சரிக்கையுடன் தொடரவும்.',
+        'Extreme heat risk. Carry extra water and check tyres.': 'அதிக வெப்ப அபாயம். கூடுதல் தண்ணீர் எடுத்துச் சென்று டயர்களைச் சரிபார்க்கவும்.',
+        'Clear Skies': 'தெளிவான வானம்',
+        'Heavy Rain': 'கனமழை',
+        'Dense Fog': 'அடர்ந்த பனிமூட்டம்',
+        'Thunderstorm': 'இடிமின்னல்',
+        'Extreme Heat': 'கடும் வெப்பம்'
+    },
+    'kn-IN': {
+        'Demo biometric scan in progress.': 'ಡೆಮೊ ಬಯೋಮೆಟ್ರಿಕ್ ಸ್ಕ್ಯಾನ್ ಪ್ರಗತಿಯಲ್ಲಿದೆ.',
+        'Demo biometric check complete.': 'ಡೆಮೊ ಬಯೋಮೆಟ್ರಿಕ್ ಪರಿಶೀಲನೆ ಪೂರ್ಣಗೊಂಡಿದೆ.',
+        'Starting live journey...': 'ಲೈವ್ ಪ್ರಯಾಣ ಪ್ರಾರಂಭವಾಗುತ್ತಿದೆ...',
+        'Toll payment successful!': 'ಟೋಲ್ ಪಾವತಿ ಯಶಸ್ವಿಯಾಗಿದೆ!',
+        'Optimal travel conditions.': 'ಅನುಕೂಲಕರ ಪ್ರಯಾಣದ ಪರಿಸ್ಥಿತಿಗಳು.',
+        'Slippery roads. Reduce speed by 20%.': 'ಜಾರುವ ರಸ್ತೆಗಳು. ವೇಗವನ್ನು 20% ರಷ್ಟು ಕಡಿಮೆ ಮಾಡಿ.',
+        'Low visibility. Use fog lights & hazard lamps.': 'ಕಡಿಮೆ ಗೋಚರತೆ. ಫಾಗ್ ಲೈಟ್‌ಗಳು ಮತ್ತು ಅಪಾಯದ ದೀಪಗಳನ್ನು ಬಳಸಿ.',
+        'High winds and lightning hazard. Proceed with caution.': 'ಬಲವಾದ ಗಾಳಿ ಮತ್ತು ಮಿಂಚಿನ ಅಪಾಯ. ಎಚ್ಚರಿಕೆಯಿಂದ ಮುಂದುವರಿಯಿರಿ.',
+        'Extreme heat risk. Carry extra water and check tyres.': 'ವಿಪರೀತ ಶಾಖದ ಅಪಾಯ. ಹೆಚ್ಚುವರಿ ನೀರನ್ನು ಒಯ್ಯಿರಿ ಮತ್ತು ಟೈರ್‌ಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ.',
+        'Clear Skies': 'ಸ್ವಚ್ಛ ಆಕಾಶ',
+        'Heavy Rain': 'ಭಾರೀ ಮಳೆ',
+        'Dense Fog': 'ದಟ್ಟವಾದ ಮಂಜು',
+        'Thunderstorm': 'ಗುಡುಗು ಸಹಿತ ಮಳೆ',
+        'Extreme Heat': 'ಅತಿಯಾದ ತಾಪಮಾನ'
+    },
+    'ml-IN': {
+        'Demo biometric scan in progress.': 'ഡെമോ ബയോമെട്രിക് സ്കാൻ പുരോഗമിക്കുന്നു.',
+        'Demo biometric check complete.': 'ഡെമോ ബയോമെട്രിക് പരിശോധന പൂർത്തിയായി.',
+        'Starting live journey...': 'യാത്ര ആരംഭിക്കുന്നു...',
+        'Toll payment successful!': 'ടോൾ പേയ്മെന്റ് വിജയകരമായി!',
+        'Optimal travel conditions.': 'അനുകൂല യാത്രാ സാഹചര്യങ്ങൾ.',
+        'Slippery roads. Reduce speed by 20%.': 'വഴുക്കലുള്ള റോഡുകൾ. വേഗത 20% കുറയ്ക്കുക.',
+        'Low visibility. Use fog lights & hazard lamps.': 'കുറഞ്ഞ കാഴ്ചാ പരിധി. ഫോഗ് ലൈറ്റുകളും ഹസാർഡ് ലൈറ്റുകളും ഉപയോഗിക്കുക.',
+        'High winds and lightning hazard. Proceed with caution.': 'ശക്തമായ കാറ്റും മിന്നൽ ഭയവും. ശ്രദ്ധയോടെ മുന്നോട്ട് പോവുക.',
+        'Extreme heat risk. Carry extra water and check tyres.': 'കടുത്ത ചൂട് ഭീഷണി. കൂടുതൽ വെള്ളം കരുതുക, ടയറുകൾ പരിശോധിക്കുക.',
+        'Clear Skies': 'തെളിഞ്ഞ ആകാശം',
+        'Heavy Rain': 'ശക്തമായ മഴ',
+        'Dense Fog': 'കനത്ത മൂടൽമഞ്ഞ്',
+        'Thunderstorm': 'ഇടിമിന്നൽ',
+        'Extreme Heat': 'കഠിനമായ ചൂട്'
+    }
+};
+
 const VoiceAssistant = {
     isSpeaking: false,
     
@@ -9,12 +100,10 @@ const VoiceAssistant = {
                 resolve(voices);
                 return;
             }
-            // VOICE LOADING FIX: Wait for voices to load asynchronously
             window.speechSynthesis.onvoiceschanged = () => {
                 voices = window.speechSynthesis.getVoices();
                 resolve(voices);
             };
-            // Safety timeout
             setTimeout(() => {
                 resolve(window.speechSynthesis.getVoices());
             }, 1000);
@@ -24,68 +113,113 @@ const VoiceAssistant = {
     speak: async (text, forceLang) => {
         if (!window.speechSynthesis) return;
 
-        // SAFE SPEECH EXECUTION: Cancel previous speech immediately
         window.speechSynthesis.cancel();
         VoiceAssistant.isSpeaking = false;
 
-        let targetLang = 'en-IN'; // Force English only
-
-        let targetGender = 'female';
+        // Retrieve user voice assistant language
+        let targetLang = 'en-IN';
         if (window.Storage) {
-            targetGender = Storage.get('nhai_voice_gender') || 'female';
+            targetLang = Storage.get('nhai_voice_lang') || 'en-IN';
         }
+        if (forceLang) targetLang = forceLang;
+
+        // Force Female gender only (Male options removed from the site)
+        const targetGender = 'female';
         
-        // LANGUAGE OUTPUT RULE: No cloud translation, text remains exactly as provided
         let finalText = text;
 
-        // Wait for voices
-        const voices = await VoiceAssistant._getVoicesAsync();
+        // Apply translations for regional Indian languages
+        if (targetLang !== 'en-IN' && VOICE_TRANSLATIONS[targetLang]) {
+            const dict = VOICE_TRANSLATIONS[targetLang];
+            if (dict[text]) {
+                finalText = dict[text];
+            } else {
+                // Dynamic translation matcher: "The current weather at your origin is X degrees with Y. Z"
+                const weatherMatch = text.match(/The current weather at your (origin|destination) is (\d+) degrees with ([^.]+)\.\s*(.+)/i);
+                if (weatherMatch) {
+                    const placeType = weatherMatch[1];
+                    const temp = weatherMatch[2];
+                    const condition = weatherMatch[3].trim();
+                    const advisory = weatherMatch[4].trim();
+                    
+                    const placeTrans = targetLang === 'hi-IN' ? (placeType === 'origin' ? 'प्रस्थान स्थान' : 'गंतव्य स्थान') : 
+                                      targetLang === 'te-IN' ? (placeType === 'origin' ? 'ప్రారంభ స్థానం' : 'గమ్యస్థానం') :
+                                      targetLang === 'ta-IN' ? (placeType === 'origin' ? 'தொடக்க இடம்' : 'சேருமிடம்') :
+                                      targetLang === 'kn-IN' ? (placeType === 'origin' ? 'ಪ್ರಾರಂಭದ ಸ್ಥಳ' : 'ಗಮ್ಯಸ್ಥಾನ') :
+                                      targetLang === 'ml-IN' ? (placeType === 'origin' ? 'തുടങ്ങുന്ന സ്ഥലം' : 'ലക്ഷ്യസ്ഥാനം') : placeType;
+                    
+                    const condTrans = dict[condition] || condition;
+                    const advTrans = dict[advisory] || advisory;
+                    
+                    if (targetLang === 'hi-IN') {
+                        finalText = `आपके ${placeTrans} पर वर्तमान मौसम ${temp} डिग्री के साथ ${condTrans} है। ${advTrans}`;
+                    } else if (targetLang === 'te-IN') {
+                        finalText = `మీ ${placeTrans} వద్ద ప్రస్తుత వాతావరణం ${temp} డిగ్రీలు మరియు ${condTrans}. ${advTrans}`;
+                    } else if (targetLang === 'ta-IN') {
+                        finalText = `உங்கள் ${placeTrans}ல் தற்போதைய வானிலை ${temp} டிகிரி மற்றும் ${condTrans}. ${advTrans}`;
+                    } else if (targetLang === 'kn-IN') {
+                        finalText = `ನಿಮ್ಮ ${placeTrans}ದಲ್ಲಿ ಈಗಿನ ವಾತಾವರಣ ${temp} ಡಿಗ್ರಿ ಮತ್ತು ${condTrans}. ${advTrans}`;
+                    } else if (targetLang === 'ml-IN') {
+                        finalText = `നിങ്ങളുടെ ${placeTrans}ലെ ഇപ്പോഴത്തെ കാലാവസ്ഥ ${temp} ഡിഗ്രിയും ${condTrans} ആണ്. ${advTrans}`;
+                    }
+                }
+                
+                // Dynamic selection matcher: "You have selected origin place as Delhi."
+                const selectionMatch = text.match(/You have selected (origin|destination) place as ([^.]+)/i);
+                if (selectionMatch) {
+                    const placeType = selectionMatch[1];
+                    const cityName = selectionMatch[2];
+                    const placeTrans = targetLang === 'hi-IN' ? (placeType === 'origin' ? 'प्रस्थान स्थान' : 'गंतव्य स्थान') : 
+                                      targetLang === 'te-IN' ? (placeType === 'origin' ? 'ప్రారంభ స్థానం' : 'గమ్యస్థానం') :
+                                      targetLang === 'ta-IN' ? (placeType === 'origin' ? 'தொடக்க இடம்' : 'சேருமிடம்') :
+                                      targetLang === 'kn-IN' ? (placeType === 'origin' ? 'ಪ್ರಾರಂಭದ ಸ್ಥಳ' : 'ಗಮ್ಯಸ್ಥಾನ') :
+                                      targetLang === 'ml-IN' ? (placeType === 'origin' ? 'തുടങ്ങുന്ന സ്ഥലം' : 'ലക്ഷ്യസ്ഥാനം') : placeType;
+                    if (targetLang === 'hi-IN') {
+                        finalText = `आपने ${placeTrans} के रूप में ${cityName} को चुना है।`;
+                    } else if (targetLang === 'te-IN') {
+                        finalText = `మీరు ${placeTrans}గా ${cityName}ని ఎంచుకున్నారు.`;
+                    } else if (targetLang === 'ta-IN') {
+                        finalText = `நீங்கள் ${placeTrans}ஆக ${cityName}ஐத் தேர்ந்தெடுத்துள்ளீர்கள்.`;
+                    } else if (targetLang === 'kn-IN') {
+                        finalText = `ನೀವು ${placeTrans}ವಾಗಿ ${cityName} ಆಯ್ಕೆ ಮಾಡಿದ್ದೀರಿ.`;
+                    } else if (targetLang === 'ml-IN') {
+                        finalText = `നിങ്ങൾ ${placeTrans} ആയി ${cityName} തിരഞ്ഞെടുത്തിരിക്കുന്നു.`;
+                    }
+                }
+            }
+        }
 
+        const voices = await VoiceAssistant._getVoicesAsync();
         if (voices.length === 0) {
-            console.warn("No TTS voices available on this device.");
+            console.warn("No TTS voices available.");
             return;
         }
 
-
-
-        // VOICE SELECTION ENGINE
-        // 1. Try exact or partial language match
+        // Voice selector matching lang code
         let availableVoices = voices.filter(v => 
             v.lang.toLowerCase() === targetLang.toLowerCase() || 
             v.lang.toLowerCase().replace('_', '-').startsWith(targetLang.split('-')[0].toLowerCase())
         );
 
-        // 2. If NOT found, fallback to ANY available voice
         if (availableVoices.length === 0) {
-            console.warn(`${targetLang} voice not available, using fallback`);
-            availableVoices = voices; 
+            // Fallback to any matching Indian voice if primary language target failed
+            availableVoices = voices.filter(v => v.lang.toLowerCase().includes('in'));
+        }
+        if (availableVoices.length === 0) {
+            availableVoices = voices;
         }
 
-        // 3. MALE VOICE HANDLING (OPTIONAL)
-        let selectedVoice = null;
-        if (targetGender === 'male') {
-            selectedVoice = availableVoices.find(v => v.name.toLowerCase().includes('male'));
-            if (!selectedVoice) {
-                console.warn("Male voice not available, using fallback");
-            }
-        } 
-        
-        // Try female if male not found or not requested
-        if (!selectedVoice) {
-            selectedVoice = availableVoices.find(v => v.name.toLowerCase().includes('female'));
-        }
-
-        // ABSOLUTE RULE: System MUST ALWAYS select a voice
+        // Select female voice (fallback to first available)
+        let selectedVoice = availableVoices.find(v => v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('google'));
         if (!selectedVoice) {
             selectedVoice = availableVoices[0];
         }
 
-        // SAFE SPEECH EXECUTION: Create utterance and speak
         const utterance = new SpeechSynthesisUtterance(finalText);
         utterance.voice = selectedVoice;
         utterance.lang = selectedVoice.lang;
         utterance.rate = 1;
-        utterance.pitch = 1;
+        utterance.pitch = 1.05; // Slightly higher pitch for clear assistant feedback
 
         utterance.onstart = () => { VoiceAssistant.isSpeaking = true; };
         utterance.onend = () => { VoiceAssistant.isSpeaking = false; };
@@ -100,7 +234,6 @@ const VoiceAssistant = {
 
 window.VoiceAssistant = VoiceAssistant;
 
-// Ensure voices are loaded early
 if (window.speechSynthesis) {
     VoiceAssistant._getVoicesAsync();
 }

@@ -205,6 +205,47 @@
                         <i class="fa-solid fa-chart-pie"></i> Trip Analytics Dashboard
                     </h3>
 
+                    <!-- Driver XP Level & Badges (Gamified Section) -->
+                    <div class="glass-panel" style="padding: 15px; margin-bottom: 20px; border: 1px solid rgba(100,255,218,0.15); box-shadow: 0 0 10px rgba(100,255,218,0.05); position: relative; overflow: hidden;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <div>
+                                <span style="font-size: 9px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Driver Level</span>
+                                <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 14px; font-weight: 800; color: #fff;">Level 1 Highway Cadet</h4>
+                            </div>
+                            <div id="gamified-lvl-badge" style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: #021a12; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; box-shadow: 0 0 8px var(--primary);">1</div>
+                        </div>
+                        
+                        <!-- XP progress bar -->
+                        <div style="font-size: 10px; color: var(--text-sec); display:flex; justify-content:space-between; margin-bottom:4px;">
+                            <span id="gamified-xp-text">150 / 500 XP</span>
+                            <span id="gamified-xp-pct">30%</span>
+                        </div>
+                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin-bottom: 15px;">
+                            <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: var(--primary); box-shadow: 0 0 8px var(--primary); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+                        </div>
+
+                        <!-- Achievements Grid -->
+                        <p style="font-size: 10px; font-weight: 700; color: var(--text-sec); margin-top: 0; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Unlocked Badges</p>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                            <div id="badge-face_verified" class="achievement-badge locked" title="Shield Guard: Complete face verification (+200 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
+                                <div style="font-size: 20px; margin-bottom: 4px;">🛡️</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Shield</span>
+                            </div>
+                            <div id="badge-first_trip" class="achievement-badge locked" title="FASTag Hero: Complete your first highway journey (+250 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
+                                <div style="font-size: 20px; margin-bottom: 4px;">⚡</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Hero</span>
+                            </div>
+                            <div id="badge-fuel_stop" class="achievement-badge locked" title="Eco-Drive: Explore service station markers (+150 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
+                                <div style="font-size: 20px; margin-bottom: 4px;">🌱</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Eco</span>
+                            </div>
+                            <div id="badge-highway_guardian" class="achievement-badge locked" title="Guardian: File an emergency SOS alert (+200 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
+                                <div style="font-size: 20px; margin-bottom: 4px;">🚨</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Guardian</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Stats Cards -->
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
                         <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid var(--border-light); text-align: center;">
@@ -373,15 +414,19 @@
 
                 <!-- AI Voice Assistant -->
                 <div class="pref-box" style="margin-bottom: 16px;">
-                    <p class="pref-label"><i class="fa-solid fa-microphone"></i> AI Voice Assistant</p>
-                    <input type="hidden" id="pref-voice-lang" value="en-IN">
+                    <p class="pref-label"><i class="fa-solid fa-microphone"></i> AI Voice Assistant (Female)</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Voice Type</span>
+                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Assistant Language</span>
+                            <p style="font-size: 9px; color: var(--text-muted); margin-top:2px;">Speak reports in regional language</p>
                         </div>
-                        <select id="pref-voice-gender" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
-                            <option value="female">Female</option>
-                            <option value="male">Male</option>
+                        <select id="pref-voice-lang" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
+                            <option value="en-IN">English (India)</option>
+                            <option value="hi-IN">Hindi (हिंदी)</option>
+                            <option value="te-IN">Telugu (తెలుగు)</option>
+                            <option value="ta-IN">Tamil (தமிழ்)</option>
+                            <option value="kn-IN">Kannada (ಕನ್ನಡ)</option>
+                            <option value="ml-IN">Malayalam (മലയാളം)</option>
                         </select>
                     </div>
                 </div>
@@ -799,6 +844,7 @@
     <script src="../js/user/userProfile.js"></script>
     <script src="../js/user/vehicleGarage.js"></script>
     <script src="../js/user/faceAuth.js?v=2"></script>
+    <script src="../js/user/gamification.js"></script>
     <script src="../js/user/userSettings.js"></script>
     <script src="../js/user/userApp.js?v=2"></script>
 </body>

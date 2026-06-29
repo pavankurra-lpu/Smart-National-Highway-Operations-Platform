@@ -108,7 +108,8 @@ const AdminApp = {
             zoomControl: true,
             attributionControl: true,
             center: [20.5937, 78.9629],
-            zoom: 5
+            zoom: 5,
+            worldCopyJump: true
         });
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
