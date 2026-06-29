@@ -465,22 +465,30 @@ const IndiaMapPlanner = {
             { color: '#10b981', weight: 5, opacity: 0.85, dashArray: '6 4' }   // alt2 — green dashed
         ];
 
-        // Draw primary route FIRST (underneath)
+        // Selected route is always solid blue, alternate routes are styled separately
         const primary = routes[index];
         const coords  = primary.geometry.coordinates; // [[lng, lat], …]
         const primaryLatLngs = coords.map(p => [p[1], p[0]]);
 
-        const primaryPoly = L.polyline(primaryLatLngs, { ...routeStyles[0], lineJoin: 'round' })
+        const primaryPoly = L.polyline(primaryLatLngs, { color: '#3b82f6', weight: 7, opacity: 1.0, lineJoin: 'round' })
             .addTo(IndiaMapPlanner.map);
         primaryPoly.bindTooltip('Selected Route', { permanent: false, sticky: true });
         IndiaMapPlanner.routePolylines.push(primaryPoly);
 
-        // Draw alternate routes on top
+        // Define distinct styling templates for unselected alternate routes
+        const altStyles = [
+            { color: '#f59e0b', weight: 5, opacity: 0.85, dashArray: '10 5' }, // Alt 1: Amber dashed
+            { color: '#10b981', weight: 5, opacity: 0.85, dashArray: '6 4' }   // Alt 2: Green dashed
+        ];
+
+        let altStyleIndex = 0;
         routes.forEach((r, i) => {
             if (i === index) return;
             const altLatLngs = r.geometry.coordinates.map(p => [p[1], p[0]]);
-            const style   = routeStyles[i] || routeStyles[2];
-            const poly    = L.polyline(altLatLngs, { ...style, lineJoin: 'round' })
+            const style = altStyles[altStyleIndex] || altStyles[1];
+            altStyleIndex++;
+
+            const poly = L.polyline(altLatLngs, { ...style, lineJoin: 'round' })
                 .addTo(IndiaMapPlanner.map);
 
             // Click → switch to this route

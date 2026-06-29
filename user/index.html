@@ -456,6 +456,10 @@
                             <optgroup label="Standard"><option value="LMV">Car / Jeep / Van (LMV)</option><option value="LCV">Light Commercial Vehicle</option><option value="BUS_2AXLE">Bus / Truck (2 Axles)</option><option value="COM_3AXLE">Commercial (3 Axles)</option><option value="MAV_4_6">MAV (4-6 Axles)</option><option value="OVERSIZED">Oversized (7+ Axles)</option></optgroup>
                             <optgroup label="Priority / Exempt"><option value="GOVT">Government</option><option value="ARMY">Army / Defense</option><option value="AMBULANCE">Ambulance</option><option value="FIRE">Fire &amp; Rescue</option><option value="POLICE">Police</option></optgroup>
                         </select>
+                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                            <input type="checkbox" id="garage-require-face" style="width:auto; margin:0;">
+                            <label for="garage-require-face" style="font-size:11px; color:var(--text-sec); cursor:pointer;">Require Face Verification for this vehicle</label>
+                        </div>
                         <button id="btn-add-vehicle" class="btn btn-primary w-full" style="justify-content:center; font-size:12px;">
                             <i class="fa-solid fa-garage"></i> &nbsp;Save Vehicle
                         </button>

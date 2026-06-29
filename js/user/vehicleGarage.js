@@ -17,7 +17,7 @@ const VehicleGarage = {
         return VehicleGarage.getAll().find(v => v.id === id) || null;
     },
 
-    add: (nickname, regNumber, vehicleType) => {
+    add: (nickname, regNumber, vehicleType, requireFaceAuth) => {
         const vehicles = VehicleGarage.getAll();
         if (vehicles.length >= 5) {
             Utils.showToast('Maximum 5 vehicles allowed per account.', 'error');
@@ -33,6 +33,7 @@ const VehicleGarage = {
             nickname:    nickname.trim(),
             regNumber:   regNumber.trim().toUpperCase(),
             vehicleType: vehicleType,
+            requireFaceAuth: !!requireFaceAuth,
             addedAt:     new Date().toISOString()
         };
         vehicles.push(newVehicle);
@@ -81,6 +82,7 @@ const VehicleGarage = {
         const nickname    = (document.getElementById('garage-nickname')?.value || '').trim();
         const regNumber   = (document.getElementById('garage-reg')?.value || '').trim();
         const vehicleType = document.getElementById('garage-type')?.value || 'LMV';
+        const requireFace = document.getElementById('garage-require-face')?.checked || false;
 
         if (!nickname) {
             Utils.showToast('Enter a nickname, e.g. "My Swift" or "Papa\'s Car".', 'error');
@@ -96,10 +98,11 @@ const VehicleGarage = {
             Utils.showToast('Enter a valid registration number (e.g. DL01AB1234).', 'error');
             return;
         }
-        const success = VehicleGarage.add(nickname, regNumber, vehicleType);
+        const success = VehicleGarage.add(nickname, regNumber, vehicleType, requireFace);
         if (success) {
             document.getElementById('garage-nickname').value = '';
             document.getElementById('garage-reg').value = '';
+            document.getElementById('garage-require-face').checked = false;
             VehicleGarage.render();
             // Collapse the add form
             const form = document.getElementById('garage-add-form');
@@ -171,6 +174,7 @@ const VehicleGarage = {
                         display:flex; align-items:center; gap:6px;
                     ">
                         ${v.nickname}
+                        ${v.requireFaceAuth ? '<i class="fa-solid fa-face-viewfinder" style="color:var(--primary); font-size:11px;" title="Face Verification Required"></i>' : ''}
                         ${isActive ? '<span style="font-size:8px;background:var(--primary);color:#021a12;padding:2px 5px;border-radius:3px;font-weight:800;letter-spacing:0.5px;">ACTIVE</span>' : ''}
                     </div>
                     <div style="font-size:10px; color:var(--text-muted); margin-top:2px;">

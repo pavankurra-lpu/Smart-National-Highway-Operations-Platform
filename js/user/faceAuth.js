@@ -15,7 +15,16 @@ const FaceAuth = {
     },
 
     isVerificationRequired: () => {
-        const enabled = Storage.get('nhai_face_auth_enabled', true);
+        let enabled = Storage.get('nhai_face_auth_enabled', true);
+        
+        // If a specific active vehicle is selected, override global setting
+        if (window.VehicleGarage) {
+            const activeVeh = VehicleGarage.getActive();
+            if (activeVeh && activeVeh.requireFaceAuth !== undefined) {
+                enabled = activeVeh.requireFaceAuth;
+            }
+        }
+
         if (!enabled) return false;
 
         const lastAuthTime = Storage.get('nhai_face_auth_time');

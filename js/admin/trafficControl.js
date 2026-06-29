@@ -1,9 +1,11 @@
-// Enhanced Traffic and Congestion Admin Control
+// Enhanced Traffic and Congestion Admin Control with GPS Local Filtering
 
 const TrafficControl = {
     currentPage: 0,
     pageSize: 25,
     filteredData: [],
+    useGpsFilter: false,
+    gpsCoords: null,
 
     init: () => {
         TrafficControl.populateStateFilter();
@@ -27,8 +29,73 @@ const TrafficControl = {
             if (TrafficControl.currentPage < maxPage) { TrafficControl.currentPage++; TrafficControl.renderGrid(); }
         });
 
+        // GPS Geolocation Filter Button
+        const gpsBtn = document.getElementById('btn-gps-filter');
+        if (gpsBtn) {
+            gpsBtn.addEventListener('click', () => {
+                TrafficControl.useGpsFilter = !TrafficControl.useGpsFilter;
+                
+                if (TrafficControl.useGpsFilter) {
+                    gpsBtn.style.background = 'var(--primary)';
+                    gpsBtn.style.color = '#021a12';
+                    gpsBtn.style.borderColor = 'var(--primary)';
+                    
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (pos) => {
+                                const lat = pos.coords.latitude;
+                                const lng = pos.coords.longitude;
+                                
+                                // Bounding box verify (India limits)
+                                const inIndia = lat >= 6.5 && lat <= 37.6 && lng >= 68.0 && lng <= 97.5;
+                                if (inIndia) {
+                                    TrafficControl.gpsCoords = { lat, lng };
+                                    Utils.showToast('GPS active: Showing local toll plazas.', 'success');
+                                } else {
+                                    // Fallback mock center: Jaipur/Delhi area toll plazas
+                                    TrafficControl.gpsCoords = { lat: 26.9124, lng: 75.7873 };
+                                    Utils.showToast('GPS outside India. Simulating local location in Jaipur.', 'info');
+                                }
+                                TrafficControl.currentPage = 0;
+                                TrafficControl.applyFilters();
+                            },
+                            (err) => {
+                                TrafficControl.gpsCoords = { lat: 26.9124, lng: 75.7873 };
+                                Utils.showToast('GPS access blocked. Simulating location in Jaipur.', 'info');
+                                TrafficControl.currentPage = 0;
+                                TrafficControl.applyFilters();
+                            }
+                        );
+                    } else {
+                        TrafficControl.gpsCoords = { lat: 26.9124, lng: 75.7873 };
+                        Utils.showToast('GPS unsupported. Simulating location in Jaipur.', 'info');
+                        TrafficControl.currentPage = 0;
+                        TrafficControl.applyFilters();
+                    }
+                } else {
+                    gpsBtn.style.background = 'rgba(255, 255, 255, 0.05)';
+                    gpsBtn.style.color = '#fff';
+                    gpsBtn.style.borderColor = 'var(--border)';
+                    TrafficControl.gpsCoords = null;
+                    TrafficControl.currentPage = 0;
+                    TrafficControl.applyFilters();
+                }
+            });
+        }
+
         // Refresh stats periodically
         setInterval(() => TrafficControl.updateStats(), 5000);
+    },
+
+    calcDistance: (lat1, lon1, lat2, lon2) => {
+        const R = 6371; // km
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon/2) * Math.sin(dLon/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
     },
 
     populateStateFilter: () => {
@@ -62,6 +129,26 @@ const TrafficControl = {
                 const cong = currentStates[plaza.id]?.congestion || 'NORMAL';
                 if (cong !== congF) return false;
             }
+            
+            // GPS local distance restriction filter
+            if (TrafficControl.useGpsFilter && TrafficControl.gpsCoords) {
+                const plazaLat = plaza.lat || 0;
+                const plazaLng = plaza.lng || 0;
+                // If plaza coords are mock, treat as distance-eligible for demo stability
+                if (plazaLat !== 0 && plazaLng !== 0) {
+                    const dist = TrafficControl.calcDistance(
+                        TrafficControl.gpsCoords.lat, 
+                        TrafficControl.gpsCoords.lng, 
+                        plazaLat, 
+                        plazaLng
+                    );
+                    if (dist > 150) return false; // Only local Plazas within 150 km
+                } else if (TrafficControl.gpsCoords.lat !== 26.9124) {
+                    // Filter out untracked coordinate plazas if using real GPS to avoid confusion
+                    return false;
+                }
+            }
+            
             return true;
         });
 
@@ -103,7 +190,7 @@ const TrafficControl = {
         if (pageInfo) pageInfo.innerText = data.length > 0 ? `Showing ${start + 1}–${end} of ${data.length}` : 'No results';
 
         if (page.length === 0) {
-            grid.innerHTML = '<div style="color:var(--text-sec); font-size:12px; padding:20px; text-align:center;">No Toll Plazas Match Criteria</div>';
+            grid.innerHTML = '<div style="color:var(--text-sec); font-size:12px; padding:40px; text-align:center;"><i class="fa-solid fa-circle-exclamation" style="font-size: 24px; color: var(--border); display:block; margin-bottom:10px;"></i>No Toll Plazas Match Criteria</div>';
             return;
         }
 
@@ -113,69 +200,109 @@ const TrafficControl = {
             const state = currentStates[tId]?.congestion || 'NORMAL';
             const lanes = currentStates[tId]?.lanes || { total: 6, open: 6 };
             
-            // Simulated live data
             const seed = plaza.id.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-            const r = (seed % 97) / 97;  // 0.0 to 1.0, stable per plaza
+            const r = (seed % 97) / 97;
 
             const vehicleCount = state === 'HIGH'     ? Math.floor(80  + r * 120) :
                                  state === 'MODERATE' ? Math.floor(30  + r * 50)  :
-                                                        Math.floor(5   + r * 25);
+                                                         Math.floor(5   + r * 25);
             const waitTime     = state === 'HIGH'     ? Math.floor(12  + r * 20)  :
                                  state === 'MODERATE' ? Math.floor(5   + r * 8)   :
-                                                        Math.floor(1   + r * 3);
+                                                         Math.floor(1   + r * 3);
             const revenue      = Math.floor(vehicleCount * (plaza.baseRate || 50) * (0.8 + r * 0.4));
             const congPct      = state === 'HIGH'     ? Math.floor(85  + r * 15)  :
                                  state === 'MODERATE' ? Math.floor(45  + r * 25)  :
-                                                        Math.floor(10  + r * 20);
+                                                         Math.floor(10  + r * 20);
             
-            const congColors = { NORMAL: '#64ffda', MODERATE: '#fcd34d', HIGH: '#ff5e5e' };
+            const congColors = { NORMAL: '#10b981', MODERATE: '#fcd34d', HIGH: '#ff5e5e' };
             const congColor = congColors[state];
 
+            // Render cool modern card layouts with glassmorphic elements
             html += `
-                <div class="tc-card" style="border-left: 3px solid ${congColor};">
-                    <div class="tc-card-header">
+                <div class="tc-card" style="
+                    background: rgba(20, 25, 20, 0.45);
+                    border: 1px solid rgba(255,255,255,0.04);
+                    border-left: 4px solid ${congColor};
+                    border-radius: 12px;
+                    padding: 16px;
+                    margin-bottom: 12px;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.2)';">
+                    
+                    <!-- Header -->
+                    <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom: 12px;">
                         <div>
-                            <h4 class="tc-plaza-name" title="${plaza.name}">${plaza.name}</h4>
-                            <div class="tc-meta">${tId} · ${plaza.state} · ${plaza.type}</div>
+                            <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3;">${plaza.name}</h4>
+                            <div style="font-size: 10px; color: var(--text-sec); margin-top: 3px; letter-spacing: 0.5px;">
+                                ${tId} · <span style="text-transform: uppercase;">${plaza.state}</span>
+                            </div>
                         </div>
-                        <div class="tc-live-badge" style="color: ${congColor};">● ${state}</div>
-                    </div>
-
-                    <!-- Live Metrics -->
-                    <div class="tc-metrics">
-                        <div class="tc-metric">
-                            <span class="tc-metric-label">Vehicles</span>
-                            <span class="tc-metric-val">${vehicleCount}</span>
-                        </div>
-                        <div class="tc-metric">
-                            <span class="tc-metric-label">Avg Wait</span>
-                            <span class="tc-metric-val">${waitTime}m</span>
-                        </div>
-                        <div class="tc-metric">
-                            <span class="tc-metric-label">Revenue</span>
-                            <span class="tc-metric-val" style="color:var(--primary);">₹${revenue.toLocaleString()}</span>
-                        </div>
-                        <div class="tc-metric">
-                            <span class="tc-metric-label">Lanes</span>
-                            <span class="tc-metric-val">${lanes.open}/${lanes.total}</span>
+                        <div style="
+                            font-size: 9px; font-weight: 800; text-transform: uppercase;
+                            color: ${congColor}; background: ${congColor}15;
+                            padding: 3px 8px; border-radius: 6px; border: 1px solid ${congColor}30;
+                            display: flex; align-items: center; gap: 4px;
+                        ">
+                            <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${congColor};"></span>
+                            ${state}
                         </div>
                     </div>
 
-                    <!-- Congestion Bar -->
-                    <div class="tc-cong-bar-wrap">
-                        <div class="tc-cong-bar" style="width: ${congPct}%; background: ${congColor};"></div>
+                    <!-- Live Stats Details -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 12px; background: rgba(0,0,0,0.25); padding: 8px; border-radius: 6px;">
+                        <div style="text-align: center;">
+                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Vehicles</span>
+                            <span style="font-size:12px; font-weight:700; color:#fff;">${vehicleCount}</span>
+                        </div>
+                        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.05);">
+                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Wait</span>
+                            <span style="font-size:12px; font-weight:700; color:#fff;">${waitTime}m</span>
+                        </div>
+                        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.05);">
+                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Revenue</span>
+                            <span style="font-size:12px; font-weight:700; color:var(--primary);">₹${revenue}</span>
+                        </div>
+                        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.05);">
+                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Lanes</span>
+                            <span style="font-size:12px; font-weight:700; color:#fff;">${lanes.open}/${lanes.total}</span>
+                        </div>
                     </div>
 
-                    <!-- Controls -->
-                    <div class="tc-controls">
-                        <div class="tc-btn-group">
-                            <button onclick="setCongestion('${tId}', 'NORMAL')" class="tc-btn ${state === 'NORMAL' ? 'tc-btn-active-green' : ''}">Normal</button>
-                            <button onclick="setCongestion('${tId}', 'MODERATE')" class="tc-btn ${state === 'MODERATE' ? 'tc-btn-active-yellow' : ''}">Moderate</button>
-                            <button onclick="setCongestion('${tId}', 'HIGH')" class="tc-btn ${state === 'HIGH' ? 'tc-btn-active-red' : ''}">High</button>
+                    <!-- Glowing Progress bar -->
+                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; margin-bottom: 14px;">
+                        <div style="width: ${congPct}%; height: 100%; background: ${congColor}; box-shadow: 0 0 8px ${congColor}; transition: width 0.3s ease;"></div>
+                    </div>
+
+                    <!-- Control Actions -->
+                    <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                        <div style="display:flex; gap:4px; flex:1;">
+                            <button onclick="setCongestion('${tId}', 'NORMAL')" style="
+                                flex: 1; padding: 6px 0; font-size: 10px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid ${state === 'NORMAL' ? '#10b981' : 'rgba(255,255,255,0.05)'};
+                                background: ${state === 'NORMAL' ? 'rgba(16,185,129,0.15)' : 'rgba(0,0,0,0.2)'};
+                                color: ${state === 'NORMAL' ? '#10b981' : 'var(--text-sec)'};
+                            ">Normal</button>
+                            
+                            <button onclick="setCongestion('${tId}', 'MODERATE')" style="
+                                flex: 1; padding: 6px 0; font-size: 10px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid ${state === 'MODERATE' ? '#fcd34d' : 'rgba(255,255,255,0.05)'};
+                                background: ${state === 'MODERATE' ? 'rgba(252,211,77,0.15)' : 'rgba(0,0,0,0.2)'};
+                                color: ${state === 'MODERATE' ? '#fcd34d' : 'var(--text-sec)'};
+                            ">Moderate</button>
+                            
+                            <button onclick="setCongestion('${tId}', 'HIGH')" style="
+                                flex: 1; padding: 6px 0; font-size: 10px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid ${state === 'HIGH' ? '#ff5e5e' : 'rgba(255,255,255,0.05)'};
+                                background: ${state === 'HIGH' ? 'rgba(255,94,94,0.15)' : 'rgba(0,0,0,0.2)'};
+                                color: ${state === 'HIGH' ? '#ff5e5e' : 'var(--text-sec)'};
+                            ">High</button>
                         </div>
-                        <div class="tc-lane-controls">
-                            <button onclick="TrafficControl.adjustLanes('${tId}', -1)" class="tc-btn" title="Close lane">− Lane</button>
-                            <button onclick="TrafficControl.adjustLanes('${tId}', 1)" class="tc-btn" title="Open lane">+ Lane</button>
+                        
+                        <div style="display:flex; gap:4px;">
+                            <button onclick="TrafficControl.adjustLanes('${tId}', -1)" style="
+                                width: 28px; height: 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.2); color: #fff; font-size: 12px; cursor: pointer; display:flex; align-items:center; justify-content:center;
+                            " title="Close Lane">−</button>
+                            <button onclick="TrafficControl.adjustLanes('${tId}', 1)" style="
+                                width: 28px; height: 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.2); color: #fff; font-size: 12px; cursor: pointer; display:flex; align-items:center; justify-content:center;
+                            " title="Open Lane">+</button>
                         </div>
                     </div>
                 </div>
@@ -187,7 +314,7 @@ const TrafficControl = {
 
     setCongestion: (tollId, level) => {
         Storage.setTollCongestion(tollId, level);
-        Utils.showToast(`${tollId} → ${level} traffic.`);
+        Utils.showToast(`Updated plaza ${tollId} load: ${level}`);
         TrafficControl.applyFilters();
     },
 
@@ -199,7 +326,7 @@ const TrafficControl = {
         states[tollId].lanes.open = Math.max(1, Math.min(states[tollId].lanes.total, states[tollId].lanes.open + delta));
         Storage.set(Storage.KEYS.TOLL_STATES, states);
         
-        Utils.showToast(`${tollId}: ${states[tollId].lanes.open}/${states[tollId].lanes.total} lanes open.`);
+        Utils.showToast(`Lane status updated: ${states[tollId].lanes.open}/${states[tollId].lanes.total} open.`);
         TrafficControl.renderGrid();
     }
 };
