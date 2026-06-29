@@ -86,9 +86,10 @@ const IndiaMapPlanner = {
         const streetOpts = (tileCfg.street || {}).options || { maxZoom: 20, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO' };
         IndiaMapPlanner._streetLayer = L.tileLayer(streetUrl, streetOpts);
 
-        // Default: street layer
-        IndiaMapPlanner._streetLayer.addTo(IndiaMapPlanner.map);
-        IndiaMapPlanner._isSatellite = false;
+        // Default: satellite & labels layer
+        IndiaMapPlanner._satelliteLayer.addTo(IndiaMapPlanner.map);
+        IndiaMapPlanner._labelsLayer.addTo(IndiaMapPlanner.map);
+        IndiaMapPlanner._isSatellite = true;
 
         window.NHAI_MAP = IndiaMapPlanner.map;
         
@@ -137,12 +138,14 @@ const IndiaMapPlanner = {
                     if (IndiaMapPlanner.map) {
                         IndiaMapPlanner.map.flyTo([res.lat, res.lng], 13, { animate: true, duration: 1.5 });
                     }
+                    IndiaMapPlanner.showWeatherPopup('origin', res.name, res.lat, res.lng);
                 });
             } else {
                 IndiaMapPlanner.selectedOrigin = city;
                 if (IndiaMapPlanner.map && city.lat && city.lng) {
                     IndiaMapPlanner.map.flyTo([city.lat, city.lng], 12, { animate: true, duration: 1.5 });
                 }
+                IndiaMapPlanner.showWeatherPopup('origin', city.name, city.lat, city.lng);
             }
         });
         IndiaMapPlanner.setupAutocomplete('route-dest-input', 'dest-suggestions', city => {
@@ -150,16 +153,31 @@ const IndiaMapPlanner = {
             if (city.lat === 0 && city.lng === 0) {
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
                     IndiaMapPlanner.selectedDest = res;
+                    IndiaMapPlanner.showWeatherPopup('destination', res.name, res.lat, res.lng);
                 });
             } else {
                 IndiaMapPlanner.selectedDest = city;
+                IndiaMapPlanner.showWeatherPopup('destination', city.name, city.lat, city.lng);
             }
         });
 
         // ── Button bindings ────────────────────────────────────────
         const safe = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
 
-        safe('btn-calc-route',  () => IndiaMapPlanner.processRoute());
+        safe('btn-calc-route',  () => {
+            const modal = document.getElementById('security-verification-modal');
+            if (modal) {
+                IndiaMapPlanner.onVerificationComplete = () => {
+                    IndiaMapPlanner.processRoute();
+                };
+                Utils.toggleVisibility('security-verification-modal', true);
+                if (window.turnstile) {
+                    window.turnstile.reset();
+                }
+            } else {
+                IndiaMapPlanner.processRoute();
+            }
+        });
         safe('btn-start-trip',  () => IndiaMapPlanner.startLiveTrip());
         safe('btn-end-trip',    () => IndiaMapPlanner.endLiveTrip());
 
@@ -259,6 +277,97 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner.renderTollMarkers();
             }
         }, 3000);
+    },
+
+    showWeatherPopup: (type, cityName, lat, lng) => {
+        if (!lat || !lng) return;
+        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data || !data.current_weather) return;
+                const temp = data.current_weather.temperature;
+                const code = data.current_weather.weathercode;
+                
+                let condition = 'Clear Skies';
+                let icon = 'fa-sun';
+                let color = '#fcd34d';
+                let advisory = 'Optimal travel conditions.';
+                
+                if ([45, 48].includes(code)) {
+                    condition = 'Dense Fog';
+                    icon = 'fa-smog';
+                    color = '#a8a29e';
+                    advisory = 'Low visibility. Use fog lights & hazard lamps.';
+                } else if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) {
+                    condition = 'Heavy Rain';
+                    icon = 'fa-cloud-showers-heavy';
+                    color = '#3b82f6';
+                    advisory = 'Slippery roads. Reduce speed by 20%.';
+                } else if ([95, 96, 99].includes(code)) {
+                    condition = 'Thunderstorm';
+                    icon = 'fa-cloud-bolt';
+                    color = '#8b5cf6';
+                    advisory = 'High winds and lightning hazard. Proceed with caution.';
+                } else if (temp > 40) {
+                    condition = 'Extreme Heat';
+                    icon = 'fa-temperature-arrow-up';
+                    color = '#ef4444';
+                    advisory = 'Extreme heat risk. Carry extra water and check tyres.';
+                }
+                
+                let popup = document.getElementById('floating-weather-popup');
+                if (!popup) {
+                    popup = document.createElement('div');
+                    popup.id = 'floating-weather-popup';
+                    document.body.appendChild(popup);
+                }
+                
+                Object.assign(popup.style, {
+                    position: 'fixed',
+                    bottom: '30px',
+                    right: '20px',
+                    zIndex: '9999',
+                    background: 'rgba(15, 23, 42, 0.95)',
+                    backdropFilter: 'blur(12px)',
+                    border: `1px solid ${color}60`,
+                    borderRadius: '12px',
+                    padding: '14px 18px',
+                    color: '#fff',
+                    width: '280px',
+                    boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+                    transition: 'all 0.3s ease',
+                    display: 'block'
+                });
+                
+                popup.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <span style="font-size:10px; font-weight:800; text-transform:uppercase; color:${color}; letter-spacing:0.5px;">
+                            <i class="fa-solid fa-cloud-sun-rain"></i> Real-time Weather
+                        </span>
+                        <button onclick="document.getElementById('floating-weather-popup').style.display='none'" style="background:none; border:none; color:var(--text-sec); font-size:14px; cursor:pointer;">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div style="font-size:12px; font-weight:700; color:#fff; margin-bottom:4px;">${type === 'origin' ? 'Origin' : 'Destination'}: ${cityName}</div>
+                    <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                        <div style="font-size:28px; font-weight:800; color:#fff;">${temp}°C</div>
+                        <div>
+                            <div style="font-size:12px; font-weight:600; color:${color}; display:flex; align-items:center; gap:4px;">
+                                <i class="fa-solid ${icon}"></i> ${condition}
+                            </div>
+                            <div style="font-size:9px; color:var(--text-sec); margin-top:2px;">Live location tracking active</div>
+                        </div>
+                    </div>
+                    <div style="font-size:10px; color:var(--text-sec); border-top:1px solid rgba(255,255,255,0.05); padding-top:6px; line-height:1.4;">
+                        <strong>Alert:</strong> ${advisory}
+                    </div>
+                `;
+                
+                if (window.VoiceAssistant) {
+                    window.VoiceAssistant.speak(`The current weather at your ${type} is ${temp} degrees with ${condition}. ${advisory}`);
+                }
+            })
+            .catch(err => console.error('Weather fetch error:', err));
     },
 
     // ═══════════════════════════════════════════════════════════════
@@ -1233,10 +1342,6 @@ const IndiaMapPlanner = {
             display: 'flex', flexDirection: 'column', gap: '8px'
         });
 
-        // 1. Street/Satellite Toggle
-        const btnView = document.createElement('button');
-        btnView.className = 'layer-control-btn';
-        btnView.innerHTML = '<i class="fa-solid fa-satellite"></i> <span>Street View</span>';
         
         // 2. Boundaries Toggle
         const btnBounds = document.createElement('button');
@@ -1257,26 +1362,7 @@ const IndiaMapPlanner = {
             b.addEventListener('mouseleave', () => { b.style.background = 'var(--bg-panel)'; b.style.borderColor = 'var(--border)'; });
         };
 
-        styleBtn(btnView);
         styleBtn(btnBounds);
-
-        btnView.addEventListener('click', () => {
-            IndiaMapPlanner._isSatellite = !IndiaMapPlanner._isSatellite;
-            document.body.classList.toggle('street-mode-active', !IndiaMapPlanner._isSatellite);
-            
-            if (IndiaMapPlanner._isSatellite) {
-                IndiaMapPlanner._streetLayer.remove();
-                IndiaMapPlanner._satelliteLayer.addTo(IndiaMapPlanner.map);
-                IndiaMapPlanner._labelsLayer.addTo(IndiaMapPlanner.map);
-                btnView.innerHTML = '<i class="fa-solid fa-satellite"></i> <span>Street View</span>';
-            } else {
-                IndiaMapPlanner._satelliteLayer.remove();
-                IndiaMapPlanner._labelsLayer.remove();
-                IndiaMapPlanner._streetLayer.addTo(IndiaMapPlanner.map);
-                btnView.innerHTML = '<i class="fa-solid fa-map"></i> <span>Satellite</span>';
-            }
-        });
-
 
         btnBounds.addEventListener('click', () => {
             IndiaMapPlanner._showBoundaries = !IndiaMapPlanner._showBoundaries;
@@ -1287,7 +1373,6 @@ const IndiaMapPlanner = {
         });
 
         container.appendChild(btnBounds);
-        container.appendChild(btnView);
         
         const mapEl = document.getElementById('map');
         if (mapEl) mapEl.appendChild(container);

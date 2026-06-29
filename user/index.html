@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/user.css">
+    <!-- Cloudflare Turnstile Verification script -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -708,6 +710,59 @@
                 </div>
             </div>
         </div>
+
+        <!-- ==============================
+             CLOUDFLARE TURNSTILE HUMAN VERIFICATION MODAL
+             ============================== -->
+        <div id="security-verification-modal" class="modal-overlay hidden" style="z-index: 10005;">
+            <div class="glass-panel" style="width: 380px; max-width: 90%; padding: 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.08);">
+                <h3 style="margin-top: 0; color: #fff; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> Security Verification
+                </h3>
+                <p style="font-size: 11px; color: var(--text-sec); margin-bottom: 20px; line-height: 1.5;">
+                    Please verify that you are a human to prevent automated routing queries and secure national database operations.
+                </p>
+                
+                <!-- Cloudflare Turnstile Widget (uses standard test sitekey which always passes) -->
+                <div style="display: flex; justify-content: center; margin-bottom: 20px; min-height: 65px;">
+                    <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="dark" data-callback="onTurnstileSuccess"></div>
+                </div>
+                
+                <button id="btn-cancel-verification" class="btn btn-outline w-full" style="justify-content: center; font-size: 12px; padding: 8px;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+        <script>
+            window.onTurnstileSuccess = function(token) {
+                if (window.Utils) {
+                    Utils.showToast("Verification successful! Processing route...", "success");
+                }
+                setTimeout(() => {
+                    Utils.toggleVisibility('security-verification-modal', false);
+                    if (window.IndiaMapPlanner && window.IndiaMapPlanner.onVerificationComplete) {
+                        window.IndiaMapPlanner.onVerificationComplete();
+                        window.IndiaMapPlanner.onVerificationComplete = null;
+                    }
+                }, 800);
+            };
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                const cancelBtn = document.getElementById('btn-cancel-verification');
+                if (cancelBtn) {
+                    cancelBtn.addEventListener('click', () => {
+                        Utils.toggleVisibility('security-verification-modal', false);
+                        if (window.IndiaMapPlanner) {
+                            window.IndiaMapPlanner.onVerificationComplete = null;
+                        }
+                        if (window.turnstile) {
+                            window.turnstile.reset();
+                        }
+                    });
+                }
+            });
+        </script>
 
     </div><!-- /#user-app -->
 
