@@ -17,6 +17,12 @@ const RealtimeService = {
             Utils.showToast("Live server connected", "success");
             const badge = document.getElementById('connection-status');
             if (badge) { badge.style.color = 'var(--primary)'; badge.title = 'Live server: Connected'; }
+
+            // Join the admin room to receive SOS alerts if authenticated
+            const token = sessionStorage.getItem('nhai_admin_auth');
+            if (token) {
+                RealtimeService.socket.emit('join-admin-room', { token });
+            }
         });
 
         // Listen for global admin broadcasts

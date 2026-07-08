@@ -30,7 +30,7 @@ const AlertBroadcaster = {
                 // Emit over WebSocket so users on OTHER devices receive it
                 if (window.RealtimeService && RealtimeService.socket?.connected) {
                     RealtimeService.socket.emit('admin-broadcast', {
-                        token:     window.NHAI_CONFIG?.admin?.socketToken || 'NHAI_ADMIN',
+                        token:     sessionStorage.getItem('nhai_admin_auth'),
                         alertData: alertPayload
                     });
                     Utils.showToast(`Alert broadcast to all live users in ${region === 'ALL' ? 'India' : region}`, 'success');

@@ -23,10 +23,10 @@ const IncidentCenter = {
             
             let statusUI = '';
             if (inc.status === 'CLOSED') {
-                statusUI = `<div style="font-size:11px; color:var(--text-sec);"><i class="fa-solid fa-check-double"></i> Closed (User Accepted)</div><div style="font-size:10px; color:var(--accent-yellow); margin-top:2px;">Rating: ${inc.feedbackRating || 5}★</div>`;
+                statusUI = `<div style="font-size:11px; color:var(--text-sec);"><i class="fa-solid fa-check-double"></i> Closed (User Accepted)</div><div style="font-size:10px; color:var(--accent-yellow); margin-top:2px;">Rating: ${Utils.escapeHtml(inc.feedbackRating || 5)}★</div>`;
             } else {
                 statusUI = `
-                    <select onchange="updateIncidentStatus('${inc.id}', this.value)" style="width:auto; padding:4px; font-size:11px;">
+                    <select onchange="updateIncidentStatus('${Utils.escapeHtml(inc.id)}', this.value)" style="width:auto; padding:4px; font-size:11px;">
                         <option value="RAISED" ${inc.status === 'RAISED' ? 'selected' : ''}>Raised</option>
                         <option value="ACKNOWLEDGED" ${inc.status === 'ACKNOWLEDGED' ? 'selected' : ''}>Ack</option>
                         <option value="DISPATCHED" ${inc.status === 'DISPATCHED' ? 'selected' : ''}>Dispatch</option>
@@ -37,13 +37,13 @@ const IncidentCenter = {
 
             html += `
                 <tr ${rowClass}>
-                    <td style="font-size:11px; font-weight:bold;">${inc.id}</td>
-                    <td><span class="badge badge-warning">${inc.type}</span></td>
-                    <td style="font-size:12px;">${inc.location}</td>
-                    <td style="max-width: 200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:11px;" title="${inc.description}">
-                        ${inc.description || '-'}
+                    <td style="font-size:11px; font-weight:bold;">${Utils.escapeHtml(inc.id)}</td>
+                    <td><span class="badge badge-warning">${Utils.escapeHtml(inc.type)}</span></td>
+                    <td style="font-size:12px;">${Utils.escapeHtml(inc.location)}</td>
+                    <td style="max-width: 200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:11px;" title="${Utils.escapeHtml(inc.description)}">
+                        ${Utils.escapeHtml(inc.description) || '-'}
                     </td>
-                    <td><span class="badge ${inc.status === 'RESOLVED' || inc.status === 'CLOSED' ? 'badge-success' : 'badge-danger'}">${inc.status}</span></td>
+                    <td><span class="badge ${inc.status === 'RESOLVED' || inc.status === 'CLOSED' ? 'badge-success' : 'badge-danger'}">${Utils.escapeHtml(inc.status)}</span></td>
                     <td>
                         ${statusUI}
                     </td>

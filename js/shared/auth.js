@@ -3,7 +3,8 @@
 const Auth = {
     login: async (id, pass) => {
         try {
-            const response = await fetch('http://localhost:3000/api/auth/login', {
+            const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+            const response = await fetch(`${backendUrl}/api/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id, pass })
@@ -25,7 +26,8 @@ const Auth = {
         const token = sessionStorage.getItem('nhai_admin_auth');
         if (token) {
             try {
-                await fetch('http://localhost:3000/api/auth/logout', {
+                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+                await fetch(`${backendUrl}/api/auth/logout`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ token })
@@ -52,7 +54,8 @@ const Auth = {
 
         // Securely verify token with backend
         try {
-            const response = await fetch('http://localhost:3000/api/auth/verify', {
+            const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+            const response = await fetch(`${backendUrl}/api/auth/verify`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ token })
@@ -63,7 +66,9 @@ const Auth = {
                 window.location.replace('login.html');
             }
         } catch (e) {
-            console.warn('[Auth] Server verify offline, allowing local fallback.');
+            console.warn('[Auth] Server verify failed or offline. Failing closed.', e);
+            sessionStorage.removeItem('nhai_admin_auth');
+            window.location.replace('login.html');
         }
     }
 };

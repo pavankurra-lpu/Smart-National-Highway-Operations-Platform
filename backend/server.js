@@ -13,6 +13,12 @@ app.use(express.json());
 const rateLimit = require('express-rate-limit');
 app.use(rateLimit({ windowMs: 60000, max: 600 }));
 
+const loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 10, // Limit each IP to 10 login requests per windowMs
+    message: { error: 'Too many login attempts. Please try again after 15 minutes.' }
+});
+
 // Path to file database
 const DB_PATH = path.join(__dirname, 'db.json');
 
@@ -130,6 +136,16 @@ app.post('/api/db/update', (req, res) => {
         }
     }
 
+    // Basic validation for nhai_fastag_balance
+    // NOTE: In a real system, balance changes should be derived server-side from validated
+    // recharge/toll-deduction events, not accepted as a raw client-supplied number.
+    // This validation is a stop-gap for the demo, not a substitute for a secure ledger redesign.
+    if (key === 'nhai_fastag_balance') {
+        if (typeof value !== 'number' || isNaN(value) || value < 0 || value > 1000000) {
+            return res.status(400).json({ error: 'Invalid balance amount. Must be a numeric value between 0 and 1,000,000.' });
+        }
+    }
+
     const db = loadDB();
     db[key] = value;
     saveDB(db);
@@ -149,13 +165,15 @@ app.get('/api/active-journeys', (req, res) => {
 });
 
 // Secure API endpoints for Admin Authentication
-app.post('/api/auth/login', (req, res) => {
+app.post('/api/auth/login', loginLimiter, (req, res) => {
     const { id, pass } = req.body;
     const adminCreds = {
         id: process.env.ADMIN_ID || 'admin@nhai',
         pass: process.env.ADMIN_PASS || 'NHAI@2026'
     };
 
+    // NOTE: In a production environment, passwords should be securely hashed (e.g. using bcrypt)
+    // and compared using constant-time comparison algorithms rather than plain-text comparison.
     if (id === adminCreds.id && pass === adminCreds.pass) {
         const token = crypto.randomBytes(24).toString('hex');
         activeAdminSessions.set(token, { createdAt: Date.now() });
@@ -206,6 +224,19 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
 
+    // Join admin room for authenticated dashboards
+    socket.on('join-admin-room', (data) => {
+        const token = data ? data.token : null;
+        const session = token ? activeAdminSessions.get(token) : null;
+        const SESSION_HOURS = 8;
+        if (session && Date.now() - session.createdAt <= SESSION_HOURS * 3600 * 1000) {
+            socket.join('admins');
+            console.log(`Socket ${socket.id} joined admins room`);
+        } else {
+            socket.emit('error', 'Unauthorized to join admins room');
+        }
+    });
+
     // Join a specific vehicle trip for updates
     socket.on('join-trip', (tripId) => {
         socket.join(tripId);
@@ -215,7 +246,7 @@ io.on('connection', (socket) => {
     // Handle SOS alerts from user to broadcast to admin
     socket.on('send-sos', (sosData) => {
         console.log('SOS Received:', sosData);
-        io.emit('new-sos-alert', {
+        io.to('admins').emit('new-sos-alert', {
             ...sosData,
             serverTimestamp: new Date().toISOString()
         });
@@ -223,8 +254,11 @@ io.on('connection', (socket) => {
 
     // Handle Admin Broadcasts (Traffic, Weather, etc)
     socket.on('admin-broadcast', (data) => {
-        const validToken = process.env.ADMIN_TOKEN || 'NHAI_ADMIN';
-        if (!data.token || data.token !== validToken) {
+        const token = data ? data.token : null;
+        const session = token ? activeAdminSessions.get(token) : null;
+        const SESSION_HOURS = 8;
+        if (!session || Date.now() - session.createdAt > SESSION_HOURS * 3600 * 1000) {
+            if (token) activeAdminSessions.delete(token);
             socket.emit('error', 'Unauthorized');
             return;
         }
@@ -248,4 +282,19 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log(`NHAI Real-time Server running on http://localhost:${PORT}`);
+    
+    // Log warnings if insecure default credentials are used
+    if (!process.env.ADMIN_ID || !process.env.ADMIN_PASS) {
+        console.warn('\n============================================================');
+        console.warn('⚠️  WARNING: Insecure default admin credentials configuration!');
+        if (!process.env.ADMIN_ID) {
+            console.warn(' - process.env.ADMIN_ID is missing. Falling back to default: "admin@nhai"');
+        }
+        if (!process.env.ADMIN_PASS) {
+            console.warn(' - process.env.ADMIN_PASS is missing. Falling back to default: "NHAI@2026"');
+        }
+        console.warn(' This fallback configuration is only intended for local development.');
+        console.warn(' For production deployment, set ADMIN_ID and ADMIN_PASS environment variables.');
+        console.warn('============================================================\n');
+    }
 });

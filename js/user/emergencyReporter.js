@@ -121,19 +121,19 @@ const EmergencyReporter = {
 
             let actionBtn = '';
             if (e.status === 'RESOLVED') {
-                actionBtn = `<button class="btn btn-outline w-full" style="justify-content:center; margin-top:8px; font-size:11px;" onclick="EmergencyReporter.openFeedback('${e.id}')">Review & Close Incident</button>`;
+                actionBtn = `<button class="btn btn-outline w-full" style="justify-content:center; margin-top:8px; font-size:11px;" onclick="EmergencyReporter.openFeedback('${Utils.escapeHtml(e.id)}')">Review & Close Incident</button>`;
             } else if (e.status === 'CLOSED') {
-                actionBtn = `<div style="font-size:10px; color:var(--text-sec); margin-top:8px; text-align:center;"><i class="fa-solid fa-check-double"></i> Closed (Rated ${e.feedbackRating}★)</div>`;
+                actionBtn = `<div style="font-size:10px; color:var(--text-sec); margin-top:8px; text-align:center;"><i class="fa-solid fa-check-double"></i> Closed (Rated ${Utils.escapeHtml(e.feedbackRating)}★)</div>`;
             }
 
             html += `
                 <div class="glass-panel" style="margin-bottom:10px; padding:12px;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                        <span style="font-size:11px; color:var(--text-main); font-weight:bold;">${e.id} | ${e.type}</span>
-                        <span class="badge ${badgeClass}">${e.status}</span>
+                        <span style="font-size:11px; color:var(--text-main); font-weight:bold;">${Utils.escapeHtml(e.id)} | ${Utils.escapeHtml(e.type)}</span>
+                        <span class="badge ${badgeClass}">${Utils.escapeHtml(e.status)}</span>
                     </div>
-                    <div style="font-size:11px; color:var(--text-sec); margin-bottom:5px;">Loc: ${e.location}</div>
-                    ${e.adminNote && e.status !== 'RESOLVED' && e.status !== 'CLOSED' ? `<div style="font-size:10px; color:var(--primary); background:rgba(100,255,218,0.1); padding:4px; border-radius:4px;">Admin: ${e.adminNote}</div>` : ''}
+                    <div style="font-size:11px; color:var(--text-sec); margin-bottom:5px;">Loc: ${Utils.escapeHtml(e.location)}</div>
+                    ${e.adminNote && e.status !== 'RESOLVED' && e.status !== 'CLOSED' ? `<div style="font-size:10px; color:var(--primary); background:rgba(100,255,218,0.1); padding:4px; border-radius:4px;">Admin: ${Utils.escapeHtml(e.adminNote)}</div>` : ''}
                     <div style="font-size:9px; color:rgba(255,255,255,0.3); text-align:right; margin-top:5px;">Updated: ${Utils.formatDateTime(e.updatedAt)}</div>
                     ${actionBtn}
                 </div>
