@@ -142,14 +142,20 @@ const Analytics = {
                     }
                 },
                 scales: {
+                    x: {
+                        grid: { display: false },
+                        border: { display: false },
+                        ticks: { color: '#71717a', font: { size: 9, family: 'Inter' } }
+                    },
                     'y-rev': {
                         type: 'linear',
                         position: 'left',
                         beginAtZero: true,
-                        grid: { color: 'rgba(255, 255, 255, 0.03)' },
+                        grid: { display: false },
+                        border: { display: false },
                         ticks: {
-                            color: '#8e8e93',
-                            font: { size: 8, family: 'Space Grotesk' },
+                            color: '#71717a',
+                            font: { size: 9, family: 'Inter' },
                             callback: (v) => '₹' + v
                         }
                     },
@@ -158,20 +164,40 @@ const Analytics = {
                         position: 'right',
                         beginAtZero: true,
                         grid: { display: false },
+                        border: { display: false },
                         ticks: {
-                            color: '#8e8e93',
-                            font: { size: 8, family: 'Space Grotesk' },
-                            stepSize: 1
+                            color: '#71717a',
+                            font: { size: 9, family: 'Inter' }
                         }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: '#8e8e93', font: { size: 8, family: 'Space Grotesk' } }
                     }
                 }
             }
         });
+
+        // ═══════════════════════════════════════════════════════════════
+        // Real-Time Live Graph Updates (Bklit Style)
+        // ═══════════════════════════════════════════════════════════════
+        if (Analytics.liveInterval) clearInterval(Analytics.liveInterval);
+        
+        Analytics.liveInterval = setInterval(() => {
+            if (!Analytics.chartInstance) return;
+            
+            const livePositions = Storage.get(Storage.KEYS.LIVE_POSITIONS, []);
+            const currentActive = livePositions.length;
+            
+            // Randomly fluctuate the last point to simulate real-time operations
+            const dataset = Analytics.chartInstance.data.datasets[1]; // traffic count bar
+            const lastIndex = dataset.data.length - 1;
+            
+            if (lastIndex >= 0) {
+                // Add the current active vehicles to the today's traffic count to simulate live pulsing
+                const baseCount = trafficValues[lastIndex];
+                dataset.data[lastIndex] = baseCount + currentActive + Math.floor(Math.random() * 3);
+                Analytics.chartInstance.update('none'); // Update without full animation for smooth real-time feel
+            }
+        }, 2500);
     }
 };
 
 window.Analytics = Analytics;
+document.addEventListener('DOMContentLoaded', Analytics.init);

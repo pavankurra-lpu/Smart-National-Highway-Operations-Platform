@@ -147,17 +147,31 @@ const TripAnalytics = {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false }
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(9, 9, 11, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#a1a1aa',
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 1,
+                        padding: 10,
+                        usePointStyle: true,
+                        cornerRadius: 8,
+                        mode: 'index',
+                        intersect: false
+                    }
                 },
                 scales: {
                     y: {
                         beginAtZero: true,
-                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
-                        ticks: { color: '#8e8e93', font: { size: 8.5, family: 'Space Grotesk' } }
+                        grid: { display: false }, // Hidden for Bklit style
+                        border: { display: false },
+                        ticks: { color: '#71717a', font: { size: 9, family: 'Inter' } }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: '#8e8e93', font: { size: 8.5, family: 'Space Grotesk' } }
+                        border: { display: false },
+                        ticks: { color: '#71717a', font: { size: 9, family: 'Inter' } }
                     }
                 }
             }
@@ -192,7 +206,8 @@ const TripAnalytics = {
                     datasets: [{
                         data: donutData,
                         backgroundColor: donutColors,
-                        borderWidth: 0,
+                        borderWidth: 2,
+                        borderColor: '#18181b', // match dark bg
                         hoverOffset: 4
                     }]
                 },
@@ -201,15 +216,99 @@ const TripAnalytics = {
                     maintainAspectRatio: false,
                     cutout: '76%',
                     plugins: {
+                        tooltip: {
+                            backgroundColor: 'rgba(9, 9, 11, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#a1a1aa',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10,
+                            boxPadding: 4,
+                            usePointStyle: true,
+                            cornerRadius: 8
+                        },
                         legend: {
                             display: true,
                             position: 'right',
                             labels: {
                                 color: '#a1a1aa',
-                                font: { size: 8.5, family: 'Space Grotesk', weight: '500' },
-                                boxWidth: 7,
-                                padding: 8
+                                font: { size: 9, family: 'Inter', weight: '500' },
+                                boxWidth: 8,
+                                boxHeight: 8,
+                                usePointStyle: true,
+                                padding: 12
                             }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // Bklit UI: Top Plazas Bar Chart
+        // ═══════════════════════════════════════════════════════════════
+        const barCanvas = document.getElementById('barChart');
+        if (barCanvas && trips.length > 0) {
+            const barCtx = barCanvas.getContext('2d');
+            
+            if (TripAnalytics.barInstance) {
+                TripAnalytics.barInstance.destroy();
+            }
+
+            // Aggregate tolls passed
+            const plazaCounts = {};
+            trips.forEach(trip => {
+                (trip.tollsPassed || []).forEach(toll => {
+                    plazaCounts[toll] = (plazaCounts[toll] || 0) + 1;
+                });
+            });
+
+            // Sort top 5
+            const sortedPlazas = Object.entries(plazaCounts).sort((a,b) => b[1] - a[1]).slice(0, 5);
+            const barLabels = sortedPlazas.map(p => p[0].split(' ')[0] + '..');
+            const barData = sortedPlazas.map(p => p[1]);
+
+            // Create gradient
+            let barGradient = 'rgba(245, 158, 11, 0.8)';
+            try {
+                barGradient = barCtx.createLinearGradient(0, 0, 0, 120);
+                barGradient.addColorStop(0, '#f59e0b');
+                barGradient.addColorStop(1, 'rgba(245, 158, 11, 0.2)');
+            } catch(e) {}
+
+            TripAnalytics.barInstance = new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: barLabels,
+                    datasets: [{
+                        label: 'Crossings',
+                        data: barData,
+                        backgroundColor: barGradient,
+                        borderRadius: 4,
+                        barThickness: 12
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(9, 9, 11, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#a1a1aa',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 10,
+                            cornerRadius: 8
+                        }
+                    },
+                    scales: {
+                        y: { display: false }, // Hide Y completely for Bklit minimalism
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#71717a', font: { size: 9, family: 'Inter' } },
+                            border: { display: false }
                         }
                     }
                 }
