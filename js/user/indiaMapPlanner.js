@@ -100,23 +100,7 @@ const IndiaMapPlanner = {
         }, 500);
 
 
-        // ── Sidebar toggle ─────────────────────────────────────────
-        const toggleBtn = document.getElementById('sidebar-toggle');
-        const sidebar   = document.getElementById('nhai-sidebar');
-        if (toggleBtn && sidebar) {
-            toggleBtn.addEventListener('click', () => {
-                sidebar.classList.toggle('collapsed');
-                toggleBtn.classList.toggle('shifted');
-                const icon = toggleBtn.querySelector('i');
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.className = 'fa-solid fa-bars';
-                    toggleBtn.title = 'Open Panel';
-                } else {
-                    icon.className = 'fa-solid fa-xmark';
-                    toggleBtn.title = 'Close Panel';
-                }
-            });
-        }
+        // ── Sidebar toggle (handled via inline onclick in HTML now) ─────────────────────────────────────────
 
         // ── Autocomplete ───────────────────────────────────────────
         const speakPlace = (type, name) => {
@@ -1708,10 +1692,10 @@ const IndiaMapPlanner = {
                 minWidth: '170px', justifyContent: 'flex-start'
             });
             b.addEventListener('mouseenter', () => { 
-                b.style.borderColor = 'rgba(59, 130, 246, 0.5)'; 
-                b.style.color = '#60a5fa';
+                b.style.borderColor = 'var(--primary)'; 
+                b.style.color = 'var(--primary)';
                 b.style.transform = 'translateY(-2px) scale(1.02)'; 
-                b.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.1)';
+                b.style.boxShadow = '0 8px 25px var(--primary-glow), inset 0 1px 0 rgba(255,255,255,0.1)';
             });
             b.addEventListener('mouseleave', () => { 
                 b.style.borderColor = 'rgba(255, 255, 255, 0.1)'; 

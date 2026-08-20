@@ -1200,9 +1200,9 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     position: absolute;
     width: 14px;
     height: 14px;
-    background: #3b82f6; /* Sharp Blue */
+    background: var(--primary);
     border-radius: 50%;
-    box-shadow: 0 0 10px #3b82f6, inset 0 0 4px #93c5fd;
+    box-shadow: 0 0 10px var(--primary-glow), inset 0 0 4px rgba(255,255,255,0.8);
     border: 2px solid #ffffff;
     z-index: 3;
 }
@@ -1211,7 +1211,7 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, transparent 70%, rgba(59, 130, 246, 0.9) 100%);
+    background: conic-gradient(from 0deg, transparent 70%, var(--primary) 100%);
     animation: k-spin 1.5s linear infinite;
     -webkit-mask-image: radial-gradient(transparent 55%, black 65%);
     mask-image: radial-gradient(transparent 55%, black 65%);
@@ -1222,8 +1222,9 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(59, 130, 246, 0.15);
-    border: 1px solid rgba(59, 130, 246, 0.4);
+    background: var(--primary);
+    opacity: 0.3;
+    border: 1px solid var(--primary);
     animation: k-ripple 2.5s cubic-bezier(0.1, 0, 0.3, 1) infinite;
     z-index: 1;
 }

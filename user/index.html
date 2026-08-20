@@ -83,7 +83,17 @@
         <!-- Floating Locate Me Button is dynamically injected by map planner -->
 
         <!-- Sidebar Toggle Button -->
-        <button id="sidebar-toggle" class="sidebar-toggle" title="Close NHAI Panel">
+        <button id="sidebar-toggle" class="sidebar-toggle" title="Close NHAI Panel" onclick="
+            document.getElementById('nhai-sidebar').classList.toggle('collapsed'); 
+            this.classList.toggle('shifted'); 
+            const icon = this.querySelector('i'); 
+            if(this.classList.contains('shifted')){ 
+                icon.className='fa-solid fa-bars'; 
+                this.title='Open Panel'; 
+            } else { 
+                icon.className='fa-solid fa-xmark'; 
+                this.title='Close Panel'; 
+            }">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
