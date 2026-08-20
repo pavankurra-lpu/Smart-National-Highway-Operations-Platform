@@ -168,19 +168,26 @@
                     </div>
 
                     <div>
-                        <span class="field-label"><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Origin</span>
-                        <input type="text" id="route-origin-input" placeholder="Type origin city..." autocomplete="off">
-                        <div id="origin-suggestions" class="autocomplete-dropdown"></div>
+                            <span class="field-label"><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Starting Point</span>
+                            <div class="ai-input-wrapper">
+                                <input type="text" id="route-origin-input" placeholder="Enter starting city..." autocomplete="off" style="padding-left: 36px;">
+                                <i class="fa-solid fa-sparkles" style="position: absolute; left: 12px; top: 12px; color: var(--primary); font-size: 14px;"></i>
+                            </div>
+                            <div id="origin-suggestions" class="autocomplete-dropdown"></div>
+                        </div>
+                        
+                        <div>
+                            <span class="field-label"><i class="fa-solid fa-flag-checkered" style="color:var(--accent-red)"></i> Destination</span>
+                            <div class="ai-input-wrapper">
+                                <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off" style="padding-left: 36px;">
+                                <i class="fa-solid fa-wand-magic-sparkles" style="position: absolute; left: 12px; top: 12px; color: var(--accent-blue); font-size: 14px;"></i>
+                            </div>
+                            <div id="dest-suggestions" class="autocomplete-dropdown"></div>
+                        </div>
                     </div>
 
-                    <div>
-                        <span class="field-label"><i class="fa-solid fa-flag-checkered" style="color:var(--accent-red)"></i> Destination</span>
-                        <input type="text" id="route-dest-input" placeholder="Type destination city..." autocomplete="off">
-                        <div id="dest-suggestions" class="autocomplete-dropdown"></div>
-                    </div>
-
-                    <button id="btn-calc-route" class="btn btn-primary w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
-                        <i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route
+                    <button id="btn-calc-route" class="btn btn-kokonut w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
+                        <i class="fa-solid fa-route"></i> Calculate Optimal Path
                     </button>
 
                     <!-- Dynamic Toll Timeline Container -->
@@ -232,7 +239,7 @@
                                 <option>Paytm</option>
                                 <option>Net Banking</option>
                             </select>
-                            <button id="btn-recharge" class="btn btn-primary w-full" style="justify-content: center; height: 36px; font-size: 11px;">
+                            <button id="btn-recharge" class="btn btn-kokonut w-full" style="justify-content: center; height: 36px; font-size: 11px;">
                                 <i class="fa-solid fa-lock"></i> Proceed to Pay
                             </button>
                         </div>
@@ -384,18 +391,21 @@
                             </select>
                         </div>
                         <div>
-                            <span class="field-label">Your Location</span>
-                            <input type="text" id="sos-location" placeholder="Highway / Nearest milestone...">
+                            <span class="field-label">Location (Highway/Toll/Geo)</span>
+                            <div class="ai-input-wrapper">
+                                <input type="text" id="sos-location" placeholder="E.g. Near Plaza 42" style="padding-left: 36px;">
+                                <i class="fa-solid fa-location-crosshairs" style="position: absolute; left: 12px; top: 12px; color: var(--accent-red); font-size: 14px;"></i>
+                            </div>
                         </div>
                         <div>
-                            <span class="field-label">Description</span>
-                            <textarea id="sos-desc" rows="3" placeholder="Brief description of the emergency..."></textarea>
+                            <span class="field-label">Phone Number</span>
+                            <input type="tel" id="sos-phone" placeholder="10-digit number" value="9876543210">
                         </div>
                         <div>
-                            <span class="field-label">Callback Number</span>
-                            <input type="tel" id="sos-phone" placeholder="Your phone number">
+                            <span class="field-label">Additional Details</span>
+                            <textarea id="sos-desc" rows="3" placeholder="Describe the situation briefly..."></textarea>
                         </div>
-                        <button id="btn-submit-sos" class="btn btn-danger w-full" style="justify-content: center; font-size: 13px;">
+                        <button id="btn-submit-sos" class="btn btn-kokonut w-full" style="justify-content: center; font-size: 13px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.05)); border-color: rgba(239, 68, 68, 0.3); color: var(--accent-red);">
                             <i class="fa-solid fa-paper-plane"></i> Dispatch SOS to Admin
                         </button>
                     </div>

@@ -116,36 +116,60 @@ const EmergencyReporter = {
             return;
         }
 
-        let html = '';
-        // Only show recent 5
-        emergencies.slice(0, 5).forEach(e => {
-            let badgeClass = 'badge-danger';
-            if(e.status === 'ACKNOWLEDGED') badgeClass = 'badge-warning';
-            if(e.status === 'DISPATCHED') badgeClass = 'badge-warning';
-            if(e.status === 'RESOLVED') badgeClass = 'badge-success';
-            if(e.status === 'CLOSED') badgeClass = 'badge-success';
+        listEl.innerHTML = emergencies.slice(0, 5).map(c => {
+            const date = new Date(c.reportedAt).toLocaleString('en-IN', {
+                day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
+            });
+            
+            let badgeClass = 'badge-pending';
+            if(c.status === 'ACKNOWLEDGED') badgeClass = 'badge-warning';
+            if(c.status === 'DISPATCHED') badgeClass = 'badge-primary';
+            if(c.status === 'RESOLVED') badgeClass = 'badge-success';
 
             let actionBtn = '';
-            if (e.status === 'RESOLVED') {
-                actionBtn = `<button class="btn btn-outline w-full" style="justify-content:center; margin-top:8px; font-size:11px;" onclick="EmergencyReporter.openFeedback('${Utils.escapeHtml(e.id)}')">Review & Close Incident</button>`;
-            } else if (e.status === 'CLOSED') {
-                actionBtn = `<div style="font-size:10px; color:var(--text-sec); margin-top:8px; text-align:center;"><i class="fa-solid fa-check-double"></i> Closed (Rated ${Utils.escapeHtml(e.feedbackRating)}★)</div>`;
+            if (c.status === 'RESOLVED') {
+                actionBtn = `<button class="btn btn-outline w-full" style="justify-content:center; margin-top:8px; font-size:11px;" onclick="EmergencyReporter.openFeedback('${Utils.escapeHtml(c.id)}')">Review & Close Incident</button>`;
+            } else if (c.status === 'CLOSED') {
+                actionBtn = `<div style="font-size:10px; color:var(--text-sec); margin-top:8px; text-align:center;"><i class="fa-solid fa-check-double"></i> Closed (Rated ${Utils.escapeHtml(c.feedbackRating)}★)</div>`;
             }
 
-            html += `
-                <div class="glass-panel" style="margin-bottom:10px; padding:12px;">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                        <span style="font-size:11px; color:var(--text-main); font-weight:bold;">${Utils.escapeHtml(e.id)} | ${Utils.escapeHtml(e.type)}</span>
-                        <span class="badge ${badgeClass}">${Utils.escapeHtml(e.status)}</span>
+            return `
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-light); border-radius: 8px; padding: 15px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <p style="color: #fff; font-size: 13px; font-weight: 600; margin: 0 0 4px;"><i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-red); margin-right:5px;"></i> ${Utils.escapeHtml(c.type)}</p>
+                            <p style="color: var(--text-sec); font-size: 11px; margin: 0;">${Utils.escapeHtml(c.location)}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="badge ${badgeClass}" style="margin-bottom: 4px;">${Utils.escapeHtml(c.status)}</span>
+                            <p style="color: var(--text-muted); font-size: 9px; margin: 0;">${date}</p>
+                        </div>
                     </div>
-                    <div style="font-size:11px; color:var(--text-sec); margin-bottom:5px;">Loc: ${Utils.escapeHtml(e.location)}</div>
-                    ${e.adminNote && e.status !== 'RESOLVED' && e.status !== 'CLOSED' ? `<div style="font-size:10px; color:var(--primary); background:rgba(100,255,218,0.1); padding:4px; border-radius:4px;">Admin: ${Utils.escapeHtml(e.adminNote)}</div>` : ''}
-                    <div style="font-size:9px; color:rgba(255,255,255,0.3); text-align:right; margin-top:5px;">Updated: ${Utils.formatDateTime(e.updatedAt)}</div>
+
+                    <!-- Kokonut Timeline Tracker -->
+                    <div class="kokonut-timeline" style="margin-top: 15px;">
+                        <div class="kokonut-timeline-item active">
+                            <div class="kokonut-timeline-title">Request Raised</div>
+                            <div class="kokonut-timeline-desc">${date}</div>
+                        </div>
+                        <div class="kokonut-timeline-item ${['ACKNOWLEDGED', 'DISPATCHED', 'RESOLVED', 'CLOSED'].includes(c.status) ? 'active' : ''}">
+                            <div class="kokonut-timeline-title">Control Room Acknowledged</div>
+                            <div class="kokonut-timeline-desc">Verifying details</div>
+                        </div>
+                        <div class="kokonut-timeline-item ${['DISPATCHED', 'RESOLVED', 'CLOSED'].includes(c.status) ? 'active' : ''}">
+                            <div class="kokonut-timeline-title">Unit Dispatched</div>
+                            <div class="kokonut-timeline-desc">Emergency responders en route</div>
+                        </div>
+                        <div class="kokonut-timeline-item ${['RESOLVED', 'CLOSED'].includes(c.status) ? 'active' : ''}" style="margin-bottom: 0;">
+                            <div class="kokonut-timeline-title">Case Resolved</div>
+                            <div class="kokonut-timeline-desc">Issue cleared from highway</div>
+                        </div>
+                    </div>
+                    ${c.adminNote && c.status !== 'RESOLVED' && c.status !== 'CLOSED' ? `<div style="font-size:10px; color:var(--primary); background:rgba(100,255,218,0.1); padding:4px; border-radius:4px; margin-top:10px;">Admin: ${Utils.escapeHtml(c.adminNote)}</div>` : ''}
                     ${actionBtn}
                 </div>
             `;
-        });
-        listEl.innerHTML = html;
+        }).join('');
     },
 
     openFeedback: (id) => {
