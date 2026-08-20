@@ -188,6 +188,38 @@ const Storage = {
             logs[logIdx].cost += cost;
             Storage.set(Storage.KEYS.VEHICLE_LOGS, logs);
         }
+    },
+
+    seedDemoData: () => {
+        // 1. Set FASTag Balance
+        Storage.set(Storage.KEYS.FASTAG_BALANCE, 2850);
+        
+        // 2. Recharge History
+        const now = new Date();
+        Storage.set(Storage.KEYS.RECHARGE_HISTORY, [
+            { id: 'TXN-9382', date: new Date(now.getTime() - 86400000).toISOString(), amount: 1000, fee: 10, net: 990, gateway: 'PhonePe UPI' },
+            { id: 'TXN-9211', date: new Date(now.getTime() - 400000000).toISOString(), amount: -245, fee: 0, net: -245, gateway: 'Ludhiana Toll Plaza' },
+            { id: 'TXN-8843', date: new Date(now.getTime() - 800000000).toISOString(), amount: 2000, fee: 20, net: 1980, gateway: 'Net Banking' }
+        ]);
+
+        // 3. Trip History
+        Storage.set(Storage.KEYS.TRIP_HISTORY, [
+            { id: 'TRP-DEMO1', origin: 'Chandigarh', dest: 'Ambala', tollsPassed: ['Dapper Toll Plaza', 'Ambala Toll'], cost: 185, totalDistance: 45.2, startTime: new Date(now.getTime() - 400000000).toISOString(), endTime: new Date(now.getTime() - 390000000).toISOString(), status: 'COMPLETED' },
+            { id: 'TRP-DEMO2', origin: 'Delhi', dest: 'Panipat', tollsPassed: ['Singhu Border Toll', 'Murthal Toll'], cost: 210, totalDistance: 85.5, startTime: new Date(now.getTime() - 900000000).toISOString(), endTime: new Date(now.getTime() - 890000000).toISOString(), status: 'COMPLETED' }
+        ]);
+
+        // 4. Vehicle Garage
+        Storage.set('nhai_vehicles', [
+            { id: 'V-1111', regNum: 'DL-1C-AA-1111', type: 'LMV', make: 'Honda City', verified: true },
+            { id: 'V-2222', regNum: 'HR-26-BB-2222', type: 'LCV', make: 'Mahindra Bolero', verified: false }
+        ]);
+
+        // 5. Gamification XP
+        localStorage.setItem('nhai_xp', '450');
+        localStorage.setItem('nhai_gamified_level', '2');
+        localStorage.setItem('nhai_achievements', JSON.stringify({"first_trip":true, "fastag_hero":true}));
+
+        console.log('[Storage] Demo data seeded successfully.');
     }
 };
 

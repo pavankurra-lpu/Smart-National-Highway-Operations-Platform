@@ -13,6 +13,17 @@ const UserProfile = {
         if (btnSave) {
             btnSave.addEventListener('click', UserProfile.saveProfile);
         }
+
+        const btnDemo = document.getElementById('btn-load-demo-data');
+        if (btnDemo) {
+            btnDemo.addEventListener('click', () => {
+                if (window.Storage) Storage.seedDemoData();
+                Utils.showToast("Demo Data Loaded Successfully! Refreshing UI...", "success");
+                setTimeout(() => {
+                    window.location.reload();
+                }, 800);
+            });
+        }
     },
 
     saveProfile: () => {

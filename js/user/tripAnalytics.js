@@ -28,7 +28,13 @@ const TripAnalytics = {
         if (!listEl) return;
 
         if (trips.length === 0) {
-            listEl.innerHTML = '<p style="color:var(--text-muted); font-size:11px; text-align:center; padding:10px;">No trip history yet.</p>';
+            listEl.innerHTML = `
+                <div style="text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; margin-top: 10px;">
+                    <i class="fa-solid fa-map-location-dot" style="font-size: 24px; color: var(--text-muted); margin-bottom: 12px;"></i>
+                    <p style="color: var(--text-main); font-size: 13px; font-weight: 600; margin: 0 0 4px;">No Trips Recorded</p>
+                    <p style="color: var(--text-muted); font-size: 11px; margin: 0; line-height: 1.4;">Navigate to the Route Planner and start your first simulated trip to see journey logs here.</p>
+                </div>
+            `;
             return;
         }
 
@@ -86,10 +92,15 @@ const TripAnalytics = {
             canvas.style.display = 'none';
             const parent = canvas.parentElement;
             if (!parent.querySelector('.no-data-msg')) {
-                const msg = document.createElement('p');
+                const msg = document.createElement('div');
                 msg.className = 'no-data-msg';
-                msg.style.cssText = 'color:var(--text-muted); font-size:12px; text-align:center; padding:20px;';
-                msg.innerText = 'Plan your first trip to see spending analytics here.';
+                msg.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; margin-bottom: 20px;">
+                        <i class="fa-solid fa-chart-column" style="font-size: 24px; color: var(--text-muted); margin-bottom: 12px;"></i>
+                        <p style="color: var(--text-main); font-size: 13px; font-weight: 600; margin: 0 0 4px;">No Analytics Data</p>
+                        <p style="color: var(--text-muted); font-size: 11px; margin: 0;">Plan your first trip to unlock spending and travel charts.</p>
+                    </div>
+                `;
                 parent.appendChild(msg);
             }
             return;

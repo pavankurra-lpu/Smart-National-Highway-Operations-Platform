@@ -106,7 +106,13 @@ const EmergencyReporter = {
         const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
         
         if (emergencies.length === 0) {
-            listEl.innerHTML = '<p style="font-size:11px; color:var(--text-sec);">No active emergency cases.</p>';
+            listEl.innerHTML = `
+                <div style="text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; margin-top: 10px;">
+                    <i class="fa-solid fa-shield-heart" style="font-size: 24px; color: var(--text-muted); margin-bottom: 12px;"></i>
+                    <p style="color: var(--text-main); font-size: 13px; font-weight: 600; margin: 0 0 4px;">No Active Incidents</p>
+                    <p style="color: var(--text-muted); font-size: 11px; margin: 0; line-height: 1.4;">Your reported SOS emergencies and their admin resolution status will appear here.</p>
+                </div>
+            `;
             return;
         }
 

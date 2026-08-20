@@ -99,7 +99,13 @@ const FastagEngine = {
         if (histEl) {
             const hist = Storage.get(Storage.KEYS.RECHARGE_HISTORY, []);
             if (hist.length === 0) {
-                histEl.innerHTML = '<p style="color:var(--text-muted);font-size:12px;">No recent transactions.</p>';
+                histEl.innerHTML = `
+                    <div style="text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; margin-top: 10px;">
+                        <i class="fa-solid fa-wallet" style="font-size: 24px; color: var(--text-muted); margin-bottom: 12px;"></i>
+                        <p style="color: var(--text-main); font-size: 13px; font-weight: 600; margin: 0 0 4px;">No Transactions Yet</p>
+                        <p style="color: var(--text-muted); font-size: 11px; margin: 0;">Recharge your FASTag to view your history.</p>
+                    </div>
+                `;
             } else {
                 histEl.innerHTML = hist.slice(0, 8).map(h => {
                     const isDebit = h.net < 0;

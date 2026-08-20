@@ -764,6 +764,7 @@ const IndiaMapPlanner = {
 
         const btnCalc = document.getElementById('btn-calc-route');
         if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analyzing…'; btnCalc.disabled = true; }
+        Utils.toggleVisibility('route-loader-overlay', true);
 
         IndiaMapPlanner.endLiveTrip();
         IndiaMapPlanner._clearRoutePolylines();
@@ -781,6 +782,7 @@ const IndiaMapPlanner = {
             .then(r => r.json())
             .then(data => {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
+                Utils.toggleVisibility('route-loader-overlay', false);
                 if (data.code !== 'Ok' || !data.routes?.length) {
                     Utils.showToast('No route found via OSRM. Try nearby cities.', 'error');
                     return;
@@ -803,6 +805,7 @@ const IndiaMapPlanner = {
             })
             .catch(() => {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
+                Utils.toggleVisibility('route-loader-overlay', false);
                 Utils.showToast('No internet or routing service offline. Check connection and retry.', 'error');
             });
     },
