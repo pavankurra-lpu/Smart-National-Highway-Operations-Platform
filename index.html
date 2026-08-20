@@ -325,20 +325,32 @@
     <!-- Header Navigation -->
     <header class="gateway-header">
         <div class="brand-logo">
-            <!-- Government of India Emblem SVG -->
+            <!-- Government of India 4 Lions Emblem SVG -->
             <svg class="emblem-svg" viewBox="0 0 100 100" width="34" height="34">
-                <circle cx="50" cy="50" r="46" fill="none" stroke="#d4af37" stroke-width="3"/>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#002244" stroke-width="2"/>
-                <circle cx="50" cy="50" r="8" fill="#002244"/>
-                <line x1="50" y1="12" x2="50" y2="88" stroke="#002244" stroke-width="1.8"/>
-                <line x1="12" y1="50" x2="88" y2="50" stroke="#002244" stroke-width="1.8"/>
-                <line x1="23.2" y1="23.2" x2="76.8" y2="76.8" stroke="#002244" stroke-width="1.5"/>
-                <line x1="76.8" y1="23.2" x2="23.2" y2="76.8" stroke="#002244" stroke-width="1.5"/>
-                <line x1="50" y1="50" x2="69" y2="31" stroke="#002244" stroke-width="1.2"/>
-                <line x1="50" y1="50" x2="31" y2="69" stroke="#002244" stroke-width="1.2"/>
-                <line x1="50" y1="50" x2="31" y2="31" stroke="#002244" stroke-width="1.2"/>
-                <line x1="50" y1="50" x2="69" y2="69" stroke="#002244" stroke-width="1.2"/>
-                <circle cx="50" cy="50" r="41" fill="none" stroke="#002244" stroke-width="0.8" stroke-dasharray="2,2"/>
+                <!-- Base pedestal -->
+                <path d="M 28,80 L 72,80 L 68,76 L 32,76 Z" fill="#d4af37"/>
+                <path d="M 33,76 L 67,76 L 65,68 L 35,68 Z" fill="#d4af37"/>
+                <!-- Pedestal Chakra -->
+                <circle cx="50" cy="72" r="3" fill="#030712" stroke="#d4af37" stroke-width="0.6"/>
+                <!-- Flanking animal indicators -->
+                <circle cx="41" cy="72" r="1" fill="#d4af37"/>
+                <circle cx="59" cy="72" r="1" fill="#d4af37"/>
+                <!-- Lotus base -->
+                <path d="M 37,68 C 37,64 63,64 63,68 Z" fill="#d4af37" opacity="0.8"/>
+                
+                <!-- Three visible Lions (representing the 4 lions capital) -->
+                <!-- Left Lion -->
+                <path d="M 32,52 C 30,42 40,37 40,45 C 38,51 40,55 40,57 C 39,60 38,62 39,65 C 40,65 42,65 42,64 C 41,61 42,59 41,57 C 42,52 37,47 37,43 C 37,40 40,39 42,42 C 43,44 43,47 43,49 L 44,65 L 40,65" fill="#d4af37"/>
+                <!-- Right Lion -->
+                <path d="M 68,52 C 70,42 60,37 60,45 C 62,51 60,55 60,57 C 61,60 62,62 61,65 C 60,65 58,65 58,64 C 59,61 58,59 58,57 C 57,52 62,47 62,43 C 62,40 59,39 57,42 C 56,44 56,47 56,49 L 55,65 L 59,65" fill="#d4af37"/>
+                <!-- Center Lion -->
+                <path d="M 50,34 C 45,34 43,39 45,43 C 43,45 42,48 43,51 C 44,55 45,58 45,64 C 47,64 48,64 49,63 C 48,59 49,56 48,54 C 47,48 53,48 52,54 C 51,56 52,59 51,63 C 52,64 53,64 55,64 C 55,58 56,55 57,51 C 58,48 57,45 55,43 C 57,39 55,34 50,34 Z" fill="#d4af37"/>
+                <!-- Manes and features -->
+                <circle cx="50" cy="38" r="1.5" fill="#030712"/>
+                <circle cx="38" cy="42" r="1" fill="#030712"/>
+                <circle cx="62" cy="42" r="1" fill="#030712"/>
+                <!-- Satyameva Jayate (सत्यमेव जयते) tagline -->
+                <text x="50" y="90" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="7.5" fill="#d4af37" text-anchor="middle" letter-spacing="0.5">सत्यमेव जयते</text>
             </svg>
             
             <!-- NHAI Emblem SVG -->
