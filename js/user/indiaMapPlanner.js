@@ -1692,37 +1692,20 @@ const IndiaMapPlanner = {
         const container = document.createElement('div');
         container.id = 'map-layer-controls';
         Object.assign(container.style, {
-            position: 'absolute', bottom: '90px', left: '30px', zIndex: '700',
-            display: 'flex', flexDirection: 'column', gap: '8px'
+            position: 'absolute', bottom: '30px', left: '30px', zIndex: '9999',
+            display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start'
         });
-
-        // Vehicle Avatar 3D Switcher
-        const btnVehicle = document.createElement('button');
-        btnVehicle.className = 'layer-control-btn';
-        
-        const updateBtnText = () => {
-            const v = IndiaMapPlanner._currentVehicleAvatar || 'default';
-            let label = 'Classic Dot';
-            if (v === 'car_red') label = 'Sports Car';
-            if (v === 'suv_blue') label = 'Cool SUV';
-            if (v === 'camper') label = 'Camper Van';
-            if (v === 'scooter') label = 'Scooter';
-            
-            const icon = IndiaMapPlanner._vehicleIcons[v] || '<i class="fa-solid fa-location-dot"></i>';
-            btnVehicle.innerHTML = `<span style="font-size:16px">${icon}</span> <span>${label}</span>`;
-        };
-        updateBtnText();
 
         const styleBtn = (b) => {
             Object.assign(b.style, {
                 background: 'rgba(9, 9, 11, 0.85)', backdropFilter: 'blur(12px)',
                 border: '1px solid rgba(255, 255, 255, 0.1)', color: '#e4e4e7',
-                fontFamily: 'var(--font-main)', fontSize: '12px', fontWeight: '500',
-                padding: '10px 16px', borderRadius: '12px', cursor: 'pointer',
+                fontFamily: 'var(--font-main)', fontSize: '13px', fontWeight: '500',
+                padding: '12px 18px', borderRadius: '12px', cursor: 'pointer',
                 display: 'flex', alignItems: 'center', gap: '10px',
-                transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)', 
+                transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)', 
                 boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
-                minWidth: '150px', justifyContent: 'center'
+                minWidth: '170px', justifyContent: 'flex-start'
             });
             b.addEventListener('mouseenter', () => { 
                 b.style.borderColor = 'rgba(59, 130, 246, 0.5)'; 
@@ -1738,6 +1721,59 @@ const IndiaMapPlanner = {
             });
         };
 
+        // 1. Locate Me / GPS Tracker Button
+        const btnLocate = document.createElement('button');
+        btnLocate.id = 'btn-locate-me-dynamic';
+        btnLocate.innerHTML = '<i class="fa-solid fa-location-crosshairs" style="font-size: 16px; width: 24px; text-align: center;"></i> <span>Locate Me</span>';
+        styleBtn(btnLocate);
+        
+        btnLocate.addEventListener('click', () => {
+            const iconEl = btnLocate.querySelector('i');
+            if (iconEl) iconEl.className = 'fa-solid fa-spinner fa-spin';
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                        if (IndiaMapPlanner.map) IndiaMapPlanner.map.setView([lat, lng], 13);
+                        
+                        if (IndiaMapPlanner.userLocationMarker) IndiaMapPlanner.userLocationMarker.remove();
+                        IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
+                            .bindTooltip("My Location", { permanent: false, direction: 'top' })
+                            .addTo(IndiaMapPlanner.map);
+                        Utils.showToast("Located successfully!", "success");
+                        const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
+                        if (state) IndiaMapPlanner.fetchLiveNewsAlerts(state);
+                    },
+                    (error) => {
+                        if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                        Utils.showToast("Could not retrieve GPS location.", "error");
+                    },
+                    { enableHighAccuracy: true, timeout: 8000 }
+                );
+            } else {
+                if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                Utils.showToast("Geolocation is not supported by your browser.", "error");
+            }
+        });
+
+        // 2. Vehicle Avatar 3D Switcher
+        const btnVehicle = document.createElement('button');
+        
+        const updateBtnText = () => {
+            const v = IndiaMapPlanner._currentVehicleAvatar || 'default';
+            let label = 'Classic Dot';
+            if (v === 'car_red') label = 'Sports Car';
+            if (v === 'suv_blue') label = 'Cool SUV';
+            if (v === 'camper') label = 'Camper Van';
+            if (v === 'scooter') label = 'Scooter';
+            
+            const icon = IndiaMapPlanner._vehicleIcons[v] || '<i class="fa-solid fa-location-dot"></i>';
+            btnVehicle.innerHTML = `<span style="font-size: 16px; width: 24px; text-align: center; display: inline-block;">${icon}</span> <span>${label}</span>`;
+        };
+        updateBtnText();
         styleBtn(btnVehicle);
 
         btnVehicle.addEventListener('click', () => {
@@ -1758,6 +1794,7 @@ const IndiaMapPlanner = {
             Utils.showToast("Vehicle avatar updated! 🚗", "success");
         });
 
+        container.appendChild(btnLocate);
         container.appendChild(btnVehicle);
         
         const mapEl = document.getElementById('map');

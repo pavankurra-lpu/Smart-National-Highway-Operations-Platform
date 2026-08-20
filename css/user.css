@@ -515,7 +515,7 @@ body.light-mode .alerts-ticker-label {
     position: absolute;
     top: 25px;
     right: 440px;
-    z-index: 600;
+    z-index: 9999;
     width: 40px; height: 40px;
     border-radius: var(--radius-sm);
     background: rgba(9, 9, 11, 0.82);
@@ -1183,69 +1183,7 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     animation: dash 20s linear infinite;
 }
 
-/* Floating Locate Me Button Style (Shadcn + Kokonut UI Inspired) */
-.locate-me-btn {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-    background: rgba(9, 9, 11, 0.85); /* Zinc 950 */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #e4e4e7; /* Zinc 200 */
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    z-index: 999;
-    overflow: hidden;
-}
-body.light-mode .locate-me-btn {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: #18181b;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-.locate-me-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 150%; height: 150%;
-    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.25) 0%, transparent 60%);
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: -1;
-    pointer-events: none;
-}
-.locate-me-btn:hover {
-    border-color: rgba(59, 130, 246, 0.5); /* Blue-500 glow */
-    transform: translateY(-2px) scale(1.02);
-    color: #60a5fa; /* Blue 400 */
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
-}
-.locate-me-btn:hover::before {
-    opacity: 1;
-}
-.locate-me-btn:active {
-    transform: translateY(1px) scale(0.96);
-}
-
-@media (max-width: 768px) {
-    .locate-me-btn {
-        bottom: 20px;
-        left: 20px;
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-}
+/* Locate Me Button styles moved to dynamic JS generation */
 
 /* ========================================================
    Kokonut UI / Motion.dev Inspired "Classic Dot" Radar
