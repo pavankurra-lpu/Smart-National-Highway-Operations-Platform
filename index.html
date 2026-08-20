@@ -321,7 +321,7 @@
             <!-- Left Info Panel -->
             <div class="hero-info animate-stagger-group">
                 <span class="nhai-badge"><i class="fa-solid fa-building-shield"></i> Gov of India SIMULATION</span>
-                <h1 class="hero-title">Smart National Highway Operations <span>Platform</span></h1>
+                <h1 class="hero-title animate-title">Smart National Highway Operations <span>Platform</span></h1>
                 <p class="hero-subtitle">
                     A comprehensive, portfolio-grade Indian highway mobility system. Experience real-time FASTag wallet operations, Dijkstra-powered multi-modal route planning, and active emergency operations command.
                 </p>
@@ -329,15 +329,15 @@
                 <!-- NHAI System-Wide Stats Widget -->
                 <div class="landing-stats-box">
                     <div class="l-stat">
-                        <div class="l-stat-val">850+</div>
+                        <div class="l-stat-val" id="stat-plazas">0</div>
                         <div class="l-stat-lbl">Active Plazas</div>
                     </div>
                     <div class="l-stat">
-                        <div class="l-stat-val">1.4L+ KM</div>
+                        <div class="l-stat-val" id="stat-network">0</div>
                         <div class="l-stat-lbl">Highway Network</div>
                     </div>
                     <div class="l-stat">
-                        <div class="l-stat-val">99.9%</div>
+                        <div class="l-stat-val" id="stat-uptime">0</div>
                         <div class="l-stat-lbl">System Uptime</div>
                     </div>
                 </div>
@@ -378,25 +378,98 @@
         *Inspired by the National Highways Authority of India (NHAI) and FASTag workflow design. Fully client-side state synchronization enabled. Created by pavan.kurra
     </footer>
 
-    <!-- Motion.dev Animation Library -->
+    <!-- Animation Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Anime.js: Word-by-word Blur Reveal Stagger on Hero Title
+            const titleEl = document.querySelector('.animate-title');
+            if (titleEl && typeof anime !== 'undefined') {
+                const text = titleEl.innerText;
+                titleEl.innerHTML = text.split(' ').map(word => {
+                    if (word.toLowerCase() === 'platform') {
+                        return `<span class="word-span" style="color: var(--primary); display: inline-block;">${word}</span>`;
+                    }
+                    return `<span class="word-span" style="display: inline-block;">${word}</span>`;
+                }).join(' ');
+                
+                const spans = titleEl.querySelectorAll('.word-span');
+                spans.forEach(s => {
+                    s.style.opacity = '0';
+                    s.style.transform = 'translateY(15px) scale(0.95)';
+                    s.style.filter = 'blur(4px)';
+                });
+
+                anime({
+                    targets: spans,
+                    opacity: [0, 1],
+                    translateY: [15, 0],
+                    scale: [0.95, 1],
+                    filter: ['blur(4px)', 'blur(0px)'],
+                    delay: anime.stagger(100),
+                    duration: 800,
+                    easing: 'easeOutQuad'
+                });
+            }
+
+            // Anime.js Count-Up for NHAI System-Wide Stats
+            if (typeof anime !== 'undefined') {
+                // 1. Plazas Count Up
+                const plazasObj = { val: 0 };
+                const plazasEl = document.getElementById('stat-plazas');
+                if (plazasEl) {
+                    anime({
+                        targets: plazasObj,
+                        val: 850,
+                        round: 1,
+                        duration: 1500,
+                        easing: 'easeOutQuad',
+                        update: () => { plazasEl.innerText = plazasObj.val + '+'; }
+                    });
+                }
+
+                // 2. Network Count Up
+                const netObj = { val: 0 };
+                const netEl = document.getElementById('stat-network');
+                if (netEl) {
+                    anime({
+                        targets: netObj,
+                        val: 1.4,
+                        duration: 1500,
+                        easing: 'easeOutQuad',
+                        update: () => { netEl.innerText = netObj.val.toFixed(1) + 'L+ KM'; }
+                    });
+                }
+
+                // 3. Uptime Count Up
+                const uptimeObj = { val: 0 };
+                const uptimeEl = document.getElementById('stat-uptime');
+                if (uptimeEl) {
+                    anime({
+                        targets: uptimeObj,
+                        val: 99.9,
+                        duration: 1500,
+                        easing: 'easeOutQuad',
+                        update: () => { uptimeEl.innerText = uptimeObj.val.toFixed(1) + '%'; }
+                    });
+                }
+            }
 
             // High performance staggers using Motion
             if (typeof Motion !== 'undefined') {
                 const { animate, stagger } = Motion;
                 
-                // Animate Left Column elements
-                const infoElements = document.querySelectorAll('.hero-info > *');
+                // Animate remaining Left Column elements (except the title which is handled by anime.js)
+                const infoElements = Array.from(document.querySelectorAll('.hero-info > *')).filter(el => !el.classList.contains('animate-title'));
                 infoElements.forEach(el => {
                     el.style.opacity = '0';
                     el.style.transform = 'translateY(25px)';
                 });
-                animate(Array.from(infoElements), 
+                animate(infoElements, 
                     { opacity: [0, 1], y: [25, 0] }, 
-                    { delay: stagger(0.08), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
+                    { delay: stagger(0.08, { startDelay: 200 }), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
                 );
 
                 // Animate Right Column cards
@@ -407,7 +480,7 @@
                 });
                 animate(Array.from(cards), 
                     { opacity: [0, 1], x: [30, 0] }, 
-                    { delay: stagger(0.12, { startDelay: 0.2 }), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
+                    { delay: stagger(0.12, { startDelay: 350 }), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
                 );
             }
         });
