@@ -348,11 +348,13 @@ const IndiaMapPlanner = {
                         if (state) {
                             IndiaMapPlanner.fetchLiveNewsAlerts(state);
                         } else {
-                            IndiaMapPlanner.fetchLiveNewsAlerts();
+                            const localState = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
+                            IndiaMapPlanner.fetchLiveNewsAlerts(localState || '');
                         }
                     })
                     .catch(() => {
-                        IndiaMapPlanner.fetchLiveNewsAlerts();
+                        const localState = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
+                        IndiaMapPlanner.fetchLiveNewsAlerts(localState || '');
                     });
             },
             (error) => {
@@ -796,6 +798,17 @@ const IndiaMapPlanner = {
 
         IndiaMapPlanner.map.fitBounds(primaryPoly.getBounds(), { padding: [50, 50] });
         Utils.showToast(`${rData.originName} → ${rData.destName} · ${rData.totalDist} km · ${rData.tolls.length} tolls`, 'success');
+
+        // Update alerts ticker with regional feed for route origin state
+        let routeState = '';
+        if (origin && origin.state) {
+            routeState = origin.state;
+        } else if (coords && coords.length > 0) {
+            routeState = IndiaMapPlanner._getLocalStateFromCoords(coords[0][1], coords[0][0]);
+        }
+        if (routeState) {
+            IndiaMapPlanner.fetchLiveNewsAlerts(routeState);
+        }
 
         // AI Voice Announcement
         IndiaMapPlanner._announceRoute(rData);
@@ -1815,6 +1828,22 @@ const IndiaMapPlanner = {
         
         IndiaMapPlanner.closeTollExplorer();
         IndiaMapPlanner.processRoute();
+    },
+
+    _getLocalStateFromCoords: (lat, lng) => {
+        if (!window.IndiaMapData || !IndiaMapData.cities) return '';
+        let minDist = Infinity;
+        let closestCity = null;
+        IndiaMapData.cities.forEach(c => {
+            const dy = c.lat - lat;
+            const dx = c.lng - lng;
+            const dist = dy * dy + dx * dx;
+            if (dist < minDist) {
+                minDist = dist;
+                closestCity = c;
+            }
+        });
+        return closestCity ? closestCity.state : '';
     }
 };
 
