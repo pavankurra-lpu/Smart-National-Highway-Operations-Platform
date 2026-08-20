@@ -208,6 +208,32 @@
             width: 4px;
             background: transparent;
             transition: var(--transition);
+            z-index: 3;
+        }
+        .portal-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+                rgba(16, 185, 129, 0.06) 0%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+            z-index: 1;
+            border-radius: inherit;
+        }
+        .portal-card.card-admin::after {
+            background: radial-gradient(
+                180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+                rgba(14, 165, 233, 0.06) 0%,
+                transparent 100%
+            );
+        }
+        .portal-card:hover::after {
+            opacity: 1;
         }
         .portal-card:hover {
             background: rgba(24, 24, 30, 0.7);
@@ -240,6 +266,7 @@
             font-size: 22px;
             flex-shrink: 0;
             transition: var(--transition);
+            z-index: 2;
         }
         .portal-card.card-user .card-icon-box { color: var(--primary); }
         .portal-card.card-admin .card-icon-box { color: var(--accent-blue); }
@@ -277,6 +304,10 @@
             color: var(--text-sec);
             line-height: 1.5;
             margin: 0;
+        }
+        .card-details {
+            position: relative;
+            z-index: 2;
         }
 
         /* Footer Panel */
@@ -580,6 +611,18 @@
             };
             updateClock();
             setInterval(updateClock, 1000);
+
+            // 6. Kokonut UI: Spotlight card hover gradient tracker
+            const portalCards = document.querySelectorAll('.portal-card');
+            portalCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
         });
     </script>
 </body>
