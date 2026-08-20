@@ -340,7 +340,7 @@ body.light-mode .sidebar {
 }
 
 .sidebar.collapsed {
-    transform: translateX(calc(100% + 30px));
+    transform: translateX(calc(100% + 30px)) !important;
 }
 
 .sidebar-header {
