@@ -1183,43 +1183,118 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     animation: dash 20s linear infinite;
 }
 
-/* Floating Locate Me Button Style */
+/* Floating Locate Me Button Style (Shadcn + Kokonut UI Inspired) */
 .locate-me-btn {
     position: absolute;
     bottom: 30px;
     left: 30px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--bg-panel);
-    backdrop-filter: var(--glass);
-    border: 1px solid var(--border);
-    color: var(--primary);
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(9, 9, 11, 0.85); /* Zinc 950 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e4e4e7; /* Zinc 200 */
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 999;
+    overflow: hidden;
+}
+body.light-mode .locate-me-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #18181b;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+.locate-me-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 150%; height: 150%;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.25) 0%, transparent 60%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
 }
 .locate-me-btn:hover {
-    background: var(--primary);
-    color: #021a12;
-    transform: scale(1.08);
-    box-shadow: 0 0 15px var(--primary-glow);
-    border-color: var(--primary);
+    border-color: rgba(59, 130, 246, 0.5); /* Blue-500 glow */
+    transform: translateY(-2px) scale(1.02);
+    color: #60a5fa; /* Blue 400 */
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.locate-me-btn:hover::before {
+    opacity: 1;
+}
+.locate-me-btn:active {
+    transform: translateY(1px) scale(0.96);
 }
 
 @media (max-width: 768px) {
     .locate-me-btn {
         bottom: 20px;
         left: 20px;
-        width: 38px;
-        height: 38px;
-        font-size: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
+}
+
+/* ========================================================
+   Kokonut UI / Motion.dev Inspired "Classic Dot" Radar
+   ======================================================== */
+.kokonut-dot {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.kokonut-dot-core {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #3b82f6; /* Sharp Blue */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #3b82f6, inset 0 0 4px #93c5fd;
+    border: 2px solid #ffffff;
+    z-index: 3;
+}
+.kokonut-dot-ring {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 70%, rgba(59, 130, 246, 0.9) 100%);
+    animation: k-spin 1.5s linear infinite;
+    -webkit-mask-image: radial-gradient(transparent 55%, black 65%);
+    mask-image: radial-gradient(transparent 55%, black 65%);
+    z-index: 2;
+}
+.kokonut-dot-radar {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    animation: k-ripple 2.5s cubic-bezier(0.1, 0, 0.3, 1) infinite;
+    z-index: 1;
+}
+@keyframes k-ripple {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes k-spin {
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes dash {

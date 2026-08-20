@@ -1675,8 +1675,8 @@ const IndiaMapPlanner = {
         if (!IndiaMapPlanner._currentVehicleAvatar || IndiaMapPlanner._currentVehicleAvatar === 'default') {
             return L.divIcon({
                 className: '',
-                html: "<div class='user-loc-marker' style='background:#10b981;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #10b981;position:relative;'><div style='position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(16,185,129,0.5);animation:pulse 2s infinite;'></div></div>",
-                iconSize: [14,14], iconAnchor: [7,7]
+                html: "<div class='kokonut-dot'><div class='kokonut-dot-radar'></div><div class='kokonut-dot-ring'></div><div class='kokonut-dot-core'></div></div>",
+                iconSize: [24,24], iconAnchor: [12,12]
             });
         }
         const emoji = IndiaMapPlanner._vehicleIcons[IndiaMapPlanner._currentVehicleAvatar];
@@ -1715,16 +1715,27 @@ const IndiaMapPlanner = {
 
         const styleBtn = (b) => {
             Object.assign(b.style, {
-                background: 'var(--bg-panel)', backdropFilter: 'var(--glass)',
-                border: '1px solid var(--border)', color: 'var(--primary)',
-                fontFamily: 'var(--font-main)', fontSize: '11px', fontWeight: '600',
-                padding: '10px 16px', borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+                background: 'rgba(9, 9, 11, 0.85)', backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)', color: '#e4e4e7',
+                fontFamily: 'var(--font-main)', fontSize: '12px', fontWeight: '500',
+                padding: '10px 16px', borderRadius: '12px', cursor: 'pointer',
                 display: 'flex', alignItems: 'center', gap: '10px',
-                transition: 'var(--transition)', boxShadow: 'var(--shadow)',
+                transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)', 
+                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
                 minWidth: '150px', justifyContent: 'center'
             });
-            b.addEventListener('mouseenter', () => { b.style.background = 'var(--primary-dim)'; b.style.borderColor = 'var(--primary)'; b.style.transform = 'scale(1.05)'; });
-            b.addEventListener('mouseleave', () => { b.style.background = 'var(--bg-panel)'; b.style.borderColor = 'var(--border)'; b.style.transform = 'scale(1)'; });
+            b.addEventListener('mouseenter', () => { 
+                b.style.borderColor = 'rgba(59, 130, 246, 0.5)'; 
+                b.style.color = '#60a5fa';
+                b.style.transform = 'translateY(-2px) scale(1.02)'; 
+                b.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.1)';
+            });
+            b.addEventListener('mouseleave', () => { 
+                b.style.borderColor = 'rgba(255, 255, 255, 0.1)'; 
+                b.style.color = '#e4e4e7';
+                b.style.transform = 'translateY(0) scale(1)'; 
+                b.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)';
+            });
         };
 
         styleBtn(btnVehicle);
