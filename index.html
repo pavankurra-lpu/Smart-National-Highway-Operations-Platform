@@ -326,19 +326,19 @@
                     A comprehensive, portfolio-grade Indian highway mobility system. Experience real-time FASTag wallet operations, Dijkstra-powered multi-modal route planning, and active emergency operations command.
                 </p>
                 
-                <!-- Live Telemetry Stats Widget -->
+                <!-- NHAI System-Wide Stats Widget -->
                 <div class="landing-stats-box">
                     <div class="l-stat">
-                        <div class="l-stat-val" id="stat-plazas">142</div>
-                        <div class="l-stat-lbl">Toll Plazas</div>
+                        <div class="l-stat-val">850+</div>
+                        <div class="l-stat-lbl">Active Plazas</div>
                     </div>
                     <div class="l-stat">
-                        <div class="l-stat-val" id="stat-incidents">0</div>
-                        <div class="l-stat-lbl">SOS Events</div>
+                        <div class="l-stat-val">1.4L+ KM</div>
+                        <div class="l-stat-lbl">Highway Network</div>
                     </div>
                     <div class="l-stat">
-                        <div class="l-stat-val" id="stat-fastag">₹1,500</div>
-                        <div class="l-stat-lbl">FASTag Base</div>
+                        <div class="l-stat-val">99.9%</div>
+                        <div class="l-stat-lbl">System Uptime</div>
                     </div>
                 </div>
             </div>
@@ -383,20 +383,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Load live statistics from localStorage
-            try {
-                const emergencies = JSON.parse(localStorage.getItem('nhai_emergencies')) || [];
-                const activeSOS = emergencies.filter(e => e.status === 'Active' || e.status === 'Dispatched').length;
-                document.getElementById('stat-incidents').innerText = activeSOS;
-
-                const balance = localStorage.getItem('nhai_fastag_balance');
-                if (balance !== null) {
-                    const balNum = parseFloat(balance) || 0;
-                    document.getElementById('stat-fastag').innerText = '₹' + balNum.toLocaleString('en-IN', { maximumFractionDigits: 0 });
-                }
-            } catch (e) {
-                console.warn('Could not read state counters from localStorage.');
-            }
 
             // High performance staggers using Motion
             if (typeof Motion !== 'undefined') {
