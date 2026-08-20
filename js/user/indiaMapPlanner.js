@@ -278,6 +278,55 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner.renderTollMarkers();
             }
         }, 3000);
+
+        // Fetch active news updates
+        IndiaMapPlanner.fetchLiveNewsAlerts();
+    },
+
+    fetchLiveNewsAlerts: () => {
+        const fallbackAlerts = [
+            "NH-48: Traffic maintenance warnings near Mumbai-Pune expressway links",
+            "NH-44: Reduced visibility alerts reported around NCR regions due to morning mist",
+            "NH-2: Lane closures active near Kanpur bypass extensions for overlay works",
+            "NH-3: Dynamic safety alerts active near Kasara Ghat highway crossings",
+            "NH-8: FastTag auto-deduction sync verified on all major Rajasthan toll lanes"
+        ];
+
+        fetch('/api/news-feed')
+            .then(res => {
+                if (!res.ok) throw new Error('API down');
+                return res.json();
+            })
+            .then(data => {
+                if (data.alerts && data.alerts.length > 0) {
+                    IndiaMapPlanner.updateAlertsTickerUI(data.alerts);
+                } else {
+                    IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts);
+                }
+            })
+            .catch(() => {
+                const host = window.location.hostname || 'localhost';
+                fetch(`http://${host}:3000/api/news-feed`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.alerts && data.alerts.length > 0) {
+                            IndiaMapPlanner.updateAlertsTickerUI(data.alerts);
+                        } else {
+                            IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts);
+                        }
+                    })
+                    .catch(() => {
+                        IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts);
+                    });
+            });
+    },
+
+    updateAlertsTickerUI: (alerts) => {
+        const container = document.querySelector('.alerts-ticker-scroll');
+        if (!container) return;
+        container.innerHTML = alerts.map(alert => `
+            <span><i class="fa-solid fa-triangle-exclamation" style="color: #fbbf24; margin-right: 4px;"></i> ${alert}</span>
+        `).join('');
     },
 
     showWeatherPopup: (type, cityName, lat, lng) => {
