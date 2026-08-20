@@ -397,7 +397,7 @@ body.light-mode .alerts-ticker-label {
     gap: 40px;
     white-space: nowrap;
     width: max-content;
-    animation: alertsScroll 22s linear infinite;
+    animation: alertsScroll 35s linear infinite;
 }
 .alerts-ticker-container:hover .alerts-ticker-scroll {
     animation-play-state: paused;
