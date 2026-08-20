@@ -800,6 +800,7 @@ const IndiaMapPlanner = {
         IndiaMapPlanner.routePolylines = [];
         // Remove alt tabs
         document.getElementById('alt-route-tabs')?.remove();
+        document.getElementById('route-sidebar-summary')?.classList.add('hidden');
     },
 
     // ═══════════════════════════════════════════════════════════════
@@ -812,6 +813,49 @@ const IndiaMapPlanner = {
         setText('sum-eta',       rData.totalEta);
         setText('sum-toll',      rData.tolls.length);
         setText('sum-cost',      `₹${rData.totalTollCost}`);
+
+        // Render dynamic toll timeline steps
+        const timelineEl = document.getElementById('route-timeline-steps');
+        const summaryPanel = document.getElementById('route-sidebar-summary');
+        if (timelineEl && summaryPanel) {
+            summaryPanel.classList.remove('hidden');
+            let html = `
+                <div style="position: relative; margin-bottom: 12px; z-index: 2;">
+                    <div style="position: absolute; left: -22.5px; top: 3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); border: 2px solid #000; box-shadow: 0 0 8px var(--primary-glow);"></div>
+                    <div style="font-size: 11px; font-weight: 700; color: #fff;">${rData.originName}</div>
+                    <div style="font-size: 8.5px; color: var(--text-muted);">Start of Journey</div>
+                </div>
+            `;
+            if (rData.tolls.length > 0) {
+                rData.tolls.forEach(toll => {
+                    const td = window.TollSeedData?.find(s => s.id === toll.id);
+                    const name = td ? td.name : 'Toll Plaza';
+                    html += `
+                        <div style="position: relative; margin-bottom: 12px; z-index: 2;">
+                            <div style="position: absolute; left: -22px; top: 4px; width: 7px; height: 7px; border-radius: 50%; background: #fbbf24; border: 1.5px solid #000; box-shadow: 0 0 6px rgba(251, 191, 36, 0.4);"></div>
+                            <div style="font-size: 10px; font-weight: 600; color: var(--text-sec); display: flex; justify-content: space-between;">
+                                <span>${name}</span>
+                                <span style="color: var(--accent-yellow); font-weight: 700;">₹${toll.cost}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                html += `
+                    <div style="position: relative; margin-bottom: 12px; z-index: 2;">
+                        <div style="font-size: 10px; color: var(--text-muted); font-style: italic;">(Toll-free Route)</div>
+                    </div>
+                `;
+            }
+            html += `
+                <div style="position: relative; z-index: 2;">
+                    <div style="position: absolute; left: -22.5px; top: 3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-red); border: 2px solid #000; box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);"></div>
+                    <div style="font-size: 11px; font-weight: 700; color: #fff;">${rData.destName}</div>
+                    <div style="font-size: 8.5px; color: var(--text-muted);">Destination reached • ${rData.totalDist} km • ${rData.totalEta}h</div>
+                </div>
+            `;
+            timelineEl.innerHTML = html;
+        }
     },
 
     // ═══════════════════════════════════════════════════════════════

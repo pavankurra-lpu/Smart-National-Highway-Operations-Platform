@@ -109,6 +109,19 @@
                 </div>
             </div>
 
+            <!-- Active Highway Alerts Ticker (Kokonut UI Style) -->
+            <div class="alerts-ticker-container">
+                <div class="alerts-ticker-label"><i class="fa-solid fa-triangle-exclamation"></i> LIVE NHAI FEED</div>
+                <div class="alerts-ticker-track">
+                    <div class="alerts-ticker-scroll">
+                        <span>🚧 NH-48: Maintenance alert near Surat (Right lane closed)</span>
+                        <span>🌧️ NH-3: Heavy rainfall warning near Kasara Ghat (Drive safe)</span>
+                        <span>🚗 NH-19: Congestion delay 15m near Varanasi toll gate</span>
+                        <span>⚠️ NH-44: High density fog warning near Ambala</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tabs -->
             <div class="nav-tabs">
                 <button class="tab-btn active" data-tab="tab-plan" id="tab-btn-plan">
@@ -160,6 +173,16 @@
                     <button id="btn-calc-route" class="btn btn-primary w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
                         <i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route
                     </button>
+
+                    <!-- Dynamic Toll Timeline Container -->
+                    <div id="route-sidebar-summary" class="hidden flex-col gap-3" style="margin-top: 15px; border-top: 1px solid var(--border-light); padding-top: 15px;">
+                        <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-sec); display:flex; align-items:center; gap:6px; margin: 0 0 10px;">
+                            <i class="fa-solid fa-timeline" style="color:var(--primary)"></i> Journey Route Timeline
+                        </h4>
+                        <div id="route-timeline-steps" class="flex-col gap-2" style="position: relative; padding-left: 18px; border-left: 1px dashed rgba(255, 255, 255, 0.1);">
+                            <!-- Steps will be generated here dynamically -->
+                        </div>
+                    </div>
                 </div>
             </div>
 

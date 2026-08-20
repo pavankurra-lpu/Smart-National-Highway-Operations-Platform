@@ -357,6 +357,60 @@ body.light-mode .sidebar-header {
     border-bottom-color: var(--border);
 }
 
+
+/* ===== KOKONUT UI STYLE ACTIVE HIGHWAY ALERTS TICKER ===== */
+.alerts-ticker-container {
+    display: flex;
+    align-items: center;
+    background: rgba(251, 191, 36, 0.04);
+    border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+    padding: 7px 16px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    gap: 12px;
+    flex-shrink: 0;
+}
+body.light-mode .alerts-ticker-container {
+    background: rgba(217, 119, 6, 0.03);
+    border-bottom-color: rgba(217, 119, 6, 0.12);
+}
+.alerts-ticker-label {
+    color: #fbbf24;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+body.light-mode .alerts-ticker-label {
+    color: #d97706;
+}
+.alerts-ticker-track {
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+    height: 14px;
+}
+.alerts-ticker-scroll {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+    width: max-content;
+    animation: alertsScroll 22s linear infinite;
+}
+.alerts-ticker-container:hover .alerts-ticker-scroll {
+    animation-play-state: paused;
+}
+@keyframes alertsScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.alerts-ticker-scroll span {
+    color: var(--text-sec);
+    font-weight: 500;
+}
+
 .sidebar-header h2 {
     font-size: 15px;
     color: var(--primary);
