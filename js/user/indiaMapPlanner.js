@@ -83,7 +83,7 @@ const IndiaMapPlanner = {
         const labelsOpts = (tileCfg.labels || {}).options || { maxZoom: 19, pane: 'shadowPane', opacity: 0.8 };
         IndiaMapPlanner._labelsLayer = L.tileLayer(labelsUrl, labelsOpts);
 
-        const streetUrl = (tileCfg.street || {}).url || 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+        const streetUrl = (tileCfg.street || {}).url || 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
         const streetOpts = (tileCfg.street || {}).options || { maxZoom: 20, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO' };
         IndiaMapPlanner._streetLayer = L.tileLayer(streetUrl, streetOpts);
 
