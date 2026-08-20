@@ -8,60 +8,60 @@
 /* ===== DARK THEME (Default) ===== */
 /* ===== ORGANIC MINIMALIST THEME (Cream & Olive) ===== */
 :root {
-    --bg-dark:        #121510; /* Deep Forest Black */
-    --bg-darker:      #0d100b;
-    --bg-card:        rgba(35, 45, 30, 0.6); /* Olive Glass */
-    --bg-panel:       rgba(20, 25, 18, 0.9);
+    --bg-dark:        #09090b; /* Shadcn Zinc-950 */
+    --bg-darker:      #030303;
+    --bg-card:        rgba(24, 24, 27, 0.65); /* Zinc-900 Glass */
+    --bg-panel:       rgba(9, 9, 11, 0.95);
     
-    --primary:        #8da672; /* Sage / Olive Green */
-    --primary-dim:    rgba(141, 166, 114, 0.1);
-    --primary-hover:  #a3bc88;
+    --primary:        #10b981; /* Shadcn Emerald */
+    --primary-dim:    rgba(16, 185, 129, 0.1);
+    --primary-hover:  #059669;
     
-    --text-main:      #f4f7f0;
-    --text-sec:       #a3ad9b;
-    --text-muted:     #636b5d;
+    --text-main:      #fafafa; /* Zinc-50 */
+    --text-sec:       #a1a1aa; /* Zinc-400 */
+    --text-muted:     #71717a; /* Zinc-500 */
     
-    --accent-red:     #d66d6d;
-    --accent-yellow:  #e3c382;
-    --accent-blue:    #7ca3ad;
+    --accent-red:     #ef4444; /* Red-500 */
+    --accent-yellow:  #f59e0b; /* Amber-500 */
+    --accent-blue:    #0ea5e9; /* Sky-500 */
     
-    --border:         rgba(141, 166, 114, 0.15);
+    --border:         rgba(255, 255, 255, 0.08); /* Zinc-800 subtle */
     --border-light:   rgba(255, 255, 255, 0.04);
     
-    --shadow:         0 10px 30px -10px rgba(0, 0, 0, 0.6);
-    --shadow-lg:      0 20px 50px -12px rgba(0, 0, 0, 0.8);
+    --shadow:         0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --shadow-lg:      0 20px 50px -12px rgba(0, 0, 0, 0.7);
     
     --font-main:      'Inter', sans-serif;
     --font-display:   'Inter', sans-serif;
     
-    --radius:         16px;
-    --radius-sm:      10px;
-    --radius-lg:      30px;
+    --radius:         10px; /* Sharp Shadcn corners */
+    --radius-sm:      6px;
+    --radius-lg:      20px;
 
-    --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --glass:          blur(12px) saturate(150%);
+    --transition:     all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --glass:          blur(12px) saturate(140%);
 }
 
-/* ===== PROFESSIONAL LIGHT MODE (Cream SaaS) ===== */
+/* ===== PROFESSIONAL LIGHT MODE (Zinc SaaS) ===== */
 body.light-mode {
-    --bg-dark:        #fdfcf0; /* Cream / Bone */
-    --bg-darker:      #fcfaf2;
-    --bg-card:        rgba(255, 255, 255, 0.8);
-    --bg-panel:       rgba(253, 252, 240, 0.95);
+    --bg-dark:        #ffffff; /* Pure White */
+    --bg-darker:      #fafafa; /* Zinc-50 */
+    --bg-card:        rgba(255, 255, 255, 0.85);
+    --bg-panel:       rgba(255, 255, 255, 0.98);
     
-    --primary:        #556b2f; /* Dark Olive Green */
-    --primary-dim:    rgba(85, 107, 47, 0.08);
-    --primary-hover:  #6b8e23;
+    --primary:        #059669; /* Emerald-600 */
+    --primary-dim:    rgba(5, 150, 105, 0.08);
+    --primary-hover:  #047857; /* Emerald-700 */
     
-    --text-main:      #1c1f1a;
-    --text-sec:       #4a5246;
-    --text-muted:     #8a9486;
+    --text-main:      #09090b; /* Zinc-950 */
+    --text-sec:       #71717a; /* Zinc-500 */
+    --text-muted:     #a1a1aa; /* Zinc-400 */
     
-    --border:         rgba(85, 107, 47, 0.12);
-    --border-light:   rgba(0, 0, 0, 0.06);
+    --border:         rgba(9, 9, 11, 0.08); /* Zinc-200 subtle */
+    --border-light:   rgba(9, 9, 11, 0.04);
     
-    --shadow:         0 10px 30px -10px rgba(85, 107, 47, 0.1);
-    --shadow-lg:      0 20px 50px -12px rgba(85, 107, 47, 0.15);
+    --shadow:         0 10px 30px -10px rgba(5, 150, 105, 0.05);
+    --shadow-lg:      0 20px 50px -12px rgba(9, 9, 11, 0.06);
 }
 
 /* ===== STREET VIEW MODE (Black & White Transformation) ===== */
@@ -343,3 +343,86 @@ body.light-mode option {
 }
 
 .modal-overlay.hidden { display: none !important; }
+
+/* ===== SHADCN TOAST NOTIFICATION SYSTEM ===== */
+.shadcn-toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    width: calc(100% - 48px);
+    pointer-events: none;
+}
+.shadcn-toast {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    color: var(--text-main);
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    overflow: hidden;
+    position: relative;
+}
+.shadcn-toast::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: var(--text-muted);
+}
+.shadcn-toast.toast-success::before {
+    background: var(--primary);
+}
+.shadcn-toast.toast-error::before {
+    background: var(--accent-red);
+}
+.shadcn-toast.toast-warning::before {
+    background: var(--accent-yellow);
+}
+.shadcn-toast.toast-info::before {
+    background: var(--accent-blue);
+}
+.shadcn-toast-icon {
+    font-size: 16px;
+    margin-top: 1px;
+    flex-shrink: 0;
+}
+.shadcn-toast-content {
+    flex-grow: 1;
+}
+.shadcn-toast-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+.shadcn-toast-description {
+    font-size: 12px;
+    color: var(--text-sec);
+    line-height: 1.4;
+}
+.shadcn-toast-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 11px;
+    padding: 2px;
+    transition: var(--transition);
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+.shadcn-toast-close:hover {
+    color: var(--text-main);
+}
+
