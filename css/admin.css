@@ -303,3 +303,80 @@
 .tc-btn-active-yellow { background: rgba(252,211,77,0.2); color: #fcd34d; border-color: #fcd34d40; }
 .tc-btn-active-red { background: rgba(255,94,94,0.2); color: #ff5e5e; border-color: #ff5e5e40; }
 
+/* Variables fallback */
+:root {
+    --card-bg: var(--bg-card, rgba(24, 24, 27, 0.65));
+}
+
+/* Modern Overview Dashboard Layout */
+.overview-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+@media (max-width: 1024px) {
+    .overview-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-live-map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Chart Container & custom chart font sizing */
+.chart-card canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Kokonut UI: Spotlight Hover Glowing Effect */
+.spotlight-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-card);
+    backdrop-filter: var(--glass);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        220px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(16, 185, 129, 0.08) 0%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+.spotlight-card:hover::after {
+    opacity: 1;
+}
+
+/* Make sure inner elements stay above the spotlight radial shadow */
+.spotlight-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Light mode specific override for spotlight gradient */
+body.light-mode .spotlight-card::after {
+    background: radial-gradient(
+        220px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+        rgba(5, 150, 105, 0.06) 0%,
+        transparent 100%
+    );
+}
+

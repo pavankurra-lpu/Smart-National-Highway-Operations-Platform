@@ -1,6 +1,8 @@
 // Admin Analytics and Overview logic
 
 const Analytics = {
+    chartInstance: null,
+
     init: () => {
         Analytics.refresh();
     },
@@ -39,6 +41,136 @@ const Analytics = {
         const activeCount = incidents.filter(i => ['RAISED', 'ACKNOWLEDGED', 'DISPATCHED'].includes(i.status)).length;
         const statIncidents = document.getElementById('stat-incidents');
         if (statIncidents) statIncidents.innerText = activeCount;
+
+        // Draw/Refresh Bklit-style Chart
+        Analytics.drawRevenueChart(logs);
+    },
+
+    drawRevenueChart: (logs) => {
+        const canvas = document.getElementById('admin-revenue-chart');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        // Group last 7 days of logs
+        const dailyData = {};
+        const now = new Date();
+        for (let i = 6; i >= 0; i--) {
+            const d = new Date(now);
+            d.setDate(now.getDate() - i);
+            const dateStr = d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
+            dailyData[dateStr] = { revenue: 0, count: 0 };
+        }
+
+        logs.forEach(log => {
+            const dateStr = new Date(log.timestamp).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
+            if (dailyData[dateStr] !== undefined) {
+                dailyData[dateStr].revenue += log.cost || 0;
+                dailyData[dateStr].count += 1;
+            }
+        });
+
+        const labels = Object.keys(dailyData);
+        const revenueValues = labels.map(l => dailyData[l].revenue);
+        const trafficValues = labels.map(l => dailyData[l].count);
+
+        if (Analytics.chartInstance) {
+            Analytics.chartInstance.destroy();
+        }
+
+        let gradient = null;
+        try {
+            gradient = ctx.createLinearGradient(0, 0, 0, 250);
+            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
+            gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+        } catch (e) {
+            gradient = 'rgba(16, 185, 129, 0.05)';
+        }
+
+        Analytics.chartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        type: 'line',
+                        label: 'Revenue (₹)',
+                        data: revenueValues,
+                        borderColor: '#10b981',
+                        borderWidth: 2.5,
+                        fill: true,
+                        backgroundColor: gradient,
+                        tension: 0.35,
+                        pointBackgroundColor: '#10b981',
+                        pointHoverRadius: 6,
+                        yAxisID: 'y-rev'
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Transit Counts',
+                        data: trafficValues,
+                        backgroundColor: 'rgba(14, 165, 233, 0.4)',
+                        borderColor: '#0ea5e9',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        barThickness: 12,
+                        yAxisID: 'y-count'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#a1a1aa',
+                            font: { size: 9, family: 'Space Grotesk', weight: '500' },
+                            boxWidth: 8,
+                            padding: 10
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(9, 9, 11, 0.95)',
+                        borderColor: 'rgba(255,255,255,0.08)',
+                        borderWidth: 1,
+                        titleFont: { family: 'Space Grotesk', size: 10 },
+                        bodyFont: { family: 'Inter', size: 10 },
+                        padding: 8
+                    }
+                },
+                scales: {
+                    'y-rev': {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.03)' },
+                        ticks: {
+                            color: '#8e8e93',
+                            font: { size: 8, family: 'Space Grotesk' },
+                            callback: (v) => '₹' + v
+                        }
+                    },
+                    'y-count': {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        grid: { display: false },
+                        ticks: {
+                            color: '#8e8e93',
+                            font: { size: 8, family: 'Space Grotesk' },
+                            stepSize: 1
+                        }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#8e8e93', font: { size: 8, family: 'Space Grotesk' } }
+                    }
+                }
+            }
+        });
     }
 };
 

@@ -36,12 +36,14 @@ const AdminApp = {
 
         // Init map
         AdminApp.initMap();
+        AdminApp.renderIncidentMarkers();
 
         // Listen for user actions dynamically
         window.addEventListener('local-storage-update', () => {
             Analytics.refresh();
             IncidentCenter.refresh();
             SpecialVehicleControl.refresh();
+            AdminApp.renderIncidentMarkers();
         });
         
         // Change-detection poll: only re-render when data actually changes
@@ -135,6 +137,102 @@ const AdminApp = {
                 .addTo(AdminApp.map);
             AdminApp.vehicleMarkers[tripId] = m;
         }
+    },
+
+    incidentMarkers: {},
+
+    renderIncidentMarkers: () => {
+        if (!AdminApp.map) return;
+
+        const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
+        
+        // Remove markers for emergencies that are no longer in storage or resolved
+        const currentIds = emergencies.map(e => e.id);
+        Object.keys(AdminApp.incidentMarkers).forEach(id => {
+            if (!currentIds.includes(id)) {
+                AdminApp.map.removeLayer(AdminApp.incidentMarkers[id]);
+                delete AdminApp.incidentMarkers[id];
+            }
+        });
+
+        // Add/Update markers
+        emergencies.forEach(e => {
+            if (e.status === 'RESOLVED' || e.status === 'CLOSED') {
+                if (AdminApp.incidentMarkers[e.id]) {
+                    AdminApp.map.removeLayer(AdminApp.incidentMarkers[e.id]);
+                    delete AdminApp.incidentMarkers[e.id];
+                }
+                return;
+            }
+
+            let lat = 20.5937;
+            let lng = 78.9629;
+            let found = false;
+
+            if (window.IndiaMapData) {
+                const query = e.location.toLowerCase();
+                for (const code in IndiaMapData.nodes) {
+                    const node = IndiaMapData.nodes[code];
+                    if (query.includes(node.name.toLowerCase()) || node.name.toLowerCase().includes(query)) {
+                        lat = node.lat;
+                        lng = node.lng;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found && IndiaMapData.cities) {
+                    const city = IndiaMapData.cities.find(c => query.includes(c.name.toLowerCase()) || c.name.toLowerCase().includes(query));
+                    if (city) {
+                        lat = city.lat;
+                        lng = city.lng;
+                        found = true;
+                    }
+                }
+            }
+
+            if (!found) {
+                const seed = e.id.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+                lat = 20.5937 + ((seed % 100) - 50) * 0.05;
+                lng = 78.9629 + (((seed >> 2) % 100) - 50) * 0.05;
+            }
+
+            const statusColors = {
+                'RAISED': '#ef4444',
+                'ACKNOWLEDGED': '#f59e0b',
+                'DISPATCHED': '#0ea5e9'
+            };
+            const color = statusColors[e.status] || '#ef4444';
+
+            if (AdminApp.incidentMarkers[e.id]) {
+                AdminApp.incidentMarkers[e.id].setLatLng([lat, lng]);
+            } else {
+                const icon = L.divIcon({
+                    className: '',
+                    html: `
+                        <div style="position: relative; width: 18px; height: 18px;">
+                            <div style="position: absolute; width: 18px; height: 18px; background: ${color}; border-radius: 50%; animation: radarPulse 1.5s infinite; opacity: 0.6;"></div>
+                            <div style="position: absolute; top: 4px; left: 4px; width: 10px; height: 10px; background: ${color}; border-radius: 50%; border: 1.5px solid #fff; box-shadow: 0 0 6px ${color};"></div>
+                        </div>
+                    `,
+                    iconSize: [18, 18],
+                    iconAnchor: [9, 9]
+                });
+
+                const marker = L.marker([lat, lng], { icon })
+                    .bindPopup(`
+                        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; padding: 2px;">
+                            <strong style="color: ${color}; font-size:12px; display:block; margin-bottom:4px;">🚨 SOS [${e.id}]</strong>
+                            <strong style="color:#fff;">Type:</strong> ${e.type}<br>
+                            <strong style="color:#fff;">Loc:</strong> ${e.location}<br>
+                            <strong style="color:#fff;">Desc:</strong> ${e.description || 'No description'}<br>
+                            <strong style="color:#fff;">Status:</strong> <span style="color:${color};font-weight:700;">${e.status}</span>
+                        </div>
+                    `, { className: 'admin-map-popup' })
+                    .addTo(AdminApp.map);
+
+                AdminApp.incidentMarkers[e.id] = marker;
+            }
+        });
     }
 };
 

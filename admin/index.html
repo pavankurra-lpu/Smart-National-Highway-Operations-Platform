@@ -67,19 +67,32 @@
             <!-- VIEWS -->
 
             <!-- 1. Overview & Analytics -->
-            <section id="view-overview" class="view-section active">
+            <section id="view-overview" class="view-section active animate-stagger-group">
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <div class="stat-card spotlight-card">
                         <h3>Revenue (Today)</h3>
                         <div class="value" id="stat-revenue-today" style="color: var(--primary);">₹0</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card spotlight-card">
                         <h3>Revenue (This Month)</h3>
                         <div class="value" id="stat-revenue-month" style="color: var(--primary);">₹0</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card spotlight-card">
                         <h3>Revenue (This Year)</h3>
                         <div class="value" id="stat-revenue-year" style="color: var(--primary);">₹0</div>
+                    </div>
+                </div>
+
+                <div class="overview-dashboard-grid">
+                    <div class="stat-card spotlight-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 420px;">
+                        <h4 style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin: 15px 20px 10px;"><i class="fa-solid fa-map-location-dot" style="color: var(--primary); margin-right: 5px;"></i> Live Operations Map</h4>
+                        <div id="admin-live-map" class="admin-live-map-container" style="flex: 1; border-top: 1px solid var(--border-light);"></div>
+                    </div>
+                    <div class="stat-card spotlight-card chart-card" style="display: flex; flex-direction: column; height: 420px; padding: 20px;">
+                        <h4 style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; margin-top: 0;"><i class="fa-solid fa-chart-line" style="color: var(--primary); margin-right: 5px;"></i> Bklit-Style Transit & Revenue Analytics</h4>
+                        <div style="flex: 1; position: relative;">
+                            <canvas id="admin-revenue-chart"></canvas>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -308,11 +321,13 @@
     <script src="../js/shared/realtimeConnector.js"></script>
     <script src="../js/shared/utils.js"></script>
     <script src="../js/shared/storage.js"></script>
+    <script src="../js/shared/indiaMapData.js"></script>
     <script src="../js/shared/tollSeedData.js"></script>
     <script src="../js/shared/tollData.js"></script>
     <script src="../js/shared/cctvFeedEngine.js"></script>
 
     <!-- Admin dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="../js/shared/themeManager.js"></script>
     <script src="../js/admin/analytics.js"></script>
     <script src="../js/admin/cctvManager.js"></script>

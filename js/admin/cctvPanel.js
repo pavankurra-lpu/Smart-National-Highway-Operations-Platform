@@ -28,7 +28,7 @@ const CCTVPanel = {
             let queue = cam.mode === 'OFFLINE' ? '-' : Math.floor((qSeed % 23) + 2) + ' cars';
 
             html += `
-                <div class="cctv-cam">
+                <div class="cctv-cam spotlight-card">
                     ${window.CCTVFeedEngine ? CCTVFeedEngine.getFeedHTML(cam) : '<div class="cctv-feed-sim"></div>'}
                     <div class="cctv-overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.8) 100%); display:flex; flex-direction:column; justify-content:space-between; padding:10px;">
                         

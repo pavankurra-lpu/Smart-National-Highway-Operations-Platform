@@ -222,18 +222,12 @@ const TrafficControl = {
             const congColors = { NORMAL: '#10b981', MODERATE: '#fcd34d', HIGH: '#ff5e5e' };
             const congColor = congColors[state];
 
-            // Render cool modern card layouts with glassmorphic elements
+            // Render cool modern card layouts with glassmorphic elements (Kokonut UI Spotlight card)
             html += `
-                <div class="tc-card" style="
-                    background: rgba(20, 25, 20, 0.45);
-                    border: 1px solid rgba(255,255,255,0.04);
+                <div class="tc-card spotlight-card" style="
                     border-left: 4px solid ${congColor};
-                    border-radius: 12px;
-                    padding: 16px;
                     margin-bottom: 12px;
-                    transition: transform 0.2s, box-shadow 0.2s;
-                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.2)';">
+                ">
                     
                     <!-- Header -->
                     <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom: 12px;">

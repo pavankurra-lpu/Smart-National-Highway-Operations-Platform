@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // CCTV & stats card glows/scales on hover
-    const hoverCards = '.stat-card, .cctv-card, .fastag-card, .alert-box, .glass-panel table tbody tr';
+    const hoverCards = '.stat-card, .cctv-cam, .fastag-card, .alert-box, .glass-panel table tbody tr';
     document.querySelectorAll(hoverCards).forEach(card => {
         card.addEventListener('mouseenter', () => {
             animate(card, { scale: 1.015, translateZ: 0 }, { duration: 0.2, easing: 'ease-out' });
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Special staggers inside specific admin tabs
                     if (targetViewId === 'view-cctv') {
                         setTimeout(() => {
-                            const cctvs = targetView.querySelectorAll('.cctv-card');
+                            const cctvs = targetView.querySelectorAll('.cctv-cam');
                             cctvs.forEach(card => {
                                 card.style.opacity = '0';
                                 card.style.transform = 'scale(0.95)';
