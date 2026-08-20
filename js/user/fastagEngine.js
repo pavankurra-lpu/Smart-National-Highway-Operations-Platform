@@ -145,6 +145,8 @@ const FastagEngine = {
 
         FastagEngine.updateUI();
         Utils.showToast(`Toll ${Utils.formatCurrency(cost)} deducted via FASTag.`);
+        
+        if (window.Gamification) Gamification.addXP(10, 'FASTag Toll Paid');
 
         // Check for low balance alerts
         if (balance < 500) {

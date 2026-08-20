@@ -157,11 +157,15 @@ const EmergencyReporter = {
         if (noteEl) noteEl.innerText = inc.adminNote || 'No notes provided.';
         
         if (imgEl) {
-            if (inc.resolutionImage) {
+            const placeholder = document.getElementById('fb-res-placeholder');
+            if (inc.resolutionImage && inc.resolutionImage.trim() !== '') {
                 imgEl.src = inc.resolutionImage;
-                imgEl.parentElement.style.display = 'block';
+                imgEl.style.display = 'block';
+                if (placeholder) placeholder.style.display = 'none';
             } else {
-                imgEl.parentElement.style.display = 'none';
+                imgEl.src = '';
+                imgEl.style.display = 'none';
+                if (placeholder) placeholder.style.display = 'block';
             }
         }
 

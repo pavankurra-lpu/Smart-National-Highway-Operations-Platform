@@ -56,8 +56,19 @@ const UserProfile = {
     },
 
     applyProfile: (profile) => {
-        // Vehicle type is now managed by VehicleGarage
-        // Only sync if garage is empty (first-time user)
+        const nameEl = document.getElementById('profile-name');
+        const regEl = document.getElementById('profile-reg');
+        const phoneEl = document.getElementById('profile-phone');
+        const emailEl = document.getElementById('profile-email');
+        const vTypeEl = document.getElementById('profile-vtype');
+        
+        if (nameEl) nameEl.value = profile.name || '';
+        if (regEl) regEl.value = profile.regNum || '';
+        if (phoneEl) phoneEl.value = profile.phone || '';
+        if (emailEl) emailEl.value = profile.email || '';
+        if (vTypeEl && profile.vehicleType) vTypeEl.value = profile.vehicleType;
+
+        // Sync main vehicle type if garage is empty
         const garageVehicles = window.VehicleGarage ? (typeof window.VehicleGarage.getAll === 'function' ? window.VehicleGarage.getAll() : []) : [];
         if (garageVehicles.length === 0 && profile.vehicleType) {
             const vTypeSelect = document.getElementById('vehicle-type');

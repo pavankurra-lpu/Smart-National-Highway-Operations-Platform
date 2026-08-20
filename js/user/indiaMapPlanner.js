@@ -1503,6 +1503,10 @@ const IndiaMapPlanner = {
             
             Storage.logTripEnd(IndiaMapPlanner.currentTripId, IndiaMapPlanner.tripTollsPassed, IndiaMapPlanner.tripTotalCost, dist);
             
+            if (window.Gamification) {
+                Gamification.addXP(Math.floor(dist * 0.5) + 50, 'Completed Trip');
+            }
+
             if (window.EmailAlerts) EmailAlerts.sendTripEmail(tripData);
             if (window.TripAnalytics) TripAnalytics.init();
             

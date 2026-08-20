@@ -754,9 +754,13 @@
                         <strong style="color:var(--text-main);">Admin Note:</strong>
                         <div id="fb-admin-note" style="background:rgba(255,255,255,0.05); padding:10px; border-radius:4px; margin-top:5px; border:1px solid var(--border);"></div>
                     </div>
-                    <div style="margin-bottom: 20px;">
+                    <div id="fb-proof-container" style="margin-bottom: 20px;">
                         <strong style="color:var(--text-main);">Resolution Proof:</strong>
-                        <div style="margin-top:5px; text-align:center; background:#000; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+                        <div style="margin-top:5px; text-align:center; background:#000; border-radius:8px; overflow:hidden; border:1px solid var(--border); min-height: 100px; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div id="fb-res-placeholder" style="color:var(--text-muted); font-size:12px; display:none;">
+                                <i class="fa-solid fa-image" style="font-size:24px; display:block; margin-bottom:8px; opacity:0.5;"></i>
+                                No proof attached by admin
+                            </div>
                             <img id="fb-res-image" src="" alt="Proof" style="max-width:100%; max-height:200px; display:block; margin:0 auto;">
                         </div>
                     </div>

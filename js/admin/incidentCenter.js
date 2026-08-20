@@ -101,10 +101,6 @@ const IncidentCenter = {
         const imgInput = document.getElementById('res-image-upload');
         const noteInput = document.getElementById('res-note');
         
-        if (!imgInput.files || imgInput.files.length === 0) {
-            Utils.showToast("Error: Resolution proof image is mandatory.", "error"); 
-            return;
-        }
         if (!noteInput.value.trim()) {
             Utils.showToast("Error: Admin Summary Note is mandatory.", "error"); 
             return;
@@ -112,23 +108,28 @@ const IncidentCenter = {
 
         const note = `[RESOLVED] ${noteInput.value.trim()}`;
         
-        const file = imgInput.files[0];
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const base64Image = e.target.result;
-            Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image);
-            
-            // Clear inputs
-            imgInput.value = '';
-            noteInput.value = '';
-            
-            document.getElementById('resolution-modal').classList.add('hidden');
-            Utils.showToast(`Incident ${id} resolved. Awaiting user acceptance.`, "success");
-            
-            IncidentCenter.refresh();
-            Analytics.refresh();
-        };
-        reader.readAsDataURL(file);
+        if (imgInput.files && imgInput.files.length > 0) {
+            const file = imgInput.files[0];
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const base64Image = e.target.result;
+                Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image);
+                IncidentCenter._finalizeResolution(id);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            Storage.updateEmergencyStatus(id, 'RESOLVED', note, '');
+            IncidentCenter._finalizeResolution(id);
+        }
+    },
+
+    _finalizeResolution: (id) => {
+        document.getElementById('res-image-upload').value = '';
+        document.getElementById('res-note').value = '';
+        document.getElementById('resolution-modal').classList.add('hidden');
+        Utils.showToast(`Incident ${id} resolved. Awaiting user acceptance.`, "success");
+        IncidentCenter.refresh();
+        Analytics.refresh();
     }
 };
 
