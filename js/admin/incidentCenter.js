@@ -7,9 +7,24 @@ const IncidentCenter = {
     },
 
     refresh: () => {
-        const incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
+        let incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
         const tbody = document.getElementById('incidents-table-body');
         const badge = document.getElementById('sos-badge');
+        
+        // Regional filtering
+        const region = sessionStorage.getItem('admin_region') || 'ALL';
+        if (region !== 'ALL') {
+            incidents = incidents.filter(incident => {
+                const loc = (incident.location || '').toLowerCase();
+                const r = region.toLowerCase();
+                if (loc.includes(r)) return true;
+                if (r === 'maharashtra' && (loc.includes('mumbai') || loc.includes('pune') || loc.includes('nashik'))) return true;
+                if (r === 'punjab' && (loc.includes('amritsar') || loc.includes('ludhiana') || loc.includes('jalandhar'))) return true;
+                if (r === 'delhi' && (loc.includes('delhi') || loc.includes('noida') || loc.includes('gurgaon'))) return true;
+                if (r === 'karnataka' && (loc.includes('bengaluru') || loc.includes('bangalore') || loc.includes('mysuru'))) return true;
+                return false;
+            });
+        }
 
         if (!tbody) return;
 

@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(async () => {
                 const success = await Auth.login(id, pass);
                 if (success) {
+                    const region = document.getElementById('admin-region').value;
+                    sessionStorage.setItem('admin_region', region);
                     window.location.href = 'index.html';
                 } else {
                     errorEl.innerText = "ACCESS DENIED. Invalid Credentials.";

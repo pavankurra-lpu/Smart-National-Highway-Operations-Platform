@@ -24,6 +24,20 @@ const AdminApp = {
             });
         });
 
+        // Setup Regional Access
+        AdminApp.region = sessionStorage.getItem('admin_region') || 'ALL';
+        const badge = document.getElementById('admin-region-badge');
+        if (badge) {
+            if (AdminApp.region === 'ALL') {
+                badge.innerText = 'ALL INDIA';
+            } else {
+                badge.innerText = AdminApp.region.toUpperCase() + ' REGION';
+                badge.style.background = 'rgba(14, 165, 233, 0.15)'; // Blue badge for specific region
+                badge.style.borderColor = 'var(--accent-blue)';
+                badge.style.color = 'var(--accent-blue)';
+            }
+        }
+
         // Initialize features
         ThemeManager.init();
         Analytics.init();
@@ -106,11 +120,23 @@ const AdminApp = {
         const mapEl = document.getElementById('admin-live-map');
         if (!mapEl) return;
 
+        // Default: Center of India
+        let center = [20.5937, 78.9629];
+        let zoom = 5;
+
+        // Regional boundaries
+        if (AdminApp.region === 'Maharashtra') { center = [19.7515, 75.7139]; zoom = 7; }
+        else if (AdminApp.region === 'Delhi') { center = [28.6139, 77.2090]; zoom = 10; }
+        else if (AdminApp.region === 'Karnataka') { center = [15.3173, 75.7139]; zoom = 7; }
+        else if (AdminApp.region === 'Punjab') { center = [31.1471, 75.3412]; zoom = 8; }
+        else if (AdminApp.region === 'Gujarat') { center = [22.2587, 71.1924]; zoom = 7; }
+        else if (AdminApp.region === 'Uttar Pradesh') { center = [26.8467, 80.9462]; zoom = 7; }
+
         AdminApp.map = L.map('admin-live-map', {
             zoomControl: true,
             attributionControl: true,
-            center: [20.5937, 78.9629],
-            zoom: 5,
+            center: center,
+            zoom: zoom,
             worldCopyJump: true
         });
 

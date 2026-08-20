@@ -27,6 +27,19 @@
                 <input type="password" id="admin-pass" placeholder="NHAI@2026" required autocomplete="off">
             </div>
 
+            <div style="text-align: left;">
+                <label style="font-size: 11px; color: var(--text-sec); font-weight: bold;">TERRITORY ASSIGNMENT</label>
+                <select id="admin-region" required style="width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); border-radius: 6px; color: #fff; font-size: 13px; margin-top: 5px; outline: none; appearance: auto;">
+                    <option value="ALL">All India (Super Admin)</option>
+                    <option value="Punjab">Punjab Zone (Amritsar)</option>
+                    <option value="Maharashtra">Maharashtra Zone (Mumbai)</option>
+                    <option value="Delhi">Delhi NCR Zone</option>
+                    <option value="Karnataka">Karnataka Zone (Bengaluru)</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh Zone</option>
+                    <option value="Gujarat">Gujarat Zone</option>
+                </select>
+            </div>
+
             <p id="login-error" style="color: var(--accent-red); font-size: 12px; height: 14px; margin: 0;"></p>
 
             <button type="submit" class="btn btn-primary w-full" style="justify-content: center; padding: 15px;">

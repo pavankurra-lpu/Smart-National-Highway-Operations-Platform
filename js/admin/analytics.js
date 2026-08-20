@@ -19,7 +19,28 @@ const Analytics = {
         const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
         const startOfYear = new Date(now.getFullYear(), 0, 1).getTime();
 
-        logs.forEach(log => {
+        const region = sessionStorage.getItem('admin_region') || 'ALL';
+
+        // Helper to check if a log is in the region (using origin/dest keywords or toll names)
+        const isLogInRegion = (log) => {
+            if (region === 'ALL') return true;
+            // Simple string matching for demo purposes
+            const str = (log.origin + ' ' + log.dest).toLowerCase();
+            const r = region.toLowerCase();
+            if (str.includes(r)) return true;
+            
+            // Check if region matches specific cities for the demo
+            if (r === 'maharashtra' && (str.includes('mumbai') || str.includes('pune') || str.includes('nashik'))) return true;
+            if (r === 'punjab' && (str.includes('amritsar') || str.includes('ludhiana') || str.includes('jalandhar'))) return true;
+            if (r === 'delhi' && (str.includes('delhi') || str.includes('noida') || str.includes('gurgaon'))) return true;
+            if (r === 'karnataka' && (str.includes('bengaluru') || str.includes('bangalore') || str.includes('mysuru'))) return true;
+            
+            return false;
+        };
+
+        const filteredLogs = logs.filter(isLogInRegion);
+
+        filteredLogs.forEach(log => {
             const cost = log.cost || 0;
             const time = new Date(log.timestamp).getTime();
             
@@ -44,7 +65,23 @@ const Analytics = {
 
         // Active incidents stat
         const incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
-        const activeCount = incidents.filter(i => ['RAISED', 'ACKNOWLEDGED', 'DISPATCHED'].includes(i.status)).length;
+        
+        const isIncidentInRegion = (incident) => {
+            if (region === 'ALL') return true;
+            const loc = (incident.location || '').toLowerCase();
+            const r = region.toLowerCase();
+            if (loc.includes(r)) return true;
+            if (r === 'maharashtra' && (loc.includes('mumbai') || loc.includes('pune') || loc.includes('nashik'))) return true;
+            if (r === 'punjab' && (loc.includes('amritsar') || loc.includes('ludhiana') || loc.includes('jalandhar'))) return true;
+            if (r === 'delhi' && (loc.includes('delhi') || loc.includes('noida') || loc.includes('gurgaon'))) return true;
+            if (r === 'karnataka' && (loc.includes('bengaluru') || loc.includes('bangalore') || loc.includes('mysuru'))) return true;
+            return false;
+        };
+        
+        const activeCount = incidents.filter(i => 
+            ['RAISED', 'ACKNOWLEDGED', 'DISPATCHED'].includes(i.status) && isIncidentInRegion(i)
+        ).length;
+        
         const statIncidents = document.getElementById('stat-incidents');
         
         if (statIncidents) {
@@ -56,7 +93,7 @@ const Analytics = {
         }
 
         // Draw/Refresh Bklit-style Chart
-        Analytics.drawRevenueChart(logs);
+        Analytics.drawRevenueChart(filteredLogs);
     },
 
     drawRevenueChart: (logs) => {
