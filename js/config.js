@@ -87,7 +87,9 @@ const NHAI_CONFIG = {
 
     /* ── SECURE BACKEND CONFIGURATION ──────────────────────── */
     backend: {
-        url: (window.location.origin && !window.location.origin.includes('file://')) 
+        url: (window.location.origin && 
+              !window.location.origin.includes('file://') && 
+              (window.location.port === '3000' || window.location.port === '')) 
             ? window.location.origin 
             : 'http://localhost:3000'
     }
