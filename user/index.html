@@ -786,12 +786,15 @@
         <!-- ==============================
              USER PROFILE SETUP MODAL
              ============================== -->
-        <div id="profile-setup-modal" class="modal-overlay hidden" style="z-index: 9999;">
-            <div class="glass-panel" style="width:400px; max-width:95%; padding:0; overflow:hidden;">
-                <div class="modal-header" style="padding:15px 20px;">
-                    <h3 class="modal-title"><i class="fa-solid fa-user-shield"></i> Complete Your Profile</h3>
+        <div id="profile-setup-modal" class="drawer-overlay" style="z-index: 10010;">
+            <div class="drawer-panel" style="width: 450px; overflow:hidden;">
+                <div class="drawer-header">
+                    <h3 style="margin: 0; color: #fff; font-size: 16px; font-weight: 600;">
+                        <i class="fa-solid fa-user-shield" style="color: var(--primary); margin-right: 8px;"></i> Profile Settings
+                    </h3>
+                    <button onclick="Utils.toggleVisibility('profile-setup-modal', false)" style="background:none; border:none; color:var(--text-sec); cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <div style="font-size: 12px; padding: 20px;">
+                <div class="drawer-body" style="font-size: 12px; padding: 20px;">
                     <p style="color:var(--text-sec); margin-bottom:15px;">Welcome to the SNHOP Traveller Portal! Please set up your profile to enable personalized FASTag logic, SMS alerts, and route planning.</p>
                     
                     <div style="margin-bottom: 12px;">
@@ -824,10 +827,10 @@
                             <option value="MAV_4_6">MAV (4-6 Axles)</option>
                             <option value="OVERSIZED">Oversized (7+ Axles)</option>
                         </select>
-                    </div>
-                    
+                </div>
+                <div class="drawer-footer" style="flex-direction: column;">
                     <button id="btn-save-profile" class="btn btn-primary" style="width:100%; justify-content:center; padding:12px;">
-                        <i class="fa-solid fa-check"></i> Save & Continue
+                        <i class="fa-solid fa-check"></i> Save Profile Settings
                     </button>
                     
                     <!-- Phase 2: Load Demo Data -->
@@ -875,26 +878,46 @@
             </style>
         </div>
 
-        <!-- TRIP RECEIPT MODAL -->
-        <div id="trip-receipt-modal" class="modal-overlay hidden" style="z-index: 10005;">
-            <div class="glass-panel" style="width: 400px; max-width: 90%; padding: 0; text-align: left; border: 1px solid rgba(255, 255, 255, 0.08); background: #1a1b1e;">
-                <div style="padding: 20px; border-bottom: 1px dashed rgba(255,255,255,0.2);">
-                    <h3 style="margin-top: 0; color: #fff; font-size: 18px; font-weight: 700; text-align: center;">
-                        <i class="fa-solid fa-receipt" style="color: var(--primary);"></i> Trip Summary Receipt
+        <!-- COMMAND PALETTE (Shadcn style) -->
+        <div id="command-palette-overlay" class="drawer-overlay" onclick="Utils.toggleCommandPalette(false)" style="align-items: flex-start; justify-content: center; padding-top: 10vh; display: flex;">
+            <div id="command-palette" class="glass-panel" onclick="event.stopPropagation()" style="width: 600px; max-width: 90vw; padding: 0; background: var(--bg-panel); border: 1px solid var(--border); box-shadow: var(--shadow-lg); transform: scale(0.95); opacity: 0; transition: all 0.2s ease;">
+                <div style="display: flex; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--border-light);">
+                    <i class="fa-solid fa-magnifying-glass" style="color: var(--text-muted); margin-right: 15px;"></i>
+                    <input type="text" id="cmd-input" placeholder="Type a command or search..." style="flex: 1; border: none; background: transparent; font-size: 16px; outline: none; padding: 0; box-shadow: none;" autocomplete="off">
+                    <span style="font-size: 10px; padding: 4px 6px; background: var(--bg-dark); border-radius: 4px; color: var(--text-muted); border: 1px solid var(--border-light);">ESC</span>
+                </div>
+                <div id="cmd-results" style="max-height: 300px; overflow-y: auto; padding: 10px;">
+                    <div class="cmd-group-label" style="font-size: 11px; font-weight: 600; color: var(--text-muted); padding: 8px 10px; margin-top: 5px;">Quick Actions</div>
+                    <div class="cmd-item" onclick="switchTab('tab-planner'); Utils.toggleCommandPalette(false);" style="padding: 12px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: background 0.2s;"><i class="fa-solid fa-map" style="color: var(--primary);"></i> Plan Route</div>
+                    <div class="cmd-item" onclick="switchTab('tab-wallet'); Utils.toggleCommandPalette(false);" style="padding: 12px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: background 0.2s;"><i class="fa-solid fa-wallet" style="color: var(--primary);"></i> Recharge FASTag</div>
+                    <div class="cmd-item" onclick="switchTab('tab-sos'); Utils.toggleCommandPalette(false);" style="padding: 12px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: background 0.2s;"><i class="fa-solid fa-truck-medical" style="color: var(--accent-red);"></i> Report Incident</div>
+                    <div class="cmd-item" onclick="switchTab('tab-garage'); Utils.toggleCommandPalette(false);" style="padding: 12px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: background 0.2s;"><i class="fa-solid fa-car" style="color: var(--accent-blue);"></i> Manage Vehicles</div>
+                    <div class="cmd-item" onclick="document.getElementById('profile-setup-modal').classList.add('active'); Utils.toggleCommandPalette(false);" style="padding: 12px 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; border-radius: var(--radius-sm); transition: background 0.2s;"><i class="fa-solid fa-user-gear" style="color: var(--text-sec);"></i> Open Profile Settings</div>
+                </div>
+            </div>
+            <style>
+                .cmd-item:hover { background: var(--primary-dim); color: var(--text-main); }
+                #command-palette-overlay.active #command-palette { transform: scale(1); opacity: 1; }
+            </style>
+        </div>
+
+        <!-- TRIP RECEIPT DRAWER -->
+        <div id="trip-receipt-modal" class="drawer-overlay" style="z-index: 10005;">
+            <div class="drawer-panel" style="width: 450px;">
+                <div class="drawer-header">
+                    <h3 style="margin: 0; color: #fff; font-size: 16px; font-weight: 600;">
+                        <i class="fa-solid fa-receipt" style="color: var(--primary); margin-right: 8px;"></i> Trip Summary Receipt
                     </h3>
-                    <p style="font-size: 10px; color: var(--text-muted); text-align: center; margin: 5px 0 0;">NHAI Official Digital Record</p>
+                    <button onclick="Utils.toggleVisibility('trip-receipt-modal', false)" style="background:none; border:none; color:var(--text-sec); cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
                 </div>
                 
-                <div id="receipt-content" style="padding: 20px; font-family: monospace; font-size: 12px; color: #d1d5db; line-height: 1.6;">
+                <div class="drawer-body" id="receipt-content" style="font-family: monospace; font-size: 13px; color: #d1d5db; line-height: 1.6;">
                     <!-- Filled dynamically -->
                 </div>
                 
-                <div style="padding: 15px; border-top: 1px dashed rgba(255,255,255,0.2); display: flex; gap: 10px;">
-                    <button id="btn-print-receipt" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 12px; padding: 10px;" onclick="window.print()">
-                        <i class="fa-solid fa-print"></i> Print / PDF
-                    </button>
-                    <button class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 12px; padding: 10px;" onclick="Utils.toggleVisibility('trip-receipt-modal', false)">
-                        Close
+                <div class="drawer-footer">
+                    <button id="btn-print-receipt" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 13px; padding: 12px;" onclick="window.print()">
+                        <i class="fa-solid fa-print"></i> Print / Save PDF
                     </button>
                 </div>
             </div>
@@ -903,10 +926,10 @@
                     body * { visibility: hidden; }
                     #trip-receipt-modal, #trip-receipt-modal * { visibility: visible; }
                     #trip-receipt-modal { position: absolute; left: 0; top: 0; width: 100%; background: #fff; color: #000; }
-                    #trip-receipt-modal .glass-panel { width: 100%; border: none; box-shadow: none; background: #fff; }
+                    .drawer-panel { width: 100%; border: none; box-shadow: none; background: #fff; transform: none !important; position: static; }
                     #receipt-content { color: #000; }
                     h3 { color: #000 !important; }
-                    .btn, #btn-print-receipt { display: none !important; }
+                    .btn, #btn-print-receipt, .fa-xmark { display: none !important; }
                 }
             </style>
         </div>

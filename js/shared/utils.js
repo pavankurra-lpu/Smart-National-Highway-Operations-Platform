@@ -111,8 +111,25 @@ const Utils = {
     toggleVisibility: (elementId, show) => {
         const el = document.getElementById(elementId);
         if (el) {
-            if (show) el.classList.remove('hidden');
-            else el.classList.add('hidden');
+            if (el.classList.contains('drawer-overlay')) {
+                if (show) el.classList.add('active');
+                else el.classList.remove('active');
+            } else {
+                if (show) el.classList.remove('hidden');
+                else el.classList.add('hidden');
+            }
+        }
+    },
+
+    toggleCommandPalette: (show) => {
+        const overlay = document.getElementById('command-palette-overlay');
+        if (overlay) {
+            if (show) {
+                overlay.classList.add('active');
+                setTimeout(() => document.getElementById('cmd-input')?.focus(), 100);
+            } else {
+                overlay.classList.remove('active');
+            }
         }
     },
 
@@ -128,3 +145,14 @@ const Utils = {
 };
 
 window.Utils = Utils;
+
+// Global hotkeys (Command Palette ⌘K / Ctrl+K)
+document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        Utils.toggleCommandPalette(true);
+    }
+    if (e.key === 'Escape') {
+        Utils.toggleCommandPalette(false);
+    }
+});
