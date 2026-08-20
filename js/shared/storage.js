@@ -75,7 +75,18 @@ const Storage = {
         if (!Storage.get(Storage.KEYS.ADMIN_ALERTS)) Storage.set(Storage.KEYS.ADMIN_ALERTS, []);
         if (!Storage.get(Storage.KEYS.VEHICLE_LOGS)) Storage.set(Storage.KEYS.VEHICLE_LOGS, []);
         if (!Storage.get(Storage.KEYS.TRIP_HISTORY)) Storage.set(Storage.KEYS.TRIP_HISTORY, []);
-        if (!Storage.get(Storage.KEYS.TOLL_STATES)) Storage.set(Storage.KEYS.TOLL_STATES, {});
+        if (!Storage.get(Storage.KEYS.TOLL_STATES)) {
+            const states = {};
+            if (window.TollSeedData) {
+                const congestionLevels = ['NORMAL', 'NORMAL', 'NORMAL', 'MODERATE', 'MODERATE', 'HIGH'];
+                // Only seed for the first 200 tolls to save performance
+                TollSeedData.slice(0, 200).forEach(toll => {
+                    const rand = congestionLevels[Math.floor(Math.random() * congestionLevels.length)];
+                    states[toll.id] = { congestion: rand };
+                });
+            }
+            Storage.set(Storage.KEYS.TOLL_STATES, states);
+        }
         if (!Storage.get(Storage.KEYS.ACTIVE_TRIPS)) Storage.set(Storage.KEYS.ACTIVE_TRIPS, []);
     },
 
@@ -218,6 +229,27 @@ const Storage = {
         localStorage.setItem('nhai_xp', '450');
         localStorage.setItem('nhai_gamified_level', '2');
         localStorage.setItem('nhai_achievements', JSON.stringify({"first_trip":true, "fastag_hero":true}));
+
+        // 6. Toll Congestion
+        const states = {};
+        if (window.TollSeedData) {
+            const congestionLevels = ['NORMAL', 'NORMAL', 'NORMAL', 'MODERATE', 'MODERATE', 'HIGH'];
+            TollSeedData.slice(0, 500).forEach(toll => {
+                const rand = congestionLevels[Math.floor(Math.random() * congestionLevels.length)];
+                states[toll.id] = { congestion: rand };
+            });
+        }
+        Storage.set(Storage.KEYS.TOLL_STATES, states);
+
+        // 7. Live Vehicles for Admin Map
+        const livePos = {
+            'TRP-V1': { lat: 28.7041, lng: 77.1025, timestamp: new Date().toISOString() }, // Delhi
+            'TRP-V2': { lat: 19.0760, lng: 72.8777, timestamp: new Date().toISOString() }, // Mumbai
+            'TRP-V3': { lat: 13.0827, lng: 80.2707, timestamp: new Date().toISOString() }, // Chennai
+            'TRP-V4': { lat: 22.5726, lng: 88.3639, timestamp: new Date().toISOString() }, // Kolkata
+            'TRP-V5': { lat: 12.9716, lng: 77.5946, timestamp: new Date().toISOString() }  // Bangalore
+        };
+        Storage.set('nhai_live_positions', livePos);
 
         console.log('[Storage] Demo data seeded successfully.');
     }

@@ -1512,6 +1512,25 @@ const IndiaMapPlanner = {
 
             if (window.EmailAlerts) EmailAlerts.sendTripEmail(tripData);
             if (window.TripAnalytics) TripAnalytics.init();
+
+            // Populate and show Receipt Modal
+            const receiptEl = document.getElementById('receipt-content');
+            if (receiptEl) {
+                receiptEl.innerHTML = `
+                    <div style="margin-bottom: 10px;"><strong>Trip ID:</strong> ${IndiaMapPlanner.currentTripId}</div>
+                    <div style="margin-bottom: 10px;"><strong>Date:</strong> ${new Date().toLocaleString()}</div>
+                    <div style="margin-bottom: 10px;"><strong>Vehicle:</strong> ${vType}</div>
+                    <hr style="border:0; border-top:1px dashed rgba(255,255,255,0.2); margin:10px 0;">
+                    <div style="display:flex; justify-content:space-between;"><span>Route:</span> <span>${IndiaMapPlanner.selectedRouteData.originName} to ${IndiaMapPlanner.selectedRouteData.destName}</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span>Distance:</span> <span>${dist} km</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span>Tolls Passed:</span> <span>${IndiaMapPlanner.tripTollsPassed.length}</span></div>
+                    <hr style="border:0; border-top:1px dashed rgba(255,255,255,0.2); margin:10px 0;">
+                    <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:bold; color:var(--primary);">
+                        <span>TOTAL DEDUCTED:</span> <span>₹${IndiaMapPlanner.tripTotalCost}</span>
+                    </div>
+                `;
+                Utils.toggleVisibility('trip-receipt-modal', true);
+            }
             
             IndiaMapPlanner.currentTripId = null;
         }

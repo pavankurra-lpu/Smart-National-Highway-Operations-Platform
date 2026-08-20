@@ -875,6 +875,42 @@
             </style>
         </div>
 
+        <!-- TRIP RECEIPT MODAL -->
+        <div id="trip-receipt-modal" class="modal-overlay hidden" style="z-index: 10005;">
+            <div class="glass-panel" style="width: 400px; max-width: 90%; padding: 0; text-align: left; border: 1px solid rgba(255, 255, 255, 0.08); background: #1a1b1e;">
+                <div style="padding: 20px; border-bottom: 1px dashed rgba(255,255,255,0.2);">
+                    <h3 style="margin-top: 0; color: #fff; font-size: 18px; font-weight: 700; text-align: center;">
+                        <i class="fa-solid fa-receipt" style="color: var(--primary);"></i> Trip Summary Receipt
+                    </h3>
+                    <p style="font-size: 10px; color: var(--text-muted); text-align: center; margin: 5px 0 0;">NHAI Official Digital Record</p>
+                </div>
+                
+                <div id="receipt-content" style="padding: 20px; font-family: monospace; font-size: 12px; color: #d1d5db; line-height: 1.6;">
+                    <!-- Filled dynamically -->
+                </div>
+                
+                <div style="padding: 15px; border-top: 1px dashed rgba(255,255,255,0.2); display: flex; gap: 10px;">
+                    <button id="btn-print-receipt" class="btn btn-primary" style="flex: 1; justify-content: center; font-size: 12px; padding: 10px;" onclick="window.print()">
+                        <i class="fa-solid fa-print"></i> Print / PDF
+                    </button>
+                    <button class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 12px; padding: 10px;" onclick="Utils.toggleVisibility('trip-receipt-modal', false)">
+                        Close
+                    </button>
+                </div>
+            </div>
+            <style>
+                @media print {
+                    body * { visibility: hidden; }
+                    #trip-receipt-modal, #trip-receipt-modal * { visibility: visible; }
+                    #trip-receipt-modal { position: absolute; left: 0; top: 0; width: 100%; background: #fff; color: #000; }
+                    #trip-receipt-modal .glass-panel { width: 100%; border: none; box-shadow: none; background: #fff; }
+                    #receipt-content { color: #000; }
+                    h3 { color: #000 !important; }
+                    .btn, #btn-print-receipt { display: none !important; }
+                }
+            </style>
+        </div>
+
         <script>
             window.onTurnstileSuccess = function(token) {
                 if (window.Utils) {

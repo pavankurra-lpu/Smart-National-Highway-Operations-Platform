@@ -66,20 +66,54 @@ const RealtimeService = {
         });
     },
 
-    // Send SOS to server so other admins/users can see
-    emitSOS: (sosData) => {
+    updatePosition: (tripId, lat, lng) => {
+        if (!tripId || !lat || !lng) return;
+        
+        // Offline simulation via localStorage
+        const positions = Storage.get('nhai_live_positions', {});
+        positions[tripId] = { lat, lng, timestamp: new Date().toISOString() };
+        Storage.set('nhai_live_positions', positions);
+
         if (RealtimeService.socket && RealtimeService.socket.connected) {
-            RealtimeService.socket.emit('send-sos', sosData);
+            RealtimeService.socket.emit('update-journey-location', { tripId, lat, lng });
         }
     },
 
-    // Track position for admin monitoring
-    updatePosition: (tripId, lat, lng) => {
+    emitSOS: (data) => {
         if (RealtimeService.socket && RealtimeService.socket.connected) {
-            RealtimeService.socket.emit('update-position', { tripId, lat, lng });
+            RealtimeService.socket.emit('sos-alert', data);
+        }
+    },
+
+    broadcastAlert: (alert) => {
+        const payload = {
+            id: Utils.generateId('ALT'),
+            timestamp: new Date().toISOString(),
+            ...alert
+        };
+
+        // Offline simulation via localStorage
+        const alerts = Storage.get(Storage.KEYS.ADMIN_ALERTS, []);
+        alerts.unshift(payload);
+        Storage.set(Storage.KEYS.ADMIN_ALERTS, alerts);
+
+        if (RealtimeService.socket && RealtimeService.socket.connected) {
+            const token = sessionStorage.getItem('nhai_admin_auth');
+            RealtimeService.socket.emit('admin-broadcast', { token, alert: payload });
         }
     }
 };
+
+// Poller for offline admin map sync (runs on admin side)
+setInterval(() => {
+    if (window.AdminApp && typeof AdminApp.updateVehicleMarker === 'function') {
+        const positions = Storage.get('nhai_live_positions', {});
+        Object.keys(positions).forEach(tripId => {
+            const data = positions[tripId];
+            AdminApp.updateVehicleMarker({ tripId, lat: data.lat, lng: data.lng });
+        });
+    }
+}, 1000);
 
 window.RealtimeService = RealtimeService;
 document.addEventListener('DOMContentLoaded', () => RealtimeService.init());
