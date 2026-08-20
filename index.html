@@ -3,73 +3,428 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART NATIONAL HIGHWAY OPERATIONS PLATFORM</title>
+    <title>SNHOP - NHAI Operations Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/global.css">
+    
     <style>
-        body, html {
-            margin: 0; padding: 0; font-family: 'Inter', sans-serif; height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            background: radial-gradient(ellipse at 50% 40%, #18181b 0%, #09090b 70%);
-            color: #fafafa; text-align: center; overflow: hidden;
+        /* Base Overrides for Premium Portal Gateway */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at 50% 30%, #0d121f 0%, #030712 100%);
+            overflow-x: hidden;
+            position: relative;
         }
-        .container {
-            background: rgba(24, 24, 27, 0.7); padding: 50px; border-radius: 12px;
-            backdrop-filter: blur(20px) saturate(180%); 
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            max-width: 600px; width: 90%;
-            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.8);
-            animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        /* Top Navigation Header */
+        .gateway-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            z-index: 10;
         }
-        h1 { font-size: 32px; font-weight: 700; margin-bottom: 12px; color: #fafafa; letter-spacing: -0.5px; }
-        p { font-size: 15px; color: #a1a1aa; margin-bottom: 40px; line-height: 1.6; }
-        .btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            text-decoration: none; padding: 14px 32px; border-radius: 8px;
-            font-weight: 600; font-size: 14px; transition: all 0.3s;
-            display: inline-flex; align-items: center; gap: 10px;
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+            font-size: 18px;
         }
-        .btn-user {
-            background: #10b981; color: #09090b;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        .brand-logo i {
+            color: var(--primary);
+            animation: radarPulse 2s infinite;
         }
-        .btn-user:hover {
-            background: #059669; transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-sec);
+            background: rgba(16, 185, 129, 0.06);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.15);
         }
-        .btn-admin {
-            background: rgba(255, 255, 255, 0.05); color: #fafafa;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: statusPulse 1.5s infinite;
         }
-        .btn-admin:hover {
-            background: rgba(255, 255, 255, 0.1); border-color: #10b981;
+
+        /* Hero Split Screen layout */
+        .gateway-hero {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            z-index: 5;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            width: 100%;
+            align-items: center;
+        }
+
+        /* Hero Copy Panel */
+        .hero-info {
+            text-align: left;
+        }
+        .nhai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-sec);
+            margin-bottom: 20px;
+        }
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 46px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .hero-title span {
+            color: var(--primary);
+            position: relative;
+        }
+        .hero-subtitle {
+            font-size: 15px;
+            color: var(--text-sec);
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+        
+        /* Stats Dashboard Live Widget */
+        .landing-stats-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .l-stat {
+            text-align: left;
+        }
+        .l-stat-val {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .l-stat-lbl {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* Interactive Portal Cards Group */
+        .portal-cards-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .portal-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: rgba(20, 20, 25, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-decoration: none;
+            text-align: left;
+            transition: var(--transition);
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+        }
+        .portal-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 4px;
+            background: transparent;
+            transition: var(--transition);
+        }
+        .portal-card:hover {
+            background: rgba(24, 24, 30, 0.7);
+            border-color: rgba(16, 185, 129, 0.2);
             transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.05);
         }
-        .disclaimer { margin-top: 40px; font-size: 11px; color: #71717a; opacity: 0.8; line-height: 1.4; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .portal-card.card-user:hover {
+            border-color: rgba(16, 185, 129, 0.25);
+        }
+        .portal-card.card-admin:hover {
+            border-color: rgba(14, 165, 233, 0.25);
+        }
+        .portal-card.card-user::before { background: var(--primary); transform: scaleY(0); transform-origin: bottom; }
+        .portal-card.card-admin::before { background: var(--accent-blue); transform: scaleY(0); transform-origin: bottom; }
+        
+        .portal-card:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .card-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .portal-card.card-user .card-icon-box { color: var(--primary); }
+        .portal-card.card-admin .card-icon-box { color: var(--accent-blue); }
+        
+        .portal-card:hover .card-icon-box {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        
+        .card-details h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-details h3 i {
+            font-size: 12px;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: var(--transition);
+            color: var(--primary);
+        }
+        .portal-card.card-admin h3 i { color: var(--accent-blue); }
+        
+        .portal-card:hover .card-details h3 i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .card-details p {
+            font-size: 13px;
+            color: var(--text-sec);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Footer Panel */
+        .gateway-footer {
+            padding: 24px 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            backdrop-filter: blur(12px);
+            z-index: 10;
+        }
+
+        @keyframes radarPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        @keyframes statusPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-info {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .gateway-header {
+                padding: 20px 24px;
+            }
+            .gateway-footer {
+                padding: 20px 24px;
+            }
+            .landing-stats-box {
+                max-width: 480px;
+                width: 100%;
+            }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>SMART NATIONAL HIGHWAY OPERATIONS PLATFORM</h1>
-        <p>Welcome to the National Highway Authority of India simulated mobility platform. Select your portal to proceed.</p>
-        
-        <div class="btn-group">
-            <a href="user/index.html" class="btn btn-user">
-                <i class="fa-solid fa-car-side"></i> Enter Traveller Portal
-            </a>
-            <a href="admin/login.html" class="btn btn-admin">
-                <i class="fa-solid fa-shield-halved"></i> Admin Secure Access
-            </a>
-        </div>
 
-        <p class="disclaimer">
-            *This platform is a simulation-based portfolio project inspired by Indian NHAI/FASTag highway operations. Data is representative and designed for demonstration purposes.
-        </p>
-    </div>
+    <!-- Header Navigation -->
+    <header class="gateway-header">
+        <div class="brand-logo">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <span>SNHOP PLATFORM</span>
+        </div>
+        <div class="system-status">
+            <span class="status-dot"></span>
+            <span>NHAI CENTRAL CONNECTED</span>
+        </div>
+    </header>
+
+    <!-- Hero Selection Split -->
+    <main class="gateway-hero">
+        <div class="hero-grid">
+            
+            <!-- Left Info Panel -->
+            <div class="hero-info animate-stagger-group">
+                <span class="nhai-badge"><i class="fa-solid fa-building-shield"></i> Gov of India SIMULATION</span>
+                <h1 class="hero-title">Smart National Highway Operations <span>Platform</span></h1>
+                <p class="hero-subtitle">
+                    A comprehensive, portfolio-grade Indian highway mobility system. Experience real-time FASTag wallet operations, Dijkstra-powered multi-modal route planning, and active emergency operations command.
+                </p>
+                
+                <!-- Live Telemetry Stats Widget -->
+                <div class="landing-stats-box">
+                    <div class="l-stat">
+                        <div class="l-stat-val" id="stat-plazas">142</div>
+                        <div class="l-stat-lbl">Toll Plazas</div>
+                    </div>
+                    <div class="l-stat">
+                        <div class="l-stat-val" id="stat-incidents">0</div>
+                        <div class="l-stat-lbl">SOS Events</div>
+                    </div>
+                    <div class="l-stat">
+                        <div class="l-stat-val" id="stat-fastag">₹1,500</div>
+                        <div class="l-stat-lbl">FASTag Base</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Selection Panel -->
+            <div class="portal-cards-box animate-stagger-group">
+                
+                <!-- Traveller Card -->
+                <a href="user/index.html" class="portal-card card-user">
+                    <div class="card-icon-box">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <div class="card-details">
+                        <h3>Traveller Portal <i class="fa-solid fa-arrow-right"></i></h3>
+                        <p>Plan routes dynamically, manage your digital FASTag wallet balance, simulate trips, and request emergency road assistance.</p>
+                    </div>
+                </a>
+
+                <!-- Admin Card -->
+                <a href="admin/login.html" class="portal-card card-admin">
+                    <div class="card-icon-box">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="card-details">
+                        <h3>Operations Control <i class="fa-solid fa-arrow-right"></i></h3>
+                        <p>Monitor live vehicle journeys, analyze revenue figures, oversee CCTV streams, broadcast highway alerts, and dispatch emergency responders.</p>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Panel -->
+    <footer class="gateway-footer">
+        *Inspired by the National Highways Authority of India (NHAI) and FASTag workflow design. Fully client-side state synchronization enabled. Created by pavan.kurra
+    </footer>
+
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="js/shared/animations.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load live statistics from localStorage
+            try {
+                const emergencies = JSON.parse(localStorage.getItem('nhai_emergencies')) || [];
+                const activeSOS = emergencies.filter(e => e.status === 'Active' || e.status === 'Dispatched').length;
+                document.getElementById('stat-incidents').innerText = activeSOS;
+
+                const balance = localStorage.getItem('nhai_fastag_balance');
+                if (balance !== null) {
+                    const balNum = parseFloat(balance) || 0;
+                    document.getElementById('stat-fastag').innerText = '₹' + balNum.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+                }
+            } catch (e) {
+                console.warn('Could not read state counters from localStorage.');
+            }
+
+            // High performance staggers using Motion
+            if (typeof Motion !== 'undefined') {
+                const { animate, stagger } = Motion;
+                
+                // Animate Left Column elements
+                const infoElements = document.querySelectorAll('.hero-info > *');
+                infoElements.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(25px)';
+                });
+                animate(Array.from(infoElements), 
+                    { opacity: [0, 1], y: [25, 0] }, 
+                    { delay: stagger(0.08), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
+                );
+
+                // Animate Right Column cards
+                const cards = document.querySelectorAll('.portal-card');
+                cards.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateX(30px)';
+                });
+                animate(Array.from(cards), 
+                    { opacity: [0, 1], x: [30, 0] }, 
+                    { delay: stagger(0.12, { startDelay: 0.2 }), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
+                );
+            }
+        });
+    </script>
 </body>
 </html>
-
