@@ -100,17 +100,36 @@ const TripAnalytics = {
         if (staleMsg) staleMsg.remove();
         canvas.style.display = '';
 
+        // Create gradient fill for line chart
+        let gradient = null;
+        try {
+            gradient = ctx.createLinearGradient(0, 0, 0, 150);
+            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.22)');
+            gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+        } catch (e) {
+            gradient = 'rgba(16, 185, 129, 0.05)';
+        }
+
         TripAnalytics.chartInstance = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
                     label: 'Daily Toll Spend (₹)',
                     data: data,
-                    backgroundColor: '#d9e35b',
-                    borderColor: '#d9e35b',
-                    borderWidth: 1,
-                    borderRadius: 4
+                    fill: true,
+                    backgroundColor: gradient,
+                    borderColor: '#10b981',
+                    borderWidth: 2,
+                    tension: 0.38,
+                    pointBackgroundColor: '#10b981',
+                    pointBorderColor: 'rgba(255,255,255,0.15)',
+                    pointBorderWidth: 1.5,
+                    pointRadius: 2.5,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: '#10b981',
+                    pointHoverBorderColor: '#fff',
+                    pointHoverBorderWidth: 2
                 }]
             },
             options: {
@@ -122,16 +141,69 @@ const TripAnalytics = {
                 scales: {
                     y: {
                         beginAtZero: true,
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                        ticks: { color: '#999', font: { size: 9 } }
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { color: '#8e8e93', font: { size: 8.5, family: 'Space Grotesk' } }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: '#999', font: { size: 9 } }
+                        ticks: { color: '#8e8e93', font: { size: 8.5, family: 'Space Grotesk' } }
                     }
                 }
             }
         });
+
+        // ═══════════════════════════════════════════════════════════════
+        // Bklit UI: Spend Share Donut Chart
+        // ═══════════════════════════════════════════════════════════════
+        const donutCanvas = document.getElementById('donutChart');
+        if (donutCanvas) {
+            const donutCtx = donutCanvas.getContext('2d');
+            
+            if (TripAnalytics.donutInstance) {
+                TripAnalytics.donutInstance.destroy();
+            }
+
+            // Aggregate spend share by vehicle
+            const vehicleCosts = {};
+            trips.forEach(trip => {
+                const vehicle = trip.vehicleName || 'Primary Car';
+                vehicleCosts[vehicle] = (vehicleCosts[vehicle] || 0) + (trip.cost || 0);
+            });
+
+            const donutLabels = Object.keys(vehicleCosts).length ? Object.keys(vehicleCosts) : ['Primary Car'];
+            const donutData = Object.keys(vehicleCosts).length ? Object.values(vehicleCosts) : [0.01]; // placeholder if zero
+            const donutColors = Object.keys(vehicleCosts).length ? ['#10b981', '#ff671f', '#0ea5e9', '#a855f7'] : ['rgba(255,255,255,0.06)'];
+
+            TripAnalytics.donutInstance = new Chart(donutCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: donutLabels,
+                    datasets: [{
+                        data: donutData,
+                        backgroundColor: donutColors,
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '76%',
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'right',
+                            labels: {
+                                color: '#a1a1aa',
+                                font: { size: 8.5, family: 'Space Grotesk', weight: '500' },
+                                boxWidth: 7,
+                                padding: 8
+                            }
+                        }
+                    }
+                }
+            });
+        }
     }
 };
 
