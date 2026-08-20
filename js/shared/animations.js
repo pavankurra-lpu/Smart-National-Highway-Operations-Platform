@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     
                     // Stagger reveal the dashboard panels
-                    const dashboardPanels = document.querySelectorAll('#tab-planner .glass-panel, #tab-planner .stat-card, #tab-planner .kokonut-stat-tile, #tab-planner button');
+                    const dashboardPanels = document.querySelectorAll('#tab-plan .glass-panel, #tab-plan .stat-card, #tab-plan .kokonut-stat-tile, #tab-plan button');
                     dashboardPanels.forEach(panel => {
                         panel.style.opacity = '0';
                         panel.style.transform = 'translateY(25px)';
