@@ -29,10 +29,17 @@ It is built as a highly interactive, GitHub-worthy demonstration of dynamic web 
 - **Traffic & Alerts Broadcaster**: Send warnings (accidents, congestion, bad weather) that push instantly to the Traveller portal.
 - **Pass-through Analytics**: Keep track of special VIP and emergency vehicles requesting passage.
 
+### 🎨 Modern UI Animations (motion.dev)
+- **Staggered Page Entrances**: Gateway portals, landing titles, badges, and statistics cards cascade into view on load.
+- **Fluid View Transitions**: Seamless page transitions (unlocking Traveller Dashboard fades/scales the gateway and slides in the control panel) and smooth sliding tab switches.
+- **Interactive Micro-interactions**: Hover feedback dynamically scales buttons, nav items, and table rows using physics-based spring curves.
+- **Pulsing Emergency Warnings**: The Operations Incident SOS badge pulses with dynamic glow animations to alert staff of active cases.
+
 ---
 
 ## 🛠️ Technology Stack
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+). No frameworks used.
+- **Animation**: Motion.dev (Motion One) loaded via lightweight CDN for high-performance UI motion effects.
 - **Theme**: Automatic persistence-based Dark Mode & Light Mode system globally synced.
 - **Mapping**: Leaflet.js alongside Carto, OSM and simulated Satellite Esri tile configurations.
 - **Data Persistence**: `localStorage` (cross-tab data sync) and `sessionStorage` (auth guards).
