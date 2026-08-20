@@ -35,14 +35,34 @@
             align-items: center;
             gap: 12px;
             font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
             color: #fff;
-            letter-spacing: -0.5px;
-            font-size: 18px;
+            z-index: 10;
         }
-        .brand-logo i {
-            color: var(--primary);
-            animation: radarPulse 2s infinite;
+        .emblem-svg {
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .emblem-svg:hover {
+            transform: rotate(15deg) scale(1.05);
+        }
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .logo-title-main {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fafafa;
+            letter-spacing: 0.5px;
+            line-height: 1.25;
+        }
+        .logo-subtitle-main {
+            font-size: 9.5px;
+            font-weight: 600;
+            color: var(--text-sec);
+            line-height: 1.25;
+            margin-top: 1px;
         }
         .system-status {
             display: flex;
@@ -305,8 +325,34 @@
     <!-- Header Navigation -->
     <header class="gateway-header">
         <div class="brand-logo">
-            <i class="fa-solid fa-satellite-dish"></i>
-            <span>SNHOP PLATFORM</span>
+            <!-- Government of India Emblem SVG -->
+            <svg class="emblem-svg" viewBox="0 0 100 100" width="34" height="34">
+                <circle cx="50" cy="50" r="46" fill="none" stroke="#d4af37" stroke-width="3"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#002244" stroke-width="2"/>
+                <circle cx="50" cy="50" r="8" fill="#002244"/>
+                <line x1="50" y1="12" x2="50" y2="88" stroke="#002244" stroke-width="1.8"/>
+                <line x1="12" y1="50" x2="88" y2="50" stroke="#002244" stroke-width="1.8"/>
+                <line x1="23.2" y1="23.2" x2="76.8" y2="76.8" stroke="#002244" stroke-width="1.5"/>
+                <line x1="76.8" y1="23.2" x2="23.2" y2="76.8" stroke="#002244" stroke-width="1.5"/>
+                <line x1="50" y1="50" x2="69" y2="31" stroke="#002244" stroke-width="1.2"/>
+                <line x1="50" y1="50" x2="31" y2="69" stroke="#002244" stroke-width="1.2"/>
+                <line x1="50" y1="50" x2="31" y2="31" stroke="#002244" stroke-width="1.2"/>
+                <line x1="50" y1="50" x2="69" y2="69" stroke="#002244" stroke-width="1.2"/>
+                <circle cx="50" cy="50" r="41" fill="none" stroke="#002244" stroke-width="0.8" stroke-dasharray="2,2"/>
+            </svg>
+            
+            <!-- NHAI Emblem SVG -->
+            <svg class="emblem-svg" viewBox="0 0 100 100" width="34" height="34">
+                <circle cx="50" cy="50" r="46" fill="#022c22" stroke="#10b981" stroke-width="3"/>
+                <path d="M 50 15 L 28 85 L 34 85 L 50 25 L 66 85 L 72 85 Z" fill="#38bdf8"/>
+                <path d="M 50 25 L 48 85 L 52 85 Z" fill="#fff"/>
+                <text x="50" y="55" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="15" fill="#fff" text-anchor="middle" letter-spacing="1">NHAI</text>
+            </svg>
+            
+            <div class="logo-text-group">
+                <div class="logo-title-main">भारत सरकार • GOVT. OF INDIA</div>
+                <div class="logo-subtitle-main">भारतीय राष्ट्रीय राजमार्ग प्राधिकरण • NHAI</div>
+            </div>
         </div>
         <div class="system-status">
             <span class="status-dot"></span>
