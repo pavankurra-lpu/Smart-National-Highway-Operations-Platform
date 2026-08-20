@@ -1183,6 +1183,45 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     animation: dash 20s linear infinite;
 }
 
+/* Floating Locate Me Button Style */
+.locate-me-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-panel);
+    backdrop-filter: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    z-index: 999;
+}
+.locate-me-btn:hover {
+    background: var(--primary);
+    color: #021a12;
+    transform: scale(1.08);
+    box-shadow: 0 0 15px var(--primary-glow);
+    border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .locate-me-btn {
+        bottom: 20px;
+        left: 20px;
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+    }
+}
+
 @keyframes dash {
     to { stroke-dashoffset: -1000; }
 }

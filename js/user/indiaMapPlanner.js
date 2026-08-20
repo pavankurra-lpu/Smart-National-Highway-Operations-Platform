@@ -165,6 +165,12 @@ const IndiaMapPlanner = {
         // ── Button bindings ────────────────────────────────────────
         const safe = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
 
+        safe('btn-locate-me', () => {
+            if (IndiaMapPlanner.locateUser) {
+                IndiaMapPlanner.locateUser();
+            }
+        });
+
         safe('btn-calc-route',  () => {
             const modal = document.getElementById('security-verification-modal');
             if (modal) {
@@ -374,42 +380,165 @@ const IndiaMapPlanner = {
     },
 
     fetchLiveNewsAlerts: (region = '') => {
-        const fallbackAlerts = [
-            "NH-48: Traffic maintenance warnings near Mumbai-Pune expressway links",
-            "NH-44: Reduced visibility alerts reported around NCR regions due to morning mist",
-            "NH-2: Lane closures active near Kanpur bypass extensions for overlay works",
-            "NH-3: Dynamic safety alerts active near Kasara Ghat highway crossings",
-            "NH-8: FastTag auto-deduction sync verified on all major Rajasthan toll lanes"
-        ];
-
-        const queryParam = region ? `?region=${encodeURIComponent(region)}` : '';
-        fetch(`/api/news-feed${queryParam}`)
+        // 1. Build Google News RSS query
+        const query = region ? `${region} highway traffic congestion` : 'NHAI highway traffic';
+        const googleNewsUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-IN&gl=IN&ceid=IN:en`;
+        
+        // 2. Fetch via free RSS-to-JSON proxy (api.rss2json.com) to bypass CORS and backend dependency
+        const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(googleNewsUrl)}`;
+        
+        fetch(url)
             .then(res => {
-                if (!res.ok) throw new Error('API down');
+                if (!res.ok) throw new Error('Proxy down');
                 return res.json();
             })
             .then(data => {
-                if (data.alerts && data.alerts.length > 0) {
-                    IndiaMapPlanner.updateAlertsTickerUI(data.alerts, region);
+                if (data.status === 'ok' && data.items && data.items.length > 0) {
+                    let alerts = data.items.map(item => {
+                        let title = item.title;
+                        const sourceIdx = title.lastIndexOf(' - ');
+                        if (sourceIdx !== -1) {
+                            title = title.substring(0, sourceIdx);
+                        }
+                        return title;
+                    }).filter(t => t.length > 15);
+
+                    if (region) {
+                        const regLower = region.toLowerCase();
+                        const filtered = alerts.filter(t => {
+                            const titleLower = t.toLowerCase();
+                            return titleLower.includes(regLower) || titleLower.includes('highway') || titleLower.includes('nh') || titleLower.includes('toll') || titleLower.includes('traffic');
+                        });
+                        if (filtered.length > 0) alerts = filtered;
+                    }
+
+                    if (alerts.length > 0) {
+                        IndiaMapPlanner.updateAlertsTickerUI(alerts.slice(0, 8), region);
+                    } else {
+                        IndiaMapPlanner.updateAlertsTickerUI(IndiaMapPlanner._getRegionalFallbackAlerts(region), region);
+                    }
                 } else {
-                    IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts, region);
+                    IndiaMapPlanner.updateAlertsTickerUI(IndiaMapPlanner._getRegionalFallbackAlerts(region), region);
                 }
             })
             .catch(() => {
-                const host = window.location.hostname || 'localhost';
-                fetch(`http://${host}:3000/api/news-feed${queryParam}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.alerts && data.alerts.length > 0) {
-                            IndiaMapPlanner.updateAlertsTickerUI(data.alerts, region);
-                        } else {
-                            IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts, region);
-                        }
-                    })
-                    .catch(() => {
-                        IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts, region);
-                    });
+                IndiaMapPlanner.updateAlertsTickerUI(IndiaMapPlanner._getRegionalFallbackAlerts(region), region);
             });
+    },
+
+    _getRegionalFallbackAlerts: (region) => {
+        if (!region) {
+            return [
+                "NH-48: Traffic maintenance warnings near Mumbai-Pune expressway links",
+                "NH-44: Reduced visibility alerts reported around NCR regions due to morning mist",
+                "NH-2: Lane closures active near Kanpur bypass extensions for overlay works",
+                "NH-3: Dynamic safety alerts active near Kasara Ghat highway crossings",
+                "NH-8: FastTag auto-deduction sync verified on all major Rajasthan toll lanes"
+            ];
+        }
+        const r = region.toLowerCase();
+        if (r.includes('maharashtra') || r.includes('mumbai') || r.includes('pune')) {
+            return [
+                "NH-48 (Maharashtra): Heavy congestion reported near Mumbai-Pune Expressway exit",
+                "NH-3 (Maharashtra): Landslide hazard warning issued for Kasara Ghat mountain pass",
+                "NH-66 (Maharashtra): Road widening works active near Indapur bypass (single lane traffic)",
+                "NH-4 (Maharashtra): Toll plaza delays up to 10 mins near Satara bypass"
+            ];
+        } else if (r.includes('delhi') || r.includes('ncr') || r.includes('haryana') || r.includes('punjab') || r.includes('ambala')) {
+            return [
+                "NH-44 (Delhi-NCR): High-density fog advisory near Ambala-Panipat highway stretch",
+                "NH-9 (Haryana): Dynamic speed limits active around Rohtak corridor (Limit: 80 km/h)",
+                "NH-48 (Delhi-Jaipur): Structural maintenance works active near Gurugram-Manesar toll gate",
+                "NE-3 (Delhi-Meerut): Commuters advised to follow designated speed lanes"
+            ];
+        } else if (r.includes('karnataka') || r.includes('bangalore') || r.includes('bengaluru')) {
+            return [
+                "NH-48 (Karnataka): Waterlogging alert reported near Tumakuru highway junctions",
+                "NH-75 (Karnataka): Diversions active near Shiradi Ghat stretch due to maintenance works",
+                "NH-44 (Karnataka): Automated speed enforcement cameras active near Devanahalli plaza",
+                "NH-275 (Bengaluru-Mysuru): Toll collection lanes fully functional via FASTag barriers"
+            ];
+        } else if (r.includes('uttar pradesh') || r.includes('up') || r.includes('lucknow') || r.includes('varanasi')) {
+            return [
+                "NH-19 (Uttar Pradesh): Maintenance lane closure active near Varanasi toll plaza",
+                "Yamuna Expressway (UP): Reduced speed limits of 80 km/h active due to weather warnings",
+                "NH-24 (UP): Heavy vehicle restrictions active near Ghaziabad-Hapur border stretch",
+                "NH-27 (UP): Traffic diversions active around Kanpur city bypass corridors"
+            ];
+        } else if (r.includes('tamil nadu') || r.includes('chennai') || r.includes('salem')) {
+            return [
+                "NH-45 (Tamil Nadu): Periodic rain warning near Chengalpattu highway crossings",
+                "NH-44 (Tamil Nadu): Smart highway speed cameras active near Salem toll gates",
+                "NH-48 (Tamil Nadu): Traffic slow down reported around Sriperumbudur industrial corridor",
+                "NH-7 (Tamil Nadu): Operations center monitoring minor water logging near Madurai bypass"
+            ];
+        } else if (r.includes('rajasthan') || r.includes('jaipur')) {
+            return [
+                "NH-48 (Rajasthan): Traffic restoration completed near Behror bypass stretch",
+                "NH-8 (Rajasthan): Sandstorm reduction warnings cleared near Ajmer-Beawar highways",
+                "NH-52 (Rajasthan): Automated radar speed checks active around Kota corridor links",
+                "NH-11 (Rajasthan): Toll collection operations smooth at Jaipur-Reengus plaza"
+            ];
+        }
+        
+        const regTitle = region.charAt(0).toUpperCase() + region.slice(1);
+        return [
+            `NH-Alert (${regTitle}): Localized traffic advisory active along regional highway corridors`,
+            `NH-Operations (${regTitle}): Emergency response teams deployed near major bypass routes`,
+            `NH-Safety (${regTitle}): Travelers advised to monitor real-time speed board limits`,
+            `NH-Tolls (${regTitle}): FASTag reader lanes operating under automatic detection`
+        ];
+    },
+
+    locateUser: () => {
+        const btn = document.getElementById('btn-locate-me');
+        if (btn) {
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    
+                    if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
+
+                    if (IndiaMapPlanner.map) {
+                        IndiaMapPlanner.map.setView([lat, lng], 13);
+                    }
+                    
+                    const userLocIcon = L.divIcon({
+                        className: '',
+                        html: "<div class='user-loc-marker' style='background:#10b981;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #10b981;position:relative;'><div style='position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(16,185,129,0.5);animation:pulse 2s infinite;'></div></div>",
+                        iconSize: [14,14], iconAnchor: [7,7]
+                    });
+                    
+                    if (IndiaMapPlanner.userLocationMarker) {
+                        IndiaMapPlanner.userLocationMarker.remove();
+                    }
+                    
+                    IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: userLocIcon })
+                        .bindTooltip("My Location", { permanent: false, direction: 'top' })
+                        .addTo(IndiaMapPlanner.map);
+
+                    Utils.showToast("Located successfully!", "success");
+
+                    const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
+                    if (state) {
+                        IndiaMapPlanner.fetchLiveNewsAlerts(state);
+                    }
+                },
+                (error) => {
+                    if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
+                    Utils.showToast("Could not retrieve GPS location.", "error");
+                },
+                { enableHighAccuracy: true, timeout: 8000 }
+            );
+        } else {
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
+            Utils.showToast("Geolocation is not supported by your browser.", "error");
+        }
     },
 
     updateAlertsTickerUI: (alerts, region = '') => {
