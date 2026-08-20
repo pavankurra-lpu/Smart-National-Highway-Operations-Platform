@@ -673,49 +673,88 @@ body.light-mode #admin-broadcasts-panel {
 
 /* ===== FASTAG CARD ===== */
 .fastag-card {
-    background: var(--bg-card);
-    backdrop-filter: var(--glass);
-    border: 1px solid var(--border);
-    padding: 24px;
-    border-radius: var(--radius);
+    background: linear-gradient(135deg, #09090b 0%, #17171e 60%, #064e3b 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 20px 22px;
+    border-radius: 12px;
     position: relative;
     overflow: hidden;
     margin-bottom: 18px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
     display: flex;
     flex-direction: column;
+    aspect-ratio: 1.6 / 1;
+    justify-content: space-between;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    cursor: pointer;
 }
 
 body.light-mode .fastag-card {
-    background: var(--bg-card);
-    border-color: var(--border);
-    box-shadow: var(--shadow);
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 60%, #d1fae5 100%) !important;
+    border-color: rgba(2, 132, 199, 0.15) !important;
+    box-shadow: 0 15px 35px rgba(2, 132, 199, 0.08);
 }
 
 body.street-mode-active .fastag-card {
-    background: rgba(30, 30, 30, 0.9);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(30, 30, 30, 0.9) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
     filter: grayscale(1);
 }
 
+/* Simulated smart chip container */
 .fastag-card::before {
     content: '';
     position: absolute;
-    top: -40px; right: -40px;
-    width: 120px; height: 120px;
-    background: radial-gradient(circle, var(--primary-dim) 0%, transparent 70%);
-    border-radius: 50%;
+    bottom: 20px; right: 22px;
+    width: 32px; height: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     pointer-events: none;
+    background-image: linear-gradient(to right, transparent 50%, rgba(255,255,255,0.08) 50%),
+                      linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.08) 50%);
+    background-size: 8px 8px;
+    transition: var(--transition);
 }
 
+body.light-mode .fastag-card::before {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(to right, transparent 50%, rgba(0,0,0,0.05) 50%),
+                      linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.05) 50%);
+}
+
+/* Brand indicator in card top right */
 .fastag-card::after {
-    content: '';
+    content: 'FASTag';
     position: absolute;
-    bottom: -30px; left: -20px;
-    width: 80px; height: 80px;
-    background: radial-gradient(circle, rgba(0,229,179,0.1) 0%, transparent 70%);
-    border-radius: 50%;
+    top: 20px; right: 22px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.9;
     pointer-events: none;
+    background: none;
+    width: auto; height: auto;
+    border-radius: 0;
+}
+
+body.light-mode .fastag-card::after {
+    color: #0369a1;
+}
+
+.fastag-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    border-color: rgba(16, 185, 129, 0.3) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.05);
+}
+
+body.light-mode .fastag-card:hover {
+    border-color: rgba(2, 132, 199, 0.3) !important;
+    box-shadow: 0 20px 40px rgba(2, 132, 199, 0.12);
 }
 
 .fastag-live-label {

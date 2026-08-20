@@ -256,8 +256,8 @@ input, select, textarea {
 }
 input:focus, select:focus, textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-dim);
-    background: rgba(0, 229, 179, 0.04);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.18), 0 4px 12px rgba(0, 0, 0, 0.25);
+    background: rgba(16, 185, 129, 0.02);
 }
 input::placeholder, textarea::placeholder { color: var(--text-muted); }
 option { background: var(--bg-dark); color: var(--text-main); }
@@ -274,9 +274,9 @@ body.light-mode textarea {
 body.light-mode input:focus,
 body.light-mode select:focus,
 body.light-mode textarea:focus {
-    background: #fafdff;
+    background: #ffffff;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-dim);
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.12), 0 4px 12px rgba(2, 132, 199, 0.04);
 }
 body.light-mode option {
     background: #ffffff;
