@@ -427,8 +427,8 @@
                         <div class="l-stat-lbl">Highway Network</div>
                     </div>
                     <div class="l-stat">
-                        <div class="l-stat-val" id="stat-uptime">0</div>
-                        <div class="l-stat-lbl">System Uptime</div>
+                        <div class="l-stat-val" id="stat-time" style="font-size: 16px; min-height: 24px; display: flex; align-items: center; justify-content: flex-start;">--:--:--</div>
+                        <div class="l-stat-lbl" id="stat-date" style="font-size: 9px; margin-top: 4px;">DATE</div>
                     </div>
                 </div>
             </div>
@@ -566,17 +566,20 @@
                 });
             }
 
-            const uptimeObj = { val: 0 };
-            const uptimeEl = document.getElementById('stat-uptime');
-            if (uptimeEl) {
-                anime({
-                    targets: uptimeObj,
-                    val: 99.9,
-                    duration: 1600,
-                    easing: 'easeOutQuad',
-                    update: () => { uptimeEl.innerText = uptimeObj.val.toFixed(1) + '%'; }
-                });
-            }
+            // 5. Dynamic clock and date updater (replacing system uptime)
+            const updateClock = () => {
+                const timeEl = document.getElementById('stat-time');
+                const dateEl = document.getElementById('stat-date');
+                const now = new Date();
+                if (timeEl) {
+                    timeEl.innerText = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+                }
+                if (dateEl) {
+                    dateEl.innerText = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+                }
+            };
+            updateClock();
+            setInterval(updateClock, 1000);
         });
     </script>
 </body>
