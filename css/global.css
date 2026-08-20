@@ -365,11 +365,11 @@ body.light-mode option {
     pointer-events: none;
 }
 .shadcn-toast {
-    background: var(--bg-card);
+    background: rgba(9, 9, 11, 0.82);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 14px 16px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     color: var(--text-main);
     pointer-events: auto;
     display: flex;

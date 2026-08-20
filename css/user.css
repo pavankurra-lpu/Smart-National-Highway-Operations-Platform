@@ -269,14 +269,16 @@ path.leaflet-interactive:focus,
 /* Leaflet container overrides */
 .leaflet-container { background: #0d100b !important; }
 .leaflet-popup-content-wrapper {
-    background: rgba(5, 18, 38, 0.97);
+    background: rgba(9, 9, 11, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     color: var(--text-main);
-    border: 1px solid var(--primary);
-    border-radius: var(--radius);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 .leaflet-popup-tip {
-    background: rgba(5, 18, 38, 0.97);
+    background: rgba(9, 9, 11, 0.85);
 }
 .leaflet-popup-content { margin: 14px 16px; font-family: var(--font-main); }
 .custom-div-icon {
@@ -995,8 +997,8 @@ body.light-mode .autocomplete-dropdown {
 body.light-mode .leaflet-popup-content-wrapper {
     background: #ffffff;
     color: #0f2744;
-    border: 1px solid var(--primary);
-    box-shadow: 0 4px 20px rgba(0,50,100,0.15);
+    border: 1px solid rgba(2, 132, 199, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 50, 100, 0.12);
 }
 body.light-mode .leaflet-popup-tip {
     background: #ffffff;
