@@ -17,9 +17,15 @@ const TripAnalytics = {
         const distEl = document.getElementById('total-distance');
         const costEl = document.getElementById('total-cost');
 
-        if (tripsEl) tripsEl.innerText = totalTrips;
-        if (distEl) distEl.innerText = totalDistance.toFixed(0) + ' km';
-        if (costEl) costEl.innerText = '₹' + totalCost.toFixed(2);
+        if (window.animateNumber) {
+            if (tripsEl) window.animateNumber('total-trips', totalTrips);
+            if (distEl) window.animateNumber('total-distance', totalDistance, '', ' km', 0);
+            if (costEl) window.animateNumber('total-cost', totalCost, '₹', '', 2);
+        } else {
+            if (tripsEl) tripsEl.innerText = totalTrips;
+            if (distEl) distEl.innerText = totalDistance.toFixed(0) + ' km';
+            if (costEl) costEl.innerText = '₹' + totalCost.toFixed(2);
+        }
     },
 
     renderTripLog: () => {

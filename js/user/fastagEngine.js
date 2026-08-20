@@ -80,7 +80,14 @@ const FastagEngine = {
 
         const balance = Storage.get(Storage.KEYS.FASTAG_BALANCE, 0);
         
-        if (balEl) balEl.innerText = Utils.formatCurrency(balance);
+        if (balEl) {
+            if (window.animateNumber) {
+                // Remove formatting, the helper does it
+                window.animateNumber('ui-fastag-bal', balance, '₹', '', 2);
+            } else {
+                balEl.innerText = Utils.formatCurrency(balance);
+            }
+        }
         
         if (statusEl) {
             statusEl.className = 'badge';

@@ -32,15 +32,28 @@ const Analytics = {
         const elMonth = document.getElementById('stat-revenue-month');
         const elYear = document.getElementById('stat-revenue-year');
         
-        if (elToday) elToday.innerText = Utils.formatCurrency(revenueToday);
-        if (elMonth) elMonth.innerText = Utils.formatCurrency(revenueMonth);
-        if (elYear) elYear.innerText = Utils.formatCurrency(revenueYear);
+        if (window.animateNumber) {
+            if (elToday) window.animateNumber('stat-revenue-today', revenueToday, '₹', '', 2);
+            if (elMonth) window.animateNumber('stat-revenue-month', revenueMonth, '₹', '', 2);
+            if (elYear) window.animateNumber('stat-revenue-year', revenueYear, '₹', '', 2);
+        } else {
+            if (elToday) elToday.innerText = Utils.formatCurrency(revenueToday);
+            if (elMonth) elMonth.innerText = Utils.formatCurrency(revenueMonth);
+            if (elYear) elYear.innerText = Utils.formatCurrency(revenueYear);
+        }
 
         // Active incidents stat
         const incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
         const activeCount = incidents.filter(i => ['RAISED', 'ACKNOWLEDGED', 'DISPATCHED'].includes(i.status)).length;
         const statIncidents = document.getElementById('stat-incidents');
-        if (statIncidents) statIncidents.innerText = activeCount;
+        
+        if (statIncidents) {
+            if (window.animateNumber) {
+                window.animateNumber('stat-incidents', activeCount);
+            } else {
+                statIncidents.innerText = activeCount;
+            }
+        }
 
         // Draw/Refresh Bklit-style Chart
         Analytics.drawRevenueChart(logs);

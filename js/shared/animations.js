@@ -7,12 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const { animate, stagger } = Motion;
 
+    // Helper for Number Counting Animation
+    window.animateNumber = (elementId, endValue, prefix = '', suffix = '', decimals = 0) => {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        
+        let startValue = parseFloat(el.getAttribute('data-val') || 0);
+        if (isNaN(startValue)) startValue = 0;
+        
+        animate(
+            (progress) => {
+                const current = startValue + (endValue - startValue) * progress;
+                el.innerText = prefix + current.toFixed(decimals) + suffix;
+            },
+            { duration: 1.5, easing: 'ease-out' }
+        );
+        el.setAttribute('data-val', endValue);
+    };
+
     // ==========================================
     // 1. GENERIC INTERACTIVE MICRO-INTERACTIONS
     // ==========================================
 
     // Hover scale animations for standard buttons and active pills
-    const buttonSelectors = '.btn, .tab-btn, .admin-nav-btn, .back-btn, .theme-toggle-btn';
+    const buttonSelectors = '.btn, .tab-btn, .admin-nav-btn, .back-btn, .theme-toggle-btn, .btn-kokonut';
     document.querySelectorAll(buttonSelectors).forEach(btn => {
         btn.addEventListener('mouseenter', () => {
             animate(btn, { scale: 1.05 }, { duration: 0.2, easing: 'ease-out' });
@@ -23,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // CCTV & stats card glows/scales on hover
-    const hoverCards = '.stat-card, .cctv-cam, .fastag-card, .alert-box, .glass-panel table tbody tr';
+    const hoverCards = '.stat-card, .cctv-cam, .fastag-card, .alert-box, .glass-panel table tbody tr, .kokonut-stat-tile';
     document.querySelectorAll(hoverCards).forEach(card => {
         card.addEventListener('mouseenter', () => {
             animate(card, { scale: 1.015, translateZ: 0 }, { duration: 0.2, easing: 'ease-out' });
@@ -199,6 +217,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             { duration: 0.6, easing: [0.16, 1, 0.3, 1] }
                         );
                     }
+                    
+                    // Stagger reveal the dashboard panels
+                    const dashboardPanels = document.querySelectorAll('#tab-planner .glass-panel, #tab-planner .stat-card, #tab-planner .kokonut-stat-tile, #tab-planner button');
+                    dashboardPanels.forEach(panel => {
+                        panel.style.opacity = '0';
+                        panel.style.transform = 'translateY(25px)';
+                    });
+                    
+                    animate(
+                        Array.from(dashboardPanels),
+                        { opacity: [0, 1], y: [25, 0] },
+                        { delay: stagger(0.08, { startDelay: 0.2 }), duration: 0.6, easing: [0.16, 1, 0.3, 1] }
+                    );
                 }, 600);
             });
         }

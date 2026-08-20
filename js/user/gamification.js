@@ -107,8 +107,22 @@ const Gamification = {
         const currentLimit = activeLvl.xpNeeded;
         const currentPct = Math.min(100, Math.floor((xp / currentLimit) * 100));
         
-        if (xpText) xpText.innerText = `${xp} / ${currentLimit} XP`;
-        if (xpPct) xpPct.innerText = `${currentPct}%`;
+        if (xpText) {
+            if (window.animateNumber) {
+                // Remove existing text to handle animation
+                xpText.innerText = '';
+                // Since animateNumber doesn't support changing suffix dynamically on the fly based on a secondary limit easily, we can just animate the XP value.
+                window.animateNumber('gamified-xp-text', xp, '', ` / ${currentLimit} XP`);
+            } else {
+                xpText.innerText = `${xp} / ${currentLimit} XP`;
+            }
+        }
+        
+        if (xpPct) {
+            if (window.animateNumber) window.animateNumber('gamified-xp-pct', currentPct, '', '%');
+            else xpPct.innerText = `${currentPct}%`;
+        }
+        
         if (xpBar) xpBar.style.width = `${currentPct}%`;
 
         // Refresh Badge statuses
