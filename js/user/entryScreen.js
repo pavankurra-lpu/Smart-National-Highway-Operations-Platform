@@ -44,6 +44,9 @@ const EntryScreen = {
                         IndiaMapPlanner.map.invalidateSize();
                         setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 100);
                         setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 500);
+                        
+                        // Ask for location permission and auto-center
+                        IndiaMapPlanner.askForLocationPermission();
                     }
                 }, 800);
             });

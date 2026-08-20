@@ -283,7 +283,95 @@ const IndiaMapPlanner = {
         IndiaMapPlanner.fetchLiveNewsAlerts();
     },
 
-    fetchLiveNewsAlerts: () => {
+    askForLocationPermission: () => {
+        const modal = document.getElementById('location-permission-modal');
+        if (!modal) return;
+
+        Utils.toggleVisibility('location-permission-modal', true);
+
+        // Add event listeners
+        const allowBtn = document.getElementById('btn-allow-loc');
+        const denyBtn = document.getElementById('btn-deny-loc');
+
+        if (allowBtn) {
+            allowBtn.onclick = () => {
+                Utils.toggleVisibility('location-permission-modal', false);
+                IndiaMapPlanner.getUserLocation();
+            };
+        }
+
+        if (denyBtn) {
+            denyBtn.onclick = () => {
+                Utils.toggleVisibility('location-permission-modal', false);
+                IndiaMapPlanner.useDefaultLocation();
+            };
+        }
+    },
+
+    getUserLocation: () => {
+        if (!navigator.geolocation) {
+            Utils.showToast("Geolocation is not supported by your browser. Using default location.", "warning");
+            IndiaMapPlanner.useDefaultLocation();
+            return;
+        }
+
+        Utils.showToast("Requesting device GPS coordinates...", "info");
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                
+                // Center Map at User Location
+                IndiaMapPlanner.map.setView([lat, lng], 13);
+
+                // Add glowing user location marker
+                const userLocIcon = L.divIcon({
+                    className: '',
+                    html: "<div class='user-loc-marker' style='background:#10b981;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #10b981;position:relative;'><div style='position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(16,185,129,0.5);animation:pulse 2s infinite;'></div></div>",
+                    iconSize: [14,14], iconAnchor: [7,7]
+                });
+                
+                if (IndiaMapPlanner.userLocationMarker) {
+                    IndiaMapPlanner.userLocationMarker.remove();
+                }
+                IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: userLocIcon })
+                    .bindTooltip("My Location", { permanent: false, direction: 'top' })
+                    .addTo(IndiaMapPlanner.map);
+
+                Utils.showToast("Location successfully mapped!", "success");
+
+                // Reverse geocode to find state name for regional feed
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
+                    .then(res => res.json())
+                    .then(geo => {
+                        const state = geo.address?.state || geo.address?.state_district || '';
+                        if (state) {
+                            IndiaMapPlanner.fetchLiveNewsAlerts(state);
+                        } else {
+                            IndiaMapPlanner.fetchLiveNewsAlerts();
+                        }
+                    })
+                    .catch(() => {
+                        IndiaMapPlanner.fetchLiveNewsAlerts();
+                    });
+            },
+            (error) => {
+                Utils.showToast("Location permission denied. Defaulting to New Delhi.", "warning");
+                IndiaMapPlanner.useDefaultLocation();
+            },
+            { enableHighAccuracy: true, timeout: 8000 }
+        );
+    },
+
+    useDefaultLocation: () => {
+        // Default to New Delhi coordinates: [28.6139, 77.2090]
+        const defLat = 28.6139;
+        const defLng = 77.2090;
+        IndiaMapPlanner.map.setView([defLat, defLng], 12);
+        IndiaMapPlanner.fetchLiveNewsAlerts();
+    },
+
+    fetchLiveNewsAlerts: (region = '') => {
         const fallbackAlerts = [
             "NH-48: Traffic maintenance warnings near Mumbai-Pune expressway links",
             "NH-44: Reduced visibility alerts reported around NCR regions due to morning mist",
@@ -292,38 +380,45 @@ const IndiaMapPlanner = {
             "NH-8: FastTag auto-deduction sync verified on all major Rajasthan toll lanes"
         ];
 
-        fetch('/api/news-feed')
+        const queryParam = region ? `?region=${encodeURIComponent(region)}` : '';
+        fetch(`/api/news-feed${queryParam}`)
             .then(res => {
                 if (!res.ok) throw new Error('API down');
                 return res.json();
             })
             .then(data => {
                 if (data.alerts && data.alerts.length > 0) {
-                    IndiaMapPlanner.updateAlertsTickerUI(data.alerts);
+                    IndiaMapPlanner.updateAlertsTickerUI(data.alerts, region);
                 } else {
-                    IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts);
+                    IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts, region);
                 }
             })
             .catch(() => {
                 const host = window.location.hostname || 'localhost';
-                fetch(`http://${host}:3000/api/news-feed`)
+                fetch(`http://${host}:3000/api/news-feed${queryParam}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.alerts && data.alerts.length > 0) {
-                            IndiaMapPlanner.updateAlertsTickerUI(data.alerts);
+                            IndiaMapPlanner.updateAlertsTickerUI(data.alerts, region);
                         } else {
-                            IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts);
+                            IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts, region);
                         }
                     })
                     .catch(() => {
-                        IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts);
+                        IndiaMapPlanner.updateAlertsTickerUI(fallbackAlerts, region);
                     });
             });
     },
 
-    updateAlertsTickerUI: (alerts) => {
+    updateAlertsTickerUI: (alerts, region = '') => {
         const container = document.querySelector('.alerts-ticker-scroll');
         if (!container) return;
+        
+        const labelEl = document.querySelector('.alerts-ticker-label');
+        if (labelEl) {
+            labelEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> LIVE NHAI FEED ${region ? `(${region.toUpperCase()})` : ''}`;
+        }
+
         container.innerHTML = alerts.map(alert => `
             <span><i class="fa-solid fa-triangle-exclamation" style="color: #fbbf24; margin-right: 4px;"></i> ${alert}</span>
         `).join('');
