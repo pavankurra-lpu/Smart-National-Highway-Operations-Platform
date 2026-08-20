@@ -331,16 +331,10 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner.map.setView([lat, lng], 13);
 
                 // Add glowing user location marker
-                const userLocIcon = L.divIcon({
-                    className: '',
-                    html: "<div class='user-loc-marker' style='background:#10b981;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #10b981;position:relative;'><div style='position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(16,185,129,0.5);animation:pulse 2s infinite;'></div></div>",
-                    iconSize: [14,14], iconAnchor: [7,7]
-                });
-                
                 if (IndiaMapPlanner.userLocationMarker) {
                     IndiaMapPlanner.userLocationMarker.remove();
                 }
-                IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: userLocIcon })
+                IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
                     .bindTooltip("My Location", { permanent: false, direction: 'top' })
                     .addTo(IndiaMapPlanner.map);
 
@@ -508,17 +502,11 @@ const IndiaMapPlanner = {
                         IndiaMapPlanner.map.setView([lat, lng], 13);
                     }
                     
-                    const userLocIcon = L.divIcon({
-                        className: '',
-                        html: "<div class='user-loc-marker' style='background:#10b981;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #10b981;position:relative;'><div style='position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(16,185,129,0.5);animation:pulse 2s infinite;'></div></div>",
-                        iconSize: [14,14], iconAnchor: [7,7]
-                    });
-                    
                     if (IndiaMapPlanner.userLocationMarker) {
                         IndiaMapPlanner.userLocationMarker.remove();
                     }
                     
-                    IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: userLocIcon })
+                    IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
                         .bindTooltip("My Location", { permanent: false, direction: 'top' })
                         .addTo(IndiaMapPlanner.map);
 
@@ -1673,45 +1661,93 @@ const IndiaMapPlanner = {
     // ═══════════════════════════════════════════════════════════════
     // LAYER TOGGLE BUTTON (bottom-left of map)
     // ═══════════════════════════════════════════════════════════════
+    _currentVehicleAvatar: 'default',
+    _vehicleTypes: ['default', 'car_red', 'suv_blue', 'camper', 'scooter'],
+    _vehicleIcons: {
+        'default': '<i class="fa-solid fa-location-dot"></i>',
+        'car_red': '🏎️',
+        'suv_blue': '🚙',
+        'camper': '🚐',
+        'scooter': '🛵'
+    },
+
+    _getUserLocIcon: () => {
+        if (!IndiaMapPlanner._currentVehicleAvatar || IndiaMapPlanner._currentVehicleAvatar === 'default') {
+            return L.divIcon({
+                className: '',
+                html: "<div class='user-loc-marker' style='background:#10b981;width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #10b981;position:relative;'><div style='position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(16,185,129,0.5);animation:pulse 2s infinite;'></div></div>",
+                iconSize: [14,14], iconAnchor: [7,7]
+            });
+        }
+        const emoji = IndiaMapPlanner._vehicleIcons[IndiaMapPlanner._currentVehicleAvatar];
+        return L.divIcon({
+            className: '',
+            html: `<div style="font-size: 36px; line-height: 36px; filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.4)) drop-shadow(0px 12px 16px rgba(0,0,0,0.3)); transform: perspective(100px) rotateX(15deg) translateY(-10px); transition: all 0.3s ease;">${emoji}</div>`,
+            iconSize: [44, 44],
+            iconAnchor: [22, 22]
+        });
+    },
+
     _addLayerToggle: () => {
         const container = document.createElement('div');
         container.id = 'map-layer-controls';
         Object.assign(container.style, {
-            position: 'absolute', bottom: '30px', left: '20px', zIndex: '700',
+            position: 'absolute', bottom: '90px', left: '30px', zIndex: '700',
             display: 'flex', flexDirection: 'column', gap: '8px'
         });
 
+        // Vehicle Avatar 3D Switcher
+        const btnVehicle = document.createElement('button');
+        btnVehicle.className = 'layer-control-btn';
         
-        // 2. Boundaries Toggle
-        const btnBounds = document.createElement('button');
-        btnBounds.className = 'layer-control-btn';
-        btnBounds.innerHTML = '<i class="fa-solid fa-border-all"></i> <span>Hide Boundaries</span>';
+        const updateBtnText = () => {
+            const v = IndiaMapPlanner._currentVehicleAvatar || 'default';
+            let label = 'Classic Dot';
+            if (v === 'car_red') label = 'Sports Car';
+            if (v === 'suv_blue') label = 'Cool SUV';
+            if (v === 'camper') label = 'Camper Van';
+            if (v === 'scooter') label = 'Scooter';
+            
+            const icon = IndiaMapPlanner._vehicleIcons[v] || '<i class="fa-solid fa-location-dot"></i>';
+            btnVehicle.innerHTML = `<span style="font-size:16px">${icon}</span> <span>${label}</span>`;
+        };
+        updateBtnText();
 
         const styleBtn = (b) => {
             Object.assign(b.style, {
                 background: 'var(--bg-panel)', backdropFilter: 'var(--glass)',
                 border: '1px solid var(--border)', color: 'var(--primary)',
                 fontFamily: 'var(--font-main)', fontSize: '11px', fontWeight: '600',
-                padding: '10px 14px', borderRadius: 'var(--radius-sm)', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', gap: '8px',
+                padding: '10px 16px', borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: '10px',
                 transition: 'var(--transition)', boxShadow: 'var(--shadow)',
-                minWidth: '140px', justifyContent: 'center'
+                minWidth: '150px', justifyContent: 'center'
             });
-            b.addEventListener('mouseenter', () => { b.style.background = 'var(--primary-dim)'; b.style.borderColor = 'var(--primary)'; });
-            b.addEventListener('mouseleave', () => { b.style.background = 'var(--bg-panel)'; b.style.borderColor = 'var(--border)'; });
+            b.addEventListener('mouseenter', () => { b.style.background = 'var(--primary-dim)'; b.style.borderColor = 'var(--primary)'; b.style.transform = 'scale(1.05)'; });
+            b.addEventListener('mouseleave', () => { b.style.background = 'var(--bg-panel)'; b.style.borderColor = 'var(--border)'; b.style.transform = 'scale(1)'; });
         };
 
-        styleBtn(btnBounds);
+        styleBtn(btnVehicle);
 
-        btnBounds.addEventListener('click', () => {
-            IndiaMapPlanner._showBoundaries = !IndiaMapPlanner._showBoundaries;
-            IndiaMapPlanner.updateBoundaryVisibility();
-            btnBounds.innerHTML = IndiaMapPlanner._showBoundaries ? 
-                '<i class="fa-solid fa-border-all"></i> <span>Hide Boundaries</span>' :
-                '<i class="fa-solid fa-border-none"></i> <span>Show Boundaries</span>';
+        btnVehicle.addEventListener('click', () => {
+            const types = IndiaMapPlanner._vehicleTypes;
+            let idx = types.indexOf(IndiaMapPlanner._currentVehicleAvatar);
+            idx = (idx + 1) % types.length;
+            IndiaMapPlanner._currentVehicleAvatar = types[idx];
+            updateBtnText();
+            
+            if (IndiaMapPlanner.userLocationMarker) {
+                const latlng = IndiaMapPlanner.userLocationMarker.getLatLng();
+                IndiaMapPlanner.userLocationMarker.remove();
+                IndiaMapPlanner.userLocationMarker = L.marker(latlng, { icon: IndiaMapPlanner._getUserLocIcon() })
+                    .bindTooltip("My Location", { permanent: false, direction: 'top' })
+                    .addTo(IndiaMapPlanner.map);
+            }
+            
+            Utils.showToast("Vehicle avatar updated! 🚗", "success");
         });
 
-        container.appendChild(btnBounds);
+        container.appendChild(btnVehicle);
         
         const mapEl = document.getElementById('map');
         if (mapEl) mapEl.appendChild(container);
