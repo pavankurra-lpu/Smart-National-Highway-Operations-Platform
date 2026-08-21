@@ -128,6 +128,9 @@ const VoiceAssistant = {
     },
 
     speak: async (text, forceLang) => {
+        const enableCheckbox = document.getElementById('pref-voice-enable');
+        if (enableCheckbox && !enableCheckbox.checked) return;
+
         if (!window.speechSynthesis) return;
 
         // Cancel previous native speech and any pending backend fetch
