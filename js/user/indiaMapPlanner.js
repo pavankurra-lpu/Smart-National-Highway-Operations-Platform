@@ -927,60 +927,72 @@ const IndiaMapPlanner = {
         if (!window.speechSynthesis) return;
         window.speechSynthesis.cancel();
         
-        let text = `Route mapped from ${rData.originName} to ${rData.destName}. `;
-        
-        // Time
+        let targetLang = 'en-IN';
+        if (window.localStorage) {
+            targetLang = localStorage.getItem('nhai_voice_lang') || 'en-IN';
+        }
+
+        let text = '';
         const etaVal = parseFloat(rData.totalEta);
-        if (etaVal < 1.0) {
-            const mins = Math.round(etaVal * 60);
-            text += `The estimated travel time is ${mins} minutes. `;
-        } else {
-            text += `The estimated travel time is ${rData.totalEta} hours. `;
-        }
-        
-        // Tolls
-        if (rData.tolls.length === 0) {
-            text += `This is a toll-free route. `;
-        } else {
-            text += `There are ${rData.tolls.length} tolls on this route. Total toll amount to be paid is ${rData.totalTollCost} rupees. `;
-        }
-        
-        // FASTag Balance
+        const mins = Math.round(etaVal * 60);
         const balance = window.Storage ? window.Storage.get('nhai_fastag_balance', 0) : 0;
-        text += `Your current FASTag account balance is ${balance} rupees. `;
         
-        // Real-time Weather via OpenWeatherMap
+        // Fetch weather
+        let weatherDesc = 'optimal';
         if (rData.destNodeId && window.IndiaMapData?.nodes[rData.destNodeId]) {
-            const destNode = window.IndiaMapData.nodes[rData.destNodeId];
             try {
+                const destNode = window.IndiaMapData.nodes[rData.destNodeId];
                 const API_KEY = 'a8f71ad22e0567bdce65cc749371ba90';
                 const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${destNode.lat}&lon=${destNode.lng}&appid=${API_KEY}&units=metric`);
                 const wData = await res.json();
-                
                 if (wData && wData.weather && wData.weather.length > 0) {
-                    const desc = wData.weather[0].main;
-                    text += `Weather condition along the route is expected to be ${desc}. `;
-                } else {
-                    text += `Weather and traffic conditions are currently optimal. `;
+                    weatherDesc = wData.weather[0].main.toLowerCase();
                 }
-            } catch (err) {
-                console.error("Weather fetch failed:", err);
-                text += `Weather and traffic conditions are currently optimal. `;
+            } catch (e) { console.error(e); }
+        }
+
+        if (targetLang === 'hi-IN') {
+            text += `Aapka route ${rData.originName} se ${rData.destName} tak set ho gaya hai. `;
+            if (etaVal < 1.0) {
+                text += `Yatra ka anumanit samay ${mins} minute hai. `;
+            } else {
+                text += `Yatra ka anumanit samay ${rData.totalEta} ghante hai. `;
+            }
+            
+            if (rData.tolls.length === 0) {
+                text += `Yah route toll free hai. `;
+            } else {
+                text += `Is route par ${rData.tolls.length} toll hain. Kul toll amount ${rData.totalTollCost} rupaye hai. `;
+            }
+            
+            text += `Aapke FASTag account ka balance ${balance} rupaye hai. `;
+            
+            if (weatherDesc === 'optimal') {
+                text += `Mausam aur traffic ki sthiti normal hai. `;
+            } else {
+                text += `Raste me mausam ${weatherDesc} hone ki sambhavna hai, kripya savdhani se gaadi chalayen. `;
             }
         } else {
-            text += `Weather and traffic conditions are currently optimal. `;
-        }
-        
-        // Directions
-        const route = IndiaMapPlanner.allRoutes[IndiaMapPlanner.selectedRouteIndex];
-        if (route && route.legs && route.legs[0] && route.legs[0].steps && route.legs[0].steps.length > 1) {
-            const step1 = route.legs[0].steps[0];
-            const step2 = route.legs[0].steps[1];
-            const distKm = (step1.distance / 1000).toFixed(1);
-            const turn = step2.maneuver && step2.maneuver.modifier ? step2.maneuver.modifier.replace('-', ' ') : 'as directed';
-            text += `Initial directions: Keep straight for ${distKm} kilometers, and then turn ${turn}. Drive safely.`;
-        } else {
-            text += `Please follow the highlighted route. Drive safely.`;
+            text += `Route mapped from ${rData.originName} to ${rData.destName}. `;
+            if (etaVal < 1.0) {
+                text += `The estimated travel time is ${mins} minutes. `;
+            } else {
+                text += `The estimated travel time is ${rData.totalEta} hours. `;
+            }
+            
+            if (rData.tolls.length === 0) {
+                text += `This is a toll-free route. `;
+            } else {
+                text += `There are ${rData.tolls.length} tolls on this route. Total toll amount to be paid is ${rData.totalTollCost} rupees. `;
+            }
+            
+            text += `Your current FASTag account balance is ${balance} rupees. `;
+            
+            if (weatherDesc === 'optimal') {
+                text += `Weather and traffic conditions are currently optimal. `;
+            } else {
+                text += `Weather condition along the route is expected to be ${weatherDesc}. `;
+            }
         }
         
         if (window.VoiceAssistant) {
@@ -988,13 +1000,6 @@ const IndiaMapPlanner = {
         } else {
             const msg = new SpeechSynthesisUtterance(text);
             msg.rate = 1.15;
-            msg.pitch = 1.0;
-            
-            // Use an Indian English voice if available
-            const voices = window.speechSynthesis.getVoices();
-            const inVoice = voices.find(v => v.lang.includes('en-IN'));
-            if (inVoice) msg.voice = inVoice;
-            
             window.speechSynthesis.speak(msg);
         }
     },

@@ -270,7 +270,7 @@ const VoiceAssistant = {
         }
 
         // Target high-quality speakers matching the gender
-        let selectedVoice = availableVoices.find(v => {
+        let selectedVoice = availableVoices.find(v => { return v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('david') || v.name.toLowerCase().includes('ravi');
             const name = v.name.toLowerCase();
             if (targetGender === 'female') {
                 return name.includes('female') || name.includes('zira') || name.includes('heera') || name.includes('swara') || name.includes('google');
@@ -314,7 +314,7 @@ const VoiceAssistant = {
                     body: JSON.stringify({
                         text: finalText,
                         language: sarvamLang,
-                        speaker: targetGender === 'male' ? 'arvind' : 'meera'
+                        speaker: 'arvind'
                     }),
                     signal: signal
                 });
