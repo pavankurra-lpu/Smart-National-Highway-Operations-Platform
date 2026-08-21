@@ -178,19 +178,31 @@
                             <div id="dest-suggestions" class="autocomplete-dropdown"></div>
                         </div>
 
-                          <!-- Enable AI Voice Option -->
-                          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px; margin-bottom: 5px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
-                              <div style="display: flex; align-items: center; gap: 8px;">
-                                  <i class="fa-solid fa-volume-high" style="color: var(--accent-blue);"></i>
-                                  <div>
-                                      <span style="font-size: 13px; font-weight: 600; color: var(--text-main); display: block;">Enable AI Voice Guide</span>
-                                      <span style="font-size: 10px; color: var(--text-muted);">Audible navigation and alerts</span>
+                          <!-- AI Voice Config Option -->
+                          <div style="margin-top: 5px; margin-bottom: 5px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                  <div style="display: flex; align-items: center; gap: 8px;">
+                                      <i class="fa-solid fa-volume-high" style="color: var(--accent-blue);"></i>
+                                      <div>
+                                          <span style="font-size: 13px; font-weight: 600; color: var(--text-main); display: block;">Enable AI Voice Guide</span>
+                                          <span style="font-size: 10px; color: var(--text-muted);">Audible navigation and alerts</span>
+                                      </div>
                                   </div>
+                                  <label class="switch">
+                                      <input type="checkbox" id="pref-voice-enable" checked>
+                                      <span class="slider round"></span>
+                                  </label>
                               </div>
-                              <label class="switch">
-                                  <input type="checkbox" id="pref-voice-enable" checked>
-                                  <span class="slider round"></span>
-                              </label>
+                              <div style="display: flex; gap: 8px;">
+                                  <select id="pref-voice-lang" style="flex: 1; font-size: 11px; padding: 6px; border-radius: 4px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff;">
+                                      <option value="en-IN">English</option>
+                                      <option value="hi-IN">Hindi</option>
+                                  </select>
+                                  <select id="pref-voice-gender" style="flex: 1; font-size: 11px; padding: 6px; border-radius: 4px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff;">
+                                      <option value="female">Female</option>
+                                      <option value="male">Male</option>
+                                  </select>
+                              </div>
                           </div>
 
                     <button id="btn-calc-route" class="btn btn-kokonut w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
@@ -509,25 +521,6 @@
                             <input type="checkbox" id="pref-avoid-tolls">
                             <span class="slider round"></span>
                         </label>
-                    </div>
-                </div>
-
-                <!-- AI Voice Assistant -->
-                <div class="pref-box" style="margin-bottom: 16px;">
-                    <p class="pref-label"><i class="fa-solid fa-microphone"></i> AI Voice Assistant (Female)</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Assistant Language</span>
-                            <p style="font-size: 9px; color: var(--text-muted); margin-top:2px;">Speak reports in regional language</p>
-                        </div>
-                        <select id="pref-voice-lang" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
-                            <option value="en-IN">English (India)</option>
-                            <option value="hi-IN">Hindi (हिंदी)</option>
-                            <option value="te-IN">Telugu (తెలుగు)</option>
-                            <option value="ta-IN">Tamil (தமிழ்)</option>
-                            <option value="kn-IN">Kannada (ಕನ್ನಡ)</option>
-                            <option value="ml-IN">Malayalam (മലയാളം)</option>
-                        </select>
                     </div>
                 </div>
 

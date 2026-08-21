@@ -232,6 +232,11 @@ const VoiceAssistant = {
 
         const voices = await VoiceAssistant._getVoicesAsync();
 
+        let targetGender = 'female';
+        if (window.Storage) {
+            targetGender = Storage.get('nhai_voice_gender') || 'female';
+        }
+
         // Voice selector matching lang code
         let availableVoices = voices.filter(v => 
             v.lang.toLowerCase() === targetLang.toLowerCase() || 
@@ -246,14 +251,15 @@ const VoiceAssistant = {
             availableVoices = voices;
         }
 
-        // Target high-quality female speakers
-        let selectedVoice = availableVoices.find(v => 
-            v.name.toLowerCase().includes('female') || 
-            v.name.toLowerCase().includes('zira') || 
-            v.name.toLowerCase().includes('heera') || 
-            v.name.toLowerCase().includes('swara') ||
-            v.name.toLowerCase().includes('google')
-        );
+        // Target high-quality speakers matching the gender
+        let selectedVoice = availableVoices.find(v => {
+            const name = v.name.toLowerCase();
+            if (targetGender === 'female') {
+                return name.includes('female') || name.includes('zira') || name.includes('heera') || name.includes('swara') || name.includes('google');
+            } else {
+                return name.includes('male') || name.includes('david') || name.includes('mark') || name.includes('ravi') || (name.includes('google') && !name.includes('female'));
+            }
+        });
         if (!selectedVoice) {
             selectedVoice = availableVoices[0];
         }
@@ -290,8 +296,9 @@ const VoiceAssistant = {
                     body: JSON.stringify({
                         text: finalText,
                         language: sarvamLang,
-                        speaker: "shubh"
-                    })
+                        speaker: targetGender === 'male' ? 'arvind' : 'shubh'
+                    }),
+                    signal: signal
                 });
 
                 const result = await response.json();

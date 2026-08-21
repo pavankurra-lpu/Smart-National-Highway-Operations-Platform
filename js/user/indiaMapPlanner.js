@@ -928,7 +928,13 @@ const IndiaMapPlanner = {
         let text = `Route mapped from ${rData.originName} to ${rData.destName}. `;
         
         // Time
-        text += `The estimated travel time is ${rData.totalEta} hours. `;
+        const etaVal = parseFloat(rData.totalEta);
+        if (etaVal < 1.0) {
+            const mins = Math.round(etaVal * 60);
+            text += `The estimated travel time is ${mins} minutes. `;
+        } else {
+            text += `The estimated travel time is ${rData.totalEta} hours. `;
+        }
         
         // Tolls
         if (rData.tolls.length === 0) {
@@ -1070,8 +1076,13 @@ const IndiaMapPlanner = {
     updateSummary: rData => {
         const setText = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
         setText('summary-title', `${rData.originName} → ${rData.destName}`);
+        let displayEta = rData.totalEta + 'h';
+        if (parseFloat(rData.totalEta) < 1.0) {
+            displayEta = Math.round(parseFloat(rData.totalEta) * 60) + ' min';
+        }
+        
         setText('sum-dist',      rData.totalDist);
-        setText('sum-eta',       rData.totalEta);
+        setText('sum-eta',       displayEta.replace('h',''));
         setText('sum-toll',      rData.tolls.length);
         setText('sum-cost',      `₹${rData.totalTollCost}`);
 
@@ -1112,7 +1123,7 @@ const IndiaMapPlanner = {
                 <div style="position: relative; z-index: 2;">
                     <div style="position: absolute; left: -22.5px; top: 3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-red); border: 2px solid #000; box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);"></div>
                     <div style="font-size: 11px; font-weight: 700; color: #fff;">${rData.destName}</div>
-                    <div style="font-size: 8.5px; color: var(--text-muted);">Destination reached • ${rData.totalDist} km • ${rData.totalEta}h</div>
+                    <div style="font-size: 8.5px; color: var(--text-muted);">Destination reached • ${rData.totalDist} km • ${parseFloat(rData.totalEta) < 1.0 ? Math.round(parseFloat(rData.totalEta)*60) + ' min' : rData.totalEta + 'h'}</div>
                 </div>
             `;
             timelineEl.innerHTML = html;
