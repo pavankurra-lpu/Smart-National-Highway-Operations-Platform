@@ -454,18 +454,21 @@
                 
                 <!-- NHAI System-Wide Stats Widget -->
                 <div class="landing-stats-box" style="gap: 12px; margin-top: 40px; padding: 4px; background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px 20px;">
-                        <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(90deg, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700;">0</div>
-                        <div class="l-stat-lbl" style="color: var(--text-sec); font-size: 11px; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px;">Active Plazas</div>
+                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(90deg, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 20px; font-weight: 700;">0</div>
+                        <div class="l-stat-lbl" style="color: var(--text-sec); font-size: 10px; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Active Plazas</div>
                     </div>
-                    <!-- Middle Time Block -->
-                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px 20px;">
-                        <div class="l-stat-val" id="stat-time" style="background: linear-gradient(90deg, #fcd34d, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700;">--:--:--</div>
-                        <div class="l-stat-lbl" id="stat-date" style="color: var(--text-sec); font-size: 11px; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px;">DATE</div>
+                    
+                    <!-- Middle Reactbits Style Clock -->
+                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px; display: flex; flex-direction: column; align-items: flex-start;">
+                        <div id="stat-time-only" style="color: #fcd34d; font-size: 20px; font-weight: 700; line-height: 1;">--:--:--</div>
+                        <div id="stat-ampm" style="color: #fcd34d; font-size: 16px; font-weight: 600; line-height: 1; margin-top: 8px;">am</div>
+                        <div id="stat-date" style="color: #9ca3af; font-size: 10px; font-weight: 600; margin-top: 10px; letter-spacing: 1px; text-transform: uppercase;">DATE</div>
                     </div>
-                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px 20px;">
-                        <div class="l-stat-val" id="stat-network" style="background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700;">0</div>
-                        <div class="l-stat-lbl" style="color: var(--text-sec); font-size: 11px; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px;">Highway Network</div>
+
+                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="l-stat-val" id="stat-network" style="background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 20px; font-weight: 700;">0</div>
+                        <div class="l-stat-lbl" style="color: var(--text-sec); font-size: 10px; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Highway Network</div>
                     </div>
                 </div>
 
@@ -666,14 +669,26 @@
                 });
             }
 
-            // 5. Dynamic clock and date updater
+            // 5. Dynamic clock and date updater (Reactbits split style)
             const updateClock = () => {
-                const timeEl = document.getElementById('stat-time');
+                const timeEl = document.getElementById('stat-time-only');
+                const ampmEl = document.getElementById('stat-ampm');
                 const dateEl = document.getElementById('stat-date');
-                if (!timeEl || !dateEl) return;
+                if (!timeEl || !dateEl || !ampmEl) return;
+                
                 const now = new Date();
-                timeEl.innerText = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-                dateEl.innerText = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+                let hours = now.getHours();
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                const ampm = hours >= 12 ? 'pm' : 'am';
+                
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                const hoursStr = String(hours).padStart(2, '0');
+                
+                timeEl.innerText = `${hoursStr}:${minutes}:${seconds}`;
+                ampmEl.innerText = ampm;
+                dateEl.innerText = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
             };
             updateClock();
             setInterval(updateClock, 1000);
