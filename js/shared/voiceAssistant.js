@@ -172,39 +172,6 @@ const VoiceAssistant = {
             const dict = VOICE_TRANSLATIONS[targetLang];
             if (dict[text]) {
                 finalText = dict[text];
-            } else {
-                // Dynamic translation matcher: "The current weather at your origin is X degrees with Y. Z"
-                const weatherMatch = text.match(/The current weather at your (origin|destination) is (\d+) degrees with ([^.]+)\.\s*(.+)/i);
-                if (weatherMatch) {
-                    const placeType = weatherMatch[1];
-                    const temp = weatherMatch[2];
-                    const condition = weatherMatch[3].trim();
-                    const advisory = weatherMatch[4].trim();
-                    
-                    const placeTrans = targetLang === 'hi-IN' ? (placeType === 'origin' ? 'प्रस्थान स्थान' : 'गंतव्य स्थान') : 
-                                      targetLang === 'te-IN' ? (placeType === 'origin' ? 'ప్రారంభ స్థానం' : 'గమ్యస్థానం') :
-                                      targetLang === 'ta-IN' ? (placeType === 'origin' ? 'தொடக்க இடம்' : 'சேருமிடம்') :
-                                      targetLang === 'kn-IN' ? (placeType === 'origin' ? 'ಪ್ರಾರಂಭದ ಸ್ಥಳ' : 'ಗಮ್ಯಸ್ಥಾನ') :
-                                      targetLang === 'ml-IN' ? (placeType === 'origin' ? 'തുടങ്ങുന്ന സ്ഥലം' : 'ലക്ഷ്യസ്ഥാനം') : placeType;
-                    
-                    const condTrans = dict[condition] || condition;
-                    const advTrans = dict[advisory] || advisory;
-                    
-                    if (targetLang === 'hi-IN') {
-                        finalText = `आपके ${placeTrans} पर वर्तमान मौसम ${temp} डिग्री के साथ ${condTrans} है। ${advTrans}`;
-                    } else if (targetLang === 'te-IN') {
-                        finalText = `మీ ${placeTrans} వద్ద ప్రస్తుత వాతావరణం ${temp} డిగ్రీలు మరియు ${condTrans}. ${advTrans}`;
-                    } else if (targetLang === 'ta-IN') {
-                        finalText = `உங்கள் ${placeTrans}ல் தற்போதைய வானிலை ${temp} டிகிரி மற்றும் ${condTrans}. ${advTrans}`;
-                    } else if (targetLang === 'kn-IN') {
-                        finalText = `ನಿಮ್ಮ ${placeTrans}ದಲ್ಲಿ ಈಗಿನ ವಾತಾವರಣ ${temp} ಡಿಗ್ರಿ ಮತ್ತು ${condTrans}. ${advTrans}`;
-                    } else if (targetLang === 'ml-IN') {
-                        finalText = `നിങ്ങളുടെ ${placeTrans}ലെ ഇപ്പോഴത്തെ കാലാവസ്ഥ ${temp} ഡിഗ്രിയും ${condTrans} ആണ്. ${advTrans}`;
-                    }
-                }
-                
-                // Dynamic selection matcher: "You have selected origin place as Delhi."
-                const selectionMatch = text.match(/You have selected (origin|destination) place as ([^.]+)/i);
                 if (selectionMatch) {
                     const placeType = selectionMatch[1];
                     const cityName = selectionMatch[2];
