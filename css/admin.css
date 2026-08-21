@@ -3,6 +3,47 @@
     display: flex; height: 100vh; overflow: hidden;
 }
 
+/* ===== BKLIT UI: BORDER BEAMS ===== */
+.bklit-border-beam {
+    position: relative;
+}
+.bklit-border-beam::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle), transparent 70%, var(--primary) 100%);
+    z-index: -1;
+    animation: rotateBeam 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.bklit-border-beam:hover::after {
+    opacity: 1;
+}
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes rotateBeam {
+    to { --angle: 360deg; }
+}
+
+/* ===== SHADCN: SKELETON LOADERS ===== */
+.shadcn-skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    color: transparent !important;
+}
+.shadcn-skeleton * { visibility: hidden; }
+@keyframes skeleton-pulse {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
 /* Login Screen Background */
 .admin-login-body {
     display: flex; justify-content: center; align-items: center;

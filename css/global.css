@@ -368,86 +368,86 @@ body.light-mode option {
 
 .modal-overlay.hidden { display: none !important; }
 
-/* ===== SHADCN TOAST NOTIFICATION SYSTEM ===== */
+/* ===== KOKONUT UI DYNAMIC ISLAND (TOASTS) ===== */
 .shadcn-toast-container {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 999999;
     display: flex;
     flex-direction: column;
     gap: 12px;
     max-width: 400px;
-    width: calc(100% - 48px);
+    width: max-content;
     pointer-events: none;
+    align-items: center;
 }
 .shadcn-toast {
-    background: rgba(9, 9, 11, 0.82);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px; /* Pill shape */
+    padding: 12px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
     color: var(--text-main);
     pointer-events: auto;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    overflow: hidden;
-    position: relative;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    animation: islandDrop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform-origin: top center;
+}
+@keyframes islandDrop {
+    0% { transform: scale(0.8) translateY(-40px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 .shadcn-toast::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 4px;
-    background: var(--text-muted);
-}
-.shadcn-toast.toast-success::before {
-    background: var(--primary);
-}
-.shadcn-toast.toast-error::before {
-    background: var(--accent-red);
-}
-.shadcn-toast.toast-warning::before {
-    background: var(--accent-yellow);
-}
-.shadcn-toast.toast-info::before {
-    background: var(--accent-blue);
+    display: none; /* Remove left border */
 }
 .shadcn-toast-icon {
     font-size: 16px;
-    margin-top: 1px;
     flex-shrink: 0;
 }
+/* Colorize icons based on type instead of borders */
+.toast-success .shadcn-toast-icon { color: #10b981; text-shadow: 0 0 10px rgba(16,185,129,0.5); }
+.toast-error .shadcn-toast-icon { color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.5); }
+.toast-warning .shadcn-toast-icon { color: #f59e0b; text-shadow: 0 0 10px rgba(245,158,11,0.5); }
+.toast-info .shadcn-toast-icon { color: #3b82f6; text-shadow: 0 0 10px rgba(59,130,246,0.5); }
+
 .shadcn-toast-content {
-    flex-grow: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
 }
 .shadcn-toast-title {
     font-weight: 600;
     font-size: 13px;
-    color: var(--text-main);
-    margin-bottom: 2px;
+    color: #fff;
 }
 .shadcn-toast-description {
-    font-size: 12px;
-    color: var(--text-sec);
-    line-height: 1.4;
+    font-size: 13px;
+    color: #a1a1aa;
 }
 .shadcn-toast-close {
-    background: transparent;
+    background: rgba(255,255,255,0.1);
     border: none;
-    color: var(--text-muted);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a1a1aa;
     cursor: pointer;
-    font-size: 11px;
-    padding: 2px;
-    transition: var(--transition);
-    flex-shrink: 0;
+    font-size: 10px;
+    transition: all 0.2s;
     margin-left: 8px;
 }
 .shadcn-toast-close:hover {
-    color: var(--text-main);
+    background: rgba(255,255,255,0.2);
+    color: #fff;
 }
 
 /* ===== SHADCN SHEETS / DRAWERS ===== */
