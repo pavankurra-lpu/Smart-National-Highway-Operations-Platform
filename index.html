@@ -453,22 +453,27 @@
                 </p>
                 
                 <!-- NHAI System-Wide Stats Widget -->
-                <div class="landing-stats-box" style="gap: 12px; margin-top: 40px; padding: 4px; background: rgba(255,255,255,0.02); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
-                        <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(90deg, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 20px; font-weight: 700;">0</div>
-                        <div class="l-stat-lbl" style="color: var(--text-sec); font-size: 10px; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Active Plazas</div>
+                <div class="landing-stats-box" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; width: 100%;">
+                    
+                    <!-- Reactbits-style Minimal Bento Card -->
+                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
+                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Active Plazas</div>
+                        <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700; line-height: 1;">0</div>
                     </div>
                     
-                    <!-- Middle Reactbits Style Clock -->
-                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px; display: flex; flex-direction: column; align-items: flex-start;">
-                        <div id="stat-time-only" style="color: #fcd34d; font-size: 20px; font-weight: 700; line-height: 1;">--:--:--</div>
-                        <div id="stat-ampm" style="color: #fcd34d; font-size: 16px; font-weight: 600; line-height: 1; margin-top: 8px;">am</div>
-                        <div id="stat-date" style="color: #9ca3af; font-size: 10px; font-weight: 600; margin-top: 10px; letter-spacing: 1px; text-transform: uppercase;">DATE</div>
+                    <!-- Reactbits-style Clock Card (Horizontal AM/PM) -->
+                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
+                        <div class="l-stat-lbl" id="stat-date" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">DATE</div>
+                        <div style="display: flex; align-items: baseline; gap: 4px;">
+                            <div id="stat-time-only" style="color: #fbbf24; font-size: 24px; font-weight: 700; line-height: 1; text-shadow: 0 0 20px rgba(251, 191, 36, 0.2);">--:--:--</div>
+                            <div id="stat-ampm" style="color: #f59e0b; font-size: 13px; font-weight: 600; text-transform: lowercase;">am</div>
+                        </div>
                     </div>
 
-                    <div class="l-stat" style="border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); border-radius: 12px; position: relative; overflow: hidden; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
-                        <div class="l-stat-val" id="stat-network" style="background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 20px; font-weight: 700;">0</div>
-                        <div class="l-stat-lbl" style="color: var(--text-sec); font-size: 10px; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px;">Highway Network</div>
+                    <!-- Reactbits-style Minimal Bento Card -->
+                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
+                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Highway Network</div>
+                        <div class="l-stat-val" id="stat-network" style="background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700; line-height: 1;">0</div>
                     </div>
                 </div>
 
