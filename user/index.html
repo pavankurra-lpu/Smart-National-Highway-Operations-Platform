@@ -178,6 +178,21 @@
                             <div id="dest-suggestions" class="autocomplete-dropdown"></div>
                         </div>
 
+                          <!-- Enable AI Voice Option -->
+                          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px; margin-bottom: 5px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                              <div style="display: flex; align-items: center; gap: 8px;">
+                                  <i class="fa-solid fa-volume-high" style="color: var(--accent-blue);"></i>
+                                  <div>
+                                      <span style="font-size: 13px; font-weight: 600; color: var(--text-main); display: block;">Enable AI Voice Guide</span>
+                                      <span style="font-size: 10px; color: var(--text-muted);">Audible navigation and alerts</span>
+                                  </div>
+                              </div>
+                              <label class="switch">
+                                  <input type="checkbox" id="pref-voice-enable" checked>
+                                  <span class="slider round"></span>
+                              </label>
+                          </div>
+
                     <button id="btn-calc-route" class="btn btn-kokonut w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
                         <i class="fa-solid fa-route"></i> Calculate Optimal Path
                     </button>
@@ -500,19 +515,6 @@
                 <!-- AI Voice Assistant -->
                 <div class="pref-box" style="margin-bottom: 16px;">
                     <p class="pref-label"><i class="fa-solid fa-microphone"></i> AI Voice Assistant (Female)</p>
-                    
-                    <!-- Enable Voice Toggle -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <div>
-                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Enable Voice</span>
-                            <p style="font-size: 9px; color: var(--text-muted); margin-top:2px;">Audible alerts and routing instructions</p>
-                        </div>
-                        <label class="switch">
-                            <input type="checkbox" id="pref-voice-enable" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Assistant Language</span>

@@ -30,6 +30,21 @@ const UserApp = {
             });
         });
 
+        // AI Voice Toggle Persistence
+        const voiceToggle = document.getElementById('pref-voice-enable');
+        if (voiceToggle) {
+            const savedVoiceState = localStorage.getItem('nhai_voice_enabled');
+            if (savedVoiceState !== null) {
+                voiceToggle.checked = savedVoiceState === 'true';
+            }
+            voiceToggle.addEventListener('change', (e) => {
+                localStorage.setItem('nhai_voice_enabled', e.target.checked);
+                if (!e.target.checked && window.speechSynthesis) {
+                    window.speechSynthesis.cancel();
+                }
+            });
+        }
+
         // Initialize Services with error boundaries
         try { ThemeManager.init(); } catch(e) { console.error('ThemeManager init error:', e); }
         try { EntryScreen.init(); } catch(e) { console.error('EntryScreen init error:', e); }
