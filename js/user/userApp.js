@@ -45,6 +45,15 @@ const UserApp = {
             });
         }
 
+        const voiceGender = document.getElementById('pref-voice-gender');
+        if (voiceGender) {
+            const savedGender = localStorage.getItem('nhai_voice_gender');
+            if (savedGender) voiceGender.value = savedGender;
+            voiceGender.addEventListener('change', (e) => {
+                localStorage.setItem('nhai_voice_gender', e.target.value);
+            });
+        }
+
         // Initialize Services with error boundaries
         try { ThemeManager.init(); } catch(e) { console.error('ThemeManager init error:', e); }
         try { EntryScreen.init(); } catch(e) { console.error('EntryScreen init error:', e); }

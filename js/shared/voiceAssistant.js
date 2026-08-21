@@ -82,22 +82,47 @@ const VoiceAssistant = {
                 return VoiceAssistant._numberToEnglishWords(match);
             });
 
+        const genderEl = document.getElementById('pref-voice-gender');
+        const targetGender = genderEl ? genderEl.value : (localStorage.getItem('nhai_voice_gender') || 'male');
+
         const voices = await VoiceAssistant._getVoicesAsync();
 
-        // Strictly pick English Male voice
-        let selectedVoice = voices.find(v => {
-            const name = (v.name || '').toLowerCase();
-            const lang = (v.lang || '').toLowerCase();
-            const isEnglish = lang.startsWith('en');
-            const isMale = name.includes('david') || 
-                           name.includes('mark') || 
-                           name.includes('george') || 
-                           name.includes('guy') || 
-                           name.includes('male') || 
-                           name.includes('ravi') ||
-                           name.includes('james');
-            return isEnglish && isMale;
-        });
+        let selectedVoice = null;
+        if (targetGender === 'female') {
+            selectedVoice = voices.find(v => {
+                const name = (v.name || '').toLowerCase();
+                const lang = (v.lang || '').toLowerCase();
+                const isEnglish = lang.startsWith('en');
+                const isFemale = name.includes('zira') || 
+                                 name.includes('female') || 
+                                 name.includes('samantha') || 
+                                 name.includes('victoria') || 
+                                 name.includes('karen') || 
+                                 name.includes('hazel') || 
+                                 name.includes('heera') || 
+                                 name.includes('catherine') || 
+                                 name.includes('susan') || 
+                                 name.includes('jenny') || 
+                                 name.includes('aria') || 
+                                 (name.includes('google') && !name.includes('male'));
+                return isEnglish && isFemale;
+            });
+        } else {
+            selectedVoice = voices.find(v => {
+                const name = (v.name || '').toLowerCase();
+                const lang = (v.lang || '').toLowerCase();
+                const isEnglish = lang.startsWith('en');
+                const isMale = name.includes('david') || 
+                               name.includes('mark') || 
+                               name.includes('george') || 
+                               name.includes('guy') || 
+                               name.includes('male') || 
+                               name.includes('ravi') ||
+                               name.includes('james') ||
+                               name.includes('richard');
+                return isEnglish && isMale;
+            });
+        }
 
         // Fallback to any English voice
         if (!selectedVoice) {

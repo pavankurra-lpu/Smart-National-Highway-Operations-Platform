@@ -1077,12 +1077,6 @@ const IndiaMapPlanner = {
                         </div>
                     `;
                 });
-            } else {
-                html += `
-                    <div style="position: relative; margin-bottom: 12px; z-index: 2;">
-                        <div style="font-size: 10px; color: var(--text-muted); font-style: italic;">(Toll-free Route)</div>
-                    </div>
-                `;
             }
             html += `
                 <div style="position: relative; z-index: 2;">
