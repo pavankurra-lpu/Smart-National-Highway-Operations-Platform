@@ -160,8 +160,8 @@ const VoiceAssistant = {
         VoiceAssistant.isSpeaking = false;
 
         let targetLang = 'en-IN';
-        if (window.Storage) {
-            targetLang = Storage.get('nhai_voice_lang') || 'en-IN';
+        if (window.localStorage) {
+            targetLang = localStorage.getItem('nhai_voice_lang') || 'en-IN';
         }
         if (forceLang) targetLang = forceLang;
 
@@ -253,10 +253,7 @@ const VoiceAssistant = {
 
         const voices = await VoiceAssistant._getVoicesAsync();
 
-        let targetGender = 'female';
-        if (window.Storage) {
-            targetGender = Storage.get('nhai_voice_gender') || 'female';
-        }
+        let targetGender = 'male'; // Forced to male per user request
 
         // Voice selector matching lang code
         let availableVoices = voices.filter(v => 
