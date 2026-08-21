@@ -224,7 +224,6 @@ const IndiaMapPlanner = {
         
         // Toll Explorer Tool
         safe('btn-toll-explorer-toggle', () => IndiaMapPlanner.toggleSelectionMode());
-        safe('btn-explorer-avoid-tab', () => IndiaMapPlanner.routeAndAvoidTolls());
 
         safe('btn-follow-me', () => {
             IndiaMapPlanner.isFollowing = !IndiaMapPlanner.isFollowing;
@@ -790,18 +789,6 @@ const IndiaMapPlanner = {
                     return;
                 }
                 IndiaMapPlanner.allRoutes = data.routes;
-                
-                // If Avoid Tolls is checked, sort routes by toll count
-                const avoidTolls = document.getElementById('pref-avoid-tolls')?.checked;
-                if (avoidTolls) {
-                    IndiaMapPlanner.allRoutes.sort((a, b) => {
-                        const tollsA = IndiaMapPlanner.estimateTollsOnRoute(a.geometry.coordinates).tolls.length;
-                        const tollsB = IndiaMapPlanner.estimateTollsOnRoute(b.geometry.coordinates).tolls.length;
-                        return tollsA - tollsB;
-                    });
-                    Utils.showToast('Routes optimized to minimize tolls.', 'info');
-                }
-
                 IndiaMapPlanner.selectedRouteIndex = 0;
                 IndiaMapPlanner._applyRoute(0, o, d);
             })
@@ -951,9 +938,7 @@ const IndiaMapPlanner = {
             text += `The estimated travel time is ${rData.totalEta} hours. `;
         }
         
-        if (rData.tolls.length === 0) {
-            text += `This is a toll-free route. `;
-        } else {
+        if (rData.tolls.length > 0) {
             text += `There are ${rData.tolls.length} tolls on this route. Total toll amount to be paid is ${rData.totalTollCost} rupees. `;
         }
         
@@ -2021,31 +2006,7 @@ const IndiaMapPlanner = {
         return p.distanceTo(projection) / 1000;
     },
 
-    routeAndAvoidTolls: () => {
-        if (IndiaMapPlanner.selectionMarkers.length === 0 || !IndiaMapPlanner.selectionEnd) {
-            Utils.showToast('Please drag a selection on the map first.', 'error');
-            return;
-        }
-        
-        const start = IndiaMapPlanner.selectionMarkers[0].getLatLng();
-        const end = IndiaMapPlanner.selectionEnd;
-        
-        // Set inputs to coordinates (since we don't have names)
-        IndiaMapPlanner.selectedOrigin = { name: 'Selected Start', lat: start.lat, lng: start.lng };
-        IndiaMapPlanner.selectedDest = { name: 'Selected End', lat: end.lat, lng: end.lng };
-        
-        const origInput = document.getElementById('route-origin-input');
-        const destInput = document.getElementById('route-dest-input');
-        if (origInput) origInput.value = `${start.lat.toFixed(4)}, ${start.lng.toFixed(4)}`;
-        if (destInput) destInput.value = `${end.lat.toFixed(4)}, ${end.lng.toFixed(4)}`;
-        
-        // Force 'Avoid Tolls' checkbox
-        const avoidCheck = document.getElementById('pref-avoid-tolls');
-        if (avoidCheck) avoidCheck.checked = true;
-        
-        IndiaMapPlanner.closeTollExplorer();
-        IndiaMapPlanner.processRoute();
-    },
+
 
     _getLocalStateFromCoords: (lat, lng) => {
         if (!window.IndiaMapData || !IndiaMapData.cities) return '';

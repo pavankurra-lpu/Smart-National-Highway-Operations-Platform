@@ -57,16 +57,14 @@ const RouteEngine = {
         return { path, edges };
     },
 
-    calculateRoute: (origin, dest, vehicleType, mode, prefs = {avoidTolls: false, useFastag: true}) => {
+    calculateRoute: (origin, dest, vehicleType, mode, prefs = {useFastag: true}) => {
         if (origin === dest) return null;
 
         // Weight functions based on mode
         let weightFunc;
         if (mode === 'FASTEST') {
             weightFunc = (edge) => {
-                let w = edge.distance / edge.speedLimit;
-                if (prefs.avoidTolls && edge.tolls && edge.tolls.length > 0) w += 10000; // Heavy penalty
-                return w;
+                return edge.distance / edge.speedLimit;
             };
         } else if (mode === 'CHEAPEST') {
             // Optimize for toll cost + fuel
@@ -75,7 +73,6 @@ const RouteEngine = {
                 if (edge.tolls) {
                     edge.tolls.forEach(tId => cost += TollData.getTollCost(tId, vehicleType));
                 }
-                if (prefs.avoidTolls && edge.tolls && edge.tolls.length > 0) cost += 10000;
                 return cost + (edge.distance * 0.5); // 0.5 as fuel proxy
             };
         } else if (mode === 'EMERGENCY') {
@@ -90,7 +87,6 @@ const RouteEngine = {
                 if (edge.tolls) {
                     edge.tolls.forEach(tId => cost += TollData.getTollCost(tId, vehicleType));
                 }
-                if (prefs.avoidTolls && edge.tolls && edge.tolls.length > 0) cost += 10000;
                 
                 let time = edge.distance / edge.speedLimit;
                 
