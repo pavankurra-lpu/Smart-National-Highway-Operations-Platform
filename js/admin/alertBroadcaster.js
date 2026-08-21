@@ -6,7 +6,7 @@ const AlertBroadcaster = {
         if (btn) {
             btn.addEventListener('click', () => {
                 const type   = document.getElementById('bc-type').value;
-                const region = document.getElementById('bc-region').value;
+                const plaza  = sessionStorage.getItem('admin_plaza') || 'ALL';
                 const title  = document.getElementById('bc-title').value;
                 const msg    = document.getElementById('bc-msg').value;
 
@@ -20,7 +20,7 @@ const AlertBroadcaster = {
                     type,
                     title,
                     message:   msg,
-                    region,
+                    plaza,
                     timestamp: new Date().toISOString()
                 };
 
@@ -33,7 +33,7 @@ const AlertBroadcaster = {
                         token:     sessionStorage.getItem('nhai_admin_auth'),
                         alertData: alertPayload
                     });
-                    Utils.showToast(`Alert broadcast to all live users in ${region === 'ALL' ? 'India' : region}`, 'success');
+                    Utils.showToast(`Alert broadcast to all live users near ${plaza === 'ALL' ? 'all plazas' : plaza + ' Plaza'}`, 'success');
                 } else {
                     Utils.showToast(`Alert saved. WebSocket offline — only local users will see this.`, 'warning');
                 }

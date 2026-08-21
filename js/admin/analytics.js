@@ -19,26 +19,19 @@ const Analytics = {
         const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
         const startOfYear = new Date(now.getFullYear(), 0, 1).getTime();
 
-        const region = sessionStorage.getItem('admin_region') || 'ALL';
+        const plaza = sessionStorage.getItem('admin_plaza') || 'ALL';
 
-        // Helper to check if a log is in the region (using origin/dest keywords or toll names)
-        const isLogInRegion = (log) => {
-            if (region === 'ALL') return true;
+        // Helper to check if a log is in the plaza (using origin/dest keywords or toll names)
+        const isLogInPlaza = (log) => {
+            if (plaza === 'ALL') return true;
             // Simple string matching for demo purposes
             const str = (log.origin + ' ' + log.dest).toLowerCase();
-            const r = region.toLowerCase();
-            if (str.includes(r)) return true;
-            
-            // Check if region matches specific cities for the demo
-            if (r === 'maharashtra' && (str.includes('mumbai') || str.includes('pune') || str.includes('nashik'))) return true;
-            if (r === 'punjab' && (str.includes('amritsar') || str.includes('ludhiana') || str.includes('jalandhar'))) return true;
-            if (r === 'delhi' && (str.includes('delhi') || str.includes('noida') || str.includes('gurgaon'))) return true;
-            if (r === 'karnataka' && (str.includes('bengaluru') || str.includes('bangalore') || str.includes('mysuru'))) return true;
-            
+            const p = plaza.toLowerCase();
+            if (str.includes(p)) return true;
             return false;
         };
 
-        const filteredLogs = logs.filter(isLogInRegion);
+        const filteredLogs = logs.filter(isLogInPlaza);
 
         filteredLogs.forEach(log => {
             const cost = log.cost || 0;

@@ -25,8 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(async () => {
                 const success = await Auth.login(id, pass);
                 if (success) {
-                    const region = document.getElementById('admin-region').value;
-                    sessionStorage.setItem('admin_region', region);
+                    sessionStorage.setItem('nhai_admin_auth', 'token-abc-123');
+                    // Store the active plaza assignment
+                    const plaza = document.getElementById('admin-plaza').value;
+                    sessionStorage.setItem('admin_plaza', plaza);
                     window.location.href = 'index.html';
                 } else {
                     errorEl.innerText = "ACCESS DENIED. Invalid Credentials.";

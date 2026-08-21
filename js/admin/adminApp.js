@@ -24,18 +24,18 @@ const AdminApp = {
             });
         });
 
-        // Setup Regional Access
-        AdminApp.region = sessionStorage.getItem('admin_region') || 'ALL';
+        // Setup Plaza Access
+        AdminApp.plaza = sessionStorage.getItem('admin_plaza') || 'ALL';
         const badge = document.getElementById('admin-region-badge');
         if (badge) {
-            if (AdminApp.region === 'ALL') {
-                badge.innerText = 'ALL INDIA';
+            if (AdminApp.plaza === 'ALL') {
+                badge.innerText = 'ALL PLAZAS';
             } else {
-                badge.innerText = AdminApp.region.toUpperCase() + ' REGION';
-                badge.style.background = 'rgba(14, 165, 233, 0.15)'; // Blue badge for specific region
-                badge.style.borderColor = 'var(--accent-blue)';
-                badge.style.color = 'var(--accent-blue)';
+                badge.innerText = AdminApp.plaza.toUpperCase() + ' PLAZA';
             }
+            badge.style.background = 'rgba(14, 165, 233, 0.15)'; // Blue badge for specific region
+            badge.style.borderColor = 'var(--accent-blue)';
+            badge.style.color = 'var(--accent-blue)';
         }
 
         // Initialize features
