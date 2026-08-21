@@ -230,7 +230,8 @@ const VoiceAssistant = {
         const callSarvamBackend = async () => {
             try {
                 VoiceAssistant.isSpeaking = true;
-                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://127.0.0.1:5000';
+                // Voice API (Python) runs on port 5000 by default, bypassing Node backend config
+                const voiceApiUrl = 'http://127.0.0.1:5000';
                 
                 // Map local language code to Sarvam mapped string
                 const langMap = {
@@ -243,7 +244,7 @@ const VoiceAssistant = {
                 };
                 const sarvamLang = langMap[targetLang] || 'english';
 
-                const response = await fetch(`${backendUrl}/api/voice/tts`, {
+                const response = await fetch(`${voiceApiUrl}/api/voice/tts`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
