@@ -529,29 +529,31 @@ const IndiaMapPlanner = {
 
     showWeatherPopup: (type, cityName, lat, lng) => {
         if (!lat || !lng) return;
-        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current_weather=true`)
+        const API_KEY = 'a8f71ad22e0567bdce65cc749371ba90';
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`)
             .then(res => res.json())
             .then(data => {
-                if (!data || !data.current_weather) return;
-                const temp = data.current_weather.temperature;
-                const code = data.current_weather.weathercode;
+                if (!data || !data.main) return;
+                const temp = Math.round(data.main.temp);
+                const code = data.weather[0].id;
+                const desc = data.weather[0].main.toLowerCase();
                 
                 let condition = 'Clear Skies';
                 let icon = 'fa-sun';
                 let color = '#fcd34d';
                 let advisory = 'Optimal travel conditions.';
                 
-                if ([45, 48].includes(code)) {
-                    condition = 'Dense Fog';
+                if (code >= 700 && code < 800) {
+                    condition = 'Dense Fog / Haze';
                     icon = 'fa-smog';
                     color = '#a8a29e';
                     advisory = 'Low visibility. Use fog lights & hazard lamps.';
-                } else if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) {
+                } else if (code >= 300 && code < 600) {
                     condition = 'Heavy Rain';
                     icon = 'fa-cloud-showers-heavy';
                     color = '#3b82f6';
                     advisory = 'Slippery roads. Reduce speed by 20%.';
-                } else if ([95, 96, 99].includes(code)) {
+                } else if (code >= 200 && code < 300) {
                     condition = 'Thunderstorm';
                     icon = 'fa-cloud-bolt';
                     color = '#8b5cf6';
@@ -921,7 +923,7 @@ const IndiaMapPlanner = {
         setTimeout(() => IndiaMapPlanner.fetchOnRouteServices(coords, rData), 800);
     },
 
-    _announceRoute: (rData) => {
+    _announceRoute: async (rData) => {
         if (!window.speechSynthesis) return;
         window.speechSynthesis.cancel();
         
@@ -947,17 +949,24 @@ const IndiaMapPlanner = {
         const balance = window.Storage ? window.Storage.get('nhai_fastag_balance', 0) : 0;
         text += `Your current FASTag account balance is ${balance} rupees. `;
         
-        // Weather & Traffic
-        if (window.WeatherEngine && rData.destName) {
-            const hash = (new Date().getHours() + rData.destName.length) % window.WeatherEngine.conditions.length;
-            const condition = window.WeatherEngine.conditions[hash];
-            const isRisky = condition.risk === 'HIGH' || condition.risk === 'MEDIUM';
-            const advisory = isRisky ? `${condition.name}. ${window.WeatherEngine.getAdvisoryMessage(condition.code)}` : condition.name;
-            text += `Weather condition along the route is expected to be ${advisory}. `;
-            
-            const trafficConditions = ['normal', 'moderate', 'heavy in some segments', 'flowing smoothly'];
-            const traffic = trafficConditions[(hash + rData.originName.length) % trafficConditions.length];
-            text += `Current traffic intensity is ${traffic}. `;
+        // Real-time Weather via OpenWeatherMap
+        if (rData.destNodeId && window.IndiaMapData?.nodes[rData.destNodeId]) {
+            const destNode = window.IndiaMapData.nodes[rData.destNodeId];
+            try {
+                const API_KEY = 'a8f71ad22e0567bdce65cc749371ba90';
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${destNode.lat}&lon=${destNode.lng}&appid=${API_KEY}&units=metric`);
+                const wData = await res.json();
+                
+                if (wData && wData.weather && wData.weather.length > 0) {
+                    const desc = wData.weather[0].main;
+                    text += `Weather condition along the route is expected to be ${desc}. `;
+                } else {
+                    text += `Weather and traffic conditions are currently optimal. `;
+                }
+            } catch (err) {
+                console.error("Weather fetch failed:", err);
+                text += `Weather and traffic conditions are currently optimal. `;
+            }
         } else {
             text += `Weather and traffic conditions are currently optimal. `;
         }
