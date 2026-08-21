@@ -429,6 +429,13 @@
                 <div class="logo-subtitle-main" style="color: #71717a; font-size: 8px; margin-top: 2px;">NATIONAL HIGHWAYS AUTHORITY OF INDIA</div>
             </div>
         </div>
+
+        <!-- Middle Clock -->
+        <div class="header-clock" style="position: absolute; left: 50%; transform: translateX(-50%); text-align: center; color: #fff; background: rgba(0,0,0,0.4); padding: 8px 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); box-shadow: inset 0 0 20px rgba(0,0,0,0.5);">
+            <div id="central-time" style="font-size: 26px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; color: var(--primary);">--:--:--</div>
+            <div id="central-date" style="font-size: 10px; color: var(--text-sec); letter-spacing: 1px; text-transform: uppercase;">DATE</div>
+        </div>
+
         <div class="system-status">
             <span class="status-dot"></span>
             <span>NHAI CENTRAL CONNECTED</span>
@@ -664,13 +671,16 @@
             const updateClock = () => {
                 const timeEl = document.getElementById('stat-time');
                 const dateEl = document.getElementById('stat-date');
+                const centralTimeEl = document.getElementById('central-time');
+                const centralDateEl = document.getElementById('central-date');
                 const now = new Date();
-                if (timeEl) {
-                    timeEl.innerText = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-                }
-                if (dateEl) {
-                    dateEl.innerText = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
-                }
+                const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+                const dateStr = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+                
+                if (timeEl) timeEl.innerText = timeStr;
+                if (dateEl) dateEl.innerText = dateStr;
+                if (centralTimeEl) centralTimeEl.innerText = timeStr;
+                if (centralDateEl) centralDateEl.innerText = dateStr;
             };
             updateClock();
             setInterval(updateClock, 1000);
