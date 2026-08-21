@@ -155,19 +155,8 @@ const IndiaMapPlanner = {
             }
         });
 
-        safe('btn-calc-route',  () => {
-            const modal = document.getElementById('security-verification-modal');
-            if (modal) {
-                IndiaMapPlanner.onVerificationComplete = () => {
-                    IndiaMapPlanner.processRoute();
-                };
-                Utils.toggleVisibility('security-verification-modal', true);
-                if (window.turnstile) {
-                    window.turnstile.reset();
-                }
-            } else {
-                IndiaMapPlanner.processRoute();
-            }
+        safe('btn-calc-route', () => {
+            IndiaMapPlanner.processRoute();
         });
         safe('btn-start-trip',  () => IndiaMapPlanner.startLiveTrip());
         safe('btn-end-trip',    () => IndiaMapPlanner.endLiveTrip());
@@ -750,10 +739,52 @@ const IndiaMapPlanner = {
     // ═══════════════════════════════════════════════════════════════
     // ROUTE PROCESSING — OSRM + alternate routes
     // ═══════════════════════════════════════════════════════════════
-    processRoute: () => {
-        if (!IndiaMapPlanner.selectedOrigin || !IndiaMapPlanner.selectedDest) {
-            Utils.showToast('Select both Origin and Destination first.', 'error'); return;
+    processRoute: async () => {
+        const origInput = document.getElementById('route-origin-input');
+        const destInput = document.getElementById('route-dest-input');
+
+        const resolveLocation = async (text, currentObj, type) => {
+            if (currentObj && currentObj.lat && currentObj.lng) return currentObj;
+            if (!text || !text.trim()) return null;
+            const q = text.trim().toLowerCase();
+            const found = (IndiaMapPlanner.cities || []).find(c => 
+                c.name.toLowerCase() === q || 
+                q.includes(c.name.toLowerCase()) || 
+                c.name.toLowerCase().includes(q)
+            );
+            if (found) {
+                IndiaMapPlanner._setCityMarker(type, found);
+                return found;
+            }
+            try {
+                const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(text + ', India')}&countrycodes=in&format=json&limit=1`, { headers: { 'Accept-Language': 'en' } });
+                const data = await res.json();
+                if (data && data.length > 0) {
+                    const loc = {
+                        name: text.split(',')[0].trim(),
+                        lat: parseFloat(data[0].lat),
+                        lng: parseFloat(data[0].lon),
+                        state: 'India'
+                    };
+                    IndiaMapPlanner._setCityMarker(type, loc);
+                    return loc;
+                }
+            } catch(e) {}
+            return null;
+        };
+
+        if (!IndiaMapPlanner.selectedOrigin && origInput && origInput.value) {
+            IndiaMapPlanner.selectedOrigin = await resolveLocation(origInput.value, IndiaMapPlanner.selectedOrigin, 'origin');
         }
+        if (!IndiaMapPlanner.selectedDest && destInput && destInput.value) {
+            IndiaMapPlanner.selectedDest = await resolveLocation(destInput.value, IndiaMapPlanner.selectedDest, 'destination');
+        }
+
+        if (!IndiaMapPlanner.selectedOrigin || !IndiaMapPlanner.selectedDest) {
+            Utils.showToast('Please enter both Origin and Destination.', 'error');
+            return;
+        }
+
         // India bounds check
         const o = IndiaMapPlanner.selectedOrigin;
         const d = IndiaMapPlanner.selectedDest;
