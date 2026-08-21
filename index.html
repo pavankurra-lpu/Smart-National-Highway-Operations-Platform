@@ -362,9 +362,59 @@
                 width: 100%;
             }
         }
+        /* Reactbits: Animated Retro Grid Background */
+        .reactbits-bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 10%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 80%);
+            animation: gridPan 20s linear infinite;
+        }
+        @keyframes gridPan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(40px); }
+        }
+
+        /* Reactbits: Shiny Text Gradient */
+        .reactbits-shiny-text {
+            background: linear-gradient(120deg, #10b981 0%, #34d399 20%, #10b981 40%, #059669 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shineText 3s linear infinite;
+        }
+        @keyframes shineText {
+            to { background-position: 200% center; }
+        }
+
+        /* Reactbits: Tilt Glare Card (Add to portal-card) */
+        .portal-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .portal-card .glare {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.1), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .portal-card:hover .glare {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+    <!-- Reactbits Grid Background -->
+    <div class="reactbits-bg-grid"></div>
 
     <!-- Header Navigation -->
     <header class="gateway-header">
@@ -447,7 +497,7 @@
             <!-- Left Info Panel -->
             <div class="hero-info animate-stagger-group">
                 <span class="nhai-badge"><i class="fa-solid fa-building-shield"></i> Gov of India SIMULATION</span>
-                <h1 class="hero-title animate-title">Smart National Highway Operations <span>Platform</span></h1>
+                <h1 class="hero-title animate-title">Smart National Highway Operations <span class="reactbits-shiny-text">Platform</span></h1>
                 <p class="hero-subtitle">
                     Building National Highways, Building the Nation. Welcome to India's unified transit operations hub. Seamlessly manage digital FASTag wallets, plan pathfinding routes, and monitor emergency dispatches in real-time.
                 </p>
@@ -485,6 +535,7 @@
                 
                 <!-- Traveller Card -->
                 <a href="user/index.html" class="portal-card card-user">
+                    <div class="glare"></div>
                     <div class="card-icon-box">
                         <i class="fa-solid fa-car-side"></i>
                     </div>
@@ -496,6 +547,7 @@
 
                 <!-- Admin Card -->
                 <a href="admin/login.html" class="portal-card card-admin">
+                    <div class="glare"></div>
                     <div class="card-icon-box">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
@@ -698,7 +750,7 @@
             updateClock();
             setInterval(updateClock, 1000);
 
-            // 6. Kokonut UI: Spotlight card hover gradient tracker
+            // 6. Reactbits UI: Spotlight Glare + 3D Tilt Card Effect
             const portalCards = document.querySelectorAll('.portal-card');
             portalCards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
@@ -707,6 +759,22 @@
                     const y = e.clientY - rect.top;
                     card.style.setProperty('--mouse-x', `${x}px`);
                     card.style.setProperty('--mouse-y', `${y}px`);
+                    
+                    // Calculate 3D tilt
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -5; // max 5deg tilt
+                    const rotateY = ((x - centerX) / centerX) * 5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    card.style.transition = `transform 0.3s ease`;
+                });
+                
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = `none`; // remove transition for smooth tracking
                 });
             });
         });
