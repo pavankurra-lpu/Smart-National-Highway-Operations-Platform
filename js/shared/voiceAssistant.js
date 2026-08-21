@@ -226,14 +226,61 @@ const VoiceAssistant = {
         utterance.rate = 1.0;
         utterance.pitch = 1.05;
 
-        utterance.onstart = () => { VoiceAssistant.isSpeaking = true; };
-        utterance.onend = () => { VoiceAssistant.isSpeaking = false; };
-        utterance.onerror = (e) => { 
-            console.warn("Speech synthesis error:", e);
-            VoiceAssistant.isSpeaking = false; 
+        // Try calling Sarvam AI API backend first
+        const callSarvamBackend = async () => {
+            try {
+                VoiceAssistant.isSpeaking = true;
+                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://127.0.0.1:5000';
+                
+                // Map local language code to Sarvam mapped string
+                const langMap = {
+                    'en-IN': 'english',
+                    'hi-IN': 'hindi',
+                    'te-IN': 'telugu',
+                    'ta-IN': 'tamil',
+                    'ml-IN': 'malayalam',
+                    'kn-IN': 'kannada'
+                };
+                const sarvamLang = langMap[targetLang] || 'english';
+
+                const response = await fetch(`${backendUrl}/api/voice/tts`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        text: finalText,
+                        language: sarvamLang,
+                        speaker: "shubh"
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success && result.data && result.data.audios) {
+                    const base64Audio = result.data.audios[0];
+                    const audio = new Audio("data:audio/wav;base64," + base64Audio);
+                    audio.onended = () => { VoiceAssistant.isSpeaking = false; };
+                    audio.play();
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.warn("Sarvam API unreachable, falling back to browser TTS.");
+                return false;
+            }
         };
-        
-        window.speechSynthesis.speak(utterance);
+
+        // Execute API call, fallback to browser synthesis if it fails
+        callSarvamBackend().then(success => {
+            if (!success) {
+                utterance.onstart = () => { VoiceAssistant.isSpeaking = true; };
+                utterance.onend = () => { VoiceAssistant.isSpeaking = false; };
+                utterance.onerror = (e) => { 
+                    console.warn("Speech synthesis error:", e);
+                    VoiceAssistant.isSpeaking = false; 
+                };
+                window.speechSynthesis.speak(utterance);
+            }
+        });
     }
 };
 
