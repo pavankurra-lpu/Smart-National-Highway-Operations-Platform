@@ -206,6 +206,24 @@ const VoiceAssistant = {
                         finalText = `നിങ്ങൾ ${placeTrans} ആയി ${cityName} തിരഞ്ഞെടുത്തിരിക്കുന്നു.`;
                     }
                 }
+
+                // Dynamic toll payment matcher: "Toll payment successful! X rupees deducted."
+                const tollMatch = text.match(/Toll payment successful! (\d+) rupees deducted\./i);
+                if (tollMatch) {
+                    const cost = tollMatch[1];
+                    const baseSuccess = dict['Toll payment successful!'];
+                    if (targetLang === 'hi-IN') {
+                        finalText = `${baseSuccess} ${cost} rupaye kaate gaye.`;
+                    } else if (targetLang === 'te-IN') {
+                        finalText = `${baseSuccess} ${cost} roopayalu cut ayyayi.`;
+                    } else if (targetLang === 'ta-IN') {
+                        finalText = `${baseSuccess} ${cost} rubai edukkappattathu.`;
+                    } else if (targetLang === 'kn-IN') {
+                        finalText = `${baseSuccess} ${cost} roopayi kadithagide.`;
+                    } else if (targetLang === 'ml-IN') {
+                        finalText = `${baseSuccess} ${cost} roopa kurachu.`;
+                    }
+                }
             }
         }
 
