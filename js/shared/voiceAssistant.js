@@ -255,17 +255,46 @@ const VoiceAssistant = {
                 });
 
                 const result = await response.json();
+                console.log("🗣️ [DEBUG] Sarvam API Result:", result);
                 
-                if (result.success && result.data && result.data.audios) {
-                    const base64Audio = result.data.audios[0];
-                    const audio = new Audio("data:audio/wav;base64," + base64Audio);
-                    audio.onended = () => { VoiceAssistant.isSpeaking = false; };
-                    audio.play();
-                    return true;
+                if (result.success && result.data) {
+                    // Try to aggressively find the base64 audio string in the Sarvam response
+                    let base64Audio = null;
+                    if (result.data.audios && result.data.audios.length > 0) base64Audio = result.data.audios[0];
+                    else if (result.data.audio) base64Audio = result.data.audio;
+                    else if (result.data.base64) base64Audio = result.data.base64;
+                    else if (typeof result.data === 'string') base64Audio = result.data;
+                    
+                    if (base64Audio) {
+                        console.log("🎵 [DEBUG] Found audio data, attempting playback...");
+                        
+                        // Ensure correct format
+                        let audioSrc = base64Audio;
+                        if (!base64Audio.startsWith("data:audio")) {
+                            audioSrc = "data:audio/wav;base64," + base64Audio; 
+                        }
+                        
+                        const audio = new Audio(audioSrc);
+                        audio.onended = () => { VoiceAssistant.isSpeaking = false; };
+                        
+                        // audio.play() returns a Promise. Catch autoplay blocks.
+                        try {
+                            await audio.play();
+                            return true;
+                        } catch (playError) {
+                            console.error("❌ [DEBUG] Browser blocked audio playback (autoplay restriction):", playError);
+                            return false;
+                        }
+                    } else {
+                        console.warn("⚠️ [DEBUG] Could not find base64 audio in result.data:", result.data);
+                    }
+                } else {
+                    console.error("❌ [DEBUG] Sarvam API returned an error:", result.error || result);
                 }
+                
                 return false;
             } catch (error) {
-                console.warn("Sarvam API unreachable, falling back to browser TTS.");
+                console.warn("⚠️ [DEBUG] Sarvam API Unreachable (Is python voice_backend.py running?):", error.message);
                 return false;
             }
         };
