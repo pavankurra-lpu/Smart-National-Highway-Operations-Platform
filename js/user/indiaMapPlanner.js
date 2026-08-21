@@ -103,21 +103,8 @@ const IndiaMapPlanner = {
         // ── Sidebar toggle (handled via inline onclick in HTML now) ─────────────────────────────────────────
 
         // ── Autocomplete ───────────────────────────────────────────
-        const speakPlace = (type, name) => {
-            if (window.VoiceAssistant) {
-                window.VoiceAssistant.speak(`You have selected ${type} place as ${name}.`);
-            } else if (window.speechSynthesis) {
-                window.speechSynthesis.cancel();
-                const msg = new SpeechSynthesisUtterance(`You have selected ${type} place as ${name}.`);
-                msg.rate = 1.15;
-                window.speechSynthesis.speak(msg);
-            }
-        };
-
         IndiaMapPlanner.setupAutocomplete('route-origin-input', 'origin-suggestions', city => {
-            speakPlace('origin', city.name);
             if (city.lat === 0 && city.lng === 0) {
-                // Village with unknown coords - geocode first
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
                     IndiaMapPlanner.selectedOrigin = res;
                     if (IndiaMapPlanner.map) {
@@ -134,7 +121,6 @@ const IndiaMapPlanner = {
             }
         });
         IndiaMapPlanner.setupAutocomplete('route-dest-input', 'dest-suggestions', city => {
-            speakPlace('destination', city.name);
             if (city.lat === 0 && city.lng === 0) {
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
                     IndiaMapPlanner.selectedDest = res;
@@ -602,10 +588,14 @@ const IndiaMapPlanner = {
                 `;
                 
                 if (window.VoiceAssistant) {
-                    window.VoiceAssistant.speak(`The current weather at your ${type} is ${temp} degrees with ${condition}. ${advisory}`);
+                    window.VoiceAssistant.speak(`You have selected ${cityName} as ${type}. Current weather is ${temp} degrees with ${condition}.`);
                 }
             })
-            .catch(err => console.error('Weather fetch error:', err));
+            .catch(() => {
+                if (window.VoiceAssistant) {
+                    window.VoiceAssistant.speak(`You have selected ${cityName} as ${type}.`);
+                }
+            });
     },
 
     // ═══════════════════════════════════════════════════════════════
@@ -753,7 +743,6 @@ const IndiaMapPlanner = {
                 c.name.toLowerCase().includes(q)
             );
             if (found) {
-                IndiaMapPlanner._setCityMarker(type, found);
                 return found;
             }
             try {
@@ -766,7 +755,6 @@ const IndiaMapPlanner = {
                         lng: parseFloat(data[0].lon),
                         state: 'India'
                     };
-                    IndiaMapPlanner._setCityMarker(type, loc);
                     return loc;
                 }
             } catch(e) {}
