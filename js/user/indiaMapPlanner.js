@@ -1547,13 +1547,16 @@ const IndiaMapPlanner = {
     },
 
     checkTollGeofence: (lat, lng) => {
-        if (!window.TollSeedData) return;
+        if (!IndiaMapPlanner.selectedRouteData || !IndiaMapPlanner.selectedRouteData.tolls) return;
         if (!document.getElementById('pref-fastag')?.checked) return;
         
         const vehicleType = document.getElementById('vehicle-type')?.value || 'LMV';
         
-        TollSeedData.forEach(toll => {
-            if (IndiaMapPlanner.chargedTollIds.has(toll.id)) return;
+        IndiaMapPlanner.selectedRouteData.tolls.forEach(routeToll => {
+            if (IndiaMapPlanner.chargedTollIds.has(routeToll.id)) return;
+            const toll = window.TollSeedData?.find(s => s.id === routeToll.id);
+            if (!toll) return;
+            
             const dLat = (toll.lat - lat) * 111;
             const dLng = (toll.lng - lng) * 111 * Math.cos(lat * Math.PI / 180);
             if (Math.sqrt(dLat*dLat + dLng*dLng) < 1.0) {

@@ -115,10 +115,29 @@ const VoiceAssistant = {
         });
     },
 
+    _getSarvamLangCode: (targetLang) => {
+        const langMap = {
+            'en-IN': 'english',
+            'hi-IN': 'hindi',
+            'te-IN': 'telugu',
+            'ta-IN': 'tamil',
+            'ml-IN': 'malayalam',
+            'kn-IN': 'kannada'
+        };
+        return langMap[targetLang] || null;
+    },
+
     speak: async (text, forceLang) => {
         if (!window.speechSynthesis) return;
 
+        // Cancel previous native speech and any pending backend fetch
         window.speechSynthesis.cancel();
+        if (VoiceAssistant._currentAbortController) {
+            VoiceAssistant._currentAbortController.abort();
+        }
+        VoiceAssistant._currentAbortController = new AbortController();
+        const signal = VoiceAssistant._currentAbortController.signal;
+
         VoiceAssistant.isSpeaking = false;
 
         let targetLang = 'en-IN';

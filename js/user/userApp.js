@@ -21,6 +21,12 @@ const UserApp = {
                 if (target === 'tab-analytics' && window.TripAnalytics) {
                     TripAnalytics.init();
                 }
+
+                // If map is behind the current tab or became visible, invalidate its size
+                if (target === 'tab-plan' && window.IndiaMapPlanner && IndiaMapPlanner.map) {
+                    setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 50);
+                    setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 300);
+                }
             });
         });
 
