@@ -185,15 +185,30 @@ const IndiaMapPlanner = {
             Utils.toggleVisibility('lane-advisor-modal', true);
         });
 
-        // Vehicle type → special box
+        // Vehicle type → special box & dynamic route recalculation
         const vSel = document.getElementById('vehicle-type');
-        if (vSel) {
-            vSel.addEventListener('change', e => {
-                const isSpecial = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE'].includes(e.target.value);
-                Utils.toggleVisibility('special-vehicle-box', isSpecial);
-                IndiaMapPlanner.isSpecialVerified = false;
-            });
-        }
+        const rVSel = document.getElementById('route-vehicle-selector');
+
+        const onVehicleChanged = (newVal) => {
+            if (vSel && vSel.value !== newVal) vSel.value = newVal;
+            if (rVSel && rVSel.value !== newVal) rVSel.value = newVal;
+
+            const isSpecial = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE'].includes(newVal);
+            Utils.toggleVisibility('special-vehicle-box', isSpecial);
+            IndiaMapPlanner.isSpecialVerified = false;
+
+            // Dynamically recompute route toll cost for the new vehicle class
+            if (IndiaMapPlanner.selectedRouteData && IndiaMapPlanner.routeCoordinates.length > 0) {
+                const tollEstimate = IndiaMapPlanner.estimateTollsOnRoute(IndiaMapPlanner.routeCoordinates);
+                IndiaMapPlanner.selectedRouteData.tolls = tollEstimate.tolls;
+                IndiaMapPlanner.selectedRouteData.totalTollCost = tollEstimate.totalTollCost;
+                IndiaMapPlanner.updateSummary(IndiaMapPlanner.selectedRouteData);
+                Utils.showToast(`NHAI toll updated for ${newVal}: ₹${tollEstimate.totalTollCost}`, 'info');
+            }
+        };
+
+        if (vSel) vSel.addEventListener('change', e => onVehicleChanged(e.target.value));
+        if (rVSel) rVSel.addEventListener('change', e => onVehicleChanged(e.target.value));
 
         safe('btn-verify-special', () => {
             const id  = document.getElementById('special-plate-id')?.value || '';
@@ -989,15 +1004,28 @@ const IndiaMapPlanner = {
         }
     },
 
-    _tollPopup: (td, cost) => `
-        <div style="min-width:180px;font-family:'Inter',sans-serif;padding:4px;">
-            <div style="font-weight:700;font-size:13px;color:#0a192f;margin-bottom:4px;">🏗️ ${td.name}</div>
-            <div style="font-size:11px;color:#555;">${td.state || ''} · ${td.plazaType || ''} · ${td.type || ''}</div>
-            <div style="font-size:11px;color:#555;margin-top:2px;">${td.concessionaire || 'NHAI'}</div>
-            <div style="font-size:11px;margin-top:4px;color:#059669;font-weight:700;">
-                Base: ₹${td.baseRate || 50} &nbsp;|&nbsp; Your Vehicle: ₹${cost}
+    _tollPopup: (td, cost) => {
+        const vType = document.getElementById('vehicle-type')?.value || 'LMV';
+        let ratesHtml = '';
+        if (td.tollRatesByVehicleClass) {
+            ratesHtml = `
+                <div style="font-size:10px; color:#475569; margin-top:6px; background:#f1f5f9; padding:5px 8px; border-radius:6px; line-height:1.4;">
+                    <div><strong>LMV (Car):</strong> ₹${td.tollRatesByVehicleClass.LMV || td.baseRate || 50} &nbsp;|&nbsp; <strong>LCV:</strong> ₹${td.tollRatesByVehicleClass.LCV || Math.round((td.baseRate||50)*1.62)}</div>
+                    <div style="margin-top:2px;"><strong>Bus/Truck:</strong> ₹${td.tollRatesByVehicleClass.BUS_2AXLE || Math.round((td.baseRate||50)*3.39)} &nbsp;|&nbsp; <strong>MAV:</strong> ₹${td.tollRatesByVehicleClass.MAV_4_6 || Math.round((td.baseRate||50)*5.32)}</div>
+                </div>
+            `;
+        }
+        return `
+        <div style="min-width:200px;font-family:'Inter',sans-serif;padding:4px;">
+            <div style="font-weight:700;font-size:13px;color:#0a192f;margin-bottom:2px;">🏗️ ${td.name}</div>
+            <div style="font-size:11px;color:#64748b;">${td.state || ''} · ${td.nhCorridor ? 'NH-' + td.nhCorridor : 'National Highway'}</div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px;">Concessionaire: ${td.concessionaire || 'NHAI'}</div>
+            <div style="font-size:12px;margin-top:5px;color:#059669;font-weight:700;">
+                Toll for ${vType}: ₹${cost}
             </div>
-        </div>`,
+            ${ratesHtml}
+        </div>`;
+    },
 
     _buildAltRouteTabs: (routes, selectedIdx) => {
         let tabBar = document.getElementById('alt-route-tabs');
@@ -1134,6 +1162,7 @@ const IndiaMapPlanner = {
         if (!window.TollSeedData || coords.length === 0) return { tolls, totalTollCost };
 
         const vehicleType    = document.getElementById('vehicle-type')?.value || 'LMV';
+        const isExempt       = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(vehicleType);
         const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 1.5;
         const sampleStep     = Math.max(1, Math.floor(coords.length / 4000));
 
@@ -1149,18 +1178,15 @@ const IndiaMapPlanner = {
                 if (distSq < corridorKm * corridorKm) {
                     tollIds.add(toll.id);
                     
-                    // Direct calculation instead of getTollById lookup for reliability
                     let cost = 0;
-                    if (toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType] !== undefined) {
-                        cost = toll.tollRatesByVehicleClass[vehicleType];
-                    } else {
-                        const base = toll.baseRate || 50;
-                        const mult = TollData.categoryMultipliers[vehicleType] || 1.0;
-                        cost = Math.floor(base * mult);
-                    }
-                    
-                    if (IndiaMapPlanner.isSpecialVerified && vehicleType !== 'LMV') {
-                        cost = 0;
+                    if (!isExempt && !(IndiaMapPlanner.isSpecialVerified && vehicleType !== 'LMV')) {
+                        if (toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType] !== undefined) {
+                            cost = toll.tollRatesByVehicleClass[vehicleType];
+                        } else {
+                            const base = toll.baseRate || toll.singleJourney || 50;
+                            const mult = (window.TollData && TollData.categoryMultipliers[vehicleType] !== undefined) ? TollData.categoryMultipliers[vehicleType] : 1.0;
+                            cost = Math.round(base * mult);
+                        }
                     }
                     
                     totalTollCost += cost;
@@ -1176,7 +1202,7 @@ const IndiaMapPlanner = {
             }
         });
 
-        console.log(`[TollEngine] Matched ${tolls.length} tolls. Total Cost: ₹${totalTollCost}`);
+        console.log(`[TollEngine] Matched ${tolls.length} tolls for vehicle ${vehicleType}. Total Cost: ₹${totalTollCost}`);
         return { tolls, totalTollCost };
     },
 
@@ -1320,6 +1346,19 @@ const IndiaMapPlanner = {
 
         Utils.toggleVisibility('btn-start-trip', false);
         Utils.toggleVisibility('btn-end-trip',   true);
+
+        // Remove ALT ROUTE tabs and unselected polylines so only active route is visible
+        document.getElementById('alt-route-tabs')?.remove();
+        if (IndiaMapPlanner.routePolylines && IndiaMapPlanner.routePolylines.length > 0) {
+            IndiaMapPlanner.routePolylines.forEach((p, idx) => {
+                if (idx !== IndiaMapPlanner.selectedRouteIndex) {
+                    try { IndiaMapPlanner.map.removeLayer(p); } catch(e){}
+                }
+            });
+            const activeLine = IndiaMapPlanner.routePolylines[IndiaMapPlanner.selectedRouteIndex];
+            IndiaMapPlanner.routePolylines = activeLine ? [activeLine] : [];
+            IndiaMapPlanner.selectedRouteIndex = 0;
+        }
 
         const badge = document.getElementById('trip-badge');
         if (badge) { badge.innerText = 'LIVE TRIP'; badge.style.background = 'var(--accent-red)'; badge.style.color = '#fff'; }
@@ -1517,6 +1556,7 @@ const IndiaMapPlanner = {
             if (window.EmailAlerts) EmailAlerts.sendTripEmail(tripData);
             if (window.TripAnalytics) TripAnalytics.init();
 
+            const vType = document.getElementById('vehicle-type')?.value || 'LMV';
             // Populate and show Receipt Modal
             const receiptEl = document.getElementById('receipt-content');
             if (receiptEl) {

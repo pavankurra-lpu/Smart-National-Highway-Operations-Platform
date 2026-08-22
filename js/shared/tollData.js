@@ -68,15 +68,16 @@ const TollData = {
         return map[level] || map['NORMAL'];
     },
 
-    // NHAI Style Multipliers based on vehicle category (FY 2026-27 Updates)
+    // Official NHAI Fee Rules Multipliers by Vehicle Category (Gazette of India Fee Schedule)
     categoryMultipliers: {
-        'LMV': 1.0,          // Car / Jeep / Van
-        'LCV': 1.6,          // Light Commercial Vehicle
-        'BUS_2AXLE': 3.3,    // Bus/Truck 2 Axle
-        'COM_3AXLE': 3.6,    // 3-axle commercial
-        'MAV_4_6': 5.2,      // MAV 4-6 axles
-        'OVERSIZED': 6.3,    // 7+ axles
-        // Special Pre-Registered
+        'LMV': 1.0,          // Car / Jeep / Van / Tata Ace (Private)
+        'LCV': 1.62,         // Light Commercial Vehicle / Mini-Bus
+        'BUS_2AXLE': 3.39,   // Bus / 2-Axle Truck
+        'COM_3AXLE': 3.70,   // 3-Axle Commercial Vehicle
+        'MAV_4_6': 5.32,     // 4 to 6-Axle Heavy MAV / Construction Machinery
+        'OVERSIZED': 6.48,   // 7+ Axles Over-sized Vehicle
+        'BIKE': 0.0,         // Two-Wheeler (NHAI Toll Exempt under NH Fee Rules)
+        // Priority / Pre-Registered Exempt Vehicles (Rule 11)
         'GOVT': 0.0,
         'PRESS': 0.0,
         'ARMY': 0.0,
@@ -96,18 +97,17 @@ const TollData = {
         const plaza = TollData.getTollById(plazaId);
         if (!plaza) return 0;
         
+        // Handle priority / exempt vehicles
+        const isExempt = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(category);
+        if (isExempt) return 0;
+
         // Handle vehicle class specific rates if present in the plaza data
         if (plaza.tollRatesByVehicleClass && plaza.tollRatesByVehicleClass[category] !== undefined) {
             return plaza.tollRatesByVehicleClass[category];
         }
 
-        // Fallback for simple base rates - upgrade low values to realistic highway baselines
-        let base = plaza.baseRate || plaza.singleJourney || 0;
-        if (base < 75) {
-            const seed = plazaId.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-            base = 90 + (seed % 191); // Realistic deterministic baseline between ₹90 and ₹280
-        }
-
+        // Accurate NHAI vehicle multiplier based on plaza base rate
+        const base = plaza.baseRate || plaza.singleJourney || 50;
         const mult = TollData.categoryMultipliers[category] !== undefined ? TollData.categoryMultipliers[category] : 1.0;
         return Math.round(base * mult);
     }
