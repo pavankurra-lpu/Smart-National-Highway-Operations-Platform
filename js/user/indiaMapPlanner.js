@@ -1005,7 +1005,7 @@ const IndiaMapPlanner = {
     },
 
     _tollPopup: (td, cost) => {
-        const vType = document.getElementById('vehicle-type')?.value || 'LMV';
+        const vType = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
         let ratesHtml = '';
         if (td.tollRatesByVehicleClass) {
             ratesHtml = `
@@ -1634,7 +1634,7 @@ const IndiaMapPlanner = {
         if (!IndiaMapPlanner.selectedRouteData || !IndiaMapPlanner.selectedRouteData.tolls) return;
         if (!document.getElementById('pref-fastag')?.checked) return;
         
-        const vehicleType = document.getElementById('vehicle-type')?.value || 'LMV';
+        const vehicleType = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
         
         IndiaMapPlanner.selectedRouteData.tolls.forEach(routeToll => {
             if (IndiaMapPlanner.chargedTollIds.has(routeToll.id)) return;
