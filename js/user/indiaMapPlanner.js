@@ -1590,7 +1590,9 @@ const IndiaMapPlanner = {
         document.getElementById('trip-badge').style.background = 'rgba(255,255,255,0.15)';
         document.getElementById('trip-badge').style.color = 'var(--text-sec)';
 
-        IndiaMapPlanner.map.fitBounds(primaryPoly.getBounds(), { padding: [50, 50] });
+        const pad = window.innerWidth <= 768 ? [30, 30] : [50, 50];
+        const padBottom = window.innerWidth <= 768 ? [0, Math.round(window.innerHeight * 0.42)] : [0, 0];
+        IndiaMapPlanner.map.fitBounds(primaryPoly.getBounds(), { padding: pad, paddingBottomRight: padBottom });
         Utils.showToast(`${rData.originName} → ${rData.destName} · ${rData.totalDist} km · ${rData.tolls.length} tolls`, 'success');
 
         // Update alerts ticker with regional feed for route origin state
@@ -1848,18 +1850,22 @@ const IndiaMapPlanner = {
             timelineEl.innerHTML = html;
         }
 
-        // Mobile UX: Automatically expand bottom sheet and scroll to results
+        // Mobile UX: Close side panel so map is visible and show bottom floating route window
         if (window.innerWidth <= 768) {
             const sidebar = document.getElementById('nhai-sidebar');
             if (sidebar) {
-                sidebar.classList.remove('collapsed');
-                const peekText = document.getElementById('mobile-peek-text');
-                if (peekText) {
-                    peekText.innerHTML = `📍 ${rData.originName} → ${rData.destName} • ${rData.totalDist} km • ₹${rData.totalTollCost} <i class="fa-solid fa-chevron-down" style="margin-left:4px;"></i>`;
+                sidebar.classList.add('collapsed');
+                const toggle = document.getElementById('sidebar-toggle');
+                if (toggle) {
+                    toggle.classList.remove('shifted');
+                    const icon = toggle.querySelector('i');
+                    if (icon) icon.className = 'fa-solid fa-bars';
                 }
-                setTimeout(() => {
-                    summaryPanel?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 300);
+            }
+            const routePanel = document.getElementById('route-summary-panel');
+            if (routePanel) {
+                routePanel.classList.remove('hidden');
+                routePanel.classList.remove('mobile-minimized');
             }
         }
     },

@@ -466,7 +466,7 @@ path.leaflet-interactive:focus,
     gap: 40px;
     white-space: nowrap;
     width: max-content;
-    animation: alertsScroll 75s linear infinite;
+    animation: alertsScroll 180s linear infinite;
     will-change: transform;
 }
 .alerts-ticker-container:hover .alerts-ticker-scroll,
@@ -488,7 +488,7 @@ path.leaflet-interactive:focus,
 
 @media (max-width: 768px) {
     .alerts-ticker-scroll {
-        animation: alertsScroll 115s linear infinite;
+        animation: alertsScroll 280s linear infinite;
         gap: 32px;
     }
     .alerts-ticker-scroll span {
@@ -926,6 +926,30 @@ input:checked + .slider:before {
     animation: fadeIn 0.4s ease-out;
 }
 
+.btn-sheet-mini {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #94a3b8;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.btn-sheet-mini:hover {
+    background: rgba(99, 102, 241, 0.25);
+    color: #fff;
+    border-color: #6366f1;
+}
+
+.mobile-route-sheet-bar {
+    display: none;
+}
+
 body.light-mode .route-summary-float {
     background: rgba(248, 252, 255, 0.97);
     box-shadow: 0 4px 30px rgba(0, 50, 100, 0.12), 0 0 0 1px rgba(2,132,199,0.12);
@@ -933,9 +957,9 @@ body.light-mode .route-summary-float {
 
 .summary-route-title {
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
-    color: var(--primary);
+    color: #38bdf8;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -1554,72 +1578,33 @@ body.light-mode .google-ac-subtitle {
         z-index: 1;
     }
 
-    /* Transform Sidebar into Mobile Bottom-Up Scrolling Sheet */
+    /* Standard Open/Close Sidebar for Mobile */
     .sidebar {
         position: fixed !important;
+        top: 0 !important;
         bottom: 0 !important;
-        top: auto !important;
-        left: 0 !important;
         right: 0 !important;
-        width: 100vw !important;
-        max-width: 100vw !important;
-        height: auto !important;
-        max-height: 86dvh !important;
-        min-height: 200px !important;
-        border-radius: 24px 24px 0 0 !important;
-        border: 1px solid rgba(255, 255, 255, 0.14) !important;
-        border-bottom: none !important;
-        box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-        background: rgba(11, 16, 28, 0.95) !important;
+        left: auto !important;
+        width: 88vw !important;
+        max-width: 380px !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        border-radius: 20px 0 0 20px !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-right: none !important;
+        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.75) !important;
+        background: rgba(11, 16, 28, 0.96) !important;
         backdrop-filter: blur(28px) saturate(190%) !important;
         -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
         display: flex !important;
         flex-direction: column !important;
-        z-index: 500 !important;
-        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        transform: translateY(0) !important;
+        z-index: 550 !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        transform: translateX(0) !important;
     }
 
-    /* Collapsed / Peek State (gives full map view while leaving an accessible tap handle) */
     .sidebar.collapsed {
-        transform: translateY(calc(100% - 68px)) !important;
-    }
-
-    /* Mobile Sheet Drag Handle Bar */
-    .mobile-sheet-handle-bar {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 16px 6px;
-        cursor: pointer;
-        user-select: none;
-        touch-action: pan-y;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        background: rgba(15, 23, 42, 0.7);
-        border-radius: 24px 24px 0 0;
-        flex-shrink: 0;
-    }
-    .mobile-sheet-pill {
-        width: 42px;
-        height: 4.5px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.35);
-        margin-bottom: 4px;
-        transition: background 0.2s ease;
-    }
-    .mobile-sheet-handle-bar:active .mobile-sheet-pill {
-        background: #38bdf8;
-    }
-    .mobile-sheet-peek-info {
-        font-size: 10px;
-        color: #38bdf8;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 90vw;
+        transform: translateX(105%) !important;
     }
 
     /* Sidebar Content Scrolling Area */
@@ -1628,6 +1613,48 @@ body.light-mode .google-ac-subtitle {
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch;
         padding: 12px 14px 80px !important;
+    }
+
+    /* Dedicated Bottom-Docked Route Results Window for Mobile (Does NOT cover the map) */
+    #route-summary-panel.map-header {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        z-index: 460 !important;
+        pointer-events: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    #route-summary-panel .route-summary-float {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        max-height: 48vh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 20px 20px 0 0 !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-bottom: none !important;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+        background: rgba(11, 16, 28, 0.96) !important;
+        backdrop-filter: blur(28px) saturate(190%) !important;
+        -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+        padding: 10px 14px 20px !important;
+        box-sizing: border-box !important;
+        transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease !important;
+    }
+
+    /* Minimized Peek State on Mobile (Leaves 90% map view!) */
+    #route-summary-panel.mobile-minimized .route-summary-float {
+        max-height: 48px !important;
+        overflow: hidden !important;
+        padding: 8px 14px !important;
     }
 
     /* Mobile Navigation Tabs */
