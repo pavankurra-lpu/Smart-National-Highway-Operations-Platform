@@ -1664,13 +1664,28 @@ const IndiaMapPlanner = {
     // LAYER TOGGLE BUTTON (bottom-left of map)
     // ═══════════════════════════════════════════════════════════════
     _currentVehicleAvatar: 'default',
-    _vehicleTypes: ['default', 'car_red', 'suv_blue', 'camper', 'scooter'],
+    _vehicleTypes: ['default', 'car_red', 'suv_blue', 'ev_green', 'camper', 'scooter', 'motorcycle', 'truck', 'bus'],
+    _vehicleNames: {
+        'default': 'Classic Dot',
+        'car_red': 'Sports Car',
+        'suv_blue': 'Cool SUV',
+        'ev_green': 'Electric EV',
+        'camper': 'Camper Van',
+        'scooter': 'Scooter',
+        'motorcycle': 'Super Bike',
+        'truck': 'Heavy Truck',
+        'bus': 'Highway Bus'
+    },
     _vehicleIcons: {
-        'default': '<i class="fa-solid fa-location-dot"></i>',
+        'default': '📍',
         'car_red': '🏎️',
         'suv_blue': '🚙',
+        'ev_green': '🚗',
         'camper': '🚐',
-        'scooter': '🛵'
+        'scooter': '🛵',
+        'motorcycle': '🏍️',
+        'truck': '🚛',
+        'bus': '🚌'
     },
 
     _getUserLocIcon: () => {
@@ -1681,7 +1696,7 @@ const IndiaMapPlanner = {
                 iconSize: [24,24], iconAnchor: [12,12]
             });
         }
-        const emoji = IndiaMapPlanner._vehicleIcons[IndiaMapPlanner._currentVehicleAvatar];
+        const emoji = IndiaMapPlanner._vehicleIcons[IndiaMapPlanner._currentVehicleAvatar] || '📍';
         return L.divIcon({
             className: '',
             html: `<div style="font-size: 36px; line-height: 36px; filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.4)) drop-shadow(0px 12px 16px rgba(0,0,0,0.3)); transform: perspective(100px) rotateX(15deg) translateY(-10px); transition: all 0.3s ease;">${emoji}</div>`,
@@ -1747,20 +1762,15 @@ const IndiaMapPlanner = {
             }
         });
 
-        // 2. Vehicle Avatar Switcher (Classic Dot / Cars)
+        // 2. Vehicle Avatar Switcher (Classic Dot / 3D Avatars Popup)
         const btnVehicle = document.createElement('div');
         btnVehicle.className = 'reactbits-dock-item has-active';
         btnVehicle.id = 'btn-avatar-dock';
         
         const updateAvatarItem = () => {
             const v = IndiaMapPlanner._currentVehicleAvatar || 'default';
-            let label = 'Classic Dot';
-            if (v === 'car_red') label = 'Sports Car';
-            if (v === 'suv_blue') label = 'Cool SUV';
-            if (v === 'camper') label = 'Camper Van';
-            if (v === 'scooter') label = 'Scooter';
-            
-            const icon = IndiaMapPlanner._vehicleIcons[v] || '<i class="fa-solid fa-location-dot"></i>';
+            const label = IndiaMapPlanner._vehicleNames[v] || 'Classic Dot';
+            const icon = IndiaMapPlanner._vehicleIcons[v] || '📍';
             btnVehicle.innerHTML = `
                 <span style="display: flex; align-items: center; justify-content: center; font-size: 20px;">${icon}</span>
                 <div class="reactbits-dock-label" id="dock-avatar-label">Avatar: ${label}</div>
@@ -1769,26 +1779,85 @@ const IndiaMapPlanner = {
         };
         updateAvatarItem();
 
-        btnVehicle.addEventListener('click', () => {
+        let avatarPopupEl = null;
+
+        const closeAvatarPopup = () => {
+            if (avatarPopupEl) {
+                avatarPopupEl.remove();
+                avatarPopupEl = null;
+            }
+        };
+
+        const openAvatarPopup = () => {
+            closeAvatarPopup();
+            avatarPopupEl = document.createElement('div');
+            avatarPopupEl.className = 'dock-avatar-popup';
+            
+            avatarPopupEl.innerHTML = `
+                <div class="dock-avatar-header">
+                    <span class="dock-avatar-title"><i class="fa-solid fa-car-side" style="color:var(--primary);"></i> Choose 3D Avatar</span>
+                    <button class="dock-avatar-close" id="btn-close-avatar-popup"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="dock-avatar-grid">
+                    ${IndiaMapPlanner._vehicleTypes.map(key => {
+                        const isSelected = (IndiaMapPlanner._currentVehicleAvatar || 'default') === key;
+                        const icon = IndiaMapPlanner._vehicleIcons[key] || '📍';
+                        const name = IndiaMapPlanner._vehicleNames[key] || key;
+                        return `
+                            <div class="avatar-option-card ${isSelected ? 'selected' : ''}" data-avatar="${key}">
+                                <div class="avatar-option-preview">${icon}</div>
+                                <div class="avatar-option-name">${name}</div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            container.appendChild(avatarPopupEl);
+
+            avatarPopupEl.querySelector('#btn-close-avatar-popup')?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeAvatarPopup();
+            });
+
+            avatarPopupEl.querySelectorAll('.avatar-option-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const chosen = card.dataset.avatar;
+                    IndiaMapPlanner._currentVehicleAvatar = chosen;
+                    updateAvatarItem();
+                    
+                    if (IndiaMapPlanner.userLocationMarker) {
+                        const latlng = IndiaMapPlanner.userLocationMarker.getLatLng();
+                        IndiaMapPlanner.userLocationMarker.remove();
+                        IndiaMapPlanner.userLocationMarker = L.marker(latlng, { icon: IndiaMapPlanner._getUserLocIcon() })
+                            .bindTooltip("My Location", { permanent: false, direction: 'top' })
+                            .addTo(IndiaMapPlanner.map);
+                    }
+
+                    const name = IndiaMapPlanner._vehicleNames[chosen] || chosen;
+                    Utils.showToast(`${name} avatar selected! 🚗`, "success");
+                    closeAvatarPopup();
+                });
+            });
+        };
+
+        btnVehicle.addEventListener('click', (e) => {
+            e.stopPropagation();
             btnVehicle.style.transform = 'scale(0.88)';
             setTimeout(() => btnVehicle.style.transform = 'scale(1)', 150);
 
-            const types = IndiaMapPlanner._vehicleTypes;
-            let idx = types.indexOf(IndiaMapPlanner._currentVehicleAvatar);
-            idx = (idx + 1) % types.length;
-            IndiaMapPlanner._currentVehicleAvatar = types[idx];
-            updateAvatarItem();
-            
-            if (IndiaMapPlanner.userLocationMarker) {
-                const latlng = IndiaMapPlanner.userLocationMarker.getLatLng();
-                IndiaMapPlanner.userLocationMarker.remove();
-                IndiaMapPlanner.userLocationMarker = L.marker(latlng, { icon: IndiaMapPlanner._getUserLocIcon() })
-                    .bindTooltip("My Location", { permanent: false, direction: 'top' })
-                    .addTo(IndiaMapPlanner.map);
+            if (avatarPopupEl) {
+                closeAvatarPopup();
+            } else {
+                openAvatarPopup();
             }
-            
-            const currentLabel = document.getElementById('dock-avatar-label')?.innerText || 'Vehicle Avatar';
-            Utils.showToast(`${currentLabel} selected! 🚗`, "success");
+        });
+
+        document.addEventListener('click', (e) => {
+            if (avatarPopupEl && !avatarPopupEl.contains(e.target) && !btnVehicle.contains(e.target)) {
+                closeAvatarPopup();
+            }
         });
 
         // 3. Satellite / Dark View Toggle (Seamless Map Tile Switcher)

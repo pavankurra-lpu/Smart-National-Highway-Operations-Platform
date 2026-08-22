@@ -1256,24 +1256,25 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     align-items: center;
     gap: 12px;
     padding: 8px 12px;
-    background: rgba(15, 23, 42, 0.82);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
     box-shadow: 
-        0 16px 36px rgba(0, 0, 0, 0.5), 
-        0 4px 12px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 12px 32px rgba(0, 0, 0, 0.35), 
+        0 4px 12px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reactbits-dock:hover {
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(15, 23, 42, 0.55);
+    border-color: rgba(255, 255, 255, 0.15);
     box-shadow: 
-        0 20px 45px rgba(0, 0, 0, 0.6), 
-        0 6px 16px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        0 16px 40px rgba(0, 0, 0, 0.45), 
+        0 6px 16px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .reactbits-dock-item {
@@ -1281,8 +1282,8 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     width: 46px;
     height: 46px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1292,7 +1293,7 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     user-select: none;
     transform-origin: center bottom;
     transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .reactbits-dock-item:hover,
@@ -1314,9 +1315,9 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     transform: translateX(-50%) translateY(6px);
     opacity: 0;
     pointer-events: none;
-    background: rgba(9, 9, 11, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(9, 9, 11, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 8px;
     padding: 5px 10px;
@@ -1336,7 +1337,7 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     left: 50%;
     transform: translateX(-50%);
     border: 5px solid transparent;
-    border-top-color: rgba(9, 9, 11, 0.95);
+    border-top-color: rgba(9, 9, 11, 0.92);
 }
 
 .reactbits-dock-item:hover .reactbits-dock-label,
@@ -1361,3 +1362,118 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
 .reactbits-dock-item.has-active .reactbits-dock-dot {
     opacity: 1;
 }
+
+/* ======================================
+   3D AVATAR POPUP SELECTOR
+   ====================================== */
+.dock-avatar-popup {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 0;
+    width: 320px;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 10002;
+    transform-origin: bottom left;
+    animation: popInAvatar 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popInAvatar {
+    from { opacity: 0; transform: scale(0.92) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.dock-avatar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dock-avatar-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dock-avatar-close {
+    background: none;
+    border: none;
+    color: var(--text-sec, #94a3b8);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+.dock-avatar-close:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dock-avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.avatar-option-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 6px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.avatar-option-card:hover {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+}
+
+.avatar-option-card.selected {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--primary, #10b981);
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+}
+
+.avatar-option-preview {
+    font-size: 26px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.35));
+    transition: transform 0.2s ease;
+}
+
+.avatar-option-card:hover .avatar-option-preview {
+    transform: scale(1.15) rotate(2deg);
+}
+
+.avatar-option-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: #e2e8f0;
+    text-align: center;
+    line-height: 1.2;
+}
+
