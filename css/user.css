@@ -1463,11 +1463,112 @@ body.light-mode .google-ac-subtitle {
 .history-amount.debit  { color: var(--accent-red); }
 .history-amount.credit { color: var(--primary); }
 
-/* ===== RESPONSIVE (small screens) ===== */
-@media (max-width: 480px) {
-    .sidebar { width: 100vw; }
-    .sidebar-toggle { right: 12px; }
-    .sidebar-toggle.shifted { right: 12px; }
+/* ===== SIDEBAR QUICK DOCK (Mobile & Desktop Tool Strip) ===== */
+.sidebar-quick-dock {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+}
+
+.quick-dock-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 4px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    color: var(--text-sec);
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quick-dock-btn:hover,
+.quick-dock-btn:active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.quick-dock-btn i {
+    font-size: 14px;
+}
+
+/* ===== RESPONSIVE (Small Screens & Mobile Devices) ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        border-radius: 0;
+        border: none;
+        z-index: 500;
+    }
+    
+    .sidebar.collapsed {
+        transform: translateX(100%) !important;
+    }
+    
+    .sidebar-toggle {
+        top: 14px;
+        left: 14px;
+        right: auto !important;
+        z-index: 10002;
+    }
+    
+    .sidebar-toggle.shifted {
+        left: auto;
+        right: 14px !important;
+        top: 14px;
+    }
+
+    .reactbits-dock-container {
+        position: fixed !important;
+        bottom: 18px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 10001 !important;
+        width: auto !important;
+    }
+
+    .reactbits-dock {
+        padding: 6px 14px;
+        gap: 12px;
+        background: rgba(15, 23, 42, 0.88);
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 30px;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .reactbits-dock-item {
+        width: 44px;
+        height: 44px;
+        font-size: 17px;
+        border-radius: 14px;
+    }
+
+    .dock-avatar-popup {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 300px;
+        max-width: 90vw;
+        bottom: calc(100% + 14px);
+    }
 }
 
 /* ===== LIGHT MODE MAP UI ===== */

@@ -2816,8 +2816,8 @@ const IndiaMapPlanner = {
             });
         });
 
-        const mapEl = document.getElementById('map');
-        if (mapEl) mapEl.appendChild(container);
+        const targetParent = document.getElementById('user-app') || document.getElementById('map') || document.body;
+        if (targetParent) targetParent.appendChild(container);
     },
 
     // ═══════════════════════════════════════════════════════════════

@@ -338,7 +338,7 @@
         @media (max-width: 900px) {
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 36px;
                 text-align: center;
             }
             .hero-info {
@@ -352,14 +352,115 @@
                 margin-right: auto;
             }
             .gateway-header {
-                padding: 20px 24px;
+                padding: 16px 20px;
             }
             .gateway-footer {
-                padding: 20px 24px;
+                padding: 16px 20px;
             }
             .landing-stats-box {
                 max-width: 480px;
                 width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                overflow-x: hidden;
+            }
+            .gateway-header {
+                padding: 12px 14px;
+                gap: 8px;
+            }
+            .brand-logo-nhai-text {
+                display: none !important;
+            }
+            .brand-logo-divider {
+                display: none !important;
+            }
+            .system-status {
+                padding: 4px 8px;
+                font-size: 9.5px;
+                flex-shrink: 0;
+            }
+            .system-status span:last-child {
+                display: none;
+            }
+            .system-status::after {
+                content: 'ONLINE';
+                font-size: 9.5px;
+                font-weight: 700;
+                color: var(--primary);
+            }
+            .gateway-hero {
+                padding: 20px 14px;
+            }
+            .hero-title {
+                font-size: clamp(26px, 8vw, 34px) !important;
+                letter-spacing: -0.8px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 12px !important;
+            }
+            .hero-subtitle {
+                font-size: 13px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 20px !important;
+                max-width: 100% !important;
+            }
+            .nhai-badge {
+                margin-bottom: 14px !important;
+                font-size: 9px !important;
+                padding: 4px 10px !important;
+            }
+            .landing-stats-box {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 6px !important;
+                margin-top: 20px !important;
+                padding: 10px 6px !important;
+                border-radius: 12px !important;
+            }
+            .landing-stats-box .l-stat {
+                padding: 8px 4px !important;
+                border-radius: 10px !important;
+                text-align: center !important;
+                align-items: center !important;
+            }
+            .landing-stats-box .l-stat-lbl {
+                font-size: 7.5px !important;
+                letter-spacing: 0.2px !important;
+                margin-bottom: 4px !important;
+            }
+            .landing-stats-box .l-stat-val,
+            #stat-time-only {
+                font-size: 16px !important;
+            }
+            #stat-ampm {
+                font-size: 10px !important;
+            }
+            .portal-cards-box {
+                gap: 12px;
+                width: 100%;
+            }
+            .portal-card {
+                padding: 16px 12px !important;
+                gap: 12px !important;
+                border-radius: 14px !important;
+            }
+            .card-icon-box {
+                width: 42px !important;
+                height: 42px !important;
+                font-size: 17px !important;
+            }
+            .card-details h3 {
+                font-size: 15px !important;
+            }
+            .card-details p {
+                font-size: 11.5px !important;
+                line-height: 1.4 !important;
+            }
+            .gateway-footer {
+                padding: 14px 12px;
+                font-size: 9.5px;
+                line-height: 1.4;
             }
         }
         /* Reactbits: Animated Retro Grid Background */
@@ -467,7 +568,7 @@
             </div>
 
             <!-- Inter-logo Divider line -->
-            <div style="width: 1px; height: 26px; background: rgba(255, 255, 255, 0.15); margin-right: 18px;"></div>
+            <div class="brand-logo-divider" style="width: 1px; height: 26px; background: rgba(255, 255, 255, 0.15); margin-right: 18px;"></div>
 
             <!-- NHAI Emblem SVG -->
             <svg class="emblem-svg" viewBox="0 0 100 100" width="34" height="34" style="margin-right: 10px;">
@@ -478,7 +579,7 @@
             </svg>
 
             <!-- NHAI Text Group -->
-            <div class="logo-text-group">
+            <div class="logo-text-group brand-logo-nhai-text">
                 <div class="logo-title-main" style="color: #a1a1aa; font-size: 10.5px;">भारतीय राष्ट्रीय राजमार्ग प्राधिकरण</div>
                 <div class="logo-subtitle-main" style="color: #71717a; font-size: 8px; margin-top: 2px;">NATIONAL HIGHWAYS AUTHORITY OF INDIA</div>
             </div>

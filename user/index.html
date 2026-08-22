@@ -170,6 +170,26 @@
             <div id="tab-plan" class="tab-content active">
                 <div class="flex-col gap-3">
                     
+                    <!-- Quick Map Tools (Locate Me, 3D Avatar, Theme Switcher, Full Map) -->
+                    <div class="sidebar-quick-dock">
+                        <button type="button" class="quick-dock-btn" onclick="IndiaMapPlanner.locateUser(); if(window.innerWidth<=768){document.getElementById('sidebar-toggle')?.click();}" title="Locate My Position">
+                            <i class="fa-solid fa-location-crosshairs" style="color:var(--primary);"></i>
+                            <span>Locate Me</span>
+                        </button>
+                        <button type="button" class="quick-dock-btn" onclick="document.getElementById('btn-avatar-dock')?.click(); if(window.innerWidth<=768){document.getElementById('sidebar-toggle')?.click();}" title="Choose 3D Vehicle Avatar">
+                            <i class="fa-solid fa-car-side" style="color:#38bdf8;"></i>
+                            <span>3D Avatar</span>
+                        </button>
+                        <button type="button" class="quick-dock-btn" onclick="document.getElementById('btn-layer-dock')?.click();" title="Toggle Satellite / Dark Map Mode">
+                            <i class="fa-solid fa-circle-half-stroke" style="color:#fbbf24;"></i>
+                            <span>Map Mode</span>
+                        </button>
+                        <button type="button" class="quick-dock-btn quick-dock-map-btn" onclick="document.getElementById('sidebar-toggle')?.click();" title="View Full Map Screen">
+                            <i class="fa-solid fa-map" style="color:#a855f7;"></i>
+                            <span>View Map</span>
+                        </button>
+                    </div>
+
                     <!-- Modern Connected Route Search Card -->
                     <div class="route-search-card">
                         <div class="route-path-track">
