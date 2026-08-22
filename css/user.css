@@ -1258,7 +1258,7 @@ body.light-mode #lane-advisor-modal {
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
-    max-height: 280px;
+    max-height: 380px;
     overflow-y: auto;
     z-index: 1000;
     margin-top: 4px;
@@ -1336,6 +1336,10 @@ body.light-mode .google-ac-item:hover {
 .google-ac-icon-box.icon-fuel      { background: linear-gradient(135deg, #ca8a04, #a16207); color: #ffffff; box-shadow: 0 3px 10px rgba(202,138,4,0.35); }
 .google-ac-icon-box.icon-hotel     { background: linear-gradient(135deg, #65a30d, #4d7c0f); color: #ffffff; box-shadow: 0 3px 10px rgba(101,163,13,0.35); }
 .google-ac-icon-box.icon-city      { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 3px 10px rgba(37,99,235,0.35); }
+.google-ac-icon-box.icon-food      { background: linear-gradient(135deg, #f97316, #c2410c); color: #ffffff; box-shadow: 0 3px 10px rgba(249,115,22,0.35); }
+.google-ac-icon-box.icon-village   { background: linear-gradient(135deg, #15803d, #14532d); color: #ffffff; box-shadow: 0 3px 10px rgba(21,128,61,0.35); }
+.google-ac-icon-box.icon-building  { background: linear-gradient(135deg, #3b82f6, #1e40af); color: #ffffff; box-shadow: 0 3px 10px rgba(59,130,246,0.35); }
+.google-ac-icon-box.icon-govt      { background: linear-gradient(135deg, #64748b, #334155); color: #ffffff; box-shadow: 0 3px 10px rgba(100,116,139,0.35); }
 .google-ac-icon-box.icon-place     { background: linear-gradient(135deg, #475569, #334155); color: #ffffff; }
 
 /* Quick clear button inside input fields */

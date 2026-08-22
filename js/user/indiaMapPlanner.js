@@ -809,6 +809,43 @@ const IndiaMapPlanner = {
             <defs>
                 <linearGradient id="g3dPin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171"/><stop offset="50%" stop-color="#ef4444"/><stop offset="100%" stop-color="#991b1b"/></linearGradient>
             </defs>
+        </svg>`,
+
+        food: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <ellipse cx="32" cy="46" rx="24" ry="8" fill="#fdba74"/>
+            <path d="M16 42 C16 26 48 26 48 42 Z" fill="url(#g3dFood)"/>
+            <circle cx="32" cy="22" r="3" fill="#fef08a"/>
+            <defs>
+                <linearGradient id="g3dFood" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffedd5"/><stop offset="100%" stop-color="#ea580c"/></linearGradient>
+            </defs>
+        </svg>`,
+        
+        village: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <polygon points="32,10 52,26 12,26" fill="#f97316"/>
+            <rect x="16" y="26" width="32" height="26" fill="#fef3c7"/>
+            <rect x="26" y="34" width="12" height="18" fill="#78350f"/>
+            <circle cx="50" cy="38" r="10" fill="#22c55e"/>
+            <rect x="48" y="44" width="4" height="12" fill="#78350f"/>
+        </svg>`,
+
+        building: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <rect x="14" y="8" width="36" height="48" rx="4" fill="url(#g3dBuild)"/>
+            <rect x="20" y="14" width="8" height="6" rx="1" fill="#93c5fd"/>
+            <rect x="36" y="14" width="8" height="6" rx="1" fill="#93c5fd"/>
+            <rect x="20" y="26" width="8" height="6" rx="1" fill="#93c5fd"/>
+            <rect x="36" y="26" width="8" height="6" rx="1" fill="#93c5fd"/>
+            <rect x="26" y="42" width="12" height="14" rx="1" fill="#1e3a8a"/>
+            <defs>
+                <linearGradient id="g3dBuild" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#60a5fa"/></linearGradient>
+            </defs>
+        </svg>`,
+
+        govt: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <polygon points="32,8 54,20 10,20" fill="#94a3b8"/>
+            <rect x="14" y="24" width="6" height="24" rx="2" fill="#cbd5e1"/>
+            <rect x="29" y="24" width="6" height="24" rx="2" fill="#cbd5e1"/>
+            <rect x="44" y="24" width="6" height="24" rx="2" fill="#cbd5e1"/>
+            <rect x="8" y="48" width="48" height="8" rx="2" fill="#e2e8f0"/>
         </svg>`
     },
 
@@ -818,40 +855,52 @@ const IndiaMapPlanner = {
         }
         const str = ((item.name || '') + ' ' + (item.fullName || '') + ' ' + (item.subtitle || '') + ' ' + (item.type || '') + ' ' + (item.class || '')).toLowerCase();
         
+        if (str.includes('restaurant') || str.includes('cafe') || str.includes('dhaba') || str.includes('bakery') || str.includes('food') || str.includes('bhojanalaya') || str.includes('canteen') || str.includes('sweet') || str.includes('biryani') || str.includes('pizza') || str.includes('burger') || str.includes('bar') || str.includes('pub') || str.includes('eatery') || str.includes('kitchen') || str.includes('dining')) {
+            return { svg: IndiaMapPlanner._svgIcons.food, cls: 'icon-food', badge: 'FOOD / DINING' };
+        }
+        if (item.isVillage || str.includes('village') || str.includes('gram') || str.includes('panchayat') || str.includes('taluk') || str.includes('mandal') || str.includes('hamlet') || str.includes('basti') || str.includes('palle') || str.includes('kheda') || str.includes('dehat')) {
+            return { svg: IndiaMapPlanner._svgIcons.village, cls: 'icon-village', badge: 'VILLAGE / RURAL' };
+        }
+        if (str.includes('apartment') || str.includes('society') || str.includes('residency') || str.includes('enclave') || str.includes('heights') || str.includes('villas') || str.includes('towers') || str.includes('flat') || str.includes('housing') || str.includes('residential')) {
+            return { svg: IndiaMapPlanner._svgIcons.building, cls: 'icon-building', badge: 'RESIDENTIAL / BLDG' };
+        }
+        if (str.includes('police') || str.includes('court') || str.includes('secretariat') || str.includes('collectorate') || str.includes('post office') || str.includes('municipality') || str.includes('nagar nigam') || str.includes('rto') || str.includes('tehsil') || str.includes('govt')) {
+            return { svg: IndiaMapPlanner._svgIcons.govt, cls: 'icon-govt', badge: 'GOVT / PUBLIC' };
+        }
         if (str.includes('airport') || str.includes('aerodrome') || str.includes('airfield') || str.includes('helipad')) {
             return { svg: IndiaMapPlanner._svgIcons.airport, cls: 'icon-airport', badge: 'AIRPORT' };
         }
-        if (str.includes('railway') || str.includes('station') || str.includes('junction') || str.includes('metro') || str.includes('terminus')) {
-            return { svg: IndiaMapPlanner._svgIcons.station, cls: 'icon-station', badge: 'RAILWAY / METRO' };
+        if (str.includes('railway') || str.includes('station') || str.includes('junction') || str.includes('metro') || str.includes('terminus') || str.includes('bus stand') || str.includes('bus stop') || str.includes('isbt')) {
+            return { svg: IndiaMapPlanner._svgIcons.station, cls: 'icon-station', badge: 'TRANSIT' };
         }
         if (str.includes('toll') || str.includes('plaza') || str.includes('expressway') || str.includes('highway') || str.includes('tollway')) {
             return { svg: IndiaMapPlanner._svgIcons.toll, cls: 'icon-toll', badge: 'TOLL PLAZA' };
         }
-        if (str.includes('temple') || str.includes('mandir') || str.includes('tirumala') || str.includes('balaji') || str.includes('gurdwara') || str.includes('mosque') || str.includes('masjid') || str.includes('church') || str.includes('shrine') || str.includes('dargah')) {
+        if (str.includes('temple') || str.includes('mandir') || str.includes('tirumala') || str.includes('balaji') || str.includes('gurdwara') || str.includes('mosque') || str.includes('masjid') || str.includes('church') || str.includes('shrine') || str.includes('dargah') || str.includes('ashram') || str.includes('matha')) {
             return { svg: IndiaMapPlanner._svgIcons.shrine, cls: 'icon-shrine', badge: 'TEMPLE / SHRINE' };
         }
-        if (str.includes('beach') || str.includes('lake') || str.includes('sea') || str.includes('waterfall') || str.includes('river')) {
-            return { svg: IndiaMapPlanner._svgIcons.beach, cls: 'icon-beach', badge: 'BEACH / NATURE' };
+        if (str.includes('beach') || str.includes('lake') || str.includes('sea') || str.includes('waterfall') || str.includes('river') || str.includes('viewpoint') || str.includes('hill') || str.includes('peak') || str.includes('valley') || str.includes('forest') || str.includes('sanctuary') || str.includes('safari') || str.includes('park') || str.includes('garden')) {
+            return { svg: IndiaMapPlanner._svgIcons.beach, cls: 'icon-beach', badge: 'TOURIST / NATURE' };
         }
-        if (str.includes('fort') || str.includes('palace') || str.includes('monument') || str.includes('mahal') || str.includes('taj') || str.includes('charminar') || str.includes('ghat') || str.includes('museum') || str.includes('heritage')) {
+        if (str.includes('fort') || str.includes('palace') || str.includes('monument') || str.includes('mahal') || str.includes('taj') || str.includes('charminar') || str.includes('ghat') || str.includes('museum') || str.includes('heritage') || str.includes('memorial') || str.includes('arch')) {
             return { svg: IndiaMapPlanner._svgIcons.landmark, cls: 'icon-landmark', badge: 'HERITAGE' };
         }
-        if (str.includes('hospital') || str.includes('medical') || str.includes('aiims') || str.includes('clinic') || str.includes('care') || str.includes('doctor')) {
-            return { svg: IndiaMapPlanner._svgIcons.hospital, cls: 'icon-hospital', badge: 'HOSPITAL' };
+        if (str.includes('hospital') || str.includes('medical') || str.includes('aiims') || str.includes('clinic') || str.includes('care') || str.includes('doctor') || str.includes('nursing home') || str.includes('pharmacy') || str.includes('chemist') || str.includes('diagnostic')) {
+            return { svg: IndiaMapPlanner._svgIcons.hospital, cls: 'icon-hospital', badge: 'HEALTHCARE' };
         }
-        if (str.includes('university') || str.includes('college') || str.includes('campus') || str.includes('institute') || str.includes('iit') || str.includes('nit') || str.includes('lpu') || str.includes('school') || str.includes('academy')) {
+        if (str.includes('university') || str.includes('college') || str.includes('campus') || str.includes('institute') || str.includes('iit') || str.includes('nit') || str.includes('lpu') || str.includes('school') || str.includes('academy') || str.includes('vidyalaya') || str.includes('polytechnic')) {
             return { svg: IndiaMapPlanner._svgIcons.institute, cls: 'icon-institute', badge: 'COLLEGE / CAMPUS' };
         }
-        if (str.includes('tech park') || str.includes('cyber') || str.includes('hitec') || str.includes('it park') || str.includes('software') || str.includes('infosys') || str.includes('wipro') || str.includes('tcs')) {
+        if (str.includes('tech park') || str.includes('cyber') || str.includes('hitec') || str.includes('it park') || str.includes('software') || str.includes('infosys') || str.includes('wipro') || str.includes('tcs') || str.includes('mindspace') || str.includes('ecospace') || str.includes('manyata')) {
             return { svg: IndiaMapPlanner._svgIcons.tech, cls: 'icon-tech', badge: 'TECH PARK / IT' };
         }
-        if (str.includes('mall') || str.includes('market') || str.includes('bazaar') || str.includes('center') || str.includes('shopping') || str.includes('store')) {
+        if (str.includes('mall') || str.includes('market') || str.includes('bazaar') || str.includes('center') || str.includes('shopping') || str.includes('store') || str.includes('supermarket') || str.includes('mart') || str.includes('hypermarket') || str.includes('showroom')) {
             return { svg: IndiaMapPlanner._svgIcons.mall, cls: 'icon-mall', badge: 'MALL / MARKET' };
         }
-        if (str.includes('fuel') || str.includes('petrol') || str.includes('diesel') || str.includes('cng') || str.includes('pump') || str.includes('charging') || str.includes('ev station')) {
+        if (str.includes('fuel') || str.includes('petrol') || str.includes('diesel') || str.includes('cng') || str.includes('pump') || str.includes('charging') || str.includes('ev station') || str.includes('hp') || str.includes('ioc') || str.includes('bpcl') || str.includes('shell')) {
             return { svg: IndiaMapPlanner._svgIcons.fuel, cls: 'icon-fuel', badge: 'FUEL / EV' };
         }
-        if (str.includes('hotel') || str.includes('resort') || str.includes('stay') || str.includes('inn') || str.includes('lodge') || str.includes('suites')) {
+        if (str.includes('hotel') || str.includes('resort') || str.includes('stay') || str.includes('inn') || str.includes('lodge') || str.includes('suites') || str.includes('homestay') || str.includes('dharamshala') || str.includes('oyo')) {
             return { svg: IndiaMapPlanner._svgIcons.hotel, cls: 'icon-hotel', badge: 'HOTEL / STAY' };
         }
         if (item.type === 'city' || item.type === 'administrative' || ['mumbai','delhi','bengaluru','bangalore','hyderabad','chennai','kolkata','pune','ahmedabad','jaipur','lucknow','chandigarh','guntur','vijayawada','patna','bhopal','surat','indore','varanasi','agra'].includes(item.name?.toLowerCase())) {
@@ -1121,8 +1170,8 @@ const IndiaMapPlanner = {
     },
 
     _universalSearch: (query, dropdown, input, onSelect, existingList = []) => {
-        const nomUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=in&format=json&addressdetails=1&limit=8`;
-        const phoUrl = `https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&limit=8&lat=20.5937&lon=78.9629`;
+        const nomUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=in&format=json&addressdetails=1&limit=15&dedupe=0`;
+        const phoUrl = `https://photon.komoot.io/api/?q=${encodeURIComponent(query)}&limit=15&lat=20.5937&lon=78.9629`;
 
         const seenKeys = new Set(existingList.map(p => (p.name + '_' + (p.state || '')).toLowerCase()));
         const livePlaces = [];
@@ -1131,17 +1180,19 @@ const IndiaMapPlanner = {
             fetch(nomUrl, { headers: { 'Accept-Language': 'en' } }).then(r => r.json()).catch(() => []),
             fetch(phoUrl).then(r => r.json()).catch(() => ({ features: [] }))
         ]).then(([nomResults, phoResults]) => {
-            // 1. Parse Nominatim results
+            // 1. Parse Nominatim results (POI, Building, Restaurant, Village, Road)
             if (Array.isArray(nomResults)) {
                 nomResults.forEach(r => {
                     const addr = r.address || {};
-                    const primaryName = addr.amenity || addr.building || addr.tourism || addr.historic || addr.leisure || addr.aeroway || addr.city || addr.town || addr.village || addr.suburb || addr.road || r.display_name.split(',')[0].trim();
+                    const primaryName = addr.amenity || addr.building || addr.shop || addr.tourism || addr.historic || addr.leisure || addr.aeroway || addr.village || addr.hamlet || addr.suburb || addr.neighbourhood || addr.city || addr.town || addr.road || r.display_name.split(',')[0].trim();
                     const state = addr.state || 'India';
-                    const key = (primaryName + '_' + state).toLowerCase();
+                    const key = (primaryName + '_' + state + '_' + (r.lat || '')).toLowerCase();
                     
                     const subParts = [];
                     if (addr.suburb || addr.neighbourhood) subParts.push(addr.suburb || addr.neighbourhood);
+                    if (addr.village && addr.village !== primaryName) subParts.push(addr.village);
                     if (addr.city && addr.city !== primaryName) subParts.push(addr.city);
+                    if (addr.town && addr.town !== primaryName) subParts.push(addr.town);
                     if (addr.county || addr.state_district) subParts.push(addr.county || addr.state_district);
                     if (state && state !== primaryName) subParts.push(state);
                     if (addr.postcode) subParts.push(addr.postcode);
@@ -1157,26 +1208,27 @@ const IndiaMapPlanner = {
                             lng: parseFloat(r.lon),
                             state: state,
                             type: r.type || r.class || 'place',
+                            isVillage: r.type === 'village' || r.class === 'village' || !!addr.village,
                             importance: (r.importance || 0.5) + 0.1
                         });
                     }
                 });
             }
 
-            // 2. Parse Photon POI results
+            // 2. Parse Photon POI results (Restaurants, Buildings, Shops, Villages, Streets)
             if (phoResults && Array.isArray(phoResults.features)) {
                 phoResults.features.forEach(f => {
                     const p = f.properties || {};
-                    const name = p.name || p.street || p.city;
+                    const name = p.name || p.street || p.city || p.district;
                     if (!name) return;
                     const state = p.state || 'India';
-                    const key = (name + '_' + state).toLowerCase();
+                    const key = (name + '_' + state + '_' + (f.geometry?.coordinates?.[0] || '')).toLowerCase();
 
                     if (!seenKeys.has(key)) {
                         seenKeys.add(key);
                         const subParts = [];
                         if (p.street && p.street !== name) subParts.push(p.street);
-                        if (p.district) subParts.push(p.district);
+                        if (p.district && p.district !== name) subParts.push(p.district);
                         if (p.city && p.city !== name) subParts.push(p.city);
                         if (state) subParts.push(state);
                         if (p.postcode) subParts.push(p.postcode);
@@ -1190,6 +1242,7 @@ const IndiaMapPlanner = {
                             lng: f.geometry.coordinates[0],
                             state: state,
                             type: p.osm_value || p.osm_key || 'poi',
+                            isVillage: p.osm_value === 'village' || p.osm_key === 'village',
                             importance: 0.6
                         });
                     }
@@ -1197,7 +1250,7 @@ const IndiaMapPlanner = {
             }
 
             if (livePlaces.length > 0 || existingList.length > 0) {
-                const combined = [...existingList, ...livePlaces].slice(0, 10);
+                const combined = [...existingList, ...livePlaces].slice(0, 18);
                 IndiaMapPlanner._searchCache.set(query.toLowerCase(), combined);
                 IndiaMapPlanner._renderDropdown(dropdown, combined, query, onSelect, input);
             }
