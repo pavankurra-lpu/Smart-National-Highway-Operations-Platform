@@ -862,11 +862,11 @@ const IndiaMapPlanner = {
 
     _fallbackOSRM: (o, d) => {
         const btnCalc = document.getElementById('btn-calc-route');
-        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=true&steps=true`;
+        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=false&steps=true`;
         fetch(url)
             .then(r => r.json())
             .then(data => {
-                if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
+                if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-location-arrow"></i> Calculate Optimal Path'; btnCalc.disabled = false; }
                 Utils.toggleVisibility('route-loader-overlay', false);
                 if (data.code !== 'Ok' || !data.routes?.length) {
                     Utils.showToast('No route found via OSRM. Try nearby cities.', 'error');
@@ -877,7 +877,7 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner._applyRoute(0, o, d);
             })
             .catch(() => {
-                if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-magnifying-glass-location"></i> Calculate Route'; btnCalc.disabled = false; }
+                if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-location-arrow"></i> Calculate Optimal Path'; btnCalc.disabled = false; }
                 Utils.toggleVisibility('route-loader-overlay', false);
                 Utils.showToast('No internet or routing service offline. Check connection and retry.', 'error');
             });
@@ -885,55 +885,22 @@ const IndiaMapPlanner = {
 
     _applyRoute: (index, origin, dest) => {
         const routes = IndiaMapPlanner.allRoutes;
-        if (!routes || !routes[index]) return;
+        if (!routes || !routes[0]) return;
 
         IndiaMapPlanner.routeTollMarkers.forEach(m => { try { m.remove(); } catch(e){} });
         IndiaMapPlanner.routeTollMarkers = [];
 
         IndiaMapPlanner._clearRoutePolylines();
 
-        const routeStyles = [
-            { color: '#3b82f6', weight: 7, opacity: 1.0 },           // primary — bold blue
-            { color: '#f59e0b', weight: 5, opacity: 0.85, dashArray: '10 5' }, // alt1 — amber dashed
-            { color: '#10b981', weight: 5, opacity: 0.85, dashArray: '6 4' }   // alt2 — green dashed
-        ];
-
-        // Selected route is always solid blue, alternate routes are styled separately
-        const primary = routes[index];
+        // Selected single optimal primary route
+        const primary = routes[0];
         const coords  = primary.geometry.coordinates; // [[lng, lat], …]
         const primaryLatLngs = coords.map(p => [p[1], p[0]]);
 
         const primaryPoly = L.polyline(primaryLatLngs, { color: '#3b82f6', weight: 7, opacity: 1.0, lineJoin: 'round' })
             .addTo(IndiaMapPlanner.map);
-        primaryPoly.bindTooltip('Selected Route', { permanent: false, sticky: true });
+        primaryPoly.bindTooltip('Optimal National Highway Route', { permanent: false, sticky: true });
         IndiaMapPlanner.routePolylines.push(primaryPoly);
-
-        // Define distinct styling templates for unselected alternate routes
-        const altStyles = [
-            { color: '#f59e0b', weight: 5, opacity: 0.85, dashArray: '10 5' }, // Alt 1: Amber dashed
-            { color: '#10b981', weight: 5, opacity: 0.85, dashArray: '6 4' }   // Alt 2: Green dashed
-        ];
-
-        let altStyleIndex = 0;
-        routes.forEach((r, i) => {
-            if (i === index) return;
-            const altLatLngs = r.geometry.coordinates.map(p => [p[1], p[0]]);
-            const style = altStyles[altStyleIndex] || altStyles[1];
-            altStyleIndex++;
-
-            const poly = L.polyline(altLatLngs, { ...style, lineJoin: 'round' })
-                .addTo(IndiaMapPlanner.map);
-
-            // Click → switch to this route
-            poly.on('click', () => {
-                IndiaMapPlanner.selectedRouteIndex = i;
-                IndiaMapPlanner._applyRoute(i, IndiaMapPlanner.selectedOrigin, IndiaMapPlanner.selectedDest);
-            });
-
-            const altNum = i < index ? i + 1 : i;
-            poly.bindTooltip(`Alternate Route ${altNum}`, { permanent: false, sticky: true });
-            IndiaMapPlanner.routePolylines.push(poly);
-        });
 
         // Store for trip and toll matching
         IndiaMapPlanner.routeCoordinates = coords;
@@ -963,8 +930,8 @@ const IndiaMapPlanner = {
             } catch(e) {}
         });
 
-        // Alternate route tabs UI
-        IndiaMapPlanner._buildAltRouteTabs(routes, index);
+        // Ensure no alt-route tabs exist
+        document.getElementById('alt-route-tabs')?.remove();
 
         // Summary
         IndiaMapPlanner.updateSummary(rData);
@@ -1120,68 +1087,6 @@ const IndiaMapPlanner = {
                 <span style="color:#94a3b8;">${td.concessionaire || 'NHAI Managed'}</span>
             </div>
         </div>`;
-    },
-
-    _buildAltRouteTabs: (routes, selectedIdx) => {
-        let tabBar = document.getElementById('alt-route-tabs');
-        if (!tabBar) {
-            tabBar = document.createElement('div');
-            tabBar.id = 'alt-route-tabs';
-            tabBar.style.cssText = [
-                'display:flex', 'gap:6px', 'margin-bottom:10px', 'flex-wrap:wrap',
-                'border:none', 'background:none', 'outline:none', 'padding:0', 'margin-left:0'
-            ].join(';');
-            const panel = document.querySelector('.route-summary-float');
-            if (panel) panel.insertBefore(tabBar, panel.firstChild);
-        }
-        tabBar.innerHTML = '';
-        if (!routes || routes.length <= 1) {
-            tabBar.innerHTML = `
-                <div style="
-                    font-size:11px; color:var(--text-muted);
-                    padding:6px 10px; border:1px solid var(--border);
-                    border-radius:6px; display:flex; align-items:center; gap:6px;
-                ">
-                    <i class="fa-solid fa-circle-info" style="color:#60a5fa;"></i>
-                    Only one route available for this journey
-                </div>`;
-            return;
-        }
-
-        routes.forEach((r, i) => {
-            const btn = document.createElement('button');
-            const isSelected = i === selectedIdx;
-            
-            // Explicit styling to avoid any 'square box' artifacts from browser defaults
-            btn.style.cssText = `
-                padding: 6px 12px;
-                border-radius: 20px;
-                border: 1px solid var(--primary);
-                font-size: 10px;
-                font-weight: 700;
-                cursor: pointer;
-                font-family: 'Inter', sans-serif;
-                transition: all 0.2s ease;
-                letter-spacing: 0.5px;
-                background: ${isSelected ? 'var(--primary)' : 'transparent'};
-                color: ${isSelected ? '#021a12' : 'var(--primary)'};
-                box-shadow: ${isSelected ? '0 0 10px var(--primary-glow)' : 'none'};
-                outline: none;
-                margin: 0;
-            `;
-
-            btn.textContent  = i === 0 ? 'PRIMARY ROUTE' : `ALT ROUTE ${i}`;
-            
-            // OSRM provides distance in meters, duration in seconds
-            const distKm = (r.distance / 1000).toFixed(1);
-            const timeHr = (r.duration / 3600).toFixed(1);
-            btn.title = `${distKm} km · ${timeHr} hr`;
-            btn.addEventListener('click', () => {
-                IndiaMapPlanner.selectedRouteIndex = i;
-                IndiaMapPlanner._applyRoute(i, IndiaMapPlanner.selectedOrigin, IndiaMapPlanner.selectedDest);
-            });
-            tabBar.appendChild(btn);
-        });
     },
 
     _clearRoutePolylines: () => {

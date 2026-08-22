@@ -1356,13 +1356,7 @@ body.light-mode .leaflet-control-zoom a {
     color: var(--primary) !important;
 }
 
-/* ===== ALT ROUTE TAB BAR ===== */
-#alt-route-tabs {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
+
 
 /* ===== THEME TOGGLE BUTTON — force circle ===== */
 .theme-toggle-btn.btn.btn-outline {

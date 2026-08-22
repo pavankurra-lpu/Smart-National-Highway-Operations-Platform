@@ -41,13 +41,13 @@ const NHAI_CONFIG = {
     /* ── ROUTING (OSRM public demo — India capable) ───────── */
     routing: {
         baseUrl: 'https://router.project-osrm.org/route/v1/driving',
-        alternatives: true,          // ask for up to 3 alternatives
-        maxAlternatives: 2,
+        alternatives: false,         // single optimal NH route only
+        maxAlternatives: 0,
         overview: 'full',
         geometries: 'geojson',
         steps: true,
         // Corridor radius (km) for toll matching
-        tollCorridorKm: 1.5
+        tollCorridorKm: 2.5
     },
 
     /* ── GEOCODING (Nominatim — free, OSM-based) ──────────── */
