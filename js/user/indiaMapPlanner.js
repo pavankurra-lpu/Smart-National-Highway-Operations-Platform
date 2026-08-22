@@ -672,37 +672,42 @@ const IndiaMapPlanner = {
     // ═══════════════════════════════════════════════════════════════
     // AUTOCOMPLETE — Google Maps Grade Universal Search Engine
     // ═══════════════════════════════════════════════════════════════
+    _searchCache: new Map(),
+
     _getPlaceCategoryInfo: (item) => {
+        if (item.isCurrentLoc) {
+            return { icon: 'fa-solid fa-crosshairs', cls: 'icon-current', badge: 'MY GPS' };
+        }
         const str = ((item.name || '') + ' ' + (item.fullName || '') + ' ' + (item.subtitle || '') + ' ' + (item.type || '') + ' ' + (item.class || '')).toLowerCase();
         
         if (str.includes('airport') || str.includes('aerodrome') || str.includes('airfield') || str.includes('helipad')) {
             return { icon: 'fa-solid fa-plane-departure', cls: 'icon-airport', badge: 'AIRPORT' };
         }
         if (str.includes('railway') || str.includes('station') || str.includes('junction') || str.includes('metro') || str.includes('terminus')) {
-            return { icon: 'fa-solid fa-train', cls: 'icon-station', badge: 'STATION' };
+            return { icon: 'fa-solid fa-train-subway', cls: 'icon-station', badge: 'TRANSIT' };
         }
         if (str.includes('toll') || str.includes('plaza') || str.includes('expressway') || str.includes('highway') || str.includes('tollway')) {
             return { icon: 'fa-solid fa-road-barrier', cls: 'icon-toll', badge: 'TOLL PLAZA' };
         }
-        if (str.includes('temple') || str.includes('mandir') || str.includes('gurdwara') || str.includes('mosque') || str.includes('church') || str.includes('tirumala') || str.includes('shrine')) {
-            return { icon: 'fa-solid fa-place-of-worship', cls: 'icon-station', badge: 'TEMPLE / SHRINE' };
+        if (str.includes('temple') || str.includes('mandir') || str.includes('gurdwara') || str.includes('mosque') || str.includes('church') || str.includes('tirumala') || str.includes('shrine') || str.includes('dargah')) {
+            return { icon: 'fa-solid fa-place-of-worship', cls: 'icon-shrine', badge: 'PILGRIMAGE' };
         }
-        if (str.includes('beach') || str.includes('lake') || str.includes('fort') || str.includes('palace') || str.includes('monument') || str.includes('mahal') || str.includes('ghat')) {
-            return { icon: 'fa-solid fa-landmark', cls: 'icon-city', badge: 'LANDMARK' };
+        if (str.includes('beach') || str.includes('lake') || str.includes('fort') || str.includes('palace') || str.includes('monument') || str.includes('mahal') || str.includes('ghat') || str.includes('park') || str.includes('sanctuary')) {
+            return { icon: 'fa-solid fa-monument', cls: 'icon-landmark', badge: 'HERITAGE' };
         }
-        if (str.includes('hospital') || str.includes('medical') || str.includes('aiims') || str.includes('clinic')) {
-            return { icon: 'fa-solid fa-hospital', cls: 'icon-city', badge: 'HOSPITAL' };
+        if (str.includes('hospital') || str.includes('medical') || str.includes('aiims') || str.includes('clinic') || str.includes('care')) {
+            return { icon: 'fa-solid fa-hospital', cls: 'icon-hospital', badge: 'HEALTHCARE' };
         }
         if (str.includes('university') || str.includes('college') || str.includes('campus') || str.includes('institute') || str.includes('iit') || str.includes('nit') || str.includes('lpu') || str.includes('school')) {
-            return { icon: 'fa-solid fa-graduation-cap', cls: 'icon-city', badge: 'INSTITUTE' };
+            return { icon: 'fa-solid fa-graduation-cap', cls: 'icon-institute', badge: 'ACADEMIC' };
         }
-        if (str.includes('mall') || str.includes('market') || str.includes('plaza') || str.includes('bazaar') || str.includes('center') || str.includes('tower')) {
-            return { icon: 'fa-solid fa-bag-shopping', cls: 'icon-airport', badge: 'COMMERCIAL' };
+        if (str.includes('mall') || str.includes('market') || str.includes('bazaar') || str.includes('center') || str.includes('tower') || str.includes('complex') || str.includes('tech park') || str.includes('hitec')) {
+            return { icon: 'fa-solid fa-building-user', cls: 'icon-mall', badge: 'COMMERCIAL' };
         }
-        if (item.type === 'city' || item.type === 'administrative' || ['mumbai','delhi','bengaluru','bangalore','hyderabad','chennai','kolkata','pune','ahmedabad','jaipur','lucknow','chandigarh','guntur','vijayawada','patna','bhopal'].includes(item.name?.toLowerCase())) {
+        if (item.type === 'city' || item.type === 'administrative' || ['mumbai','delhi','bengaluru','bangalore','hyderabad','chennai','kolkata','pune','ahmedabad','jaipur','lucknow','chandigarh','guntur','vijayawada','patna','bhopal','surat','indore'].includes(item.name?.toLowerCase())) {
             return { icon: 'fa-solid fa-city', cls: 'icon-city', badge: 'CITY' };
         }
-        return { icon: 'fa-solid fa-location-dot', cls: '', badge: 'LOCATION' };
+        return { icon: 'fa-solid fa-map-pin', cls: 'icon-place', badge: 'LOCATION' };
     },
 
     _highlightQuery: (text, query) => {
@@ -718,18 +723,103 @@ const IndiaMapPlanner = {
         const dropdown = document.getElementById(dropdownId);
         if (!input || !dropdown) return;
 
+        const clearBtnId = inputId === 'route-origin-input' ? 'btn-clear-origin' : 'btn-clear-dest';
+        const clearBtn = document.getElementById(clearBtnId);
+
+        const updateClearBtn = () => {
+            if (clearBtn) {
+                clearBtn.style.display = input.value.trim().length > 0 ? 'block' : 'none';
+            }
+        };
+
+        if (clearBtn) {
+            clearBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                input.value = '';
+                updateClearBtn();
+                dropdown.innerHTML = '';
+                dropdown.style.display = 'none';
+                if (inputId === 'route-origin-input') IndiaMapPlanner.selectedOrigin = null;
+                if (inputId === 'route-dest-input') IndiaMapPlanner.selectedDest = null;
+                input.focus();
+            });
+        }
+
+        // Show Current GPS option for Origin on click if empty
+        input.addEventListener('focus', () => {
+            updateClearBtn();
+            if (inputId === 'route-origin-input' && input.value.trim().length === 0) {
+                const currentLocOption = [{
+                    name: 'Current Location',
+                    fullName: 'Your Current GPS Position',
+                    subtitle: 'Auto-detect coordinates from device GPS',
+                    lat: null,
+                    lng: null,
+                    isCurrentLoc: true
+                }];
+                IndiaMapPlanner._renderDropdown(dropdown, currentLocOption, '', onSelect, input);
+            }
+        });
+
         let debounceTimer;
+        let focusedIndex = -1;
+
+        // Keyboard arrow navigation
+        input.addEventListener('keydown', (e) => {
+            const items = dropdown.querySelectorAll('.google-ac-item');
+            if (!items || items.length === 0 || dropdown.style.display === 'none') return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                focusedIndex = (focusedIndex + 1) % items.length;
+                items.forEach((it, idx) => it.classList.toggle('focused', idx === focusedIndex));
+                items[focusedIndex]?.scrollIntoView({ block: 'nearest' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                focusedIndex = (focusedIndex - 1 + items.length) % items.length;
+                items.forEach((it, idx) => it.classList.toggle('focused', idx === focusedIndex));
+                items[focusedIndex]?.scrollIntoView({ block: 'nearest' });
+            } else if (e.key === 'Enter') {
+                if (focusedIndex >= 0 && items[focusedIndex]) {
+                    e.preventDefault();
+                    items[focusedIndex].click();
+                }
+            } else if (e.key === 'Escape') {
+                dropdown.style.display = 'none';
+            }
+        });
 
         input.addEventListener('input', () => {
+            updateClearBtn();
             clearTimeout(debounceTimer);
+            focusedIndex = -1;
             const val = input.value.trim();
             if (val.length < 2) { 
-                dropdown.innerHTML = ''; 
-                dropdown.style.display = 'none'; 
+                if (inputId === 'route-origin-input' && val.length === 0) {
+                    const currentLocOption = [{
+                        name: 'Current Location',
+                        fullName: 'Your Current GPS Position',
+                        subtitle: 'Auto-detect coordinates from device GPS',
+                        lat: null,
+                        lng: null,
+                        isCurrentLoc: true
+                    }];
+                    IndiaMapPlanner._renderDropdown(dropdown, currentLocOption, '', onSelect, input);
+                } else {
+                    dropdown.innerHTML = ''; 
+                    dropdown.style.display = 'none'; 
+                }
                 return; 
             }
 
             const qLower = val.toLowerCase();
+
+            // Check Instant Cache
+            if (IndiaMapPlanner._searchCache.has(qLower)) {
+                const cached = IndiaMapPlanner._searchCache.get(qLower);
+                IndiaMapPlanner._renderDropdown(dropdown, cached, val, onSelect, input);
+                return;
+            }
 
             // 1. Instant local search from IndiaMapData & TollSeedData
             const localMatches = [];
@@ -787,10 +877,10 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner._renderDropdown(dropdown, topLocal, val, onSelect, input);
             }
 
-            // 2. Dual-Engine Global & India POI Geocoding (Photon + Nominatim)
+            // 2. Dual-Engine Global & India POI Geocoding (Photon + Nominatim) with 120ms debounce
             debounceTimer = setTimeout(() => {
                 IndiaMapPlanner._universalSearch(val, dropdown, input, onSelect, topLocal);
-            }, 180);
+            }, 120);
         });
 
         document.addEventListener('click', e => {
@@ -807,11 +897,11 @@ const IndiaMapPlanner = {
             return;
         }
 
-        dropdown.innerHTML = places.map(p => {
+        dropdown.innerHTML = places.map((p, idx) => {
             const cat = IndiaMapPlanner._getPlaceCategoryInfo(p);
             const highTitle = IndiaMapPlanner._highlightQuery(p.name, query);
             return `
-                <div class="google-ac-item" data-name="${p.name}" data-lat="${p.lat}" data-lng="${p.lng}" data-state="${p.state || ''}" data-isvillage="${p.isVillage || false}">
+                <div class="google-ac-item ${idx === 0 && !query ? 'focused' : ''}" data-idx="${idx}" data-name="${p.name}" data-lat="${p.lat || ''}" data-lng="${p.lng || ''}" data-state="${p.state || ''}" data-isvillage="${p.isVillage || false}" data-iscurrent="${p.isCurrentLoc || false}">
                     <div class="google-ac-icon-box ${cat.cls}">
                         <i class="${cat.icon}"></i>
                     </div>
@@ -830,6 +920,34 @@ const IndiaMapPlanner = {
 
         dropdown.querySelectorAll('.google-ac-item').forEach(item => {
             item.addEventListener('click', () => {
+                const isCurrent = item.dataset.iscurrent === 'true';
+
+                if (isCurrent) {
+                    input.value = 'Locating GPS…';
+                    dropdown.style.display = 'none';
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(pos => {
+                            const lat = pos.coords.latitude;
+                            const lng = pos.coords.longitude;
+                            const currentObj = {
+                                name: 'My Current Location',
+                                state: 'GPS',
+                                lat: lat,
+                                lng: lng
+                            };
+                            input.value = 'My Current Location 📍';
+                            const clearBtn = document.getElementById(input.id === 'route-origin-input' ? 'btn-clear-origin' : 'btn-clear-dest');
+                            if (clearBtn) clearBtn.style.display = 'block';
+                            if (IndiaMapPlanner.map) IndiaMapPlanner.map.flyTo([lat, lng], 13);
+                            onSelect(currentObj);
+                        }, () => {
+                            input.value = '';
+                            Utils.showToast('Could not retrieve GPS location.', 'error');
+                        }, { timeout: 8000, enableHighAccuracy: true });
+                    }
+                    return;
+                }
+
                 const isVillage = item.dataset.isvillage === 'true';
                 const selectedObj = {
                     name:  item.dataset.name,
@@ -839,6 +957,8 @@ const IndiaMapPlanner = {
                     isVillage: isVillage
                 };
                 input.value = `${selectedObj.name}, ${selectedObj.state}`;
+                const clearBtn = document.getElementById(input.id === 'route-origin-input' ? 'btn-clear-origin' : 'btn-clear-dest');
+                if (clearBtn) clearBtn.style.display = 'block';
                 dropdown.style.display = 'none';
                 
                 if (IndiaMapPlanner.map && selectedObj.lat && selectedObj.lng) {
@@ -928,6 +1048,7 @@ const IndiaMapPlanner = {
 
             if (livePlaces.length > 0 || existingList.length > 0) {
                 const combined = [...existingList, ...livePlaces].slice(0, 10);
+                IndiaMapPlanner._searchCache.set(query.toLowerCase(), combined);
                 IndiaMapPlanner._renderDropdown(dropdown, combined, query, onSelect, input);
             }
         }).catch(() => {});

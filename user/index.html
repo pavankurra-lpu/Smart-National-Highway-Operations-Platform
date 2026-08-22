@@ -181,7 +181,8 @@
                             <div class="route-input-group">
                                 <label class="route-input-label">ORIGIN</label>
                                 <div class="route-field-wrapper">
-                                    <input type="text" id="route-origin-input" placeholder="Enter starting city..." autocomplete="off">
+                                    <input type="text" id="route-origin-input" placeholder="Search city, toll, or landmark..." autocomplete="off">
+                                    <button type="button" id="btn-clear-origin" class="route-field-clear" style="display:none;" title="Clear origin"><i class="fa-solid fa-circle-xmark"></i></button>
                                     <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon"></i>
                                 </div>
                                 <div id="origin-suggestions" class="autocomplete-dropdown"></div>
@@ -195,6 +196,7 @@
                                 <label class="route-input-label">DESTINATION</label>
                                 <div class="route-field-wrapper">
                                     <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off">
+                                    <button type="button" id="btn-clear-dest" class="route-field-clear" style="display:none;" title="Clear destination"><i class="fa-solid fa-circle-xmark"></i></button>
                                     <i class="fa-solid fa-location-dot route-field-icon dest-icon"></i>
                                 </div>
                                 <div id="dest-suggestions" class="autocomplete-dropdown"></div>
