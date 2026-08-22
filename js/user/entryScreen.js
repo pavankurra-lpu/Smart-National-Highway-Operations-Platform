@@ -6,49 +6,37 @@ const EntryScreen = {
         const entryScreen = document.getElementById('entry-screen');
         const appContainer = document.getElementById('user-app');
 
-        if (btnUnlock) {
+        if (btnUnlock && entryScreen) {
             btnUnlock.addEventListener('click', () => {
-                // Play animation
                 entryScreen.classList.add('fade-out');
                 
-                // Greeting Voice
-                if (window.speechSynthesis && window.Storage) {
-                    const profile = Storage.get('nhai_user_profile');
-                    const name = profile && profile.name ? profile.name : "Traveller";
-                    const hour = new Date().getHours();
-                    let greeting = "Good evening";
-                    if (hour >= 5 && hour < 12) greeting = "Good morning";
-                    else if (hour >= 12 && hour < 17) greeting = "Good afternoon";
-                    else if (hour >= 17 && hour < 22) greeting = "Good evening";
-                    else greeting = "Wow a night owl came to travel";
-                    
-                    // Fallback English if translating is not ready yet, but VoiceAssistant handles it
+                // Greeting Voice (non-blocking)
+                try {
                     if (window.VoiceAssistant) {
+                        const profile = window.Storage ? Storage.get('nhai_user_profile') : null;
+                        const name = profile && profile.name ? profile.name : "Traveller";
+                        const hour = new Date().getHours();
+                        let greeting = "Good day";
+                        if (hour >= 5 && hour < 12) greeting = "Good morning";
+                        else if (hour >= 12 && hour < 17) greeting = "Good afternoon";
+                        else if (hour >= 17 && hour < 22) greeting = "Good evening";
+                        else greeting = "Welcome";
                         window.VoiceAssistant.speak(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
-                    } else if (window.speechSynthesis) {
-                        const msg = new SpeechSynthesisUtterance(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
-                        const voices = window.speechSynthesis.getVoices();
-                        const inVoice = voices.find(v => v.lang.includes('en-IN'));
-                        if (inVoice) msg.voice = inVoice;
-                        window.speechSynthesis.speak(msg);
                     }
-                }
-
+                } catch (e) { console.warn('Voice greeting error:', e); }
 
                 setTimeout(() => {
-                    entryScreen.classList.add('hidden');
-                    appContainer.classList.remove('hidden');
+                    entryScreen.style.display = 'none';
+                    if (appContainer) appContainer.classList.remove('hidden');
                     
-                    // Trigger map resize since it was hidden
+                    // Trigger map resize since it is now revealed
                     if (window.IndiaMapPlanner && IndiaMapPlanner.map) {
                         IndiaMapPlanner.map.invalidateSize();
                         setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 100);
-                        setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 500);
-                        
-                        // Ask for location permission and auto-center
+                        setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 400);
                         IndiaMapPlanner.askForLocationPermission();
                     }
-                }, 800);
+                }, 450);
             });
         }
     }

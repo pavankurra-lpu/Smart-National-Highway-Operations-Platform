@@ -94,10 +94,22 @@ const IndiaMapPlanner = {
 
         window.NHAI_MAP = IndiaMapPlanner.map;
         
+        window.addEventListener('resize', () => {
+            if (IndiaMapPlanner.map) {
+                IndiaMapPlanner.map.invalidateSize();
+            }
+        });
+
+        setTimeout(() => {
+            if (IndiaMapPlanner.map) IndiaMapPlanner.map.invalidateSize();
+        }, 200);
+
         // Fly to center on open
         setTimeout(() => {
-            IndiaMapPlanner.map.flyTo(cfg.map.defaultCenter, 5, { animate: true, duration: 1.5 });
-        }, 500);
+            if (IndiaMapPlanner.map) {
+                IndiaMapPlanner.map.flyTo(cfg.map.defaultCenter, 5, { animate: true, duration: 1.5 });
+            }
+        }, 400);
 
 
         // ── Sidebar toggle (handled via inline onclick in HTML now) ─────────────────────────────────────────

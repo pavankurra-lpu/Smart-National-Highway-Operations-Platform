@@ -16,77 +16,46 @@
     
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v7">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v7">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v8">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v8">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
-<body>
-
-    <!-- ==============================
-         PREMIUM ENTRY / SPLASH SCREEN (React Bits Aurora & Kokonut UI)
+<body>    <!-- ==============================
+         SOPHISTICATED ENTRY / SPLASH SCREEN
          ============================== -->
     <div id="entry-screen">
-        <!-- Reactbits Aurora Background Ambient Mesh -->
-        <div class="aurora-ambient-mesh">
-            <div class="aurora-orb aurora-orb-1"></div>
-            <div class="aurora-orb aurora-orb-2"></div>
-            <div class="aurora-orb aurora-orb-3"></div>
-        </div>
-
-        <div class="entry-status-chip">
-            <span class="entry-status-dot"></span>
-            <span>INDIA NATIONAL HIGHWAY OPERATIONS 2026</span>
-        </div>
-
-        <div class="entry-logo-box">
-            <div class="entry-logo-inner">
-                <i class="fa-solid fa-car-side" style="font-size:26px;"></i>
+        <div class="entry-glass-card">
+            <div class="entry-brand-badge">
+                <span class="entry-live-dot"></span>
+                <span>NHAI OPERATIONS • OFFICIAL TRAVELLER PLATFORM</span>
             </div>
-        </div>
 
-        <p class="entry-tagline">National Highways Authority of India</p>
-        <h1 class="entry-title">SNHOP PLATFORM</h1>
-        <p class="entry-subtitle">Advanced routing, toll intelligence, and FASTag operations across India's national highway network.</p>
-
-        <!-- Infinite Scrolling Badges Marquee (Kokonut UI style) -->
-        <div class="testimonials-marquee-container" style="margin-top: 15px; margin-bottom: 28px; max-width: 650px;">
-            <div class="testimonials-marquee" style="animation-duration: 25s; gap: 10px;">
-                <!-- Set 1 -->
-                <span class="entry-badge-pill"><i class="fa-solid fa-satellite-dish"></i> Live GPS Telemetry</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-wallet"></i> FASTag 3D Smart Wallet</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-map-location-dot"></i> 50,000+ Plazas & Highways</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-route"></i> Dijkstra Pathfinding</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-truck-medical"></i> 1033 Instant SOS Dispatch</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-chart-line"></i> Bento Trip Analytics</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-microphone-lines"></i> AI Voice Navigator</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-bell"></i> Real-Time Feed</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-clock"></i> 24/7 Operations</span>
-                
-                <!-- Set 2 (Duplicate for Infinite Loop) -->
-                <span class="entry-badge-pill"><i class="fa-solid fa-satellite-dish"></i> Live GPS Telemetry</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-wallet"></i> FASTag 3D Smart Wallet</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-map-location-dot"></i> 50,000+ Plazas & Highways</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-route"></i> Dijkstra Pathfinding</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-truck-medical"></i> 1033 Instant SOS Dispatch</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-chart-line"></i> Bento Trip Analytics</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-microphone-lines"></i> AI Voice Navigator</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-bell"></i> Real-Time Feed</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-clock"></i> 24/7 Operations</span>
+            <div class="entry-icon-emblem">
+                <i class="fa-solid fa-route"></i>
             </div>
-        </div>
 
-        <button id="btn-unlock-portal" class="btn btn-primary magnet-button">
-            <i class="fa-solid fa-arrow-right-to-bracket"></i> Open Traveller Dashboard
-        </button>
+            <h1 class="entry-hero-title">National Highway Portal</h1>
+            <p class="entry-hero-desc">Intelligent route planning, real-time FASTag toll computation, and emergency highway operations across India.</p>
+
+            <div class="entry-feature-strip">
+                <span class="entry-feat-pill"><i class="fa-solid fa-location-crosshairs"></i> GPS Telemetry</span>
+                <span class="entry-feat-pill"><i class="fa-solid fa-wallet"></i> FASTag Intelligence</span>
+                <span class="entry-feat-pill"><i class="fa-solid fa-shield-halved"></i> 24/7 SOS Safety</span>
+            </div>
+
+            <button id="btn-unlock-portal" class="btn btn-enter-portal">
+                <span>Enter Traveller Dashboard</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
     </div>
 
     <!-- ==============================
-         MAIN APP CONTAINER
+         MAIN APP CONTAINER (Mounted with full dimensions)
          ============================== -->
-    <div id="user-app" class="hidden">
+    <div id="user-app">
 
         <!-- FULL SCREEN MAP (behind everything) -->
         <div id="map"></div>
@@ -108,9 +77,6 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
 
-
-
-        <!-- Map Tools (Floating Group) - REMOVED TO MOVE TO TAB -->
 
 
         <!-- ==============================
@@ -139,22 +105,25 @@
             <!-- Active Highway Alerts Ticker (Kokonut UI Style) -->
             <div class="alerts-ticker-container">
                 <div class="alerts-ticker-label">
-                    <span class="pulse-beacon"></span> LIVE FEED
+                    <span class="live-status-dot" style="background:#38bdf8;box-shadow:0 0 6px #38bdf8;"></span>
+                    <span>NHAI LIVE FEED</span>
                 </div>
-                <div class="alerts-ticker-track">
-                    <div class="alerts-ticker-scroll">
-                        <span>🚧 NH-48: Maintenance alert near Surat (Right lane closed)</span>
-                        <span>🌧️ NH-3: Heavy rainfall warning near Kasara Ghat (Drive safe)</span>
-                        <span>🚗 NH-19: Congestion delay 15m near Varanasi toll gate</span>
-                        <span>⚠️ NH-44: High density fog warning near Ambala</span>
+                <div class="alerts-ticker-marquee">
+                    <div class="alerts-ticker-scroll" id="alerts-ticker-content">
+                        <span><i class="fa-solid fa-circle-info"></i> GPS Telemetry Active · Fetching local highway advisory...</span>
+                        <span><i class="fa-solid fa-triangle-exclamation"></i> Heavy vehicle lane discipline mandatory across all National Corridors.</span>
+                        <span><i class="fa-solid fa-shield-halved"></i> 1033 National Emergency Dispatch ready 24/7.</span>
+                        <span><i class="fa-solid fa-circle-info"></i> GPS Telemetry Active · Fetching local highway advisory...</span>
+                        <span><i class="fa-solid fa-triangle-exclamation"></i> Heavy vehicle lane discipline mandatory across all National Corridors.</span>
+                        <span><i class="fa-solid fa-shield-halved"></i> 1033 National Emergency Dispatch ready 24/7.</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Modern Segmented Tabs (shadcn/ui style) -->
+            <!-- Navigation Tabs (Modern Segmented Pill Header) -->
             <div class="nav-tabs">
                 <button class="tab-btn active" data-tab="tab-plan" id="tab-btn-plan">
-                    <i class="fa-solid fa-route"></i>
+                    <i class="fa-solid fa-diamond-turn-right"></i>
                     <span>Route</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-fastag" id="tab-btn-fastag">
@@ -162,11 +131,11 @@
                     <span>FASTag</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-sos" id="tab-btn-sos">
-                    <i class="fa-solid fa-truck-medical"></i>
-                    <span>SOS</span>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>Emergency</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-analytics" id="tab-btn-analytics">
-                    <i class="fa-solid fa-chart-line"></i>
+                    <i class="fa-solid fa-chart-simple"></i>
                     <span>Analytics</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-settings" id="tab-btn-settings">
@@ -180,26 +149,6 @@
                  ======================== -->
             <div id="tab-plan" class="tab-content active">
                 <div class="flex-col gap-3">
-                    
-                    <!-- Quick Map Tools (Locate Me, 3D Avatar, Theme Switcher, Full Map) -->
-                    <div class="sidebar-quick-dock">
-                        <button type="button" class="quick-dock-btn" onclick="IndiaMapPlanner.locateUser(); if(window.innerWidth<=768){document.getElementById('sidebar-toggle')?.click();}" title="Locate My Position">
-                            <i class="fa-solid fa-location-crosshairs" style="color:var(--primary);"></i>
-                            <span>Locate Me</span>
-                        </button>
-                        <button type="button" class="quick-dock-btn" onclick="document.getElementById('btn-avatar-dock')?.click(); if(window.innerWidth<=768){document.getElementById('sidebar-toggle')?.click();}" title="Choose 3D Vehicle Avatar">
-                            <i class="fa-solid fa-car-side" style="color:#38bdf8;"></i>
-                            <span>3D Avatar</span>
-                        </button>
-                        <button type="button" class="quick-dock-btn" onclick="document.getElementById('btn-layer-dock')?.click();" title="Toggle Satellite / Dark Map Mode">
-                            <i class="fa-solid fa-circle-half-stroke" style="color:#fbbf24;"></i>
-                            <span>Map Mode</span>
-                        </button>
-                        <button type="button" class="quick-dock-btn quick-dock-map-btn" onclick="document.getElementById('sidebar-toggle')?.click();" title="View Full Map Screen">
-                            <i class="fa-solid fa-map" style="color:#a855f7;"></i>
-                            <span>View Map</span>
-                        </button>
-                    </div>
 
                     <!-- Modern Connected Route Search Card -->
                     <div class="route-search-card">
@@ -1079,40 +1028,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v7"></script>
+    <script src="../js/config.js?v=20260823_v8"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v7"></script>
-    <script src="../js/shared/storage.js?v=20260823_v7"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v7"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v7"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v7"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v7"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v7"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v7"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v7"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v7"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v7"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v7"></script>
+    <script src="../js/shared/utils.js?v=20260823_v8"></script>
+    <script src="../js/shared/storage.js?v=20260823_v8"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v8"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v8"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v8"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v8"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v8"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v8"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v8"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v8"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v8"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v8"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v7"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v7"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v7"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v7"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v7"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v7"></script>
-    <script src="../js/user/notifications.js?v=20260823_v7"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v7"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v7"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v7"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v7"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v7"></script>
-    <script src="../js/user/gamification.js?v=20260823_v7"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v7"></script>
-    <script src="../js/user/userApp.js?v=20260823_v7"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v8"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v8"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v8"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v8"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v8"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v8"></script>
+    <script src="../js/user/notifications.js?v=20260823_v8"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v8"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v8"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v8"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v8"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v8"></script>
+    <script src="../js/user/gamification.js?v=20260823_v8"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v8"></script>
+    <script src="../js/user/userApp.js?v=20260823_v8"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v7"></script>
+    <script src="../js/shared/animations.js?v=20260823_v8"></script>
 </body>
 </html>
