@@ -26,16 +26,27 @@ const AdminApp = {
 
         // Setup Plaza Access
         AdminApp.plaza = sessionStorage.getItem('admin_plaza') || 'ALL';
+        let plazaData = null;
+        try {
+            const raw = sessionStorage.getItem('admin_plaza_data');
+            if (raw) plazaData = JSON.parse(raw);
+        } catch(e){}
+        AdminApp.plazaData = plazaData;
+
         const badge = document.getElementById('admin-region-badge');
         if (badge) {
             if (AdminApp.plaza === 'ALL') {
-                badge.innerText = 'ALL PLAZAS';
+                badge.innerHTML = '<i class="fa-solid fa-earth-asia"></i> ALL INDIA (SUPER ADMIN)';
+                badge.style.background = 'rgba(59, 130, 246, 0.15)';
+                badge.style.borderColor = 'rgba(59, 130, 246, 0.4)';
+                badge.style.color = '#38bdf8';
             } else {
-                badge.innerText = AdminApp.plaza.toUpperCase() + ' PLAZA';
+                const sub = plazaData?.state ? ` (${plazaData.state})` : '';
+                badge.innerHTML = `<i class="fa-solid fa-map-pin"></i> ${AdminApp.plaza.toUpperCase()}${sub} <a href="login.html" title="Switch Toll Plaza" style="color:#f59e0b; margin-left:6px; text-decoration:none;"><i class="fa-solid fa-arrow-right-arrow-left"></i> Switch</a>`;
+                badge.style.background = 'rgba(99, 102, 241, 0.18)';
+                badge.style.borderColor = 'rgba(99, 102, 241, 0.45)';
+                badge.style.color = '#a5b4fc';
             }
-            badge.style.background = 'rgba(14, 165, 233, 0.15)'; // Blue badge for specific region
-            badge.style.borderColor = 'var(--accent-blue)';
-            badge.style.color = 'var(--accent-blue)';
         }
 
         // Initialize features
@@ -124,13 +135,11 @@ const AdminApp = {
         let center = [20.5937, 78.9629];
         let zoom = 5;
 
-        // Regional boundaries
-        if (AdminApp.region === 'Maharashtra') { center = [19.7515, 75.7139]; zoom = 7; }
-        else if (AdminApp.region === 'Delhi') { center = [28.6139, 77.2090]; zoom = 10; }
-        else if (AdminApp.region === 'Karnataka') { center = [15.3173, 75.7139]; zoom = 7; }
-        else if (AdminApp.region === 'Punjab') { center = [31.1471, 75.3412]; zoom = 8; }
-        else if (AdminApp.region === 'Gujarat') { center = [22.2587, 71.1924]; zoom = 7; }
-        else if (AdminApp.region === 'Uttar Pradesh') { center = [26.8467, 80.9462]; zoom = 7; }
+        // If a specific toll plaza is assigned, center directly on it
+        if (AdminApp.plazaData && AdminApp.plazaData.lat && AdminApp.plazaData.lng) {
+            center = [AdminApp.plazaData.lat, AdminApp.plazaData.lng];
+            zoom = 12;
+        }
 
         AdminApp.map = L.map('admin-live-map', {
             zoomControl: true,
@@ -143,6 +152,27 @@ const AdminApp = {
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19
         }).addTo(AdminApp.map);
+
+        // Highlight selected plaza if specific
+        if (AdminApp.plazaData && AdminApp.plazaData.lat && AdminApp.plazaData.lng) {
+            const p = AdminApp.plazaData;
+            const tollIcon = L.divIcon({
+                className: '',
+                html: `<div style="background: linear-gradient(135deg, #6366f1, #3b82f6); color:#fff; width:36px; height:36px; border-radius:10px; border:2px solid #fff; box-shadow:0 0 20px rgba(99,102,241,0.8); display:flex; align-items:center; justify-content:center; font-size:16px;">🏗️</div>`,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18]
+            });
+            L.marker([p.lat, p.lng], { icon: tollIcon })
+                .bindPopup(`
+                    <div style="font-family:'Inter',sans-serif; color:#0f172a; padding:4px;">
+                        <strong style="font-size:13px;">🏗️ ${p.name}</strong><br>
+                        <span style="font-size:11px; color:#64748b;">${p.district ? p.district + ', ' : ''}${p.state || 'India'}</span><br>
+                        <span style="font-size:11px; color:#4338ca; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
+                    </div>
+                `)
+                .addTo(AdminApp.map)
+                .openPopup();
+        }
     },
 
     updateVehicleMarker: (data) => {

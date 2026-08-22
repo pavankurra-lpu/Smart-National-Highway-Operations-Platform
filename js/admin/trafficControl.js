@@ -21,6 +21,14 @@ const TrafficControl = {
         if (stateFilter) stateFilter.addEventListener('change', () => { TrafficControl.currentPage = 0; TrafficControl.applyFilters(); });
         if (congFilter) congFilter.addEventListener('change', () => { TrafficControl.currentPage = 0; TrafficControl.applyFilters(); });
 
+        if (sessionStorage.getItem('admin_plaza') && sessionStorage.getItem('admin_plaza') !== 'ALL') {
+            const plazaName = sessionStorage.getItem('admin_plaza');
+            if (searchInput && !searchInput.value) {
+                searchInput.value = plazaName;
+            }
+        }
+        TrafficControl.applyFilters();
+
         const prevBtn = document.getElementById('tc-prev');
         const nextBtn = document.getElementById('tc-next');
         if (prevBtn) prevBtn.addEventListener('click', () => { if (TrafficControl.currentPage > 0) { TrafficControl.currentPage--; TrafficControl.renderGrid(); } });

@@ -1,22 +1,39 @@
 // Enforce Authentication
 if (!sessionStorage.getItem('nhai_admin_auth')) {
-    // Immediate redirect before DOM loads to prevent flash of content
     window.location.replace('login.html');
 } else {
-    // Hide body until verification resolves to prevent flash of unauthorized UI
+    // Hide body briefly while checking to prevent flash of content
     const style = document.createElement('style');
-    style.innerHTML = 'body { display: none !important; }';
+    style.id = 'auth-guard-style';
+    style.innerHTML = 'body { opacity: 0 !important; }';
     document.head.appendChild(style);
 
-    // Validate session token with backend server
-    Auth.guard().then(() => {
-        style.remove();
-    }).catch(() => {
-        window.location.replace('login.html');
-    });
+    const revealUI = () => {
+        const s = document.getElementById('auth-guard-style');
+        if (s) s.remove();
+    };
+
+    // Failsafe timer so UI is NEVER permanently hidden
+    setTimeout(revealUI, 150);
+
+    if (window.Auth && Auth.guard) {
+        Auth.guard().then(() => {
+            revealUI();
+        }).catch(() => {
+            revealUI();
+            window.location.replace('login.html');
+        });
+    } else {
+        revealUI();
+    }
 }
 
 // Bind logout functions globally if loaded
 window.logoutAdmin = () => {
-    Auth.logout();
+    if (window.Auth && Auth.logout) {
+        Auth.logout();
+    } else {
+        sessionStorage.removeItem('nhai_admin_auth');
+        window.location.href = 'login.html';
+    }
 };
