@@ -1764,12 +1764,32 @@ const IndiaMapPlanner = {
         setText('sum-toll',      rData.tolls.length);
         setText('sum-cost',      `₹${rData.totalTollCost}`);
 
-        // Render dynamic toll timeline steps
+        // Read Live Backend Congestion States & Admin Alerts
+        const currentStates = window.Storage ? Storage.get(Storage.KEYS.TOLL_STATES, {}) : {};
+        const adminAlerts = window.Storage ? Storage.get(Storage.KEYS.ADMIN_ALERTS, []) : [];
+
+        // Render dynamic toll timeline steps & Live Traffic Breakdown
         const timelineEl = document.getElementById('route-timeline-steps');
         const summaryPanel = document.getElementById('route-sidebar-summary');
         if (timelineEl && summaryPanel) {
             summaryPanel.classList.remove('hidden');
-            let html = `
+            let html = '';
+
+            // Check if any active admin broadcast matches this route
+            if (adminAlerts.length > 0) {
+                const latestAlert = adminAlerts[0];
+                html += `
+                    <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 10px; padding: 8px 10px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                        <i class="fa-solid fa-bullhorn" style="color: #f43f5e; font-size: 13px; margin-top: 2px;"></i>
+                        <div style="flex:1; min-width:0;">
+                            <div style="font-size: 10.5px; font-weight: 700; color: #f87171;">LIVE NHAI ALERT: ${latestAlert.title}</div>
+                            <div style="font-size: 9.5px; color: #fca5a5; line-height: 1.35; margin-top: 2px;">${latestAlert.message}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += `
                 <div style="position: relative; margin-bottom: 12px; z-index: 2;">
                     <div style="position: absolute; left: -22.5px; top: 3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); border: 2px solid #000; box-shadow: 0 0 8px var(--primary-glow);"></div>
                     <div style="font-size: 11px; font-weight: 700; color: #fff;">${rData.originName}</div>
@@ -1782,16 +1802,25 @@ const IndiaMapPlanner = {
                     const name = td ? td.name : (toll.name || 'NH Toll Plaza');
                     const nhBadge = (td && td.nhCorridor && td.nhCorridor !== 'N/A') ? `<span style="font-size:8px; padding:1px 4px; border-radius:3px; background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); margin-left:4px;">NH-${td.nhCorridor}</span>` : '';
                     
+                    // Check Realtime Traffic Congestion set by Admin
+                    const tState = currentStates[toll.id]?.congestion || 'NORMAL';
+                    let trafficTag = `<span style="font-size:8px; padding:1px 5px; border-radius:3px; background:rgba(16,185,129,0.12); color:#10b981; border:1px solid rgba(16,185,129,0.3); margin-left:4px;"><i class="fa-solid fa-circle-check"></i> Normal Flow</span>`;
+                    if (tState === 'HIGH') {
+                        trafficTag = `<span style="font-size:8px; padding:1px 5px; border-radius:3px; background:rgba(239,68,68,0.2); color:#f43f5e; border:1px solid rgba(239,68,68,0.4); font-weight:700; margin-left:4px;"><i class="fa-solid fa-triangle-exclamation"></i> High Traffic (+15m)</span>`;
+                    } else if (tState === 'MODERATE') {
+                        trafficTag = `<span style="font-size:8px; padding:1px 5px; border-radius:3px; background:rgba(245,158,11,0.2); color:#fbbf24; border:1px solid rgba(245,158,11,0.4); font-weight:600; margin-left:4px;"><i class="fa-solid fa-clock"></i> Moderate Flow</span>`;
+                    }
+
                     const subInfo = toll.singleCost !== undefined && toll.returnCost !== undefined
                         ? `<div style="font-size:8.5px; color:#94a3b8; margin-top:2px;">1-Way: ₹${toll.singleCost} · 2-Way: ₹${toll.returnCost}</div>`
                         : '';
 
                     html += `
                         <div style="position: relative; margin-bottom: 12px; z-index: 2;">
-                            <div style="position: absolute; left: -22px; top: 4px; width: 7px; height: 7px; border-radius: 50%; background: #fbbf24; border: 1.5px solid #000; box-shadow: 0 0 6px rgba(251, 191, 36, 0.4);"></div>
+                            <div style="position: absolute; left: -22px; top: 4px; width: 7px; height: 7px; border-radius: 50%; background: ${tState === 'HIGH' ? '#f43f5e' : (tState === 'MODERATE' ? '#fbbf24' : '#10b981')}; border: 1.5px solid #000; box-shadow: 0 0 6px rgba(251, 191, 36, 0.4);"></div>
                             <div>
                                 <div style="font-size: 10.5px; font-weight: 600; color: #f1f5f9; display: flex; justify-content: space-between; align-items:center;">
-                                    <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:210px;" title="${name}">📍 ${name} ${nhBadge}</span>
+                                    <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:210px;" title="${name}">📍 ${name} ${nhBadge} ${trafficTag}</span>
                                     <span style="color: ${IndiaMapPlanner.journeyType==='RETURN'?'#34d399':'var(--accent-yellow)'}; font-weight: 800; font-family:var(--font-display); font-size:11.5px; margin-left:6px; flex-shrink:0;">₹${toll.cost}</span>
                                 </div>
                                 ${subInfo}
@@ -1817,6 +1846,21 @@ const IndiaMapPlanner = {
                 </div>
             `;
             timelineEl.innerHTML = html;
+        }
+
+        // Mobile UX: Automatically expand bottom sheet and scroll to results
+        if (window.innerWidth <= 768) {
+            const sidebar = document.getElementById('nhai-sidebar');
+            if (sidebar) {
+                sidebar.classList.remove('collapsed');
+                const peekText = document.getElementById('mobile-peek-text');
+                if (peekText) {
+                    peekText.innerHTML = `📍 ${rData.originName} → ${rData.destName} • ${rData.totalDist} km • ₹${rData.totalTollCost} <i class="fa-solid fa-chevron-down" style="margin-left:4px;"></i>`;
+                }
+                setTimeout(() => {
+                    summaryPanel?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }
         }
     },
 
