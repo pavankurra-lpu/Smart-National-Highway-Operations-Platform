@@ -479,21 +479,37 @@ path.leaflet-interactive:focus,
 }
 .alerts-ticker-scroll {
     display: flex;
-    gap: 36px;
+    gap: 40px;
     white-space: nowrap;
     width: max-content;
-    animation: alertsScroll 30s linear infinite;
+    animation: alertsScroll 95s linear infinite;
+    will-change: transform;
 }
-.alerts-ticker-container:hover .alerts-ticker-scroll {
+.alerts-ticker-container:hover .alerts-ticker-scroll,
+.alerts-ticker-container:active .alerts-ticker-scroll {
     animation-play-state: paused;
 }
 @keyframes alertsScroll {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
 }
 .alerts-ticker-scroll span {
     color: var(--text-sec, #cbd5e1);
     font-weight: 500;
+    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+@media (max-width: 768px) {
+    .alerts-ticker-scroll {
+        animation: alertsScroll 115s linear infinite;
+        gap: 32px;
+    }
+    .alerts-ticker-scroll span {
+        font-size: 10.5px;
+    }
 }
 
 /* ===== NAV TABS (Segmented shadcn control) ===== */
