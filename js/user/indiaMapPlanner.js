@@ -674,52 +674,84 @@ const IndiaMapPlanner = {
     // ═══════════════════════════════════════════════════════════════
     _searchCache: new Map(),
 
+    _svgIcons: {
+        current: `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5" fill="currentColor"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="8" stroke-width="1.5" stroke-dasharray="2.5 2.5"/></svg>`,
+        
+        airport: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M21 15.5v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V8.5l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5l8 2.5z"/></svg>`,
+        
+        station: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2c-4.42 0-8 .5-8 4v10c0 2.21 1.79 4 4 4l-2 2v1h16v-1l-2-2c2.21 0 4-1.79 4-4V6c0-3.5-3.58-4-8-4zm0 2c3.5 0 6 .4 6 2H6c0-1.6 2.5-2 6-2zm-6 4h12v5H6V8zm2 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm8 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>`,
+        
+        toll: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M4 4h16v2H4V4zm2 4h12v2H6V8zm-2 4h16v2H4v-2zm3 4h10v5h-2v-3H9v3H7v-5z"/><circle cx="12" cy="13" r="1.5" fill="#fff"/></svg>`,
+        
+        shrine: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2l1.5 3.5h3L14 8l1.5 3.5-3.5-2-3.5 2L10 8 7.5 5.5h3L12 2zM4 14h16v2H4v-2zm-2 4h20v2H2v-2zm3-6h14v2H5v-2z"/></svg>`,
+        
+        beach: `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/><path d="M2 19c2 0 3-1 5-1s3 1 5 1 3-1 5-1 3 1 5 1"/></svg>`,
+        
+        landmark: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 3L2 8v2h20V8L12 3zM4 11v8h3v-8H4zm6 0v8h4v-8h-4zm7 0v8h3v-8h-3zM2 20v2h20v-2H2z"/></svg>`,
+        
+        hospital: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>`,
+        
+        institute: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>`,
+        
+        tech: `<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="12" x="3" y="4" rx="2"/><path d="M2 20h20M9 16v4M15 16v4M8 9h8M8 12h4"/></svg>`,
+        
+        mall: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z"/></svg>`,
+        
+        fuel: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33 0 1.38 1.12 2.5 2.5 2.5.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>`,
+        
+        hotel: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>`,
+        
+        city: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 7H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V8h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2zm0-4h-2V4h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>`,
+        
+        place: `<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`
+    },
+
     _getPlaceCategoryInfo: (item) => {
         if (item.isCurrentLoc) {
-            return { icon: 'fa-solid fa-location-crosshairs', cls: 'icon-current', badge: 'MY GPS' };
+            return { svg: IndiaMapPlanner._svgIcons.current, cls: 'icon-current', badge: 'MY GPS' };
         }
         const str = ((item.name || '') + ' ' + (item.fullName || '') + ' ' + (item.subtitle || '') + ' ' + (item.type || '') + ' ' + (item.class || '')).toLowerCase();
         
         if (str.includes('airport') || str.includes('aerodrome') || str.includes('airfield') || str.includes('helipad')) {
-            return { icon: 'fa-solid fa-plane', cls: 'icon-airport', badge: 'AIRPORT' };
+            return { svg: IndiaMapPlanner._svgIcons.airport, cls: 'icon-airport', badge: 'AIRPORT' };
         }
         if (str.includes('railway') || str.includes('station') || str.includes('junction') || str.includes('metro') || str.includes('terminus')) {
-            return { icon: 'fa-solid fa-train', cls: 'icon-station', badge: 'RAILWAY / METRO' };
+            return { svg: IndiaMapPlanner._svgIcons.station, cls: 'icon-station', badge: 'RAILWAY / METRO' };
         }
         if (str.includes('toll') || str.includes('plaza') || str.includes('expressway') || str.includes('highway') || str.includes('tollway')) {
-            return { icon: 'fa-solid fa-road', cls: 'icon-toll', badge: 'TOLL PLAZA' };
+            return { svg: IndiaMapPlanner._svgIcons.toll, cls: 'icon-toll', badge: 'TOLL PLAZA' };
         }
         if (str.includes('temple') || str.includes('mandir') || str.includes('tirumala') || str.includes('balaji') || str.includes('gurdwara') || str.includes('mosque') || str.includes('masjid') || str.includes('church') || str.includes('shrine') || str.includes('dargah')) {
-            return { icon: 'fa-solid fa-place-of-worship', cls: 'icon-shrine', badge: 'TEMPLE / SHRINE' };
+            return { svg: IndiaMapPlanner._svgIcons.shrine, cls: 'icon-shrine', badge: 'TEMPLE / SHRINE' };
         }
         if (str.includes('beach') || str.includes('lake') || str.includes('sea') || str.includes('waterfall') || str.includes('river')) {
-            return { icon: 'fa-solid fa-umbrella-beach', cls: 'icon-beach', badge: 'BEACH / NATURE' };
+            return { svg: IndiaMapPlanner._svgIcons.beach, cls: 'icon-beach', badge: 'BEACH / NATURE' };
         }
         if (str.includes('fort') || str.includes('palace') || str.includes('monument') || str.includes('mahal') || str.includes('taj') || str.includes('charminar') || str.includes('ghat') || str.includes('museum') || str.includes('heritage')) {
-            return { icon: 'fa-solid fa-landmark', cls: 'icon-landmark', badge: 'HERITAGE' };
+            return { svg: IndiaMapPlanner._svgIcons.landmark, cls: 'icon-landmark', badge: 'HERITAGE' };
         }
         if (str.includes('hospital') || str.includes('medical') || str.includes('aiims') || str.includes('clinic') || str.includes('care') || str.includes('doctor')) {
-            return { icon: 'fa-solid fa-hospital', cls: 'icon-hospital', badge: 'HOSPITAL' };
+            return { svg: IndiaMapPlanner._svgIcons.hospital, cls: 'icon-hospital', badge: 'HOSPITAL' };
         }
         if (str.includes('university') || str.includes('college') || str.includes('campus') || str.includes('institute') || str.includes('iit') || str.includes('nit') || str.includes('lpu') || str.includes('school') || str.includes('academy')) {
-            return { icon: 'fa-solid fa-graduation-cap', cls: 'icon-institute', badge: 'COLLEGE / CAMPUS' };
+            return { svg: IndiaMapPlanner._svgIcons.institute, cls: 'icon-institute', badge: 'COLLEGE / CAMPUS' };
         }
         if (str.includes('tech park') || str.includes('cyber') || str.includes('hitec') || str.includes('it park') || str.includes('software') || str.includes('infosys') || str.includes('wipro') || str.includes('tcs')) {
-            return { icon: 'fa-solid fa-laptop-code', cls: 'icon-tech', badge: 'TECH PARK / IT' };
+            return { svg: IndiaMapPlanner._svgIcons.tech, cls: 'icon-tech', badge: 'TECH PARK / IT' };
         }
         if (str.includes('mall') || str.includes('market') || str.includes('bazaar') || str.includes('center') || str.includes('shopping') || str.includes('store')) {
-            return { icon: 'fa-solid fa-bag-shopping', cls: 'icon-mall', badge: 'MALL / MARKET' };
+            return { svg: IndiaMapPlanner._svgIcons.mall, cls: 'icon-mall', badge: 'MALL / MARKET' };
         }
         if (str.includes('fuel') || str.includes('petrol') || str.includes('diesel') || str.includes('cng') || str.includes('pump') || str.includes('charging') || str.includes('ev station')) {
-            return { icon: 'fa-solid fa-gas-pump', cls: 'icon-fuel', badge: 'FUEL / EV' };
+            return { svg: IndiaMapPlanner._svgIcons.fuel, cls: 'icon-fuel', badge: 'FUEL / EV' };
         }
         if (str.includes('hotel') || str.includes('resort') || str.includes('stay') || str.includes('inn') || str.includes('lodge') || str.includes('suites')) {
-            return { icon: 'fa-solid fa-hotel', cls: 'icon-hotel', badge: 'HOTEL / STAY' };
+            return { svg: IndiaMapPlanner._svgIcons.hotel, cls: 'icon-hotel', badge: 'HOTEL / STAY' };
         }
         if (item.type === 'city' || item.type === 'administrative' || ['mumbai','delhi','bengaluru','bangalore','hyderabad','chennai','kolkata','pune','ahmedabad','jaipur','lucknow','chandigarh','guntur','vijayawada','patna','bhopal','surat','indore','varanasi','agra'].includes(item.name?.toLowerCase())) {
-            return { icon: 'fa-solid fa-city', cls: 'icon-city', badge: 'CITY' };
+            return { svg: IndiaMapPlanner._svgIcons.city, cls: 'icon-city', badge: 'CITY' };
         }
-        return { icon: 'fa-solid fa-location-dot', cls: 'icon-place', badge: 'PLACE' };
+        return { svg: IndiaMapPlanner._svgIcons.place, cls: 'icon-place', badge: 'PLACE' };
     },
 
     _highlightQuery: (text, query) => {
@@ -915,7 +947,7 @@ const IndiaMapPlanner = {
             return `
                 <div class="google-ac-item ${idx === 0 && !query ? 'focused' : ''}" data-idx="${idx}" data-name="${p.name}" data-lat="${p.lat || ''}" data-lng="${p.lng || ''}" data-state="${p.state || ''}" data-isvillage="${p.isVillage || false}" data-iscurrent="${p.isCurrentLoc || false}">
                     <div class="google-ac-icon-box ${cat.cls}">
-                        <i class="${cat.icon}"></i>
+                        ${cat.svg}
                     </div>
                     <div class="google-ac-content">
                         <div class="google-ac-title">

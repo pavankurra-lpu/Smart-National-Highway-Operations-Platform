@@ -1308,6 +1308,11 @@ body.light-mode .google-ac-item:hover {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.google-ac-icon-box svg {
+    display: block;
+    flex-shrink: 0;
+    pointer-events: none;
+}
 .google-ac-item:hover .google-ac-icon-box,
 .google-ac-item.focused .google-ac-icon-box {
     transform: scale(1.12);
