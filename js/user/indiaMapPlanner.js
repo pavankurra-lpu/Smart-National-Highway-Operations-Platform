@@ -1692,46 +1692,29 @@ const IndiaMapPlanner = {
 
     _addLayerToggle: () => {
         const container = document.createElement('div');
+        container.className = 'reactbits-dock-container';
         container.id = 'map-layer-controls';
-        Object.assign(container.style, {
-            position: 'absolute', bottom: '30px', left: '30px', zIndex: '9999',
-            display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start'
-        });
 
-        const styleBtn = (b) => {
-            Object.assign(b.style, {
-                background: 'rgba(9, 9, 11, 0.85)', backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)', color: '#e4e4e7',
-                fontFamily: 'var(--font-main)', fontSize: '13px', fontWeight: '500',
-                padding: '12px 18px', borderRadius: '12px', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', gap: '10px',
-                transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)', 
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
-                minWidth: '170px', justifyContent: 'flex-start'
-            });
-            b.addEventListener('mouseenter', () => { 
-                b.style.borderColor = 'var(--primary)'; 
-                b.style.color = 'var(--primary)';
-                b.style.transform = 'translateY(-2px) scale(1.02)'; 
-                b.style.boxShadow = '0 8px 25px var(--primary-glow), inset 0 1px 0 rgba(255,255,255,0.1)';
-            });
-            b.addEventListener('mouseleave', () => { 
-                b.style.borderColor = 'rgba(255, 255, 255, 0.1)'; 
-                b.style.color = '#e4e4e7';
-                b.style.transform = 'translateY(0) scale(1)'; 
-                b.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)';
-            });
-        };
+        const dock = document.createElement('div');
+        dock.className = 'reactbits-dock';
 
-        // 1. Locate Me / GPS Tracker Button
-        const btnLocate = document.createElement('button');
+        // 1. Locate Me Item
+        const btnLocate = document.createElement('div');
+        btnLocate.className = 'reactbits-dock-item';
         btnLocate.id = 'btn-locate-me-dynamic';
-        btnLocate.innerHTML = '<i class="fa-solid fa-location-crosshairs" style="font-size: 16px; width: 24px; text-align: center;"></i> <span>Locate Me</span>';
-        styleBtn(btnLocate);
+        btnLocate.innerHTML = `
+            <i class="fa-solid fa-location-crosshairs"></i>
+            <div class="reactbits-dock-label">Locate My Position</div>
+            <div class="reactbits-dock-dot"></div>
+        `;
         
         btnLocate.addEventListener('click', () => {
+            btnLocate.style.transform = 'scale(0.88)';
+            setTimeout(() => btnLocate.style.transform = 'scale(1)', 150);
+
             const iconEl = btnLocate.querySelector('i');
             if (iconEl) iconEl.className = 'fa-solid fa-spinner fa-spin';
+            btnLocate.classList.add('active');
             
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -1739,32 +1722,37 @@ const IndiaMapPlanner = {
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
                         if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                        btnLocate.classList.remove('active');
                         if (IndiaMapPlanner.map) IndiaMapPlanner.map.setView([lat, lng], 13);
                         
                         if (IndiaMapPlanner.userLocationMarker) IndiaMapPlanner.userLocationMarker.remove();
                         IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
                             .bindTooltip("My Location", { permanent: false, direction: 'top' })
                             .addTo(IndiaMapPlanner.map);
-                        Utils.showToast("Located successfully!", "success");
+                        Utils.showToast("Located successfully! 📍", "success");
                         const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
                         if (state) IndiaMapPlanner.fetchLiveNewsAlerts(state);
                     },
                     (error) => {
                         if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                        btnLocate.classList.remove('active');
                         Utils.showToast("Could not retrieve GPS location.", "error");
                     },
                     { enableHighAccuracy: true, timeout: 8000 }
                 );
             } else {
                 if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                btnLocate.classList.remove('active');
                 Utils.showToast("Geolocation is not supported by your browser.", "error");
             }
         });
 
-        // 2. Vehicle Avatar 3D Switcher
-        const btnVehicle = document.createElement('button');
+        // 2. Vehicle Avatar Switcher (Classic Dot / Cars)
+        const btnVehicle = document.createElement('div');
+        btnVehicle.className = 'reactbits-dock-item has-active';
+        btnVehicle.id = 'btn-avatar-dock';
         
-        const updateBtnText = () => {
+        const updateAvatarItem = () => {
             const v = IndiaMapPlanner._currentVehicleAvatar || 'default';
             let label = 'Classic Dot';
             if (v === 'car_red') label = 'Sports Car';
@@ -1773,17 +1761,23 @@ const IndiaMapPlanner = {
             if (v === 'scooter') label = 'Scooter';
             
             const icon = IndiaMapPlanner._vehicleIcons[v] || '<i class="fa-solid fa-location-dot"></i>';
-            btnVehicle.innerHTML = `<span style="font-size: 16px; width: 24px; text-align: center; display: inline-block;">${icon}</span> <span>${label}</span>`;
+            btnVehicle.innerHTML = `
+                <span style="display: flex; align-items: center; justify-content: center; font-size: 20px;">${icon}</span>
+                <div class="reactbits-dock-label" id="dock-avatar-label">Avatar: ${label}</div>
+                <div class="reactbits-dock-dot"></div>
+            `;
         };
-        updateBtnText();
-        styleBtn(btnVehicle);
+        updateAvatarItem();
 
         btnVehicle.addEventListener('click', () => {
+            btnVehicle.style.transform = 'scale(0.88)';
+            setTimeout(() => btnVehicle.style.transform = 'scale(1)', 150);
+
             const types = IndiaMapPlanner._vehicleTypes;
             let idx = types.indexOf(IndiaMapPlanner._currentVehicleAvatar);
             idx = (idx + 1) % types.length;
             IndiaMapPlanner._currentVehicleAvatar = types[idx];
-            updateBtnText();
+            updateAvatarItem();
             
             if (IndiaMapPlanner.userLocationMarker) {
                 const latlng = IndiaMapPlanner.userLocationMarker.getLatLng();
@@ -1793,12 +1787,108 @@ const IndiaMapPlanner = {
                     .addTo(IndiaMapPlanner.map);
             }
             
-            Utils.showToast("Vehicle avatar updated! 🚗", "success");
+            const currentLabel = document.getElementById('dock-avatar-label')?.innerText || 'Vehicle Avatar';
+            Utils.showToast(`${currentLabel} selected! 🚗`, "success");
         });
 
-        container.appendChild(btnLocate);
-        container.appendChild(btnVehicle);
-        
+        // 3. Toll Area Scanner Tool
+        const btnScanner = document.createElement('div');
+        btnScanner.className = 'reactbits-dock-item';
+        btnScanner.id = 'btn-scanner-dock';
+        btnScanner.innerHTML = `
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <div class="reactbits-dock-label">Area Toll Scanner</div>
+            <div class="reactbits-dock-dot"></div>
+        `;
+        btnScanner.addEventListener('click', () => {
+            btnScanner.style.transform = 'scale(0.88)';
+            setTimeout(() => btnScanner.style.transform = 'scale(1)', 150);
+            IndiaMapPlanner.toggleSelectionMode();
+            btnScanner.classList.toggle('active', IndiaMapPlanner.isSelectionMode);
+        });
+
+        // 4. Satellite / Dark View Toggle
+        const btnLayer = document.createElement('div');
+        btnLayer.className = 'reactbits-dock-item';
+        btnLayer.id = 'btn-layer-dock';
+        btnLayer.innerHTML = `
+            <i class="fa-solid fa-layer-group"></i>
+            <div class="reactbits-dock-label" id="dock-layer-label">Satellite View</div>
+            <div class="reactbits-dock-dot"></div>
+        `;
+
+        let isSatellite = false;
+        btnLayer.addEventListener('click', () => {
+            btnLayer.style.transform = 'scale(0.88)';
+            setTimeout(() => btnLayer.style.transform = 'scale(1)', 150);
+            isSatellite = !isSatellite;
+            btnLayer.classList.toggle('active', isSatellite);
+
+            const labelEl = document.getElementById('dock-layer-label');
+            if (isSatellite) {
+                if (IndiaMapPlanner.map) {
+                    if (IndiaMapPlanner.darkLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner.darkLayer);
+                    IndiaMapPlanner.satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                        maxZoom: 19,
+                        attribution: 'Tiles &copy; Esri'
+                    }).addTo(IndiaMapPlanner.map);
+                }
+                if (labelEl) labelEl.innerText = "Dark Map View";
+                Utils.showToast("Satellite View enabled 🛰️", "info");
+            } else {
+                if (IndiaMapPlanner.map) {
+                    if (IndiaMapPlanner.satLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner.satLayer);
+                    if (IndiaMapPlanner.darkLayer) IndiaMapPlanner.darkLayer.addTo(IndiaMapPlanner.map);
+                }
+                if (labelEl) labelEl.innerText = "Satellite View";
+                Utils.showToast("Dark Map View enabled 🗺️", "info");
+            }
+        });
+
+        dock.appendChild(btnLocate);
+        dock.appendChild(btnVehicle);
+        dock.appendChild(btnScanner);
+        dock.appendChild(btnLayer);
+        container.appendChild(dock);
+
+        // React Bits Dock Proximity Magnification Engine
+        const items = [btnLocate, btnVehicle, btnScanner, btnLayer];
+        const maxDistance = 110; // Proximity threshold in pixels
+        const maxScale = 0.38;   // Max scale boost (up to 1.38x)
+
+        dock.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            items.forEach((item) => {
+                const rect = item.getBoundingClientRect();
+                const itemCenterX = rect.left + rect.width / 2;
+                const distance = Math.abs(mouseX - itemCenterX);
+
+                if (distance < maxDistance) {
+                    // Smooth cosine interpolation for natural macOS / React Bits spring feel
+                    const cosFactor = Math.cos((distance / maxDistance) * (Math.PI / 2));
+                    const scale = 1 + cosFactor * maxScale;
+                    const translateY = -(scale - 1) * 10;
+                    item.style.transform = `scale(${scale.toFixed(3)}) translateY(${translateY.toFixed(1)}px)`;
+
+                    if (distance < 38) {
+                        item.classList.add('show-label');
+                    } else {
+                        item.classList.remove('show-label');
+                    }
+                } else {
+                    item.style.transform = 'scale(1) translateY(0)';
+                    item.classList.remove('show-label');
+                }
+            });
+        });
+
+        dock.addEventListener('mouseleave', () => {
+            items.forEach((item) => {
+                item.style.transform = 'scale(1) translateY(0)';
+                item.classList.remove('show-label');
+            });
+        });
+
         const mapEl = document.getElementById('map');
         if (mapEl) mapEl.appendChild(container);
     },
