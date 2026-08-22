@@ -1126,19 +1126,29 @@ const IndiaMapPlanner = {
                 </div>
             `;
             if (rData.tolls.length > 0) {
-                rData.tolls.forEach(toll => {
+                rData.tolls.forEach((toll, idx) => {
                     const td = window.TollSeedData?.find(s => s.id === toll.id);
-                    const name = td ? td.name : 'Toll Plaza';
+                    const name = td ? td.name : (toll.name || 'NH Toll Plaza');
+                    const nhBadge = (td && td.nhCorridor && td.nhCorridor !== 'N/A') ? `<span style="font-size:8px; padding:1px 4px; border-radius:3px; background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); margin-left:4px;">NH-${td.nhCorridor}</span>` : '';
                     html += `
                         <div style="position: relative; margin-bottom: 12px; z-index: 2;">
                             <div style="position: absolute; left: -22px; top: 4px; width: 7px; height: 7px; border-radius: 50%; background: #fbbf24; border: 1.5px solid #000; box-shadow: 0 0 6px rgba(251, 191, 36, 0.4);"></div>
-                            <div style="font-size: 10px; font-weight: 600; color: var(--text-sec); display: flex; justify-content: space-between;">
-                                <span>${name}</span>
-                                <span style="color: var(--accent-yellow); font-weight: 700;">₹${toll.cost}</span>
+                            <div style="font-size: 10.5px; font-weight: 600; color: #f1f5f9; display: flex; justify-content: space-between; align-items:center;">
+                                <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:230px;" title="${name}">📍 ${name} ${nhBadge}</span>
+                                <span style="color: var(--accent-yellow); font-weight: 800; font-family:var(--font-display); font-size:11px; margin-left:6px; flex-shrink:0;">₹${toll.cost}</span>
                             </div>
                         </div>
                     `;
                 });
+            } else {
+                html += `
+                    <div style="position: relative; margin-bottom: 12px; z-index: 2;">
+                        <div style="position: absolute; left: -22px; top: 4px; width: 7px; height: 7px; border-radius: 50%; background: #10b981; border: 1.5px solid #000;"></div>
+                        <div style="font-size: 10px; color: var(--primary); font-weight: 600;">
+                            ✨ Direct Highway Corridor (No Toll Plazas detected)
+                        </div>
+                    </div>
+                `;
             }
             html += `
                 <div style="position: relative; z-index: 2;">
@@ -1163,7 +1173,7 @@ const IndiaMapPlanner = {
 
         const vehicleType    = document.getElementById('vehicle-type')?.value || 'LMV';
         const isExempt       = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(vehicleType);
-        const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 1.5;
+        const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 2.0;
         const sampleStep     = Math.max(1, Math.floor(coords.length / 4000));
 
         TollSeedData.forEach(toll => {
@@ -1180,7 +1190,7 @@ const IndiaMapPlanner = {
                     
                     let cost = 0;
                     if (!isExempt && !(IndiaMapPlanner.isSpecialVerified && vehicleType !== 'LMV')) {
-                        if (toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType] !== undefined) {
+                        if (toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType] !== undefined && toll.tollRatesByVehicleClass[vehicleType] > 0) {
                             cost = toll.tollRatesByVehicleClass[vehicleType];
                         } else {
                             const base = toll.baseRate || toll.singleJourney || 50;
@@ -1195,14 +1205,18 @@ const IndiaMapPlanner = {
                         name: toll.name || toll.tollName || 'NH Toll Plaza', 
                         cost: cost,
                         lat: toll.lat,
-                        lng: toll.lng
+                        lng: toll.lng,
+                        coordIndex: i
                     });
                     break;
                 }
             }
         });
 
-        console.log(`[TollEngine] Matched ${tolls.length} tolls for vehicle ${vehicleType}. Total Cost: ₹${totalTollCost}`);
+        // Sort tolls sequentially by route progression (from Origin -> Destination)
+        tolls.sort((a, b) => a.coordIndex - b.coordIndex);
+
+        console.log(`[TollEngine] Matched ${tolls.length} tolls in journey order for vehicle ${vehicleType}. Total Cost: ₹${totalTollCost}`);
         return { tolls, totalTollCost };
     },
 
