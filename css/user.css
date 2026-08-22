@@ -406,6 +406,43 @@ path.leaflet-interactive:focus,
     transform: translateY(-1px);
 }
 
+/* ===== SNHOP ACCESS QUICK TOOLS BAR ===== */
+.snhop-quick-tools {
+    display: flex;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(15, 23, 42, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.snhop-tool-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #cbd5e1;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    white-space: nowrap;
+}
+.snhop-tool-btn:hover,
+.snhop-tool-btn:active {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.4);
+    color: #fff;
+    transform: translateY(-1px);
+}
+.snhop-tool-btn i {
+    color: #38bdf8;
+    font-size: 12px;
+}
+
 /* ===== KOKONUT UI STYLE ACTIVE HIGHWAY ALERTS TICKER ===== */
 .alerts-ticker-container {
     display: flex;
@@ -1686,38 +1723,36 @@ body.light-mode .google-ac-subtitle {
         top: 10px;
     }
 
-    /* Mobile Floating Dock positioning */
-    .reactbits-dock-container {
-        position: fixed !important;
-        bottom: 12px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        z-index: 450 !important;
-        width: auto !important;
-        max-width: 95vw !important;
+    /* Mobile: Remove Floating Bottom Bar */
+    .reactbits-dock-container,
+    #map-layer-controls {
+        display: none !important;
     }
-    .reactbits-dock {
-        padding: 4px 12px !important;
-        gap: 10px !important;
-        background: rgba(15, 23, 42, 0.90) !important;
-        backdrop-filter: blur(28px) saturate(200%) !important;
-        -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.18) !important;
-        border-radius: 25px !important;
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ===== FULL SCREEN & HORIZONTAL / VERTICAL PHONE ROTATION SUPPORT ===== */
+@media (max-width: 950px) and (orientation: landscape) {
+    .sidebar {
+        width: 45vw !important;
+        max-width: 340px !important;
     }
-    .reactbits-dock-item {
-        width: 38px !important;
-        height: 38px !important;
-        font-size: 15px !important;
-        border-radius: 12px !important;
+    .sidebar-content {
+        padding-bottom: 30px !important;
     }
-    .dock-avatar-popup {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 290px;
-        max-width: 92vw;
-        bottom: calc(100% + 10px);
+    #route-summary-panel .route-summary-float {
+        max-height: 58vh !important;
+        padding: 8px 12px 14px !important;
+    }
+    .snhop-quick-tools {
+        padding: 5px 10px !important;
+        gap: 6px !important;
+    }
+    .snhop-tool-btn {
+        padding: 5px 4px !important;
+        font-size: 10px !important;
+    }
+    .alerts-ticker-container {
+        padding: 4px 10px !important;
     }
 }
 
