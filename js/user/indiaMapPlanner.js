@@ -2595,7 +2595,7 @@ const IndiaMapPlanner = {
         btnLocate.id = 'btn-locate-me-dynamic';
         btnLocate.innerHTML = `
             <i class="fa-solid fa-location-crosshairs"></i>
-            <div class="reactbits-dock-label">Locate My Position</div>
+            <div class="reactbits-dock-label">Locate Me</div>
         `;
         
         btnLocate.addEventListener('click', () => {

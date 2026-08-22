@@ -1746,17 +1746,17 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     transform: translateX(-50%) translateY(6px);
     opacity: 0;
     pointer-events: none;
-    background: rgba(9, 9, 11, 0.92);
+    background: rgba(9, 9, 11, 0.95);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 8px;
     padding: 5px 10px;
     color: #f8fafc;
     font-size: 11px;
     font-weight: 600;
     white-space: nowrap;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
     transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 10000;
 }
@@ -1768,13 +1768,43 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     left: 50%;
     transform: translateX(-50%);
     border: 5px solid transparent;
-    border-top-color: rgba(9, 9, 11, 0.92);
+    border-top-color: rgba(9, 9, 11, 0.95);
 }
 
 .reactbits-dock-item:hover .reactbits-dock-label,
 .reactbits-dock-item.show-label .reactbits-dock-label {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+}
+
+/* Ensure leftmost item tooltip never clips off-screen */
+.reactbits-dock-item:first-child .reactbits-dock-label {
+    left: 0;
+    transform: translateX(0) translateY(6px);
+}
+.reactbits-dock-item:first-child .reactbits-dock-label::after {
+    left: 23px;
+    transform: translateX(-50%);
+}
+.reactbits-dock-item:first-child:hover .reactbits-dock-label,
+.reactbits-dock-item:first-child.show-label .reactbits-dock-label {
+    transform: translateX(0) translateY(0);
+}
+
+/* Ensure rightmost item tooltip never clips off-screen */
+.reactbits-dock-item:last-child .reactbits-dock-label {
+    left: auto;
+    right: 0;
+    transform: translateX(0) translateY(6px);
+}
+.reactbits-dock-item:last-child .reactbits-dock-label::after {
+    left: auto;
+    right: 18px;
+    transform: translateX(0);
+}
+.reactbits-dock-item:last-child:hover .reactbits-dock-label,
+.reactbits-dock-item:last-child.show-label .reactbits-dock-label {
+    transform: translateX(0) translateY(0);
 }
 
 /* Remove bottom green dot completely per user request */
