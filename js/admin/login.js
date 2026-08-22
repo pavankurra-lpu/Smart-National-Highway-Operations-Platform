@@ -305,24 +305,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const count = allTolls.filter(t => (t.state || 'Other') === selectedState && t.district === dist).length;
                 const opt = document.createElement('option');
                 opt.value = dist;
-                opt.textContent = `${dist}${count > 0 ? ` (${count})` : ''}`;
+                opt.textContent = `${dist}${count > 0 ? ` (${count} Tolls)` : ''}`;
                 districtSelect.appendChild(opt);
             });
         }
     };
 
-    // Function to Render Plazas into Select Dropdown
+    // Function to Render Plazas into Select Dropdown and Interactive Cards
     const renderPlazas = () => {
         if (!plazaSelect) return;
         const selectedState = stateSelect ? stateSelect.value : 'ALL';
         const selectedDistrict = districtSelect ? districtSelect.value : 'ALL';
-        const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+        const cardListEl = document.getElementById('district-tolls-card-list');
 
         let filtered = allTolls.filter(toll => {
             const tState = (toll.state || '').toLowerCase();
             const tDist = (toll.district || '').toLowerCase();
-            const tName = (toll.name || toll.plazaName || '').toLowerCase();
-            const tCorr = (toll.nhCorridor || toll.highway || '').toLowerCase();
 
             // State match
             if (selectedState !== 'ALL' && (toll.state || 'Other') !== selectedState) return false;
@@ -330,39 +328,45 @@ document.addEventListener('DOMContentLoaded', () => {
             // District match
             if (selectedDistrict !== 'ALL' && (toll.district || '') !== selectedDistrict) return false;
 
-            // Search query match (search by state, district, plaza name, or NH corridor)
-            if (query) {
-                const matches = tName.includes(query) || tState.includes(query) || tDist.includes(query) || tCorr.includes(query);
-                if (!matches) return false;
-            }
-
             return true;
         });
 
-        // Update badge
+        // Update badge with clear feedback
         if (countBadge) {
-            countBadge.textContent = `${filtered.length} Plazas Found`;
+            if (selectedDistrict !== 'ALL') {
+                countBadge.textContent = `${filtered.length} Tolls in ${selectedDistrict}`;
+            } else if (selectedState !== 'ALL') {
+                countBadge.textContent = `${filtered.length} Tolls in ${selectedState}`;
+            } else {
+                countBadge.textContent = `${allTolls.length}+ Plazas (All India)`;
+            }
             countBadge.style.color = filtered.length > 0 ? '#38bdf8' : '#f43f5e';
         }
 
         plazaSelect.innerHTML = '';
 
-        // Default super-admin option
-        const superOpt = document.createElement('option');
-        superOpt.value = 'ALL';
-        superOpt.textContent = `⭐ All Plazas (Super Admin - All India)`;
-        plazaSelect.appendChild(superOpt);
+        // Default super-admin option if All States / All Districts
+        if (selectedState === 'ALL' || selectedDistrict === 'ALL') {
+            const superOpt = document.createElement('option');
+            superOpt.value = 'ALL';
+            superOpt.textContent = `⭐ All Plazas (${selectedState === 'ALL' ? 'Super Admin - All India' : `All ${selectedState}`})`;
+            plazaSelect.appendChild(superOpt);
+        }
 
         if (filtered.length === 0) {
             const noOpt = document.createElement('option');
             noOpt.value = '';
-            noOpt.textContent = `No plazas match query "${query}"`;
+            noOpt.textContent = `No toll plazas found in this district`;
             noOpt.disabled = true;
             plazaSelect.appendChild(noOpt);
+            if (cardListEl) {
+                cardListEl.innerHTML = '<div style="font-size:11px; color:#94a3b8; padding:12px; text-align:center;">No toll plazas registered for this district.</div>';
+            }
             return;
         }
 
-        filtered.slice(0, 300).forEach(t => {
+        // Populate Plaza Dropdown
+        filtered.slice(0, 300).forEach((t, idx) => {
             const opt = document.createElement('option');
             opt.value = t.name || t.id;
             const corr = t.nhCorridor && t.nhCorridor !== 'N/A' ? ` [NH-${t.nhCorridor}]` : '';
@@ -372,11 +376,45 @@ document.addEventListener('DOMContentLoaded', () => {
             plazaSelect.appendChild(opt);
         });
 
-        if (filtered.length > 300) {
-            const moreOpt = document.createElement('option');
-            moreOpt.disabled = true;
-            moreOpt.textContent = `... and ${filtered.length - 300} more (refine search or district)`;
-            plazaSelect.appendChild(moreOpt);
+        // Auto-select first plaza if a specific district is picked
+        if (selectedDistrict !== 'ALL' && filtered.length > 0) {
+            plazaSelect.value = filtered[0].name || filtered[0].id;
+        }
+
+        // Populate Interactive Quick-Click Toll Cards
+        if (cardListEl) {
+            cardListEl.innerHTML = '';
+            
+            // Header for district tolls
+            if (selectedDistrict !== 'ALL' || selectedState !== 'ALL') {
+                const head = document.createElement('div');
+                head.style.cssText = 'font-size: 9.5px; color: #94a3b8; font-weight: 700; margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center;';
+                head.innerHTML = `<span><i class="fa-solid fa-hand-pointer" style="color:#818cf8;"></i> Click any toll to select directly:</span> <span style="color:#38bdf8;">${filtered.length} Plazas</span>`;
+                cardListEl.appendChild(head);
+            }
+
+            filtered.slice(0, 40).forEach((t, idx) => {
+                const card = document.createElement('div');
+                const isSelected = (selectedDistrict !== 'ALL' && idx === 0) || (plazaSelect.value === (t.name || t.id));
+                card.className = `toll-card-item ${isSelected ? 'selected' : ''}`;
+                const corr = t.nhCorridor && t.nhCorridor !== 'N/A' ? `NH-${t.nhCorridor}` : 'National Hwy';
+                
+                card.innerHTML = `
+                    <div style="flex:1; min-width:0; padding-right:8px;">
+                        <div class="toll-card-name"><i class="fa-solid fa-archway" style="color:#818cf8; font-size:10px;"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</span></div>
+                        <div class="toll-card-location"><i class="fa-solid fa-location-dot" style="font-size:8px; color:#38bdf8;"></i> ${t.district || ''}, ${t.state || 'India'}</div>
+                    </div>
+                    <span class="toll-card-corridor">${corr}</span>
+                `;
+
+                card.addEventListener('click', () => {
+                    cardListEl.querySelectorAll('.toll-card-item').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    plazaSelect.value = t.name || t.id;
+                });
+
+                cardListEl.appendChild(card);
+            });
         }
     };
 
@@ -394,17 +432,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            // Auto-detect if user typed a known state name (e.g. "Punjab")
-            const q = searchInput.value.trim().toLowerCase();
-            const matchedState = statesList.find(s => s.toLowerCase() === q);
-            if (matchedState && stateSelect) {
-                stateSelect.value = matchedState;
-                populateDistricts(matchedState);
+    if (plazaSelect) {
+        plazaSelect.addEventListener('change', () => {
+            const cardListEl = document.getElementById('district-tolls-card-list');
+            if (cardListEl) {
+                cardListEl.querySelectorAll('.toll-card-item').forEach(card => {
+                    const name = card.querySelector('.toll-card-name span')?.textContent;
+                    if (name && (plazaSelect.value.includes(name) || name.includes(plazaSelect.value))) {
+                        card.classList.add('selected');
+                    } else {
+                        card.classList.remove('selected');
+                    }
+                });
             }
-            renderPlazas();
         });
+    }
+
+    // Default to Punjab to showcase instant segregation out of the box
+    if (stateSelect) {
+        stateSelect.value = 'Punjab';
+        populateDistricts('Punjab');
     }
 
     // Initial render
@@ -426,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(async () => {
                 const success = await Auth.login(id, pass);
                 if (success) {
-                    sessionStorage.setItem('nhai_admin_auth', 'token-admin-session-2026');
+                    sessionStorage.setItem('nhai_admin_auth', 'nhai-admin-valid-2026');
                     
                     // Store the selected plaza details
                     const selectedVal = plazaSelect ? plazaSelect.value : 'ALL';
@@ -437,7 +484,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (selectedOpt && selectedOpt.dataset.tollJson) {
                         sessionStorage.setItem('admin_plaza_data', selectedOpt.dataset.tollJson);
                     } else {
-                        sessionStorage.removeItem('admin_plaza_data');
+                        // Find matching toll in allTolls if value is plaza name
+                        const matchedToll = allTolls.find(t => t.name === selectedVal || t.id === selectedVal);
+                        if (matchedToll) {
+                            sessionStorage.setItem('admin_plaza_data', JSON.stringify(matchedToll));
+                        } else {
+                            sessionStorage.removeItem('admin_plaza_data');
+                        }
                     }
 
                     window.location.href = 'index.html';
@@ -446,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 }
-            }, 600);
+            }, 500);
         });
     }
 });

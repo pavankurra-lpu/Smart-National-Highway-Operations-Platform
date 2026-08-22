@@ -11,75 +11,74 @@
 </head>
 <body class="admin-login-body">
 
-    <div class="glass-panel login-card" style="width: 100%; max-width: 460px; text-align: center; border-color: rgba(255,255,255,0.12); padding: 32px 28px; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(24px); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.7);">
-        <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(99, 102, 241, 0.18); border: 1px solid rgba(99, 102, 241, 0.4); display: inline-flex; align-items: center; justify-content: center; color: #818cf8; font-size: 24px; margin-bottom: 16px; box-shadow: 0 0 24px rgba(99, 102, 241, 0.3);">
+    <div class="glass-panel login-card" style="width: 100%; max-width: 480px; text-align: center; border-color: rgba(255,255,255,0.12); padding: 30px 26px; background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(28px); border-radius: 20px; box-shadow: 0 24px 60px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,255,255,0.1);">
+        <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(99, 102, 241, 0.18); border: 1px solid rgba(99, 102, 241, 0.4); display: inline-flex; align-items: center; justify-content: center; color: #818cf8; font-size: 22px; margin-bottom: 12px; box-shadow: 0 0 24px rgba(99, 102, 241, 0.3);">
             <i class="fa-solid fa-building-shield"></i>
         </div>
-        <h2 style="margin-bottom: 6px; color: #fff; font-size: 20px; font-weight: 800; letter-spacing: -0.02em;">AUTHORIZED PERSONNEL ONLY</h2>
-        <p style="font-size: 11.5px; margin-bottom: 24px; color: var(--text-sec);">SNHOP National Highway Operations Control Room</p>
+        <h2 style="margin-bottom: 4px; color: #ffffff; font-size: 19px; font-weight: 800; letter-spacing: -0.02em;">AUTHORIZED PERSONNEL ONLY</h2>
+        <p style="font-size: 11px; margin-bottom: 20px; color: #94a3b8;">SNHOP National Highway Operations Command</p>
 
         <form id="login-form" class="flex-col gap-3">
-            <div style="text-align: left;">
-                <label style="font-size: 10.5px; color: var(--text-sec); font-weight: 700; letter-spacing: 0.5px;">STAFF ID</label>
-                <input type="text" id="admin-id" placeholder="admin@nhai" value="admin@nhai" required autocomplete="off" style="width:100%; padding:10px 12px; margin-top:4px; font-size:12.5px; background:rgba(30,41,59,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
-            </div>
-            
-            <div style="text-align: left;">
-                <label style="font-size: 10.5px; color: var(--text-sec); font-weight: 700; letter-spacing: 0.5px;">PASSCODE</label>
-                <input type="password" id="admin-pass" placeholder="NHAI@2026" value="NHAI@2026" required autocomplete="off" style="width:100%; padding:10px 12px; margin-top:4px; font-size:12.5px; background:rgba(30,41,59,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; text-align: left;">
+                <div>
+                    <label style="font-size: 10px; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">STAFF ID</label>
+                    <input type="text" id="admin-id" placeholder="admin@nhai" value="admin@nhai" required autocomplete="off" style="width:100%; box-sizing:border-box; padding:9px 10px; margin-top:3px; font-size:12px; background:rgba(30,41,59,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
+                </div>
+                <div>
+                    <label style="font-size: 10px; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">PASSCODE</label>
+                    <input type="password" id="admin-pass" placeholder="NHAI@2026" value="NHAI@2026" required autocomplete="off" style="width:100%; box-sizing:border-box; padding:9px 10px; margin-top:3px; font-size:12px; background:rgba(30,41,59,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:#fff;">
+                </div>
             </div>
 
-            <!-- TOLL PLAZA STATE / DISTRICT / CORRIDOR SELECTION SYSTEM -->
-            <div style="text-align: left; background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px; margin-top: 4px;">
+            <!-- DIRECT STATE & DISTRICT TOLL PICKER -->
+            <div style="text-align: left; background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px; margin-top: 2px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
                     <label style="font-size: 11px; color: #38bdf8; font-weight: 700; display:flex; align-items:center; gap:6px;">
                         <i class="fa-solid fa-map-location-dot"></i> ASSIGNED TOLL PLAZA
                     </label>
-                    <span id="plaza-count-badge" style="font-size: 9.5px; color: #94a3b8; font-weight: 600;">1,550+ Plazas</span>
+                    <span id="plaza-count-badge" style="font-size: 9.5px; color: #38bdf8; font-weight: 700; background: rgba(56,189,248,0.12); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(56,189,248,0.25);">Select Location</span>
                 </div>
 
-                <!-- Instant Search Toll or State -->
-                <div style="position: relative; margin-bottom: 8px;">
-                    <input type="text" id="toll-search-input" placeholder="🔍 Search Toll / State (e.g. Punjab, NH-44, Lalru)..." autocomplete="off" style="width: 100%; box-sizing: border-box; padding: 8px 10px; font-size: 11.5px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; color: #fff;">
-                </div>
-
-                <!-- State and District Cascade Filter Grid -->
+                <!-- Step 1 & 2: State & District Cascade Grid -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
                     <div>
-                        <label style="font-size: 9.5px; color: #94a3b8; font-weight: 600; display: block; margin-bottom: 2px;">Filter State</label>
-                        <select id="toll-state-select" style="width: 100%; padding: 7px 8px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; color: #fff; font-size: 11px; outline: none;">
-                            <option value="ALL">All States (India)</option>
+                        <label style="font-size: 9.5px; color: #cbd5e1; font-weight: 700; display: block; margin-bottom: 2px;">1. Select State</label>
+                        <select id="toll-state-select" style="width: 100%; padding: 8px; background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; color: #fff; font-size: 11.5px; font-weight: 600; outline: none; cursor: pointer;">
+                            <option value="ALL">⭐ All States (India)</option>
                         </select>
                     </div>
                     <div>
-                        <label style="font-size: 9.5px; color: #94a3b8; font-weight: 600; display: block; margin-bottom: 2px;">Filter District</label>
-                        <select id="toll-district-select" style="width: 100%; padding: 7px 8px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; color: #fff; font-size: 11px; outline: none;">
+                        <label style="font-size: 9.5px; color: #cbd5e1; font-weight: 700; display: block; margin-bottom: 2px;">2. Select District</label>
+                        <select id="toll-district-select" style="width: 100%; padding: 8px; background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; color: #fff; font-size: 11.5px; font-weight: 600; outline: none; cursor: pointer;">
                             <option value="ALL">All Districts</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Main Toll Plaza Selection Dropdown -->
+                <!-- Step 3: Main Toll Plaza Select -->
                 <div>
-                    <label style="font-size: 9.5px; color: #cbd5e1; font-weight: 700; display: block; margin-bottom: 2px;">Selected Plaza to Manage</label>
-                    <select id="admin-plaza" required style="width: 100%; padding: 9px 10px; background: #0f172a; border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 6px; color: #f8fafc; font-size: 12px; font-weight: 600; outline: none;">
+                    <label style="font-size: 9.5px; color: #cbd5e1; font-weight: 700; display: block; margin-bottom: 2px;">3. Choose Assigned Plaza</label>
+                    <select id="admin-plaza" required style="width: 100%; padding: 9px 10px; background: #0f172a; border: 1px solid rgba(99, 102, 241, 0.5); border-radius: 6px; color: #f8fafc; font-size: 11.5px; font-weight: 600; outline: none; cursor: pointer;">
                         <option value="ALL">⭐ All Plazas (Super Admin - All India)</option>
                     </select>
                 </div>
+
+                <!-- Interactive Quick-Click Toll Cards Container -->
+                <div id="district-tolls-card-list" class="district-tolls-card-list"></div>
             </div>
 
-            <p id="login-error" style="color: var(--accent-red); font-size: 12px; min-height: 16px; margin: 0;"></p>
+            <p id="login-error" style="color: var(--accent-red); font-size: 11.5px; min-height: 14px; margin: 0;"></p>
 
-            <button type="submit" class="btn btn-primary w-full" style="justify-content: center; padding: 13px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);">
+            <button type="submit" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);">
                 <i class="fa-solid fa-lock-open"></i> AUTHENTICATE & ENTER
             </button>
         </form>
 
-        <div style="margin-top: 24px; font-size: 10px; color: var(--text-sec);">
-            <p>Authorized NHAI Officers & Plaza Managers Only.</p>
-            <p style="margin-top: 4px; color: #38bdf8;">Demo Creds: admin@nhai / NHAI@2026</p>
+        <div style="margin-top: 18px; font-size: 10px; color: #94a3b8;">
+            <p>Authorized NHAI Officers & Toll Plaza Managers Only.</p>
+            <p style="margin-top: 3px; color: #38bdf8; font-weight: 600;">Demo: admin@nhai / NHAI@2026</p>
         </div>
-        <a href="../index.html" style="display:inline-block; margin-top: 12px; font-size: 11.5px; color: #94a3b8; text-decoration: none;">← Back to Gateway</a>
+        <a href="../index.html" style="display:inline-block; margin-top: 10px; font-size: 11px; color: #94a3b8; text-decoration: none;">← Back to Gateway</a>
     </div>
 
     <!-- Scripts -->
