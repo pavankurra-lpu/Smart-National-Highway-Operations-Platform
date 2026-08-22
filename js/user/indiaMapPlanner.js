@@ -1165,15 +1165,14 @@ const IndiaMapPlanner = {
     // TOLL ESTIMATION — corridor matching against route geometry
     // ═══════════════════════════════════════════════════════════════
     estimateTollsOnRoute: coords => {
-        const tolls = [];
+        const rawMatched = [];
         const tollIds = new Set();
-        let totalTollCost = 0;
 
-        if (!window.TollSeedData || coords.length === 0) return { tolls, totalTollCost };
+        if (!window.TollSeedData || coords.length === 0) return { tolls: [], totalTollCost: 0 };
 
         const vehicleType    = document.getElementById('vehicle-type')?.value || 'LMV';
         const isExempt       = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(vehicleType);
-        const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 2.0;
+        const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 2.5;
         const sampleStep     = Math.max(1, Math.floor(coords.length / 4000));
 
         TollSeedData.forEach(toll => {
@@ -1199,11 +1198,11 @@ const IndiaMapPlanner = {
                         }
                     }
                     
-                    totalTollCost += cost;
-                    tolls.push({ 
+                    rawMatched.push({ 
                         id: toll.id, 
                         name: toll.name || toll.tollName || 'NH Toll Plaza', 
                         cost: cost,
+                        baseRate: toll.baseRate || 50,
                         lat: toll.lat,
                         lng: toll.lng,
                         coordIndex: i
@@ -1213,8 +1212,35 @@ const IndiaMapPlanner = {
             }
         });
 
-        // Sort tolls sequentially by route progression (from Origin -> Destination)
-        tolls.sort((a, b) => a.coordIndex - b.coordIndex);
+        // 1. Sort raw matched tolls sequentially by route progression (from Origin -> Destination)
+        rawMatched.sort((a, b) => a.coordIndex - b.coordIndex);
+
+        // 2. Intelligent NHAI spatial deduplication (merges duplicate slip lanes & ramp slips within 12km)
+        const tolls = [];
+        let totalTollCost = 0;
+        
+        rawMatched.forEach(t => {
+            if (tolls.length === 0) {
+                tolls.push(t);
+                totalTollCost += t.cost;
+            } else {
+                const last = tolls[tolls.length - 1];
+                const indexDiff = Math.abs(t.coordIndex - last.coordIndex);
+                const approxDistKm = (indexDiff / coords.length) * (parseFloat(IndiaMapPlanner.selectedRouteData?.totalDist || 100));
+                
+                if (approxDistKm < 12.0) {
+                    // Within 12km of previous toll on same highway: keep the mainline/higher tariff barrier
+                    if (t.cost > last.cost) {
+                        totalTollCost -= last.cost;
+                        tolls[tolls.length - 1] = t;
+                        totalTollCost += t.cost;
+                    }
+                } else {
+                    tolls.push(t);
+                    totalTollCost += t.cost;
+                }
+            }
+        });
 
         console.log(`[TollEngine] Matched ${tolls.length} tolls in journey order for vehicle ${vehicleType}. Total Cost: ₹${totalTollCost}`);
         return { tolls, totalTollCost };
