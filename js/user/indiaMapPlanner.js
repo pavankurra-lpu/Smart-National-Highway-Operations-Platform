@@ -675,35 +675,141 @@ const IndiaMapPlanner = {
     _searchCache: new Map(),
 
     _svgIcons: {
-        current: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" x2="5" y1="12" y2="12"/><line x1="19" x2="22" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="5"/><line x1="12" x2="12" y1="19" y2="22"/><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>`,
+        current: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <circle cx="32" cy="32" r="28" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3"/>
+            <circle cx="32" cy="32" r="18" fill="rgba(16,185,129,0.25)" stroke="#34d399" stroke-width="2.5"/>
+            <circle cx="32" cy="32" r="8" fill="#10b981" stroke="#ffffff" stroke-width="2.5"/>
+            <line x1="32" y1="4" x2="32" y2="14" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+            <line x1="32" y1="50" x2="32" y2="60" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+            <line x1="4" y1="32" x2="14" y2="32" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+            <line x1="50" y1="32" x2="60" y2="32" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
         
-        airport: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>`,
+        airport: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <path d="M32 6 L38 24 L58 36 L58 42 L38 34 L38 50 L44 54 L44 58 L32 54 L20 58 L20 54 L26 50 L26 34 L6 42 L6 36 L26 24 Z" fill="url(#g3dPlane)"/>
+            <ellipse cx="32" cy="14" rx="2.5" ry="4" fill="#bae6fd"/>
+            <defs>
+                <linearGradient id="g3dPlane" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#e0f2fe"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient>
+            </defs>
+        </svg>`,
         
-        station: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="3" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><circle cx="8" cy="15" r="1.2" fill="currentColor"/><circle cx="16" cy="15" r="1.2" fill="currentColor"/></svg>`,
+        station: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <path d="M16 10 C16 6 48 6 48 10 L52 42 C52 50 44 52 32 52 C20 52 12 50 12 42 Z" fill="url(#g3dTrain)"/>
+            <path d="M18 16 L46 16 L44 30 L20 30 Z" fill="#0f172a"/>
+            <path d="M22 18 L42 18 L40 28 L24 28 Z" fill="#38bdf8"/>
+            <circle cx="20" cy="42" r="3.5" fill="#facc15"/><circle cx="44" cy="42" r="3.5" fill="#facc15"/>
+            <line x1="20" y1="52" x2="14" y2="60" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+            <line x1="44" y1="52" x2="50" y2="60" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+            <defs>
+                <linearGradient id="g3dTrain" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="50%" stop-color="#fda4af"/><stop offset="100%" stop-color="#e11d48"/></linearGradient>
+            </defs>
+        </svg>`,
         
-        toll: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19 8 5"/><path d="m16 5 4 14"/><path d="M12 5v14"/><path d="M7.5 12h9"/><rect width="20" height="3" x="2" y="19" rx="1" fill="currentColor"/></svg>`,
+        toll: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <rect x="8" y="10" width="48" height="10" rx="3" fill="#ffffff"/>
+            <rect x="14" y="20" width="6" height="34" rx="1.5" fill="#fef3c7"/>
+            <rect x="44" y="20" width="6" height="34" rx="1.5" fill="#fef3c7"/>
+            <path d="M18 36 L52 28" stroke="#ef4444" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="20" cy="36" r="4" fill="#fbbf24"/>
+            <circle cx="32" cy="15" r="3" fill="#10b981"/>
+        </svg>`,
         
-        shrine: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 7 7h10l-5-5z"/><path d="M5 7h14v3H5z"/><path d="M4 10h16v3H4z"/><path d="M8 13v6"/><path d="M16 13v6"/><path d="M12 13v6"/><path d="M2 19h20v3H2z"/><circle cx="12" cy="4.5" r="0.8" fill="currentColor"/></svg>`,
+        shrine: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <path d="M32 4 L38 16 L48 24 L46 38 L18 38 L16 24 L26 16 Z" fill="url(#g3dTemple)"/>
+            <circle cx="32" cy="4" r="2.5" fill="#fef08a"/>
+            <rect x="12" y="38" width="40" height="8" rx="2" fill="#fed7aa"/>
+            <rect x="8" y="46" width="48" height="8" rx="2" fill="#fdba74"/>
+            <path d="M26 38 L26 28 C26 24 38 24 38 28 L38 38 Z" fill="#7c2d12"/>
+            <defs>
+                <linearGradient id="g3dTemple" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffedd5"/><stop offset="50%" stop-color="#fb923c"/><stop offset="100%" stop-color="#ea580c"/></linearGradient>
+            </defs>
+        </svg>`,
         
-        beach: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2c1-3 4-3 5 0"/><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-2c-1-3-4-3-5 0"/><path d="M5.8 15.5c1.5-1.5 3.2-2.5 5.2-3 2 .5 3.7 1.5 5.2 3"/><path d="M11 22v-9"/><path d="M13 22v-9"/></svg>`,
+        beach: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <circle cx="46" cy="18" r="8" fill="#fde047"/>
+            <path d="M12 50 C24 46 40 46 52 50 L52 56 L12 56 Z" fill="#fed7aa"/>
+            <path d="M26 50 Q32 32 30 22" stroke="#92400e" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M30 22 Q18 18 14 26 M30 22 Q24 10 32 6 M30 22 Q42 16 46 24 M30 22 Q38 12 44 8" stroke="#22c55e" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        </svg>`,
         
-        landmark: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18"/><line x1="10" x2="10" y1="18"/><line x1="14" x2="14" y1="18"/><line x1="18" x2="18" y1="18"/><polygon points="12 2 20 7 4 7"/><line x1="2" x2="22" y1="11" y2="11"/></svg>`,
+        landmark: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <polygon points="32,8 54,20 10,20" fill="url(#g3dMonument)"/>
+            <rect x="14" y="24" width="6" height="24" rx="2" fill="#ffffff"/>
+            <rect x="29" y="24" width="6" height="24" rx="2" fill="#ffffff"/>
+            <rect x="44" y="24" width="6" height="24" rx="2" fill="#ffffff"/>
+            <rect x="8" y="48" width="48" height="8" rx="2" fill="#fef08a"/>
+            <defs>
+                <linearGradient id="g3dMonument" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#fef08a"/></linearGradient>
+            </defs>
+        </svg>`,
         
-        hospital: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12"/><path d="M6 12h12"/><rect width="18" height="18" x="3" y="3" rx="4"/></svg>`,
+        hospital: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <rect x="8" y="8" width="48" height="48" rx="12" fill="url(#g3dMedBg)"/>
+            <path d="M26 18 L38 18 L38 26 L46 26 L46 38 L38 38 L38 46 L26 46 L26 38 L18 38 L18 26 L26 26 Z" fill="#ffffff"/>
+            <defs>
+                <linearGradient id="g3dMedBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171"/><stop offset="100%" stop-color="#dc2626"/></linearGradient>
+            </defs>
+        </svg>`,
         
-        institute: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>`,
+        institute: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <polygon points="32,10 58,24 32,38 6,24" fill="url(#g3dCap)"/>
+            <path d="M16 30 L16 46 C16 52 48 52 48 46 L48 30" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+            <line x1="52" y1="27" x2="52" y2="44" stroke="#facc15" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="52" cy="46" r="2.5" fill="#facc15"/>
+            <defs>
+                <linearGradient id="g3dCap" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#99f6e4"/></linearGradient>
+            </defs>
+        </svg>`,
         
-        tech: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/><path d="m10 9 2 2-2 2"/><path d="M14 13h2"/></svg>`,
+        tech: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <rect x="10" y="12" width="44" height="30" rx="4" fill="#1e1b4b" stroke="#ffffff" stroke-width="2.5"/>
+            <rect x="14" y="16" width="36" height="22" rx="2" fill="#0f172a"/>
+            <path d="M20 22 L26 27 L20 32 M29 32 L36 32" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M6 44 L58 44 L52 50 L12 50 Z" fill="#ffffff"/>
+        </svg>`,
         
-        mall: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+        mall: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <path d="M12 20 L52 20 L48 54 L16 54 Z" fill="url(#g3dBag)"/>
+            <path d="M22 24 C22 12 42 12 42 24" fill="none" stroke="#fef08a" stroke-width="4.5" stroke-linecap="round"/>
+            <line x1="14" y1="28" x2="50" y2="28" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+            <defs>
+                <linearGradient id="g3dBag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#7e22ce"/></linearGradient>
+            </defs>
+        </svg>`,
         
-        fuel: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="15" y1="22" y2="22"/><line x1="4" x2="14" y1="9" y2="9"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>`,
+        fuel: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <rect x="12" y="10" width="30" height="46" rx="4" fill="#ffffff"/>
+            <rect x="16" y="16" width="22" height="16" rx="2" fill="#0f172a"/>
+            <text x="27" y="28" fill="#facc15" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">₹</text>
+            <path d="M42 24 L48 24 L52 30 L52 46 L48 50 L44 46" fill="none" stroke="#fef08a" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
         
-        hotel: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>`,
+        hotel: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <rect x="10" y="16" width="44" height="34" rx="4" fill="#ffffff"/>
+            <rect x="14" y="20" width="16" height="12" rx="2" fill="#a3e635"/>
+            <rect x="34" y="20" width="16" height="12" rx="2" fill="#a3e635"/>
+            <rect x="10" y="34" width="44" height="16" rx="2" fill="#4d7c0f"/>
+            <line x1="8" y1="50" x2="56" y2="50" stroke="#fef08a" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>`,
         
-        city: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>`,
+        city: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <rect x="8" y="24" width="18" height="32" rx="2" fill="#93c5fd"/>
+            <rect x="24" y="10" width="20" height="46" rx="2" fill="#ffffff"/>
+            <rect x="42" y="20" width="14" height="36" rx="2" fill="#bfdbfe"/>
+            <circle cx="17" cy="30" r="1.5" fill="#1e3a8a"/><circle cx="17" cy="38" r="1.5" fill="#1e3a8a"/>
+            <circle cx="34" cy="18" r="1.5" fill="#1e3a8a"/><circle cx="34" cy="26" r="1.5" fill="#1e3a8a"/><circle cx="34" cy="34" r="1.5" fill="#1e3a8a"/>
+            <circle cx="49" cy="28" r="1.5" fill="#1e3a8a"/><circle cx="49" cy="36" r="1.5" fill="#1e3a8a"/>
+        </svg>`,
         
-        place: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3" fill="currentColor"/></svg>`
+        place: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <ellipse cx="32" cy="56" rx="14" ry="4" fill="rgba(0,0,0,0.35)"/>
+            <path d="M32 6 C20 6 12 15 12 26 C12 40 32 56 32 56 C32 56 52 40 52 26 C52 15 44 6 32 6 Z" fill="url(#g3dPin)"/>
+            <circle cx="32" cy="24" r="7" fill="#ffffff"/>
+            <circle cx="32" cy="24" r="3.5" fill="#ef4444"/>
+            <defs>
+                <linearGradient id="g3dPin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171"/><stop offset="50%" stop-color="#ef4444"/><stop offset="100%" stop-color="#991b1b"/></linearGradient>
+            </defs>
+        </svg>`
     },
 
     _getPlaceCategoryInfo: (item) => {
