@@ -87,13 +87,13 @@ const TollData = {
     },
 
     passes: {
-        MONTHLY_LOCAL: { price: 335, label: 'Monthly Pass (Local Plaza)' },
-        ANNUAL_NH: { price: 3075, label: 'Annual Pass (National Highways)', eligibility: 'LMV' },
-        MONTHLY_PLAZA: { multiplier: 33, label: 'Monthly Plaza Pass' }, 
-        RETURN: { multiplier: 1.5, label: 'Return Pass' }, 
+        MONTHLY_LOCAL: { price: 360, label: 'Monthly Pass (Local Plaza - within 20km)' },
+        ANNUAL_NH: { price: 3300, label: 'Annual Pass (National Highways)', eligibility: 'LMV' },
+        MONTHLY_PLAZA: { multiplier: 33.5, label: 'Commercial Monthly Pass (50 Trips)' }, 
+        RETURN: { multiplier: 1.5, label: 'Return Pass (2-Way within 24h)' }, 
     },
 
-    getTollCost: (plazaId, category) => {
+    getTollCost: (plazaId, category = 'LMV', journeyType = 'SINGLE') => {
         const plaza = TollData.getTollById(plazaId);
         if (!plaza) return 0;
         
@@ -101,15 +101,45 @@ const TollData = {
         const isExempt = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(category);
         if (isExempt) return 0;
 
-        // Handle vehicle class specific rates if present in the plaza data
-        if (plaza.tollRatesByVehicleClass && plaza.tollRatesByVehicleClass[category] !== undefined) {
-            return plaza.tollRatesByVehicleClass[category];
+        const isReturn = (journeyType === 'RETURN' || journeyType === '2-WAY' || journeyType === 'ROUND');
+
+        if (isReturn) {
+            if (plaza.returnRatesByVehicleClass && plaza.returnRatesByVehicleClass[category] !== undefined && plaza.returnRatesByVehicleClass[category] > 0) {
+                return plaza.returnRatesByVehicleClass[category];
+            }
+            if (plaza.returnRate && category === 'LMV') return plaza.returnRate;
+        } else {
+            if (plaza.tollRatesByVehicleClass && plaza.tollRatesByVehicleClass[category] !== undefined && plaza.tollRatesByVehicleClass[category] > 0) {
+                return plaza.tollRatesByVehicleClass[category];
+            }
         }
 
         // Accurate NHAI vehicle multiplier based on plaza base rate
         const base = plaza.baseRate || plaza.singleJourney || 50;
         const mult = TollData.categoryMultipliers[category] !== undefined ? TollData.categoryMultipliers[category] : 1.0;
-        return Math.round(base * mult);
+        const singleCost = Math.round((base * mult) / 5) * 5;
+        
+        if (isReturn) {
+            return Math.round((singleCost * 1.5) / 5) * 5;
+        }
+        return singleCost;
+    },
+
+    getTollSchedule: (plazaId) => {
+        const plaza = TollData.getTollById(plazaId);
+        if (!plaza) return null;
+        return {
+            id: plaza.id,
+            name: plaza.name,
+            state: plaza.state,
+            nhCorridor: plaza.nhCorridor,
+            baseRate: plaza.baseRate,
+            returnRate: plaza.returnRate || Math.round((plaza.baseRate * 1.5) / 5) * 5,
+            singleRates: plaza.tollRatesByVehicleClass || {},
+            returnRates: plaza.returnRatesByVehicleClass || {},
+            monthlyRates: plaza.monthlyPassByVehicleClass || {},
+            localMonthlyPass: plaza.monthlyPassLocal || 360
+        };
     }
 };
 

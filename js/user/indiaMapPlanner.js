@@ -210,6 +210,41 @@ const IndiaMapPlanner = {
         if (vSel) vSel.addEventListener('change', e => onVehicleChanged(e.target.value));
         if (rVSel) rVSel.addEventListener('change', e => onVehicleChanged(e.target.value));
 
+        IndiaMapPlanner.journeyType = 'SINGLE';
+        const btnSingle = document.getElementById('btn-trip-single');
+        const btnReturn = document.getElementById('btn-trip-return');
+        
+        const setJourneyType = (type) => {
+            IndiaMapPlanner.journeyType = type;
+            if (btnSingle && btnReturn) {
+                if (type === 'SINGLE') {
+                    btnSingle.classList.add('active');
+                    btnSingle.style.background = 'var(--primary)';
+                    btnSingle.style.color = '#021a12';
+                    btnReturn.classList.remove('active');
+                    btnReturn.style.background = 'transparent';
+                    btnReturn.style.color = '#94a3b8';
+                } else {
+                    btnReturn.classList.add('active');
+                    btnReturn.style.background = '#34d399';
+                    btnReturn.style.color = '#021a12';
+                    btnSingle.classList.remove('active');
+                    btnSingle.style.background = 'transparent';
+                    btnSingle.style.color = '#94a3b8';
+                }
+            }
+            if (IndiaMapPlanner.selectedRouteData && IndiaMapPlanner.routeCoordinates.length > 0) {
+                const tollEstimate = IndiaMapPlanner.estimateTollsOnRoute(IndiaMapPlanner.routeCoordinates);
+                IndiaMapPlanner.selectedRouteData.tolls = tollEstimate.tolls;
+                IndiaMapPlanner.selectedRouteData.totalTollCost = tollEstimate.totalTollCost;
+                IndiaMapPlanner.updateSummary(IndiaMapPlanner.selectedRouteData);
+                Utils.showToast(`Trip mode: ${type === 'SINGLE' ? '1-Way Single' : '2-Way Return (24h)'} • Toll: ₹${tollEstimate.totalTollCost}`, 'info');
+            }
+        };
+
+        if (btnSingle) btnSingle.addEventListener('click', () => setJourneyType('SINGLE'));
+        if (btnReturn) btnReturn.addEventListener('click', () => setJourneyType('RETURN'));
+
         safe('btn-verify-special', () => {
             const id  = document.getElementById('special-plate-id')?.value || '';
             const res = SpecialVehicleRegistry.verify(id);
@@ -1006,24 +1041,84 @@ const IndiaMapPlanner = {
 
     _tollPopup: (td, cost) => {
         const vType = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
-        let ratesHtml = '';
-        if (td.tollRatesByVehicleClass) {
-            ratesHtml = `
-                <div style="font-size:10px; color:#475569; margin-top:6px; background:#f1f5f9; padding:5px 8px; border-radius:6px; line-height:1.4;">
-                    <div><strong>LMV (Car):</strong> ₹${td.tollRatesByVehicleClass.LMV || td.baseRate || 50} &nbsp;|&nbsp; <strong>LCV:</strong> ₹${td.tollRatesByVehicleClass.LCV || Math.round((td.baseRate||50)*1.62)}</div>
-                    <div style="margin-top:2px;"><strong>Bus/Truck:</strong> ₹${td.tollRatesByVehicleClass.BUS_2AXLE || Math.round((td.baseRate||50)*3.39)} &nbsp;|&nbsp; <strong>MAV:</strong> ₹${td.tollRatesByVehicleClass.MAV_4_6 || Math.round((td.baseRate||50)*5.32)}</div>
-                </div>
-            `;
-        }
+        const single = td.tollRatesByVehicleClass || {};
+        const ret = td.returnRatesByVehicleClass || {};
+        const isExempt = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(vType);
+        
+        const lmvSingle = single.LMV || td.baseRate || 50;
+        const lmvReturn = ret.LMV || Math.round((lmvSingle * 1.5)/5)*5;
+
+        const curSingle = isExempt ? 0 : (single[vType] || lmvSingle);
+        const curReturn = isExempt ? 0 : (ret[vType] || Math.round((curSingle * 1.5)/5)*5);
+
         return `
-        <div style="min-width:200px;font-family:'Inter',sans-serif;padding:4px;">
-            <div style="font-weight:700;font-size:13px;color:#0a192f;margin-bottom:2px;">🏗️ ${td.name}</div>
-            <div style="font-size:11px;color:#64748b;">${td.state || ''} · ${td.nhCorridor ? 'NH-' + td.nhCorridor : 'National Highway'}</div>
-            <div style="font-size:10px;color:#94a3b8;margin-top:2px;">Concessionaire: ${td.concessionaire || 'NHAI'}</div>
-            <div style="font-size:12px;margin-top:5px;color:#059669;font-weight:700;">
-                Toll for ${vType}: ₹${cost}
+        <div style="min-width:280px; font-family:var(--font-main, 'Inter', sans-serif); padding:6px 4px; color:#1e293b;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px;">
+                <div>
+                    <div style="font-weight:800; font-size:13.5px; color:#0f172a; line-height:1.2;">🏗️ ${td.name}</div>
+                    <div style="font-size:11px; color:#64748b; margin-top:2px;">${td.state || 'India'} · ${td.nhCorridor && td.nhCorridor !== 'N/A' ? '<strong>NH-' + td.nhCorridor + '</strong>' : 'National Highway'}</div>
+                </div>
+                <span style="font-size:8.5px; font-weight:700; padding:2px 6px; border-radius:4px; background:rgba(16,185,129,0.15); color:#059669; border:1px solid rgba(16,185,129,0.3);">FASTag ACTIVE</span>
             </div>
-            ${ratesHtml}
+
+            <!-- Active Vehicle Highlight Card -->
+            <div style="background:linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.95)); border-radius:8px; padding:8px 10px; margin:8px 0; color:#fff; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+                <div>
+                    <div style="font-size:9.5px; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; font-weight:600;">Selected Vehicle (${vType})</div>
+                    <div style="font-size:11px; font-weight:700; color:#38bdf8; margin-top:1px;">
+                        ${isExempt ? '✨ 100% Toll Exempt' : 'Single: <span style="color:#fbbf24; font-size:13px;">₹' + curSingle + '</span>'}
+                    </div>
+                </div>
+                ${!isExempt ? `
+                <div style="text-align:right; border-left:1px solid rgba(255,255,255,0.1); padding-left:10px;">
+                    <div style="font-size:9px; color:#94a3b8;">2-Way Return (24h)</div>
+                    <div style="font-size:13px; font-weight:800; color:#34d399;">₹${curReturn}</div>
+                </div>` : ''}
+            </div>
+
+            <!-- Full NHAI Tariff Schedule (Single vs 2-Way) -->
+            <div style="font-size:10px; color:#334155; margin-top:6px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; overflow:hidden;">
+                <div style="background:#e2e8f0; padding:4px 8px; font-weight:700; font-size:9.5px; color:#475569; display:grid; grid-template-columns: 2fr 1fr 1fr; text-transform:uppercase;">
+                    <span>Vehicle Class</span>
+                    <span style="text-align:center;">1-Way</span>
+                    <span style="text-align:right;">2-Way (24h)</span>
+                </div>
+                <div style="padding:4px 8px; display:grid; grid-template-columns: 2fr 1fr 1fr; border-bottom:1px solid #f1f5f9; ${vType==='LMV'?'background:rgba(245,158,11,0.1); font-weight:700;':''}">
+                    <span>🚗 Car / LMV</span>
+                    <span style="text-align:center; color:#d97706; font-weight:700;">₹${single.LMV || lmvSingle}</span>
+                    <span style="text-align:right; color:#059669; font-weight:700;">₹${ret.LMV || lmvReturn}</span>
+                </div>
+                <div style="padding:4px 8px; display:grid; grid-template-columns: 2fr 1fr 1fr; border-bottom:1px solid #f1f5f9; ${vType==='LCV'?'background:rgba(245,158,11,0.1); font-weight:700;':''}">
+                    <span>🚐 LCV / Mini-Bus</span>
+                    <span style="text-align:center; color:#d97706; font-weight:700;">₹${single.LCV || Math.round(lmvSingle*1.62/5)*5}</span>
+                    <span style="text-align:right; color:#059669; font-weight:700;">₹${ret.LCV || Math.round(lmvSingle*1.62*1.5/5)*5}</span>
+                </div>
+                <div style="padding:4px 8px; display:grid; grid-template-columns: 2fr 1fr 1fr; border-bottom:1px solid #f1f5f9; ${vType==='BUS_2AXLE'?'background:rgba(245,158,11,0.1); font-weight:700;':''}">
+                    <span>🚌 Bus / 2-Axle Truck</span>
+                    <span style="text-align:center; color:#d97706; font-weight:700;">₹${single.BUS_2AXLE || Math.round(lmvSingle*3.39/5)*5}</span>
+                    <span style="text-align:right; color:#059669; font-weight:700;">₹${ret.BUS_2AXLE || Math.round(lmvSingle*3.39*1.5/5)*5}</span>
+                </div>
+                <div style="padding:4px 8px; display:grid; grid-template-columns: 2fr 1fr 1fr; border-bottom:1px solid #f1f5f9; ${vType==='COM_3AXLE'?'background:rgba(245,158,11,0.1); font-weight:700;':''}">
+                    <span>🚛 3-Axle Commercial</span>
+                    <span style="text-align:center; color:#d97706; font-weight:700;">₹${single.COM_3AXLE || Math.round(lmvSingle*3.70/5)*5}</span>
+                    <span style="text-align:right; color:#059669; font-weight:700;">₹${ret.COM_3AXLE || Math.round(lmvSingle*3.70*1.5/5)*5}</span>
+                </div>
+                <div style="padding:4px 8px; display:grid; grid-template-columns: 2fr 1fr 1fr; border-bottom:1px solid #f1f5f9; ${vType==='MAV_4_6'?'background:rgba(245,158,11,0.1); font-weight:700;':''}">
+                    <span>🚜 MAV (4-6 Axle)</span>
+                    <span style="text-align:center; color:#d97706; font-weight:700;">₹${single.MAV_4_6 || Math.round(lmvSingle*5.32/5)*5}</span>
+                    <span style="text-align:right; color:#059669; font-weight:700;">₹${ret.MAV_4_6 || Math.round(lmvSingle*5.32*1.5/5)*5}</span>
+                </div>
+                <div style="padding:4px 8px; display:grid; grid-template-columns: 2fr 1fr 1fr; ${vType==='OVERSIZED'?'background:rgba(245,158,11,0.1); font-weight:700;':''}">
+                    <span>🏗️ Oversized (7+ Axle)</span>
+                    <span style="text-align:center; color:#d97706; font-weight:700;">₹${single.OVERSIZED || Math.round(lmvSingle*6.48/5)*5}</span>
+                    <span style="text-align:right; color:#059669; font-weight:700;">₹${ret.OVERSIZED || Math.round(lmvSingle*6.48*1.5/5)*5}</span>
+                </div>
+            </div>
+
+            <div style="margin-top:6px; display:flex; justify-content:space-between; align-items:center; font-size:9.5px; color:#64748b;">
+                <span>🎟️ Local Monthly Pass: <strong style="color:#0f172a;">₹${td.monthlyPassLocal || 360}</strong></span>
+                <span style="color:#94a3b8;">${td.concessionaire || 'NHAI Managed'}</span>
+            </div>
         </div>`;
     },
 
@@ -1108,6 +1203,7 @@ const IndiaMapPlanner = {
             displayEta = Math.round(parseFloat(rData.totalEta) * 60) + ' min';
         }
         
+        const jType = IndiaMapPlanner.journeyType === 'RETURN' ? '2-Way Return (24h)' : '1-Way Single';
         setText('sum-dist',      rData.totalDist);
         setText('sum-eta',       displayEta.replace('h',''));
         setText('sum-toll',      rData.tolls.length);
@@ -1122,7 +1218,7 @@ const IndiaMapPlanner = {
                 <div style="position: relative; margin-bottom: 12px; z-index: 2;">
                     <div style="position: absolute; left: -22.5px; top: 3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); border: 2px solid #000; box-shadow: 0 0 8px var(--primary-glow);"></div>
                     <div style="font-size: 11px; font-weight: 700; color: #fff;">${rData.originName}</div>
-                    <div style="font-size: 8.5px; color: var(--text-muted);">Start of Journey</div>
+                    <div style="font-size: 8.5px; color: var(--text-muted);">Start of Journey • <span style="color:#38bdf8; font-weight:600;">${jType}</span></div>
                 </div>
             `;
             if (rData.tolls.length > 0) {
@@ -1130,12 +1226,20 @@ const IndiaMapPlanner = {
                     const td = window.TollSeedData?.find(s => s.id === toll.id);
                     const name = td ? td.name : (toll.name || 'NH Toll Plaza');
                     const nhBadge = (td && td.nhCorridor && td.nhCorridor !== 'N/A') ? `<span style="font-size:8px; padding:1px 4px; border-radius:3px; background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); margin-left:4px;">NH-${td.nhCorridor}</span>` : '';
+                    
+                    const subInfo = toll.singleCost !== undefined && toll.returnCost !== undefined
+                        ? `<div style="font-size:8.5px; color:#94a3b8; margin-top:2px;">1-Way: ₹${toll.singleCost} · 2-Way: ₹${toll.returnCost}</div>`
+                        : '';
+
                     html += `
                         <div style="position: relative; margin-bottom: 12px; z-index: 2;">
                             <div style="position: absolute; left: -22px; top: 4px; width: 7px; height: 7px; border-radius: 50%; background: #fbbf24; border: 1.5px solid #000; box-shadow: 0 0 6px rgba(251, 191, 36, 0.4);"></div>
-                            <div style="font-size: 10.5px; font-weight: 600; color: #f1f5f9; display: flex; justify-content: space-between; align-items:center;">
-                                <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:230px;" title="${name}">📍 ${name} ${nhBadge}</span>
-                                <span style="color: var(--accent-yellow); font-weight: 800; font-family:var(--font-display); font-size:11px; margin-left:6px; flex-shrink:0;">₹${toll.cost}</span>
+                            <div>
+                                <div style="font-size: 10.5px; font-weight: 600; color: #f1f5f9; display: flex; justify-content: space-between; align-items:center;">
+                                    <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:210px;" title="${name}">📍 ${name} ${nhBadge}</span>
+                                    <span style="color: ${IndiaMapPlanner.journeyType==='RETURN'?'#34d399':'var(--accent-yellow)'}; font-weight: 800; font-family:var(--font-display); font-size:11.5px; margin-left:6px; flex-shrink:0;">₹${toll.cost}</span>
+                                </div>
+                                ${subInfo}
                             </div>
                         </div>
                     `;
@@ -1170,7 +1274,8 @@ const IndiaMapPlanner = {
 
         if (!window.TollSeedData || coords.length === 0) return { tolls: [], totalTollCost: 0 };
 
-        const vehicleType    = document.getElementById('vehicle-type')?.value || 'LMV';
+        const vehicleType    = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
+        const journeyType    = IndiaMapPlanner.journeyType || 'SINGLE';
         const isExempt       = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(vehicleType);
         const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 2.5;
         const sampleStep     = Math.max(1, Math.floor(coords.length / 4000));
@@ -1189,19 +1294,20 @@ const IndiaMapPlanner = {
                     
                     let cost = 0;
                     if (!isExempt && !(IndiaMapPlanner.isSpecialVerified && vehicleType !== 'LMV')) {
-                        if (toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType] !== undefined && toll.tollRatesByVehicleClass[vehicleType] > 0) {
-                            cost = toll.tollRatesByVehicleClass[vehicleType];
-                        } else {
-                            const base = toll.baseRate || toll.singleJourney || 50;
-                            const mult = (window.TollData && TollData.categoryMultipliers[vehicleType] !== undefined) ? TollData.categoryMultipliers[vehicleType] : 1.0;
-                            cost = Math.round(base * mult);
-                        }
+                        cost = (window.TollData && TollData.getTollCost) 
+                            ? TollData.getTollCost(toll.id, vehicleType, journeyType) 
+                            : (toll.tollRatesByVehicleClass?.[vehicleType] || toll.baseRate || 50);
                     }
                     
+                    const singleCost = isExempt ? 0 : ((toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType]) || toll.baseRate || 50);
+                    const returnCost = isExempt ? 0 : ((toll.returnRatesByVehicleClass && toll.returnRatesByVehicleClass[vehicleType]) || Math.round((singleCost * 1.5)/5)*5);
+
                     rawMatched.push({ 
                         id: toll.id, 
                         name: toll.name || toll.tollName || 'NH Toll Plaza', 
                         cost: cost,
+                        singleCost: singleCost,
+                        returnCost: returnCost,
                         baseRate: toll.baseRate || 50,
                         lat: toll.lat,
                         lng: toll.lng,
