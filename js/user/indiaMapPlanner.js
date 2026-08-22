@@ -338,53 +338,37 @@ const IndiaMapPlanner = {
     },
 
     getUserLocation: () => {
-        if (!navigator.geolocation) {
-            Utils.showToast("Geolocation is not supported by your browser. Using default location.", "warning");
-            IndiaMapPlanner.useDefaultLocation();
-            return;
-        }
-
-        Utils.showToast("Requesting device GPS coordinates...", "info");
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
+        Utils.showToast("Detecting your location...", "info");
+        IndiaMapPlanner.getReliableUserLocation(
+            (loc) => {
+                const lat = loc.lat;
+                const lng = loc.lng;
                 
                 // Center Map at User Location
-                IndiaMapPlanner.map.setView([lat, lng], 13);
+                if (IndiaMapPlanner.map) {
+                    IndiaMapPlanner.map.flyTo([lat, lng], 13, { duration: 1.2 });
+                }
 
                 // Add glowing user location marker
                 if (IndiaMapPlanner.userLocationMarker) {
                     IndiaMapPlanner.userLocationMarker.remove();
                 }
                 IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
-                    .bindTooltip("My Location", { permanent: false, direction: 'top' })
+                    .bindTooltip("My Location 📍", { permanent: false, direction: 'top' })
                     .addTo(IndiaMapPlanner.map);
 
-                Utils.showToast("Location successfully mapped!", "success");
+                Utils.showToast(`Location mapped via ${loc.source || 'GPS'}! 📍`, "success");
 
                 // Reverse geocode to find state name for regional feed
-                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
-                    .then(res => res.json())
-                    .then(geo => {
-                        const state = geo.address?.state || geo.address?.state_district || '';
-                        if (state) {
-                            IndiaMapPlanner.fetchLiveNewsAlerts(state);
-                        } else {
-                            const localState = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
-                            IndiaMapPlanner.fetchLiveNewsAlerts(localState || '');
-                        }
-                    })
-                    .catch(() => {
-                        const localState = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
-                        IndiaMapPlanner.fetchLiveNewsAlerts(localState || '');
-                    });
+                const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng) || loc.state;
+                if (state) {
+                    IndiaMapPlanner.fetchLiveNewsAlerts(state);
+                }
             },
-            (error) => {
-                Utils.showToast("Location permission denied. Defaulting to New Delhi.", "warning");
+            () => {
+                Utils.showToast("Could not retrieve GPS. Using default view.", "warning");
                 IndiaMapPlanner.useDefaultLocation();
-            },
-            { enableHighAccuracy: true, timeout: 8000 }
+            }
         );
     },
 
@@ -507,49 +491,122 @@ const IndiaMapPlanner = {
         ];
     },
 
+    getReliableUserLocation: (onSuccess, onError) => {
+        let isDone = false;
+        const done = (loc) => {
+            if (!isDone) {
+                isDone = true;
+                onSuccess(loc);
+            }
+        };
+
+        const tryIpFallback = () => {
+            fetch('https://ipapi.co/json/')
+                .then(r => r.json())
+                .then(d => {
+                    if (d && d.latitude && d.longitude) {
+                        done({
+                            lat: parseFloat(d.latitude),
+                            lng: parseFloat(d.longitude),
+                            city: d.city || 'My Location',
+                            state: d.region || 'India',
+                            source: 'Network'
+                        });
+                    } else {
+                        throw new Error('ipapi invalid');
+                    }
+                })
+                .catch(() => {
+                    fetch('https://freeipapi.com/api/json')
+                        .then(r => r.json())
+                        .then(d => {
+                            if (d && d.latitude && d.longitude) {
+                                done({
+                                    lat: parseFloat(d.latitude),
+                                    lng: parseFloat(d.longitude),
+                                    city: d.cityName || 'My Location',
+                                    state: d.regionName || 'India',
+                                    source: 'Network'
+                                });
+                            } else {
+                                if (onError && !isDone) onError();
+                            }
+                        })
+                        .catch(() => {
+                            if (onError && !isDone) onError();
+                        });
+                });
+        };
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    done({
+                        lat: pos.coords.latitude,
+                        lng: pos.coords.longitude,
+                        accuracy: pos.coords.accuracy,
+                        source: 'GPS'
+                    });
+                },
+                () => {
+                    // Try lower accuracy before network IP
+                    navigator.geolocation.getCurrentPosition(
+                        (pos2) => {
+                            done({
+                                lat: pos2.coords.latitude,
+                                lng: pos2.coords.longitude,
+                                accuracy: pos2.coords.accuracy,
+                                source: 'GPS'
+                            });
+                        },
+                        () => tryIpFallback(),
+                        { enableHighAccuracy: false, timeout: 4000, maximumAge: 60000 }
+                    );
+                },
+                { enableHighAccuracy: true, timeout: 5000, maximumAge: 10000 }
+            );
+        } else {
+            tryIpFallback();
+        }
+    },
+
     locateUser: () => {
         const btn = document.getElementById('btn-locate-me');
         if (btn) {
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
         }
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const lat = position.coords.latitude;
-                    const lng = position.coords.longitude;
-                    
-                    if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
+        IndiaMapPlanner.getReliableUserLocation(
+            (loc) => {
+                const lat = loc.lat;
+                const lng = loc.lng;
+                
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
 
-                    if (IndiaMapPlanner.map) {
-                        IndiaMapPlanner.map.setView([lat, lng], 13);
-                    }
-                    
-                    if (IndiaMapPlanner.userLocationMarker) {
-                        IndiaMapPlanner.userLocationMarker.remove();
-                    }
-                    
-                    IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
-                        .bindTooltip("My Location", { permanent: false, direction: 'top' })
-                        .addTo(IndiaMapPlanner.map);
+                if (IndiaMapPlanner.map) {
+                    IndiaMapPlanner.map.flyTo([lat, lng], 13, { duration: 1.2 });
+                }
+                
+                if (IndiaMapPlanner.userLocationMarker) {
+                    IndiaMapPlanner.userLocationMarker.remove();
+                }
+                
+                IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
+                    .bindTooltip("My Location 📍", { permanent: false, direction: 'top' })
+                    .addTo(IndiaMapPlanner.map);
 
-                    Utils.showToast("Located successfully!", "success");
+                Utils.showToast(`Located successfully via ${loc.source || 'GPS'}! 📍`, "success");
 
-                    const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
-                    if (state) {
-                        IndiaMapPlanner.fetchLiveNewsAlerts(state);
-                    }
-                },
-                (error) => {
-                    if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
-                    Utils.showToast("Could not retrieve GPS location.", "error");
-                },
-                { enableHighAccuracy: true, timeout: 8000 }
-            );
-        } else {
-            if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
-            Utils.showToast("Geolocation is not supported by your browser.", "error");
-        }
+                const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng) || loc.state;
+                if (state) {
+                    IndiaMapPlanner.fetchLiveNewsAlerts(state);
+                }
+            },
+            () => {
+                if (btn) btn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
+                Utils.showToast("Could not retrieve GPS or network location.", "error");
+            }
+        );
     },
 
     updateAlertsTickerUI: (alerts, region = '') => {
@@ -1122,28 +1179,27 @@ const IndiaMapPlanner = {
                 const isCurrent = item.dataset.iscurrent === 'true';
 
                 if (isCurrent) {
-                    input.value = 'Locating GPS…';
+                    input.value = 'Locating position…';
                     dropdown.style.display = 'none';
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(pos => {
-                            const lat = pos.coords.latitude;
-                            const lng = pos.coords.longitude;
+                    IndiaMapPlanner.getReliableUserLocation(
+                        (loc) => {
                             const currentObj = {
                                 name: 'My Current Location',
-                                state: 'GPS',
-                                lat: lat,
-                                lng: lng
+                                state: loc.state || 'GPS',
+                                lat: loc.lat,
+                                lng: loc.lng
                             };
                             input.value = 'My Current Location 📍';
                             const clearBtn = document.getElementById(input.id === 'route-origin-input' ? 'btn-clear-origin' : 'btn-clear-dest');
                             if (clearBtn) clearBtn.style.display = 'block';
-                            if (IndiaMapPlanner.map) IndiaMapPlanner.map.flyTo([lat, lng], 13);
+                            if (IndiaMapPlanner.map) IndiaMapPlanner.map.flyTo([loc.lat, loc.lng], 13, { duration: 1.2 });
                             onSelect(currentObj);
-                        }, () => {
+                        },
+                        () => {
                             input.value = '';
-                            Utils.showToast('Could not retrieve GPS location.', 'error');
-                        }, { timeout: 8000, enableHighAccuracy: true });
-                    }
+                            Utils.showToast('Could not retrieve location.', 'error');
+                        }
+                    );
                     return;
                 }
 
@@ -2440,35 +2496,28 @@ const IndiaMapPlanner = {
             if (iconEl) iconEl.className = 'fa-solid fa-spinner fa-spin';
             btnLocate.classList.add('active');
             
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
-                        btnLocate.classList.remove('active');
-                        if (IndiaMapPlanner.map) IndiaMapPlanner.map.setView([lat, lng], 13);
-                        
-                        if (IndiaMapPlanner.userLocationMarker) IndiaMapPlanner.userLocationMarker.remove();
-                        IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
-                            .bindTooltip("My Location", { permanent: false, direction: 'top' })
-                            .addTo(IndiaMapPlanner.map);
-                        Utils.showToast("Located successfully! 📍", "success");
-                        const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng);
-                        if (state) IndiaMapPlanner.fetchLiveNewsAlerts(state);
-                    },
-                    (error) => {
-                        if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
-                        btnLocate.classList.remove('active');
-                        Utils.showToast("Could not retrieve GPS location.", "error");
-                    },
-                    { enableHighAccuracy: true, timeout: 8000 }
-                );
-            } else {
-                if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
-                btnLocate.classList.remove('active');
-                Utils.showToast("Geolocation is not supported by your browser.", "error");
-            }
+            IndiaMapPlanner.getReliableUserLocation(
+                (loc) => {
+                    const lat = loc.lat;
+                    const lng = loc.lng;
+                    if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                    btnLocate.classList.remove('active');
+                    if (IndiaMapPlanner.map) IndiaMapPlanner.map.flyTo([lat, lng], 13, { duration: 1.2 });
+                    
+                    if (IndiaMapPlanner.userLocationMarker) IndiaMapPlanner.userLocationMarker.remove();
+                    IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
+                        .bindTooltip("My Location 📍", { permanent: false, direction: 'top' })
+                        .addTo(IndiaMapPlanner.map);
+                    Utils.showToast(`Located successfully via ${loc.source || 'GPS'}! 📍`, "success");
+                    const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng) || loc.state;
+                    if (state) IndiaMapPlanner.fetchLiveNewsAlerts(state);
+                },
+                () => {
+                    if (iconEl) iconEl.className = 'fa-solid fa-location-crosshairs';
+                    btnLocate.classList.remove('active');
+                    Utils.showToast("Could not retrieve GPS or network location.", "error");
+                }
+            );
         });
 
         // 2. Vehicle Avatar Switcher (Classic Dot / 3D Avatars Popup)
