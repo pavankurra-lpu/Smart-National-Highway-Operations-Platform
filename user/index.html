@@ -103,24 +103,33 @@
 
 
         <!-- ==============================
-             NHAI ACCESS: RIGHT SIDEBAR
+             NHAI ACCESS: RIGHT SIDEBAR (Modernized shadcn/ui & KokonutUI style)
              ============================== -->
         <aside class="sidebar" id="nhai-sidebar">
             <div class="sidebar-header">
-                <h2><i class="fa-solid fa-car-side"></i> SNHOP Access <i id="connection-status" class="fa-solid fa-circle" style="font-size:8px; color:#fcd34d; margin-left:6px;" title="Live server: Connecting..."></i></h2>
-                <div style="display:flex;gap:8px;align-items:center;">
-                    <button class="theme-toggle-btn btn btn-outline" id="theme-btn" title="Toggle Theme">
-                        <i class="fa-solid fa-sun"></i>
-                    </button>
-                    <a href="../index.html" style="color:var(--text-sec);font-size:11px;text-decoration:none;display:flex;align-items:center;gap:4px;padding:6px 8px;border-radius:6px;border:1px solid var(--border-light);">
-                        <i class="fa-solid fa-right-from-bracket"></i> Exit
+                <div class="snhop-brand-badge">
+                    <div class="snhop-brand-icon">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <div>
+                        <div class="snhop-brand-title">SNHOP <span class="snhop-badge-pill">OPERATIONS</span></div>
+                        <div class="snhop-brand-sub">
+                            <span class="live-status-dot"></span> NHAI Highway Platform
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit
                     </a>
                 </div>
             </div>
 
             <!-- Active Highway Alerts Ticker (Kokonut UI Style) -->
             <div class="alerts-ticker-container">
-                <div class="alerts-ticker-label"><i class="fa-solid fa-triangle-exclamation"></i> LIVE NHAI FEED</div>
+                <div class="alerts-ticker-label">
+                    <span class="pulse-beacon"></span> LIVE FEED
+                </div>
                 <div class="alerts-ticker-track">
                     <div class="alerts-ticker-scroll">
                         <span>🚧 NH-48: Maintenance alert near Surat (Right lane closed)</span>
@@ -131,22 +140,27 @@
                 </div>
             </div>
 
-            <!-- Tabs -->
+            <!-- Modern Segmented Tabs (shadcn/ui style) -->
             <div class="nav-tabs">
                 <button class="tab-btn active" data-tab="tab-plan" id="tab-btn-plan">
-                    <i class="fa-solid fa-route"></i> Route
+                    <i class="fa-solid fa-route"></i>
+                    <span>Route</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-fastag" id="tab-btn-fastag">
-                    <i class="fa-solid fa-wallet"></i> FASTag
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>FASTag</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-sos" id="tab-btn-sos">
-                    <i class="fa-solid fa-truck-medical"></i> SOS
+                    <i class="fa-solid fa-truck-medical"></i>
+                    <span>SOS</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-analytics" id="tab-btn-analytics">
-                    <i class="fa-solid fa-chart-line"></i> Analytics
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Analytics</span>
                 </button>
                 <button class="tab-btn" data-tab="tab-settings" id="tab-btn-settings">
-                    <i class="fa-solid fa-gear"></i> Settings
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
                 </button>
             </div>
 
@@ -155,51 +169,67 @@
                  ======================== -->
             <div id="tab-plan" class="tab-content active">
                 <div class="flex-col gap-3">
-                    <!-- FASTag Widget Removed -->
-
-                    <div>
-                            <span class="field-label"><i class="fa-solid fa-location-dot" style="color:var(--primary)"></i> Starting Point</span>
-                            <div class="ai-input-wrapper">
-                                <input type="text" id="route-origin-input" placeholder="Enter starting city..." autocomplete="off" style="padding-left: 36px;">
-                                <i class="fa-solid fa-sparkles" style="position: absolute; left: 12px; top: 12px; color: var(--primary); font-size: 14px;"></i>
-                            </div>
-                            <div id="origin-suggestions" class="autocomplete-dropdown"></div>
+                    
+                    <!-- Modern Connected Route Search Card -->
+                    <div class="route-search-card">
+                        <div class="route-path-track">
+                            <div class="track-node origin-node"></div>
+                            <div class="track-line"></div>
+                            <div class="track-node dest-node"></div>
                         </div>
-                        
-                        <div>
-                            <span class="field-label"><i class="fa-solid fa-flag-checkered" style="color:var(--accent-red)"></i> Destination</span>
-                            <div class="ai-input-wrapper">
-                                <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off" style="padding-left: 36px;">
-                                <i class="fa-solid fa-wand-magic-sparkles" style="position: absolute; left: 12px; top: 12px; color: var(--accent-blue); font-size: 14px;"></i>
+                        <div class="route-inputs-container">
+                            <div class="route-input-group">
+                                <label class="route-input-label">ORIGIN</label>
+                                <div class="route-field-wrapper">
+                                    <input type="text" id="route-origin-input" placeholder="Enter starting city..." autocomplete="off">
+                                    <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon"></i>
+                                </div>
+                                <div id="origin-suggestions" class="autocomplete-dropdown"></div>
                             </div>
-                            <div id="dest-suggestions" class="autocomplete-dropdown"></div>
+
+                            <button id="btn-swap-locations" type="button" class="route-swap-btn" title="Swap Origin and Destination">
+                                <i class="fa-solid fa-arrow-down-up-across-line"></i>
+                            </button>
+
+                            <div class="route-input-group">
+                                <label class="route-input-label">DESTINATION</label>
+                                <div class="route-field-wrapper">
+                                    <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off">
+                                    <i class="fa-solid fa-location-dot route-field-icon dest-icon"></i>
+                                </div>
+                                <div id="dest-suggestions" class="autocomplete-dropdown"></div>
+                            </div>
                         </div>
+                    </div>
 
-                          <!-- AI Voice Config Option -->
-                          <div style="margin-top: 5px; margin-bottom: 5px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
-                              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                                  <div style="display: flex; align-items: center; gap: 8px;">
-                                      <i class="fa-solid fa-volume-high" style="color: var(--accent-blue);"></i>
-                                      <div>
-                                          <span style="font-size: 13px; font-weight: 600; color: var(--text-main); display: block;">AI Voice Guide</span>
-                                          <span style="font-size: 10px; color: var(--text-muted);">Clear English audio navigation</span>
-                                      </div>
-                                  </div>
-                                  <label class="switch">
-                                      <input type="checkbox" id="pref-voice-enable" checked>
-                                      <span class="slider round"></span>
-                                  </label>
-                              </div>
-                              <div style="display: flex; gap: 8px;">
-                                  <select id="pref-voice-gender" style="flex: 1; font-size: 11px; padding: 6px; border-radius: 4px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff;">
-                                      <option value="male">Male Voice</option>
-                                      <option value="female">Female Voice</option>
-                                  </select>
-                              </div>
-                          </div>
+                    <!-- Modern AI Voice Guide Card -->
+                    <div class="snhop-voice-card">
+                        <div class="voice-card-header">
+                            <div class="voice-card-brand">
+                                <div class="voice-wave-icon">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </div>
+                                <div>
+                                    <span class="voice-card-title">AI Voice Guide</span>
+                                    <span class="voice-card-desc">English highway announcements</span>
+                                </div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="pref-voice-enable" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="voice-gender-selector">
+                            <select id="pref-voice-gender">
+                                <option value="male">🎙️ Male Voice (Natural UK/US)</option>
+                                <option value="female">🎙️ Female Voice (Natural UK/US)</option>
+                            </select>
+                        </div>
+                    </div>
 
-                    <button id="btn-calc-route" class="btn btn-kokonut w-full" style="justify-content: center; margin-top: 4px; padding: 13px;">
-                        <i class="fa-solid fa-route"></i> Calculate Optimal Path
+                    <!-- High-tech Calculate Route Button -->
+                    <button id="btn-calc-route" class="btn btn-kokonut w-full" style="justify-content: center; margin-top: 4px; padding: 14px; font-weight: 700; font-size: 13px; letter-spacing: 0.3px;">
+                        <i class="fa-solid fa-location-arrow"></i> Calculate Optimal Path
                     </button>
 
                     <!-- Dynamic Toll Timeline Container -->

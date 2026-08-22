@@ -144,6 +144,21 @@ const IndiaMapPlanner = {
         safe('btn-calc-route', () => {
             IndiaMapPlanner.processRoute();
         });
+        safe('btn-swap-locations', () => {
+            const oInput = document.getElementById('route-origin-input');
+            const dInput = document.getElementById('route-dest-input');
+            if (oInput && dInput) {
+                const tempVal = oInput.value;
+                oInput.value = dInput.value;
+                dInput.value = tempVal;
+
+                const tempObj = IndiaMapPlanner.selectedOrigin;
+                IndiaMapPlanner.selectedOrigin = IndiaMapPlanner.selectedDest;
+                IndiaMapPlanner.selectedDest = tempObj;
+
+                Utils.showToast("Origin and Destination swapped! 🔄", "info");
+            }
+        });
         safe('btn-start-trip',  () => IndiaMapPlanner.startLiveTrip());
         safe('btn-end-trip',    () => IndiaMapPlanner.endLiveTrip());
 
