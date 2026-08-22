@@ -1564,52 +1564,105 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
 /* Locate Me Button styles moved to dynamic JS generation */
 
 /* ========================================================
-   Kokonut UI / Motion.dev Inspired "Classic Dot" Radar
+   Ultra-High Visibility Google/Apple Navigation Location Beacon
    ======================================================== */
+.custom-user-loc-container {
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
+.custom-pin-container {
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
 .kokonut-dot {
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
 }
+
+.kokonut-dot-badge {
+    position: absolute;
+    top: -24px;
+    background: rgba(15, 23, 42, 0.95);
+    color: #38bdf8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1.5px solid #38bdf8;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.75), 0 0 12px rgba(56, 189, 248, 0.5);
+    white-space: nowrap;
+    z-index: 10;
+    animation: k-float 2s ease-in-out infinite alternate;
+}
+
 .kokonut-dot-core {
     position: absolute;
-    width: 14px;
-    height: 14px;
-    background: var(--primary);
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--primary-glow), inset 0 0 4px rgba(255,255,255,0.8);
-    border: 2px solid #ffffff;
-    z-index: 3;
+    box-shadow: 0 0 16px rgba(37, 99, 235, 1), 0 0 26px rgba(56, 189, 248, 0.9), inset 0 0 4px #ffffff;
+    border: 3px solid #ffffff;
+    z-index: 5;
 }
+
+.kokonut-dot-core::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #ffffff;
+}
+
 .kokonut-dot-ring {
     position: absolute;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, transparent 70%, var(--primary) 100%);
-    animation: k-spin 1.5s linear infinite;
-    -webkit-mask-image: radial-gradient(transparent 55%, black 65%);
-    mask-image: radial-gradient(transparent 55%, black 65%);
-    z-index: 2;
+    background: conic-gradient(from 0deg, transparent 55%, rgba(56, 189, 248, 0.9) 100%);
+    animation: k-spin 1.2s linear infinite;
+    -webkit-mask-image: radial-gradient(transparent 52%, black 62%);
+    mask-image: radial-gradient(transparent 52%, black 62%);
+    z-index: 3;
 }
+
 .kokonut-dot-radar {
     position: absolute;
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
-    background: var(--primary);
-    opacity: 0.3;
-    border: 1px solid var(--primary);
-    animation: k-ripple 2.5s cubic-bezier(0.1, 0, 0.3, 1) infinite;
-    z-index: 1;
+    background: rgba(37, 99, 235, 0.4);
+    border: 2px solid rgba(56, 189, 248, 0.9);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
+    animation: k-ripple 2s cubic-bezier(0.1, 0, 0.3, 1) infinite;
+    z-index: 2;
 }
+
+@keyframes k-float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-4px); }
+}
+
 @keyframes k-ripple {
-    0% { transform: scale(0.5); opacity: 1; }
-    100% { transform: scale(2.2); opacity: 0; }
+    0% { transform: scale(0.35); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
 }
+
 @keyframes k-spin {
     100% { transform: rotate(360deg); }
 }

@@ -107,16 +107,12 @@ const IndiaMapPlanner = {
             if (city.lat === 0 && city.lng === 0) {
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
                     IndiaMapPlanner.selectedOrigin = res;
-                    if (IndiaMapPlanner.map) {
-                        IndiaMapPlanner.map.flyTo([res.lat, res.lng], 13, { animate: true, duration: 1.5 });
-                    }
+                    IndiaMapPlanner.setOriginMarker(res);
                     IndiaMapPlanner.showWeatherPopup('origin', res.name, res.lat, res.lng);
                 });
             } else {
                 IndiaMapPlanner.selectedOrigin = city;
-                if (IndiaMapPlanner.map && city.lat && city.lng) {
-                    IndiaMapPlanner.map.flyTo([city.lat, city.lng], 12, { animate: true, duration: 1.5 });
-                }
+                IndiaMapPlanner.setOriginMarker(city);
                 IndiaMapPlanner.showWeatherPopup('origin', city.name, city.lat, city.lng);
             }
         });
@@ -124,10 +120,12 @@ const IndiaMapPlanner = {
             if (city.lat === 0 && city.lng === 0) {
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
                     IndiaMapPlanner.selectedDest = res;
+                    IndiaMapPlanner.setDestMarker(res);
                     IndiaMapPlanner.showWeatherPopup('destination', res.name, res.lat, res.lng);
                 });
             } else {
                 IndiaMapPlanner.selectedDest = city;
+                IndiaMapPlanner.setDestMarker(city);
                 IndiaMapPlanner.showWeatherPopup('destination', city.name, city.lat, city.lng);
             }
         });
@@ -995,8 +993,15 @@ const IndiaMapPlanner = {
                 updateClearBtn();
                 dropdown.innerHTML = '';
                 dropdown.style.display = 'none';
-                if (inputId === 'route-origin-input') IndiaMapPlanner.selectedOrigin = null;
-                if (inputId === 'route-dest-input') IndiaMapPlanner.selectedDest = null;
+                if (inputId === 'route-origin-input') {
+                    IndiaMapPlanner.selectedOrigin = null;
+                    if (IndiaMapPlanner.userLocationMarker) { try { IndiaMapPlanner.userLocationMarker.remove(); } catch(e){} IndiaMapPlanner.userLocationMarker = null; }
+                    if (IndiaMapPlanner.originMarker) { try { IndiaMapPlanner.originMarker.remove(); } catch(e){} IndiaMapPlanner.originMarker = null; }
+                }
+                if (inputId === 'route-dest-input') {
+                    IndiaMapPlanner.selectedDest = null;
+                    if (IndiaMapPlanner.destMarker) { try { IndiaMapPlanner.destMarker.remove(); } catch(e){} IndiaMapPlanner.destMarker = null; }
+                }
                 input.focus();
             });
         }
@@ -1187,12 +1192,13 @@ const IndiaMapPlanner = {
                                 name: 'My Current Location',
                                 state: loc.state || 'GPS',
                                 lat: loc.lat,
-                                lng: loc.lng
+                                lng: loc.lng,
+                                isCurrentLoc: true
                             };
                             input.value = 'My Current Location 📍';
                             const clearBtn = document.getElementById(input.id === 'route-origin-input' ? 'btn-clear-origin' : 'btn-clear-dest');
                             if (clearBtn) clearBtn.style.display = 'block';
-                            if (IndiaMapPlanner.map) IndiaMapPlanner.map.flyTo([loc.lat, loc.lng], 13, { duration: 1.2 });
+                            IndiaMapPlanner.setUserLocation(loc.lat, loc.lng, 'My Current Location');
                             onSelect(currentObj);
                         },
                         () => {
@@ -2454,20 +2460,124 @@ const IndiaMapPlanner = {
         </svg>`
     },
 
+    _getOriginPinIcon: (name = 'Start') => {
+        return L.divIcon({
+            className: 'custom-pin-container',
+            html: `
+                <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+                    <div style="background:rgba(15,23,42,0.95); color:#34d399; font-size:10px; font-weight:800; padding:3px 9px; border-radius:12px; border:1.5px solid #10b981; white-space:nowrap; box-shadow:0 4px 12px rgba(0,0,0,0.6); margin-bottom:2px;">📍 ${name}</div>
+                    <svg viewBox="0 0 32 32" width="28" height="28" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.7));">
+                        <circle cx="16" cy="14" r="10" fill="#10b981" stroke="#ffffff" stroke-width="2.5"/>
+                        <circle cx="16" cy="14" r="4" fill="#ffffff"/>
+                        <path d="M16 24 L16 30" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            `,
+            iconSize: [120, 52],
+            iconAnchor: [60, 50]
+        });
+    },
+
+    _getDestPinIcon: (name = 'Destination') => {
+        return L.divIcon({
+            className: 'custom-pin-container',
+            html: `
+                <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+                    <div style="background:rgba(15,23,42,0.95); color:#f87171; font-size:10px; font-weight:800; padding:3px 9px; border-radius:12px; border:1.5px solid #ef4444; white-space:nowrap; box-shadow:0 4px 12px rgba(0,0,0,0.6); margin-bottom:2px;">🏁 ${name}</div>
+                    <svg viewBox="0 0 32 32" width="28" height="28" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.7));">
+                        <circle cx="16" cy="14" r="10" fill="#ef4444" stroke="#ffffff" stroke-width="2.5"/>
+                        <circle cx="16" cy="14" r="4" fill="#ffffff"/>
+                        <path d="M16 24 L16 30" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            `,
+            iconSize: [120, 52],
+            iconAnchor: [60, 50]
+        });
+    },
+
+    setUserLocation: (lat, lng, locName = 'My Location') => {
+        if (!lat || !lng) return;
+        if (IndiaMapPlanner.userLocationMarker) {
+            try { IndiaMapPlanner.userLocationMarker.remove(); } catch(e){}
+        }
+        IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { 
+            icon: IndiaMapPlanner._getUserLocIcon(), 
+            zIndexOffset: 2000 
+        })
+        .bindTooltip(`📍 ${locName}`, { permanent: false, direction: 'top' })
+        .addTo(IndiaMapPlanner.map);
+
+        if (IndiaMapPlanner.map) {
+            IndiaMapPlanner.map.flyTo([lat, lng], 14, { duration: 1.2 });
+        }
+    },
+
+    setOriginMarker: (place) => {
+        if (!place || !place.lat || !place.lng) return;
+        if (place.isCurrentLoc || place.name === 'My Current Location') {
+            IndiaMapPlanner.setUserLocation(place.lat, place.lng, 'My Current Location');
+            return;
+        }
+        if (IndiaMapPlanner.originMarker) {
+            try { IndiaMapPlanner.originMarker.remove(); } catch(e){}
+        }
+        IndiaMapPlanner.originMarker = L.marker([place.lat, place.lng], {
+            icon: IndiaMapPlanner._getOriginPinIcon(place.name),
+            zIndexOffset: 1200
+        }).addTo(IndiaMapPlanner.map);
+        
+        if (IndiaMapPlanner.map) {
+            IndiaMapPlanner.map.flyTo([place.lat, place.lng], 13, { duration: 1.2 });
+        }
+    },
+
+    setDestMarker: (place) => {
+        if (!place || !place.lat || !place.lng) return;
+        if (IndiaMapPlanner.destMarker) {
+            try { IndiaMapPlanner.destMarker.remove(); } catch(e){}
+        }
+        IndiaMapPlanner.destMarker = L.marker([place.lat, place.lng], {
+            icon: IndiaMapPlanner._getDestPinIcon(place.name),
+            zIndexOffset: 1200
+        }).addTo(IndiaMapPlanner.map);
+        
+        if (IndiaMapPlanner.map) {
+            IndiaMapPlanner.map.flyTo([place.lat, place.lng], 13, { duration: 1.2 });
+        }
+    },
+
     _getUserLocIcon: () => {
         if (!IndiaMapPlanner._currentVehicleAvatar || IndiaMapPlanner._currentVehicleAvatar === 'default') {
             return L.divIcon({
-                className: '',
-                html: "<div class='kokonut-dot'><div class='kokonut-dot-radar'></div><div class='kokonut-dot-ring'></div><div class='kokonut-dot-core'></div></div>",
-                iconSize: [24,24], iconAnchor: [12,12]
+                className: 'custom-user-loc-container',
+                html: `
+                    <div class="kokonut-dot">
+                        <div class="kokonut-dot-badge">📍 MY LOCATION</div>
+                        <div class="kokonut-dot-radar"></div>
+                        <div class="kokonut-dot-ring"></div>
+                        <div class="kokonut-dot-core"></div>
+                    </div>
+                `,
+                iconSize: [60, 60],
+                iconAnchor: [30, 30]
             });
         }
         const svgContent = IndiaMapPlanner._vehicleIcons[IndiaMapPlanner._currentVehicleAvatar] || '📍';
+        const name = IndiaMapPlanner._vehicleNames[IndiaMapPlanner._currentVehicleAvatar] || 'My Vehicle';
         return L.divIcon({
-            className: '',
-            html: `<div style="display:flex; align-items:center; justify-content:center; transform: perspective(120px) rotateX(15deg) translateY(-8px); filter: drop-shadow(0 10px 14px rgba(0,0,0,0.5)); transition: all 0.3s ease;">${svgContent}</div>`,
-            iconSize: [44, 44],
-            iconAnchor: [22, 22]
+            className: 'custom-user-loc-container',
+            html: `
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; width:60px; height:60px;">
+                    <div class="kokonut-dot-badge" style="top:-18px;">🚗 ${name.toUpperCase()}</div>
+                    <div class="kokonut-dot-radar" style="position:absolute; top:0; left:0; width:60px; height:60px;"></div>
+                    <div style="transform: perspective(120px) rotateX(15deg) translateY(-2px); filter: drop-shadow(0 10px 14px rgba(0,0,0,0.65)); transition: all 0.3s ease; position:relative; z-index:5;">
+                        ${svgContent}
+                    </div>
+                </div>
+            `,
+            iconSize: [60, 60],
+            iconAnchor: [30, 30]
         });
     },
 
