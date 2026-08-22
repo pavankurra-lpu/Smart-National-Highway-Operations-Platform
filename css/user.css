@@ -1314,17 +1314,21 @@ body.light-mode .google-ac-item:hover {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
-/* Category Modern Gradient Icon Boxes */
+/* Category Modern Relatable Gradient Icon Boxes */
 .google-ac-icon-box.icon-current   { background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; box-shadow: 0 3px 10px rgba(16,185,129,0.4); }
-.google-ac-icon-box.icon-airport   { background: linear-gradient(135deg, #0ea5e9, #0284c7); color: #ffffff; }
-.google-ac-icon-box.icon-station   { background: linear-gradient(135deg, #ec4899, #db2777); color: #ffffff; }
-.google-ac-icon-box.icon-toll      { background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; box-shadow: 0 3px 10px rgba(245,158,11,0.35); }
-.google-ac-icon-box.icon-city      { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #ffffff; }
-.google-ac-icon-box.icon-institute { background: linear-gradient(135deg, #14b8a6, #0d9488); color: #ffffff; }
-.google-ac-icon-box.icon-hospital  { background: linear-gradient(135deg, #f43f5e, #e11d48); color: #ffffff; }
-.google-ac-icon-box.icon-landmark  { background: linear-gradient(135deg, #f97316, #ea580c); color: #ffffff; }
-.google-ac-icon-box.icon-shrine    { background: linear-gradient(135deg, #fb923c, #c2410c); color: #ffffff; }
-.google-ac-icon-box.icon-mall      { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #ffffff; }
+.google-ac-icon-box.icon-airport   { background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; box-shadow: 0 3px 10px rgba(2,132,199,0.35); }
+.google-ac-icon-box.icon-station   { background: linear-gradient(135deg, #e11d48, #be123c); color: #ffffff; box-shadow: 0 3px 10px rgba(225,29,72,0.35); }
+.google-ac-icon-box.icon-toll      { background: linear-gradient(135deg, #d97706, #b45309); color: #ffffff; box-shadow: 0 3px 10px rgba(217,119,6,0.35); }
+.google-ac-icon-box.icon-shrine    { background: linear-gradient(135deg, #ea580c, #c2410c); color: #ffffff; box-shadow: 0 3px 10px rgba(234,88,12,0.35); }
+.google-ac-icon-box.icon-beach     { background: linear-gradient(135deg, #06b6d4, #0891b2); color: #ffffff; box-shadow: 0 3px 10px rgba(6,182,212,0.35); }
+.google-ac-icon-box.icon-landmark  { background: linear-gradient(135deg, #854d0e, #713f12); color: #ffffff; box-shadow: 0 3px 10px rgba(133,77,14,0.35); }
+.google-ac-icon-box.icon-hospital  { background: linear-gradient(135deg, #dc2626, #991b1b); color: #ffffff; box-shadow: 0 3px 10px rgba(220,38,38,0.35); }
+.google-ac-icon-box.icon-institute { background: linear-gradient(135deg, #0d9488, #0f766e); color: #ffffff; box-shadow: 0 3px 10px rgba(13,148,136,0.35); }
+.google-ac-icon-box.icon-tech      { background: linear-gradient(135deg, #4f46e5, #4338ca); color: #ffffff; box-shadow: 0 3px 10px rgba(79,70,229,0.35); }
+.google-ac-icon-box.icon-mall      { background: linear-gradient(135deg, #7c3aed, #6d28d9); color: #ffffff; box-shadow: 0 3px 10px rgba(124,58,237,0.35); }
+.google-ac-icon-box.icon-fuel      { background: linear-gradient(135deg, #ca8a04, #a16207); color: #ffffff; box-shadow: 0 3px 10px rgba(202,138,4,0.35); }
+.google-ac-icon-box.icon-hotel     { background: linear-gradient(135deg, #65a30d, #4d7c0f); color: #ffffff; box-shadow: 0 3px 10px rgba(101,163,13,0.35); }
+.google-ac-icon-box.icon-city      { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 3px 10px rgba(37,99,235,0.35); }
 .google-ac-icon-box.icon-place     { background: linear-gradient(135deg, #475569, #334155); color: #ffffff; }
 
 /* Quick clear button inside input fields */

@@ -676,38 +676,50 @@ const IndiaMapPlanner = {
 
     _getPlaceCategoryInfo: (item) => {
         if (item.isCurrentLoc) {
-            return { icon: 'fa-solid fa-crosshairs', cls: 'icon-current', badge: 'MY GPS' };
+            return { icon: 'fa-solid fa-location-crosshairs', cls: 'icon-current', badge: 'MY GPS' };
         }
         const str = ((item.name || '') + ' ' + (item.fullName || '') + ' ' + (item.subtitle || '') + ' ' + (item.type || '') + ' ' + (item.class || '')).toLowerCase();
         
         if (str.includes('airport') || str.includes('aerodrome') || str.includes('airfield') || str.includes('helipad')) {
-            return { icon: 'fa-solid fa-plane-departure', cls: 'icon-airport', badge: 'AIRPORT' };
+            return { icon: 'fa-solid fa-plane', cls: 'icon-airport', badge: 'AIRPORT' };
         }
         if (str.includes('railway') || str.includes('station') || str.includes('junction') || str.includes('metro') || str.includes('terminus')) {
-            return { icon: 'fa-solid fa-train-subway', cls: 'icon-station', badge: 'TRANSIT' };
+            return { icon: 'fa-solid fa-train', cls: 'icon-station', badge: 'RAILWAY / METRO' };
         }
         if (str.includes('toll') || str.includes('plaza') || str.includes('expressway') || str.includes('highway') || str.includes('tollway')) {
-            return { icon: 'fa-solid fa-road-barrier', cls: 'icon-toll', badge: 'TOLL PLAZA' };
+            return { icon: 'fa-solid fa-road', cls: 'icon-toll', badge: 'TOLL PLAZA' };
         }
-        if (str.includes('temple') || str.includes('mandir') || str.includes('gurdwara') || str.includes('mosque') || str.includes('church') || str.includes('tirumala') || str.includes('shrine') || str.includes('dargah')) {
-            return { icon: 'fa-solid fa-place-of-worship', cls: 'icon-shrine', badge: 'PILGRIMAGE' };
+        if (str.includes('temple') || str.includes('mandir') || str.includes('tirumala') || str.includes('balaji') || str.includes('gurdwara') || str.includes('mosque') || str.includes('masjid') || str.includes('church') || str.includes('shrine') || str.includes('dargah')) {
+            return { icon: 'fa-solid fa-place-of-worship', cls: 'icon-shrine', badge: 'TEMPLE / SHRINE' };
         }
-        if (str.includes('beach') || str.includes('lake') || str.includes('fort') || str.includes('palace') || str.includes('monument') || str.includes('mahal') || str.includes('ghat') || str.includes('park') || str.includes('sanctuary')) {
-            return { icon: 'fa-solid fa-monument', cls: 'icon-landmark', badge: 'HERITAGE' };
+        if (str.includes('beach') || str.includes('lake') || str.includes('sea') || str.includes('waterfall') || str.includes('river')) {
+            return { icon: 'fa-solid fa-umbrella-beach', cls: 'icon-beach', badge: 'BEACH / NATURE' };
         }
-        if (str.includes('hospital') || str.includes('medical') || str.includes('aiims') || str.includes('clinic') || str.includes('care')) {
-            return { icon: 'fa-solid fa-hospital', cls: 'icon-hospital', badge: 'HEALTHCARE' };
+        if (str.includes('fort') || str.includes('palace') || str.includes('monument') || str.includes('mahal') || str.includes('taj') || str.includes('charminar') || str.includes('ghat') || str.includes('museum') || str.includes('heritage')) {
+            return { icon: 'fa-solid fa-landmark', cls: 'icon-landmark', badge: 'HERITAGE' };
         }
-        if (str.includes('university') || str.includes('college') || str.includes('campus') || str.includes('institute') || str.includes('iit') || str.includes('nit') || str.includes('lpu') || str.includes('school')) {
-            return { icon: 'fa-solid fa-graduation-cap', cls: 'icon-institute', badge: 'ACADEMIC' };
+        if (str.includes('hospital') || str.includes('medical') || str.includes('aiims') || str.includes('clinic') || str.includes('care') || str.includes('doctor')) {
+            return { icon: 'fa-solid fa-hospital', cls: 'icon-hospital', badge: 'HOSPITAL' };
         }
-        if (str.includes('mall') || str.includes('market') || str.includes('bazaar') || str.includes('center') || str.includes('tower') || str.includes('complex') || str.includes('tech park') || str.includes('hitec')) {
-            return { icon: 'fa-solid fa-building-user', cls: 'icon-mall', badge: 'COMMERCIAL' };
+        if (str.includes('university') || str.includes('college') || str.includes('campus') || str.includes('institute') || str.includes('iit') || str.includes('nit') || str.includes('lpu') || str.includes('school') || str.includes('academy')) {
+            return { icon: 'fa-solid fa-graduation-cap', cls: 'icon-institute', badge: 'COLLEGE / CAMPUS' };
         }
-        if (item.type === 'city' || item.type === 'administrative' || ['mumbai','delhi','bengaluru','bangalore','hyderabad','chennai','kolkata','pune','ahmedabad','jaipur','lucknow','chandigarh','guntur','vijayawada','patna','bhopal','surat','indore'].includes(item.name?.toLowerCase())) {
+        if (str.includes('tech park') || str.includes('cyber') || str.includes('hitec') || str.includes('it park') || str.includes('software') || str.includes('infosys') || str.includes('wipro') || str.includes('tcs')) {
+            return { icon: 'fa-solid fa-laptop-code', cls: 'icon-tech', badge: 'TECH PARK / IT' };
+        }
+        if (str.includes('mall') || str.includes('market') || str.includes('bazaar') || str.includes('center') || str.includes('shopping') || str.includes('store')) {
+            return { icon: 'fa-solid fa-bag-shopping', cls: 'icon-mall', badge: 'MALL / MARKET' };
+        }
+        if (str.includes('fuel') || str.includes('petrol') || str.includes('diesel') || str.includes('cng') || str.includes('pump') || str.includes('charging') || str.includes('ev station')) {
+            return { icon: 'fa-solid fa-gas-pump', cls: 'icon-fuel', badge: 'FUEL / EV' };
+        }
+        if (str.includes('hotel') || str.includes('resort') || str.includes('stay') || str.includes('inn') || str.includes('lodge') || str.includes('suites')) {
+            return { icon: 'fa-solid fa-hotel', cls: 'icon-hotel', badge: 'HOTEL / STAY' };
+        }
+        if (item.type === 'city' || item.type === 'administrative' || ['mumbai','delhi','bengaluru','bangalore','hyderabad','chennai','kolkata','pune','ahmedabad','jaipur','lucknow','chandigarh','guntur','vijayawada','patna','bhopal','surat','indore','varanasi','agra'].includes(item.name?.toLowerCase())) {
             return { icon: 'fa-solid fa-city', cls: 'icon-city', badge: 'CITY' };
         }
-        return { icon: 'fa-solid fa-map-pin', cls: 'icon-place', badge: 'LOCATION' };
+        return { icon: 'fa-solid fa-location-dot', cls: 'icon-place', badge: 'PLACE' };
     },
 
     _highlightQuery: (text, query) => {
