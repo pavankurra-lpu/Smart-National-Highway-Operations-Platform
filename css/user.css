@@ -1297,26 +1297,28 @@ body.light-mode .google-ac-item:hover {
 }
 
 .google-ac-icon-box {
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13.5px;
+    font-size: 14px;
     flex-shrink: 0;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -1.5px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
 }
 .google-ac-icon-box svg {
     display: block;
     flex-shrink: 0;
     pointer-events: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
 }
 .google-ac-item:hover .google-ac-icon-box,
 .google-ac-item.focused .google-ac-icon-box {
-    transform: scale(1.12);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    transform: perspective(300px) rotateX(8deg) scale(1.14) translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
 }
 
 /* Category Modern Relatable Gradient Icon Boxes */

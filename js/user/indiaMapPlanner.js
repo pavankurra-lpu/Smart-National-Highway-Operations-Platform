@@ -2138,14 +2138,105 @@ const IndiaMapPlanner = {
     },
     _vehicleIcons: {
         'default': '<div class="dock-radar-beacon"><div class="dock-radar-beacon-ring"></div><div class="dock-radar-beacon-crosshair"></div><div class="dock-radar-beacon-core"></div></div>',
-        'car_red': '🏎️',
-        'suv_blue': '🚙',
-        'ev_green': '🚗',
-        'camper': '🚐',
-        'scooter': '🛵',
-        'motorcycle': '🏍️',
-        'truck': '🚛',
-        'bus': '🚌'
+        
+        'car_red': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="24" ry="5" fill="rgba(0,0,0,0.3)"/>
+            <path d="M12 40 L20 22 L44 22 L52 40 L56 46 L8 46 Z" fill="url(#gRedCar)"/>
+            <path d="M22 24 L25 36 L39 36 L42 24 Z" fill="url(#gGlass)"/>
+            <circle cx="18" cy="46" r="6" fill="#0f172a"/><circle cx="18" cy="46" r="3" fill="#94a3b8"/>
+            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="3" fill="#94a3b8"/>
+            <polygon points="46,20 54,20 52,23 48,23" fill="#1e293b"/>
+            <rect x="7" y="41" width="4" height="3" rx="1" fill="#facc15"/>
+            <rect x="53" y="41" width="4" height="3" rx="1" fill="#facc15"/>
+            <defs>
+                <linearGradient id="gRedCar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171"/><stop offset="50%" stop-color="#ef4444"/><stop offset="100%" stop-color="#991b1b"/></linearGradient>
+                <linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#0284c7"/></linearGradient>
+            </defs>
+        </svg>`,
+        
+        'suv_blue': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="24" ry="5" fill="rgba(0,0,0,0.3)"/>
+            <rect x="18" y="14" width="28" height="3" rx="1" fill="#475569"/>
+            <path d="M10 42 L16 18 L48 18 L54 42 L56 46 L8 46 Z" fill="url(#gBlueSuv)"/>
+            <path d="M18 20 L22 34 L32 34 L32 20 Z" fill="url(#gGlass)"/>
+            <path d="M34 20 L34 34 L44 34 L46 20 Z" fill="url(#gGlass)"/>
+            <circle cx="18" cy="46" r="7" fill="#0f172a"/><circle cx="18" cy="46" r="3.5" fill="#cbd5e1"/>
+            <circle cx="46" cy="46" r="7" fill="#0f172a"/><circle cx="46" cy="46" r="3.5" fill="#cbd5e1"/>
+            <defs>
+                <linearGradient id="gBlueSuv" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#38bdf8"/><stop offset="50%" stop-color="#0284c7"/><stop offset="100%" stop-color="#075985"/></linearGradient>
+            </defs>
+        </svg>`,
+        
+        'ev_green': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="24" ry="5" fill="rgba(16,185,129,0.35)"/>
+            <path d="M12 40 Q20 18 32 18 Q44 18 52 40 L54 46 L10 46 Z" fill="url(#gEvGreen)"/>
+            <path d="M20 23 Q32 21 44 23 L42 34 L22 34 Z" fill="url(#gGlass)"/>
+            <circle cx="18" cy="46" r="6" fill="#0f172a"/><circle cx="18" cy="46" r="2.5" fill="#10b981"/>
+            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="2.5" fill="#10b981"/>
+            <polygon points="32,38 29,43 33,43 31,48 35,42 32,42" fill="#10b981"/>
+            <defs>
+                <linearGradient id="gEvGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="50%" stop-color="#10b981"/><stop offset="100%" stop-color="#065f46"/></linearGradient>
+            </defs>
+        </svg>`,
+        
+        'camper': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="24" ry="5" fill="rgba(0,0,0,0.3)"/>
+            <rect x="8" y="16" width="48" height="30" rx="6" fill="url(#gCamper)"/>
+            <rect x="14" y="20" width="12" height="12" rx="2" fill="url(#gGlass)"/>
+            <rect x="30" y="20" width="12" height="12" rx="2" fill="url(#gGlass)"/>
+            <circle cx="18" cy="46" r="6" fill="#0f172a"/><circle cx="18" cy="46" r="3" fill="#e2e8f0"/>
+            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="3" fill="#e2e8f0"/>
+            <defs>
+                <linearGradient id="gCamper" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="50%" stop-color="#ea580c"/><stop offset="100%" stop-color="#9a3412"/></linearGradient>
+            </defs>
+        </svg>`,
+        
+        'scooter': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="20" ry="4" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="16" cy="46" r="6" fill="#0f172a"/><circle cx="16" cy="46" r="3" fill="#cbd5e1"/>
+            <circle cx="48" cy="46" r="6" fill="#0f172a"/><circle cx="48" cy="46" r="3" fill="#cbd5e1"/>
+            <path d="M16 46 L26 46 L34 38 L42 22 L46 22" stroke="#06b6d4" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M26 46 L30 32 L38 32 L34 46 Z" fill="#0891b2"/>
+            <circle cx="46" cy="20" r="3" fill="#facc15"/>
+        </svg>`,
+        
+        'motorcycle': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="22" ry="4" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="14" cy="44" r="7" fill="#0f172a"/><circle cx="14" cy="44" r="3.5" fill="#f59e0b"/>
+            <circle cx="50" cy="44" r="7" fill="#0f172a"/><circle cx="50" cy="44" r="3.5" fill="#f59e0b"/>
+            <path d="M14 44 L28 32 L40 32 L50 44" stroke="#e11d48" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M26 30 L36 24 L44 26 L42 34 Z" fill="#be123c"/>
+            <path d="M42 26 L46 20 L48 20" stroke="#475569" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>`,
+        
+        'truck': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="26" ry="5" fill="rgba(0,0,0,0.3)"/>
+            <rect x="6" y="16" width="32" height="28" rx="2" fill="url(#gTruckTrailer)"/>
+            <path d="M38 24 L46 24 L52 34 L52 44 L38 44 Z" fill="url(#gTruckCab)"/>
+            <path d="M44 26 L48 26 L50 32 L44 32 Z" fill="url(#gGlass)"/>
+            <circle cx="14" cy="46" r="6" fill="#0f172a"/><circle cx="14" cy="46" r="2.5" fill="#94a3b8"/>
+            <circle cx="28" cy="46" r="6" fill="#0f172a"/><circle cx="28" cy="46" r="2.5" fill="#94a3b8"/>
+            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="2.5" fill="#94a3b8"/>
+            <defs>
+                <linearGradient id="gTruckTrailer" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#475569"/></linearGradient>
+                <linearGradient id="gTruckCab" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#b45309"/></linearGradient>
+            </defs>
+        </svg>`,
+        
+        'bus': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
+            <ellipse cx="32" cy="54" rx="26" ry="5" fill="rgba(0,0,0,0.3)"/>
+            <rect x="6" y="16" width="52" height="28" rx="6" fill="url(#gBus)"/>
+            <rect x="10" y="20" width="8" height="10" rx="1.5" fill="url(#gGlass)"/>
+            <rect x="20" y="20" width="8" height="10" rx="1.5" fill="url(#gGlass)"/>
+            <rect x="30" y="20" width="8" height="10" rx="1.5" fill="url(#gGlass)"/>
+            <rect x="40" y="20" width="8" height="10" rx="1.5" fill="url(#gGlass)"/>
+            <rect x="50" y="20" width="6" height="14" rx="1.5" fill="url(#gGlass)"/>
+            <circle cx="16" cy="46" r="6" fill="#0f172a"/><circle cx="16" cy="46" r="2.5" fill="#e2e8f0"/>
+            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="2.5" fill="#e2e8f0"/>
+            <defs>
+                <linearGradient id="gBus" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="50%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#4c1d95"/></linearGradient>
+            </defs>
+        </svg>`
     },
 
     _getUserLocIcon: () => {
@@ -2156,10 +2247,10 @@ const IndiaMapPlanner = {
                 iconSize: [24,24], iconAnchor: [12,12]
             });
         }
-        const emoji = IndiaMapPlanner._vehicleIcons[IndiaMapPlanner._currentVehicleAvatar] || '📍';
+        const svgContent = IndiaMapPlanner._vehicleIcons[IndiaMapPlanner._currentVehicleAvatar] || '📍';
         return L.divIcon({
             className: '',
-            html: `<div style="font-size: 36px; line-height: 36px; filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.4)) drop-shadow(0px 12px 16px rgba(0,0,0,0.3)); transform: perspective(100px) rotateX(15deg) translateY(-10px); transition: all 0.3s ease;">${emoji}</div>`,
+            html: `<div style="display:flex; align-items:center; justify-content:center; transform: perspective(120px) rotateX(15deg) translateY(-8px); filter: drop-shadow(0 10px 14px rgba(0,0,0,0.5)); transition: all 0.3s ease;">${svgContent}</div>`,
             iconSize: [44, 44],
             iconAnchor: [22, 22]
         });
