@@ -944,13 +944,6 @@ const IndiaMapPlanner = {
             } catch(e) {}
             return null;
         };
-                        state: 'India'
-                    };
-                    return loc;
-                }
-            } catch(e) {}
-            return null;
-        };
 
         if (!IndiaMapPlanner.selectedOrigin && origInput && origInput.value) {
             IndiaMapPlanner.selectedOrigin = await resolveLocation(origInput.value, IndiaMapPlanner.selectedOrigin, 'origin');
