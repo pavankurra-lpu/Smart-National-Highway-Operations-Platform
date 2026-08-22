@@ -35,10 +35,15 @@ const TripAnalytics = {
 
         if (trips.length === 0) {
             listEl.innerHTML = `
-                <div style="text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; margin-top: 10px;">
-                    <i class="fa-solid fa-map-location-dot" style="font-size: 24px; color: var(--text-muted); margin-bottom: 12px;"></i>
-                    <p style="color: var(--text-main); font-size: 13px; font-weight: 600; margin: 0 0 4px;">No Trips Recorded</p>
-                    <p style="color: var(--text-muted); font-size: 11px; margin: 0; line-height: 1.4;">Navigate to the Route Planner and start your first simulated trip to see journey logs here.</p>
+                <div class="reactbits-empty-state">
+                    <div class="empty-state-beacon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <div class="empty-state-title">No Trips Recorded</div>
+                    <div class="empty-state-desc">Navigate to the Route Planner and start your first simulated trip to see journey logs here.</div>
+                    <button type="button" class="empty-state-cta" onclick="document.getElementById('tab-btn-plan').click()">
+                        <i class="fa-solid fa-location-arrow"></i> Plan Route Now
+                    </button>
                 </div>
             `;
             return;
@@ -47,26 +52,26 @@ const TripAnalytics = {
         listEl.innerHTML = trips.map(t => {
             const date = new Date(t.timestamp || t.startTime).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
             return `
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); border-radius: 8px; padding: 12px; transition: all 0.2s ease; cursor: default;">
+                <div style="background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px; transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1); box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                         <div>
-                            <p style="color: var(--primary); font-size: 11px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 5px;">
-                                <i class="fa-solid fa-route"></i> ${t.origin || 'Unknown'} → ${t.dest || 'Unknown'}
+                            <p style="color: #fff; font-size: 12px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 6px;">
+                                <span style="color:var(--primary); font-size:13px;"><i class="fa-solid fa-route"></i></span> ${t.origin || 'Unknown'} → ${t.dest || 'Unknown'}
                             </p>
-                            <p style="color: var(--text-muted); font-size: 9px; margin: 2px 0 0;">${date}</p>
+                            <p style="color: var(--text-muted); font-size: 10px; margin: 3px 0 0;"><i class="fa-regular fa-calendar"></i> ${date}</p>
                         </div>
                         <div style="text-align: right;">
-                            <p style="color: var(--accent-yellow); font-size: 12px; font-weight: 700; margin: 0;">₹${(t.cost || 0).toFixed(2)}</p>
-                            <p style="color: var(--text-muted); font-size: 9px; margin: 2px 0 0;">${t.totalDistance || 0} km</p>
+                            <p style="color: var(--accent-yellow); font-size: 13px; font-weight: 800; margin: 0; font-family:var(--font-display);">₹${(t.cost || 0).toFixed(2)}</p>
+                            <span style="display:inline-block; font-size: 9px; font-weight:700; color: var(--accent-blue); background:rgba(14,165,233,0.1); padding:2px 6px; border-radius:4px; margin-top:2px;">${t.totalDistance || 0} km</span>
                         </div>
                     </div>
-                    <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.05);">
                         ${(t.tollsPassed || []).slice(0, 3).map(toll => `
-                            <span style="font-size: 8px; padding: 2px 6px; background: rgba(0,0,0,0.3); border-radius: 4px; color: var(--text-sec); border: 1px solid rgba(255,255,255,0.05);">
-                                ${toll}
+                            <span style="font-size: 9px; padding: 2px 7px; background: rgba(0,0,0,0.35); border-radius: 6px; color: var(--text-sec); border: 1px solid rgba(255,255,255,0.08);">
+                                📍 ${toll}
                             </span>
                         `).join('')}
-                        ${(t.tollsPassed || []).length > 3 ? `<span style="font-size: 8px; color: var(--text-muted); padding-top:2px;">+${t.tollsPassed.length - 3} more</span>` : ''}
+                        ${(t.tollsPassed || []).length > 3 ? `<span style="font-size: 9px; color: var(--primary); font-weight:600; padding-top:2px;">+${t.tollsPassed.length - 3} more</span>` : ''}
                     </div>
                 </div>
             `;
@@ -101,10 +106,15 @@ const TripAnalytics = {
                 const msg = document.createElement('div');
                 msg.className = 'no-data-msg';
                 msg.innerHTML = `
-                    <div style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; margin-bottom: 20px;">
-                        <i class="fa-solid fa-chart-column" style="font-size: 24px; color: var(--text-muted); margin-bottom: 12px;"></i>
-                        <p style="color: var(--text-main); font-size: 13px; font-weight: 600; margin: 0 0 4px;">No Analytics Data</p>
-                        <p style="color: var(--text-muted); font-size: 11px; margin: 0;">Plan your first trip to unlock spending and travel charts.</p>
+                    <div class="reactbits-empty-state" style="padding: 22px 14px;">
+                        <div class="empty-state-beacon" style="width: 42px; height: 42px; font-size: 17px; margin-bottom: 8px;">
+                            <i class="fa-solid fa-chart-column"></i>
+                        </div>
+                        <div class="empty-state-title" style="font-size: 12.5px;">No Analytics Data</div>
+                        <div class="empty-state-desc" style="font-size: 10.5px; margin-bottom: 10px;">Plan your first trip to unlock spending and travel charts.</div>
+                        <button type="button" class="empty-state-cta" style="padding: 5px 12px; font-size: 10px;" onclick="document.getElementById('tab-btn-plan').click()">
+                            <i class="fa-solid fa-route"></i> Start Routing
+                        </button>
                     </div>
                 `;
                 parent.appendChild(msg);
@@ -121,7 +131,7 @@ const TripAnalytics = {
         let gradient = null;
         try {
             gradient = ctx.createLinearGradient(0, 0, 0, 150);
-            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.22)');
+            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
             gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
         } catch (e) {
             gradient = 'rgba(16, 185, 129, 0.05)';

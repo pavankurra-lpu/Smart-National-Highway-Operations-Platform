@@ -349,52 +349,68 @@
                         </div>
                     </div>
 
-                    <!-- Stats Cards -->
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
-                        <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid var(--border-light); text-align: center;">
-                            <p style="color: var(--text-sec); margin: 0; font-size: 9px; text-transform: uppercase;">Total Trips</p>
-                            <p id="total-trips" style="color: var(--primary); font-size: 20px; margin: 5px 0; font-weight: bold;">0</p>
+                    <!-- React Bits Bento Stats Grid -->
+                    <div class="analytics-bento-grid">
+                        <div class="bento-stat-card">
+                            <span class="bento-stat-icon" style="color:var(--primary);"><i class="fa-solid fa-route"></i></span>
+                            <p class="bento-stat-label">Total Trips</p>
+                            <p id="total-trips" class="bento-stat-value">0</p>
                         </div>
-                        <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid var(--border-light); text-align: center;">
-                            <p style="color: var(--text-sec); margin: 0; font-size: 9px; text-transform: uppercase;">Distance</p>
-                            <p id="total-distance" style="color: var(--primary); font-size: 20px; margin: 5px 0; font-weight: bold;">0 km</p>
+                        <div class="bento-stat-card">
+                            <span class="bento-stat-icon" style="color:var(--accent-blue);"><i class="fa-solid fa-road"></i></span>
+                            <p class="bento-stat-label">Distance</p>
+                            <p id="total-distance" class="bento-stat-value">0 km</p>
                         </div>
-                        <div style="padding: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid var(--border-light); text-align: center;">
-                            <p style="color: var(--text-sec); margin: 0; font-size: 9px; text-transform: uppercase;">Expenditure</p>
-                            <p id="total-cost" style="color: var(--accent-yellow); font-size: 20px; margin: 5px 0; font-weight: bold;">₹0</p>
+                        <div class="bento-stat-card">
+                            <span class="bento-stat-icon" style="color:var(--accent-yellow);"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                            <p class="bento-stat-label">Expenditure</p>
+                            <p id="total-cost" class="bento-stat-value">₹0</p>
                         </div>
                     </div>
 
-                    <!-- Bklit UI-Style Chart Grid -->
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 25px;">
+                    <!-- React Bits Chart Grid -->
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 22px;">
                         <!-- Spending Patterns Line Chart -->
-                        <div class="glass-panel" style="padding: 16px; position: relative;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
-                                <p style="font-size: 10.5px; font-weight: 700; color: var(--text-sec); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Daily Spending Curve</p>
-                                <span style="font-size: 8px; padding: 2px 6px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); color: var(--primary); border-radius: 4px; font-weight: 600;">LINE DURATION</span>
+                        <div class="analytics-chart-panel">
+                            <div class="chart-panel-header">
+                                <p class="chart-panel-title">
+                                    <i class="fa-solid fa-chart-line" style="color:var(--primary);"></i> Daily Spending Curve
+                                </p>
+                                <span class="chart-neon-badge badge-emerald">
+                                    <span class="live-status-dot"></span> LINE DURATION
+                                </span>
                             </div>
-                            <div style="height: 150px; width: 100%;">
+                            <div id="costChart-wrapper" style="height: 150px; width: 100%; position: relative;">
                                 <canvas id="costChart"></canvas>
                             </div>
                         </div>
+
                         <!-- Toll Spend Bar Chart -->
-                        <div class="glass-panel" style="padding: 16px; position: relative;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
-                                <p style="font-size: 10.5px; font-weight: 700; color: var(--text-sec); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Top Toll Plazas (Spend)</p>
-                                <span style="font-size: 8px; padding: 2px 6px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.2); color: var(--accent-yellow); border-radius: 4px; font-weight: 600;">BAR RANKING</span>
+                        <div class="analytics-chart-panel">
+                            <div class="chart-panel-header">
+                                <p class="chart-panel-title">
+                                    <i class="fa-solid fa-chart-simple" style="color:var(--accent-yellow);"></i> Top Toll Plazas (Spend)
+                                </p>
+                                <span class="chart-neon-badge badge-amber">
+                                    <span class="pulse-beacon" style="width:5px;height:5px;"></span> BAR RANKING
+                                </span>
                             </div>
-                            <div style="height: 120px; width: 100%;">
+                            <div id="barChart-wrapper" style="height: 125px; width: 100%; position: relative;">
                                 <canvas id="barChart"></canvas>
                             </div>
                         </div>
                         
                         <!-- Expense Breakdown Donut Chart -->
-                        <div class="glass-panel" style="padding: 16px; position: relative;">
-                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
-                                <p style="font-size: 10.5px; font-weight: 700; color: var(--text-sec); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Expense Breakdown</p>
-                                <span style="font-size: 8px; padding: 2px 6px; background: rgba(14, 165, 233, 0.08); border: 1px solid rgba(14, 165, 233, 0.2); color: var(--accent-blue); border-radius: 4px; font-weight: 600;">DONUT CHART</span>
+                        <div class="analytics-chart-panel">
+                            <div class="chart-panel-header">
+                                <p class="chart-panel-title">
+                                    <i class="fa-solid fa-chart-pie" style="color:var(--accent-blue);"></i> Expense Breakdown
+                                </p>
+                                <span class="chart-neon-badge badge-blue">
+                                    <span class="live-status-dot" style="background:#38bdf8;box-shadow:0 0 8px #38bdf8;"></span> DONUT CHART
+                                </span>
                             </div>
-                            <div style="height: 120px; width: 100%; display: flex; align-items: center; justify-content: center;">
+                            <div id="donutChart-wrapper" style="height: 125px; width: 100%; display: flex; align-items: center; justify-content: center; position: relative;">
                                 <canvas id="donutChart"></canvas>
                             </div>
                         </div>
@@ -402,11 +418,11 @@
 
                     <!-- Detailed Trip History List -->
                     <div>
-                        <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-sec); margin-bottom: 15px; display:flex; align-items:center; gap:8px;">
-                            <i class="fa-solid fa-history"></i> Detailed Journey Log
+                        <h4 style="font-size: 11.5px; font-weight: 700; text-transform: uppercase; color: var(--text-sec); margin-bottom: 12px; display:flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-clock-rotate-left" style="color:var(--primary);"></i> Detailed Journey Log
                         </h4>
                         <div id="trip-history-list" style="display: flex; flex-direction: column; gap: 10px;">
-                            <p style="color:var(--text-muted); font-size:11px; text-align:center; padding:20px;">No trip history yet.</p>
+                            <!-- Filled dynamically -->
                         </div>
                     </div>
                 </div>
