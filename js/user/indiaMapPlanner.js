@@ -1791,68 +1791,62 @@ const IndiaMapPlanner = {
             Utils.showToast(`${currentLabel} selected! 🚗`, "success");
         });
 
-        // 3. Toll Area Scanner Tool
-        const btnScanner = document.createElement('div');
-        btnScanner.className = 'reactbits-dock-item';
-        btnScanner.id = 'btn-scanner-dock';
-        btnScanner.innerHTML = `
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <div class="reactbits-dock-label">Area Toll Scanner</div>
-            <div class="reactbits-dock-dot"></div>
-        `;
-        btnScanner.addEventListener('click', () => {
-            btnScanner.style.transform = 'scale(0.88)';
-            setTimeout(() => btnScanner.style.transform = 'scale(1)', 150);
-            IndiaMapPlanner.toggleSelectionMode();
-            btnScanner.classList.toggle('active', IndiaMapPlanner.isSelectionMode);
-        });
-
-        // 4. Satellite / Dark View Toggle
+        // 3. Satellite / Dark View Toggle (Seamless Map Tile Switcher)
         const btnLayer = document.createElement('div');
         btnLayer.className = 'reactbits-dock-item';
         btnLayer.id = 'btn-layer-dock';
-        btnLayer.innerHTML = `
-            <i class="fa-solid fa-layer-group"></i>
-            <div class="reactbits-dock-label" id="dock-layer-label">Satellite View</div>
-            <div class="reactbits-dock-dot"></div>
-        `;
 
-        let isSatellite = false;
+        const updateLayerBtn = () => {
+            if (IndiaMapPlanner._isSatellite) {
+                btnLayer.innerHTML = `
+                    <i class="fa-solid fa-moon"></i>
+                    <div class="reactbits-dock-label" id="dock-layer-label">Dark Mode</div>
+                    <div class="reactbits-dock-dot"></div>
+                `;
+            } else {
+                btnLayer.innerHTML = `
+                    <i class="fa-solid fa-satellite"></i>
+                    <div class="reactbits-dock-label" id="dock-layer-label">Satellite View</div>
+                    <div class="reactbits-dock-dot"></div>
+                `;
+            }
+        };
+        updateLayerBtn();
+
         btnLayer.addEventListener('click', () => {
             btnLayer.style.transform = 'scale(0.88)';
             setTimeout(() => btnLayer.style.transform = 'scale(1)', 150);
-            isSatellite = !isSatellite;
-            btnLayer.classList.toggle('active', isSatellite);
 
-            const labelEl = document.getElementById('dock-layer-label');
-            if (isSatellite) {
+            if (IndiaMapPlanner._isSatellite) {
+                // Switch from Satellite -> Dark Mode
                 if (IndiaMapPlanner.map) {
-                    if (IndiaMapPlanner.darkLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner.darkLayer);
-                    IndiaMapPlanner.satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                        maxZoom: 19,
-                        attribution: 'Tiles &copy; Esri'
-                    }).addTo(IndiaMapPlanner.map);
+                    if (IndiaMapPlanner._satelliteLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._satelliteLayer);
+                    if (IndiaMapPlanner._labelsLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._labelsLayer);
+                    if (IndiaMapPlanner._streetLayer) IndiaMapPlanner._streetLayer.addTo(IndiaMapPlanner.map);
                 }
-                if (labelEl) labelEl.innerText = "Dark Map View";
-                Utils.showToast("Satellite View enabled 🛰️", "info");
+                IndiaMapPlanner._isSatellite = false;
+                updateLayerBtn();
+                Utils.showToast("Dark Mode enabled 🌙", "info");
             } else {
+                // Switch from Dark Mode -> Satellite Mode
                 if (IndiaMapPlanner.map) {
-                    if (IndiaMapPlanner.satLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner.satLayer);
-                    if (IndiaMapPlanner.darkLayer) IndiaMapPlanner.darkLayer.addTo(IndiaMapPlanner.map);
+                    if (IndiaMapPlanner._streetLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._streetLayer);
+                    if (IndiaMapPlanner._satelliteLayer) IndiaMapPlanner._satelliteLayer.addTo(IndiaMapPlanner.map);
+                    if (IndiaMapPlanner._labelsLayer) IndiaMapPlanner._labelsLayer.addTo(IndiaMapPlanner.map);
                 }
-                if (labelEl) labelEl.innerText = "Satellite View";
-                Utils.showToast("Dark Map View enabled 🗺️", "info");
+                IndiaMapPlanner._isSatellite = true;
+                updateLayerBtn();
+                Utils.showToast("Satellite View enabled 🛰️", "info");
             }
         });
 
         dock.appendChild(btnLocate);
         dock.appendChild(btnVehicle);
-        dock.appendChild(btnScanner);
         dock.appendChild(btnLayer);
         container.appendChild(dock);
 
         // React Bits Dock Proximity Magnification Engine
-        const items = [btnLocate, btnVehicle, btnScanner, btnLayer];
+        const items = [btnLocate, btnVehicle, btnLayer];
         const maxDistance = 110; // Proximity threshold in pixels
         const maxScale = 0.38;   // Max scale boost (up to 1.38x)
 
@@ -1864,7 +1858,6 @@ const IndiaMapPlanner = {
                 const distance = Math.abs(mouseX - itemCenterX);
 
                 if (distance < maxDistance) {
-                    // Smooth cosine interpolation for natural macOS / React Bits spring feel
                     const cosFactor = Math.cos((distance / maxDistance) * (Math.PI / 2));
                     const scale = 1 + cosFactor * maxScale;
                     const translateY = -(scale - 1) * 10;

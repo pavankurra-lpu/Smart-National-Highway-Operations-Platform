@@ -142,9 +142,6 @@
                 <button class="tab-btn" data-tab="tab-sos" id="tab-btn-sos">
                     <i class="fa-solid fa-truck-medical"></i> SOS
                 </button>
-                <button class="tab-btn" data-tab="tab-explorer" id="tab-btn-explorer">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Explorer
-                </button>
                 <button class="tab-btn" data-tab="tab-analytics" id="tab-btn-analytics">
                     <i class="fa-solid fa-chart-line"></i> Analytics
                 </button>
@@ -432,45 +429,6 @@
                         <i class="fa-solid fa-list-check"></i> Your Active Cases
                     </h4>
                     <div id="sos-cases-list"></div>
-                </div>
-            </div>
-
-            <!-- ========================
-                 TAB: TOLL EXPLORER
-                 ======================== -->
-            <div id="tab-explorer" class="tab-content">
-                <div class="explorer-card">
-                    <h3 class="explorer-tab-title">
-                        <i class="fa-solid fa-compass-drafting"></i> Toll Explorer
-                    </h3>
-                    <p class="explorer-tab-desc">
-                        Analyze highway tolls between any two points in India by dragging on the map.
-                    </p>
-                    
-                    <div class="explorer-action-box">
-                        <button id="btn-toll-explorer-toggle" class="btn btn-outline w-full" style="justify-content: center;">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i> Enable Selection Mode
-                        </button>
-                    </div>
-
-                    <div id="explorer-results-sidebar" class="hidden">
-                        <div class="explorer-stats-grid">
-                            <div class="ex-stat-card">
-                                <span class="ex-stat-label">Toll Plazas</span>
-                                <span id="explorer-toll-count-tab" class="ex-stat-val">0</span>
-                            </div>
-                            <div class="ex-stat-card">
-                                <span class="ex-stat-label">Total Cost</span>
-                                <span id="explorer-toll-cost-tab" class="ex-stat-val">₹0</span>
-                            </div>
-                        </div>
-                        <p id="explorer-path-info" style="font-size: 10px; color: var(--text-muted); margin-bottom: 12px; text-align: center;"></p>
-                    </div>
-
-                    <div id="explorer-idle-msg" style="text-align: center; padding: 20px 0;">
-                        <i class="fa-solid fa-map-location-dot" style="font-size: 24px; color: var(--border); margin-bottom: 10px; display: block;"></i>
-                        <span style="font-size: 11px; color: var(--text-muted);">Enable mode then drag on map to begin.</span>
-                    </div>
                 </div>
             </div>
 
