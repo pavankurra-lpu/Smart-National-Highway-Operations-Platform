@@ -14,11 +14,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 220,
-            "BUS_2AXLE": 450,
-            "COM_3AXLE": 695,
-            "MAV_4_6": 695,
-            "OVERSIZED": 880
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -35,11 +35,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
-            "OVERSIZED": 285
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -58,9 +58,9 @@ const TollSeedData = [
             "LMV": 85,
             "LCV": 140,
             "BUS_2AXLE": 290,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 460,
-            "OVERSIZED": 560
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -78,10 +78,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 220
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -120,10 +120,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 615,
-            "OVERSIZED": 750
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -140,11 +140,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -162,10 +162,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -182,11 +182,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 650,
-            "OVERSIZED": 795
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -204,10 +204,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 460
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -227,8 +227,8 @@ const TollSeedData = [
             "LCV": 80,
             "BUS_2AXLE": 170,
             "COM_3AXLE": 185,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -266,11 +266,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 280,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -288,10 +288,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 135,
             "LCV": 220,
-            "BUS_2AXLE": 455,
-            "COM_3AXLE": 495,
-            "MAV_4_6": 715,
-            "OVERSIZED": 870
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -308,11 +308,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 90,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 280,
-            "MAV_4_6": 280,
-            "OVERSIZED": 280
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -329,11 +329,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 535,
-            "OVERSIZED": 655
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -350,11 +350,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 95,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 310,
-            "MAV_4_6": 310,
-            "OVERSIZED": 310
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -373,8 +373,8 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 590,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
             "OVERSIZED": 715
         },
         "status": "ACTIVE"
@@ -392,11 +392,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 570,
-            "OVERSIZED": 695
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -414,10 +414,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 375,
-            "OVERSIZED": 460
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -431,14 +431,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 17.809262992907,
         "lng": 73.9720206930516,
-        "baseRate": 80,
+        "baseRate": 85,
         "tollRatesByVehicleClass": {
-            "LMV": 80,
-            "LCV": 130,
-            "BUS_2AXLE": 270,
-            "COM_3AXLE": 425,
-            "MAV_4_6": 425,
-            "OVERSIZED": 515
+            "LMV": 85,
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 455,
+            "OVERSIZED": 555
         },
         "status": "ACTIVE"
     },
@@ -455,11 +455,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 175,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 570,
-            "OVERSIZED": 690
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -478,7 +478,7 @@ const TollSeedData = [
             "LMV": 60,
             "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -497,11 +497,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 245,
-            "BUS_2AXLE": 490,
-            "COM_3AXLE": 785,
-            "MAV_4_6": 785,
-            "OVERSIZED": 785
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -518,11 +518,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 415,
-            "OVERSIZED": 505
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -539,11 +539,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 570,
-            "OVERSIZED": 695
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -560,11 +560,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 540,
-            "OVERSIZED": 655
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -582,10 +582,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -602,11 +602,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 370,
+            "LCV": 180,
+            "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
-            "MAV_4_6": 580,
-            "OVERSIZED": 705
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -620,14 +620,14 @@ const TollSeedData = [
         "nhCorridor": "45",
         "lat": 12.3468619995711,
         "lng": 79.7798560001735,
-        "baseRate": 70,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 70,
-            "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 260,
-            "MAV_4_6": 375,
-            "OVERSIZED": 455
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -648,7 +648,7 @@ const TollSeedData = [
             "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
             "MAV_4_6": 585,
-            "OVERSIZED": 710
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -665,11 +665,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 255,
-            "OVERSIZED": 255
+            "LCV": 55,
+            "BUS_2AXLE": 115,
+            "COM_3AXLE": 125,
+            "MAV_4_6": 180,
+            "OVERSIZED": 220
         },
         "status": "ACTIVE"
     },
@@ -687,10 +687,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -710,8 +710,8 @@ const TollSeedData = [
             "LCV": 195,
             "BUS_2AXLE": 405,
             "COM_3AXLE": 445,
-            "MAV_4_6": 635,
-            "OVERSIZED": 775
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -729,10 +729,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -751,8 +751,8 @@ const TollSeedData = [
             "LMV": 25,
             "LCV": 40,
             "BUS_2AXLE": 85,
-            "COM_3AXLE": 90,
-            "MAV_4_6": 130,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
             "OVERSIZED": 160
         },
         "status": "ACTIVE"
@@ -771,10 +771,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 305,
-            "OVERSIZED": 370
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -791,11 +791,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 420,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 655,
-            "OVERSIZED": 800
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -813,10 +813,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 385,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -834,10 +834,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
+            "BUS_2AXLE": 355,
             "COM_3AXLE": 390,
-            "MAV_4_6": 565,
-            "OVERSIZED": 685
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -856,9 +856,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 300
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -875,9 +875,9 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -896,11 +896,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 400,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 630,
-            "OVERSIZED": 765
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -917,11 +917,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 235,
-            "OVERSIZED": 285
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -935,14 +935,14 @@ const TollSeedData = [
         "nhCorridor": "7",
         "lat": 13.7929718186802,
         "lng": 77.7643246767625,
-        "baseRate": 115,
+        "baseRate": 125,
         "tollRatesByVehicleClass": {
-            "LMV": 115,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 620,
-            "OVERSIZED": 755
+            "LMV": 125,
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 670,
+            "OVERSIZED": 815
         },
         "status": "ACTIVE"
     },
@@ -959,10 +959,10 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 235,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
             "OVERSIZED": 290
         },
         "status": "ACTIVE"
@@ -977,14 +977,14 @@ const TollSeedData = [
         "nhCorridor": "8A (Old 47)",
         "lat": 22.6307521360698,
         "lng": 72.1793293262666,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 37.5,
-            "BUS_2AXLE": 75,
-            "COM_3AXLE": 75,
-            "MAV_4_6": 75,
-            "OVERSIZED": 84
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -1002,10 +1002,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 740
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -1022,11 +1022,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 205,
-            "OVERSIZED": 245
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -1043,11 +1043,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 465,
-            "OVERSIZED": 565
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -1088,8 +1088,8 @@ const TollSeedData = [
             "LCV": 210,
             "BUS_2AXLE": 440,
             "COM_3AXLE": 480,
-            "MAV_4_6": 695,
-            "OVERSIZED": 845
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -1106,11 +1106,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 225,
-            "OVERSIZED": 275
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -1128,10 +1128,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 175,
-            "OVERSIZED": 215
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -1150,9 +1150,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
+            "COM_3AXLE": 165,
             "MAV_4_6": 240,
-            "OVERSIZED": 295
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -1170,10 +1170,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
+            "BUS_2AXLE": 205,
             "COM_3AXLE": 220,
-            "MAV_4_6": 315,
-            "OVERSIZED": 380
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -1212,10 +1212,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 310,
-            "OVERSIZED": 380
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -1229,14 +1229,14 @@ const TollSeedData = [
         "nhCorridor": "8A (Old 47 )",
         "lat": 22.4229942711092,
         "lng": 71.0887344894159,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 37.5,
-            "BUS_2AXLE": 75,
-            "COM_3AXLE": 84,
-            "MAV_4_6": 105,
-            "OVERSIZED": 130
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -1253,11 +1253,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 205,
-            "OVERSIZED": 245
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -1275,10 +1275,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 45,
             "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -1296,10 +1296,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 310,
+            "BUS_2AXLE": 305,
             "COM_3AXLE": 335,
-            "MAV_4_6": 485,
-            "OVERSIZED": 590
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -1337,11 +1337,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -1355,14 +1355,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 14.910388377907,
         "lng": 75.2792659109645,
-        "baseRate": 55,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 285,
-            "OVERSIZED": 350
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -1380,10 +1380,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 170,
             "LCV": 275,
-            "BUS_2AXLE": 585,
-            "COM_3AXLE": 635,
-            "MAV_4_6": 910,
-            "OVERSIZED": 1110
+            "BUS_2AXLE": 575,
+            "COM_3AXLE": 630,
+            "MAV_4_6": 905,
+            "OVERSIZED": 1100
         },
         "status": "ACTIVE"
     },
@@ -1402,9 +1402,9 @@ const TollSeedData = [
             "LMV": 85,
             "LCV": 140,
             "BUS_2AXLE": 290,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -1422,10 +1422,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
+            "BUS_2AXLE": 205,
             "COM_3AXLE": 220,
-            "MAV_4_6": 315,
-            "OVERSIZED": 380
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -1443,10 +1443,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 140,
+            "BUS_2AXLE": 135,
             "COM_3AXLE": 150,
-            "MAV_4_6": 220,
-            "OVERSIZED": 265
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -1464,10 +1464,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 550,
-            "OVERSIZED": 670
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -1484,11 +1484,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
+            "LCV": 130,
+            "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
-            "MAV_4_6": 415,
-            "OVERSIZED": 505
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -1505,11 +1505,11 @@ const TollSeedData = [
         "baseRate": 180,
         "tollRatesByVehicleClass": {
             "LMV": 180,
-            "LCV": 280,
-            "BUS_2AXLE": 570,
-            "COM_3AXLE": 625,
-            "MAV_4_6": 875,
-            "OVERSIZED": 1110
+            "LCV": 290,
+            "BUS_2AXLE": 610,
+            "COM_3AXLE": 665,
+            "MAV_4_6": 960,
+            "OVERSIZED": 1165
         },
         "status": "ACTIVE"
     },
@@ -1527,10 +1527,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 385,
-            "OVERSIZED": 470
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -1548,10 +1548,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 470,
-            "OVERSIZED": 570
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -1568,11 +1568,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 610,
-            "MAV_4_6": 610,
-            "OVERSIZED": 765
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -1589,11 +1589,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 245,
-            "BUS_2AXLE": 515,
-            "COM_3AXLE": 565,
-            "MAV_4_6": 810,
-            "OVERSIZED": 985
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -1607,14 +1607,14 @@ const TollSeedData = [
         "nhCorridor": "93",
         "lat": 27.3355080001182,
         "lng": 78.031047999771,
-        "baseRate": 35,
+        "baseRate": 115,
         "tollRatesByVehicleClass": {
-            "LMV": 35,
-            "LCV": 55,
-            "BUS_2AXLE": 120,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 185,
-            "OVERSIZED": 225
+            "LMV": 115,
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -1652,11 +1652,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 165,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -1675,9 +1675,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 295
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -1695,10 +1695,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -1716,10 +1716,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 300,
-            "OVERSIZED": 365
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -1736,11 +1736,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 150,
-            "BUS_2AXLE": 310,
-            "COM_3AXLE": 340,
-            "MAV_4_6": 485,
-            "OVERSIZED": 595
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -1758,10 +1758,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 225,
             "LCV": 365,
-            "BUS_2AXLE": 770,
-            "COM_3AXLE": 840,
-            "MAV_4_6": 1205,
-            "OVERSIZED": 1470
+            "BUS_2AXLE": 765,
+            "COM_3AXLE": 835,
+            "MAV_4_6": 1195,
+            "OVERSIZED": 1460
         },
         "status": "ACTIVE"
     },
@@ -1778,11 +1778,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 435
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -1799,11 +1799,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 400,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 630,
-            "OVERSIZED": 765
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -1842,10 +1842,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 515,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -1862,11 +1862,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 180,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 565,
-            "OVERSIZED": 715
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -1885,8 +1885,8 @@ const TollSeedData = [
             "LMV": 75,
             "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
             "OVERSIZED": 485
         },
         "status": "ACTIVE"
@@ -1905,8 +1905,8 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
             "MAV_4_6": 505,
             "OVERSIZED": 615
         },
@@ -1925,11 +1925,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 90,
-            "BUS_2AXLE": 185,
-            "COM_3AXLE": 295,
-            "MAV_4_6": 295,
-            "OVERSIZED": 295
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -1947,10 +1947,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -1970,8 +1970,8 @@ const TollSeedData = [
             "LCV": 205,
             "BUS_2AXLE": 425,
             "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 815
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -1989,10 +1989,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 435,
-            "OVERSIZED": 530
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -2009,11 +2009,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -2031,10 +2031,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 90,
-            "MAV_4_6": 125,
-            "OVERSIZED": 155
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -2073,10 +2073,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 90,
-            "MAV_4_6": 125,
-            "OVERSIZED": 155
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -2115,10 +2115,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 110,
             "LCV": 180,
-            "BUS_2AXLE": 370,
+            "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
             "MAV_4_6": 585,
-            "OVERSIZED": 710
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -2137,9 +2137,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -2156,11 +2156,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
+            "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 410,
-            "OVERSIZED": 410
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -2177,11 +2177,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 285,
-            "OVERSIZED": 345
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -2198,11 +2198,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
-            "BUS_2AXLE": 315,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 495,
-            "OVERSIZED": 605
+            "LCV": 155,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -2220,7 +2220,7 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 410,
+            "BUS_2AXLE": 405,
             "COM_3AXLE": 445,
             "MAV_4_6": 640,
             "OVERSIZED": 780
@@ -2241,10 +2241,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 140,
+            "BUS_2AXLE": 135,
             "COM_3AXLE": 150,
             "MAV_4_6": 215,
-            "OVERSIZED": 265
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -2261,11 +2261,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 85,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 265,
-            "OVERSIZED": 265
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -2282,11 +2282,11 @@ const TollSeedData = [
         "baseRate": 135,
         "tollRatesByVehicleClass": {
             "LMV": 135,
-            "LCV": 215,
-            "BUS_2AXLE": 440,
-            "COM_3AXLE": 680,
-            "MAV_4_6": 680,
-            "OVERSIZED": 850
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -2303,11 +2303,11 @@ const TollSeedData = [
         "baseRate": 175,
         "tollRatesByVehicleClass": {
             "LMV": 175,
-            "LCV": 275,
-            "BUS_2AXLE": 565,
-            "COM_3AXLE": 870,
-            "MAV_4_6": 870,
-            "OVERSIZED": 1095
+            "LCV": 285,
+            "BUS_2AXLE": 595,
+            "COM_3AXLE": 650,
+            "MAV_4_6": 930,
+            "OVERSIZED": 1135
         },
         "status": "ACTIVE"
     },
@@ -2345,11 +2345,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
-            "BUS_2AXLE": 315,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 495,
-            "OVERSIZED": 600
+            "LCV": 155,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -2367,10 +2367,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 130,
             "LCV": 210,
-            "BUS_2AXLE": 435,
-            "COM_3AXLE": 475,
-            "MAV_4_6": 685,
-            "OVERSIZED": 835
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -2388,10 +2388,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 330,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 515,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -2408,11 +2408,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 205,
-            "OVERSIZED": 245
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -2431,7 +2431,7 @@ const TollSeedData = [
             "LMV": 60,
             "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -2450,11 +2450,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 310,
-            "MAV_4_6": 445,
-            "OVERSIZED": 545
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -2471,11 +2471,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 230,
-            "BUS_2AXLE": 485,
-            "COM_3AXLE": 530,
-            "MAV_4_6": 760,
-            "OVERSIZED": 930
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -2493,10 +2493,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 380,
-            "OVERSIZED": 460
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -2514,10 +2514,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -2535,10 +2535,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
+            "BUS_2AXLE": 355,
             "COM_3AXLE": 390,
-            "MAV_4_6": 565,
-            "OVERSIZED": 685
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -2556,10 +2556,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -2577,10 +2577,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 205,
-            "OVERSIZED": 250
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -2598,10 +2598,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 215
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -2620,9 +2620,9 @@ const TollSeedData = [
             "LMV": 85,
             "LCV": 140,
             "BUS_2AXLE": 290,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 460,
-            "OVERSIZED": 560
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -2660,11 +2660,11 @@ const TollSeedData = [
         "baseRate": 175,
         "tollRatesByVehicleClass": {
             "LMV": 175,
-            "LCV": 275,
-            "BUS_2AXLE": 565,
-            "COM_3AXLE": 870,
-            "MAV_4_6": 870,
-            "OVERSIZED": 1105
+            "LCV": 285,
+            "BUS_2AXLE": 595,
+            "COM_3AXLE": 650,
+            "MAV_4_6": 930,
+            "OVERSIZED": 1135
         },
         "status": "ACTIVE"
     },
@@ -2682,10 +2682,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 550,
-            "OVERSIZED": 670
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -2704,9 +2704,9 @@ const TollSeedData = [
             "LMV": 50,
             "LCV": 80,
             "BUS_2AXLE": 170,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -2727,7 +2727,7 @@ const TollSeedData = [
             "BUS_2AXLE": 390,
             "COM_3AXLE": 425,
             "MAV_4_6": 610,
-            "OVERSIZED": 740
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -2744,11 +2744,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 360,
-            "OVERSIZED": 360
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -2765,11 +2765,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 240,
-            "BUS_2AXLE": 490,
-            "COM_3AXLE": 745,
-            "MAV_4_6": 745,
-            "OVERSIZED": 960
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -2787,10 +2787,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 30,
             "LCV": 50,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 115,
-            "MAV_4_6": 170,
-            "OVERSIZED": 205
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -2808,10 +2808,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 740
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -2828,11 +2828,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
-            "OVERSIZED": 285
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -2849,11 +2849,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 145,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 315,
-            "MAV_4_6": 315,
-            "OVERSIZED": 315
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -2891,11 +2891,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 90,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 375,
-            "OVERSIZED": 375
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -2913,10 +2913,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 215
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -2933,11 +2933,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 255,
-            "OVERSIZED": 310
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -2954,11 +2954,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 140,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 470,
-            "MAV_4_6": 470,
-            "OVERSIZED": 570
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -2978,7 +2978,7 @@ const TollSeedData = [
             "LCV": 65,
             "BUS_2AXLE": 135,
             "COM_3AXLE": 150,
-            "MAV_4_6": 210,
+            "MAV_4_6": 215,
             "OVERSIZED": 260
         },
         "status": "ACTIVE"
@@ -2996,11 +2996,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -3014,14 +3014,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 14.5567819997503,
         "lng": 75.7280720000327,
-        "baseRate": 140,
+        "baseRate": 100,
         "tollRatesByVehicleClass": {
-            "LMV": 140,
-            "LCV": 230,
-            "BUS_2AXLE": 480,
-            "COM_3AXLE": 525,
-            "MAV_4_6": 755,
-            "OVERSIZED": 915
+            "LMV": 100,
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -3040,8 +3040,8 @@ const TollSeedData = [
             "LMV": 75,
             "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
             "OVERSIZED": 485
         },
         "status": "ACTIVE"
@@ -3059,11 +3059,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 575,
-            "OVERSIZED": 700
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -3080,11 +3080,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 330,
-            "OVERSIZED": 400
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -3102,10 +3102,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 390,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -3122,11 +3122,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 95,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 200,
-            "OVERSIZED": 200
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -3143,9 +3143,9 @@ const TollSeedData = [
         "baseRate": 25,
         "tollRatesByVehicleClass": {
             "LMV": 25,
-            "LCV": 43,
+            "LCV": 40,
             "BUS_2AXLE": 85,
-            "COM_3AXLE": 182,
+            "COM_3AXLE": 95,
             "MAV_4_6": 135,
             "OVERSIZED": 160
         },
@@ -3164,11 +3164,11 @@ const TollSeedData = [
         "baseRate": 165,
         "tollRatesByVehicleClass": {
             "LMV": 165,
-            "LCV": 295,
-            "BUS_2AXLE": 585,
-            "COM_3AXLE": 940,
-            "MAV_4_6": 940,
-            "OVERSIZED": 940
+            "LCV": 265,
+            "BUS_2AXLE": 560,
+            "COM_3AXLE": 610,
+            "MAV_4_6": 880,
+            "OVERSIZED": 1070
         },
         "status": "ACTIVE"
     },
@@ -3185,11 +3185,11 @@ const TollSeedData = [
         "baseRate": 130,
         "tollRatesByVehicleClass": {
             "LMV": 130,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 635,
-            "MAV_4_6": 635,
-            "OVERSIZED": 805
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -3206,11 +3206,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 165,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 545,
-            "OVERSIZED": 665
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -3228,10 +3228,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 320
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -3248,11 +3248,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -3269,11 +3269,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 115,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 375,
-            "OVERSIZED": 375
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -3291,10 +3291,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 525,
-            "OVERSIZED": 640
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -3311,11 +3311,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -3333,10 +3333,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 525,
-            "OVERSIZED": 635
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -3353,11 +3353,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 355,
-            "OVERSIZED": 435
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -3371,14 +3371,14 @@ const TollSeedData = [
         "nhCorridor": "48",
         "lat": 12.9109430002002,
         "lng": 79.4012100002714,
-        "baseRate": 45,
+        "baseRate": 65,
         "tollRatesByVehicleClass": {
-            "LMV": 45,
+            "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 230,
-            "OVERSIZED": 280
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -3395,11 +3395,11 @@ const TollSeedData = [
         "baseRate": 170,
         "tollRatesByVehicleClass": {
             "LMV": 170,
-            "LCV": 270,
-            "BUS_2AXLE": 570,
-            "COM_3AXLE": 620,
-            "MAV_4_6": 890,
-            "OVERSIZED": 1085
+            "LCV": 275,
+            "BUS_2AXLE": 575,
+            "COM_3AXLE": 630,
+            "MAV_4_6": 905,
+            "OVERSIZED": 1100
         },
         "status": "ACTIVE"
     },
@@ -3417,10 +3417,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
+            "BUS_2AXLE": 205,
             "COM_3AXLE": 220,
-            "MAV_4_6": 315,
-            "OVERSIZED": 385
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -3438,9 +3438,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
+            "MAV_4_6": 370,
             "OVERSIZED": 455
         },
         "status": "ACTIVE"
@@ -3461,8 +3461,8 @@ const TollSeedData = [
             "LCV": 50,
             "BUS_2AXLE": 100,
             "COM_3AXLE": 110,
-            "MAV_4_6": 155,
-            "OVERSIZED": 190
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -3479,11 +3479,11 @@ const TollSeedData = [
         "baseRate": 185,
         "tollRatesByVehicleClass": {
             "LMV": 185,
-            "LCV": 200,
-            "BUS_2AXLE": 420,
-            "COM_3AXLE": 460,
-            "MAV_4_6": 660,
-            "OVERSIZED": 805
+            "LCV": 300,
+            "BUS_2AXLE": 625,
+            "COM_3AXLE": 685,
+            "MAV_4_6": 985,
+            "OVERSIZED": 1200
         },
         "status": "ACTIVE"
     },
@@ -3500,11 +3500,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -3522,10 +3522,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -3542,11 +3542,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 285,
-            "OVERSIZED": 345
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -3563,11 +3563,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 110,
-            "BUS_2AXLE": 355,
-            "COM_3AXLE": 545,
-            "MAV_4_6": 545,
-            "OVERSIZED": 685
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -3584,11 +3584,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -3605,11 +3605,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 195,
-            "OVERSIZED": 240
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -3626,8 +3626,8 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
             "MAV_4_6": 240,
             "OVERSIZED": 290
@@ -3647,11 +3647,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 440
+            "LCV": 115,
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -3690,10 +3690,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
+            "BUS_2AXLE": 355,
             "COM_3AXLE": 390,
-            "MAV_4_6": 565,
-            "OVERSIZED": 685
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -3711,10 +3711,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 30,
             "LCV": 50,
-            "BUS_2AXLE": 105,
-            "COM_3AXLE": 115,
-            "MAV_4_6": 165,
-            "OVERSIZED": 200
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -3732,10 +3732,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 80,
-            "MAV_4_6": 80,
-            "OVERSIZED": 80
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -3774,10 +3774,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 565,
-            "OVERSIZED": 685
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -3794,11 +3794,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 140,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 455,
-            "OVERSIZED": 455
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -3817,8 +3817,8 @@ const TollSeedData = [
             "LMV": 75,
             "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
             "OVERSIZED": 485
         },
         "status": "ACTIVE"
@@ -3837,10 +3837,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -3858,7 +3858,7 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
+            "BUS_2AXLE": 320,
             "COM_3AXLE": 350,
             "MAV_4_6": 505,
             "OVERSIZED": 615
@@ -3882,7 +3882,7 @@ const TollSeedData = [
             "BUS_2AXLE": 170,
             "COM_3AXLE": 185,
             "MAV_4_6": 265,
-            "OVERSIZED": 320
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -3896,14 +3896,14 @@ const TollSeedData = [
         "nhCorridor": "2",
         "lat": 25.249452616655,
         "lng": 82.9995433024231,
-        "baseRate": 80,
+        "baseRate": 85,
         "tollRatesByVehicleClass": {
-            "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 415,
-            "MAV_4_6": 425,
-            "OVERSIZED": 510
+            "LMV": 85,
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 455,
+            "OVERSIZED": 555
         },
         "status": "ACTIVE"
     },
@@ -3920,11 +3920,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 230,
-            "BUS_2AXLE": 485,
-            "COM_3AXLE": 530,
-            "MAV_4_6": 760,
-            "OVERSIZED": 930
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -3963,10 +3963,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -3987,7 +3987,7 @@ const TollSeedData = [
             "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
             "MAV_4_6": 425,
-            "OVERSIZED": 515
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -4005,10 +4005,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 735
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -4026,10 +4026,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 620
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -4047,10 +4047,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -4064,14 +4064,14 @@ const TollSeedData = [
         "nhCorridor": "2",
         "lat": 22.6988909996506,
         "lng": 88.2888620003809,
-        "baseRate": 75,
+        "baseRate": 115,
         "tollRatesByVehicleClass": {
-            "LMV": 75,
-            "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "LMV": 115,
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -4089,10 +4089,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 305,
-            "OVERSIZED": 370
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -4109,11 +4109,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 540,
-            "OVERSIZED": 655
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -4130,11 +4130,11 @@ const TollSeedData = [
         "baseRate": 130,
         "tollRatesByVehicleClass": {
             "LMV": 130,
-            "LCV": 205,
-            "BUS_2AXLE": 435,
-            "COM_3AXLE": 475,
-            "MAV_4_6": 680,
-            "OVERSIZED": 830
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -4151,11 +4151,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 435,
-            "MAV_4_6": 625,
-            "OVERSIZED": 760
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -4172,11 +4172,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -4197,7 +4197,7 @@ const TollSeedData = [
             "BUS_2AXLE": 255,
             "COM_3AXLE": 280,
             "MAV_4_6": 400,
-            "OVERSIZED": 490
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -4214,11 +4214,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 225,
-            "BUS_2AXLE": 460,
-            "COM_3AXLE": 700,
-            "MAV_4_6": 700,
-            "OVERSIZED": 895
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -4232,14 +4232,14 @@ const TollSeedData = [
         "nhCorridor": "8",
         "lat": 27.086899400304,
         "lng": 75.8345567999139,
-        "baseRate": 30,
+        "baseRate": 65,
         "tollRatesByVehicleClass": {
-            "LMV": 30,
-            "LCV": 50,
-            "BUS_2AXLE": 100,
-            "COM_3AXLE": 110,
-            "MAV_4_6": 160,
-            "OVERSIZED": 195
+            "LMV": 65,
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -4257,10 +4257,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 130,
             "LCV": 210,
-            "BUS_2AXLE": 435,
-            "COM_3AXLE": 475,
-            "MAV_4_6": 680,
-            "OVERSIZED": 830
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -4277,11 +4277,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 415,
-            "MAV_4_6": 415,
-            "OVERSIZED": 500
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -4299,10 +4299,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -4319,11 +4319,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
+            "LCV": 50,
             "BUS_2AXLE": 100,
-            "COM_3AXLE": 105,
-            "MAV_4_6": 155,
-            "OVERSIZED": 185
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -4340,11 +4340,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -4363,9 +4363,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -4382,11 +4382,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 285,
-            "MAV_4_6": 410,
-            "OVERSIZED": 495
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -4404,10 +4404,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 350,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -4424,11 +4424,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 275,
-            "OVERSIZED": 335
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -4445,11 +4445,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
+            "LCV": 120,
+            "BUS_2AXLE": 255,
             "COM_3AXLE": 280,
-            "MAV_4_6": 405,
-            "OVERSIZED": 495
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -4466,11 +4466,11 @@ const TollSeedData = [
         "baseRate": 175,
         "tollRatesByVehicleClass": {
             "LMV": 175,
-            "LCV": 275,
-            "BUS_2AXLE": 565,
-            "COM_3AXLE": 615,
-            "MAV_4_6": 870,
-            "OVERSIZED": 1095
+            "LCV": 285,
+            "BUS_2AXLE": 595,
+            "COM_3AXLE": 650,
+            "MAV_4_6": 930,
+            "OVERSIZED": 1135
         },
         "status": "ACTIVE"
     },
@@ -4487,11 +4487,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
-            "OVERSIZED": 285
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -4510,9 +4510,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 295
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -4529,11 +4529,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 650,
-            "OVERSIZED": 795
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -4550,10 +4550,10 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
+            "MAV_4_6": 240,
             "OVERSIZED": 290
         },
         "status": "ACTIVE"
@@ -4571,11 +4571,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 205,
-            "OVERSIZED": 250
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -4592,11 +4592,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 400,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 630,
-            "OVERSIZED": 770
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -4616,8 +4616,8 @@ const TollSeedData = [
             "LCV": 195,
             "BUS_2AXLE": 405,
             "COM_3AXLE": 445,
-            "MAV_4_6": 635,
-            "OVERSIZED": 775
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -4634,11 +4634,11 @@ const TollSeedData = [
         "baseRate": 135,
         "tollRatesByVehicleClass": {
             "LMV": 135,
-            "LCV": 205,
-            "BUS_2AXLE": 410,
-            "COM_3AXLE": 620,
-            "MAV_4_6": 620,
-            "OVERSIZED": 810
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -4656,10 +4656,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 300,
-            "OVERSIZED": 365
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -4698,9 +4698,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
             "OVERSIZED": 520
         },
         "status": "ACTIVE"
@@ -4718,11 +4718,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 440,
-            "OVERSIZED": 535
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -4739,11 +4739,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
-            "OVERSIZED": 285
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -4761,10 +4761,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
+            "BUS_2AXLE": 185,
             "COM_3AXLE": 205,
-            "MAV_4_6": 300,
-            "OVERSIZED": 360
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -4782,10 +4782,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 300,
-            "OVERSIZED": 365
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -4802,11 +4802,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 155,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 460,
-            "OVERSIZED": 805
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -4825,9 +4825,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 300
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -4846,9 +4846,9 @@ const TollSeedData = [
             "LMV": 120,
             "LCV": 195,
             "BUS_2AXLE": 405,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 635,
-            "OVERSIZED": 770
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -4868,8 +4868,8 @@ const TollSeedData = [
             "LCV": 195,
             "BUS_2AXLE": 405,
             "COM_3AXLE": 445,
-            "MAV_4_6": 635,
-            "OVERSIZED": 775
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -4886,11 +4886,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 85,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 345,
-            "OVERSIZED": 345
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -4907,11 +4907,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 160,
-            "BUS_2AXLE": 320,
-            "COM_3AXLE": 515,
-            "MAV_4_6": 515,
-            "OVERSIZED": 515
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -4932,7 +4932,7 @@ const TollSeedData = [
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
             "MAV_4_6": 185,
-            "OVERSIZED": 230
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -4949,11 +4949,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 540,
-            "OVERSIZED": 655
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -4973,8 +4973,8 @@ const TollSeedData = [
             "LCV": 210,
             "BUS_2AXLE": 440,
             "COM_3AXLE": 480,
-            "MAV_4_6": 685,
-            "OVERSIZED": 685
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -5012,11 +5012,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 190,
-            "OVERSIZED": 235
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -5034,10 +5034,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -5051,14 +5051,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 15.3186685305904,
         "lng": 75.1399083942398,
-        "baseRate": 45,
+        "baseRate": 50,
         "tollRatesByVehicleClass": {
-            "LMV": 45,
-            "LCV": 113,
-            "BUS_2AXLE": 151,
-            "COM_3AXLE": 178,
-            "MAV_4_6": 240,
-            "OVERSIZED": 290
+            "LMV": 50,
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -5075,11 +5075,11 @@ const TollSeedData = [
         "baseRate": 190,
         "tollRatesByVehicleClass": {
             "LMV": 190,
-            "LCV": 290,
-            "BUS_2AXLE": 585,
-            "COM_3AXLE": 885,
-            "MAV_4_6": 885,
-            "OVERSIZED": 1155
+            "LCV": 310,
+            "BUS_2AXLE": 645,
+            "COM_3AXLE": 705,
+            "MAV_4_6": 1010,
+            "OVERSIZED": 1230
         },
         "status": "ACTIVE"
     },
@@ -5096,11 +5096,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -5117,11 +5117,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 620,
-            "OVERSIZED": 755
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -5135,14 +5135,14 @@ const TollSeedData = [
         "nhCorridor": "na",
         "lat": 28.2491597921123,
         "lng": 77.2908536617192,
-        "baseRate": 120,
+        "baseRate": 115,
         "tollRatesByVehicleClass": {
-            "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 595,
-            "MAV_4_6": 595,
-            "OVERSIZED": 755
+            "LMV": 115,
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -5161,9 +5161,9 @@ const TollSeedData = [
             "LMV": 55,
             "LCV": 90,
             "BUS_2AXLE": 185,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 290,
-            "OVERSIZED": 350
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -5181,10 +5181,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 45,
             "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -5201,11 +5201,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -5225,8 +5225,8 @@ const TollSeedData = [
             "LCV": 260,
             "BUS_2AXLE": 540,
             "COM_3AXLE": 590,
-            "MAV_4_6": 845,
-            "OVERSIZED": 1030
+            "MAV_4_6": 850,
+            "OVERSIZED": 1035
         },
         "status": "ACTIVE"
     },
@@ -5243,11 +5243,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 195,
-            "OVERSIZED": 235
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -5265,10 +5265,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 300,
-            "OVERSIZED": 370
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -5286,10 +5286,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 340,
-            "MAV_4_6": 340,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -5306,11 +5306,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "LCV": 115,
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -5327,11 +5327,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 400,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 630,
-            "OVERSIZED": 770
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -5349,10 +5349,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 125,
             "LCV": 205,
-            "BUS_2AXLE": 430,
+            "BUS_2AXLE": 425,
             "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 820
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -5369,11 +5369,11 @@ const TollSeedData = [
         "baseRate": 130,
         "tollRatesByVehicleClass": {
             "LMV": 130,
-            "LCV": 205,
-            "BUS_2AXLE": 435,
-            "COM_3AXLE": 470,
-            "MAV_4_6": 680,
-            "OVERSIZED": 825
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -5391,10 +5391,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 185,
             "LCV": 300,
-            "BUS_2AXLE": 630,
+            "BUS_2AXLE": 625,
             "COM_3AXLE": 685,
-            "MAV_4_6": 990,
-            "OVERSIZED": 1205
+            "MAV_4_6": 985,
+            "OVERSIZED": 1200
         },
         "status": "ACTIVE"
     },
@@ -5413,9 +5413,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -5432,11 +5432,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 245,
-            "BUS_2AXLE": 490,
-            "COM_3AXLE": 785,
-            "MAV_4_6": 785,
-            "OVERSIZED": 785
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -5474,11 +5474,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 265,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 425,
-            "MAV_4_6": 425,
-            "OVERSIZED": 425
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -5498,7 +5498,7 @@ const TollSeedData = [
             "LCV": 90,
             "BUS_2AXLE": 185,
             "COM_3AXLE": 205,
-            "MAV_4_6": 290,
+            "MAV_4_6": 295,
             "OVERSIZED": 355
         },
         "status": "ACTIVE"
@@ -5519,8 +5519,8 @@ const TollSeedData = [
             "LCV": 140,
             "BUS_2AXLE": 290,
             "COM_3AXLE": 315,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -5540,7 +5540,7 @@ const TollSeedData = [
             "LCV": 80,
             "BUS_2AXLE": 170,
             "COM_3AXLE": 185,
-            "MAV_4_6": 270,
+            "MAV_4_6": 265,
             "OVERSIZED": 325
         },
         "status": "ACTIVE"
@@ -5558,11 +5558,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 200,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 325,
-            "OVERSIZED": 325
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -5581,9 +5581,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -5600,11 +5600,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -5622,10 +5622,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 220
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -5642,11 +5642,11 @@ const TollSeedData = [
         "baseRate": 130,
         "tollRatesByVehicleClass": {
             "LMV": 130,
-            "LCV": 205,
-            "BUS_2AXLE": 435,
-            "COM_3AXLE": 475,
-            "MAV_4_6": 680,
-            "OVERSIZED": 830
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -5660,14 +5660,14 @@ const TollSeedData = [
         "nhCorridor": "516 C",
         "lat": 17.7139961249481,
         "lng": 83.2123239370739,
-        "baseRate": 12,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 12,
-            "LCV": 23,
-            "BUS_2AXLE": 47,
-            "COM_3AXLE": 47,
-            "MAV_4_6": 70,
-            "OVERSIZED": 82
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -5684,11 +5684,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -5705,11 +5705,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 230,
-            "OVERSIZED": 280
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -5726,11 +5726,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -5748,10 +5748,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 735
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -5768,11 +5768,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 180,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 550,
-            "MAV_4_6": 550,
-            "OVERSIZED": 720
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -5786,14 +5786,14 @@ const TollSeedData = [
         "nhCorridor": "48",
         "lat": 14.0537780000925,
         "lng": 76.5605729999888,
-        "baseRate": 85,
+        "baseRate": 105,
         "tollRatesByVehicleClass": {
-            "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 445,
-            "MAV_4_6": 445,
-            "OVERSIZED": 540
+            "LMV": 105,
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -5811,10 +5811,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -5832,10 +5832,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 30,
             "LCV": 50,
-            "BUS_2AXLE": 105,
-            "COM_3AXLE": 115,
-            "MAV_4_6": 165,
-            "OVERSIZED": 200
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -5856,7 +5856,7 @@ const TollSeedData = [
             "BUS_2AXLE": 220,
             "COM_3AXLE": 240,
             "MAV_4_6": 345,
-            "OVERSIZED": 415
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -5874,10 +5874,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 460
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -5891,13 +5891,13 @@ const TollSeedData = [
         "nhCorridor": "3",
         "lat": 24.6203822328432,
         "lng": 77.2614721466162,
-        "baseRate": 15,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 15,
-            "LCV": 30,
-            "BUS_2AXLE": 95,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 160,
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
             "OVERSIZED": 160
         },
         "status": "ACTIVE"
@@ -5915,11 +5915,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 540,
-            "OVERSIZED": 655
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -5933,14 +5933,14 @@ const TollSeedData = [
         "nhCorridor": "2",
         "lat": 26.9965240003944,
         "lng": 78.7773339997158,
-        "baseRate": 115,
+        "baseRate": 130,
         "tollRatesByVehicleClass": {
-            "LMV": 115,
-            "LCV": 185,
-            "BUS_2AXLE": 390,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 615,
-            "OVERSIZED": 750
+            "LMV": 130,
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -5958,10 +5958,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 85,
-            "MAV_4_6": 125,
-            "OVERSIZED": 155
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -5978,11 +5978,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 165,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 545,
-            "OVERSIZED": 665
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -6000,10 +6000,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -6020,11 +6020,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 575,
-            "OVERSIZED": 700
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -6041,11 +6041,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 190,
-            "BUS_2AXLE": 390,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 600,
-            "OVERSIZED": 765
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -6062,11 +6062,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 220,
-            "BUS_2AXLE": 465,
-            "COM_3AXLE": 510,
-            "MAV_4_6": 730,
-            "OVERSIZED": 890
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -6083,11 +6083,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 225,
-            "OVERSIZED": 275
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -6104,11 +6104,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 355,
-            "OVERSIZED": 430
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -6147,10 +6147,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 125,
             "LCV": 205,
-            "BUS_2AXLE": 430,
-            "COM_3AXLE": 470,
-            "MAV_4_6": 675,
-            "OVERSIZED": 820
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -6167,11 +6167,11 @@ const TollSeedData = [
         "baseRate": 150,
         "tollRatesByVehicleClass": {
             "LMV": 150,
-            "LCV": 240,
-            "BUS_2AXLE": 500,
-            "COM_3AXLE": 545,
-            "MAV_4_6": 785,
-            "OVERSIZED": 955
+            "LCV": 245,
+            "BUS_2AXLE": 510,
+            "COM_3AXLE": 555,
+            "MAV_4_6": 800,
+            "OVERSIZED": 970
         },
         "status": "ACTIVE"
     },
@@ -6191,8 +6191,8 @@ const TollSeedData = [
             "LCV": 140,
             "BUS_2AXLE": 290,
             "COM_3AXLE": 315,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -6209,11 +6209,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
+            "LCV": 155,
             "BUS_2AXLE": 320,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 500,
-            "OVERSIZED": 605
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -6230,11 +6230,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 325,
-            "OVERSIZED": 400
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -6252,10 +6252,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 565,
-            "OVERSIZED": 690
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -6269,14 +6269,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 16.1433907586038,
         "lng": 74.516978355611,
-        "baseRate": 25,
+        "baseRate": 40,
         "tollRatesByVehicleClass": {
-            "LMV": 25,
-            "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 90,
-            "MAV_4_6": 130,
-            "OVERSIZED": 155
+            "LMV": 40,
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 210,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -6296,8 +6296,8 @@ const TollSeedData = [
             "LCV": 205,
             "BUS_2AXLE": 425,
             "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 815
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -6311,14 +6311,14 @@ const TollSeedData = [
         "nhCorridor": "48",
         "lat": 14.3755990108421,
         "lng": 76.1066999455941,
-        "baseRate": 130,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 130,
-            "LCV": 210,
-            "BUS_2AXLE": 440,
-            "COM_3AXLE": 480,
-            "MAV_4_6": 690,
-            "OVERSIZED": 845
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -6337,7 +6337,7 @@ const TollSeedData = [
             "LMV": 50,
             "LCV": 80,
             "BUS_2AXLE": 170,
-            "COM_3AXLE": 265,
+            "COM_3AXLE": 185,
             "MAV_4_6": 265,
             "OVERSIZED": 325
         },
@@ -6356,11 +6356,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 230,
-            "OVERSIZED": 280
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -6378,10 +6378,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 305,
-            "OVERSIZED": 375
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -6416,14 +6416,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 15.7631099999981,
         "lng": 74.6478499998862,
-        "baseRate": 115,
+        "baseRate": 105,
         "tollRatesByVehicleClass": {
-            "LMV": 115,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 620,
-            "MAV_4_6": 620,
-            "OVERSIZED": 750
+            "LMV": 105,
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -6441,10 +6441,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -6462,10 +6462,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 240,
-            "MAV_4_6": 240,
-            "OVERSIZED": 310
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -6483,10 +6483,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 205,
-            "OVERSIZED": 250
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -6503,11 +6503,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 175,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 570,
-            "OVERSIZED": 690
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -6524,11 +6524,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 565,
-            "OVERSIZED": 705
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -6546,10 +6546,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 130,
-            "MAV_4_6": 130,
-            "OVERSIZED": 130
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -6568,9 +6568,9 @@ const TollSeedData = [
             "LMV": 105,
             "LCV": 170,
             "BUS_2AXLE": 355,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 555,
-            "OVERSIZED": 675
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -6590,8 +6590,8 @@ const TollSeedData = [
             "LCV": 105,
             "BUS_2AXLE": 220,
             "COM_3AXLE": 240,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -6609,10 +6609,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
+            "BUS_2AXLE": 355,
             "COM_3AXLE": 390,
-            "MAV_4_6": 565,
-            "OVERSIZED": 685
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -6630,10 +6630,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 525,
-            "OVERSIZED": 635
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -6651,10 +6651,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 350,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -6668,14 +6668,14 @@ const TollSeedData = [
         "nhCorridor": "Old NH 03(New no. NH 52)",
         "lat": 22.9595398322702,
         "lng": 76.084159253195,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 30,
-            "BUS_2AXLE": 65,
-            "COM_3AXLE": 105,
-            "MAV_4_6": 105,
-            "OVERSIZED": 125
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -6692,11 +6692,11 @@ const TollSeedData = [
         "baseRate": 25,
         "tollRatesByVehicleClass": {
             "LMV": 25,
-            "LCV": 35,
-            "BUS_2AXLE": 75,
-            "COM_3AXLE": 75,
-            "MAV_4_6": 75,
-            "OVERSIZED": 75
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -6713,11 +6713,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 140,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 465,
-            "MAV_4_6": 465,
-            "OVERSIZED": 570
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -6737,8 +6737,8 @@ const TollSeedData = [
             "LCV": 140,
             "BUS_2AXLE": 290,
             "COM_3AXLE": 315,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -6755,11 +6755,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 280,
-            "MAV_4_6": 280,
-            "OVERSIZED": 370
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -6773,14 +6773,14 @@ const TollSeedData = [
         "nhCorridor": "NH30 (24B)",
         "lat": 25.9994971743957,
         "lng": 81.2858428494246,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 35,
-            "BUS_2AXLE": 75,
-            "COM_3AXLE": 120,
-            "MAV_4_6": 145,
-            "OVERSIZED": 145
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -6797,11 +6797,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 465,
-            "OVERSIZED": 565
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -6818,11 +6818,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 400,
-            "COM_3AXLE": 435,
-            "MAV_4_6": 625,
-            "OVERSIZED": 765
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -6839,11 +6839,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 255,
-            "OVERSIZED": 310
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -6861,10 +6861,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -6881,11 +6881,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 435
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -6902,11 +6902,11 @@ const TollSeedData = [
         "baseRate": 130,
         "tollRatesByVehicleClass": {
             "LMV": 130,
-            "LCV": 205,
-            "BUS_2AXLE": 425,
-            "COM_3AXLE": 660,
-            "MAV_4_6": 660,
-            "OVERSIZED": 825
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -6925,8 +6925,8 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 590,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
             "OVERSIZED": 715
         },
         "status": "ACTIVE"
@@ -6944,11 +6944,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 190,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 610,
-            "MAV_4_6": 610,
-            "OVERSIZED": 610
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -6966,10 +6966,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 435,
-            "OVERSIZED": 530
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -6987,10 +6987,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 415
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -7008,10 +7008,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -7028,11 +7028,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 465,
-            "OVERSIZED": 570
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -7049,11 +7049,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 150,
-            "BUS_2AXLE": 310,
-            "COM_3AXLE": 480,
-            "MAV_4_6": 480,
-            "OVERSIZED": 610
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -7071,10 +7071,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 30,
             "LCV": 50,
-            "BUS_2AXLE": 105,
-            "COM_3AXLE": 115,
-            "MAV_4_6": 165,
-            "OVERSIZED": 200
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -7091,11 +7091,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 355,
-            "OVERSIZED": 435
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -7112,11 +7112,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 330,
-            "OVERSIZED": 400
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -7134,10 +7134,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 140,
+            "BUS_2AXLE": 135,
             "COM_3AXLE": 150,
             "MAV_4_6": 215,
-            "OVERSIZED": 265
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -7158,7 +7158,7 @@ const TollSeedData = [
             "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
             "MAV_4_6": 585,
-            "OVERSIZED": 710
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -7176,10 +7176,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 460
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -7196,11 +7196,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 230,
-            "OVERSIZED": 280
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -7218,10 +7218,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 460
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -7240,9 +7240,9 @@ const TollSeedData = [
             "LMV": 80,
             "LCV": 130,
             "BUS_2AXLE": 270,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 420,
-            "OVERSIZED": 510
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -7261,9 +7261,9 @@ const TollSeedData = [
             "LMV": 90,
             "LCV": 145,
             "BUS_2AXLE": 305,
-            "COM_3AXLE": 330,
-            "MAV_4_6": 475,
-            "OVERSIZED": 580
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -7280,11 +7280,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 330,
-            "OVERSIZED": 400
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -7301,11 +7301,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 150,
-            "BUS_2AXLE": 310,
-            "COM_3AXLE": 340,
-            "MAV_4_6": 490,
-            "OVERSIZED": 595
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -7323,10 +7323,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 310,
-            "OVERSIZED": 375
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -7344,9 +7344,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
+            "MAV_4_6": 370,
             "OVERSIZED": 455
         },
         "status": "ACTIVE"
@@ -7364,11 +7364,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 310,
-            "MAV_4_6": 445,
-            "OVERSIZED": 545
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -7386,10 +7386,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
+            "BUS_2AXLE": 340,
             "COM_3AXLE": 370,
             "MAV_4_6": 530,
-            "OVERSIZED": 645
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -7406,11 +7406,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 200,
-            "OVERSIZED": 245
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -7431,7 +7431,7 @@ const TollSeedData = [
             "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
             "MAV_4_6": 370,
-            "OVERSIZED": 450
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -7450,9 +7450,9 @@ const TollSeedData = [
             "LMV": 90,
             "LCV": 145,
             "BUS_2AXLE": 305,
-            "COM_3AXLE": 330,
-            "MAV_4_6": 475,
-            "OVERSIZED": 580
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -7470,10 +7470,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 310,
-            "OVERSIZED": 380
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -7492,8 +7492,8 @@ const TollSeedData = [
             "LMV": 75,
             "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
             "OVERSIZED": 485
         },
         "status": "ACTIVE"
@@ -7513,8 +7513,8 @@ const TollSeedData = [
             "LMV": 55,
             "LCV": 90,
             "BUS_2AXLE": 185,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 290,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
             "OVERSIZED": 355
         },
         "status": "ACTIVE"
@@ -7532,11 +7532,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -7553,11 +7553,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 290,
-            "BUS_2AXLE": 320,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -7575,10 +7575,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 255,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -7595,11 +7595,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -7617,10 +7617,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 415
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -7641,7 +7641,7 @@ const TollSeedData = [
             "BUS_2AXLE": 475,
             "COM_3AXLE": 520,
             "MAV_4_6": 745,
-            "OVERSIZED": 910
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -7659,10 +7659,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -7679,11 +7679,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 575,
-            "OVERSIZED": 700
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -7697,14 +7697,14 @@ const TollSeedData = [
         "nhCorridor": "16",
         "lat": 16.6613200043157,
         "lng": 81.0046667384223,
-        "baseRate": 70,
+        "baseRate": 65,
         "tollRatesByVehicleClass": {
-            "LMV": 70,
-            "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 260,
-            "MAV_4_6": 375,
-            "OVERSIZED": 455
+            "LMV": 65,
+            "LCV": 110,
+            "BUS_2AXLE": 225,
+            "COM_3AXLE": 245,
+            "MAV_4_6": 350,
+            "OVERSIZED": 430
         },
         "status": "ACTIVE"
     },
@@ -7721,11 +7721,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 355,
-            "OVERSIZED": 430
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -7742,11 +7742,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 265,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 425,
-            "MAV_4_6": 425,
-            "OVERSIZED": 425
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -7763,11 +7763,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 285,
-            "MAV_4_6": 410,
-            "OVERSIZED": 500
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -7785,10 +7785,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 735
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -7805,11 +7805,11 @@ const TollSeedData = [
         "baseRate": 165,
         "tollRatesByVehicleClass": {
             "LMV": 165,
-            "LCV": 255,
-            "BUS_2AXLE": 515,
-            "COM_3AXLE": 780,
-            "MAV_4_6": 780,
-            "OVERSIZED": 1010
+            "LCV": 265,
+            "BUS_2AXLE": 560,
+            "COM_3AXLE": 610,
+            "MAV_4_6": 880,
+            "OVERSIZED": 1070
         },
         "status": "ACTIVE"
     },
@@ -7827,10 +7827,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 330,
-            "MAV_4_6": 470,
-            "OVERSIZED": 570
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -7847,11 +7847,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 135,
+            "LCV": 130,
             "BUS_2AXLE": 270,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 440,
-            "OVERSIZED": 440
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -7869,10 +7869,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 170,
             "LCV": 275,
-            "BUS_2AXLE": 580,
-            "COM_3AXLE": 635,
-            "MAV_4_6": 910,
-            "OVERSIZED": 1110
+            "BUS_2AXLE": 575,
+            "COM_3AXLE": 630,
+            "MAV_4_6": 905,
+            "OVERSIZED": 1100
         },
         "status": "ACTIVE"
     },
@@ -7890,10 +7890,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 120,
-            "MAV_4_6": 175,
-            "OVERSIZED": 210
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -7910,11 +7910,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 440
+            "LCV": 115,
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -7932,10 +7932,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -7952,10 +7952,10 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
+            "LCV": 160,
             "BUS_2AXLE": 340,
             "COM_3AXLE": 370,
-            "MAV_4_6": 535,
+            "MAV_4_6": 530,
             "OVERSIZED": 650
         },
         "status": "ACTIVE"
@@ -7974,10 +7974,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 220
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -7994,11 +7994,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 125,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 530,
-            "OVERSIZED": 530
+            "LCV": 115,
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -8017,8 +8017,8 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 590,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
             "OVERSIZED": 715
         },
         "status": "ACTIVE"
@@ -8058,10 +8058,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 385,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -8078,11 +8078,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 445,
-            "MAV_4_6": 445,
-            "OVERSIZED": 540
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -8099,11 +8099,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
-            "BUS_2AXLE": 315,
-            "COM_3AXLE": 490,
-            "MAV_4_6": 490,
-            "OVERSIZED": 600
+            "LCV": 155,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -8120,11 +8120,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 365,
-            "OVERSIZED": 440
+            "LCV": 115,
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -8141,11 +8141,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 265,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 425,
-            "MAV_4_6": 425,
-            "OVERSIZED": 425
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -8159,14 +8159,14 @@ const TollSeedData = [
         "nhCorridor": "44 and 7",
         "lat": 15.0617539998874,
         "lng": 77.6303280002263,
-        "baseRate": 125,
+        "baseRate": 135,
         "tollRatesByVehicleClass": {
-            "LMV": 125,
-            "LCV": 205,
-            "BUS_2AXLE": 425,
-            "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 815
+            "LMV": 135,
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 880
         },
         "status": "ACTIVE"
     },
@@ -8184,9 +8184,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
+            "MAV_4_6": 370,
             "OVERSIZED": 455
         },
         "status": "ACTIVE"
@@ -8204,11 +8204,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
-            "BUS_2AXLE": 315,
-            "COM_3AXLE": 340,
-            "MAV_4_6": 490,
-            "OVERSIZED": 600
+            "LCV": 155,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -8222,14 +8222,14 @@ const TollSeedData = [
         "nhCorridor": "2",
         "lat": 25.7495923856022,
         "lng": 81.1703987990753,
-        "baseRate": 95,
+        "baseRate": 115,
         "tollRatesByVehicleClass": {
-            "LMV": 95,
-            "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 350,
-            "MAV_4_6": 505,
-            "OVERSIZED": 615
+            "LMV": 115,
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -8243,14 +8243,14 @@ const TollSeedData = [
         "nhCorridor": "16",
         "lat": 16.3853489418826,
         "lng": 80.5332188506714,
-        "baseRate": 120,
+        "baseRate": 125,
         "tollRatesByVehicleClass": {
-            "LMV": 120,
+            "LMV": 125,
             "LCV": 205,
-            "BUS_2AXLE": 410,
-            "COM_3AXLE": 660,
-            "MAV_4_6": 660,
-            "OVERSIZED": 660
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 670,
+            "OVERSIZED": 815
         },
         "status": "ACTIVE"
     },
@@ -8264,14 +8264,14 @@ const TollSeedData = [
         "nhCorridor": "9",
         "lat": 16.7180433709893,
         "lng": 80.3244020070589,
-        "baseRate": 70,
+        "baseRate": 75,
         "tollRatesByVehicleClass": {
-            "LMV": 70,
-            "LCV": 120,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 520,
-            "MAV_4_6": 520,
-            "OVERSIZED": 520
+            "LMV": 75,
+            "LCV": 125,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 490
         },
         "status": "ACTIVE"
     },
@@ -8289,10 +8289,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 45,
             "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 300
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -8313,7 +8313,7 @@ const TollSeedData = [
             "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
             "MAV_4_6": 585,
-            "OVERSIZED": 710
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -8331,10 +8331,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -8352,8 +8352,8 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 455,
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
             "MAV_4_6": 370,
             "OVERSIZED": 455
         },
@@ -8373,10 +8373,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 335,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -8393,11 +8393,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -8414,11 +8414,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 280,
-            "MAV_4_6": 280,
-            "OVERSIZED": 280
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -8435,11 +8435,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 115,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 370,
-            "MAV_4_6": 370,
-            "OVERSIZED": 370
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -8456,9 +8456,9 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -8481,7 +8481,7 @@ const TollSeedData = [
             "BUS_2AXLE": 340,
             "COM_3AXLE": 370,
             "MAV_4_6": 530,
-            "OVERSIZED": 645
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -8498,11 +8498,11 @@ const TollSeedData = [
         "baseRate": 175,
         "tollRatesByVehicleClass": {
             "LMV": 175,
-            "LCV": 280,
-            "BUS_2AXLE": 585,
-            "COM_3AXLE": 635,
-            "MAV_4_6": 915,
-            "OVERSIZED": 1115
+            "LCV": 285,
+            "BUS_2AXLE": 595,
+            "COM_3AXLE": 650,
+            "MAV_4_6": 930,
+            "OVERSIZED": 1135
         },
         "status": "ACTIVE"
     },
@@ -8519,11 +8519,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
+            "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 410,
-            "OVERSIZED": 410
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -8541,10 +8541,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 300,
-            "OVERSIZED": 365
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -8562,10 +8562,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
-            "OVERSIZED": 460
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -8583,10 +8583,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
+            "BUS_2AXLE": 185,
             "COM_3AXLE": 205,
             "MAV_4_6": 295,
-            "OVERSIZED": 360
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -8603,11 +8603,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -8647,9 +8647,9 @@ const TollSeedData = [
             "LMV": 120,
             "LCV": 195,
             "BUS_2AXLE": 405,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 635,
-            "OVERSIZED": 770
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -8666,11 +8666,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 165,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 550,
-            "OVERSIZED": 670
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -8689,8 +8689,8 @@ const TollSeedData = [
             "LMV": 115,
             "LCV": 185,
             "BUS_2AXLE": 390,
-            "COM_3AXLE": 615,
-            "MAV_4_6": 615,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
             "OVERSIZED": 745
         },
         "status": "ACTIVE"
@@ -8709,10 +8709,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 535,
-            "OVERSIZED": 670
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -8729,11 +8729,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 230,
-            "BUS_2AXLE": 485,
-            "COM_3AXLE": 530,
-            "MAV_4_6": 760,
-            "OVERSIZED": 930
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -8753,8 +8753,8 @@ const TollSeedData = [
             "LCV": 50,
             "BUS_2AXLE": 100,
             "COM_3AXLE": 110,
-            "MAV_4_6": 155,
-            "OVERSIZED": 190
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -8773,8 +8773,8 @@ const TollSeedData = [
             "LMV": 75,
             "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
             "OVERSIZED": 485
         },
         "status": "ACTIVE"
@@ -8792,11 +8792,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 400,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 630,
-            "OVERSIZED": 765
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -8815,9 +8815,9 @@ const TollSeedData = [
             "LMV": 105,
             "LCV": 170,
             "BUS_2AXLE": 355,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 555,
-            "OVERSIZED": 675
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -8835,10 +8835,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 515,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -8856,10 +8856,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 140,
+            "BUS_2AXLE": 135,
             "COM_3AXLE": 150,
             "MAV_4_6": 215,
-            "OVERSIZED": 265
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -8879,8 +8879,8 @@ const TollSeedData = [
             "LCV": 105,
             "BUS_2AXLE": 220,
             "COM_3AXLE": 240,
-            "MAV_4_6": 340,
-            "OVERSIZED": 415
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -8894,14 +8894,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 16.8767054004081,
         "lng": 74.2983000996602,
-        "baseRate": 70,
+        "baseRate": 90,
         "tollRatesByVehicleClass": {
-            "LMV": 70,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 435
+            "LMV": 90,
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 330,
+            "MAV_4_6": 480,
+            "OVERSIZED": 580
         },
         "status": "ACTIVE"
     },
@@ -8922,7 +8922,7 @@ const TollSeedData = [
             "BUS_2AXLE": 255,
             "COM_3AXLE": 280,
             "MAV_4_6": 400,
-            "OVERSIZED": 490
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -8939,11 +8939,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -8960,11 +8960,11 @@ const TollSeedData = [
         "baseRate": 165,
         "tollRatesByVehicleClass": {
             "LMV": 165,
-            "LCV": 260,
-            "BUS_2AXLE": 540,
-            "COM_3AXLE": 830,
-            "MAV_4_6": 830,
-            "OVERSIZED": 1045
+            "LCV": 265,
+            "BUS_2AXLE": 560,
+            "COM_3AXLE": 610,
+            "MAV_4_6": 880,
+            "OVERSIZED": 1070
         },
         "status": "ACTIVE"
     },
@@ -8983,9 +8983,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 295
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -9003,10 +9003,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 85,
             "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 465,
-            "OVERSIZED": 565
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -9024,10 +9024,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 140,
+            "BUS_2AXLE": 135,
             "COM_3AXLE": 150,
-            "MAV_4_6": 220,
-            "OVERSIZED": 265
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -9041,14 +9041,14 @@ const TollSeedData = [
         "nhCorridor": "4",
         "lat": 16.5422000000468,
         "lng": 74.318249999576,
-        "baseRate": 70,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 70,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 440
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -9065,11 +9065,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 190,
-            "BUS_2AXLE": 390,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 600,
-            "OVERSIZED": 765
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -9086,11 +9086,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 575,
-            "OVERSIZED": 695
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -9108,10 +9108,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 410,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 645,
-            "OVERSIZED": 785
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -9128,11 +9128,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 355,
-            "OVERSIZED": 435
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -9150,10 +9150,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 45,
             "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -9170,11 +9170,11 @@ const TollSeedData = [
         "baseRate": 25,
         "tollRatesByVehicleClass": {
             "LMV": 25,
-            "LCV": 45,
-            "BUS_2AXLE": 90,
-            "COM_3AXLE": 100,
-            "MAV_4_6": 145,
-            "OVERSIZED": 175
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -9191,11 +9191,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 325,
-            "OVERSIZED": 435
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -9212,11 +9212,11 @@ const TollSeedData = [
         "baseRate": 130,
         "tollRatesByVehicleClass": {
             "LMV": 130,
-            "LCV": 205,
-            "BUS_2AXLE": 430,
-            "COM_3AXLE": 665,
-            "MAV_4_6": 665,
-            "OVERSIZED": 825
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -9235,9 +9235,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 295
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -9258,7 +9258,7 @@ const TollSeedData = [
             "BUS_2AXLE": 255,
             "COM_3AXLE": 280,
             "MAV_4_6": 400,
-            "OVERSIZED": 490
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -9276,10 +9276,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 120,
-            "MAV_4_6": 175,
-            "OVERSIZED": 210
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -9296,11 +9296,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
+            "LCV": 90,
             "BUS_2AXLE": 185,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 285,
-            "OVERSIZED": 350
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -9317,11 +9317,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 130,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 420,
-            "OVERSIZED": 420
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -9340,7 +9340,7 @@ const TollSeedData = [
             "LMV": 85,
             "LCV": 140,
             "BUS_2AXLE": 290,
-            "COM_3AXLE": 455,
+            "COM_3AXLE": 315,
             "MAV_4_6": 455,
             "OVERSIZED": 555
         },
@@ -9360,10 +9360,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 565,
-            "OVERSIZED": 690
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -9380,11 +9380,11 @@ const TollSeedData = [
         "baseRate": 135,
         "tollRatesByVehicleClass": {
             "LMV": 135,
-            "LCV": 215,
-            "BUS_2AXLE": 450,
-            "COM_3AXLE": 490,
-            "MAV_4_6": 705,
-            "OVERSIZED": 860
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -9402,10 +9402,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 140,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 220,
-            "OVERSIZED": 270
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -9422,11 +9422,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 545,
-            "OVERSIZED": 660
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -9444,10 +9444,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 80,
-            "MAV_4_6": 80,
-            "OVERSIZED": 80
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -9465,7 +9465,7 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 45,
             "LCV": 75,
-            "BUS_2AXLE": 150,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
             "MAV_4_6": 240,
             "OVERSIZED": 290
@@ -9482,14 +9482,14 @@ const TollSeedData = [
         "nhCorridor": "53",
         "lat": 21.252536417209,
         "lng": 81.5370934983513,
-        "baseRate": 15,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 15,
-            "LCV": 25,
-            "BUS_2AXLE": 45,
-            "COM_3AXLE": 45,
-            "MAV_4_6": 105,
-            "OVERSIZED": 105
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -9509,8 +9509,8 @@ const TollSeedData = [
             "LCV": 130,
             "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
-            "MAV_4_6": 420,
-            "OVERSIZED": 515
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -9527,11 +9527,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 370,
+            "LCV": 180,
+            "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
-            "MAV_4_6": 580,
-            "OVERSIZED": 705
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -9549,10 +9549,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -9569,11 +9569,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 225,
-            "OVERSIZED": 275
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -9590,11 +9590,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 125,
-            "OVERSIZED": 125
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -9612,10 +9612,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 550,
-            "OVERSIZED": 670
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -9653,11 +9653,11 @@ const TollSeedData = [
         "baseRate": 135,
         "tollRatesByVehicleClass": {
             "LMV": 135,
-            "LCV": 205,
-            "BUS_2AXLE": 420,
-            "COM_3AXLE": 635,
-            "MAV_4_6": 635,
-            "OVERSIZED": 825
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -9674,11 +9674,11 @@ const TollSeedData = [
         "baseRate": 135,
         "tollRatesByVehicleClass": {
             "LMV": 135,
-            "LCV": 210,
-            "BUS_2AXLE": 440,
-            "COM_3AXLE": 480,
-            "MAV_4_6": 695,
-            "OVERSIZED": 845
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -9695,11 +9695,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 100,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 335,
-            "OVERSIZED": 405
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -9718,9 +9718,9 @@ const TollSeedData = [
             "LMV": 85,
             "LCV": 140,
             "BUS_2AXLE": 290,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -9734,14 +9734,14 @@ const TollSeedData = [
         "nhCorridor": "30",
         "lat": 25.2673858682823,
         "lng": 82.4889749868929,
-        "baseRate": 230,
+        "baseRate": 110,
         "tollRatesByVehicleClass": {
-            "LMV": 230,
-            "LCV": 370,
-            "BUS_2AXLE": 770,
-            "COM_3AXLE": 840,
-            "MAV_4_6": 1210,
-            "OVERSIZED": 1470
+            "LMV": 110,
+            "LCV": 175,
+            "BUS_2AXLE": 370,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 580,
+            "OVERSIZED": 710
         },
         "status": "ACTIVE"
     },
@@ -9758,11 +9758,11 @@ const TollSeedData = [
         "baseRate": 165,
         "tollRatesByVehicleClass": {
             "LMV": 165,
-            "LCV": 295,
-            "BUS_2AXLE": 585,
-            "COM_3AXLE": 940,
-            "MAV_4_6": 940,
-            "OVERSIZED": 940
+            "LCV": 265,
+            "BUS_2AXLE": 560,
+            "COM_3AXLE": 610,
+            "MAV_4_6": 880,
+            "OVERSIZED": 1070
         },
         "status": "ACTIVE"
     },
@@ -9779,11 +9779,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 255,
-            "BUS_2AXLE": 530,
-            "COM_3AXLE": 580,
-            "MAV_4_6": 830,
-            "OVERSIZED": 1015
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -9801,10 +9801,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 620
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -9821,11 +9821,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 200,
-            "OVERSIZED": 240
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -9842,11 +9842,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
+            "LCV": 155,
             "BUS_2AXLE": 320,
             "COM_3AXLE": 350,
-            "MAV_4_6": 500,
-            "OVERSIZED": 610
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -9864,10 +9864,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 305,
-            "OVERSIZED": 375
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -9885,10 +9885,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -9909,7 +9909,7 @@ const TollSeedData = [
             "BUS_2AXLE": 490,
             "COM_3AXLE": 535,
             "MAV_4_6": 770,
-            "OVERSIZED": 935
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -9927,10 +9927,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
-            "OVERSIZED": 460
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -9948,10 +9948,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 255,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -9970,8 +9970,8 @@ const TollSeedData = [
             "LMV": 55,
             "LCV": 90,
             "BUS_2AXLE": 185,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 290,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
             "OVERSIZED": 355
         },
         "status": "ACTIVE"
@@ -9991,9 +9991,9 @@ const TollSeedData = [
             "LMV": 75,
             "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -10011,10 +10011,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 140,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 220,
-            "OVERSIZED": 270
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -10032,10 +10032,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 330,
-            "MAV_4_6": 475,
-            "OVERSIZED": 575
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -10052,11 +10052,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 370,
+            "LCV": 180,
+            "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
-            "MAV_4_6": 580,
-            "OVERSIZED": 705
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -10073,9 +10073,9 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -10094,11 +10094,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 225,
-            "BUS_2AXLE": 465,
-            "COM_3AXLE": 710,
-            "MAV_4_6": 710,
-            "OVERSIZED": 905
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -10116,10 +10116,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 310,
-            "OVERSIZED": 380
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -10137,10 +10137,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
+            "BUS_2AXLE": 185,
             "COM_3AXLE": 205,
             "MAV_4_6": 295,
-            "OVERSIZED": 360
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -10157,11 +10157,11 @@ const TollSeedData = [
         "baseRate": 25,
         "tollRatesByVehicleClass": {
             "LMV": 25,
-            "LCV": 45,
-            "BUS_2AXLE": 90,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 145,
-            "OVERSIZED": 145
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -10178,11 +10178,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 245,
-            "BUS_2AXLE": 520,
-            "COM_3AXLE": 565,
-            "MAV_4_6": 815,
-            "OVERSIZED": 990
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -10200,10 +10200,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 165,
             "LCV": 265,
-            "BUS_2AXLE": 555,
-            "COM_3AXLE": 605,
-            "MAV_4_6": 870,
-            "OVERSIZED": 1055
+            "BUS_2AXLE": 560,
+            "COM_3AXLE": 610,
+            "MAV_4_6": 880,
+            "OVERSIZED": 1070
         },
         "status": "ACTIVE"
     },
@@ -10221,10 +10221,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
+            "BUS_2AXLE": 355,
             "COM_3AXLE": 390,
             "MAV_4_6": 560,
-            "OVERSIZED": 685
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -10262,11 +10262,11 @@ const TollSeedData = [
         "baseRate": 135,
         "tollRatesByVehicleClass": {
             "LMV": 135,
-            "LCV": 215,
-            "BUS_2AXLE": 450,
-            "COM_3AXLE": 490,
-            "MAV_4_6": 705,
-            "OVERSIZED": 860
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -10284,10 +10284,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 330,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 520,
-            "OVERSIZED": 635
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -10305,10 +10305,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -10327,7 +10327,7 @@ const TollSeedData = [
             "LMV": 35,
             "LCV": 55,
             "BUS_2AXLE": 120,
-            "COM_3AXLE": 185,
+            "COM_3AXLE": 130,
             "MAV_4_6": 185,
             "OVERSIZED": 225
         },
@@ -10367,11 +10367,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
+            "LCV": 120,
+            "BUS_2AXLE": 255,
             "COM_3AXLE": 280,
-            "MAV_4_6": 405,
-            "OVERSIZED": 495
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -10389,10 +10389,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 525,
-            "OVERSIZED": 640
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -10409,11 +10409,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 535,
-            "MAV_4_6": 535,
-            "OVERSIZED": 655
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -10431,10 +10431,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 130,
             "LCV": 210,
-            "BUS_2AXLE": 445,
-            "COM_3AXLE": 485,
-            "MAV_4_6": 700,
-            "OVERSIZED": 850
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -10451,11 +10451,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 230,
-            "BUS_2AXLE": 480,
-            "COM_3AXLE": 525,
-            "MAV_4_6": 755,
-            "OVERSIZED": 920
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -10472,11 +10472,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -10494,10 +10494,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 520,
-            "OVERSIZED": 635
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -10514,11 +10514,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 310,
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
             "MAV_4_6": 450,
-            "OVERSIZED": 545
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -10537,7 +10537,7 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 410,
+            "COM_3AXLE": 405,
             "MAV_4_6": 585,
             "OVERSIZED": 715
         },
@@ -10556,11 +10556,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 615,
-            "OVERSIZED": 750
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -10577,11 +10577,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 575,
-            "OVERSIZED": 695
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -10598,11 +10598,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 195,
-            "OVERSIZED": 240
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -10619,11 +10619,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 620,
-            "OVERSIZED": 755
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -10640,11 +10640,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 420,
-            "COM_3AXLE": 460,
-            "MAV_4_6": 660,
-            "OVERSIZED": 805
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -10662,10 +10662,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 385,
-            "OVERSIZED": 470
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -10685,7 +10685,7 @@ const TollSeedData = [
             "LCV": 80,
             "BUS_2AXLE": 170,
             "COM_3AXLE": 185,
-            "MAV_4_6": 270,
+            "MAV_4_6": 265,
             "OVERSIZED": 325
         },
         "status": "ACTIVE"
@@ -10703,11 +10703,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 105,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 330,
-            "MAV_4_6": 330,
-            "OVERSIZED": 330
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -10724,11 +10724,11 @@ const TollSeedData = [
         "baseRate": 175,
         "tollRatesByVehicleClass": {
             "LMV": 175,
-            "LCV": 270,
-            "BUS_2AXLE": 550,
-            "COM_3AXLE": 840,
-            "MAV_4_6": 840,
-            "OVERSIZED": 1075
+            "LCV": 285,
+            "BUS_2AXLE": 595,
+            "COM_3AXLE": 650,
+            "MAV_4_6": 930,
+            "OVERSIZED": 1135
         },
         "status": "ACTIVE"
     },
@@ -10745,11 +10745,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -10766,11 +10766,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -10787,11 +10787,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 150,
-            "BUS_2AXLE": 310,
-            "COM_3AXLE": 340,
-            "MAV_4_6": 490,
-            "OVERSIZED": 595
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -10808,11 +10808,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 370,
+            "LCV": 180,
+            "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
-            "MAV_4_6": 580,
-            "OVERSIZED": 705
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -10829,11 +10829,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
+            "LCV": 105,
             "BUS_2AXLE": 220,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 355,
-            "OVERSIZED": 355
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -10853,8 +10853,8 @@ const TollSeedData = [
             "LCV": 50,
             "BUS_2AXLE": 100,
             "COM_3AXLE": 110,
-            "MAV_4_6": 155,
-            "OVERSIZED": 190
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -10872,10 +10872,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 220
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -10893,10 +10893,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 110,
             "LCV": 180,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 415,
-            "MAV_4_6": 595,
-            "OVERSIZED": 725
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -10913,11 +10913,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 230,
-            "BUS_2AXLE": 475,
-            "COM_3AXLE": 735,
-            "MAV_4_6": 735,
-            "OVERSIZED": 920
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -10952,14 +10952,14 @@ const TollSeedData = [
         "nhCorridor": "8",
         "lat": 27.3056399000765,
         "lng": 75.9535128003918,
-        "baseRate": 80,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 80,
-            "LCV": 145,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 460,
-            "MAV_4_6": 460,
-            "OVERSIZED": 460
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -10977,9 +10977,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
+            "MAV_4_6": 370,
             "OVERSIZED": 455
         },
         "status": "ACTIVE"
@@ -10999,9 +10999,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 300
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -11015,14 +11015,14 @@ const TollSeedData = [
         "nhCorridor": "7(new 44)",
         "lat": 14.5020215247595,
         "lng": 77.631286575398,
-        "baseRate": 140,
+        "baseRate": 120,
         "tollRatesByVehicleClass": {
-            "LMV": 140,
-            "LCV": 225,
-            "BUS_2AXLE": 470,
-            "COM_3AXLE": 515,
-            "MAV_4_6": 740,
-            "OVERSIZED": 900
+            "LMV": 120,
+            "LCV": 195,
+            "BUS_2AXLE": 410,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -11039,9 +11039,9 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -11061,10 +11061,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -11081,11 +11081,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 355,
-            "OVERSIZED": 430
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -11099,14 +11099,14 @@ const TollSeedData = [
         "nhCorridor": "State Highways ( SH01 SH01A SH56 SH02)",
         "lat": 13.1765512367561,
         "lng": 80.2450317562876,
-        "baseRate": 45,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
-            "COM_3AXLE": 165,
-            "MAV_4_6": 235,
-            "OVERSIZED": 290
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -11123,11 +11123,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -11145,10 +11145,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 220
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -11166,10 +11166,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 330,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 520,
-            "OVERSIZED": 630
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -11187,10 +11187,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -11207,11 +11207,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -11228,11 +11228,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -11250,10 +11250,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 310,
-            "OVERSIZED": 380
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -11270,11 +11270,11 @@ const TollSeedData = [
         "baseRate": 160,
         "tollRatesByVehicleClass": {
             "LMV": 160,
-            "LCV": 255,
-            "BUS_2AXLE": 520,
-            "COM_3AXLE": 795,
-            "MAV_4_6": 795,
-            "OVERSIZED": 1010
+            "LCV": 260,
+            "BUS_2AXLE": 540,
+            "COM_3AXLE": 590,
+            "MAV_4_6": 850,
+            "OVERSIZED": 1035
         },
         "status": "ACTIVE"
     },
@@ -11291,11 +11291,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 115,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 365,
-            "OVERSIZED": 365
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -11313,10 +11313,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -11335,9 +11335,9 @@ const TollSeedData = [
             "LMV": 105,
             "LCV": 170,
             "BUS_2AXLE": 355,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 555,
-            "OVERSIZED": 675
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -11355,10 +11355,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 330,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 520,
-            "OVERSIZED": 635
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -11375,11 +11375,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 200,
-            "OVERSIZED": 245
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -11397,10 +11397,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 410,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 645,
-            "OVERSIZED": 785
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -11418,10 +11418,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -11438,11 +11438,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
+            "LCV": 120,
+            "BUS_2AXLE": 255,
             "COM_3AXLE": 280,
-            "MAV_4_6": 405,
-            "OVERSIZED": 490
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -11456,14 +11456,14 @@ const TollSeedData = [
         "nhCorridor": "2",
         "lat": 25.188233700254,
         "lng": 83.5615932997249,
-        "baseRate": 60,
+        "baseRate": 130,
         "tollRatesByVehicleClass": {
-            "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 205,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 320,
-            "OVERSIZED": 395
+            "LMV": 130,
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -11480,7 +11480,7 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
+            "LCV": 205,
             "BUS_2AXLE": 425,
             "COM_3AXLE": 465,
             "MAV_4_6": 665,
@@ -11502,10 +11502,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 410,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 645,
-            "OVERSIZED": 785
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -11522,11 +11522,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 400
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -11543,11 +11543,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 205,
-            "OVERSIZED": 245
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -11565,10 +11565,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -11585,11 +11585,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 195,
-            "OVERSIZED": 280
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -11606,9 +11606,9 @@ const TollSeedData = [
         "baseRate": 25,
         "tollRatesByVehicleClass": {
             "LMV": 25,
-            "LCV": 43,
+            "LCV": 40,
             "BUS_2AXLE": 85,
-            "COM_3AXLE": 182,
+            "COM_3AXLE": 95,
             "MAV_4_6": 135,
             "OVERSIZED": 160
         },
@@ -11628,10 +11628,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 150,
             "LCV": 245,
-            "BUS_2AXLE": 515,
-            "COM_3AXLE": 560,
-            "MAV_4_6": 805,
-            "OVERSIZED": 980
+            "BUS_2AXLE": 510,
+            "COM_3AXLE": 555,
+            "MAV_4_6": 800,
+            "OVERSIZED": 970
         },
         "status": "ACTIVE"
     },
@@ -11648,11 +11648,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 615,
-            "OVERSIZED": 750
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -11671,9 +11671,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 300
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -11694,7 +11694,7 @@ const TollSeedData = [
             "BUS_2AXLE": 220,
             "COM_3AXLE": 240,
             "MAV_4_6": 345,
-            "OVERSIZED": 425
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -11713,9 +11713,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 300
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -11733,10 +11733,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -11753,11 +11753,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 160,
-            "BUS_2AXLE": 320,
-            "COM_3AXLE": 510,
-            "MAV_4_6": 510,
-            "OVERSIZED": 510
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -11775,10 +11775,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
+            "BUS_2AXLE": 355,
             "COM_3AXLE": 390,
-            "MAV_4_6": 565,
-            "OVERSIZED": 685
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -11795,11 +11795,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 230,
-            "OVERSIZED": 280
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -11817,10 +11817,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 40,
             "LCV": 65,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 205,
-            "OVERSIZED": 250
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -11837,11 +11837,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -11858,11 +11858,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -11880,10 +11880,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 335,
-            "MAV_4_6": 335,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -11904,7 +11904,7 @@ const TollSeedData = [
             "BUS_2AXLE": 100,
             "COM_3AXLE": 110,
             "MAV_4_6": 160,
-            "OVERSIZED": 190
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -11921,11 +11921,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 100,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 335,
-            "OVERSIZED": 405
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -11942,11 +11942,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 550,
-            "MAV_4_6": 550,
-            "OVERSIZED": 700
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -11964,10 +11964,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 45,
             "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -11985,10 +11985,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
-            "OVERSIZED": 460
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -12005,11 +12005,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -12029,8 +12029,8 @@ const TollSeedData = [
             "LCV": 205,
             "BUS_2AXLE": 425,
             "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 815
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -12047,11 +12047,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 415,
-            "OVERSIZED": 505
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -12069,10 +12069,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 435,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -12086,14 +12086,14 @@ const TollSeedData = [
         "nhCorridor": "NH 117",
         "lat": 21.7506004981127,
         "lng": 88.2368995896765,
-        "baseRate": 15,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 15,
-            "LCV": 20,
-            "BUS_2AXLE": 45,
-            "COM_3AXLE": 50,
-            "MAV_4_6": 70,
-            "OVERSIZED": 85
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -12114,7 +12114,7 @@ const TollSeedData = [
             "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
             "MAV_4_6": 425,
-            "OVERSIZED": 515
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -12131,11 +12131,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 395,
-            "COM_3AXLE": 605,
-            "MAV_4_6": 605,
-            "OVERSIZED": 765
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -12153,10 +12153,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 120,
-            "MAV_4_6": 175,
-            "OVERSIZED": 210
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -12175,8 +12175,8 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 590,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
             "OVERSIZED": 715
         },
         "status": "ACTIVE"
@@ -12194,11 +12194,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 430,
-            "OVERSIZED": 550
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -12215,11 +12215,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 220,
-            "BUS_2AXLE": 465,
-            "COM_3AXLE": 510,
-            "MAV_4_6": 730,
-            "OVERSIZED": 890
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -12236,10 +12236,10 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 113,
-            "BUS_2AXLE": 151,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 178,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
             "OVERSIZED": 290
         },
         "status": "ACTIVE"
@@ -12258,10 +12258,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 300,
-            "OVERSIZED": 365
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -12275,14 +12275,14 @@ const TollSeedData = [
         "nhCorridor": "NH 113",
         "lat": 24.5523414001504,
         "lng": 74.6665498114391,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 35,
-            "BUS_2AXLE": 70,
-            "COM_3AXLE": 80,
-            "MAV_4_6": 115,
-            "OVERSIZED": 140
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -12299,11 +12299,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 465,
-            "OVERSIZED": 565
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -12320,11 +12320,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 230,
-            "OVERSIZED": 280
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -12341,11 +12341,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 175,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 565,
-            "OVERSIZED": 690
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -12363,10 +12363,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 165,
             "LCV": 265,
-            "BUS_2AXLE": 555,
-            "COM_3AXLE": 605,
-            "MAV_4_6": 870,
-            "OVERSIZED": 1055
+            "BUS_2AXLE": 560,
+            "COM_3AXLE": 610,
+            "MAV_4_6": 880,
+            "OVERSIZED": 1070
         },
         "status": "ACTIVE"
     },
@@ -12383,11 +12383,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 115,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 365,
-            "OVERSIZED": 365
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -12404,11 +12404,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 370,
-            "COM_3AXLE": 400,
-            "MAV_4_6": 575,
-            "OVERSIZED": 700
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -12422,14 +12422,14 @@ const TollSeedData = [
         "nhCorridor": "114A",
         "lat": 24.2843982230394,
         "lng": 86.3485694113579,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 35,
-            "BUS_2AXLE": 75,
-            "COM_3AXLE": 85,
-            "MAV_4_6": 120,
-            "OVERSIZED": 145
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -12449,8 +12449,8 @@ const TollSeedData = [
             "LCV": 155,
             "BUS_2AXLE": 320,
             "COM_3AXLE": 350,
-            "MAV_4_6": 500,
-            "OVERSIZED": 610
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -12467,11 +12467,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 190,
-            "BUS_2AXLE": 390,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 600,
-            "OVERSIZED": 765
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -12488,11 +12488,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 230,
-            "BUS_2AXLE": 480,
-            "COM_3AXLE": 525,
-            "MAV_4_6": 750,
-            "OVERSIZED": 915
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -12509,11 +12509,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 240,
-            "BUS_2AXLE": 490,
-            "COM_3AXLE": 535,
-            "MAV_4_6": 745,
-            "OVERSIZED": 955
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -12530,9 +12530,9 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -12551,11 +12551,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
-            "BUS_2AXLE": 95,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 155,
-            "OVERSIZED": 155
+            "LCV": 50,
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -12572,11 +12572,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 65,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 275,
-            "OVERSIZED": 275
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -12594,9 +12594,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
+            "MAV_4_6": 370,
             "OVERSIZED": 455
         },
         "status": "ACTIVE"
@@ -12617,8 +12617,8 @@ const TollSeedData = [
             "LCV": 140,
             "BUS_2AXLE": 290,
             "COM_3AXLE": 315,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -12639,7 +12639,7 @@ const TollSeedData = [
             "BUS_2AXLE": 100,
             "COM_3AXLE": 110,
             "MAV_4_6": 160,
-            "OVERSIZED": 190
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -12657,10 +12657,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 300,
-            "OVERSIZED": 365
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -12677,11 +12677,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 440
+            "LCV": 115,
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -12699,10 +12699,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -12721,9 +12721,9 @@ const TollSeedData = [
             "LMV": 55,
             "LCV": 90,
             "BUS_2AXLE": 185,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 290,
-            "OVERSIZED": 350
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -12740,11 +12740,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 415,
-            "OVERSIZED": 505
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -12761,11 +12761,11 @@ const TollSeedData = [
         "baseRate": 150,
         "tollRatesByVehicleClass": {
             "LMV": 150,
-            "LCV": 235,
-            "BUS_2AXLE": 480,
-            "COM_3AXLE": 730,
-            "MAV_4_6": 730,
-            "OVERSIZED": 940
+            "LCV": 245,
+            "BUS_2AXLE": 510,
+            "COM_3AXLE": 555,
+            "MAV_4_6": 800,
+            "OVERSIZED": 970
         },
         "status": "ACTIVE"
     },
@@ -12785,8 +12785,8 @@ const TollSeedData = [
             "LCV": 105,
             "BUS_2AXLE": 220,
             "COM_3AXLE": 240,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -12803,11 +12803,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 330,
-            "OVERSIZED": 405
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -12845,11 +12845,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 310,
-            "MAV_4_6": 445,
-            "OVERSIZED": 540
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -12868,9 +12868,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
+            "COM_3AXLE": 165,
             "MAV_4_6": 240,
-            "OVERSIZED": 295
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -12888,10 +12888,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 740
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -12910,8 +12910,8 @@ const TollSeedData = [
             "LMV": 105,
             "LCV": 170,
             "BUS_2AXLE": 355,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 555,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
             "OVERSIZED": 680
         },
         "status": "ACTIVE"
@@ -12929,11 +12929,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 165,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 540,
-            "MAV_4_6": 540,
-            "OVERSIZED": 540
+            "LCV": 155,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -12951,10 +12951,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
             "MAV_4_6": 185,
-            "OVERSIZED": 220
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -13014,10 +13014,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 460
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -13034,11 +13034,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 440,
-            "OVERSIZED": 535
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -13056,7 +13056,7 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
+            "BUS_2AXLE": 320,
             "COM_3AXLE": 350,
             "MAV_4_6": 505,
             "OVERSIZED": 615
@@ -13078,9 +13078,9 @@ const TollSeedData = [
             "LMV": 90,
             "LCV": 145,
             "BUS_2AXLE": 305,
-            "COM_3AXLE": 330,
-            "MAV_4_6": 475,
-            "OVERSIZED": 580
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -13097,11 +13097,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -13118,11 +13118,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 190,
-            "OVERSIZED": 235
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -13139,11 +13139,11 @@ const TollSeedData = [
         "baseRate": 135,
         "tollRatesByVehicleClass": {
             "LMV": 135,
-            "LCV": 210,
-            "BUS_2AXLE": 440,
-            "COM_3AXLE": 480,
-            "MAV_4_6": 695,
-            "OVERSIZED": 845
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -13162,9 +13162,9 @@ const TollSeedData = [
             "LMV": 70,
             "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
+            "COM_3AXLE": 260,
             "MAV_4_6": 370,
-            "OVERSIZED": 450
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -13183,9 +13183,9 @@ const TollSeedData = [
             "LMV": 85,
             "LCV": 140,
             "BUS_2AXLE": 290,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -13204,7 +13204,7 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 585,
+            "COM_3AXLE": 405,
             "MAV_4_6": 585,
             "OVERSIZED": 715
         },
@@ -13220,14 +13220,14 @@ const TollSeedData = [
         "nhCorridor": "2",
         "lat": 23.1787220000779,
         "lng": 88.0263950002914,
-        "baseRate": 75,
+        "baseRate": 105,
         "tollRatesByVehicleClass": {
-            "LMV": 75,
-            "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "LMV": 105,
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -13244,11 +13244,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 415,
-            "MAV_4_6": 415,
-            "OVERSIZED": 505
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -13265,11 +13265,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 60,
-            "BUS_2AXLE": 130,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 200,
-            "OVERSIZED": 245
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -13283,14 +13283,14 @@ const TollSeedData = [
         "nhCorridor": "516 C",
         "lat": 17.7138840661927,
         "lng": 83.2121393485544,
-        "baseRate": 47,
+        "baseRate": 45,
         "tollRatesByVehicleClass": {
-            "LMV": 47,
-            "LCV": 82,
-            "BUS_2AXLE": 164,
-            "COM_3AXLE": 164,
-            "MAV_4_6": 267,
-            "OVERSIZED": 328
+            "LMV": 45,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -13328,11 +13328,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 150,
-            "BUS_2AXLE": 310,
-            "COM_3AXLE": 3440,
-            "MAV_4_6": 485,
-            "OVERSIZED": 590
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -13350,10 +13350,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 735
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -13371,10 +13371,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 470,
-            "OVERSIZED": 570
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -13391,11 +13391,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 170,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 530,
-            "MAV_4_6": 530,
-            "OVERSIZED": 685
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -13409,14 +13409,14 @@ const TollSeedData = [
         "nhCorridor": "65",
         "lat": 17.2328133287269,
         "lng": 78.9605416532423,
-        "baseRate": 95,
+        "baseRate": 105,
         "tollRatesByVehicleClass": {
-            "LMV": 95,
-            "LCV": 150,
-            "BUS_2AXLE": 315,
-            "COM_3AXLE": 485,
-            "MAV_4_6": 485,
-            "OVERSIZED": 605
+            "LMV": 105,
+            "LCV": 170,
+            "BUS_2AXLE": 350,
+            "COM_3AXLE": 380,
+            "MAV_4_6": 550,
+            "OVERSIZED": 670
         },
         "status": "ACTIVE"
     },
@@ -13430,14 +13430,14 @@ const TollSeedData = [
         "nhCorridor": "168",
         "lat": 24.4473574959973,
         "lng": 71.7516316368439,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 35,
-            "BUS_2AXLE": 75,
-            "COM_3AXLE": 80,
-            "MAV_4_6": 115,
-            "OVERSIZED": 140
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -13455,9 +13455,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
+            "MAV_4_6": 370,
             "OVERSIZED": 455
         },
         "status": "ACTIVE"
@@ -13475,11 +13475,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 285,
-            "MAV_4_6": 410,
-            "OVERSIZED": 500
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -13493,14 +13493,14 @@ const TollSeedData = [
         "nhCorridor": "45",
         "lat": 12.7242227083034,
         "lng": 79.9819234920359,
-        "baseRate": 70,
+        "baseRate": 75,
         "tollRatesByVehicleClass": {
-            "LMV": 70,
-            "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 380,
-            "OVERSIZED": 465
+            "LMV": 75,
+            "LCV": 120,
+            "BUS_2AXLE": 250,
+            "COM_3AXLE": 275,
+            "MAV_4_6": 395,
+            "OVERSIZED": 480
         },
         "status": "ACTIVE"
     },
@@ -13521,7 +13521,7 @@ const TollSeedData = [
             "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
             "MAV_4_6": 425,
-            "OVERSIZED": 515
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -13560,10 +13560,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 300,
-            "OVERSIZED": 365
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -13581,10 +13581,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -13602,10 +13602,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 180,
-            "OVERSIZED": 220
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -13623,10 +13623,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 80,
-            "COM_3AXLE": 90,
-            "MAV_4_6": 125,
-            "OVERSIZED": 155
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -13640,14 +13640,14 @@ const TollSeedData = [
         "nhCorridor": "65 (Old 9)",
         "lat": 17.5235068179673,
         "lng": 78.2734181328693,
-        "baseRate": 22,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 22,
-            "LCV": 44,
-            "BUS_2AXLE": 81,
-            "COM_3AXLE": 176,
-            "MAV_4_6": 115,
-            "OVERSIZED": 145
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -13666,8 +13666,8 @@ const TollSeedData = [
             "LMV": 105,
             "LCV": 170,
             "BUS_2AXLE": 355,
-            "COM_3AXLE": 385,
-            "MAV_4_6": 555,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
             "OVERSIZED": 680
         },
         "status": "ACTIVE"
@@ -13688,8 +13688,8 @@ const TollSeedData = [
             "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -13708,9 +13708,9 @@ const TollSeedData = [
             "LMV": 90,
             "LCV": 145,
             "BUS_2AXLE": 305,
-            "COM_3AXLE": 475,
-            "MAV_4_6": 475,
-            "OVERSIZED": 580
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -13727,11 +13727,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 335,
-            "OVERSIZED": 405
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -13748,11 +13748,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 165,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 550,
-            "OVERSIZED": 665
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -13771,9 +13771,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
+            "COM_3AXLE": 165,
             "MAV_4_6": 240,
-            "OVERSIZED": 295
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -13791,10 +13791,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 55,
             "LCV": 90,
-            "BUS_2AXLE": 190,
+            "BUS_2AXLE": 185,
             "COM_3AXLE": 205,
             "MAV_4_6": 295,
-            "OVERSIZED": 360
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -13812,10 +13812,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 30,
             "LCV": 50,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 120,
-            "MAV_4_6": 170,
-            "OVERSIZED": 205
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -13836,7 +13836,7 @@ const TollSeedData = [
             "BUS_2AXLE": 390,
             "COM_3AXLE": 425,
             "MAV_4_6": 610,
-            "OVERSIZED": 425
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -13855,8 +13855,8 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 210,
-            "MAV_4_6": 210,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
             "OVERSIZED": 260
         },
         "status": "ACTIVE"
@@ -13875,10 +13875,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 330,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 515,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -13896,10 +13896,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 420,
-            "OVERSIZED": 510
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -13916,11 +13916,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
+            "LCV": 50,
             "BUS_2AXLE": 100,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 155,
-            "OVERSIZED": 190
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -13937,11 +13937,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -13959,10 +13959,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -13981,9 +13981,9 @@ const TollSeedData = [
             "LMV": 80,
             "LCV": 130,
             "BUS_2AXLE": 270,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 420,
-            "OVERSIZED": 510
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -14000,11 +14000,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 215,
-            "BUS_2AXLE": 440,
-            "COM_3AXLE": 675,
-            "MAV_4_6": 675,
-            "OVERSIZED": 860
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -14021,11 +14021,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 355,
-            "OVERSIZED": 430
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -14043,10 +14043,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 525,
-            "OVERSIZED": 640
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -14063,11 +14063,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 85,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 265,
-            "OVERSIZED": 265
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -14084,11 +14084,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 195,
-            "BUS_2AXLE": 410,
-            "COM_3AXLE": 630,
-            "MAV_4_6": 630,
-            "OVERSIZED": 790
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -14106,10 +14106,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 120,
-            "MAV_4_6": 175,
-            "OVERSIZED": 210
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -14126,11 +14126,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 95,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 310,
-            "MAV_4_6": 310,
-            "OVERSIZED": 310
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -14147,11 +14147,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 255,
-            "OVERSIZED": 310
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -14168,11 +14168,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 215,
-            "BUS_2AXLE": 435,
-            "COM_3AXLE": 695,
-            "MAV_4_6": 695,
-            "OVERSIZED": 695
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -14189,11 +14189,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -14207,14 +14207,14 @@ const TollSeedData = [
         "nhCorridor": "16",
         "lat": 16.5723664508092,
         "lng": 80.862578841799,
-        "baseRate": 65,
+        "baseRate": 70,
         "tollRatesByVehicleClass": {
-            "LMV": 65,
-            "LCV": 105,
-            "BUS_2AXLE": 220,
-            "COM_3AXLE": 240,
-            "MAV_4_6": 340,
-            "OVERSIZED": 415
+            "LMV": 70,
+            "LCV": 115,
+            "BUS_2AXLE": 230,
+            "COM_3AXLE": 250,
+            "MAV_4_6": 360,
+            "OVERSIZED": 440
         },
         "status": "ACTIVE"
     },
@@ -14232,10 +14232,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 140,
             "LCV": 225,
-            "BUS_2AXLE": 470,
-            "COM_3AXLE": 510,
-            "MAV_4_6": 735,
-            "OVERSIZED": 895
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -14252,11 +14252,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 285,
-            "MAV_4_6": 405,
-            "OVERSIZED": 495
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -14273,11 +14273,11 @@ const TollSeedData = [
         "baseRate": 190,
         "tollRatesByVehicleClass": {
             "LMV": 190,
-            "LCV": 305,
-            "BUS_2AXLE": 635,
-            "COM_3AXLE": 690,
-            "MAV_4_6": 995,
-            "OVERSIZED": 1210
+            "LCV": 310,
+            "BUS_2AXLE": 645,
+            "COM_3AXLE": 705,
+            "MAV_4_6": 1010,
+            "OVERSIZED": 1230
         },
         "status": "ACTIVE"
     },
@@ -14294,11 +14294,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 160,
-            "BUS_2AXLE": 320,
-            "COM_3AXLE": 515,
-            "MAV_4_6": 515,
-            "OVERSIZED": 515
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -14312,14 +14312,14 @@ const TollSeedData = [
         "nhCorridor": "44",
         "lat": 15.8877420004114,
         "lng": 78.0169780000896,
-        "baseRate": 135,
+        "baseRate": 125,
         "tollRatesByVehicleClass": {
-            "LMV": 135,
-            "LCV": 220,
-            "BUS_2AXLE": 460,
-            "COM_3AXLE": 500,
-            "MAV_4_6": 720,
-            "OVERSIZED": 875
+            "LMV": 125,
+            "LCV": 200,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -14339,8 +14339,8 @@ const TollSeedData = [
             "LCV": 205,
             "BUS_2AXLE": 425,
             "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 815
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -14358,10 +14358,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -14378,11 +14378,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 310,
-            "MAV_4_6": 445,
-            "OVERSIZED": 545
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -14399,11 +14399,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 245,
-            "BUS_2AXLE": 515,
-            "COM_3AXLE": 565,
-            "MAV_4_6": 810,
-            "OVERSIZED": 990
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -14420,11 +14420,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 355,
-            "OVERSIZED": 430
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -14442,10 +14442,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 125,
-            "MAV_4_6": 175,
-            "OVERSIZED": 215
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -14462,11 +14462,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 190,
-            "BUS_2AXLE": 400,
-            "COM_3AXLE": 435,
-            "MAV_4_6": 625,
-            "OVERSIZED": 760
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -14484,10 +14484,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -14501,14 +14501,14 @@ const TollSeedData = [
         "nhCorridor": "44",
         "lat": 17.0066125068709,
         "lng": 78.1947469043397,
-        "baseRate": 80,
+        "baseRate": 105,
         "tollRatesByVehicleClass": {
-            "LMV": 80,
-            "LCV": 145,
-            "BUS_2AXLE": 285,
-            "COM_3AXLE": 460,
-            "MAV_4_6": 460,
-            "OVERSIZED": 460
+            "LMV": 105,
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -14526,10 +14526,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 330,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 520,
-            "OVERSIZED": 630
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -14546,10 +14546,10 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
+            "MAV_4_6": 240,
             "OVERSIZED": 290
         },
         "status": "ACTIVE"
@@ -14567,11 +14567,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 135,
-            "BUS_2AXLE": 270,
-            "COM_3AXLE": 435,
-            "MAV_4_6": 435,
-            "OVERSIZED": 435
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -14588,9 +14588,9 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -14609,11 +14609,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 175,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 350,
-            "MAV_4_6": 350,
-            "OVERSIZED": 350
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -14631,10 +14631,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 140,
             "LCV": 225,
-            "BUS_2AXLE": 470,
-            "COM_3AXLE": 515,
-            "MAV_4_6": 740,
-            "OVERSIZED": 900
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -14651,11 +14651,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 285,
-            "MAV_4_6": 405,
-            "OVERSIZED": 495
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -14673,10 +14673,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 130,
             "LCV": 210,
-            "BUS_2AXLE": 445,
-            "COM_3AXLE": 485,
-            "MAV_4_6": 695,
-            "OVERSIZED": 850
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -14694,10 +14694,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 470
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -14714,11 +14714,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 545,
-            "OVERSIZED": 660
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -14737,9 +14737,9 @@ const TollSeedData = [
             "LMV": 55,
             "LCV": 90,
             "BUS_2AXLE": 185,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 290,
-            "OVERSIZED": 350
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -14757,10 +14757,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -14777,11 +14777,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 440,
-            "OVERSIZED": 535
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -14799,10 +14799,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -14820,10 +14820,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 85,
             "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 460,
-            "OVERSIZED": 560
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -14840,11 +14840,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 200,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 325,
-            "OVERSIZED": 325
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -14862,10 +14862,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 435,
-            "OVERSIZED": 530
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -14879,14 +14879,14 @@ const TollSeedData = [
         "nhCorridor": "19",
         "lat": 24.3234000001642,
         "lng": 85.388099999954,
-        "baseRate": 125,
+        "baseRate": 135,
         "tollRatesByVehicleClass": {
-            "LMV": 125,
-            "LCV": 205,
-            "BUS_2AXLE": 425,
-            "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 815
+            "LMV": 135,
+            "LCV": 220,
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 880
         },
         "status": "ACTIVE"
     },
@@ -14903,11 +14903,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
-            "BUS_2AXLE": 95,
-            "COM_3AXLE": 105,
-            "MAV_4_6": 150,
-            "OVERSIZED": 185
+            "LCV": 50,
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -14924,11 +14924,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 140,
-            "MAV_4_6": 200,
-            "OVERSIZED": 240
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -14945,11 +14945,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 415,
-            "OVERSIZED": 505
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -14967,10 +14967,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 130,
             "LCV": 210,
-            "BUS_2AXLE": 445,
-            "COM_3AXLE": 485,
-            "MAV_4_6": 695,
-            "OVERSIZED": 845
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -14987,11 +14987,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 230,
+            "LCV": 225,
             "BUS_2AXLE": 475,
             "COM_3AXLE": 520,
-            "MAV_4_6": 750,
-            "OVERSIZED": 910
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -15010,7 +15010,7 @@ const TollSeedData = [
             "LMV": 140,
             "LCV": 225,
             "BUS_2AXLE": 475,
-            "COM_3AXLE": 515,
+            "COM_3AXLE": 520,
             "MAV_4_6": 745,
             "OVERSIZED": 905
         },
@@ -15030,10 +15030,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 105,
             "LCV": 170,
-            "BUS_2AXLE": 360,
+            "BUS_2AXLE": 355,
             "COM_3AXLE": 390,
-            "MAV_4_6": 565,
-            "OVERSIZED": 685
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -15051,10 +15051,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 120,
             "LCV": 195,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 650,
-            "OVERSIZED": 790
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -15072,10 +15072,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 470,
-            "OVERSIZED": 570
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -15092,11 +15092,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 440,
-            "OVERSIZED": 535
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -15114,10 +15114,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 385,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -15135,10 +15135,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 450,
-            "MAV_4_6": 450,
-            "OVERSIZED": 575
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -15155,11 +15155,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 255,
-            "OVERSIZED": 310
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -15176,11 +15176,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 190,
-            "BUS_2AXLE": 390,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 600,
-            "OVERSIZED": 765
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -15198,10 +15198,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -15219,10 +15219,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
+            "BUS_2AXLE": 340,
             "COM_3AXLE": 370,
             "MAV_4_6": 530,
-            "OVERSIZED": 645
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -15239,11 +15239,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 140,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 445,
-            "MAV_4_6": 445,
-            "OVERSIZED": 445
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -15260,11 +15260,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 420,
-            "COM_3AXLE": 460,
-            "MAV_4_6": 660,
-            "OVERSIZED": 800
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -15283,8 +15283,8 @@ const TollSeedData = [
             "LMV": 75,
             "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
             "OVERSIZED": 485
         },
         "status": "ACTIVE"
@@ -15306,7 +15306,7 @@ const TollSeedData = [
             "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
             "MAV_4_6": 425,
-            "OVERSIZED": 515
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -15323,11 +15323,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 330,
-            "OVERSIZED": 405
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -15345,10 +15345,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 330,
-            "COM_3AXLE": 360,
-            "MAV_4_6": 520,
-            "OVERSIZED": 630
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -15366,7 +15366,7 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 115,
+            "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
             "MAV_4_6": 185,
             "OVERSIZED": 225
@@ -15386,11 +15386,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 435,
-            "MAV_4_6": 435,
-            "OVERSIZED": 530
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -15407,11 +15407,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 95,
-            "BUS_2AXLE": 190,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 305,
-            "OVERSIZED": 305
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -15429,10 +15429,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 155,
             "LCV": 250,
-            "BUS_2AXLE": 515,
-            "COM_3AXLE": 800,
-            "MAV_4_6": 800,
-            "OVERSIZED": 995
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -15450,10 +15450,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 30,
             "LCV": 50,
-            "BUS_2AXLE": 105,
-            "COM_3AXLE": 115,
-            "MAV_4_6": 165,
-            "OVERSIZED": 200
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -15471,9 +15471,9 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
+            "MAV_4_6": 370,
             "OVERSIZED": 455
         },
         "status": "ACTIVE"
@@ -15491,11 +15491,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
+            "LCV": 50,
             "BUS_2AXLE": 100,
             "COM_3AXLE": 110,
-            "MAV_4_6": 155,
-            "OVERSIZED": 190
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -15516,7 +15516,7 @@ const TollSeedData = [
             "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
             "MAV_4_6": 425,
-            "OVERSIZED": 515
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -15533,8 +15533,8 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 285,
+            "LCV": 140,
+            "BUS_2AXLE": 290,
             "COM_3AXLE": 315,
             "MAV_4_6": 450,
             "OVERSIZED": 550
@@ -15555,10 +15555,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 455,
-            "OVERSIZED": 570
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -15575,11 +15575,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 655,
-            "OVERSIZED": 795
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -15593,14 +15593,14 @@ const TollSeedData = [
         "nhCorridor": "2",
         "lat": 24.9571250003374,
         "lng": 83.9549970000825,
-        "baseRate": 135,
+        "baseRate": 120,
         "tollRatesByVehicleClass": {
-            "LMV": 135,
-            "LCV": 220,
-            "BUS_2AXLE": 460,
-            "COM_3AXLE": 720,
-            "MAV_4_6": 720,
-            "OVERSIZED": 875
+            "LMV": 120,
+            "LCV": 195,
+            "BUS_2AXLE": 410,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -15618,10 +15618,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
-            "COM_3AXLE": 315,
-            "MAV_4_6": 315,
-            "OVERSIZED": 385
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -15639,10 +15639,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 335,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -15659,11 +15659,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 440,
-            "OVERSIZED": 535
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -15681,10 +15681,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -15704,8 +15704,8 @@ const TollSeedData = [
             "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -15724,9 +15724,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -15743,11 +15743,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -15766,9 +15766,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 295
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -15787,9 +15787,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
-            "MAV_4_6": 245,
-            "OVERSIZED": 295
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -15806,11 +15806,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 225,
-            "MAV_4_6": 325,
-            "OVERSIZED": 395
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -15827,11 +15827,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
+            "LCV": 50,
             "BUS_2AXLE": 100,
-            "COM_3AXLE": 105,
-            "MAV_4_6": 155,
-            "OVERSIZED": 190
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -15848,11 +15848,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
+            "LCV": 205,
             "BUS_2AXLE": 425,
-            "COM_3AXLE": 460,
+            "COM_3AXLE": 465,
             "MAV_4_6": 665,
-            "OVERSIZED": 805
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -15869,11 +15869,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 180,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 580,
-            "MAV_4_6": 580,
-            "OVERSIZED": 580
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -15890,11 +15890,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 115,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 375,
-            "OVERSIZED": 375
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -15911,11 +15911,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 110,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 360,
-            "OVERSIZED": 435
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -15933,10 +15933,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 200,
+            "BUS_2AXLE": 205,
             "COM_3AXLE": 220,
-            "MAV_4_6": 315,
-            "OVERSIZED": 385
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -15954,10 +15954,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
+            "BUS_2AXLE": 170,
             "COM_3AXLE": 185,
-            "MAV_4_6": 260,
-            "OVERSIZED": 320
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -15976,9 +15976,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -15995,11 +15995,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 100,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 335,
-            "MAV_4_6": 335,
-            "OVERSIZED": 410
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -16013,14 +16013,14 @@ const TollSeedData = [
         "nhCorridor": "8",
         "lat": 27.9998020396275,
         "lng": 76.4306468927372,
-        "baseRate": 170,
+        "baseRate": 185,
         "tollRatesByVehicleClass": {
-            "LMV": 170,
+            "LMV": 185,
             "LCV": 300,
-            "BUS_2AXLE": 600,
-            "COM_3AXLE": 960,
-            "MAV_4_6": 960,
-            "OVERSIZED": 960
+            "BUS_2AXLE": 625,
+            "COM_3AXLE": 680,
+            "MAV_4_6": 980,
+            "OVERSIZED": 1195
         },
         "status": "ACTIVE"
     },
@@ -16038,10 +16038,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 85,
             "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 465,
-            "OVERSIZED": 565
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -16059,10 +16059,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 85,
             "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 460,
-            "OVERSIZED": 560
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -16080,10 +16080,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 45,
             "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 250,
-            "MAV_4_6": 250,
-            "OVERSIZED": 305
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -16103,8 +16103,8 @@ const TollSeedData = [
             "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -16142,11 +16142,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -16164,10 +16164,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 170,
             "LCV": 275,
-            "BUS_2AXLE": 580,
-            "COM_3AXLE": 635,
-            "MAV_4_6": 910,
-            "OVERSIZED": 1110
+            "BUS_2AXLE": 575,
+            "COM_3AXLE": 630,
+            "MAV_4_6": 905,
+            "OVERSIZED": 1100
         },
         "status": "ACTIVE"
     },
@@ -16184,11 +16184,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 175,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 555,
-            "MAV_4_6": 555,
-            "OVERSIZED": 705
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -16205,11 +16205,11 @@ const TollSeedData = [
         "baseRate": 130,
         "tollRatesByVehicleClass": {
             "LMV": 130,
-            "LCV": 205,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 635,
-            "MAV_4_6": 635,
-            "OVERSIZED": 810
+            "LCV": 210,
+            "BUS_2AXLE": 440,
+            "COM_3AXLE": 480,
+            "MAV_4_6": 690,
+            "OVERSIZED": 840
         },
         "status": "ACTIVE"
     },
@@ -16247,11 +16247,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 195,
-            "OVERSIZED": 240
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -16268,11 +16268,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 195,
-            "OVERSIZED": 235
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -16289,11 +16289,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 135,
+            "LCV": 130,
             "BUS_2AXLE": 270,
-            "COM_3AXLE": 440,
-            "MAV_4_6": 440,
-            "OVERSIZED": 440
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -16311,10 +16311,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 470,
-            "OVERSIZED": 570
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -16331,11 +16331,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 195,
-            "OVERSIZED": 235
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -16352,11 +16352,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
-            "OVERSIZED": 285
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -16373,9 +16373,9 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
+            "LCV": 95,
             "BUS_2AXLE": 205,
-            "COM_3AXLE": 225,
+            "COM_3AXLE": 220,
             "MAV_4_6": 320,
             "OVERSIZED": 390
         },
@@ -16394,11 +16394,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 195,
-            "BUS_2AXLE": 390,
-            "COM_3AXLE": 630,
-            "MAV_4_6": 630,
-            "OVERSIZED": 630
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -16418,8 +16418,8 @@ const TollSeedData = [
             "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -16436,11 +16436,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 175,
-            "BUS_2AXLE": 370,
+            "LCV": 180,
+            "BUS_2AXLE": 375,
             "COM_3AXLE": 405,
-            "MAV_4_6": 580,
-            "OVERSIZED": 705
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -16457,11 +16457,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 130,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 410,
-            "OVERSIZED": 520
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -16478,11 +16478,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
-            "BUS_2AXLE": 315,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 495,
-            "OVERSIZED": 605
+            "LCV": 155,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -16499,11 +16499,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 335,
-            "OVERSIZED": 405
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -16520,11 +16520,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 165,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 545,
-            "MAV_4_6": 545,
-            "OVERSIZED": 665
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -16541,11 +16541,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 60,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 200,
-            "OVERSIZED": 200
+            "LCV": 50,
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -16562,11 +16562,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 190,
-            "BUS_2AXLE": 390,
-            "COM_3AXLE": 430,
-            "MAV_4_6": 430,
-            "OVERSIZED": 765
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -16587,7 +16587,7 @@ const TollSeedData = [
             "BUS_2AXLE": 170,
             "COM_3AXLE": 185,
             "MAV_4_6": 265,
-            "OVERSIZED": 320
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -16604,11 +16604,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 165,
-            "BUS_2AXLE": 350,
-            "COM_3AXLE": 550,
-            "MAV_4_6": 550,
-            "OVERSIZED": 670
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -16622,14 +16622,14 @@ const TollSeedData = [
         "nhCorridor": "48",
         "lat": 12.9821549998633,
         "lng": 79.968944000397,
-        "baseRate": 50,
+        "baseRate": 60,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "LMV": 60,
+            "LCV": 100,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 225,
+            "MAV_4_6": 325,
+            "OVERSIZED": 395
         },
         "status": "ACTIVE"
     },
@@ -16647,10 +16647,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 735
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -16669,8 +16669,8 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 410,
-            "MAV_4_6": 590,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
             "OVERSIZED": 715
         },
         "status": "ACTIVE"
@@ -16688,11 +16688,11 @@ const TollSeedData = [
         "baseRate": 60,
         "tollRatesByVehicleClass": {
             "LMV": 60,
-            "LCV": 100,
-            "BUS_2AXLE": 210,
-            "COM_3AXLE": 230,
-            "MAV_4_6": 330,
-            "OVERSIZED": 405
+            "LCV": 95,
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -16710,10 +16710,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -16730,11 +16730,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 130,
+            "LCV": 120,
             "BUS_2AXLE": 255,
-            "COM_3AXLE": 550,
-            "MAV_4_6": 550,
-            "OVERSIZED": 550
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -16751,11 +16751,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
-            "BUS_2AXLE": 315,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 495,
-            "OVERSIZED": 600
+            "LCV": 155,
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -16773,10 +16773,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 385,
-            "OVERSIZED": 470
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -16793,11 +16793,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 545,
-            "OVERSIZED": 660
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -16817,8 +16817,8 @@ const TollSeedData = [
             "LCV": 205,
             "BUS_2AXLE": 425,
             "COM_3AXLE": 465,
-            "MAV_4_6": 670,
-            "OVERSIZED": 815
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -16835,11 +16835,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 255,
-            "OVERSIZED": 325
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -16856,11 +16856,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
-            "BUS_2AXLE": 95,
-            "COM_3AXLE": 100,
-            "MAV_4_6": 145,
-            "OVERSIZED": 180
+            "LCV": 50,
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -16881,7 +16881,7 @@ const TollSeedData = [
             "BUS_2AXLE": 220,
             "COM_3AXLE": 240,
             "MAV_4_6": 345,
-            "OVERSIZED": 415
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -16899,10 +16899,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -16920,10 +16920,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 415
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -16941,10 +16941,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -16982,11 +16982,11 @@ const TollSeedData = [
         "baseRate": 100,
         "tollRatesByVehicleClass": {
             "LMV": 100,
-            "LCV": 165,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 535,
-            "MAV_4_6": 535,
-            "OVERSIZED": 655
+            "LCV": 160,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
+            "MAV_4_6": 530,
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -17006,8 +17006,8 @@ const TollSeedData = [
             "LCV": 80,
             "BUS_2AXLE": 170,
             "COM_3AXLE": 185,
-            "MAV_4_6": 270,
-            "OVERSIZED": 330
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -17025,10 +17025,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 265,
-            "MAV_4_6": 385,
-            "OVERSIZED": 465
+            "BUS_2AXLE": 235,
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -17045,11 +17045,11 @@ const TollSeedData = [
         "baseRate": 95,
         "tollRatesByVehicleClass": {
             "LMV": 95,
-            "LCV": 150,
+            "LCV": 155,
             "BUS_2AXLE": 320,
             "COM_3AXLE": 350,
-            "MAV_4_6": 500,
-            "OVERSIZED": 610
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -17066,11 +17066,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 210,
-            "BUS_2AXLE": 345,
-            "COM_3AXLE": 345,
-            "MAV_4_6": 345,
-            "OVERSIZED": 345
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -17088,10 +17088,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 125,
             "LCV": 205,
-            "BUS_2AXLE": 430,
-            "COM_3AXLE": 470,
-            "MAV_4_6": 675,
-            "OVERSIZED": 820
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -17109,10 +17109,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 110,
             "LCV": 180,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 415,
-            "MAV_4_6": 595,
-            "OVERSIZED": 720
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -17130,10 +17130,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -17151,10 +17151,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -17172,10 +17172,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 100,
             "LCV": 160,
-            "BUS_2AXLE": 335,
-            "COM_3AXLE": 365,
+            "BUS_2AXLE": 340,
+            "COM_3AXLE": 370,
             "MAV_4_6": 530,
-            "OVERSIZED": 645
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -17192,11 +17192,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 205,
-            "BUS_2AXLE": 410,
-            "COM_3AXLE": 660,
-            "MAV_4_6": 660,
-            "OVERSIZED": 660
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -17216,8 +17216,8 @@ const TollSeedData = [
             "LCV": 140,
             "BUS_2AXLE": 290,
             "COM_3AXLE": 315,
-            "MAV_4_6": 455,
-            "OVERSIZED": 555
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -17235,10 +17235,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 120,
-            "MAV_4_6": 175,
-            "OVERSIZED": 215
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -17277,10 +17277,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 85,
             "LCV": 140,
-            "BUS_2AXLE": 295,
-            "COM_3AXLE": 320,
-            "MAV_4_6": 460,
-            "OVERSIZED": 560
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -17299,9 +17299,9 @@ const TollSeedData = [
             "LMV": 90,
             "LCV": 145,
             "BUS_2AXLE": 305,
-            "COM_3AXLE": 330,
+            "COM_3AXLE": 335,
             "MAV_4_6": 480,
-            "OVERSIZED": 580
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -17318,11 +17318,11 @@ const TollSeedData = [
         "baseRate": 160,
         "tollRatesByVehicleClass": {
             "LMV": 160,
-            "LCV": 245,
-            "BUS_2AXLE": 490,
-            "COM_3AXLE": 745,
-            "MAV_4_6": 745,
-            "OVERSIZED": 970
+            "LCV": 260,
+            "BUS_2AXLE": 540,
+            "COM_3AXLE": 590,
+            "MAV_4_6": 850,
+            "OVERSIZED": 1035
         },
         "status": "ACTIVE"
     },
@@ -17360,11 +17360,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 115,
-            "BUS_2AXLE": 230,
-            "COM_3AXLE": 375,
-            "MAV_4_6": 375,
-            "OVERSIZED": 375
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -17381,11 +17381,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 55,
-            "BUS_2AXLE": 115,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 180,
-            "OVERSIZED": 180
+            "LCV": 50,
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -17402,11 +17402,11 @@ const TollSeedData = [
         "baseRate": 40,
         "tollRatesByVehicleClass": {
             "LMV": 40,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 155,
-            "MAV_4_6": 225,
-            "OVERSIZED": 275
+            "LCV": 65,
+            "BUS_2AXLE": 135,
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -17423,11 +17423,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 245,
-            "BUS_2AXLE": 520,
-            "COM_3AXLE": 565,
-            "MAV_4_6": 810,
-            "OVERSIZED": 990
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -17445,10 +17445,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 390,
-            "OVERSIZED": 475
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -17465,11 +17465,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 190,
-            "OVERSIZED": 235
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -17488,7 +17488,7 @@ const TollSeedData = [
             "LMV": 110,
             "LCV": 180,
             "BUS_2AXLE": 375,
-            "COM_3AXLE": 410,
+            "COM_3AXLE": 405,
             "MAV_4_6": 585,
             "OVERSIZED": 715
         },
@@ -17508,10 +17508,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 340,
-            "OVERSIZED": 415
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -17529,10 +17529,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 90,
             "LCV": 145,
-            "BUS_2AXLE": 310,
+            "BUS_2AXLE": 305,
             "COM_3AXLE": 335,
-            "MAV_4_6": 485,
-            "OVERSIZED": 590
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -17549,11 +17549,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 650,
-            "OVERSIZED": 795
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -17571,10 +17571,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 80,
             "LCV": 130,
-            "BUS_2AXLE": 275,
-            "COM_3AXLE": 300,
-            "MAV_4_6": 430,
-            "OVERSIZED": 525
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -17591,11 +17591,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 85,
-            "BUS_2AXLE": 175,
-            "COM_3AXLE": 190,
-            "MAV_4_6": 275,
-            "OVERSIZED": 335
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -17612,11 +17612,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 175,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 570,
-            "OVERSIZED": 695
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -17634,10 +17634,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 70,
             "LCV": 115,
-            "BUS_2AXLE": 240,
+            "BUS_2AXLE": 235,
             "COM_3AXLE": 260,
-            "MAV_4_6": 375,
-            "OVERSIZED": 460
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -17651,14 +17651,14 @@ const TollSeedData = [
         "nhCorridor": "NH 89",
         "lat": 28.0233831057368,
         "lng": 73.4134923908025,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 35,
-            "BUS_2AXLE": 75,
-            "COM_3AXLE": 80,
-            "MAV_4_6": 120,
-            "OVERSIZED": 145
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -17677,9 +17677,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -17696,11 +17696,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 255,
-            "BUS_2AXLE": 530,
-            "COM_3AXLE": 580,
-            "MAV_4_6": 830,
-            "OVERSIZED": 1015
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -17718,10 +17718,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -17738,11 +17738,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 110,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 255,
-            "MAV_4_6": 365,
-            "OVERSIZED": 445
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -17760,10 +17760,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 165,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 260,
-            "OVERSIZED": 315
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -17780,11 +17780,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 255,
-            "OVERSIZED": 310
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -17798,14 +17798,14 @@ const TollSeedData = [
         "nhCorridor": "16",
         "lat": 16.8237735642076,
         "lng": 81.4307677874119,
-        "baseRate": 110,
+        "baseRate": 60,
         "tollRatesByVehicleClass": {
-            "LMV": 110,
-            "LCV": 180,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 415,
-            "MAV_4_6": 595,
-            "OVERSIZED": 725
+            "LMV": 60,
+            "LCV": 95,
+            "BUS_2AXLE": 195,
+            "COM_3AXLE": 215,
+            "MAV_4_6": 310,
+            "OVERSIZED": 375
         },
         "status": "ACTIVE"
     },
@@ -17825,8 +17825,8 @@ const TollSeedData = [
             "LCV": 260,
             "BUS_2AXLE": 540,
             "COM_3AXLE": 590,
-            "MAV_4_6": 845,
-            "OVERSIZED": 1030
+            "MAV_4_6": 850,
+            "OVERSIZED": 1035
         },
         "status": "ACTIVE"
     },
@@ -17843,11 +17843,11 @@ const TollSeedData = [
         "baseRate": 145,
         "tollRatesByVehicleClass": {
             "LMV": 145,
-            "LCV": 225,
-            "BUS_2AXLE": 470,
-            "COM_3AXLE": 515,
-            "MAV_4_6": 730,
-            "OVERSIZED": 910
+            "LCV": 235,
+            "BUS_2AXLE": 490,
+            "COM_3AXLE": 535,
+            "MAV_4_6": 770,
+            "OVERSIZED": 940
         },
         "status": "ACTIVE"
     },
@@ -17866,8 +17866,8 @@ const TollSeedData = [
             "LMV": 55,
             "LCV": 90,
             "BUS_2AXLE": 185,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 290,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
             "OVERSIZED": 355
         },
         "status": "ACTIVE"
@@ -17886,10 +17886,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 135,
             "LCV": 220,
-            "BUS_2AXLE": 465,
-            "COM_3AXLE": 505,
-            "MAV_4_6": 725,
-            "OVERSIZED": 885
+            "BUS_2AXLE": 460,
+            "COM_3AXLE": 500,
+            "MAV_4_6": 720,
+            "OVERSIZED": 875
         },
         "status": "ACTIVE"
     },
@@ -17906,11 +17906,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 125,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 285,
-            "MAV_4_6": 410,
-            "OVERSIZED": 500
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -17931,7 +17931,7 @@ const TollSeedData = [
             "BUS_2AXLE": 390,
             "COM_3AXLE": 425,
             "MAV_4_6": 610,
-            "OVERSIZED": 740
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -17951,8 +17951,8 @@ const TollSeedData = [
             "LCV": 50,
             "BUS_2AXLE": 100,
             "COM_3AXLE": 110,
-            "MAV_4_6": 155,
-            "OVERSIZED": 190
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -17969,11 +17969,11 @@ const TollSeedData = [
         "baseRate": 75,
         "tollRatesByVehicleClass": {
             "LMV": 75,
-            "LCV": 130,
-            "BUS_2AXLE": 260,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 420,
-            "OVERSIZED": 420
+            "LCV": 120,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -17990,11 +17990,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 140,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 455,
-            "OVERSIZED": 455
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -18035,8 +18035,8 @@ const TollSeedData = [
             "LCV": 55,
             "BUS_2AXLE": 120,
             "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -18053,11 +18053,11 @@ const TollSeedData = [
         "baseRate": 55,
         "tollRatesByVehicleClass": {
             "LMV": 55,
-            "LCV": 85,
-            "BUS_2AXLE": 180,
-            "COM_3AXLE": 195,
-            "MAV_4_6": 280,
-            "OVERSIZED": 340
+            "LCV": 90,
+            "BUS_2AXLE": 185,
+            "COM_3AXLE": 205,
+            "MAV_4_6": 295,
+            "OVERSIZED": 355
         },
         "status": "ACTIVE"
     },
@@ -18074,11 +18074,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 100,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 335,
-            "MAV_4_6": 335,
-            "OVERSIZED": 410
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -18116,11 +18116,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 175,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 570,
-            "MAV_4_6": 570,
-            "OVERSIZED": 690
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -18137,11 +18137,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 60,
+            "LCV": 55,
             "BUS_2AXLE": 120,
-            "COM_3AXLE": 135,
-            "MAV_4_6": 190,
-            "OVERSIZED": 235
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -18159,10 +18159,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 235,
-            "MAV_4_6": 335,
-            "OVERSIZED": 410
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -18180,10 +18180,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 395,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -18200,11 +18200,11 @@ const TollSeedData = [
         "baseRate": 155,
         "tollRatesByVehicleClass": {
             "LMV": 155,
-            "LCV": 240,
-            "BUS_2AXLE": 490,
-            "COM_3AXLE": 535,
-            "MAV_4_6": 745,
-            "OVERSIZED": 950
+            "LCV": 250,
+            "BUS_2AXLE": 525,
+            "COM_3AXLE": 575,
+            "MAV_4_6": 825,
+            "OVERSIZED": 1005
         },
         "status": "ACTIVE"
     },
@@ -18221,11 +18221,11 @@ const TollSeedData = [
         "baseRate": 140,
         "tollRatesByVehicleClass": {
             "LMV": 140,
-            "LCV": 215,
-            "BUS_2AXLE": 440,
-            "COM_3AXLE": 670,
-            "MAV_4_6": 670,
-            "OVERSIZED": 865
+            "LCV": 225,
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -18242,11 +18242,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 115,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 365,
-            "MAV_4_6": 365,
-            "OVERSIZED": 365
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -18263,11 +18263,11 @@ const TollSeedData = [
         "baseRate": 160,
         "tollRatesByVehicleClass": {
             "LMV": 160,
-            "LCV": 255,
-            "BUS_2AXLE": 535,
-            "COM_3AXLE": 585,
-            "MAV_4_6": 840,
-            "OVERSIZED": 1025
+            "LCV": 260,
+            "BUS_2AXLE": 540,
+            "COM_3AXLE": 590,
+            "MAV_4_6": 850,
+            "OVERSIZED": 1035
         },
         "status": "ACTIVE"
     },
@@ -18284,11 +18284,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 230,
-            "OVERSIZED": 280
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -18305,11 +18305,11 @@ const TollSeedData = [
         "baseRate": 110,
         "tollRatesByVehicleClass": {
             "LMV": 110,
-            "LCV": 190,
-            "BUS_2AXLE": 380,
-            "COM_3AXLE": 610,
-            "MAV_4_6": 610,
-            "OVERSIZED": 610
+            "LCV": 180,
+            "BUS_2AXLE": 375,
+            "COM_3AXLE": 405,
+            "MAV_4_6": 585,
+            "OVERSIZED": 715
         },
         "status": "ACTIVE"
     },
@@ -18327,10 +18327,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 140,
             "LCV": 225,
-            "BUS_2AXLE": 470,
-            "COM_3AXLE": 510,
-            "MAV_4_6": 735,
-            "OVERSIZED": 895
+            "BUS_2AXLE": 475,
+            "COM_3AXLE": 520,
+            "MAV_4_6": 745,
+            "OVERSIZED": 905
         },
         "status": "ACTIVE"
     },
@@ -18344,14 +18344,14 @@ const TollSeedData = [
         "nhCorridor": "Old No.NH210New No.(NH536)",
         "lat": 9.54261047681075,
         "lng": 78.863459300251,
-        "baseRate": 35,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 35,
-            "LCV": 60,
-            "BUS_2AXLE": 120,
-            "COM_3AXLE": 130,
-            "MAV_4_6": 190,
-            "OVERSIZED": 230
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -18368,11 +18368,11 @@ const TollSeedData = [
         "baseRate": 90,
         "tollRatesByVehicleClass": {
             "LMV": 90,
-            "LCV": 140,
-            "BUS_2AXLE": 300,
-            "COM_3AXLE": 325,
-            "MAV_4_6": 465,
-            "OVERSIZED": 570
+            "LCV": 145,
+            "BUS_2AXLE": 305,
+            "COM_3AXLE": 335,
+            "MAV_4_6": 480,
+            "OVERSIZED": 585
         },
         "status": "ACTIVE"
     },
@@ -18389,11 +18389,11 @@ const TollSeedData = [
         "baseRate": 70,
         "tollRatesByVehicleClass": {
             "LMV": 70,
-            "LCV": 120,
+            "LCV": 115,
             "BUS_2AXLE": 235,
-            "COM_3AXLE": 380,
-            "MAV_4_6": 380,
-            "OVERSIZED": 380
+            "COM_3AXLE": 260,
+            "MAV_4_6": 370,
+            "OVERSIZED": 455
         },
         "status": "ACTIVE"
     },
@@ -18410,11 +18410,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 180,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 580,
-            "MAV_4_6": 580,
-            "OVERSIZED": 580
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -18433,9 +18433,9 @@ const TollSeedData = [
             "LMV": 40,
             "LCV": 65,
             "BUS_2AXLE": 135,
-            "COM_3AXLE": 145,
-            "MAV_4_6": 210,
-            "OVERSIZED": 255
+            "COM_3AXLE": 150,
+            "MAV_4_6": 215,
+            "OVERSIZED": 260
         },
         "status": "ACTIVE"
     },
@@ -18454,9 +18454,9 @@ const TollSeedData = [
             "LMV": 45,
             "LCV": 75,
             "BUS_2AXLE": 155,
-            "COM_3AXLE": 170,
+            "COM_3AXLE": 165,
             "MAV_4_6": 240,
-            "OVERSIZED": 295
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -18473,11 +18473,11 @@ const TollSeedData = [
         "baseRate": 115,
         "tollRatesByVehicleClass": {
             "LMV": 115,
-            "LCV": 180,
-            "BUS_2AXLE": 365,
-            "COM_3AXLE": 560,
-            "MAV_4_6": 560,
-            "OVERSIZED": 715
+            "LCV": 185,
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -18495,10 +18495,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 250,
-            "COM_3AXLE": 275,
-            "MAV_4_6": 395,
-            "OVERSIZED": 480
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -18515,11 +18515,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 150,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
             "COM_3AXLE": 165,
-            "MAV_4_6": 235,
-            "OVERSIZED": 285
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -18536,11 +18536,11 @@ const TollSeedData = [
         "baseRate": 45,
         "tollRatesByVehicleClass": {
             "LMV": 45,
-            "LCV": 70,
-            "BUS_2AXLE": 145,
-            "COM_3AXLE": 160,
-            "MAV_4_6": 225,
-            "OVERSIZED": 275
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -18560,8 +18560,8 @@ const TollSeedData = [
             "LCV": 105,
             "BUS_2AXLE": 220,
             "COM_3AXLE": 240,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -18578,11 +18578,11 @@ const TollSeedData = [
         "baseRate": 125,
         "tollRatesByVehicleClass": {
             "LMV": 125,
-            "LCV": 200,
-            "BUS_2AXLE": 415,
-            "COM_3AXLE": 455,
-            "MAV_4_6": 650,
-            "OVERSIZED": 795
+            "LCV": 205,
+            "BUS_2AXLE": 425,
+            "COM_3AXLE": 465,
+            "MAV_4_6": 665,
+            "OVERSIZED": 810
         },
         "status": "ACTIVE"
     },
@@ -18600,10 +18600,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 65,
             "LCV": 105,
-            "BUS_2AXLE": 225,
-            "COM_3AXLE": 245,
-            "MAV_4_6": 350,
-            "OVERSIZED": 425
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -18624,7 +18624,7 @@ const TollSeedData = [
             "BUS_2AXLE": 340,
             "COM_3AXLE": 370,
             "MAV_4_6": 530,
-            "OVERSIZED": 645
+            "OVERSIZED": 650
         },
         "status": "ACTIVE"
     },
@@ -18638,14 +18638,14 @@ const TollSeedData = [
         "nhCorridor": "5",
         "lat": 17.7151411898944,
         "lng": 83.2673559836306,
-        "baseRate": 47,
+        "baseRate": 45,
         "tollRatesByVehicleClass": {
-            "LMV": 47,
-            "LCV": 82,
-            "BUS_2AXLE": 164,
-            "COM_3AXLE": 267,
-            "MAV_4_6": 267,
-            "OVERSIZED": 328
+            "LMV": 45,
+            "LCV": 75,
+            "BUS_2AXLE": 155,
+            "COM_3AXLE": 165,
+            "MAV_4_6": 240,
+            "OVERSIZED": 290
         },
         "status": "ACTIVE"
     },
@@ -18663,10 +18663,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 95,
             "LCV": 155,
-            "BUS_2AXLE": 325,
-            "COM_3AXLE": 355,
-            "MAV_4_6": 510,
-            "OVERSIZED": 625
+            "BUS_2AXLE": 320,
+            "COM_3AXLE": 350,
+            "MAV_4_6": 505,
+            "OVERSIZED": 615
         },
         "status": "ACTIVE"
     },
@@ -18680,14 +18680,14 @@ const TollSeedData = [
         "nhCorridor": "37A",
         "lat": 26.5675809301635,
         "lng": 92.8692820603944,
-        "baseRate": 26,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 26,
-            "LCV": 39,
-            "BUS_2AXLE": 78,
-            "COM_3AXLE": 86,
-            "MAV_4_6": 86,
-            "OVERSIZED": 156
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -18704,11 +18704,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 75,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 255,
-            "OVERSIZED": 310
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -18725,11 +18725,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 52,
-            "BUS_2AXLE": 104,
-            "COM_3AXLE": 104,
-            "MAV_4_6": 104,
-            "OVERSIZED": 104
+            "LCV": 55,
+            "BUS_2AXLE": 115,
+            "COM_3AXLE": 125,
+            "MAV_4_6": 180,
+            "OVERSIZED": 220
         },
         "status": "ACTIVE"
     },
@@ -18746,11 +18746,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 52,
-            "BUS_2AXLE": 104,
-            "COM_3AXLE": 104,
-            "MAV_4_6": 104,
-            "OVERSIZED": 104
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -18767,11 +18767,11 @@ const TollSeedData = [
         "baseRate": 65,
         "tollRatesByVehicleClass": {
             "LMV": 65,
-            "LCV": 125,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 300,
-            "OVERSIZED": 350
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -18788,11 +18788,11 @@ const TollSeedData = [
         "baseRate": 35,
         "tollRatesByVehicleClass": {
             "LMV": 35,
-            "LCV": 52,
-            "BUS_2AXLE": 104,
-            "COM_3AXLE": 104,
-            "MAV_4_6": 104,
-            "OVERSIZED": 104
+            "LCV": 55,
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -18809,11 +18809,11 @@ const TollSeedData = [
         "baseRate": 80,
         "tollRatesByVehicleClass": {
             "LMV": 80,
-            "LCV": 125,
-            "BUS_2AXLE": 265,
-            "COM_3AXLE": 290,
-            "MAV_4_6": 415,
-            "OVERSIZED": 505
+            "LCV": 130,
+            "BUS_2AXLE": 270,
+            "COM_3AXLE": 295,
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -18830,11 +18830,11 @@ const TollSeedData = [
         "baseRate": 120,
         "tollRatesByVehicleClass": {
             "LMV": 120,
-            "LCV": 185,
-            "BUS_2AXLE": 375,
-            "COM_3AXLE": 570,
-            "MAV_4_6": 570,
-            "OVERSIZED": 740
+            "LCV": 195,
+            "BUS_2AXLE": 405,
+            "COM_3AXLE": 445,
+            "MAV_4_6": 640,
+            "OVERSIZED": 780
         },
         "status": "ACTIVE"
     },
@@ -18851,11 +18851,11 @@ const TollSeedData = [
         "baseRate": 105,
         "tollRatesByVehicleClass": {
             "LMV": 105,
-            "LCV": 180,
-            "BUS_2AXLE": 360,
-            "COM_3AXLE": 580,
-            "MAV_4_6": 580,
-            "OVERSIZED": 535
+            "LCV": 170,
+            "BUS_2AXLE": 355,
+            "COM_3AXLE": 390,
+            "MAV_4_6": 560,
+            "OVERSIZED": 680
         },
         "status": "ACTIVE"
     },
@@ -18893,11 +18893,11 @@ const TollSeedData = [
         "baseRate": 50,
         "tollRatesByVehicleClass": {
             "LMV": 50,
-            "LCV": 90,
-            "BUS_2AXLE": 185,
-            "COM_3AXLE": 295,
-            "MAV_4_6": 295,
-            "OVERSIZED": 295
+            "LCV": 80,
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -18914,11 +18914,11 @@ const TollSeedData = [
         "baseRate": 180,
         "tollRatesByVehicleClass": {
             "LMV": 180,
-            "LCV": 280,
-            "BUS_2AXLE": 580,
-            "COM_3AXLE": 895,
-            "MAV_4_6": 895,
-            "OVERSIZED": 1125
+            "LCV": 290,
+            "BUS_2AXLE": 610,
+            "COM_3AXLE": 665,
+            "MAV_4_6": 960,
+            "OVERSIZED": 1165
         },
         "status": "ACTIVE"
     },
@@ -18936,10 +18936,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 25,
             "LCV": 40,
-            "BUS_2AXLE": 125,
-            "COM_3AXLE": 200,
-            "MAV_4_6": 200,
-            "OVERSIZED": 200
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -18956,9 +18956,9 @@ const TollSeedData = [
         "baseRate": 25,
         "tollRatesByVehicleClass": {
             "LMV": 25,
-            "LCV": 25,
-            "BUS_2AXLE": 60,
-            "COM_3AXLE": 60,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
             "MAV_4_6": 135,
             "OVERSIZED": 160
         },
@@ -18974,14 +18974,14 @@ const TollSeedData = [
         "nhCorridor": "66 (Old 17)",
         "lat": 18.8450023433875,
         "lng": 73.0946176758083,
-        "baseRate": 10,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 10,
-            "LCV": 30,
-            "BUS_2AXLE": 30,
-            "COM_3AXLE": 50,
-            "MAV_4_6": 55,
-            "OVERSIZED": 65
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -19001,8 +19001,8 @@ const TollSeedData = [
             "LCV": 130,
             "BUS_2AXLE": 270,
             "COM_3AXLE": 295,
-            "MAV_4_6": 420,
-            "OVERSIZED": 515
+            "MAV_4_6": 425,
+            "OVERSIZED": 520
         },
         "status": "ACTIVE"
     },
@@ -19020,10 +19020,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 60,
             "LCV": 95,
-            "BUS_2AXLE": 195,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 305,
-            "OVERSIZED": 375
+            "BUS_2AXLE": 205,
+            "COM_3AXLE": 220,
+            "MAV_4_6": 320,
+            "OVERSIZED": 390
         },
         "status": "ACTIVE"
     },
@@ -19041,10 +19041,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 75,
             "LCV": 120,
-            "BUS_2AXLE": 245,
-            "COM_3AXLE": 270,
-            "MAV_4_6": 385,
-            "OVERSIZED": 470
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 485
         },
         "status": "ACTIVE"
     },
@@ -19058,14 +19058,14 @@ const TollSeedData = [
         "nhCorridor": "6",
         "lat": 21.040010245132,
         "lng": 75.8292175875643,
-        "baseRate": 10,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 10,
-            "LCV": 10,
-            "BUS_2AXLE": 35,
-            "COM_3AXLE": 45,
-            "MAV_4_6": 55,
-            "OVERSIZED": 65
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -19079,14 +19079,14 @@ const TollSeedData = [
         "nhCorridor": "7",
         "lat": 23.7686237559585,
         "lng": 80.3348535254023,
-        "baseRate": 20,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 20,
-            "LCV": 60,
-            "BUS_2AXLE": 215,
-            "COM_3AXLE": 215,
-            "MAV_4_6": 215,
-            "OVERSIZED": 130
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -19103,11 +19103,11 @@ const TollSeedData = [
         "baseRate": 30,
         "tollRatesByVehicleClass": {
             "LMV": 30,
-            "LCV": 45,
-            "BUS_2AXLE": 95,
-            "COM_3AXLE": 105,
-            "MAV_4_6": 150,
-            "OVERSIZED": 180
+            "LCV": 50,
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -19125,10 +19125,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 35,
             "LCV": 55,
-            "BUS_2AXLE": 110,
-            "COM_3AXLE": 175,
-            "MAV_4_6": 175,
-            "OVERSIZED": 210
+            "BUS_2AXLE": 120,
+            "COM_3AXLE": 130,
+            "MAV_4_6": 185,
+            "OVERSIZED": 225
         },
         "status": "ACTIVE"
     },
@@ -19146,10 +19146,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 115,
             "LCV": 185,
-            "BUS_2AXLE": 385,
-            "COM_3AXLE": 420,
-            "MAV_4_6": 605,
-            "OVERSIZED": 735
+            "BUS_2AXLE": 390,
+            "COM_3AXLE": 425,
+            "MAV_4_6": 610,
+            "OVERSIZED": 745
         },
         "status": "ACTIVE"
     },
@@ -19166,11 +19166,11 @@ const TollSeedData = [
         "baseRate": 85,
         "tollRatesByVehicleClass": {
             "LMV": 85,
-            "LCV": 135,
-            "BUS_2AXLE": 280,
-            "COM_3AXLE": 305,
-            "MAV_4_6": 440,
-            "OVERSIZED": 535
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 450,
+            "OVERSIZED": 550
         },
         "status": "ACTIVE"
     },
@@ -19184,14 +19184,14 @@ const TollSeedData = [
         "nhCorridor": "6",
         "lat": 21.1395140962569,
         "lng": 79.6753112217428,
-        "baseRate": 21,
+        "baseRate": 25,
         "tollRatesByVehicleClass": {
-            "LMV": 21,
-            "LCV": 21,
-            "BUS_2AXLE": 106,
-            "COM_3AXLE": 169,
-            "MAV_4_6": 110,
-            "OVERSIZED": 135
+            "LMV": 25,
+            "LCV": 40,
+            "BUS_2AXLE": 85,
+            "COM_3AXLE": 95,
+            "MAV_4_6": 135,
+            "OVERSIZED": 160
         },
         "status": "ACTIVE"
     },
@@ -20822,14 +20822,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 13.0496829635831,
         "lng": 77.4943505079459,
-        "baseRate": 50,
+        "baseRate": 30,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 30,
+            "LCV": 50,
+            "BUS_2AXLE": 100,
+            "COM_3AXLE": 110,
+            "MAV_4_6": 160,
+            "OVERSIZED": 195
         },
         "status": "ACTIVE"
     },
@@ -22712,14 +22712,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 25.8837367316317,
         "lng": 76.5304011147595,
-        "baseRate": 50,
+        "baseRate": 65,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 65,
+            "LCV": 105,
+            "BUS_2AXLE": 220,
+            "COM_3AXLE": 240,
+            "MAV_4_6": 345,
+            "OVERSIZED": 420
         },
         "status": "ACTIVE"
     },
@@ -23153,14 +23153,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 12.8931167266433,
         "lng": 77.0445674489039,
-        "baseRate": 50,
+        "baseRate": 95,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 95,
+            "LCV": 155,
+            "BUS_2AXLE": 325,
+            "COM_3AXLE": 355,
+            "MAV_4_6": 510,
+            "OVERSIZED": 620
         },
         "status": "ACTIVE"
     },
@@ -23909,14 +23909,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 20.6163950017219,
         "lng": 77.8505109477527,
-        "baseRate": 50,
+        "baseRate": 320,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 320,
+            "LCV": 495,
+            "BUS_2AXLE": 825,
+            "COM_3AXLE": 905,
+            "MAV_4_6": 1295,
+            "OVERSIZED": 1580
         },
         "status": "ACTIVE"
     },
@@ -25043,14 +25043,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 28.1142167636185,
         "lng": 77.5754929200755,
-        "baseRate": 50,
+        "baseRate": 165,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 165,
+            "LCV": 260,
+            "BUS_2AXLE": 540,
+            "COM_3AXLE": 590,
+            "MAV_4_6": 845,
+            "OVERSIZED": 1030
         },
         "status": "ACTIVE"
     },
@@ -25778,14 +25778,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 17.307581656881,
         "lng": 78.3779889453753,
-        "baseRate": 50,
+        "baseRate": 75,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 75,
+            "LCV": 125,
+            "BUS_2AXLE": 255,
+            "COM_3AXLE": 280,
+            "MAV_4_6": 400,
+            "OVERSIZED": 490
         },
         "status": "ACTIVE"
     },
@@ -25925,14 +25925,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 18.8010803453537,
         "lng": 73.2853669592329,
-        "baseRate": 50,
+        "baseRate": 320,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 320,
+            "LCV": 495,
+            "BUS_2AXLE": 825,
+            "COM_3AXLE": 905,
+            "MAV_4_6": 1295,
+            "OVERSIZED": 1580
         },
         "status": "ACTIVE"
     },
@@ -26156,14 +26156,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 28.39560399988,
         "lng": 76.9817600002695,
-        "baseRate": 50,
+        "baseRate": 85,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 85,
+            "LCV": 120,
+            "BUS_2AXLE": 250,
+            "COM_3AXLE": 275,
+            "MAV_4_6": 395,
+            "OVERSIZED": 480
         },
         "status": "ACTIVE"
     },
@@ -26744,14 +26744,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 12.0064656182925,
         "lng": 78.0804941512112,
-        "baseRate": 50,
+        "baseRate": 85,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 85,
+            "LCV": 140,
+            "BUS_2AXLE": 290,
+            "COM_3AXLE": 315,
+            "MAV_4_6": 455,
+            "OVERSIZED": 555
         },
         "status": "ACTIVE"
     },
@@ -27563,14 +27563,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 27.6601269757536,
         "lng": 77.7334934182332,
-        "baseRate": 50,
+        "baseRate": 185,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 185,
+            "LCV": 295,
+            "BUS_2AXLE": 615,
+            "COM_3AXLE": 670,
+            "MAV_4_6": 965,
+            "OVERSIZED": 1175
         },
         "status": "ACTIVE"
     },
@@ -31427,14 +31427,14 @@ const TollSeedData = [
         "nhCorridor": "Unknown",
         "lat": 18.7139379996315,
         "lng": 73.6458480000105,
-        "baseRate": 50,
+        "baseRate": 320,
         "tollRatesByVehicleClass": {
-            "LMV": 50,
-            "LCV": 80,
-            "BUS_2AXLE": 170,
-            "COM_3AXLE": 185,
-            "MAV_4_6": 265,
-            "OVERSIZED": 325
+            "LMV": 320,
+            "LCV": 495,
+            "BUS_2AXLE": 825,
+            "COM_3AXLE": 905,
+            "MAV_4_6": 1295,
+            "OVERSIZED": 1580
         },
         "status": "ACTIVE"
     },
@@ -32670,10 +32670,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 250,
-            "OVERSIZED": 300
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -32691,10 +32691,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 250,
-            "OVERSIZED": 300
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     },
@@ -32712,10 +32712,10 @@ const TollSeedData = [
         "tollRatesByVehicleClass": {
             "LMV": 50,
             "LCV": 80,
-            "BUS_2AXLE": 160,
-            "COM_3AXLE": 180,
-            "MAV_4_6": 250,
-            "OVERSIZED": 300
+            "BUS_2AXLE": 170,
+            "COM_3AXLE": 185,
+            "MAV_4_6": 265,
+            "OVERSIZED": 325
         },
         "status": "ACTIVE"
     }
