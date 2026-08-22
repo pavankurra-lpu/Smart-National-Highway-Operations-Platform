@@ -519,27 +519,28 @@ body.light-mode option {
 /* Kokonut Gradient Button */
 .btn-kokonut {
     position: relative;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    color: var(--primary);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(56, 189, 248, 0.08));
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    color: #818cf8;
+    border-radius: var(--radius-sm);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1;
 }
 .btn-kokonut::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--primary), #059669);
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #3b82f6 100%);
     opacity: 0;
     z-index: -1;
     transition: opacity 0.3s ease;
 }
 .btn-kokonut:hover {
-    color: #fff;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px -6px rgba(16, 185, 129, 0.4);
-    border-color: transparent;
+    box-shadow: 0 8px 24px -4px rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 .btn-kokonut:hover::before {
     opacity: 1;
@@ -558,7 +559,7 @@ body.light-mode option {
 .ai-input-wrapper:focus-within {
     background: linear-gradient(90deg, var(--primary), var(--accent-blue), var(--primary));
     background-size: 200% 200%;
-    box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.45);
 }
 @keyframes gradientFlow {
     0% { background-position: 0% 50%; }

@@ -137,12 +137,21 @@ const VoiceAssistant = {
             utterance.voice = selectedVoice;
         }
         utterance.lang = 'en-US';
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
-
-        utterance.onstart = () => { VoiceAssistant.isSpeaking = true; };
-        utterance.onend = () => { VoiceAssistant.isSpeaking = false; };
-        utterance.onerror = () => { VoiceAssistant.isSpeaking = false; };
+        utterance.onstart = () => { 
+            VoiceAssistant.isSpeaking = true; 
+            const vis = document.getElementById('voice-wave-visualizer');
+            if (vis) vis.classList.add('speaking');
+        };
+        utterance.onend = () => { 
+            VoiceAssistant.isSpeaking = false; 
+            const vis = document.getElementById('voice-wave-visualizer');
+            if (vis) vis.classList.remove('speaking');
+        };
+        utterance.onerror = () => { 
+            VoiceAssistant.isSpeaking = false; 
+            const vis = document.getElementById('voice-wave-visualizer');
+            if (vis) vis.classList.remove('speaking');
+        };
 
         window.speechSynthesis.speak(utterance);
     }

@@ -46,12 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseenter', () => {
             animate(card, { scale: 1.015, translateZ: 0 }, { duration: 0.2, easing: 'ease-out' });
             card.style.borderColor = 'var(--primary)';
-            card.style.boxShadow = '0 10px 25px -5px rgba(0, 229, 179, 0.15)';
+            card.style.boxShadow = '0 10px 30px -5px rgba(99, 102, 241, 0.25)';
         });
         card.addEventListener('mouseleave', () => {
             animate(card, { scale: 1.0, translateZ: 0 }, { duration: 0.2, easing: 'ease-out' });
             card.style.borderColor = '';
             card.style.boxShadow = '';
+        });
+    });
+
+    // Reactbits Spotlight cursor follower
+    document.addEventListener('mousemove', (e) => {
+        const cards = document.querySelectorAll('.spotlight-card, .glass-panel, .bento-stat-card, .route-search-card, .fastag-card, .snhop-voice-card, .snhop-vehicle-card');
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 

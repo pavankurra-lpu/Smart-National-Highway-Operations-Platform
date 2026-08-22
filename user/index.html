@@ -16,18 +16,29 @@
     
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v6">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v6">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v7">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v7">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
     <!-- ==============================
-         PREMIUM ENTRY / SPLASH SCREEN
+         PREMIUM ENTRY / SPLASH SCREEN (React Bits Aurora & Kokonut UI)
          ============================== -->
     <div id="entry-screen">
+        <!-- Reactbits Aurora Background Ambient Mesh -->
+        <div class="aurora-ambient-mesh">
+            <div class="aurora-orb aurora-orb-1"></div>
+            <div class="aurora-orb aurora-orb-2"></div>
+            <div class="aurora-orb aurora-orb-3"></div>
+        </div>
+
+        <div class="entry-status-chip">
+            <span class="entry-status-dot"></span>
+            <span>INDIA NATIONAL HIGHWAY OPERATIONS 2026</span>
+        </div>
+
         <div class="entry-logo-box">
             <div class="entry-logo-inner">
                 <i class="fa-solid fa-car-side" style="font-size:26px;"></i>
@@ -39,35 +50,35 @@
         <p class="entry-subtitle">Advanced routing, toll intelligence, and FASTag operations across India's national highway network.</p>
 
         <!-- Infinite Scrolling Badges Marquee (Kokonut UI style) -->
-        <div class="testimonials-marquee-container" style="margin-top: 15px; margin-bottom: 30px; max-width: 600px;">
+        <div class="testimonials-marquee-container" style="margin-top: 15px; margin-bottom: 28px; max-width: 650px;">
             <div class="testimonials-marquee" style="animation-duration: 25s; gap: 10px;">
                 <!-- Set 1 -->
-                <span class="entry-badge-pill"><i class="fa-solid fa-satellite-dish"></i> Live Tracking</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-wallet"></i> FASTag Auto-Sync</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-satellite-dish"></i> Live GPS Telemetry</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-wallet"></i> FASTag 3D Smart Wallet</span>
                 <span class="entry-badge-pill"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-map-location-dot"></i> All-India Coverage</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-map-location-dot"></i> 50,000+ Plazas & Highways</span>
                 <span class="entry-badge-pill"><i class="fa-solid fa-route"></i> Dijkstra Pathfinding</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-truck-medical"></i> Real-Time SOS Dispatch</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-chart-line"></i> Revenue Analytics</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-lock"></i> Secure Admin Access</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-bell"></i> Instant SMS Alerts</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-truck-medical"></i> 1033 Instant SOS Dispatch</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-chart-line"></i> Bento Trip Analytics</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-microphone-lines"></i> AI Voice Navigator</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-bell"></i> Real-Time Feed</span>
                 <span class="entry-badge-pill"><i class="fa-solid fa-clock"></i> 24/7 Operations</span>
                 
                 <!-- Set 2 (Duplicate for Infinite Loop) -->
-                <span class="entry-badge-pill"><i class="fa-solid fa-satellite-dish"></i> Live Tracking</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-wallet"></i> FASTag Auto-Sync</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-satellite-dish"></i> Live GPS Telemetry</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-wallet"></i> FASTag 3D Smart Wallet</span>
                 <span class="entry-badge-pill"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-map-location-dot"></i> All-India Coverage</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-map-location-dot"></i> 50,000+ Plazas & Highways</span>
                 <span class="entry-badge-pill"><i class="fa-solid fa-route"></i> Dijkstra Pathfinding</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-truck-medical"></i> Real-Time SOS Dispatch</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-chart-line"></i> Revenue Analytics</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-lock"></i> Secure Admin Access</span>
-                <span class="entry-badge-pill"><i class="fa-solid fa-bell"></i> Instant SMS Alerts</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-truck-medical"></i> 1033 Instant SOS Dispatch</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-chart-line"></i> Bento Trip Analytics</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-microphone-lines"></i> AI Voice Navigator</span>
+                <span class="entry-badge-pill"><i class="fa-solid fa-bell"></i> Real-Time Feed</span>
                 <span class="entry-badge-pill"><i class="fa-solid fa-clock"></i> 24/7 Operations</span>
             </div>
         </div>
 
-        <button id="btn-unlock-portal" class="btn btn-primary">
+        <button id="btn-unlock-portal" class="btn btn-primary magnet-button">
             <i class="fa-solid fa-arrow-right-to-bracket"></i> Open Traveller Dashboard
         </button>
     </div>
@@ -251,13 +262,13 @@
                                 <i class="fa-solid fa-repeat" style="font-size:9px; color:var(--primary);"></i> Journey:
                             </span>
                             <div style="display:flex; gap:4px;">
-                                <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:4px 10px; border-radius:6px; font-size:10px; font-weight:700; border:none; cursor:pointer; background:var(--primary); color:#021a12; transition:all 0.2s;">1-Way Single</button>
-                                <button type="button" id="btn-trip-return" class="btn-trip-mode" style="padding:4px 10px; border-radius:6px; font-size:10px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#94a3b8; transition:all 0.2s;">2-Way Return (24h)</button>
+                                <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:5px 12px; border-radius:6px; font-size:10.5px; font-weight:700; border:none; cursor:pointer; background:linear-gradient(135deg, #6366f1, #4f46e5); color:#ffffff; box-shadow:0 2px 8px rgba(99,102,241,0.35); transition:all 0.2s;">1-Way Single</button>
+                                <button type="button" id="btn-trip-return" class="btn-trip-mode" style="padding:5px 12px; border-radius:6px; font-size:10.5px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#94a3b8; transition:all 0.2s;">2-Way Return (24h)</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Modern AI Voice Guide Card -->
+                    <!-- Modern AI Voice Guide Card (Kokonut UI Audio Equalizer) -->
                     <div class="snhop-voice-card">
                         <div class="voice-card-header">
                             <div class="voice-card-brand">
@@ -268,6 +279,14 @@
                                     <span class="voice-card-title">AI Voice Guide</span>
                                     <span class="voice-card-desc">English highway announcements</span>
                                 </div>
+                            </div>
+                            <!-- Kokonut UI Animated Audio Wave Bars -->
+                            <div class="audio-wave-bars" id="voice-wave-visualizer" title="AI Voice Live Equalizer">
+                                <span class="wave-bar bar-1"></span>
+                                <span class="wave-bar bar-2"></span>
+                                <span class="wave-bar bar-3"></span>
+                                <span class="wave-bar bar-4"></span>
+                                <span class="wave-bar bar-5"></span>
                             </div>
                             <label class="switch">
                                 <input type="checkbox" id="pref-voice-enable" checked>
@@ -317,11 +336,16 @@
                     <!-- Recharge Panel -->
                     <div class="glass-panel" style="margin-bottom: 0;">
                         <p class="recharge-section-title"><i class="fa-solid fa-rotate" style="color:var(--primary)"></i> 3rd-Party Recharge Simulation</p>
-                        <p style="font-size: 11px; color: var(--accent-yellow); margin-bottom: 10px; display:flex; align-items:center; gap:5px;">
+                        <p style="font-size: 11px; color: var(--accent-yellow); margin-bottom: 8px; display:flex; align-items:center; gap:5px;">
                             <i class="fa-solid fa-circle-info"></i> Platform deducts 1% convenience fee.
                         </p>
                         <div class="flex-col gap-2">
-                            <input type="number" id="recharge-amount" placeholder="Enter Amount (Min &#8377;500)" min="500">
+                            <div class="quick-recharge-pills" style="display:flex; gap:6px; margin-bottom:2px;">
+                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:6px 4px; font-size:10.5px; font-weight:700; justify-content:center; border-radius:8px;" onclick="document.getElementById('recharge-amount').value=500; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;500</button>
+                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:6px 4px; font-size:10.5px; font-weight:700; justify-content:center; border-radius:8px;" onclick="document.getElementById('recharge-amount').value=1000; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;1,000</button>
+                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:6px 4px; font-size:10.5px; font-weight:700; justify-content:center; border-radius:8px;" onclick="document.getElementById('recharge-amount').value=2000; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;2,000</button>
+                            </div>
+                            <input type="number" id="recharge-amount" placeholder="Enter Custom Amount (Min &#8377;500)" min="500">
                             <div class="recharge-fee-row" style="font-size: 11px; color: var(--text-sec);">
                                 <span>Platform Fee (1%):</span>
                                 <span id="recharge-fee" style="color: var(--accent-red); font-weight:700;">- &#8377;0.00</span>
@@ -364,22 +388,22 @@
                     </h3>
 
                     <!-- Driver XP Level & Badges (Gamified Section) -->
-                    <div class="glass-panel" style="padding: 15px; margin-bottom: 20px; border: 1px solid rgba(100,255,218,0.15); box-shadow: 0 0 10px rgba(100,255,218,0.05); position: relative; overflow: hidden;">
+                    <div class="glass-panel" style="padding: 16px; margin-bottom: 20px; border: 1px solid rgba(99, 102, 241, 0.25); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 20px rgba(99, 102, 241, 0.1); position: relative; overflow: hidden; border-radius: 16px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                             <div>
-                                <span style="font-size: 9px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">Driver Level</span>
+                                <span style="font-size: 9px; font-weight: 800; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px;">Driver Level</span>
                                 <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 14px; font-weight: 800; color: #fff;">Level 1 Highway Cadet</h4>
                             </div>
-                            <div id="gamified-lvl-badge" style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: #021a12; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; box-shadow: 0 0 8px var(--primary);">1</div>
+                            <div id="gamified-lvl-badge" style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #3b82f6); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; box-shadow: 0 0 16px rgba(99, 102, 241, 0.5); border: 1.5px solid rgba(255,255,255,0.25);">1</div>
                         </div>
                         
                         <!-- XP progress bar -->
-                        <div style="font-size: 10px; color: var(--text-sec); display:flex; justify-content:space-between; margin-bottom:4px;">
+                        <div style="font-size: 10px; color: var(--text-sec); display:flex; justify-content:space-between; margin-bottom:5px;">
                             <span id="gamified-xp-text">150 / 500 XP</span>
                             <span id="gamified-xp-pct">30%</span>
                         </div>
-                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin-bottom: 15px;">
-                            <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: var(--primary); box-shadow: 0 0 8px var(--primary); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+                        <div style="width: 100%; height: 7px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; margin-bottom: 15px;">
+                            <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #6366f1, #38bdf8); box-shadow: 0 0 12px rgba(99, 102, 241, 0.6); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
                         </div>
 
                         <!-- Achievements Grid -->
@@ -1055,40 +1079,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v4"></script>
+    <script src="../js/config.js?v=20260823_v7"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v4"></script>
-    <script src="../js/shared/storage.js?v=20260823_v4"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v4"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v4"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v4"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v4"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v4"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v4"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v4"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v4"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v4"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v4"></script>
+    <script src="../js/shared/utils.js?v=20260823_v7"></script>
+    <script src="../js/shared/storage.js?v=20260823_v7"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v7"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v7"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v7"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v7"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v7"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v7"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v7"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v7"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v7"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v7"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v4"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v4"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v4"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v4"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v4"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v4"></script>
-    <script src="../js/user/notifications.js?v=20260823_v4"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v6"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v4"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v4"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v4"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v4"></script>
-    <script src="../js/user/gamification.js?v=20260823_v4"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v4"></script>
-    <script src="../js/user/userApp.js?v=20260823_v4"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v7"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v7"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v7"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v7"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v7"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v7"></script>
+    <script src="../js/user/notifications.js?v=20260823_v7"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v7"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v7"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v7"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v7"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v7"></script>
+    <script src="../js/user/gamification.js?v=20260823_v7"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v7"></script>
+    <script src="../js/user/userApp.js?v=20260823_v7"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v4"></script>
+    <script src="../js/shared/animations.js?v=20260823_v7"></script>
 </body>
 </html>
