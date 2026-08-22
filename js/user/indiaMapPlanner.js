@@ -666,6 +666,41 @@ const IndiaMapPlanner = {
     // ═══════════════════════════════════════════════════════════════
     // AUTOCOMPLETE — built-in city list + live Nominatim for unknowns
     // ═══════════════════════════════════════════════════════════════
+    // ═══════════════════════════════════════════════════════════════
+    // AUTOCOMPLETE — Google Maps Grade High-Accuracy Search Engine
+    // ═══════════════════════════════════════════════════════════════
+    _getPlaceCategoryInfo: (item) => {
+        const str = ((item.name || '') + ' ' + (item.display_name || '') + ' ' + (item.type || '') + ' ' + (item.class || '')).toLowerCase();
+        
+        if (str.includes('airport') || str.includes('aerodrome') || str.includes('airfield')) {
+            return { icon: 'fa-solid fa-plane-departure', cls: 'icon-airport', badge: 'AIRPORT' };
+        }
+        if (str.includes('railway') || str.includes('station') || str.includes('junction') || str.includes('metro')) {
+            return { icon: 'fa-solid fa-train', cls: 'icon-station', badge: 'STATION' };
+        }
+        if (str.includes('toll') || str.includes('plaza') || str.includes('expressway') || str.includes('highway') || str.includes('tollway')) {
+            return { icon: 'fa-solid fa-road-barrier', cls: 'icon-toll', badge: 'TOLL PLAZA' };
+        }
+        if (item.type === 'city' || item.type === 'administrative' || ['mumbai','delhi','bengaluru','bangalore','hyderabad','chennai','kolkata','pune','ahmedabad','jaipur','lucknow','chandigarh','guntur','vijayawada','patna','bhopal'].includes(item.name?.toLowerCase())) {
+            return { icon: 'fa-solid fa-city', cls: 'icon-city', badge: 'CITY' };
+        }
+        if (str.includes('hospital') || str.includes('medical') || str.includes('aiims')) {
+            return { icon: 'fa-solid fa-hospital', cls: 'icon-city', badge: 'HOSPITAL' };
+        }
+        if (str.includes('university') || str.includes('college') || str.includes('campus') || str.includes('iit') || str.includes('nit') || str.includes('lpu')) {
+            return { icon: 'fa-solid fa-graduation-cap', cls: 'icon-city', badge: 'INSTITUTE' };
+        }
+        return { icon: 'fa-solid fa-location-dot', cls: '', badge: 'PLACE' };
+    },
+
+    _highlightQuery: (text, query) => {
+        if (!text || !query) return text || '';
+        const q = query.trim();
+        if (!q) return text;
+        const regex = new RegExp(`(${q.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<span class="search-match">$1</span>');
+    },
+
     setupAutocomplete: (inputId, dropdownId, onSelect) => {
         const input    = document.getElementById(inputId);
         const dropdown = document.getElementById(dropdownId);
@@ -675,24 +710,73 @@ const IndiaMapPlanner = {
 
         input.addEventListener('input', () => {
             clearTimeout(debounceTimer);
-            const val = input.value.trim().toLowerCase();
-            if (val.length < 2) { dropdown.innerHTML = ''; dropdown.style.display = 'none'; return; }
-
-            // Built-in matches first
-            const local = IndiaMapPlanner.cities.filter(c =>
-                c.name.toLowerCase().includes(val) || c.state.toLowerCase().includes(val)
-            ).slice(0, 10);
-
-            IndiaMapPlanner._renderDropdown(dropdown, local, (city) => {
-                input.value = `${city.name}, ${city.state}`;
-                dropdown.style.display = 'none';
-                onSelect(city);
-            });
-
-            // Always attempt Nominatim search after a debounce to catch small villages/places not in local list
-            if (val.length >= 3) {
-                debounceTimer = setTimeout(() => IndiaMapPlanner._nominatimSearch(val, dropdown, input, onSelect), 500);
+            const val = input.value.trim();
+            if (val.length < 2) { 
+                dropdown.innerHTML = ''; 
+                dropdown.style.display = 'none'; 
+                return; 
             }
+
+            const qLower = val.toLowerCase();
+
+            // 1. Instant local search from IndiaMapData & TollSeedData
+            const localMatches = [];
+            const addedNames = new Set();
+
+            // Search in TollSeedData for exact toll plazas
+            if (window.TollSeedData) {
+                TollSeedData.forEach(t => {
+                    if (t.name && t.name.toLowerCase().includes(qLower)) {
+                        localMatches.push({
+                            name: t.name,
+                            fullName: `${t.name}, ${t.state || 'India'}`,
+                            subtitle: `${t.state || 'India'} • NH-${t.nhCorridor || 'National Highway'}`,
+                            lat: t.lat,
+                            lng: t.lng,
+                            state: t.state || 'India',
+                            type: 'toll',
+                            importance: 0.95
+                        });
+                        addedNames.add(t.name.toLowerCase());
+                    }
+                });
+            }
+
+            // Search in IndiaMapData.cities
+            if (IndiaMapPlanner.cities && IndiaMapPlanner.cities.length > 0) {
+                IndiaMapPlanner.cities.forEach(c => {
+                    if (c.name && (c.name.toLowerCase().includes(qLower) || (c.state && c.state.toLowerCase().includes(qLower)))) {
+                        if (!addedNames.has(c.name.toLowerCase())) {
+                            const isExactStart = c.name.toLowerCase().startsWith(qLower);
+                            localMatches.push({
+                                name: c.name,
+                                fullName: `${c.name}, ${c.state || 'India'}`,
+                                subtitle: `${c.state || 'India'}`,
+                                lat: c.lat,
+                                lng: c.lng,
+                                state: c.state || 'India',
+                                type: 'city',
+                                isVillage: c.isVillage,
+                                importance: isExactStart ? 0.9 : 0.7
+                            });
+                            addedNames.add(c.name.toLowerCase());
+                        }
+                    }
+                });
+            }
+
+            // Sort local matches by relevance
+            localMatches.sort((a, b) => (b.importance || 0) - (a.importance || 0));
+            const topLocal = localMatches.slice(0, 7);
+
+            if (topLocal.length > 0) {
+                IndiaMapPlanner._renderDropdown(dropdown, topLocal, val, onSelect, input);
+            }
+
+            // 2. High-precision live geocoding (Google Maps quality Nominatim structured search)
+            debounceTimer = setTimeout(() => {
+                IndiaMapPlanner._nominatimSearch(val, dropdown, input, onSelect, topLocal);
+            }, 220);
         });
 
         document.addEventListener('click', e => {
@@ -702,39 +786,101 @@ const IndiaMapPlanner = {
         });
     },
 
-    _renderDropdown: (dropdown, cities, onClick) => {
-        if (cities.length === 0) {
-            dropdown.innerHTML = '<div class="ac-item" style="color:var(--text-muted)">No matches – try Nominatim…</div>';
+    _renderDropdown: (dropdown, places, query, onSelect, input) => {
+        if (!places || places.length === 0) {
+            dropdown.innerHTML = '<div class="ac-item" style="color:var(--text-muted); font-size:11px;">🔍 Searching places across India…</div>';
             dropdown.style.display = 'block';
             return;
         }
-        dropdown.innerHTML = cities.map(c =>
-            `<div class="ac-item" data-name="${c.name}" data-lat="${c.lat}" data-lng="${c.lng}" data-state="${c.state || ''}" data-isvillage="${c.isVillage || false}">
-                <strong>${c.name}</strong> 
-                <span style="color:var(--text-muted);font-size:11px;">${c.state || 'India'}</span>
-                ${c.isVillage ? '<span class="badge" style="font-size:9px;margin-left:5px;background:rgba(100,255,218,0.1);color:#64ffda;">VILLAGE</span>' : ''}
-            </div>`
-        ).join('');
+
+        dropdown.innerHTML = places.map(p => {
+            const cat = IndiaMapPlanner._getPlaceCategoryInfo(p);
+            const highTitle = IndiaMapPlanner._highlightQuery(p.name, query);
+            return `
+                <div class="google-ac-item" data-name="${p.name}" data-lat="${p.lat}" data-lng="${p.lng}" data-state="${p.state || ''}" data-isvillage="${p.isVillage || false}">
+                    <div class="google-ac-icon-box ${cat.cls}">
+                        <i class="${cat.icon}"></i>
+                    </div>
+                    <div class="google-ac-content">
+                        <div class="google-ac-title">
+                            <span>${highTitle}</span>
+                            <span class="google-ac-badge">${cat.badge}</span>
+                        </div>
+                        <div class="google-ac-subtitle">${p.subtitle || (p.state ? p.state + ', India' : 'India')}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
         dropdown.style.display = 'block';
-        dropdown.querySelectorAll('.ac-item[data-name]').forEach(item => {
+
+        dropdown.querySelectorAll('.google-ac-item').forEach(item => {
             item.addEventListener('click', () => {
                 const isVillage = item.dataset.isvillage === 'true';
-                onClick({
+                const selectedObj = {
                     name:  item.dataset.name,
                     lat:   parseFloat(item.dataset.lat),
                     lng:   parseFloat(item.dataset.lng),
-                    state: item.dataset.state,
+                    state: item.dataset.state || 'India',
                     isVillage: isVillage
-                });
+                };
+                input.value = `${selectedObj.name}, ${selectedObj.state}`;
+                dropdown.style.display = 'none';
+                onSelect(selectedObj);
             });
         });
+    },
+
+    _nominatimSearch: (query, dropdown, input, onSelect, existingList = []) => {
+        const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=in&format=json&addressdetails=1&limit=10`;
+        fetch(url, { headers: { 'Accept-Language': 'en' } })
+            .then(r => r.json())
+            .then(results => {
+                if (!results || results.length === 0) return;
+
+                const seenNames = new Set(existingList.map(p => p.name.toLowerCase()));
+                const livePlaces = [];
+
+                results.forEach(r => {
+                    const addr = r.address || {};
+                    const primaryName = addr.city || addr.town || addr.village || addr.suburb || addr.amenity || addr.road || r.display_name.split(',')[0].trim();
+                    const state = addr.state || 'India';
+                    
+                    // Build clean, informative Google Maps style subtitle
+                    const subParts = [];
+                    if (addr.county || addr.state_district) subParts.push(addr.county || addr.state_district);
+                    if (state && state !== primaryName) subParts.push(state);
+                    if (addr.postcode) subParts.push(addr.postcode);
+                    if (subParts.length === 0) subParts.push('India');
+                    const subtitle = subParts.join(', ');
+
+                    if (!seenNames.has(primaryName.toLowerCase())) {
+                        seenNames.add(primaryName.toLowerCase());
+                        livePlaces.push({
+                            name: primaryName,
+                            fullName: r.display_name,
+                            subtitle: subtitle,
+                            lat: parseFloat(r.lat),
+                            lng: parseFloat(r.lon),
+                            state: state,
+                            type: r.type || r.class || 'place',
+                            importance: r.importance || 0.5
+                        });
+                    }
+                });
+
+                // Combine existing top local items with live items
+                const combined = [...existingList, ...livePlaces].slice(0, 10);
+                IndiaMapPlanner._renderDropdown(dropdown, combined, query, onSelect, input);
+            })
+            .catch(() => {});
     },
 
     _geocodeVillage: (city, callback) => {
         const query = `${city.name}, ${city.state === 'Village' ? '' : city.state}, India`;
         Utils.showToast(`Geocoding ${city.name}...`, 'info');
         
-        fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`)
+        fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=in&format=json&limit=1`)
             .then(r => r.json())
             .then(data => {
                 if (data && data.length > 0) {
@@ -747,7 +893,7 @@ const IndiaMapPlanner = {
                     Utils.showToast(`Location found!`, 'success');
                     callback(res);
                 } else {
-                    Utils.showToast(`Could not find exact location for ${city.name}. Try Nominatim search.`, 'error');
+                    Utils.showToast(`Could not find exact location for ${city.name}.`, 'error');
                 }
             })
             .catch(() => {
@@ -755,44 +901,8 @@ const IndiaMapPlanner = {
             });
     },
 
-    _nominatimSearch: (query, dropdown, input, onSelect) => {
-        const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=in&format=json&addressdetails=1&limit=6`;
-        fetch(url, { headers: { 'Accept-Language': 'en' } })
-            .then(r => r.json())
-            .then(results => {
-                const cities = results.map(r => ({
-                    name:  r.display_name.split(',')[0].trim(),
-                    lat:   parseFloat(r.lat),
-                    lng:   parseFloat(r.lon),
-                    state: r.address?.state || 'India'
-                }));
-                // Merge with existing dropdown items
-                const existing = [...dropdown.querySelectorAll('.ac-item[data-name]')].map(el => el.dataset.name);
-                const fresh = cities.filter(c => !existing.includes(c.name));
-                if (fresh.length > 0) {
-                    fresh.forEach(c => {
-                        const div = document.createElement('div');
-                        div.className = 'ac-item';
-                        div.dataset.name  = c.name;
-                        div.dataset.lat   = c.lat;
-                        div.dataset.lng   = c.lng;
-                        div.dataset.state = c.state;
-                        div.innerHTML = `<strong>${c.name}</strong> <span style="color:var(--text-muted);font-size:11px;">${c.state} · OSM</span>`;
-                        div.addEventListener('click', () => {
-                            input.value = `${c.name}, ${c.state}`;
-                            dropdown.style.display = 'none';
-                            onSelect(c);
-                        });
-                        dropdown.appendChild(div);
-                    });
-                    dropdown.style.display = 'block';
-                }
-            })
-            .catch(() => {}); // silent fail for Nominatim
-    },
-
     // ═══════════════════════════════════════════════════════════════
-    // ROUTE PROCESSING — OSRM + alternate routes
+    // ROUTE PROCESSING — OSRM Single Optimal Path
     // ═══════════════════════════════════════════════════════════════
     processRoute: async () => {
         const origInput = document.getElementById('route-origin-input');
@@ -802,14 +912,23 @@ const IndiaMapPlanner = {
             if (currentObj && currentObj.lat && currentObj.lng) return currentObj;
             if (!text || !text.trim()) return null;
             const q = text.trim().toLowerCase();
+            
+            // Check local toll seed data
+            const matchedToll = (window.TollSeedData || []).find(t => t.name && (t.name.toLowerCase() === q || q.includes(t.name.toLowerCase())));
+            if (matchedToll) {
+                return { name: matchedToll.name, lat: matchedToll.lat, lng: matchedToll.lng, state: matchedToll.state || 'India' };
+            }
+
+            // Check cities index
             const found = (IndiaMapPlanner.cities || []).find(c => 
                 c.name.toLowerCase() === q || 
                 q.includes(c.name.toLowerCase()) || 
                 c.name.toLowerCase().includes(q)
             );
-            if (found) {
+            if (found && found.lat && found.lng) {
                 return found;
             }
+
             try {
                 const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(text + ', India')}&countrycodes=in&format=json&limit=1`, { headers: { 'Accept-Language': 'en' } });
                 const data = await res.json();
@@ -818,6 +937,13 @@ const IndiaMapPlanner = {
                         name: text.split(',')[0].trim(),
                         lat: parseFloat(data[0].lat),
                         lng: parseFloat(data[0].lon),
+                        state: 'India'
+                    };
+                    return loc;
+                }
+            } catch(e) {}
+            return null;
+        };
                         state: 'India'
                     };
                     return loc;
@@ -1783,7 +1909,7 @@ const IndiaMapPlanner = {
         'bus': 'Highway Bus'
     },
     _vehicleIcons: {
-        'default': '📍',
+        'default': '<div class="dock-radar-beacon"><div class="dock-radar-beacon-ring"></div><div class="dock-radar-beacon-crosshair"></div><div class="dock-radar-beacon-core"></div></div>',
         'car_red': '🏎️',
         'suv_blue': '🚙',
         'ev_green': '🚗',
@@ -1826,7 +1952,6 @@ const IndiaMapPlanner = {
         btnLocate.innerHTML = `
             <i class="fa-solid fa-location-crosshairs"></i>
             <div class="reactbits-dock-label">Locate My Position</div>
-            <div class="reactbits-dock-dot"></div>
         `;
         
         btnLocate.addEventListener('click', () => {
@@ -1880,7 +2005,6 @@ const IndiaMapPlanner = {
             btnVehicle.innerHTML = `
                 <span style="display: flex; align-items: center; justify-content: center; font-size: 20px;">${icon}</span>
                 <div class="reactbits-dock-label" id="dock-avatar-label">Avatar: ${label}</div>
-                <div class="reactbits-dock-dot"></div>
             `;
         };
         updateAvatarItem();
@@ -1976,13 +2100,11 @@ const IndiaMapPlanner = {
                 btnLayer.innerHTML = `
                     <i class="fa-solid fa-moon"></i>
                     <div class="reactbits-dock-label" id="dock-layer-label">Dark Mode</div>
-                    <div class="reactbits-dock-dot"></div>
                 `;
             } else {
                 btnLayer.innerHTML = `
                     <i class="fa-solid fa-satellite"></i>
                     <div class="reactbits-dock-label" id="dock-layer-label">Satellite View</div>
-                    <div class="reactbits-dock-dot"></div>
                 `;
             }
         };

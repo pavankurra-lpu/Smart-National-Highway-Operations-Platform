@@ -1249,50 +1249,136 @@ body.light-mode #lane-advisor-modal {
     box-shadow: 0 0 12px rgba(0,229,179,0.1);
 }
 
-/* ===== AUTOCOMPLETE DROPDOWN ===== */
+/* ===== GOOGLE MAPS STYLE AUTOCOMPLETE DROPDOWN ===== */
 .autocomplete-dropdown {
     display: none;
     position: relative;
-    background: var(--bg-panel);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border);
-    border-top: none;
-    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-    max-height: 220px;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    max-height: 280px;
     overflow-y: auto;
-    z-index: 100;
-    margin-top: -2px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    z-index: 1000;
+    margin-top: 4px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 body.light-mode .autocomplete-dropdown {
-    background: rgba(248, 252, 255, 0.99);
-    box-shadow: 0 8px 24px rgba(0,50,100,0.12);
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 16px 36px rgba(0, 50, 100, 0.15);
 }
 
+.google-ac-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+body.light-mode .google-ac-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.google-ac-item:hover,
+.google-ac-item.focused {
+    background: rgba(16, 185, 129, 0.12);
+    transform: translateX(2px);
+}
+body.light-mode .google-ac-item:hover {
+    background: rgba(16, 185, 129, 0.08);
+}
+.google-ac-item:last-child {
+    border-bottom: none;
+}
+
+.google-ac-icon-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    color: #38bdf8;
+    transition: all 0.2s;
+}
+.google-ac-item:hover .google-ac-icon-box {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: var(--primary, #10b981);
+    transform: scale(1.06);
+}
+.google-ac-icon-box.icon-city { color: #38bdf8; background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.25); }
+.google-ac-icon-box.icon-toll { color: #fbbf24; background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.25); }
+.google-ac-icon-box.icon-airport { color: #a855f7; background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.25); }
+.google-ac-icon-box.icon-station { color: #ec4899; background: rgba(236, 72, 153, 0.12); border-color: rgba(236, 72, 153, 0.25); }
+
+.google-ac-content {
+    flex: 1;
+    min-width: 0;
+}
+.google-ac-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #f8fafc;
+    line-height: 1.25;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+body.light-mode .google-ac-title {
+    color: #0f172a;
+}
+.google-ac-title .search-match {
+    color: var(--primary, #10b981);
+    text-decoration: underline;
+}
+.google-ac-badge {
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+.google-ac-subtitle {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+body.light-mode .google-ac-subtitle {
+    color: #64748b;
+}
+
+/* Legacy ac-item support */
 .ac-item {
     padding: 10px 14px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     border-bottom: 1px solid var(--border-light);
-    transition: background 0.15s;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    color: #f8fafc;
 }
-.ac-item::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--text-muted);
-    border-radius: 50%;
-    flex-shrink: 0;
-    transition: background 0.15s;
-}
-.ac-item:hover {
-    background: var(--primary-dim);
-}
-.ac-item:hover::before {
-    background: var(--primary);
-}
+.ac-item:hover { background: var(--primary-dim); }
 .ac-item:last-child { border-bottom: none; }
 
 /* ===== SPECIAL VEHICLE BOX ===== */
@@ -1595,21 +1681,54 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     transform: translateX(-50%) translateY(0);
 }
 
+/* Remove bottom green dot completely per user request */
 .reactbits-dock-dot {
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--primary, #10b981);
-    box-shadow: 0 0 8px var(--primary, #10b981);
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    display: none !important;
 }
 .reactbits-dock-item.has-active .reactbits-dock-dot {
-    opacity: 1;
+    display: none !important;
+}
+
+/* ===== FUTURISTIC RADAR BEACON ICON FOR DOCK & AVATAR ===== */
+.dock-radar-beacon {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dock-radar-beacon-core {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #10b981;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 12px #10b981, inset 0 0 4px #ffffff;
+    z-index: 3;
+}
+.dock-radar-beacon-ring {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(16, 185, 129, 0.7);
+    animation: k-beacon-pulse 2s cubic-bezier(0.1, 0, 0.3, 1) infinite;
+    z-index: 1;
+}
+.dock-radar-beacon-crosshair {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px dashed rgba(56, 189, 248, 0.5);
+    animation: k-spin 6s linear infinite;
+    z-index: 2;
+}
+
+@keyframes k-beacon-pulse {
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(1.4); opacity: 0; }
 }
 
 /* ======================================
