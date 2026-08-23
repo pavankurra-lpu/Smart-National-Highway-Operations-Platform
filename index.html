@@ -606,12 +606,9 @@
                 <!-- NHAI System-Wide Stats Widget -->
                 <div class="landing-stats-box" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; width: 100%;">
                     
-                    <!-- Reactbits-style Minimal Bento Card (Active Plazas with click-to-view) -->
-                    <div class="l-stat" onclick="openActiveTollsModal()" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(56,189,248,0.02), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); cursor: pointer; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='rgba(56,189,248,0.4)'; this.style.boxShadow='0 12px 30px rgba(56,189,248,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(56, 189, 248, 0.15)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4)';" title="Click to view all active national highway toll plazas">
-                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
-                            <span>Active Plazas</span>
-                            <span style="font-size: 8px; color: #38bdf8; background: rgba(56,189,248,0.12); padding: 1px 4px; border-radius: 3px;"><i class="fa-solid fa-list-ul"></i> Explore</span>
-                        </div>
+                    <!-- Reactbits-style Minimal Bento Card (Active Plazas) -->
+                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
+                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Active Plazas</div>
                         <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700; line-height: 1;">0</div>
                     </div>
                     
