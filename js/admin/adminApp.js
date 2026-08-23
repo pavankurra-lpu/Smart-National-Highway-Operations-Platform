@@ -62,6 +62,7 @@ const AdminApp = {
         // Init map
         AdminApp.initMap();
         AdminApp.renderIncidentMarkers();
+        AdminApp.renderBroadcastCircles();
 
         // Listen for user actions dynamically
         window.addEventListener('local-storage-update', () => {
@@ -69,6 +70,7 @@ const AdminApp = {
             IncidentCenter.refresh();
             SpecialVehicleControl.refresh();
             AdminApp.renderIncidentMarkers();
+            AdminApp.renderBroadcastCircles();
         });
         
         // Change-detection poll: only re-render when data actually changes
@@ -287,6 +289,43 @@ const AdminApp = {
                     .addTo(AdminApp.map);
 
                 AdminApp.incidentMarkers[e.id] = marker;
+            }
+        });
+    },
+
+    broadcastCircles: {},
+
+    renderBroadcastCircles: () => {
+        if (!AdminApp.map) return;
+        const alerts = Storage.get(Storage.KEYS.ADMIN_ALERTS, []);
+
+        // Remove old circles
+        Object.values(AdminApp.broadcastCircles).forEach(c => {
+            try { AdminApp.map.removeLayer(c); } catch(e){}
+        });
+        AdminApp.broadcastCircles = {};
+
+        alerts.forEach(alert => {
+            if (alert.lat && alert.lng && (alert.lat !== 20.5937 || alert.lng !== 78.9629)) {
+                const radiusMeters = (alert.radiusKm || 10) * 1000;
+                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#38bdf8');
+                
+                const circle = L.circle([alert.lat, alert.lng], {
+                    radius: radiusMeters,
+                    color: color,
+                    weight: 2,
+                    fillColor: color,
+                    fillOpacity: 0.12,
+                    dashArray: '6, 6'
+                }).bindPopup(`
+                    <div style="font-family:'Inter',sans-serif; color:#0f172a; padding:4px;">
+                        <strong style="color:${color}; font-size:12px;">📡 10km Broadcast Geofence</strong><br>
+                        <strong style="font-size:11.5px;">${alert.title}</strong><br>
+                        <span style="font-size:11px; color:#64748b;">${alert.plaza || 'Toll Gate'} (${alert.radiusKm || 10}km Radius)</span>
+                    </div>
+                `).addTo(AdminApp.map);
+
+                AdminApp.broadcastCircles[alert.id] = circle;
             }
         });
     }

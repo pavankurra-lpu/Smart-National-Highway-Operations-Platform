@@ -1864,16 +1864,31 @@ const IndiaMapPlanner = {
 
             // Check if any active admin broadcast matches this route
             if (adminAlerts.length > 0) {
-                const latestAlert = adminAlerts[0];
-                html += `
-                    <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 10px; padding: 8px 10px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
-                        <i class="fa-solid fa-bullhorn" style="color: #f43f5e; font-size: 13px; margin-top: 2px;"></i>
-                        <div style="flex:1; min-width:0;">
-                            <div style="font-size: 10.5px; font-weight: 700; color: #f87171;">LIVE NHAI ALERT: ${latestAlert.title}</div>
-                            <div style="font-size: 9.5px; color: #fca5a5; line-height: 1.35; margin-top: 2px;">${latestAlert.message}</div>
-                        </div>
-                    </div>
-                `;
+                adminAlerts.forEach(latestAlert => {
+                    const alertPlaza = (latestAlert.plaza || '').toLowerCase();
+                    const matchesRoute = latestAlert.plaza === 'ALL' || rData.tolls.some(t => {
+                        const td = window.TollSeedData?.find(s => s.id === t.id);
+                        const tName = (td ? td.name : (t.name || '')).toLowerCase();
+                        return tName.includes(alertPlaza) || alertPlaza.includes(tName);
+                    });
+
+                    if (matchesRoute) {
+                        const alertColor = latestAlert.type === 'EMERGENCY' ? '#f43f5e' : (latestAlert.type === 'TRAFFIC' ? '#f59e0b' : '#38bdf8');
+                        const icon = latestAlert.type === 'EMERGENCY' ? 'fa-triangle-exclamation' : (latestAlert.type === 'TRAFFIC' ? 'fa-car-burst' : 'fa-tower-broadcast');
+                        html += `
+                            <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-left: 3px solid ${alertColor}; border-radius: 10px; padding: 8px 10px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                                <i class="fa-solid ${icon}" style="color: ${alertColor}; font-size: 13px; margin-top: 2px;"></i>
+                                <div style="flex:1; min-width:0;">
+                                    <div style="font-size: 10.5px; font-weight: 700; color: ${alertColor}; display:flex; justify-content:space-between; align-items:center;">
+                                        <span>LIVE NHAI ALERT: ${latestAlert.title}</span>
+                                        <span style="font-size:8px; background:rgba(56,189,248,0.15); color:#38bdf8; padding:1px 4px; border-radius:3px;">📡 10km Range</span>
+                                    </div>
+                                    <div style="font-size: 9.5px; color: #cbd5e1; line-height: 1.35; margin-top: 2px;">${latestAlert.message}</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
             }
 
             html += `

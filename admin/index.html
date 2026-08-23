@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SNHOP Operations Dashboard</title>
     <!-- Auth Guard -> Redirects immediately before load if no session -->
-    <script src="../js/config.js"></script>
-    <script src="../js/shared/auth.js"></script>
-    <script src="../js/admin/authGuard.js"></script>
+    <script src="../js/config.js?v=20260823_v33"></script>
+    <script src="../js/shared/auth.js?v=20260823_v33"></script>
+    <script src="../js/admin/authGuard.js?v=20260823_v33"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v33">
+    <link rel="stylesheet" href="../css/admin.css?v=20260823_v33">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
@@ -197,44 +197,102 @@
                 </div>
             </section>
 
-            <!-- 5. Alerts -->
+            <!-- 5. Alerts & Broadcast Control -->
             <section id="view-alerts" class="view-section">
-                <div class="glass-panel" style="max-width: 600px;">
-                    <h3 style="margin-bottom: 15px;"><i class="fa-solid fa-tower-cell"></i> Push Alert to Travellers
-                    </h3>
-                    <div class="flex-col gap-4">
-                        <div style="display:flex; gap:10px;">
-                            <div style="flex:1;">
-                                <label>Alert Category</label>
-                                <select id="bc-type">
-                                    <option value="TRAFFIC">Traffic / Congestion</option>
-                                    <option value="WEATHER">Weather Advisory</option>
-                                    <option value="EMERGENCY">Emergency / Accident</option>
-                                    <option value="INFO">General Info</option>
-                                </select>
+                <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:20px; max-width: 1200px;">
+                    <!-- Left: Broadcast Form & Auto-Connected Toll Gate -->
+                    <div class="glass-panel">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+                            <h3 style="margin:0; font-size:16px; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-tower-broadcast" style="color:var(--accent-red);"></i> Toll Gate Broadcast Control
+                            </h3>
+                            <span class="badge" id="bc-status-badge" style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); font-size:10px; padding:3px 8px; border-radius:12px; display:flex; align-items:center; gap:4px;">
+                                <span class="live-status-dot" style="background:#10b981;"></span> AUTO-CONNECTED
+                            </span>
+                        </div>
+
+                        <!-- Connected Toll Gate Info Card -->
+                        <div id="bc-connected-toll-card" style="background:rgba(15,23,42,0.6); border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:15px; border-left:4px solid #38bdf8;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <div>
+                                    <div style="font-size:10px; color:var(--text-sec); text-transform:uppercase; letter-spacing:0.5px; font-weight:700;">
+                                        <i class="fa-solid fa-archway" style="color:#38bdf8;"></i> Connected Toll Gate
+                                    </div>
+                                    <h4 id="bc-toll-name" style="margin:2px 0 0 0; font-size:14px; font-weight:700; color:#fff;">All India National Highway Network</h4>
+                                    <div id="bc-toll-meta" style="font-size:11px; color:#94a3b8; margin-top:2px;">National Corridors • Multi-State Geofence</div>
+                                </div>
+                                <div style="text-align:right;">
+                                    <span style="font-size:10px; background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); padding:2px 6px; border-radius:4px; font-weight:700;">
+                                        📡 10 km Range
+                                    </span>
+                                    <div id="bc-toll-coords" style="font-size:9.5px; color:#64748b; font-family:monospace; margin-top:3px;">Lat: 20.5937, Lng: 78.9629</div>
+                                </div>
                             </div>
-                            <div style="flex:1;">
-                                <label>Target Plaza</label>
-                                <select id="bc-plaza">
-                                    <option value="ALL">All Plazas</option>
-                                    <option value="Lakshmipur">Lakshmipur Plaza (Punjab)</option>
-                                    <option value="Aganampudi">Aganampudi Plaza (Andhra Pradesh)</option>
-                                    <option value="Bandra-Worli">Bandra-Worli Plaza (Maharashtra)</option>
-                                    <option value="Yamuna Expressway">Yamuna Expressway (Delhi NCR)</option>
-                                    <option value="Electronic City">Electronic City Plaza (Karnataka)</option>
-                                </select>
+                        </div>
+
+                        <div class="flex-col gap-4">
+                            <div style="display:flex; gap:10px;">
+                                <div style="flex:1;">
+                                    <label style="font-size:11px; font-weight:bold;">Alert Category</label>
+                                    <select id="bc-type">
+                                        <option value="TRAFFIC">🚗 Traffic / Congestion</option>
+                                        <option value="WEATHER">🌫️ Weather Advisory (Fog / Rain)</option>
+                                        <option value="EMERGENCY">🚨 Emergency / Accident / Lane Block</option>
+                                        <option value="INFO">ℹ️ General Highway Info</option>
+                                    </select>
+                                </div>
+                                <div style="flex:1;">
+                                    <label style="font-size:11px; font-weight:bold;">Target Toll Plaza</label>
+                                    <select id="bc-plaza">
+                                        <!-- Dynamically populated and auto-connected by JS -->
+                                        <option value="ALL">⭐ All Plazas (Super Admin)</option>
+                                    </select>
+                                </div>
                             </div>
+
+                            <!-- Quick Dispatch Template Chips -->
+                            <div>
+                                <label style="font-size:10px; color:var(--text-sec); margin-bottom:4px; display:block;">⚡ Quick Presets (Click to Fill):</label>
+                                <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                                    <button type="button" class="preset-chip" onclick="AlertBroadcaster.applyPreset('congestion')">🚗 +20m Congestion</button>
+                                    <button type="button" class="preset-chip" onclick="AlertBroadcaster.applyPreset('fog')">🌫️ Dense Fog Warning</button>
+                                    <button type="button" class="preset-chip" onclick="AlertBroadcaster.applyPreset('accident')">🚨 Lane Diverted</button>
+                                    <button type="button" class="preset-chip" onclick="AlertBroadcaster.applyPreset('maintenance')">🛠️ Road Work Ahead</button>
+                                    <button type="button" class="preset-chip" onclick="AlertBroadcaster.applyPreset('vip')">⚡ VIP Fast-Track</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label style="font-size:11px; font-weight:bold;">Headline *</label>
+                                <input type="text" id="bc-title" placeholder="e.g. Heavy Congestion ahead of Toll Gate">
+                            </div>
+                            <div>
+                                <label style="font-size:11px; font-weight:bold;">Description *</label>
+                                <textarea id="bc-msg" rows="3" placeholder="Provide actionable advisory for vehicles within 10km range of this toll gate..."></textarea>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.25); padding:8px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
+                                <span style="font-size:11px; color:#94a3b8;"><i class="fa-solid fa-satellite-dish" style="color:#38bdf8;"></i> Geofence Radius:</span>
+                                <span style="font-size:11px; font-weight:700; color:#38bdf8;">10 km Range (10,000m Coverage)</span>
+                            </div>
+
+                            <button id="btn-broadcast" class="btn btn-danger" style="justify-content: center; font-weight:700; font-size:13px; padding:10px 0;">
+                                <i class="fa-solid fa-tower-broadcast"></i> BROADCAST 10KM HIGHWAY ALERT
+                            </button>
                         </div>
-                        <div>
-                            <label>Headline</label>
-                            <input type="text" id="bc-title" placeholder="e.g. Heavy fog near Delhi">
+                    </div>
+
+                    <!-- Right: Active Geofenced Broadcasts & Live Monitor -->
+                    <div class="glass-panel" style="display:flex; flex-direction:column;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <h3 style="margin:0; font-size:16px; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-bullhorn" style="color:var(--accent-yellow);"></i> Active 10km Broadcasts
+                            </h3>
+                            <span id="active-broadcast-count" class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); font-size:10px;">0 Active</span>
                         </div>
-                        <div>
-                            <label>Description</label>
-                            <textarea id="bc-msg" rows="3" placeholder="Additional details..."></textarea>
+                        <div id="active-broadcasts-list" style="flex:1; overflow-y:auto; max-height:460px; display:flex; flex-direction:column; gap:10px;">
+                            <!-- Filled dynamically by AlertBroadcaster.renderActiveAlerts() -->
                         </div>
-                        <button id="btn-broadcast" class="btn btn-danger" style="justify-content: center;">BROADCAST
-                            NOW</button>
                     </div>
                 </div>
             </section>
@@ -288,28 +346,28 @@
     <!-- Shared dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-    <script src="../js/shared/realtimeConnector.js"></script>
-    <script src="../js/shared/utils.js"></script>
-    <script src="../js/shared/storage.js"></script>
-    <script src="../js/shared/indiaMapData.js"></script>
-    <script src="../js/shared/tollSeedData.js"></script>
-    <script src="../js/shared/tollData.js"></script>
-    <script src="../js/shared/cctvFeedEngine.js"></script>
+    <script src="../js/shared/realtimeConnector.js?v=20260823_v33"></script>
+    <script src="../js/shared/utils.js?v=20260823_v33"></script>
+    <script src="../js/shared/storage.js?v=20260823_v33"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v33"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v33"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v33"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v33"></script>
 
     <!-- Admin dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="../js/shared/themeManager.js"></script>
-    <script src="../js/admin/analytics.js"></script>
-    <script src="../js/admin/cctvManager.js"></script>
-    <script src="../js/admin/cctvPanel.js"></script>
-    <script src="../js/admin/incidentCenter.js"></script>
-    <script src="../js/admin/trafficControl.js"></script>
-    <script src="../js/admin/alertBroadcaster.js"></script>
-    <script src="../js/admin/specialVehicleControl.js"></script>
-    <script src="../js/admin/adminApp.js"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v33"></script>
+    <script src="../js/admin/analytics.js?v=20260823_v33"></script>
+    <script src="../js/admin/cctvManager.js?v=20260823_v33"></script>
+    <script src="../js/admin/cctvPanel.js?v=20260823_v33"></script>
+    <script src="../js/admin/incidentCenter.js?v=20260823_v33"></script>
+    <script src="../js/admin/trafficControl.js?v=20260823_v33"></script>
+    <script src="../js/admin/alertBroadcaster.js?v=20260823_v33"></script>
+    <script src="../js/admin/specialVehicleControl.js?v=20260823_v33"></script>
+    <script src="../js/admin/adminApp.js?v=20260823_v33"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js"></script>
+    <script src="../js/shared/animations.js?v=20260823_v33"></script>
 </body>
 
 </html>

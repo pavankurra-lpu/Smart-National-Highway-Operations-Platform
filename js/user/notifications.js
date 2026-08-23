@@ -152,6 +152,17 @@ const Notifications = {
         }, 50);
     },
 
+    calcDistance: (lat1, lon1, lat2, lon2) => {
+        const R = 6371; // km
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon/2) * Math.sin(dLon/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+    },
+
     renderCurrent: () => {
         if (Notifications.activeAlerts.length === 0) return;
         const alert = Notifications.activeAlerts[Notifications.currentIndex];
@@ -165,18 +176,88 @@ const Notifications = {
 
         const icon = typeIcons[alert.type] || typeIcons['INFO'];
         
+        // Calculate traveller proximity if coordinates available
+        let proximityBadge = '';
+        let userPos = null;
+        if (window.IndiaMapPlanner) {
+            if (IndiaMapPlanner.lastKnownGps) userPos = IndiaMapPlanner.lastKnownGps;
+            else if (IndiaMapPlanner.userLocationMarker) userPos = IndiaMapPlanner.userLocationMarker.getLatLng();
+            else if (IndiaMapPlanner.selectedOrigin) userPos = IndiaMapPlanner.selectedOrigin;
+        }
+
+        if (userPos && alert.lat && alert.lng && (alert.lat !== 20.5937 || alert.lng !== 78.9629)) {
+            const dist = Notifications.calcDistance(userPos.lat, userPos.lng || userPos.lon, alert.lat, alert.lng);
+            if (dist <= 10) {
+                proximityBadge = `
+                    <div style="margin-top:6px; background:rgba(239,68,68,0.22); border:1px solid rgba(239,68,68,0.5); border-radius:6px; padding:3px 8px; font-size:10px; font-weight:800; color:#f87171; display:inline-flex; align-items:center; gap:5px;">
+                        <i class="fa-solid fa-triangle-exclamation"></i> YOU ARE WITHIN 10KM TOLL GEOFENCE (${dist.toFixed(1)} km away)
+                    </div>
+                `;
+            } else {
+                proximityBadge = `
+                    <div style="margin-top:4px; font-size:9.5px; color:#94a3b8;">
+                        <i class="fa-solid fa-satellite-dish" style="color:#38bdf8;"></i> 10km Geofence Area • ${dist.toFixed(0)} km from current location
+                    </div>
+                `;
+            }
+        }
+
         const advisory = document.getElementById('advisory-text');
         if (advisory) {
             advisory.innerHTML = `
-                <div style="margin-bottom: 4px; font-weight:bold; color:#fff; font-size:12px;">
-                    ${icon} ${alert.title}
+                <div style="margin-bottom: 4px; font-weight:bold; color:#fff; font-size:12px; display:flex; align-items:center; gap:6px;">
+                    ${icon} <span>${alert.title}</span>
                 </div>
                 <div style="font-size:11.5px; color:#cbd5e1; line-height:1.4;">${alert.message}</div>
-                <div style="font-size:9.5px; color:#38bdf8; margin-top:5px; font-weight:600;">
-                    <i class="fa-solid fa-tower-broadcast"></i> Region: ${alert.plaza || 'All Corridors'} • ${Utils.formatDateTime(alert.timestamp)}
+                ${proximityBadge}
+                <div style="font-size:9px; color:#38bdf8; margin-top:5px; font-weight:600; display:flex; align-items:center; gap:6px;">
+                    <span><i class="fa-solid fa-archway"></i> ${alert.plaza || 'All Corridors'}</span>
+                    <span>•</span>
+                    <span><i class="fa-regular fa-clock"></i> ${Utils.formatDateTime ? Utils.formatDateTime(alert.timestamp) : new Date(alert.timestamp).toLocaleTimeString()}</span>
                 </div>
             `;
         }
+
+        Notifications.renderUserBroadcastCircles();
+    },
+
+    broadcastCircles: {},
+
+    renderUserBroadcastCircles: () => {
+        if (!window.IndiaMapPlanner || !IndiaMapPlanner.map) return;
+        const map = IndiaMapPlanner.map;
+        const alerts = Notifications.activeAlerts || [];
+
+        // Remove previous circles
+        Object.values(Notifications.broadcastCircles).forEach(c => {
+            try { map.removeLayer(c); } catch(e){}
+        });
+        Notifications.broadcastCircles = {};
+
+        alerts.forEach(alert => {
+            if (alert.lat && alert.lng && (alert.lat !== 20.5937 || alert.lng !== 78.9629)) {
+                const radiusMeters = (alert.radiusKm || 10) * 1000; // 10,000 meters (10 km)
+                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#38bdf8');
+
+                const circle = L.circle([alert.lat, alert.lng], {
+                    radius: radiusMeters,
+                    color: color,
+                    weight: 2,
+                    fillColor: color,
+                    fillOpacity: 0.12,
+                    dashArray: '5, 8'
+                }).bindPopup(`
+                    <div style="font-family:'Inter',sans-serif; color:#0f172a; padding:4px;">
+                        <strong style="color:${color}; font-size:12px;"><i class="fa-solid fa-tower-broadcast"></i> 10km NHAI Broadcast Zone</strong><br>
+                        <strong style="font-size:11.5px;">${alert.title}</strong><br>
+                        <p style="font-size:11px; color:#475569; margin:4px 0;">${alert.message}</p>
+                        <span style="font-size:9.5px; color:#64748b; font-weight:bold;">${alert.plaza || 'Toll Gate'} • 10 km Radius Coverage</span>
+                    </div>
+                `).addTo(map);
+
+                Notifications.broadcastCircles[alert.id] = circle;
+            }
+        });
     }
 };
 

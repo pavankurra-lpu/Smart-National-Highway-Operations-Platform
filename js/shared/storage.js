@@ -140,6 +140,12 @@ const Storage = {
         Storage.set(Storage.KEYS.ADMIN_ALERTS, alerts);
     },
 
+    removeAdminAlert: (id) => {
+        const alerts = Storage.get(Storage.KEYS.ADMIN_ALERTS, []);
+        const updated = alerts.filter(a => a.id !== id);
+        Storage.set(Storage.KEYS.ADMIN_ALERTS, updated);
+    },
+
     setTollCongestion: (tollId, level) => {
         const states = Storage.get(Storage.KEYS.TOLL_STATES, {});
         if (!states[tollId]) states[tollId] = {};
