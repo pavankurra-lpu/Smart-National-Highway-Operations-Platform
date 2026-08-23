@@ -866,31 +866,61 @@ path.leaflet-interactive:focus,
     display: block;
 }
 
-/* ===== SIDEBAR TOGGLE BUTTON ===== */
+/* ===== SIDEBAR TOGGLE BUTTON (Desktop & Mobile) ===== */
 .sidebar-toggle {
-    position: absolute;
-    top: 25px;
-    right: 440px;
-    z-index: 9999;
-    width: 40px; height: 40px;
-    border-radius: var(--radius-sm);
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border);
-    color: #818cf8;
-    font-size: 15px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: var(--transition);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    position: fixed !important;
+    top: 20px !important;
+    right: 436px !important;
+    z-index: 10000 !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 50% !important;
+    background: rgba(10, 16, 30, 0.94) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    color: #38bdf8 !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
+
 .sidebar-toggle:hover {
-    background: #6366f1;
-    color: #ffffff;
-    border-color: #6366f1;
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45);
+    background: rgba(15, 23, 42, 0.98) !important;
+    border-color: rgba(56, 189, 248, 0.5) !important;
+    color: #ffffff !important;
+    transform: scale(1.08) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 15px rgba(56, 189, 248, 0.3) !important;
 }
-.sidebar-toggle.shifted { right: 25px; }
+
+.sidebar-toggle:active {
+    transform: scale(0.92) !important;
+}
+
+.sidebar-toggle.shifted {
+    right: 20px !important;
+    color: #f8fafc !important;
+}
+
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        top: 12px !important;
+        left: 12px !important;
+        right: auto !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+    .sidebar-toggle.shifted {
+        right: auto !important;
+        left: 12px !important;
+    }
+}
 
 /* ===== TRAVEL PREFERENCES BOX ===== */
 .pref-box {
@@ -2249,53 +2279,7 @@ body.light-mode .google-ac-subtitle {
         font-size: 9.5px !important;
     }
 
-    /* Sidebar Toggle Button on Mobile (Replaced by top bar menu) */
-    .sidebar-toggle {
-        display: none !important;
-    }
 
-    /* Universal Floating 3-Bars Hamburger Toggle (Desktop & Mobile) */
-    .btn-sidebar-floating-toggle {
-        position: fixed !important;
-        top: 18px !important;
-        right: 20px !important;
-        z-index: 480 !important;
-        width: 44px !important;
-        height: 44px !important;
-        border-radius: 50% !important;
-        background: rgba(10, 16, 30, 0.92) !important;
-        backdrop-filter: blur(28px) saturate(200%) !important;
-        -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-        border: 1px solid rgba(255, 255, 255, 0.16) !important;
-        color: #f8fafc !important;
-        font-size: 16px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-        cursor: pointer !important;
-        transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
-        pointer-events: auto !important;
-        -webkit-tap-highlight-color: transparent !important;
-    }
-    .btn-sidebar-floating-toggle:hover {
-        background: rgba(15, 23, 42, 0.98) !important;
-        border-color: rgba(56, 189, 248, 0.45) !important;
-        color: #38bdf8 !important;
-        transform: scale(1.06) !important;
-    }
-    .btn-sidebar-floating-toggle:active {
-        transform: scale(0.92) !important;
-    }
-
-    @media (max-width: 768px) {
-        .btn-sidebar-floating-toggle {
-            top: 12px !important;
-            left: 12px !important;
-            right: auto !important;
-            z-index: 550 !important;
-        }
-    }
 
     /* Google Maps Floating Action Buttons (FABs) on Mobile */
     .mobile-fab-stack {

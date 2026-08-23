@@ -156,3 +156,33 @@ document.addEventListener('keydown', (e) => {
         Utils.toggleCommandPalette(false);
     }
 });
+
+window.toggleNhaiSidebar = function(forceOpen) {
+    const sb = document.getElementById('nhai-sidebar');
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    const backdrop = document.getElementById('mobile-drawer-backdrop');
+    if (!sb) return;
+
+    if (forceOpen === true) {
+        sb.classList.remove('collapsed');
+    } else if (forceOpen === false) {
+        sb.classList.add('collapsed');
+    } else {
+        sb.classList.toggle('collapsed');
+    }
+
+    const isCollapsed = sb.classList.contains('collapsed');
+    if (toggleBtn) {
+        toggleBtn.classList.toggle('shifted', isCollapsed);
+        const icon = toggleBtn.querySelector('i');
+        if (icon) {
+            icon.className = isCollapsed ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+        }
+        toggleBtn.title = isCollapsed ? 'Open NHAI Operations Panel' : 'Close NHAI Panel';
+    }
+
+    if (backdrop) {
+        if (isCollapsed) backdrop.classList.add('hidden');
+        else if (window.innerWidth <= 768) backdrop.classList.remove('hidden');
+    }
+};
