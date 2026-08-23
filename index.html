@@ -606,10 +606,13 @@
                 <!-- NHAI System-Wide Stats Widget -->
                 <div class="landing-stats-box" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; width: 100%;">
                     
-                    <!-- Reactbits-style Minimal Bento Card -->
-                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
-                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Active Plazas</div>
-                        <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700; line-height: 1;">0</div>
+                    <!-- Reactbits-style Minimal Bento Card (Active Plazas with click-to-view) -->
+                    <div class="l-stat" onclick="openActiveTollsModal()" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(56, 189, 248, 0.15); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(56,189,248,0.02), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); cursor: pointer; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='rgba(56,189,248,0.4)'; this.style.boxShadow='0 12px 30px rgba(56,189,248,0.12)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(56, 189, 248, 0.15)'; this.style.boxShadow='0 8px 32px rgba(0,0,0,0.4)';" title="Click to view all active national highway toll plazas">
+                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Active Plazas</span>
+                            <span style="font-size: 8px; color: #38bdf8; background: rgba(56,189,248,0.12); padding: 1px 4px; border-radius: 3px;"><i class="fa-solid fa-list-ul"></i> Explore</span>
+                        </div>
+                        <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700; line-height: 1;">0</div>
                     </div>
                     
                     <!-- Reactbits-style Clock Card (Horizontal AM/PM) -->
@@ -710,7 +713,7 @@
                 <h4 style="color: #fff; margin: 0 0 10px; font-size: 15px;">Key Technical Highlights</h4>
                 <ul style="padding-left: 20px; margin-bottom: 0;">
                     <li style="margin-bottom: 8px;"><strong>OSRM Routing:</strong> Integrates with Open Source Routing Machine to calculate accurate driving paths and distances.</li>
-                    <li style="margin-bottom: 8px;"><strong>Spatial Intersections:</strong> Analyzes polyline routes against a database of 600+ Indian toll plazas to accurately predict passage costs.</li>
+                    <li style="margin-bottom: 8px;"><strong>Spatial Intersections:</strong> Analyzes polyline routes against a database of 1,558+ Indian toll plazas to accurately predict passage costs.</li>
                     <li style="margin-bottom: 8px;"><strong>Live State Sync:</strong> Uses native <code>storage</code> events to allow admins to resolve emergencies while the user watches the status update live.</li>
                 </ul>
             </div>
@@ -723,7 +726,61 @@
         </div>
     </div>
 
-    <!-- Animation Dependencies -->
+    <!-- Active Toll Plazas Explorer Modal -->
+    <div id="active-tolls-modal" class="modal-overlay hidden" style="z-index: 10006;">
+        <div class="glass-panel" style="width: 860px; max-width: 95%; max-height: 88vh; display: flex; flex-direction: column; padding: 0; text-align: left; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(56,189,248,0.15); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
+            <div style="padding: 18px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
+                <div>
+                    <h3 style="margin: 0; color: #fff; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-archway" style="color: #38bdf8;"></i> Active National Highway Toll Plazas
+                    </h3>
+                    <p style="margin: 3px 0 0 0; font-size: 11px; color: #94a3b8;">1,558+ operational FASTag toll gates across Indian national highway network</p>
+                </div>
+                <button onclick="document.getElementById('active-tolls-modal').classList.add('hidden')" style="background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 18px;" title="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <!-- Filters Bar -->
+            <div style="padding: 14px 24px; background: rgba(15,23,42,0.6); border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                <div style="flex: 1.4; min-width: 220px; position: relative;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 11px; color: #64748b; font-size: 12px;"></i>
+                    <input type="text" id="modal-toll-search" placeholder="Search toll plaza name, district, NH-44..." style="width: 100%; padding: 8px 12px 8px 34px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 12px;">
+                </div>
+                <div style="flex: 1; min-width: 170px;">
+                    <select id="modal-toll-state" style="width: 100%; padding: 8px 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; color: #fff; font-size: 12px;">
+                        <option value="ALL">⭐ All States (National Network)</option>
+                    </select>
+                </div>
+                <div style="display: flex; align-items: center; font-size: 11.5px; color: #38bdf8; font-weight: 700; white-space: nowrap;">
+                    <span id="modal-toll-count-badge">Loading Plazas...</span>
+                </div>
+            </div>
+
+            <!-- Plazas Grid / List Container -->
+            <div id="modal-tolls-list" style="flex: 1; overflow-y: auto; padding: 18px 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; max-height: 480px;">
+                <!-- Filled dynamically by JavaScript -->
+            </div>
+
+            <!-- Footer Link -->
+            <div style="padding: 12px 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
+                <span style="font-size: 11px; color: #94a3b8;">
+                    <i class="fa-solid fa-shield-halved" style="color: #10b981;"></i> 100% FASTag Enabled • Real-Time Highway Operations
+                </span>
+                <div style="display:flex; gap:10px;">
+                    <a href="toll-route.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 11px; text-decoration:none;">
+                        <i class="fa-solid fa-map-location-dot"></i> Interactive Map
+                    </a>
+                    <a href="user/index.html" class="btn btn-primary" style="padding: 6px 14px; font-size: 11px; text-decoration:none;">
+                        <i class="fa-solid fa-car"></i> Plan Journey
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data & Animation Dependencies -->
+    <script src="js/shared/tollSeedData.js?v=20260823_v34"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
@@ -804,14 +861,15 @@
             // 4. Anime.js: Count-Up for NHAI System-Wide Stats
             const plazasObj = { val: 0 };
             const plazasEl = document.getElementById('stat-plazas');
+            const totalTollsCount = (window.TollSeedData && window.TollSeedData.length > 0) ? window.TollSeedData.length : 1558;
             if (plazasEl) {
                 anime({
                     targets: plazasObj,
-                    val: 850,
+                    val: totalTollsCount,
                     round: 1,
                     duration: 1600,
                     easing: 'easeOutQuad',
-                    update: () => { plazasEl.innerText = plazasObj.val + '+'; }
+                    update: () => { plazasEl.innerText = plazasObj.val.toLocaleString() + '+'; }
                 });
             }
 
@@ -820,10 +878,10 @@
             if (netEl) {
                 anime({
                     targets: netObj,
-                    val: 1.4,
+                    val: 1.45,
                     duration: 1600,
                     easing: 'easeOutQuad',
-                    update: () => { netEl.innerText = netObj.val.toFixed(1) + 'L+ KM'; }
+                    update: () => { netEl.innerText = netObj.val.toFixed(2) + 'L+ KM'; }
                 });
             }
 
@@ -878,6 +936,123 @@
                     card.style.transition = `none`; // remove transition for smooth tracking
                 });
             });
+
+            // 7. Active Toll Plazas Modal Engine
+            window.openActiveTollsModal = () => {
+                const modal = document.getElementById('active-tolls-modal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    initActiveTollsModal();
+                }
+            };
+
+            let modalInitialized = false;
+            const initActiveTollsModal = () => {
+                const searchInput = document.getElementById('modal-toll-search');
+                const stateSelect = document.getElementById('modal-toll-state');
+                const listEl = document.getElementById('modal-tolls-list');
+                const countBadge = document.getElementById('modal-toll-count-badge');
+                if (!listEl) return;
+
+                const allTolls = window.TollSeedData || [];
+
+                if (!modalInitialized) {
+                    // Populate State Select Dropdown
+                    const states = new Set();
+                    allTolls.forEach(t => { if (t.state) states.add(t.state); });
+                    Array.from(states).sort().forEach(st => {
+                        const opt = document.createElement('option');
+                        opt.value = st;
+                        const count = allTolls.filter(t => t.state === st).length;
+                        opt.textContent = `${st} (${count} Plazas)`;
+                        stateSelect.appendChild(opt);
+                    });
+
+                    if (searchInput) searchInput.addEventListener('input', () => renderModalTolls());
+                    if (stateSelect) stateSelect.addEventListener('change', () => renderModalTolls());
+                    modalInitialized = true;
+                }
+
+                renderModalTolls();
+            };
+
+            const renderModalTolls = () => {
+                const searchInput = document.getElementById('modal-toll-search');
+                const stateSelect = document.getElementById('modal-toll-state');
+                const listEl = document.getElementById('modal-tolls-list');
+                const countBadge = document.getElementById('modal-toll-count-badge');
+                if (!listEl) return;
+
+                const q = (searchInput?.value || '').toLowerCase().trim();
+                const stFilter = stateSelect?.value || 'ALL';
+                const allTolls = window.TollSeedData || [];
+
+                const filtered = allTolls.filter(t => {
+                    if (stFilter !== 'ALL' && t.state !== stFilter) return false;
+                    if (q) {
+                        const str = `${t.name || ''} ${t.district || ''} ${t.state || ''} ${t.nhCorridor || ''} ${t.id || ''}`.toLowerCase();
+                        if (!str.includes(q)) return false;
+                    }
+                    return true;
+                });
+
+                if (countBadge) {
+                    countBadge.textContent = `${filtered.length} Plazas Found`;
+                    countBadge.style.color = filtered.length > 0 ? '#38bdf8' : '#f43f5e';
+                }
+
+                if (filtered.length === 0) {
+                    listEl.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 13px;">
+                            <i class="fa-solid fa-archway" style="font-size: 28px; color: rgba(255,255,255,0.15); margin-bottom: 10px; display: block;"></i>
+                            No national highway toll plazas match your search query.
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '';
+                // Render first 80 for high speed rendering
+                filtered.slice(0, 80).forEach(t => {
+                    const corr = (t.nhCorridor && t.nhCorridor !== 'N/A') ? `NH-${t.nhCorridor}` : 'National Hwy';
+                    const sCost = t.singleCost || t.baseRate || 95;
+                    const rCost = t.returnCost || Math.floor(sCost * 1.5);
+                    const loc = t.district ? `${t.district}, ${t.state}` : (t.state || 'India');
+
+                    html += `
+                        <div style="background: rgba(15,23,42,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease;" onmouseover="this.style.borderColor='rgba(56,189,248,0.4)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)';">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; margin-bottom: 4px;">
+                                    <h4 style="margin: 0; font-size: 13px; font-weight: 700; color: #fff; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${t.name}">
+                                        🏗️ ${t.name}
+                                    </h4>
+                                    <span style="font-size: 8.5px; font-weight: 800; color: #38bdf8; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.25); padding: 1px 5px; border-radius: 4px; flex-shrink: 0;">
+                                        ${corr}
+                                    </span>
+                                </div>
+                                <div style="font-size: 10.5px; color: #94a3b8; margin-bottom: 8px;">
+                                    <i class="fa-solid fa-location-dot" style="font-size: 9px; color: #38bdf8;"></i> ${loc}
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-size: 10.5px;">
+                                <span style="color: #64748b;">1-Way: <b style="color: #34d399;">₹${sCost}</b></span>
+                                <span style="color: #64748b;">2-Way: <b style="color: #fbbf24;">₹${rCost}</b></span>
+                                <span style="color: #10b981; font-size: 9px; font-weight: 700;"><i class="fa-solid fa-circle-check"></i> FASTag</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                if (filtered.length > 80) {
+                    html += `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 12px; font-size: 11px; color: #94a3b8;">
+                            Showing top 80 of ${filtered.length} matching toll plazas. Use search filter above to narrow down.
+                        </div>
+                    `;
+                }
+
+                listEl.innerHTML = html;
+            };
         });
     </script>
 </body>
