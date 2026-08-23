@@ -965,10 +965,11 @@ input:checked + .slider:before {
 
 .route-summary-float {
     pointer-events: auto;
-    background: var(--bg-panel);
-    backdrop-filter: blur(18px) saturate(180%);
-    border: 1px solid var(--primary);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,229,179,0.08);
+    background: rgba(10, 16, 30, 0.94);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     padding: 16px 20px;
     border-radius: var(--radius-lg);
     min-width: 320px;

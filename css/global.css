@@ -5,49 +5,50 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* ===== MODERN KOKONUT & REACTBITS DARK THEME (Default) ===== */
+/* ===== MAP-SYNCHRONIZED DARK PALETTE (Google Maps & Mapbox Aesthetic) ===== */
 :root {
-    --bg-dark:        #0b0f19; /* Midnight Obsidian */
-    --bg-darker:      #030712; /* Slate-950 Base */
-    --bg-card:        rgba(15, 23, 42, 0.72); /* Kokonut Glass Slate-900 */
-    --bg-panel:       rgba(11, 15, 25, 0.94);
+    --bg-dark:        #0a0f1d; /* Deep Map Charcoal Navy */
+    --bg-darker:      #050811; /* Deep Slate Void */
+    --bg-card:        rgba(15, 23, 42, 0.88); /* Frosted Slate Glass */
+    --bg-panel:       rgba(10, 16, 30, 0.94);
     
-    --primary:        #6366f1; /* Electric Indigo (Kokonut & Linear) */
-    --primary-dim:    rgba(99, 102, 241, 0.12);
-    --primary-hover:  #4f46e5; /* Indigo-600 */
-    --primary-glow:   rgba(99, 102, 241, 0.35);
+    --primary:        #38bdf8; /* Map Navigation Sky Cyan */
+    --primary-dim:    rgba(56, 189, 248, 0.14);
+    --primary-hover:  #0284c7; /* Deep Blue-Sky */
+    --primary-glow:   rgba(56, 189, 248, 0.35);
     
-    --accent-cyan:    #38bdf8; /* Cyber Sky-400 */
-    --accent-blue:    #3b82f6; /* Electric Blue-500 */
-    --accent-violet:  #8b5cf6; /* Violet-500 */
-    --accent-red:     #f43f5e; /* Rose-500 */
-    --accent-yellow:  #f59e0b; /* FASTag Amber-500 */
+    --accent-cyan:    #38bdf8; /* Highway Sky */
+    --accent-blue:    #3b82f6; /* Route Line Blue */
+    --accent-violet:  #818cf8; /* Subtle Indigo */
+    --accent-red:     #f43f5e; /* Rose Alert */
+    --accent-yellow:  #fbbf24; /* FASTag Warm Amber */
+    --accent-green:   #10b981; /* Live Traffic Emerald */
     
-    --text-main:      #f8fafc; /* Slate-50 Pure Frost */
+    --text-main:      #f8fafc; /* Slate-50 Pure Crisp */
     --text-sec:       #cbd5e1; /* Slate-300 */
     --text-muted:     #94a3b8; /* Slate-400 */
     
-    --border:         rgba(255, 255, 255, 0.09); /* Crisp frosted stroke */
-    --border-light:   rgba(255, 255, 255, 0.05);
-    --border-glow:    rgba(99, 102, 241, 0.3);
+    --border:         rgba(255, 255, 255, 0.12); /* Subtle Glass Stroke */
+    --border-light:   rgba(255, 255, 255, 0.06);
+    --border-glow:    rgba(56, 189, 248, 0.28);
     
-    --shadow:         0 10px 30px -10px rgba(0, 0, 0, 0.55);
-    --shadow-lg:      0 20px 50px -12px rgba(0, 0, 0, 0.75);
-    --shadow-glow:    0 0 30px -5px rgba(99, 102, 241, 0.25);
+    --shadow:         0 10px 30px -8px rgba(0, 0, 0, 0.65);
+    --shadow-lg:      0 20px 45px -10px rgba(0, 0, 0, 0.82);
+    --shadow-glow:    0 0 25px -4px rgba(56, 189, 248, 0.25);
     
-    --font-main:      'Inter', sans-serif;
+    --font-main:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display:   'Space Grotesk', 'Inter', sans-serif;
     
-    --radius:         12px;
+    --radius:         14px;
     --radius-sm:      8px;
-    --radius-lg:      16px;
+    --radius-lg:      18px;
     --radius-xl:      24px;
 
-    --ring:           #6366f1; /* Electric Indigo ring */
-    --ring-offset:    #0b0f19; /* Midnight Slate */
+    --ring:           #38bdf8;
+    --ring-offset:    #0a0f1d;
 
-    --transition:     all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    --glass:          blur(20px) saturate(180%);
+    --transition:     all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    --glass:          blur(24px) saturate(190%);
 }
 
 /* ===== PROFESSIONAL LIGHT MODE (Zinc SaaS) ===== */

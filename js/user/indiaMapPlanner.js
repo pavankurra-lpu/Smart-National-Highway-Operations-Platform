@@ -3093,6 +3093,37 @@ const IndiaMapPlanner = {
             cleanLower.includes(c.name.toLowerCase())
         ));
 
+        // 1.1 Fuzzy Matching for common typos (e.g. "amritsir" -> "Amritsar")
+        if (!found) {
+            const levenshtein = (a, b) => {
+                const matrix = [];
+                for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+                for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+                for (let i = 1; i <= b.length; i++) {
+                    for (let j = 1; j <= a.length; j++) {
+                        matrix[i][j] = b.charAt(i - 1) === a.charAt(j - 1)
+                            ? matrix[i - 1][j - 1]
+                            : Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+                    }
+                }
+                return matrix[b.length][a.length];
+            };
+
+            let best = null;
+            let bestDist = 999;
+            for (const c of cityPool) {
+                if (!c.name) continue;
+                const cName = c.name.toLowerCase();
+                const dist = levenshtein(cleanLower, cName);
+                const maxLen = Math.max(cleanLower.length, cName.length);
+                if (dist <= 2 && dist < bestDist && (dist / maxLen) < 0.35) {
+                    bestDist = dist;
+                    best = c;
+                }
+            }
+            if (best) found = best;
+        }
+
         if (found && found.lat && found.lng) {
             return {
                 name: found.name,
@@ -3585,6 +3616,10 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
             }
         }
+
+        // Clear any old route polylines & hide previous route summary panel
+        IndiaMapPlanner._clearRoutePolylines();
+        document.getElementById('route-summary-panel')?.classList.add('hidden');
 
         // Set destination marker
         IndiaMapPlanner.setDestMarker(IndiaMapPlanner.selectedDest);
