@@ -2405,7 +2405,14 @@ const IndiaMapPlanner = {
             Storage.logTripEnd(IndiaMapPlanner.currentTripId, IndiaMapPlanner.tripTollsPassed, IndiaMapPlanner.tripTotalCost, dist);
             
             if (window.Gamification) {
-                Gamification.addXP(Math.floor(dist * 0.5) + 50, 'Completed Trip');
+                Gamification.addXP(Math.floor(dist * 0.5) + 50, 'Completed Highway Journey');
+                Gamification.unlockAchievement('first_trip', 'FASTag Hero', 250);
+                if (dist >= 100) {
+                    Gamification.unlockAchievement('century_driver', 'Century Rider', 350);
+                }
+                if (IndiaMapPlanner.tripTollsPassed && IndiaMapPlanner.tripTollsPassed.length >= 2) {
+                    Gamification.unlockAchievement('state_explorer', 'Interstate', 300);
+                }
             }
 
             if (window.EmailAlerts) EmailAlerts.sendTripEmail(tripData);

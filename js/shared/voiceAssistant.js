@@ -294,6 +294,7 @@ const VoiceAssistant = {
             }
 
             Utils.showToast(`Voice Route: ${originName} ➔ ${destName} 🛣️`, 'success');
+            if (window.Gamification) Gamification.unlockAchievement('voice_navigator', 'Voice AI', 150);
             if (window.IndiaMapPlanner?.processRoute) IndiaMapPlanner.processRoute();
             return;
         }

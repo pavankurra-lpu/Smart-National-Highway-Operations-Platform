@@ -187,6 +187,13 @@ const FastagEngine = {
         });
         Storage.set(Storage.KEYS.RECHARGE_HISTORY, history);
         FastagEngine.updateUI();
+
+        if (window.Gamification) {
+            Gamification.addXP(50, 'FASTag Wallet Recharge');
+            if (amount >= 500) {
+                Gamification.unlockAchievement('wallet_master', 'Wallet Master', 180);
+            }
+        }
     }
 };
 

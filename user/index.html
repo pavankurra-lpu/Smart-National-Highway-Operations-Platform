@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v33">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v33">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v34">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v34">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -396,42 +396,79 @@
                     </h3>
 
                     <!-- Driver XP Level & Badges (Gamified Section) -->
-                    <div class="glass-panel" style="padding: 16px; margin-bottom: 20px; border: 1px solid rgba(99, 102, 241, 0.25); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 20px rgba(99, 102, 241, 0.1); position: relative; overflow: hidden; border-radius: 16px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                            <div>
-                                <span style="font-size: 9px; font-weight: 800; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px;">Driver Level</span>
-                                <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 14px; font-weight: 800; color: #fff;">Level 1 Highway Cadet</h4>
+                    <div class="glass-panel" style="padding: 18px; margin-bottom: 20px; border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(99, 102, 241, 0.12); position: relative; overflow: hidden; border-radius: 16px; background: rgba(15, 23, 42, 0.75);">
+                        <!-- Header & Badge -->
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <div id="gamified-lvl-badge" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #3b82f6); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; box-shadow: 0 0 18px rgba(99, 102, 241, 0.6); border: 2px solid rgba(255,255,255,0.3); flex-shrink:0;">1</div>
+                                <div>
+                                    <div style="display:flex; align-items:center; gap:6px;">
+                                        <span style="font-size: 9px; font-weight: 800; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px;">Driver Rank</span>
+                                        <span id="gamified-tier-tag" style="font-size: 8.5px; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); padding: 1px 5px; border-radius: 4px; font-weight: 700;">Tier 1</span>
+                                    </div>
+                                    <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 14.5px; font-weight: 800; color: #fff;">Level 1 Highway Cadet</h4>
+                                </div>
                             </div>
-                            <div id="gamified-lvl-badge" style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #3b82f6); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; box-shadow: 0 0 16px rgba(99, 102, 241, 0.5); border: 1.5px solid rgba(255,255,255,0.25);">1</div>
+                            <button type="button" id="btn-daily-checkin" onclick="Gamification.claimDailyCheckIn()" style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.35); color: #34d399; font-size: 10px; font-weight: 700; padding: 5px 9px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: all 0.2s ease;">
+                                <i class="fa-solid fa-gift"></i> +50 XP Check-in
+                            </button>
                         </div>
                         
                         <!-- XP progress bar -->
-                        <div style="font-size: 10px; color: var(--text-sec); display:flex; justify-content:space-between; margin-bottom:5px;">
-                            <span id="gamified-xp-text">150 / 500 XP</span>
-                            <span id="gamified-xp-pct">30%</span>
+                        <div style="font-size: 10.5px; color: var(--text-sec); display:flex; justify-content:space-between; margin-bottom:5px;">
+                            <span id="gamified-xp-text" style="font-weight:600; color:#cbd5e1;">150 / 500 XP</span>
+                            <span id="gamified-xp-pct" style="font-weight:700; color:#38bdf8;">30%</span>
                         </div>
-                        <div style="width: 100%; height: 7px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; margin-bottom: 15px;">
+                        <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; margin-bottom: 12px;">
                             <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #6366f1, #38bdf8); box-shadow: 0 0 12px rgba(99, 102, 241, 0.6); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
                         </div>
 
-                        <!-- Achievements Grid -->
-                        <p style="font-size: 10px; font-weight: 700; color: var(--text-sec); margin-top: 0; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Unlocked Badges</p>
+                        <!-- Active Perks Pill -->
+                        <div id="gamified-perks-box" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 8px 10px; margin-bottom: 14px; font-size: 10.5px; display:flex; justify-content:space-between; align-items:center;">
+                            <div style="display:flex; align-items:center; gap:6px; color:#cbd5e1;">
+                                <i class="fa-solid fa-wand-magic-sparkles" style="color:#fbbf24;"></i>
+                                <span id="gamified-active-perk">Perk: Standard Route Intelligence & 1033 SOS</span>
+                            </div>
+                            <span onclick="Gamification.showPerksModal()" style="font-size:9.5px; color:#38bdf8; cursor:pointer; font-weight:700; text-decoration:underline;">All Perks</span>
+                        </div>
+
+                        <!-- Achievements Grid (8 Badges) -->
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                            <p style="font-size: 10px; font-weight: 700; color: var(--text-sec); margin:0; text-transform: uppercase; letter-spacing: 0.5px;">Driver Achievement Badges</p>
+                            <span id="badges-unlocked-count" style="font-size: 9.5px; color:#818cf8; font-weight:700;">0/8 Unlocked</span>
+                        </div>
                         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
-                            <div id="badge-face_verified" class="achievement-badge locked" title="Shield Guard: Complete face verification (+200 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
-                                <div style="font-size: 20px; margin-bottom: 4px;">🛡️</div>
+                            <div id="badge-face_verified" class="achievement-badge locked" onclick="Gamification.inspectBadge('face_verified')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">🛡️</div>
                                 <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Shield</span>
                             </div>
-                            <div id="badge-first_trip" class="achievement-badge locked" title="FASTag Hero: Complete your first highway journey (+250 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
-                                <div style="font-size: 20px; margin-bottom: 4px;">⚡</div>
-                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Hero</span>
+                            <div id="badge-first_trip" class="achievement-badge locked" onclick="Gamification.inspectBadge('first_trip')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">⚡</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">FASTag</span>
                             </div>
-                            <div id="badge-fuel_stop" class="achievement-badge locked" title="Eco-Drive: Explore service station markers (+150 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
-                                <div style="font-size: 20px; margin-bottom: 4px;">🌱</div>
-                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Eco</span>
+                            <div id="badge-fuel_stop" class="achievement-badge locked" onclick="Gamification.inspectBadge('fuel_stop')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">🌱</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Eco-Drive</span>
                             </div>
-                            <div id="badge-highway_guardian" class="achievement-badge locked" title="Guardian: File an emergency SOS alert (+200 XP)" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:help;">
-                                <div style="font-size: 20px; margin-bottom: 4px;">🚨</div>
+                            <div id="badge-highway_guardian" class="achievement-badge locked" onclick="Gamification.inspectBadge('highway_guardian')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">🚨</div>
                                 <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Guardian</span>
+                            </div>
+                            <div id="badge-wallet_master" class="achievement-badge locked" onclick="Gamification.inspectBadge('wallet_master')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">💳</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Wallet</span>
+                            </div>
+                            <div id="badge-voice_navigator" class="achievement-badge locked" onclick="Gamification.inspectBadge('voice_navigator')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">🎙️</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Voice AI</span>
+                            </div>
+                            <div id="badge-state_explorer" class="achievement-badge locked" onclick="Gamification.inspectBadge('state_explorer')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">🗺️</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Interstate</span>
+                            </div>
+                            <div id="badge-century_driver" class="achievement-badge locked" onclick="Gamification.inspectBadge('century_driver')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
+                                <div style="font-size: 18px; margin-bottom: 3px;">🏆</div>
+                                <span style="font-size: 8px; font-weight:700; color: #fff; display:block;">Century</span>
                             </div>
                         </div>
                     </div>
@@ -1302,40 +1339,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v33"></script>
+    <script src="../js/config.js?v=20260823_v34"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v33"></script>
-    <script src="../js/shared/storage.js?v=20260823_v33"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v33"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v33"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v33"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v33"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v33"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v33"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v33"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v33"></script>
-    <script src="../js/themeManager.js?v=20260823_v33"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v33"></script>
+    <script src="../js/shared/utils.js?v=20260823_v34"></script>
+    <script src="../js/shared/storage.js?v=20260823_v34"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v34"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v34"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v34"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v34"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v34"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v34"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v34"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v34"></script>
+    <script src="../js/themeManager.js?v=20260823_v34"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v34"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v33"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v33"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v33"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v33"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v33"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v33"></script>
-    <script src="../js/user/notifications.js?v=20260823_v33"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v33"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v33"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v33"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v33"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v33"></script>
-    <script src="../js/user/gamification.js?v=20260823_v33"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v33"></script>
-    <script src="../js/user/userApp.js?v=20260823_v33"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v34"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v34"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v34"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v34"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v34"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v34"></script>
+    <script src="../js/user/notifications.js?v=20260823_v34"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v34"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v34"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v34"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v34"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v34"></script>
+    <script src="../js/user/gamification.js?v=20260823_v34"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v34"></script>
+    <script src="../js/user/userApp.js?v=20260823_v34"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v33"></script>
+    <script src="../js/shared/animations.js?v=20260823_v34"></script>
 </body>
 </html>
