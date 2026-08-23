@@ -1676,26 +1676,35 @@ const IndiaMapPlanner = {
         const targetIdx = (index >= 0 && index < routes.length) ? index : 0;
         IndiaMapPlanner.selectedRouteIndex = targetIdx;
 
+        // Distinct high-contrast highway palette for all routes
+        const ROUTE_THEMES = [
+            { color: '#3b82f6', altColor: '#2563eb', border: '#38bdf8', bg: 'rgba(56,189,248,0.2)', tagCol: '#38bdf8', halo: 'rgba(59,130,246,0.6)' },
+            { color: '#10b981', altColor: '#059669', border: '#34d399', bg: 'rgba(16,185,129,0.2)', tagCol: '#34d399', halo: 'rgba(16,185,129,0.6)' },
+            { color: '#a855f7', altColor: '#7c3aed', border: '#c084fc', bg: 'rgba(168,85,247,0.2)', tagCol: '#c084fc', halo: 'rgba(168,85,247,0.6)' }
+        ];
+
         // Clear markers & existing polylines
         IndiaMapPlanner.routeTollMarkers.forEach(m => { try { m.remove(); } catch(e){} });
         IndiaMapPlanner.routeTollMarkers = [];
         IndiaMapPlanner.routePolylines.forEach(p => { try { p.remove(); } catch(e){} });
         IndiaMapPlanner.routePolylines = [];
 
-        // Draw Inactive Alternate Routes first (so active route is rendered on top)
+        // Draw Inactive Alternate Routes first with distinct vibrant Emerald / Violet colors
         routes.forEach((route, rIdx) => {
             if (rIdx === targetIdx) return;
+            const theme = ROUTE_THEMES[rIdx % ROUTE_THEMES.length];
             const coords = route.geometry.coordinates;
             const latLngs = coords.map(p => [p[1], p[0]]);
+            
             const altPoly = L.polyline(latLngs, {
-                color: '#94a3b8',
-                weight: 5,
-                opacity: 0.65,
-                dashArray: '6, 8',
+                color: theme.color,
+                weight: 6,
+                opacity: 0.85,
+                dashArray: '8, 8',
                 lineJoin: 'round'
             }).addTo(IndiaMapPlanner.map);
 
-            altPoly.bindTooltip(`<b>${route.title}</b><br>${route.totalDist} km · ${route.totalEta}h · ${route.tolls.length} Tolls (₹${route.totalTollCost})<br><span style="color:#38bdf8; font-size:10px; font-weight:700;">Click on road to switch</span>`, {
+            altPoly.bindTooltip(`<b>${route.title}</b><br>${route.totalDist} km · ${route.totalEta}h · ${route.tolls.length} Tolls (₹${route.totalTollCost})<br><span style="color:${theme.border}; font-size:10px; font-weight:700;">Click on road to switch to this corridor</span>`, {
                 sticky: true
             });
 
@@ -1704,10 +1713,10 @@ const IndiaMapPlanner = {
             });
 
             altPoly.on('mouseover', () => {
-                altPoly.setStyle({ color: '#818cf8', opacity: 0.9, weight: 6 });
+                altPoly.setStyle({ color: theme.border, opacity: 1.0, weight: 8 });
             });
             altPoly.on('mouseout', () => {
-                altPoly.setStyle({ color: '#94a3b8', opacity: 0.65, weight: 5 });
+                altPoly.setStyle({ color: theme.color, opacity: 0.85, weight: 6 });
             });
 
             IndiaMapPlanner.routePolylines.push(altPoly);
@@ -1715,12 +1724,13 @@ const IndiaMapPlanner = {
 
         // Draw Selected Active Route on Top
         const activeRoute = routes[targetIdx];
+        const activeTheme = ROUTE_THEMES[targetIdx % ROUTE_THEMES.length];
         const activeCoords = activeRoute.geometry.coordinates;
         const activeLatLngs = activeCoords.map(p => [p[1], p[0]]);
 
         const primaryPoly = L.polyline(activeLatLngs, {
-            color: '#3b82f6',
-            weight: 7,
+            color: activeTheme.color,
+            weight: 8,
             opacity: 1.0,
             lineJoin: 'round'
         }).addTo(IndiaMapPlanner.map);
@@ -1759,8 +1769,10 @@ const IndiaMapPlanner = {
         // Render Alternate Route Selector Tabs in UI
         IndiaMapPlanner._renderAlternateRouteTabs();
 
-        // Update Summary Floating Panel
+        // Update Summary Floating Panel & Upcoming Toll Traffic Box
         IndiaMapPlanner.updateSummary(rData);
+        IndiaMapPlanner.updateUpcomingTollBox();
+
         document.getElementById('route-summary-panel')?.classList.remove('hidden');
         document.getElementById('trip-badge').innerText = 'PREVIEW MODE';
         document.getElementById('trip-badge').style.background = 'rgba(255,255,255,0.15)';
@@ -1818,12 +1830,19 @@ const IndiaMapPlanner = {
             return;
         }
 
+        const ROUTE_THEMES = [
+            { border: '#38bdf8', bg: 'rgba(56,189,248,0.18)', tagCol: '#38bdf8', badgeBg: '#38bdf8' },
+            { border: '#34d399', bg: 'rgba(16,185,129,0.18)', tagCol: '#34d399', badgeBg: '#10b981' },
+            { border: '#c084fc', bg: 'rgba(168,85,247,0.18)', tagCol: '#c084fc', badgeBg: '#a855f7' }
+        ];
+
         let html = '';
         routes.forEach((r, idx) => {
+            const theme = ROUTE_THEMES[idx % ROUTE_THEMES.length];
             const isSel = idx === IndiaMapPlanner.selectedRouteIndex;
-            const borderCol = isSel ? '#38bdf8' : 'rgba(255,255,255,0.08)';
-            const bgCol = isSel ? 'rgba(56,189,248,0.18)' : 'rgba(0,0,0,0.35)';
-            const titleCol = isSel ? '#38bdf8' : '#e2e8f0';
+            const borderCol = isSel ? theme.border : 'rgba(255,255,255,0.08)';
+            const bgCol = isSel ? theme.bg : 'rgba(0,0,0,0.35)';
+            const titleCol = isSel ? theme.tagCol : '#e2e8f0';
             const etaHours = parseFloat(r.totalEta);
             const timeStr = etaHours < 1.0 ? `${Math.round(etaHours * 60)}m` : `${Math.floor(etaHours)}h ${Math.round((etaHours % 1) * 60)}m`;
 
@@ -1831,7 +1850,7 @@ const IndiaMapPlanner = {
                 <div onclick="IndiaMapPlanner.selectRoute(${idx})" style="flex: 1; min-width: 125px; background: ${bgCol}; border: 1px solid ${borderCol}; border-radius: 8px; padding: 6px 8px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 2px;" title="Click to switch to ${r.title}">
                     <div style="font-size: 10px; font-weight: 800; color: ${titleCol}; display: flex; align-items: center; justify-content: space-between;">
                         <span>${r.title.split('(')[0].trim()}</span>
-                        ${isSel ? '<span style="font-size:7.5px; background:#38bdf8; color:#000; padding:1px 3px; border-radius:3px; font-weight:900;">ACTIVE</span>' : ''}
+                        ${isSel ? `<span style="font-size:7.5px; background:${theme.badgeBg}; color:#000; padding:1px 4px; border-radius:3px; font-weight:900;">ACTIVE</span>` : ''}
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center; font-size: 9.5px; color: #94a3b8; margin-top: 1px;">
                         <span>${r.totalDist} km · ${timeStr}</span>
@@ -1842,6 +1861,90 @@ const IndiaMapPlanner = {
         });
 
         container.innerHTML = html;
+    },
+
+    updateUpcomingTollBox: (currentLat = null, currentLng = null) => {
+        const box = document.getElementById('upcoming-toll-box');
+        if (!box) return;
+
+        const rData = IndiaMapPlanner.selectedRouteData;
+        if (!rData) {
+            box.style.display = 'none';
+            return;
+        }
+
+        box.style.display = 'flex';
+        const nameEl = document.getElementById('upcoming-toll-name');
+        const distEl = document.getElementById('upcoming-toll-dist');
+        const feeEl  = document.getElementById('upcoming-toll-fee');
+        const trafEl = document.getElementById('upcoming-toll-traffic');
+
+        if (!rData.tolls || rData.tolls.length === 0) {
+            if (nameEl) nameEl.innerHTML = `✨ Direct Highway Corridor`;
+            if (distEl) distEl.textContent = `Zero Tolls`;
+            if (feeEl)  feeEl.textContent = `₹0`;
+            if (trafEl) trafEl.innerHTML = `
+                <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:#10b981; box-shadow:0 0 6px #10b981;"></span>
+                <span style="color:#34d399; font-weight:600;">Clear Corridor · Free Flow Traffic</span>
+            `;
+            return;
+        }
+
+        // Find the next upcoming toll that has not yet been crossed
+        const unpassed = rData.tolls.filter(t => !IndiaMapPlanner.chargedTollIds?.has(t.id));
+
+        if (unpassed.length === 0) {
+            // All tolls passed! Destination is next
+            if (nameEl) nameEl.innerHTML = `🏁 Destination: ${rData.destName}`;
+            if (distEl) distEl.textContent = `Final Stretch`;
+            if (feeEl)  feeEl.textContent = `All Cleared`;
+            if (trafEl) trafEl.innerHTML = `
+                <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:#10b981; box-shadow:0 0 6px #10b981;"></span>
+                <span style="color:#34d399; font-weight:600;">Approaching Destination · Normal Traffic</span>
+            `;
+            return;
+        }
+
+        const nextToll = unpassed[0];
+        const td = window.TollSeedData?.find(s => s.id === nextToll.id) || nextToll;
+        const plazaName = td.name || nextToll.name || 'NH Toll Plaza';
+        const nhCorridor = (td.nhCorridor && td.nhCorridor !== 'N/A') ? `(NH-${td.nhCorridor})` : '';
+
+        // Calculate distance to this upcoming toll
+        let distText = 'Next Toll';
+        if (currentLat && currentLng && td.lat && td.lng) {
+            const dLat = (td.lat - currentLat) * 111;
+            const dLng = (td.lng - currentLng) * 111 * Math.cos(currentLat * Math.PI / 180);
+            const km = Math.sqrt(dLat * dLat + dLng * dLng);
+            distText = `${km.toFixed(1)} km ahead`;
+        } else if (nextToll.coordIndex !== undefined && IndiaMapPlanner.routeCoordinates?.length) {
+            const totalKm = parseFloat(rData.totalDist || 100);
+            const approxKm = ((nextToll.coordIndex / IndiaMapPlanner.routeCoordinates.length) * totalKm).toFixed(0);
+            distText = `~${approxKm} km from start`;
+        }
+
+        // Check realtime toll traffic condition from Admin/Storage
+        const tollStates = Storage.get(Storage.KEYS.TOLL_STATES, {});
+        const cong = tollStates[nextToll.id]?.congestion || 'NORMAL';
+
+        let congDot = '#10b981';
+        let congText = '<span style="color:#34d399; font-weight:700;">🟢 Live Traffic: Normal Flow</span> <span style="color:#94a3b8;">(&lt; 2 min queue)</span>';
+        
+        if (cong === 'HIGH') {
+            congDot = '#ef4444';
+            congText = '<span style="color:#f43f5e; font-weight:700;">🔴 Live Traffic: High Congestion</span> <span style="color:#cbd5e1;">(+15m delay · Fastag lanes open)</span>';
+        } else if (cong === 'MODERATE') {
+            congDot = '#f59e0b';
+            congText = '<span style="color:#fbbf24; font-weight:700;">🟡 Live Traffic: Moderate Flow</span> <span style="color:#cbd5e1;">(~5 min queue)</span>';
+        }
+
+        if (nameEl) nameEl.innerHTML = `📍 ${plazaName} <span style="font-size:9.5px; color:#94a3b8; font-weight:600;">${nhCorridor}</span>`;
+        if (distEl) distEl.textContent = distText;
+        if (feeEl)  feeEl.textContent = `₹${nextToll.cost || td.baseRate || 65}`;
+        if (trafEl) trafEl.innerHTML = `
+            <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:${congDot}; box-shadow:0 0 8px ${congDot}; flex-shrink:0;"></span>
+            <span style="font-size:9.5px; line-height:1.2;">${congText}</span>
+        `;
     },
 
     exploreMidRouteDetour: () => {
@@ -2622,6 +2725,7 @@ const IndiaMapPlanner = {
         }
 
         IndiaMapPlanner.checkTollGeofence(lat, lng);
+        IndiaMapPlanner.updateUpcomingTollBox(lat, lng);
     },
 
     endLiveTrip: () => {
@@ -2687,6 +2791,7 @@ const IndiaMapPlanner = {
         
         const badge = document.getElementById('trip-badge');
         if (badge) { badge.innerText = 'PREVIEW MODE'; badge.style.background = 'rgba(255,255,255,0.12)'; badge.style.color = 'var(--text-sec)'; }
+        IndiaMapPlanner.updateUpcomingTollBox();
     },
 
     checkTollGeofence: (lat, lng) => {
@@ -2719,6 +2824,7 @@ const IndiaMapPlanner = {
                         if (IndiaMapPlanner.currentTripId) Storage.logTollPassage(IndiaMapPlanner.currentTripId, toll.name, cost);
                     }
                 }
+                IndiaMapPlanner.updateUpcomingTollBox(lat, lng);
             }
         });
     },

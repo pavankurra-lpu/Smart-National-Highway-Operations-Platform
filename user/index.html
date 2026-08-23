@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v36">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v36">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v37">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v37">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -804,6 +804,26 @@
                     <span id="sum-cost" class="summary-cost-value">₹—</span>
                 </div>
 
+                <!-- Upcoming Toll Plaza & Live Traffic Box -->
+                <div id="upcoming-toll-box" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-left: 3px solid #38bdf8; border-radius: 10px; padding: 8px 10px; margin: 8px 0; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-size: 9.5px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px;">
+                            <i class="fa-solid fa-road-barrier"></i> Upcoming Toll Traffic
+                        </span>
+                        <span id="upcoming-toll-dist" style="font-size: 9px; color: #94a3b8; font-weight: 600;">Next Barrier</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 1px;">
+                        <span id="upcoming-toll-name" style="font-size: 11px; font-weight: 700; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px;">
+                            Select or start route...
+                        </span>
+                        <span id="upcoming-toll-fee" style="font-size: 11.5px; font-weight: 800; color: #fbbf24;">₹—</span>
+                    </div>
+                    <div id="upcoming-toll-traffic" style="display:flex; align-items:center; gap:6px; font-size: 9.5px; color: #cbd5e1; margin-top: 2px;">
+                        <span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:#10b981; box-shadow:0 0 6px #10b981;"></span>
+                        <span>Normal Flow · Clearance &lt; 2 min</span>
+                    </div>
+                </div>
+
                 <!-- Trip Status Badge -->
                 <div class="trip-status-row">
                     <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
@@ -1400,40 +1420,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v36"></script>
+    <script src="../js/config.js?v=20260823_v37"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v36"></script>
-    <script src="../js/shared/storage.js?v=20260823_v36"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v36"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v36"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v36"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v36"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v36"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v36"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v36"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v36"></script>
-    <script src="../js/themeManager.js?v=20260823_v36"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v36"></script>
+    <script src="../js/shared/utils.js?v=20260823_v37"></script>
+    <script src="../js/shared/storage.js?v=20260823_v37"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v37"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v37"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v37"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v37"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v37"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v37"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v37"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v37"></script>
+    <script src="../js/themeManager.js?v=20260823_v37"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v37"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v36"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v36"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v36"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v36"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v36"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v36"></script>
-    <script src="../js/user/notifications.js?v=20260823_v36"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v36"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v36"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v36"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v36"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v36"></script>
-    <script src="../js/user/gamification.js?v=20260823_v36"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v36"></script>
-    <script src="../js/user/userApp.js?v=20260823_v36"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v37"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v37"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v37"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v37"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v37"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v37"></script>
+    <script src="../js/user/notifications.js?v=20260823_v37"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v37"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v37"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v37"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v37"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v37"></script>
+    <script src="../js/user/gamification.js?v=20260823_v37"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v37"></script>
+    <script src="../js/user/userApp.js?v=20260823_v37"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v36"></script>
+    <script src="../js/shared/animations.js?v=20260823_v37"></script>
 </body>
 </html>
