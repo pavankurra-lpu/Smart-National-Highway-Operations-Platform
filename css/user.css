@@ -1046,6 +1046,21 @@ input:checked + .slider:before {
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
+/* Mobile Swipe Handle Bar */
+.mobile-swipe-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+    cursor: grab;
+}
+.mobile-swipe-pill {
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
 .place-badge {
     font-size: 9.5px;
     font-weight: 800;
@@ -1057,9 +1072,31 @@ input:checked + .slider:before {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    margin-bottom: 6px;
     letter-spacing: 0.5px;
 }
+
+/* Traffic Badge */
+.traffic-badge {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 6px;
+    padding: 2px 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.traffic-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.traffic-dot.green { background: #22c55e; box-shadow: 0 0 6px #22c55e; }
+.traffic-dot.yellow { background: #eab308; box-shadow: 0 0 6px #eab308; }
+.traffic-dot.red { background: #ef4444; box-shadow: 0 0 6px #ef4444; }
 
 .place-name {
     font-size: 16px;
@@ -1071,7 +1108,64 @@ input:checked + .slider:before {
 .place-meta {
     font-size: 11px;
     color: var(--text-sec, #94a3b8);
-    margin: 0 0 12px;
+    margin: 0 0 10px;
+}
+
+/* Route Comparison Options (Fastest Highway vs Toll-Free Alternate) */
+.route-options-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.route-option-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 9px 10px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+.route-option-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+.route-option-card.active {
+    background: rgba(2, 132, 199, 0.15);
+    border-color: #38bdf8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.2);
+}
+.route-opt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+.route-opt-time {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #ffffff;
+}
+.route-opt-tag {
+    font-size: 8.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.2);
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+.route-opt-tag.alt {
+    color: #a78bfa;
+    background: rgba(167, 139, 250, 0.2);
+}
+.route-opt-details {
+    font-size: 9.5px;
+    color: var(--text-sec, #94a3b8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Google Maps 4 Actions Grid: Directions, Start, Share, Save */

@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v17">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v17">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v18">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v18">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -880,31 +880,57 @@
         </div>
 
         <!-- ==============================
-             GOOGLE MAPS STYLE PLACE ACTION CARD (Voice / Search Place Navigation)
+             GOOGLE MAPS STYLE PLACE & ROUTE INTELLIGENCE CARD
              ============================== -->
         <div id="google-place-card" class="google-place-card hidden">
             <div class="place-card-inner">
-                <!-- Header -->
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                <!-- Mobile Drag & Swipe Handle Bar -->
+                <div class="mobile-swipe-bar" title="Swipe down to dismiss">
+                    <div class="mobile-swipe-pill"></div>
+                </div>
+
+                <!-- Header: Destination Name, Status & Close Button -->
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
                     <div>
-                        <div class="place-badge" id="place-badge"><i class="fa-solid fa-location-dot"></i> MATCHED LOCATION</div>
+                        <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
+                            <span class="place-badge" id="place-badge"><i class="fa-solid fa-location-dot"></i> DESTINATION</span>
+                            <span class="traffic-badge" id="place-traffic-badge"><span class="traffic-dot green"></span> Normal Traffic</span>
+                        </div>
                         <h3 class="place-name" id="place-name">Jaipur, Rajasthan</h3>
-                        <p class="place-meta" id="place-meta">National Highway Corridor • Weather: 31°C Clear Skies</p>
+                        <p class="place-meta" id="place-meta">Connected via NH-48 Corridor</p>
                     </div>
                     <button type="button" class="btn-sheet-mini" onclick="IndiaMapPlanner.closePlaceCard();" title="Close">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
 
-                <!-- Google Maps Style 4 Action Buttons: Directions, Start, Share, Save -->
+                <!-- Google Maps Route Comparison Tabs (Fastest vs Toll-Free Alternate) -->
+                <div class="route-options-row">
+                    <div class="route-option-card active" id="route-opt-fastest" onclick="IndiaMapPlanner.selectRouteOption('fastest');">
+                        <div class="route-opt-header">
+                            <span class="route-opt-time" id="opt-fastest-time">3h 45m</span>
+                            <span class="route-opt-tag">Fastest</span>
+                        </div>
+                        <div class="route-opt-details" id="opt-fastest-details">268 km · 4 Tolls (₹360) · NH-48</div>
+                    </div>
+                    <div class="route-option-card" id="route-opt-alternate" onclick="IndiaMapPlanner.selectRouteOption('alternate');">
+                        <div class="route-opt-header">
+                            <span class="route-opt-time" id="opt-alternate-time">4h 30m</span>
+                            <span class="route-opt-tag alt">Toll-Free</span>
+                        </div>
+                        <div class="route-opt-details" id="opt-alternate-details">295 km · 0 Tolls (₹0) · State Hwy</div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Action Buttons: Start (Green Primary), Directions, Share, Save -->
                 <div class="place-actions-quad">
-                    <button type="button" class="place-action-btn primary" id="btn-place-directions" onclick="IndiaMapPlanner.routeToPlace(false);" title="Calculate route to destination">
-                        <i class="fa-solid fa-diamond-turn-right"></i>
-                        <span>Directions</span>
-                    </button>
                     <button type="button" class="place-action-btn start" id="btn-place-start" onclick="IndiaMapPlanner.routeToPlace(true);" title="Start live GPS navigation immediately">
                         <i class="fa-solid fa-location-arrow"></i>
                         <span>Start</span>
+                    </button>
+                    <button type="button" class="place-action-btn primary" id="btn-place-directions" onclick="IndiaMapPlanner.routeToPlace(false);" title="View full highway route details">
+                        <i class="fa-solid fa-diamond-turn-right"></i>
+                        <span>Directions</span>
                     </button>
                     <button type="button" class="place-action-btn" id="btn-place-share" onclick="IndiaMapPlanner.sharePlace();" title="Share place link / coordinates">
                         <i class="fa-solid fa-share-nodes"></i>
@@ -1276,40 +1302,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v17"></script>
+    <script src="../js/config.js?v=20260823_v18"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v17"></script>
-    <script src="../js/shared/storage.js?v=20260823_v17"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v17"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v17"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v17"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v17"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v17"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v17"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v17"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v17"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v17"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v17"></script>
+    <script src="../js/shared/utils.js?v=20260823_v18"></script>
+    <script src="../js/shared/storage.js?v=20260823_v18"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v18"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v18"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v18"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v18"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v18"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v18"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v18"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v18"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v18"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v18"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v17"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v17"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v17"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v17"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v17"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v17"></script>
-    <script src="../js/user/notifications.js?v=20260823_v17"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v17"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v17"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v17"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v17"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v17"></script>
-    <script src="../js/user/gamification.js?v=20260823_v17"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v17"></script>
-    <script src="../js/user/userApp.js?v=20260823_v17"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v18"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v18"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v18"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v18"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v18"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v18"></script>
+    <script src="../js/user/notifications.js?v=20260823_v18"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v18"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v18"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v18"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v18"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v18"></script>
+    <script src="../js/user/gamification.js?v=20260823_v18"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v18"></script>
+    <script src="../js/user/userApp.js?v=20260823_v18"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v17"></script>
+    <script src="../js/shared/animations.js?v=20260823_v18"></script>
 </body>
 </html>

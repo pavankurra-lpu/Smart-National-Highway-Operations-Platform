@@ -111,9 +111,10 @@ const IndiaMapPlanner = {
             if (IndiaMapPlanner.map) IndiaMapPlanner.map.invalidateSize();
         }, 200);
 
-        // Initialize touch-and-hold tactile tooltips & mobile search overlay
+        // Initialize touch-and-hold tactile tooltips & mobile search overlay & swipe to dismiss
         IndiaMapPlanner._initTouchHoldTooltips();
         IndiaMapPlanner._initMobileSearchInput();
+        IndiaMapPlanner._initSwipeToDismiss();
 
         // Fly to center on open
         setTimeout(() => {
@@ -1523,9 +1524,24 @@ const IndiaMapPlanner = {
         if (!IndiaMapPlanner.selectedDest && destInput && destInput.value) {
             IndiaMapPlanner.selectedDest = await resolveLocation(destInput.value, IndiaMapPlanner.selectedDest, 'destination');
         }
+        if (!IndiaMapPlanner.selectedDest && IndiaMapPlanner.selectedDestination) {
+            IndiaMapPlanner.selectedDest = IndiaMapPlanner.selectedDestination;
+        }
 
-        if (!IndiaMapPlanner.selectedOrigin || !IndiaMapPlanner.selectedDest) {
-            Utils.showToast('Please enter both Origin and Destination.', 'error');
+        // Automatic fallback for origin: GPS Location or New Delhi
+        if (!IndiaMapPlanner.selectedOrigin) {
+            if (IndiaMapPlanner.userLocationMarker) {
+                const uLoc = IndiaMapPlanner.userLocationMarker.getLatLng();
+                IndiaMapPlanner.selectedOrigin = { name: 'My Location', lat: uLoc.lat, lng: uLoc.lng, state: '' };
+            } else {
+                IndiaMapPlanner.selectedOrigin = { name: 'New Delhi', lat: 28.6139, lng: 77.2090, state: 'Delhi' };
+                IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+            }
+            if (origInput) origInput.value = IndiaMapPlanner.selectedOrigin.name;
+        }
+
+        if (!IndiaMapPlanner.selectedDest) {
+            Utils.showToast('Please specify a Destination to calculate route.', 'warning');
             return;
         }
 
@@ -3319,8 +3335,6 @@ const IndiaMapPlanner = {
             { id: 'mobile-fab-avatar', text: '🚗 3D Vehicle Avatar' },
             { id: 'mobile-fab-layer', text: '🛰️ Satellite / Dark View' },
             { id: 'mobile-fab-sos', text: '🚑 1033 Rapid Emergency SOS' },
-            { id: 'btn-mobile-voice', text: '🎙️ Voice Route Assistant' },
-            { id: 'mobile-search-trigger', text: '🔍 Search Route & Tolls' },
             { id: 'btn-toggle-route-window', text: '▲ Expand / Minimize Route' }
         ];
 
@@ -3346,16 +3360,155 @@ const IndiaMapPlanner = {
     },
 
     // ═══════════════════════════════════════════════════════════════
+    // SWIPE TO DISMISS GESTURE ENGINE (Mobile Notifications & Popups)
+    // ═══════════════════════════════════════════════════════════════
+    _initSwipeToDismiss: () => {
+        const attachSwipe = (elId, onDismiss) => {
+            const el = document.getElementById(elId);
+            if (!el) return;
+
+            let startY = 0;
+            let startX = 0;
+            let currentY = 0;
+            let currentX = 0;
+            let isSwiping = false;
+
+            el.addEventListener('touchstart', (e) => {
+                if (e.touches.length !== 1) return;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                currentX = startX;
+                currentY = startY;
+                isSwiping = true;
+                el.style.transition = 'none';
+            }, { passive: true });
+
+            el.addEventListener('touchmove', (e) => {
+                if (!isSwiping || e.touches.length !== 1) return;
+                currentX = e.touches[0].clientX;
+                currentY = e.touches[0].clientY;
+                const deltaY = currentY - startY;
+                const deltaX = currentX - startX;
+
+                // Dragging down or sideways
+                if (deltaY > 0) {
+                    el.style.transform = `translateY(${deltaY}px)`;
+                    el.style.opacity = Math.max(0.3, 1 - (deltaY / 220));
+                } else if (Math.abs(deltaX) > 20) {
+                    el.style.transform = `translateX(${deltaX}px)`;
+                    el.style.opacity = Math.max(0.3, 1 - (Math.abs(deltaX) / 220));
+                }
+            }, { passive: true });
+
+            el.addEventListener('touchend', () => {
+                if (!isSwiping) return;
+                isSwiping = false;
+                el.style.transition = 'all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                const deltaY = currentY - startY;
+                const deltaX = currentX - startX;
+
+                if (deltaY > 60 || Math.abs(deltaX) > 80) {
+                    // Animate off-screen
+                    if (deltaY > 60) {
+                        el.style.transform = 'translateY(120%)';
+                    } else {
+                        el.style.transform = `translateX(${deltaX > 0 ? '120%' : '-120%'})`;
+                    }
+                    el.style.opacity = '0';
+                    setTimeout(() => {
+                        if (typeof onDismiss === 'function') {
+                            onDismiss();
+                        } else {
+                            el.classList.add('hidden');
+                        }
+                        el.style.transform = '';
+                        el.style.opacity = '';
+                    }, 220);
+                } else {
+                    // Snap back
+                    el.style.transform = '';
+                    el.style.opacity = '';
+                }
+            }, { passive: true });
+        };
+
+        attachSwipe('admin-broadcasts-panel', () => {
+            document.getElementById('admin-broadcasts-panel')?.classList.add('hidden');
+        });
+        attachSwipe('google-place-card', () => {
+            IndiaMapPlanner.closePlaceCard();
+        });
+        attachSwipe('route-summary-panel', () => {
+            document.getElementById('route-summary-panel')?.classList.add('hidden');
+        });
+    },
+
+    // ═══════════════════════════════════════════════════════════════
     // GOOGLE MAPS STYLE PLACE ACTION CONTROLS & MULTI-MODAL MODES
     // ═══════════════════════════════════════════════════════════════
     _currentVoicePlace: null,
     _voicePlaceMarker: null,
+    _selectedRouteOption: 'fastest',
+
+    selectRouteOption: (option) => {
+        IndiaMapPlanner._selectedRouteOption = option;
+        const optFastest = document.getElementById('route-opt-fastest');
+        const optAlternate = document.getElementById('route-opt-alternate');
+        if (optFastest) optFastest.classList.toggle('active', option === 'fastest');
+        if (optAlternate) optAlternate.classList.toggle('active', option === 'alternate');
+
+        if (option === 'fastest') {
+            Utils.showToast('Selected: NH Expressway (Fastest Route) ⚡', 'info');
+        } else {
+            Utils.showToast('Selected: State Highway (Toll-Free Route) 🌿', 'info');
+        }
+    },
 
     showVoicePlaceResult: (place) => {
+        if (!place) return;
         IndiaMapPlanner._currentVoicePlace = place;
         const lat = parseFloat(place.lat);
         const lng = parseFloat(place.lng);
         if (isNaN(lat) || isNaN(lng)) return;
+
+        // Synchronize destination in inputs & state
+        IndiaMapPlanner.selectedDest = {
+            name: place.name,
+            state: place.state || '',
+            lat: lat,
+            lng: lng
+        };
+        IndiaMapPlanner.selectedDestination = IndiaMapPlanner.selectedDest;
+
+        const destInput = document.getElementById('route-dest-input');
+        if (destInput) destInput.value = place.name;
+
+        // Ensure origin is set; fallback to GPS or Delhi
+        const origInput = document.getElementById('route-origin-input');
+        if (!IndiaMapPlanner.selectedOrigin) {
+            if (IndiaMapPlanner.userLocationMarker) {
+                const uLoc = IndiaMapPlanner.userLocationMarker.getLatLng();
+                IndiaMapPlanner.selectedOrigin = {
+                    name: 'My Location',
+                    state: '',
+                    lat: uLoc.lat,
+                    lng: uLoc.lng
+                };
+                if (origInput) origInput.value = 'My Location';
+            } else {
+                IndiaMapPlanner.selectedOrigin = {
+                    name: 'New Delhi',
+                    state: 'Delhi',
+                    lat: 28.6139,
+                    lng: 77.2090
+                };
+                if (origInput) origInput.value = 'New Delhi';
+                IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+            }
+        }
+
+        // Set destination marker
+        IndiaMapPlanner.setDestMarker(IndiaMapPlanner.selectedDest);
 
         // Fly camera directly to location
         if (IndiaMapPlanner.map) {
@@ -3382,39 +3535,62 @@ const IndiaMapPlanner = {
             .bindTooltip(`📍 ${place.name}`, { permanent: false, direction: 'top' })
             .addTo(IndiaMapPlanner.map);
 
-        // Update Google Place Card
+        // Compute Live Route Metrics
+        const refLat = IndiaMapPlanner.selectedOrigin.lat;
+        const refLng = IndiaMapPlanner.selectedOrigin.lng;
+        const distKm = Math.round(Utils.haversine(refLat, refLng, lat, lng) * 1.25);
+        const roadHours = Math.floor(distKm / 65);
+        const roadMins = Math.round(((distKm / 65) - roadHours) * 60);
+        const fastestTimeStr = roadHours > 0 ? `${roadHours}h ${roadMins}m` : `${roadMins}m`;
+
+        const altDistKm = Math.round(distKm * 1.12);
+        const altHours = Math.floor(altDistKm / 52);
+        const altMins = Math.round(((altDistKm / 52) - altHours) * 60);
+        const altTimeStr = altHours > 0 ? `${altHours}h ${altMins}m` : `${altMins}m`;
+
+        // Toll plazas count on corridor
+        const corridorTolls = (window.TollSeedData || []).filter(t => {
+            const minLat = Math.min(refLat, lat) - 0.5;
+            const maxLat = Math.max(refLat, lat) + 0.5;
+            const minLng = Math.min(refLng, lng) - 0.5;
+            const maxLng = Math.max(refLng, lng) + 0.5;
+            return t.lat >= minLat && t.lat <= maxLat && t.lng >= minLng && t.lng <= maxLng;
+        });
+        const tollCount = Math.max(1, corridorTolls.length > 0 ? corridorTolls.length : Math.round(distKm / 65));
+        const tollFee = Math.round((tollCount * 90) / 10) * 10;
+
+        // Update DOM elements in Google Place Card
         const card = document.getElementById('google-place-card');
         const nameEl = document.getElementById('place-name');
         const metaEl = document.getElementById('place-meta');
         const badgeEl = document.getElementById('place-badge');
+        const trafficBadge = document.getElementById('place-traffic-badge');
 
         if (nameEl) nameEl.textContent = place.name + (place.state ? `, ${place.state}` : '');
-        if (metaEl) metaEl.textContent = place.details || 'National Highway Corridor • Weather: 31°C Clear Skies';
-        if (badgeEl) badgeEl.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${place.category || 'MATCHED LOCATION'}`;
+        if (metaEl) metaEl.textContent = `Connected via National Corridor • ${distKm} km from ${IndiaMapPlanner.selectedOrigin.name || 'Origin'}`;
+        if (badgeEl) badgeEl.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${place.category || 'DESTINATION'}`;
 
-        // Compute Transit Estimates from reference point (user location or Delhi)
-        let refLat = 28.6139;
-        let refLng = 77.2090;
-        if (IndiaMapPlanner.userLocationMarker) {
-            const uLoc = IndiaMapPlanner.userLocationMarker.getLatLng();
-            refLat = uLoc.lat;
-            refLng = uLoc.lng;
-        } else if (IndiaMapPlanner.selectedOrigin && IndiaMapPlanner.selectedOrigin.lat) {
-            refLat = IndiaMapPlanner.selectedOrigin.lat;
-            refLng = IndiaMapPlanner.selectedOrigin.lng;
+        if (trafficBadge) {
+            trafficBadge.innerHTML = `<span class="traffic-dot green"></span> Live Normal Traffic`;
         }
 
-        const distKm = Math.round(Utils.haversine(refLat, refLng, lat, lng) * 1.25);
-        const roadHours = Math.floor(distKm / 65);
-        const roadMins = Math.round(((distKm / 65) - roadHours) * 60);
-        const roadToll = Math.round(distKm * 1.35 / 10) * 10;
-        const roadTimeStr = roadHours > 0 ? `${roadHours}h ${roadMins}m` : `${roadMins}m`;
+        // Update Route Options Tabs
+        const optFastTime = document.getElementById('opt-fastest-time');
+        const optFastDetails = document.getElementById('opt-fastest-details');
+        const optAltTime = document.getElementById('opt-alternate-time');
+        const optAltDetails = document.getElementById('opt-alternate-details');
 
+        if (optFastTime) optFastTime.textContent = fastestTimeStr;
+        if (optFastDetails) optFastDetails.textContent = `${distKm} km · ${tollCount} Tolls (₹${tollFee}) · Fastest`;
+        if (optAltTime) optAltTime.textContent = altTimeStr;
+        if (optAltDetails) optAltDetails.textContent = `${altDistKm} km · 0 Tolls (₹0) · State Hwy`;
+
+        // Update Multi-Modal Modes
         const roadMeta = document.getElementById('transit-road-meta');
         const railMeta = document.getElementById('transit-rail-meta');
         const airMeta = document.getElementById('transit-air-meta');
 
-        if (roadMeta) roadMeta.textContent = `${roadTimeStr} · ${distKm} km · Est. FASTag ₹${roadToll}`;
+        if (roadMeta) roadMeta.textContent = `${fastestTimeStr} · ${distKm} km · ${tollCount} Tolls (₹${tollFee})`;
         if (railMeta) {
             const railHours = Math.max(1, Math.round(distKm / 85));
             railMeta.textContent = distKm < 150 ? `~${Math.round(distKm/60)}h · Regional Express` : `~${railHours}h · Vande Bharat / Superfast`;
@@ -3433,15 +3609,15 @@ const IndiaMapPlanner = {
 
         if (card) card.classList.remove('hidden');
 
-        // Close sidebar and search sheet if open
+        // Close search sheet & drawer on mobile
         if (window.innerWidth <= 768) {
             document.getElementById('nhai-sidebar')?.classList.add('collapsed');
             document.getElementById('mobile-drawer-backdrop')?.classList.add('hidden');
             IndiaMapPlanner.closeMobileSearch();
         }
 
-        // Voice confirmation
-        VoiceAssistant.speak(`Found ${place.name}. Select directions or start navigation.`);
+        // Voice announcement
+        VoiceAssistant.speak(`Route to ${place.name}: ${fastestTimeStr} with ${tollCount} tolls. Tap Start for live navigation.`);
     },
 
     closePlaceCard: () => {
