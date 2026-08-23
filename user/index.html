@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v18">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v18">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v19">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v19">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -904,6 +904,41 @@
                     </button>
                 </div>
 
+                <!-- Google Maps Interactive Origin & Destination Selector -->
+                <div class="place-route-selector-box">
+                    <div class="route-point-row">
+                        <span class="route-point-dot origin"></span>
+                        <div class="route-point-text">
+                            <span class="route-point-label">From:</span>
+                            <button type="button" class="route-point-btn" id="btn-change-origin" onclick="IndiaMapPlanner.openOriginPicker();" title="Change starting location">
+                                <span id="place-card-origin-text">📍 My Location</span>
+                                <i class="fa-solid fa-chevron-down" style="font-size:9px; margin-left:4px; opacity:0.6;"></i>
+                            </button>
+                        </div>
+                        <button type="button" class="btn-swap-mini" onclick="IndiaMapPlanner.swapPlaceLocations();" title="Swap Origin and Destination">
+                            <i class="fa-solid fa-arrow-down-up-across-line"></i>
+                        </button>
+                    </div>
+
+                    <div class="route-point-row" style="margin-top:6px;">
+                        <span class="route-point-dot dest"></span>
+                        <div class="route-point-text">
+                            <span class="route-point-label">To:</span>
+                            <span class="route-point-dest-val" id="place-card-dest-text">🚩 Destination</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Origin Selector Chips -->
+                    <div class="origin-quick-chips">
+                        <span style="font-size:9.5px; color:#94a3b8; font-weight:700;">Origin:</span>
+                        <button type="button" class="origin-chip active" id="chip-orig-gps" onclick="IndiaMapPlanner.setOriginToGPS();">📍 My GPS</button>
+                        <button type="button" class="origin-chip" onclick="IndiaMapPlanner.setOriginDirect('New Delhi');">🏛️ Delhi</button>
+                        <button type="button" class="origin-chip" onclick="IndiaMapPlanner.setOriginDirect('Mumbai');">🌊 Mumbai</button>
+                        <button type="button" class="origin-chip" onclick="IndiaMapPlanner.setOriginDirect('Bengaluru');">⚡ Bengaluru</button>
+                        <button type="button" class="origin-chip" onclick="IndiaMapPlanner.openOriginPicker();">🔍 Other...</button>
+                    </div>
+                </div>
+
                 <!-- Google Maps Route Comparison Tabs (Fastest vs Toll-Free Alternate) -->
                 <div class="route-options-row">
                     <div class="route-option-card active" id="route-opt-fastest" onclick="IndiaMapPlanner.selectRouteOption('fastest');">
@@ -965,6 +1000,27 @@
                             <div class="transit-meta" id="transit-air-meta">Domestic Flights</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Maps Origin Selector Modal -->
+        <div id="origin-picker-modal" class="modal-overlay hidden" style="z-index: 9500;">
+            <div class="glass-panel" style="width: 380px; max-width: 90%; padding: 18px; border-radius: 20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+                    <h3 style="margin:0; font-size:14px; color:#fff; display:flex; align-items:center; gap:6px;">
+                        <i class="fa-solid fa-location-crosshairs" style="color:#10b981;"></i> Choose Starting Point
+                    </h3>
+                    <button type="button" class="btn-sheet-mini" onclick="Utils.toggleVisibility('origin-picker-modal', false);" title="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="mobile-search-input-wrap" style="margin-bottom: 12px;">
+                    <i class="fa-solid fa-magnifying-glass" style="color:#10b981; font-size:13px;"></i>
+                    <input type="text" id="origin-picker-input" placeholder="Search origin city, state, or landmark..." autocomplete="off">
+                </div>
+                <div style="display:flex; flex-direction:column; gap:6px; max-height:240px; overflow-y:auto;" id="origin-picker-list">
+                    <!-- Populated dynamically -->
                 </div>
             </div>
         </div>
@@ -1302,40 +1358,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v18"></script>
+    <script src="../js/config.js?v=20260823_v19"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v18"></script>
-    <script src="../js/shared/storage.js?v=20260823_v18"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v18"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v18"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v18"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v18"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v18"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v18"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v18"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v18"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v18"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v18"></script>
+    <script src="../js/shared/utils.js?v=20260823_v19"></script>
+    <script src="../js/shared/storage.js?v=20260823_v19"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v19"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v19"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v19"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v19"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v19"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v19"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v19"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v19"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v19"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v19"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v18"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v18"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v18"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v18"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v18"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v18"></script>
-    <script src="../js/user/notifications.js?v=20260823_v18"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v18"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v18"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v18"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v18"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v18"></script>
-    <script src="../js/user/gamification.js?v=20260823_v18"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v18"></script>
-    <script src="../js/user/userApp.js?v=20260823_v18"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v19"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v19"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v19"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v19"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v19"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v19"></script>
+    <script src="../js/user/notifications.js?v=20260823_v19"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v19"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v19"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v19"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v19"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v19"></script>
+    <script src="../js/user/gamification.js?v=20260823_v19"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v19"></script>
+    <script src="../js/user/userApp.js?v=20260823_v19"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v18"></script>
+    <script src="../js/shared/animations.js?v=20260823_v19"></script>
 </body>
 </html>

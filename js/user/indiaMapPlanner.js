@@ -3485,7 +3485,7 @@ const IndiaMapPlanner = {
 
         // Ensure origin is set; fallback to GPS or Delhi
         const origInput = document.getElementById('route-origin-input');
-        if (!IndiaMapPlanner.selectedOrigin) {
+        if (!IndiaMapPlanner.selectedOrigin || isNaN(IndiaMapPlanner.selectedOrigin.lat)) {
             if (IndiaMapPlanner.userLocationMarker) {
                 const uLoc = IndiaMapPlanner.userLocationMarker.getLatLng();
                 IndiaMapPlanner.selectedOrigin = {
@@ -3512,7 +3512,7 @@ const IndiaMapPlanner = {
 
         // Fly camera directly to location
         if (IndiaMapPlanner.map) {
-            IndiaMapPlanner.map.flyTo([lat, lng], 13, { duration: 1.4 });
+            IndiaMapPlanner.map.flyTo([lat, lng], 12, { duration: 1.4 });
         }
 
         // Place glowing animated marker
@@ -3536,9 +3536,9 @@ const IndiaMapPlanner = {
             .addTo(IndiaMapPlanner.map);
 
         // Compute Live Route Metrics
-        const refLat = IndiaMapPlanner.selectedOrigin.lat;
-        const refLng = IndiaMapPlanner.selectedOrigin.lng;
-        const distKm = Math.round(Utils.haversine(refLat, refLng, lat, lng) * 1.25);
+        const refLat = (IndiaMapPlanner.selectedOrigin && !isNaN(IndiaMapPlanner.selectedOrigin.lat)) ? IndiaMapPlanner.selectedOrigin.lat : 28.6139;
+        const refLng = (IndiaMapPlanner.selectedOrigin && !isNaN(IndiaMapPlanner.selectedOrigin.lng)) ? IndiaMapPlanner.selectedOrigin.lng : 77.2090;
+        const distKm = Math.max(15, Math.round(Utils.haversine(refLat, refLng, lat, lng) * 1.25));
         const roadHours = Math.floor(distKm / 65);
         const roadMins = Math.round(((distKm / 65) - roadHours) * 60);
         const fastestTimeStr = roadHours > 0 ? `${roadHours}h ${roadMins}m` : `${roadMins}m`;
@@ -3565,10 +3565,15 @@ const IndiaMapPlanner = {
         const metaEl = document.getElementById('place-meta');
         const badgeEl = document.getElementById('place-badge');
         const trafficBadge = document.getElementById('place-traffic-badge');
+        const origTextEl = document.getElementById('place-card-origin-text');
+        const destTextEl = document.getElementById('place-card-dest-text');
 
         if (nameEl) nameEl.textContent = place.name + (place.state ? `, ${place.state}` : '');
-        if (metaEl) metaEl.textContent = `Connected via National Corridor • ${distKm} km from ${IndiaMapPlanner.selectedOrigin.name || 'Origin'}`;
+        if (metaEl) metaEl.textContent = `Connected via National Highway • ${distKm} km route`;
         if (badgeEl) badgeEl.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${place.category || 'DESTINATION'}`;
+
+        if (origTextEl) origTextEl.textContent = (IndiaMapPlanner.selectedOrigin.name === 'My Location' ? '📍 My Location' : IndiaMapPlanner.selectedOrigin.name);
+        if (destTextEl) destTextEl.textContent = place.name + (place.state ? `, ${place.state}` : '');
 
         if (trafficBadge) {
             trafficBadge.innerHTML = `<span class="traffic-dot green"></span> Live Normal Traffic`;
@@ -3607,7 +3612,10 @@ const IndiaMapPlanner = {
         if (saveIcon) saveIcon.className = isSaved ? 'fa-solid fa-bookmark' : 'fa-regular fa-bookmark';
         if (saveLabel) saveLabel.textContent = isSaved ? 'Saved' : 'Save';
 
-        if (card) card.classList.remove('hidden');
+        if (card) {
+            card.classList.remove('hidden');
+            card.style.display = 'block';
+        }
 
         // Close search sheet & drawer on mobile
         if (window.innerWidth <= 768) {
@@ -3617,7 +3625,138 @@ const IndiaMapPlanner = {
         }
 
         // Voice announcement
-        VoiceAssistant.speak(`Route to ${place.name}: ${fastestTimeStr} with ${tollCount} tolls. Tap Start for live navigation.`);
+        VoiceAssistant.speak(`Found ${place.name}. Estimated travel time is ${fastestTimeStr} with ${tollCount} tolls.`);
+    },
+
+    setOriginToGPS: () => {
+        if (IndiaMapPlanner.userLocationMarker) {
+            const uLoc = IndiaMapPlanner.userLocationMarker.getLatLng();
+            IndiaMapPlanner.selectedOrigin = { name: 'My Location', lat: uLoc.lat, lng: uLoc.lng, state: '' };
+        } else {
+            IndiaMapPlanner.selectedOrigin = { name: 'New Delhi', lat: 28.6139, lng: 77.2090, state: 'Delhi' };
+            IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+        }
+        const origInput = document.getElementById('route-origin-input');
+        if (origInput) origInput.value = IndiaMapPlanner.selectedOrigin.name;
+
+        document.querySelectorAll('.origin-chip').forEach(c => c.classList.remove('active'));
+        document.getElementById('chip-orig-gps')?.classList.add('active');
+
+        if (IndiaMapPlanner._currentVoicePlace) {
+            IndiaMapPlanner.showVoicePlaceResult(IndiaMapPlanner._currentVoicePlace);
+        }
+        Utils.showToast('Origin set to Current Location 📍', 'info');
+    },
+
+    setOriginDirect: async (cityName) => {
+        const place = await IndiaMapPlanner.resolvePlaceQuery(cityName);
+        if (place) {
+            IndiaMapPlanner.selectedOrigin = {
+                name: place.name,
+                state: place.state || '',
+                lat: place.lat,
+                lng: place.lng
+            };
+            const origInput = document.getElementById('route-origin-input');
+            if (origInput) origInput.value = place.name;
+            IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+
+            document.querySelectorAll('.origin-chip').forEach(c => c.classList.remove('active'));
+
+            if (IndiaMapPlanner._currentVoicePlace) {
+                IndiaMapPlanner.showVoicePlaceResult(IndiaMapPlanner._currentVoicePlace);
+            }
+            Utils.showToast(`Origin set to ${place.name} 🏛️`, 'info');
+        }
+    },
+
+    swapPlaceLocations: () => {
+        if (!IndiaMapPlanner.selectedOrigin || !IndiaMapPlanner.selectedDest) {
+            Utils.showToast('Need both Origin and Destination to swap', 'warning');
+            return;
+        }
+        const temp = IndiaMapPlanner.selectedOrigin;
+        IndiaMapPlanner.selectedOrigin = IndiaMapPlanner.selectedDest;
+        IndiaMapPlanner.selectedDest = temp;
+        IndiaMapPlanner.selectedDestination = temp;
+        IndiaMapPlanner._currentVoicePlace = temp;
+
+        const origInput = document.getElementById('route-origin-input');
+        const destInput = document.getElementById('route-dest-input');
+        if (origInput) origInput.value = IndiaMapPlanner.selectedOrigin.name;
+        if (destInput) destInput.value = IndiaMapPlanner.selectedDest.name;
+
+        IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+        IndiaMapPlanner.setDestMarker(IndiaMapPlanner.selectedDest);
+
+        IndiaMapPlanner.showVoicePlaceResult(IndiaMapPlanner.selectedDest);
+        Utils.showToast('Swapped Origin and Destination ⇅', 'info');
+    },
+
+    openOriginPicker: () => {
+        const modal = document.getElementById('origin-picker-modal');
+        const input = document.getElementById('origin-picker-input');
+        const list = document.getElementById('origin-picker-list');
+        if (!modal || !list) return;
+
+        const popular = [
+            { name: 'My Current Location (GPS)', lat: null, lng: null, isGps: true },
+            { name: 'New Delhi', state: 'Delhi', lat: 28.6139, lng: 77.2090 },
+            { name: 'Mumbai', state: 'Maharashtra', lat: 19.0760, lng: 72.8777 },
+            { name: 'Bengaluru', state: 'Karnataka', lat: 12.9716, lng: 77.5946 },
+            { name: 'Chennai', state: 'Tamil Nadu', lat: 13.0827, lng: 80.2707 },
+            { name: 'Kolkata', state: 'West Bengal', lat: 22.5726, lng: 88.3639 },
+            { name: 'Hyderabad', state: 'Telangana', lat: 17.3850, lng: 78.4867 },
+            { name: 'Jaipur', state: 'Rajasthan', lat: 26.9124, lng: 75.7873 },
+            { name: 'Chandigarh', state: 'Punjab / Haryana', lat: 30.7333, lng: 76.7794 },
+            { name: 'Ahmedabad', state: 'Gujarat', lat: 23.0225, lng: 72.5714 },
+            { name: 'Lucknow', state: 'Uttar Pradesh', lat: 26.8467, lng: 80.9462 }
+        ];
+
+        const renderList = (filterText = '') => {
+            const q = filterText.toLowerCase().trim();
+            const filtered = popular.filter(p => p.name.toLowerCase().includes(q) || (p.state && p.state.toLowerCase().includes(q)));
+            list.innerHTML = filtered.map(p => `
+                <div class="mobile-suggestion-item" onclick="IndiaMapPlanner.selectOriginFromPicker('${p.name}', ${p.lat}, ${p.lng}, ${!!p.isGps});" style="padding:10px 12px; border-radius:10px; cursor:pointer;">
+                    <i class="fa-solid ${p.isGps ? 'fa-location-crosshairs' : 'fa-city'}" style="color:${p.isGps ? '#10b981' : '#38bdf8'}; font-size:14px;"></i>
+                    <div style="flex:1;">
+                        <div style="font-size:12px; font-weight:700; color:#fff;">${p.name}</div>
+                        ${p.state ? `<div style="font-size:10px; color:#94a3b8;">${p.state}</div>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        renderList('');
+        if (input) {
+            input.value = '';
+            input.oninput = (e) => renderList(e.target.value);
+            input.onkeydown = async (e) => {
+                if (e.key === 'Enter' && input.value.trim()) {
+                    await IndiaMapPlanner.setOriginDirect(input.value.trim());
+                    Utils.toggleVisibility('origin-picker-modal', false);
+                }
+            };
+        }
+
+        modal.classList.remove('hidden');
+        if (input) setTimeout(() => input.focus(), 150);
+    },
+
+    selectOriginFromPicker: (name, lat, lng, isGps) => {
+        Utils.toggleVisibility('origin-picker-modal', false);
+        if (isGps) {
+            IndiaMapPlanner.setOriginToGPS();
+        } else {
+            IndiaMapPlanner.selectedOrigin = { name, lat: parseFloat(lat), lng: parseFloat(lng), state: '' };
+            const origInput = document.getElementById('route-origin-input');
+            if (origInput) origInput.value = name;
+            IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+            if (IndiaMapPlanner._currentVoicePlace) {
+                IndiaMapPlanner.showVoicePlaceResult(IndiaMapPlanner._currentVoicePlace);
+            }
+            Utils.showToast(`Origin set to ${name} 📍`, 'info');
+        }
     },
 
     closePlaceCard: () => {

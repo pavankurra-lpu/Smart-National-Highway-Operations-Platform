@@ -1022,14 +1022,14 @@ input:checked + .slider:before {
 
 /* ===== GOOGLE MAPS PLACE ACTION CARD ===== */
 .google-place-card {
-    position: fixed;
-    z-index: 465;
+    position: fixed !important;
+    z-index: 800 !important;
     bottom: 24px;
     left: 24px;
     width: 380px;
     max-width: calc(100vw - 48px);
     animation: popPlaceCard 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: auto;
+    pointer-events: auto !important;
 }
 @keyframes popPlaceCard {
     from { opacity: 0; transform: translateY(20px) scale(0.95); }
@@ -1059,6 +1059,137 @@ input:checked + .slider:before {
     height: 4px;
     border-radius: 2px;
     background: rgba(255, 255, 255, 0.25);
+}
+
+/* Google Maps Origin & Destination Box in Place Card */
+.place-route-selector-box {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+}
+
+.route-point-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.route-point-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.route-point-dot.origin {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+}
+.route-point-dot.dest {
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.7);
+}
+
+.route-point-text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.route-point-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-sec, #94a3b8);
+    text-transform: uppercase;
+}
+
+.route-point-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    padding: 2px 8px;
+    color: #38bdf8;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.15s ease;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.route-point-btn:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
+    color: #fff;
+}
+
+.route-point-dest-val {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-swap-mini {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    font-size: 10.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+.btn-swap-mini:hover,
+.btn-swap-mini:active {
+    background: rgba(99, 102, 241, 0.3);
+    color: #fff;
+    border-color: #818cf8;
+    transform: rotate(180deg);
+}
+
+.origin-quick-chips {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-top: 4px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+.origin-quick-chips::-webkit-scrollbar { display: none; }
+
+.origin-chip {
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2px 7px;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.origin-chip:hover,
+.origin-chip.active {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10b981;
+    color: #fff;
 }
 
 .place-badge {
@@ -1382,11 +1513,14 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
     .google-place-card {
-        bottom: 12px;
-        left: 10px;
-        right: 10px;
-        width: auto;
-        max-width: none;
+        bottom: 12px !important;
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        max-width: none !important;
+        z-index: 800 !important;
+        max-height: 85vh !important;
+        overflow-y: auto !important;
     }
 }
 
