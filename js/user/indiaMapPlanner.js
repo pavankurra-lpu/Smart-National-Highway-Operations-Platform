@@ -163,7 +163,43 @@ const IndiaMapPlanner = {
             }
         });
 
-        // Pressing Enter in search input resolves place and displays Google Maps place card
+        // Setup Top Universal Google Maps Search Bar
+        IndiaMapPlanner.setupAutocomplete('top-search-input', 'top-search-suggestions', city => {
+            const handleDest = (res) => {
+                IndiaMapPlanner.selectedDest = res;
+                IndiaMapPlanner.selectedDestination = res;
+                IndiaMapPlanner.showVoicePlaceResult({
+                    name: res.name,
+                    state: res.state || '',
+                    lat: res.lat,
+                    lng: res.lng,
+                    category: res.type ? res.type.toUpperCase() : 'DESTINATION'
+                });
+            };
+
+            if (city.lat === 0 && city.lng === 0) {
+                IndiaMapPlanner._geocodeVillage(city, handleDest);
+            } else {
+                handleDest(city);
+            }
+        });
+
+        const topSearchEl = document.getElementById('top-search-input');
+        const clearTopBtn = document.getElementById('btn-top-search-clear');
+        if (topSearchEl) {
+            topSearchEl.addEventListener('input', (e) => {
+                if (clearTopBtn) clearTopBtn.style.display = e.target.value.length > 0 ? 'inline-flex' : 'none';
+            });
+            topSearchEl.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && topSearchEl.value.trim()) {
+                    IndiaMapPlanner.quickSearchPlace(topSearchEl.value.trim());
+                    const drop = document.getElementById('top-search-suggestions');
+                    if (drop) drop.style.display = 'none';
+                }
+            });
+        }
+
+        // Pressing Enter in search inputs resolves place and displays Google Maps place card
         ['route-dest-input', 'route-origin-input'].forEach(inputId => {
             const el = document.getElementById(inputId);
             if (el) {
@@ -3592,8 +3628,10 @@ const IndiaMapPlanner = {
 
         const destInput = document.getElementById('route-dest-input');
         if (destInput) destInput.value = place.name;
+        const topSearchInput = document.getElementById('top-search-input');
+        if (topSearchInput) topSearchInput.value = place.name;
 
-        // Ensure origin is set; fallback to GPS or Delhi
+        // Ensure origin is set; ALWAYS default to "My Location" (GPS or User's Location)
         const origInput = document.getElementById('route-origin-input');
         if (!IndiaMapPlanner.selectedOrigin || isNaN(IndiaMapPlanner.selectedOrigin.lat)) {
             if (IndiaMapPlanner.userLocationMarker) {
@@ -3604,17 +3642,23 @@ const IndiaMapPlanner = {
                     lat: uLoc.lat,
                     lng: uLoc.lng
                 };
-                if (origInput) origInput.value = 'My Location';
+            } else if (IndiaMapPlanner.lastKnownGps) {
+                IndiaMapPlanner.selectedOrigin = {
+                    name: 'My Location',
+                    state: '',
+                    lat: IndiaMapPlanner.lastKnownGps.lat,
+                    lng: IndiaMapPlanner.lastKnownGps.lng
+                };
             } else {
                 IndiaMapPlanner.selectedOrigin = {
-                    name: 'New Delhi',
-                    state: 'Delhi',
+                    name: 'My Location',
+                    state: '',
                     lat: 28.6139,
                     lng: 77.2090
                 };
-                if (origInput) origInput.value = 'New Delhi';
-                IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
             }
+            if (origInput) origInput.value = 'My Location';
+            IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
         }
 
         // Clear any old route polylines & hide previous route summary panel
@@ -3875,6 +3919,18 @@ const IndiaMapPlanner = {
 
     openDestPicker: () => {
         IndiaMapPlanner.openMobileSearch();
+    },
+
+    clearTopSearch: () => {
+        const input = document.getElementById('top-search-input');
+        const clearBtn = document.getElementById('btn-top-search-clear');
+        const dropdown = document.getElementById('top-search-suggestions');
+        if (input) {
+            input.value = '';
+            input.focus();
+        }
+        if (clearBtn) clearBtn.style.display = 'none';
+        if (dropdown) dropdown.style.display = 'none';
     },
 
     closePlaceCard: () => {

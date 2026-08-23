@@ -2254,90 +2254,101 @@ body.light-mode .google-ac-subtitle {
         display: none !important;
     }
 
-    /* Google Maps Floating App Bar on Mobile */
-    .mobile-app-bar {
+    /* Universal Google Maps Floating Search Bar (Desktop & Mobile) */
+    .google-maps-app-bar {
         position: fixed !important;
-        top: 10px !important;
-        left: 10px !important;
-        right: 10px !important;
+        top: 16px !important;
+        left: 16px !important;
+        width: 390px !important;
+        max-width: calc(100vw - 32px) !important;
         height: 48px !important;
-        z-index: 450 !important;
+        z-index: 600 !important;
         display: flex !important;
         align-items: center !important;
         gap: 8px !important;
         pointer-events: auto !important;
     }
 
-    .mobile-bar-btn {
+    @media (max-width: 768px) {
+        .google-maps-app-bar {
+            top: 10px !important;
+            left: 10px !important;
+            right: 10px !important;
+            width: auto !important;
+            max-width: calc(100vw - 20px) !important;
+        }
+    }
+
+    .bar-icon-btn {
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background: rgba(15, 23, 42, 0.94);
-        backdrop-filter: blur(28px) saturate(220%);
-        -webkit-backdrop-filter: blur(28px) saturate(220%);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(10, 16, 30, 0.94);
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.16);
         color: #f8fafc;
         font-size: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         cursor: pointer;
         transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
         flex-shrink: 0;
         -webkit-tap-highlight-color: transparent;
     }
-    .mobile-bar-btn:active {
+    .bar-icon-btn:hover {
+        background: rgba(15, 23, 42, 0.98);
+        border-color: rgba(56, 189, 248, 0.4);
+        color: #38bdf8;
+        transform: translateY(-1px);
+    }
+    .bar-icon-btn:active {
         transform: scale(0.90);
     }
-    #btn-mobile-voice {
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.35));
-        border: 1px solid rgba(168, 85, 247, 0.45);
-        color: #e0e7ff;
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    .bar-icon-btn.voice {
+        background: linear-gradient(135deg, rgba(2, 132, 199, 0.35), rgba(56, 189, 248, 0.25));
+        border-color: rgba(56, 189, 248, 0.45);
+        color: #38bdf8;
+        box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
-    #btn-mobile-voice i {
-        font-size: 16px;
-        filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
+    .bar-icon-btn.voice i {
+        filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6));
     }
 
-    .mobile-search-pill {
+    .bar-search-input-wrap {
         flex: 1;
+        position: relative;
         height: 44px;
-        background: rgba(15, 23, 42, 0.94);
-        backdrop-filter: blur(28px) saturate(220%);
-        -webkit-backdrop-filter: blur(28px) saturate(220%);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(10, 16, 30, 0.94);
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: 24px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         display: flex;
         align-items: center;
-        padding: 0 16px;
-        gap: 12px;
-        cursor: pointer;
-        overflow: hidden;
+        gap: 8px;
         transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        -webkit-tap-highlight-color: transparent;
     }
-    .mobile-search-pill:active {
-        border-color: rgba(56, 189, 248, 0.6);
-        background: rgba(15, 23, 42, 0.98);
-        transform: scale(0.98);
+    .bar-search-input-wrap:focus-within {
+        border-color: #38bdf8;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 16px rgba(56, 189, 248, 0.35);
     }
-    .mobile-search-pill i {
-        filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
-    }
-
-    .mobile-search-text {
-        font-size: 12.5px;
+    .bar-search-input-wrap input {
+        flex: 1;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #f8fafc;
+        font-size: 13px;
         font-weight: 600;
-        color: #f1f5f9;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        letter-spacing: 0.2px;
+        padding: 0 8px;
+        font-family: inherit;
     }
-    .search-placeholder {
+    .bar-search-input-wrap input::placeholder {
         color: #94a3b8;
         font-weight: 500;
     }
