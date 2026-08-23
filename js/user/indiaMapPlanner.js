@@ -3765,7 +3765,10 @@ const IndiaMapPlanner = {
 
     closePlaceCard: () => {
         const card = document.getElementById('google-place-card');
-        if (card) card.classList.add('hidden');
+        if (card) {
+            card.classList.add('hidden');
+            card.style.display = 'none';
+        }
         if (IndiaMapPlanner._voicePlaceMarker) {
             IndiaMapPlanner._voicePlaceMarker.remove();
             IndiaMapPlanner._voicePlaceMarker = null;
