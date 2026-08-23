@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v13">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v13">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v14">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v14">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -148,6 +148,14 @@
             }">
             <i class="fa-solid fa-xmark"></i>
         </button>
+
+        <!-- Mobile Drawer Backdrop Overlay -->
+        <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop hidden" onclick="document.getElementById('nhai-sidebar').classList.add('collapsed'); this.classList.add('hidden');"></div>
+
+        <!-- Touch & Hold Tactile Floating Tooltip -->
+        <div id="touch-hold-tooltip" class="touch-hold-tooltip hidden">
+            <span id="touch-hold-tooltip-text">Tooltip</span>
+        </div>
 
         <!-- ==============================
              NHAI ACCESS: RIGHT SIDEBAR (Modernized shadcn/ui & KokonutUI style)
@@ -719,7 +727,7 @@
         <div id="route-summary-panel" class="map-header hidden">
             <div class="route-summary-float">
                 <!-- Mobile Drag & Minimize Handle Bar -->
-                <div class="mobile-route-sheet-bar" onclick="document.getElementById('route-summary-panel').classList.toggle('mobile-minimized');" title="Tap to expand / collapse">
+                <div class="mobile-route-sheet-bar" onclick="IndiaMapPlanner.toggleRouteSummary();" title="Tap to expand / collapse">
                     <div class="mobile-route-sheet-pill"></div>
                 </div>
 
@@ -729,8 +737,8 @@
                         <i class="fa-solid fa-route" style="color:#38bdf8;"></i> Route Summary
                     </h3>
                     <div style="display:flex; gap:6px; align-items:center;">
-                        <button type="button" id="btn-toggle-route-window" onclick="document.getElementById('route-summary-panel').classList.toggle('mobile-minimized');" class="btn-sheet-mini" title="Minimize / Expand">
-                            <i class="fa-solid fa-chevron-down"></i>
+                        <button type="button" id="btn-toggle-route-window" onclick="IndiaMapPlanner.toggleRouteSummary();" class="btn-sheet-mini" title="Minimize / Expand">
+                            <i id="route-window-chevron" class="fa-solid fa-chevron-down"></i>
                         </button>
                         <button type="button" onclick="document.getElementById('route-summary-panel').classList.add('hidden');" class="btn-sheet-mini" title="Close Route Window">
                             <i class="fa-solid fa-xmark"></i>
@@ -872,6 +880,40 @@
                 <div class="dock-avatar-grid" id="mobile-avatar-grid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
                     <!-- Avatars populated dynamically -->
                 </div>
+            </div>
+        </div>
+
+        <!-- ==============================
+             VOICE ROUTE SEARCH MODAL
+             ============================== -->
+        <div id="voice-search-modal" class="modal-overlay hidden">
+            <div class="glass-panel voice-modal-panel" style="width:380px; max-width:92%; padding:24px 20px; border-radius:24px; text-align:center;">
+                <div style="display:flex; justify-content:flex-end; margin-bottom: -10px;">
+                    <button class="modal-close" onclick="VoiceAssistant.stopListening();" title="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <!-- Glowing Pulsing Mic Radar -->
+                <div class="voice-radar-container">
+                    <div class="voice-radar-wave wave-3"></div>
+                    <div class="voice-radar-wave wave-2"></div>
+                    <div class="voice-radar-wave wave-1"></div>
+                    <div class="voice-radar-mic" id="voice-modal-mic">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </div>
+                <h3 style="font-size:16px; font-weight:800; color:#fff; margin:16px 0 6px;" id="voice-modal-status">
+                    Listening for Route...
+                </h3>
+                <p style="font-size:12px; color:#94a3b8; line-height:1.5; margin:0 0 16px;" id="voice-modal-prompt">
+                    Say e.g. <span style="color:#38bdf8; font-weight:600;">"Delhi to Jaipur"</span> or <span style="color:#38bdf8; font-weight:600;">"Chandigarh to Amritsar"</span>
+                </p>
+                <div id="voice-modal-transcript" style="min-height:36px; padding:8px 12px; background:rgba(0,0,0,0.3); border-radius:10px; border:1px dashed rgba(255,255,255,0.15); font-size:13px; font-weight:600; color:#38bdf8;">
+                    "..."
+                </div>
+                <button type="button" class="btn btn-outline w-full" onclick="VoiceAssistant.stopListening();" style="margin-top:16px; justify-content:center; font-size:11.5px;">
+                    Cancel Voice Search
+                </button>
             </div>
         </div>
 
@@ -1130,40 +1172,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v13"></script>
+    <script src="../js/config.js?v=20260823_v14"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v13"></script>
-    <script src="../js/shared/storage.js?v=20260823_v13"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v13"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v13"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v13"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v13"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v13"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v13"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v13"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v13"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v13"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v13"></script>
+    <script src="../js/shared/utils.js?v=20260823_v14"></script>
+    <script src="../js/shared/storage.js?v=20260823_v14"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v14"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v14"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v14"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v14"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v14"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v14"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v14"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v14"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v14"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v14"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v13"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v13"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v13"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v13"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v13"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v13"></script>
-    <script src="../js/user/notifications.js?v=20260823_v13"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v13"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v13"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v13"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v13"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v13"></script>
-    <script src="../js/user/gamification.js?v=20260823_v13"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v13"></script>
-    <script src="../js/user/userApp.js?v=20260823_v13"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v14"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v14"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v14"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v14"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v14"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v14"></script>
+    <script src="../js/user/notifications.js?v=20260823_v14"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v14"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v14"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v14"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v14"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v14"></script>
+    <script src="../js/user/gamification.js?v=20260823_v14"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v14"></script>
+    <script src="../js/user/userApp.js?v=20260823_v14"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v13"></script>
+    <script src="../js/shared/animations.js?v=20260823_v14"></script>
 </body>
 </html>

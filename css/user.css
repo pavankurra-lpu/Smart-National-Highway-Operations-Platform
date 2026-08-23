@@ -524,12 +524,25 @@ path.leaflet-interactive:focus,
 }
 
 @media (max-width: 768px) {
+    .alerts-ticker-container {
+        height: 38px !important;
+        padding: 5px 12px !important;
+        border-radius: 12px !important;
+    }
+    .alerts-ticker-label {
+        font-size: 10px !important;
+        padding: 3px 8px !important;
+    }
     .alerts-ticker-scroll {
-        animation: alertsScroll 90s linear infinite;
-        gap: 28px;
+        animation: alertsScroll 140s linear infinite !important;
+        gap: 36px !important;
     }
     .alerts-ticker-scroll span {
-        font-size: 10.5px;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+    }
+    .alerts-ticker-container:active .alerts-ticker-scroll {
+        animation-play-state: paused !important;
     }
 }
 
@@ -1798,30 +1811,49 @@ body.light-mode .google-ac-subtitle {
     }
 
     .mobile-fab {
-        width: 46px;
-        height: 46px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
-        background: rgba(15, 23, 42, 0.92);
-        backdrop-filter: blur(24px) saturate(200%);
-        -webkit-backdrop-filter: blur(24px) saturate(200%);
-        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: linear-gradient(135deg, rgba(26, 35, 58, 0.95), rgba(12, 17, 30, 0.96));
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.20);
         color: #38bdf8;
-        font-size: 17px;
+        font-size: 18px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.25);
         cursor: pointer;
-        transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
     }
     .mobile-fab:active {
         transform: scale(0.88);
-        background: rgba(99, 102, 241, 0.35);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(56, 189, 248, 0.4));
+        box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
     }
     .mobile-fab.fab-sos {
         color: #ef4444;
-        border-color: rgba(239, 68, 68, 0.4);
-        box-shadow: 0 0 16px rgba(239, 68, 68, 0.35);
+        border-color: rgba(239, 68, 68, 0.45);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 16px rgba(239, 68, 68, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        animation: sosPulse 2.5s infinite;
+    }
+    @keyframes sosPulse {
+        0%, 100% { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 14px rgba(239, 68, 68, 0.3); }
+        50% { box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 24px rgba(239, 68, 68, 0.6); }
+    }
+
+    /* Mobile Drawer Backdrop Overlay */
+    .mobile-drawer-backdrop {
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(4, 7, 15, 0.65) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        z-index: 540 !important;
+        transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     /* Mobile: Remove Floating Bottom Bar */
@@ -1831,9 +1863,87 @@ body.light-mode .google-ac-subtitle {
     }
 }
 
+/* ===== TOUCH & HOLD FLOATING TOOLTIP BADGE ===== */
+.touch-hold-tooltip {
+    position: fixed;
+    z-index: 10005;
+    background: rgba(8, 12, 22, 0.94);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    border-radius: 20px;
+    padding: 7px 15px;
+    color: #ffffff;
+    font-size: 11.5px;
+    font-weight: 700;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 16px rgba(56, 189, 248, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    white-space: nowrap;
+    animation: popTooltip 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+    letter-spacing: 0.3px;
+}
+@keyframes popTooltip {
+    from { opacity: 0; transform: scale(0.88); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== VOICE SEARCH RADAR WAVE ANIMATION ===== */
+.voice-modal-panel {
+    background: rgba(10, 15, 28, 0.95) !important;
+    backdrop-filter: blur(32px) saturate(200%) !important;
+    border: 1px solid rgba(99, 102, 241, 0.3) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(99, 102, 241, 0.25) !important;
+}
+.voice-radar-container {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 10px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.voice-radar-mic {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #38bdf8);
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5);
+    transition: transform 0.2s ease;
+}
+.voice-radar-mic.pulse-active {
+    animation: micPulse 1.2s infinite alternate;
+}
+@keyframes micPulse {
+    from { transform: scale(1); box-shadow: 0 0 15px rgba(56, 189, 248, 0.6); }
+    to { transform: scale(1.1); box-shadow: 0 0 30px rgba(99, 102, 241, 0.9); }
+}
+.voice-radar-wave {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid rgba(56, 189, 248, 0.5);
+    animation: radarWave 2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+.wave-1 { width: 68px; height: 68px; animation-delay: 0s; }
+.wave-2 { width: 84px; height: 84px; animation-delay: 0.6s; }
+.wave-3 { width: 100px; height: 100px; animation-delay: 1.2s; }
+@keyframes radarWave {
+    0% { transform: scale(0.85); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
 /* Desktop default: Hide mobile app bar and FAB stack */
 .mobile-app-bar,
-.mobile-fab-stack {
+.mobile-fab-stack,
+.mobile-drawer-backdrop {
     display: none;
 }
 

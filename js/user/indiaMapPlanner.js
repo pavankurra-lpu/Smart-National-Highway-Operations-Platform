@@ -111,6 +111,9 @@ const IndiaMapPlanner = {
             if (IndiaMapPlanner.map) IndiaMapPlanner.map.invalidateSize();
         }, 200);
 
+        // Initialize touch-and-hold tactile tooltips
+        IndiaMapPlanner._initTouchHoldTooltips();
+
         // Fly to center on open
         setTimeout(() => {
             if (IndiaMapPlanner.map) {
@@ -2957,12 +2960,14 @@ const IndiaMapPlanner = {
     },
 
     // ═══════════════════════════════════════════════════════════════
-    // GOOGLE MAPS STYLE MOBILE CONTROLS
+    // GOOGLE MAPS STYLE MOBILE CONTROLS & TOUCH-HOLD TOOLTIPS
     // ═══════════════════════════════════════════════════════════════
     openMobileSearch: () => {
         const sidebar = document.getElementById('nhai-sidebar');
+        const backdrop = document.getElementById('mobile-drawer-backdrop');
         if (sidebar) {
             sidebar.classList.remove('collapsed');
+            if (backdrop) backdrop.classList.remove('hidden');
             document.getElementById('tab-btn-plan')?.click();
             setTimeout(() => {
                 const dest = document.getElementById('route-dest-input');
@@ -2976,6 +2981,18 @@ const IndiaMapPlanner = {
         }
     },
 
+    toggleRouteSummary: () => {
+        const panel = document.getElementById('route-summary-panel');
+        const chevron = document.getElementById('route-window-chevron');
+        if (!panel) return;
+        const isMin = panel.classList.toggle('mobile-minimized');
+        if (chevron) {
+            chevron.className = isMin ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+        }
+        const btn = document.getElementById('btn-toggle-route-window');
+        if (btn) btn.title = isMin ? 'Expand Route Details' : 'Minimize Route Details';
+    },
+
     openMobileAvatarModal: () => {
         const modal = document.getElementById('mobile-avatar-modal');
         const grid = document.getElementById('mobile-avatar-grid');
@@ -2986,9 +3003,9 @@ const IndiaMapPlanner = {
             const icon = IndiaMapPlanner._vehicleIcons[key] || '📍';
             const name = IndiaMapPlanner._vehicleNames[key] || key;
             return `
-                <div class="avatar-option-card ${isSelected ? 'selected' : ''}" onclick="IndiaMapPlanner.selectMobileAvatar('${key}')" style="background:rgba(255,255,255,0.06); border:1px solid ${isSelected ? '#38bdf8':'rgba(255,255,255,0.1)'}; border-radius:12px; padding:10px 6px; text-align:center; cursor:pointer;">
-                    <div style="font-size:24px; margin-bottom:4px;">${icon}</div>
-                    <div style="font-size:10px; font-weight:700; color:#fff;">${name}</div>
+                <div class="avatar-option-card ${isSelected ? 'selected' : ''}" onclick="IndiaMapPlanner.selectMobileAvatar('${key}')" style="background:rgba(255,255,255,0.06); border:1px solid ${isSelected ? '#38bdf8':'rgba(255,255,255,0.1)'}; border-radius:14px; padding:12px 6px; text-align:center; cursor:pointer; transition:all 0.2s cubic-bezier(0.2,0.8,0.2,1);">
+                    <div style="font-size:26px; margin-bottom:6px;">${icon}</div>
+                    <div style="font-size:10.5px; font-weight:700; color:#fff;">${name}</div>
                 </div>
             `;
         }).join('');
@@ -3048,12 +3065,79 @@ const IndiaMapPlanner = {
     },
 
     triggerVoiceRoute: () => {
-        if (window.VoiceAssistant && typeof VoiceAssistant.toggleListening === 'function') {
-            VoiceAssistant.toggleListening();
+        if (window.VoiceAssistant && typeof VoiceAssistant.startListening === 'function') {
+            VoiceAssistant.startListening();
         } else {
             IndiaMapPlanner.openMobileSearch();
             Utils.showToast('🎙️ Speak origin and destination in Search', 'info');
         }
+    },
+
+    _initTouchHoldTooltips: () => {
+        const tooltipEl = document.getElementById('touch-hold-tooltip');
+        const tooltipText = document.getElementById('touch-hold-tooltip-text');
+        if (!tooltipEl || !tooltipText) return;
+
+        let holdTimer = null;
+        let hideTimer = null;
+
+        const showTooltip = (targetEl, label) => {
+            clearTimeout(hideTimer);
+            tooltipText.textContent = label;
+            const rect = targetEl.getBoundingClientRect();
+            
+            // Position above or to the left of the button
+            const isRightSide = rect.left > window.innerWidth / 2;
+            if (isRightSide) {
+                tooltipEl.style.right = (window.innerWidth - rect.left + 12) + 'px';
+                tooltipEl.style.left = 'auto';
+            } else {
+                tooltipEl.style.left = (rect.right + 12) + 'px';
+                tooltipEl.style.right = 'auto';
+            }
+            tooltipEl.style.top = (rect.top + (rect.height / 2) - 16) + 'px';
+            tooltipEl.classList.remove('hidden');
+
+            try { navigator.vibrate?.(35); } catch (e) {}
+        };
+
+        const hideTooltip = () => {
+            clearTimeout(holdTimer);
+            hideTimer = setTimeout(() => {
+                tooltipEl.classList.add('hidden');
+            }, 1200);
+        };
+
+        const buttonsWithTooltips = [
+            { id: 'mobile-fab-locate', text: '🎯 My Location (GPS)' },
+            { id: 'mobile-fab-avatar', text: '🚗 3D Vehicle Avatar' },
+            { id: 'mobile-fab-layer', text: '🛰️ Satellite / Dark View' },
+            { id: 'mobile-fab-sos', text: '🚑 1033 Rapid Emergency SOS' },
+            { id: 'btn-mobile-menu', text: '☰ NHAI Operations Menu' },
+            { id: 'btn-mobile-voice', text: '🎙️ Voice Route Assistant' },
+            { id: 'mobile-search-trigger', text: '🔍 Search Route & Tolls' },
+            { id: 'btn-toggle-route-window', text: '▲ Expand / Minimize Route' }
+        ];
+
+        buttonsWithTooltips.forEach(item => {
+            const el = document.getElementById(item.id);
+            if (!el) return;
+
+            // Touch-and-Hold on Mobile
+            el.addEventListener('touchstart', () => {
+                clearTimeout(holdTimer);
+                holdTimer = setTimeout(() => {
+                    showTooltip(el, item.text);
+                }, 280);
+            }, { passive: true });
+
+            el.addEventListener('touchend', hideTooltip, { passive: true });
+            el.addEventListener('touchcancel', hideTooltip, { passive: true });
+
+            // Desktop Hover
+            el.addEventListener('mouseenter', () => showTooltip(el, item.text));
+            el.addEventListener('mouseleave', hideTooltip);
+        });
     },
 
     // ═══════════════════════════════════════════════════════════════

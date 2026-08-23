@@ -154,6 +154,132 @@ const VoiceAssistant = {
         };
 
         window.speechSynthesis.speak(utterance);
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // SPEECH RECOGNITION (Voice Route Assistant)
+    // ═══════════════════════════════════════════════════════════════
+    _recognition: null,
+    isListening: false,
+
+    startListening: () => {
+        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRec) {
+            Utils.showToast("Voice recognition not supported in this browser. Please use Chrome/Edge.", "warning");
+            IndiaMapPlanner.openMobileSearch();
+            return;
+        }
+
+        if (VoiceAssistant.isListening) {
+            VoiceAssistant.stopListening();
+            return;
+        }
+
+        const modal = document.getElementById('voice-search-modal');
+        const transcriptEl = document.getElementById('voice-modal-transcript');
+        const statusEl = document.getElementById('voice-modal-status');
+        const micEl = document.getElementById('voice-modal-mic');
+
+        if (modal) modal.classList.remove('hidden');
+        if (statusEl) statusEl.textContent = 'Listening for Route...';
+        if (transcriptEl) transcriptEl.textContent = '"Listening..."';
+        if (micEl) micEl.classList.add('pulse-active');
+
+        try {
+            const rec = new SpeechRec();
+            rec.lang = 'en-IN';
+            rec.continuous = false;
+            rec.interimResults = true;
+
+            rec.onstart = () => {
+                VoiceAssistant.isListening = true;
+                VoiceAssistant._recognition = rec;
+            };
+
+            rec.onresult = (e) => {
+                let spoken = '';
+                for (let i = e.resultIndex; i < e.results.length; ++i) {
+                    spoken += e.results[i][0].transcript;
+                }
+                if (transcriptEl) transcriptEl.textContent = `"${spoken}"`;
+
+                if (e.results[0].isFinal) {
+                    VoiceAssistant._handleVoiceRouteQuery(spoken);
+                }
+            };
+
+            rec.onerror = (err) => {
+                console.warn("Speech error:", err);
+                if (statusEl) statusEl.textContent = 'Could not catch that. Tap below to retry.';
+                VoiceAssistant.isListening = false;
+                if (micEl) micEl.classList.remove('pulse-active');
+            };
+
+            rec.onend = () => {
+                VoiceAssistant.isListening = false;
+                if (micEl) micEl.classList.remove('pulse-active');
+            };
+
+            rec.start();
+        } catch (e) {
+            console.error("SpeechRec start failed:", e);
+            Utils.showToast("Microphone permission required for voice search.", "error");
+        }
+    },
+
+    stopListening: () => {
+        if (VoiceAssistant._recognition) {
+            try { VoiceAssistant._recognition.stop(); } catch (e) {}
+            VoiceAssistant._recognition = null;
+        }
+        VoiceAssistant.isListening = false;
+        const modal = document.getElementById('voice-search-modal');
+        if (modal) modal.classList.add('hidden');
+        const micEl = document.getElementById('voice-modal-mic');
+        if (micEl) micEl.classList.remove('pulse-active');
+    },
+
+    _handleVoiceRouteQuery: (query) => {
+        const modal = document.getElementById('voice-search-modal');
+        const statusEl = document.getElementById('voice-modal-status');
+        if (statusEl) statusEl.textContent = 'Analyzing route... 🚀';
+
+        setTimeout(() => {
+            if (modal) modal.classList.add('hidden');
+            VoiceAssistant.stopListening();
+
+            // Extract Origin and Destination
+            let clean = query.trim().toLowerCase();
+            let origin = '';
+            let dest = '';
+
+            const fromToMatch = clean.match(/(?:route\s+|directions\s+)?(?:from\s+)?([a-z\s]+?)\s+to\s+([a-z\s]+)/i);
+            if (fromToMatch) {
+                origin = fromToMatch[1].replace(/^(from|take|show|find|route|get)\s+/i, '').trim();
+                dest = fromToMatch[2].replace(/\s+(route|highway|fastest|cheapest)$/i, '').trim();
+            } else {
+                const toMatch = clean.match(/(?:go\s+to|navigate\s+to|drive\s+to|to)\s+([a-z\s]+)/i);
+                if (toMatch) {
+                    dest = toMatch[1].trim();
+                } else {
+                    dest = clean;
+                }
+            }
+
+            const origInput = document.getElementById('route-origin-input');
+            const destInput = document.getElementById('route-dest-input');
+
+            if (origin && origInput) origInput.value = origin.charAt(0).toUpperCase() + origin.slice(1);
+            if (dest && destInput) destInput.value = dest.charAt(0).toUpperCase() + dest.slice(1);
+
+            // Auto-trigger calculation
+            const btnCalc = document.getElementById('btn-calculate-route');
+            if (btnCalc) {
+                btnCalc.click();
+                Utils.showToast(`Voice Route: ${origin ? origin + ' ➔ ' : ''}${dest} 🛣️`, 'success');
+                VoiceAssistant.speak(`Calculating optimal route to ${dest}`);
+            }
+        }, 600);
     }
 };
 
