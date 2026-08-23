@@ -263,27 +263,38 @@ const VoiceAssistant = {
             if (modal) modal.classList.add('hidden');
             VoiceAssistant.stopListening();
 
-            if (destPlace && window.IndiaMapPlanner) {
-                if (origPlace) {
-                    IndiaMapPlanner.selectedOrigin = {
-                        name: origPlace.name,
-                        state: origPlace.state || '',
-                        lat: origPlace.lat,
-                        lng: origPlace.lng
-                    };
-                    const origInput = document.getElementById('route-origin-input');
-                    if (origInput) origInput.value = origPlace.name;
-                    IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
-                }
-                IndiaMapPlanner.showVoicePlaceResult(destPlace);
-                Utils.showToast(`Voice Route: ${originName} ➔ ${destName} 🛣️`, 'success');
-            } else {
-                const origInput = document.getElementById('route-origin-input');
-                const destInput = document.getElementById('route-dest-input');
-                if (origInput) origInput.value = originName.charAt(0).toUpperCase() + originName.slice(1);
-                if (destInput) destInput.value = destName.charAt(0).toUpperCase() + destName.slice(1);
-                if (window.IndiaMapPlanner?.processRoute) IndiaMapPlanner.processRoute();
+            const origInput = document.getElementById('route-origin-input');
+            const destInput = document.getElementById('route-dest-input');
+
+            if (origPlace) {
+                IndiaMapPlanner.selectedOrigin = {
+                    name: origPlace.name,
+                    state: origPlace.state || '',
+                    lat: origPlace.lat,
+                    lng: origPlace.lng
+                };
+                if (origInput) origInput.value = origPlace.name;
+                IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+            } else if (origInput) {
+                origInput.value = originName.charAt(0).toUpperCase() + originName.slice(1);
             }
+
+            if (destPlace) {
+                IndiaMapPlanner.selectedDest = {
+                    name: destPlace.name,
+                    state: destPlace.state || '',
+                    lat: destPlace.lat,
+                    lng: destPlace.lng
+                };
+                IndiaMapPlanner.selectedDestination = IndiaMapPlanner.selectedDest;
+                if (destInput) destInput.value = destPlace.name;
+                IndiaMapPlanner.setDestMarker(IndiaMapPlanner.selectedDest);
+            } else if (destInput) {
+                destInput.value = destName.charAt(0).toUpperCase() + destName.slice(1);
+            }
+
+            Utils.showToast(`Voice Route: ${originName} ➔ ${destName} 🛣️`, 'success');
+            if (window.IndiaMapPlanner?.processRoute) IndiaMapPlanner.processRoute();
             return;
         }
 
@@ -304,17 +315,36 @@ const VoiceAssistant = {
         if (modal) modal.classList.add('hidden');
         VoiceAssistant.stopListening();
 
-        if (matchedPlace && window.IndiaMapPlanner && typeof IndiaMapPlanner.showVoicePlaceResult === 'function') {
-            IndiaMapPlanner.showVoicePlaceResult(matchedPlace);
-            Utils.showToast(`Found: ${matchedPlace.name} 📍`, 'success');
-        } else {
-            const destInput = document.getElementById('route-dest-input');
-            if (destInput) {
-                destInput.value = placeTarget.charAt(0).toUpperCase() + placeTarget.slice(1);
-                IndiaMapPlanner.openMobileSearch();
+        const origInput = document.getElementById('route-origin-input');
+        const destInput = document.getElementById('route-dest-input');
+
+        if (!IndiaMapPlanner.selectedOrigin || !origInput || !origInput.value) {
+            if (IndiaMapPlanner.userLocationMarker) {
+                const uLoc = IndiaMapPlanner.userLocationMarker.getLatLng();
+                IndiaMapPlanner.selectedOrigin = { name: 'My Location', lat: uLoc.lat, lng: uLoc.lng, state: '' };
+            } else {
+                IndiaMapPlanner.selectedOrigin = { name: 'New Delhi', lat: 28.6139, lng: 77.2090, state: 'Delhi' };
+                IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
             }
-            Utils.showToast(`Could not pinpoint "${clean}". Added to search.`, 'warning');
-            VoiceAssistant.speak(`Could not find exact location for ${placeTarget}. Please select from search.`);
+            if (origInput) origInput.value = IndiaMapPlanner.selectedOrigin.name;
+        }
+
+        if (matchedPlace) {
+            IndiaMapPlanner.selectedDest = {
+                name: matchedPlace.name,
+                state: matchedPlace.state || '',
+                lat: matchedPlace.lat,
+                lng: matchedPlace.lng
+            };
+            IndiaMapPlanner.selectedDestination = IndiaMapPlanner.selectedDest;
+            if (destInput) destInput.value = matchedPlace.name;
+            IndiaMapPlanner.setDestMarker(IndiaMapPlanner.selectedDest);
+            Utils.showToast(`Found: ${matchedPlace.name} 📍`, 'success');
+            if (window.IndiaMapPlanner?.processRoute) IndiaMapPlanner.processRoute();
+        } else {
+            if (destInput) destInput.value = placeTarget.charAt(0).toUpperCase() + placeTarget.slice(1);
+            Utils.showToast(`Searching for "${placeTarget}"...`, 'info');
+            if (window.IndiaMapPlanner?.processRoute) IndiaMapPlanner.processRoute();
         }
     }
 };

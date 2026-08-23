@@ -147,13 +147,7 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner.selectedDestination = res;
                 IndiaMapPlanner.setDestMarker(res);
                 IndiaMapPlanner.showWeatherPopup('destination', res.name, res.lat, res.lng);
-                IndiaMapPlanner.showVoicePlaceResult({
-                    name: res.name,
-                    state: res.state || '',
-                    lat: res.lat,
-                    lng: res.lng,
-                    category: 'DESTINATION'
-                });
+                IndiaMapPlanner.processRoute();
             };
 
             if (city.lat === 0 && city.lng === 0) {
@@ -163,53 +157,19 @@ const IndiaMapPlanner = {
             }
         });
 
-        // Setup Top Universal Google Maps Search Bar
-        IndiaMapPlanner.setupAutocomplete('top-search-input', 'top-search-suggestions', city => {
-            const handleDest = (res) => {
-                IndiaMapPlanner.selectedDest = res;
-                IndiaMapPlanner.selectedDestination = res;
-                IndiaMapPlanner.showVoicePlaceResult({
-                    name: res.name,
-                    state: res.state || '',
-                    lat: res.lat,
-                    lng: res.lng,
-                    category: res.type ? res.type.toUpperCase() : 'DESTINATION'
-                });
-            };
-
-            if (city.lat === 0 && city.lng === 0) {
-                IndiaMapPlanner._geocodeVillage(city, handleDest);
-            } else {
-                handleDest(city);
-            }
-        });
-
-        const topSearchEl = document.getElementById('top-search-input');
-        const clearTopBtn = document.getElementById('btn-top-search-clear');
-        if (topSearchEl) {
-            topSearchEl.addEventListener('input', (e) => {
-                if (clearTopBtn) clearTopBtn.style.display = e.target.value.length > 0 ? 'inline-flex' : 'none';
-            });
-            topSearchEl.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' && topSearchEl.value.trim()) {
-                    IndiaMapPlanner.quickSearchPlace(topSearchEl.value.trim());
-                    const drop = document.getElementById('top-search-suggestions');
-                    if (drop) drop.style.display = 'none';
-                }
-            });
-        }
-
-        // Pressing Enter in search inputs resolves place and displays Google Maps place card
+        // Pressing Enter in search inputs resolves place and calculates route
         ['route-dest-input', 'route-origin-input'].forEach(inputId => {
             const el = document.getElementById(inputId);
             if (el) {
                 el.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' && el.value.trim()) {
-                        IndiaMapPlanner.quickSearchPlace(el.value.trim());
+                        IndiaMapPlanner.processRoute();
                     }
                 });
             }
         });
+
+
 
         // ── Button bindings ────────────────────────────────────────
         const safe = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };

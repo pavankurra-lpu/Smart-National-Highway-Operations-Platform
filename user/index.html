@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v28">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v28">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v29">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v29">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -102,56 +102,12 @@
         <!-- FULL SCREEN MAP (behind everything) -->
         <div id="map"></div>
 
-        <!-- Universal Google Maps Style Floating Search Bar (Desktop & Mobile) -->
-        <div class="google-maps-app-bar" id="mobile-app-bar">
-            <button type="button" class="bar-icon-btn" id="btn-mobile-menu" onclick="document.getElementById('nhai-sidebar').classList.toggle('collapsed'); document.getElementById('mobile-drawer-backdrop')?.classList.toggle('hidden');" title="Toggle SNHOP Operations Panel">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="bar-search-input-wrap" id="bar-search-box">
-                <i class="fa-solid fa-magnifying-glass" style="color: #38bdf8; font-size: 14px; margin-left: 14px;"></i>
-                <input type="text" id="top-search-input" placeholder="Search destination across India..." autocomplete="off">
-                <button type="button" id="btn-top-search-clear" class="btn-sheet-mini" style="display:none; margin-right:8px;" onclick="IndiaMapPlanner.clearTopSearch();" title="Clear">
-                    <i class="fa-solid fa-circle-xmark"></i>
-                </button>
-                <div id="top-search-suggestions" class="google-ac-dropdown hidden"></div>
-            </div>
-            <button type="button" class="bar-icon-btn voice" id="btn-mobile-voice" title="Voice Search" onclick="VoiceAssistant.startListening();">
-                <i class="fa-solid fa-microphone"></i>
-            </button>
-        </div>
-
-        <!-- Google Maps Dedicated Mobile Search Overlay Sheet (Separate from SNHOP Drawer) -->
-        <div id="mobile-search-sheet" class="mobile-search-sheet hidden">
-            <div class="mobile-search-sheet-header">
-                <button type="button" class="btn-sheet-mini" onclick="IndiaMapPlanner.closeMobileSearch();" title="Go Back">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                <div class="mobile-search-input-wrap">
-                    <i class="fa-solid fa-magnifying-glass" style="color:#38bdf8; font-size:13px;"></i>
-                    <input type="text" id="mobile-search-sheet-input" placeholder="Search destination, city, or toll..." autocomplete="off">
-                    <button type="button" id="btn-mobile-sheet-clear" class="btn-sheet-mini" style="display:none;" onclick="IndiaMapPlanner.clearMobileSearchSheet();" title="Clear">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </button>
-                </div>
-                <button type="button" class="btn-sheet-mini" onclick="VoiceAssistant.startListening();" title="Voice Search" style="background:rgba(99,102,241,0.25); color:#a5b4fc; border-color:rgba(99,102,241,0.4);">
-                    <i class="fa-solid fa-microphone"></i>
-                </button>
-            </div>
-            
-            <!-- Quick Chips / Categories -->
-            <div class="mobile-search-chips">
-                <div class="search-chip" onclick="IndiaMapPlanner.quickSearchPlace('Delhi');">🏛️ Delhi</div>
-                <div class="search-chip" onclick="IndiaMapPlanner.quickSearchPlace('Jaipur');">🏰 Jaipur</div>
-                <div class="search-chip" onclick="IndiaMapPlanner.quickSearchPlace('Chandigarh');">🌳 Chandigarh</div>
-                <div class="search-chip" onclick="IndiaMapPlanner.quickSearchPlace('Amritsar');">✨ Amritsar</div>
-                <div class="search-chip" onclick="IndiaMapPlanner.quickSearchPlace('Mumbai');">🌊 Mumbai</div>
-                <div class="search-chip" onclick="IndiaMapPlanner.quickSearchPlace('Agra');">🕌 Agra</div>
-                <div class="search-chip" onclick="IndiaMapPlanner.quickSearchPlace('Bengaluru');">⚡ Bengaluru</div>
-            </div>
-
-            <!-- Autocomplete Results Container -->
-            <div id="mobile-sheet-suggestions" class="mobile-sheet-suggestions"></div>
-        </div>
+        <!-- Mobile Floating SNHOP Menu Trigger -->
+        <button type="button" id="btn-mobile-snhop-toggle" class="btn-mobile-snhop-toggle" onclick="document.getElementById('nhai-sidebar').classList.toggle('collapsed'); document.getElementById('mobile-drawer-backdrop')?.classList.toggle('hidden');" title="Open SNHOP Operations Panel">
+            <i class="fa-solid fa-route" style="color:#38bdf8;"></i>
+            <span>SNHOP Operations</span>
+            <i class="fa-solid fa-bars" style="font-size:12px; margin-left:4px; opacity:0.7;"></i>
+        </button>
 
         <!-- Google Maps Style Floating Action Buttons (FABs) (Mobile Viewport Only) -->
         <div class="mobile-fab-stack" id="mobile-fab-stack">
@@ -180,7 +136,7 @@
         <!-- ==============================
              NHAI ACCESS: RIGHT SIDEBAR (Modernized shadcn/ui & KokonutUI style)
              ============================== -->
-        <aside class="sidebar collapsed" id="nhai-sidebar">
+        <aside class="sidebar" id="nhai-sidebar">
             <div class="sidebar-header">
                 <div class="snhop-brand-badge">
                     <div class="snhop-brand-icon">
@@ -1351,40 +1307,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v28"></script>
+    <script src="../js/config.js?v=20260823_v29"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v28"></script>
-    <script src="../js/shared/storage.js?v=20260823_v28"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v28"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v28"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v28"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v28"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v28"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v28"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v28"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v28"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v28"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v28"></script>
+    <script src="../js/shared/utils.js?v=20260823_v29"></script>
+    <script src="../js/shared/storage.js?v=20260823_v29"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v29"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v29"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v29"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v29"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v29"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v29"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v29"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v29"></script>
+    <script src="../js/themeManager.js?v=20260823_v29"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v29"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v28"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v28"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v28"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v28"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v28"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v28"></script>
-    <script src="../js/user/notifications.js?v=20260823_v28"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v28"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v28"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v28"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v28"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v28"></script>
-    <script src="../js/user/gamification.js?v=20260823_v28"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v28"></script>
-    <script src="../js/user/userApp.js?v=20260823_v28"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v29"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v29"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v29"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v29"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v29"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v29"></script>
+    <script src="../js/user/notifications.js?v=20260823_v29"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v29"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v29"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v29"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v29"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v29"></script>
+    <script src="../js/user/gamification.js?v=20260823_v29"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v29"></script>
+    <script src="../js/user/userApp.js?v=20260823_v29"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v28"></script>
+    <script src="../js/shared/animations.js?v=20260823_v29"></script>
 </body>
 </html>

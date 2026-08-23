@@ -2254,103 +2254,37 @@ body.light-mode .google-ac-subtitle {
         display: none !important;
     }
 
-    /* Universal Google Maps Floating Search Bar (Desktop & Mobile) */
-    .google-maps-app-bar {
+    /* Mobile Floating SNHOP Menu Trigger */
+    .btn-mobile-snhop-toggle {
+        display: none;
         position: fixed !important;
-        top: 16px !important;
-        left: 16px !important;
-        width: 390px !important;
-        max-width: calc(100vw - 32px) !important;
-        height: 48px !important;
-        z-index: 600 !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-        pointer-events: auto !important;
-    }
-
-    @media (max-width: 768px) {
-        .google-maps-app-bar {
-            top: 10px !important;
-            left: 10px !important;
-            right: 10px !important;
-            width: auto !important;
-            max-width: calc(100vw - 20px) !important;
-        }
-    }
-
-    .bar-icon-btn {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background: rgba(10, 16, 30, 0.94);
-        backdrop-filter: blur(28px) saturate(200%);
-        -webkit-backdrop-filter: blur(28px) saturate(200%);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        color: #f8fafc;
-        font-size: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        cursor: pointer;
-        transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        flex-shrink: 0;
-        -webkit-tap-highlight-color: transparent;
-    }
-    .bar-icon-btn:hover {
-        background: rgba(15, 23, 42, 0.98);
-        border-color: rgba(56, 189, 248, 0.4);
-        color: #38bdf8;
-        transform: translateY(-1px);
-    }
-    .bar-icon-btn:active {
-        transform: scale(0.90);
-    }
-    .bar-icon-btn.voice {
-        background: linear-gradient(135deg, rgba(2, 132, 199, 0.35), rgba(56, 189, 248, 0.25));
-        border-color: rgba(56, 189, 248, 0.45);
-        color: #38bdf8;
-        box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-    .bar-icon-btn.voice i {
-        filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.6));
-    }
-
-    .bar-search-input-wrap {
-        flex: 1;
-        position: relative;
-        height: 44px;
+        top: 14px !important;
+        left: 14px !important;
+        z-index: 550 !important;
         background: rgba(10, 16, 30, 0.94);
         backdrop-filter: blur(28px) saturate(200%);
         -webkit-backdrop-filter: blur(28px) saturate(200%);
         border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: 24px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        display: flex;
+        padding: 8px 16px;
+        color: #f8fafc;
+        font-size: 12.5px;
+        font-weight: 700;
         align-items: center;
         gap: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        cursor: pointer;
         transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        -webkit-tap-highlight-color: transparent;
     }
-    .bar-search-input-wrap:focus-within {
-        border-color: #38bdf8;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 16px rgba(56, 189, 248, 0.35);
+    .btn-mobile-snhop-toggle:active {
+        transform: scale(0.92);
     }
-    .bar-search-input-wrap input {
-        flex: 1;
-        height: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: #f8fafc;
-        font-size: 13px;
-        font-weight: 600;
-        padding: 0 8px;
-        font-family: inherit;
-    }
-    .bar-search-input-wrap input::placeholder {
-        color: #94a3b8;
-        font-weight: 500;
+
+    @media (max-width: 768px) {
+        .btn-mobile-snhop-toggle {
+            display: inline-flex !important;
+        }
     }
 
     /* Google Maps Floating Action Buttons (FABs) on Mobile */
