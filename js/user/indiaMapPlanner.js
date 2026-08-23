@@ -1583,17 +1583,82 @@ const IndiaMapPlanner = {
 
     _fallbackOSRM: (o, d) => {
         const btnCalc = document.getElementById('btn-calc-route');
-        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=false&steps=true`;
+        // Request alternatives=3 from OSRM to get multiple parallel corridors
+        const url = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${d.lng},${d.lat}?overview=full&geometries=geojson&alternatives=3&steps=true`;
+        
         fetch(url)
             .then(r => r.json())
-            .then(data => {
+            .then(async data => {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-location-arrow"></i> Calculate Optimal Path'; btnCalc.disabled = false; }
                 Utils.toggleVisibility('route-loader-overlay', false);
                 if (data.code !== 'Ok' || !data.routes?.length) {
                     Utils.showToast('No route found via OSRM. Try nearby cities.', 'error');
                     return;
                 }
-                IndiaMapPlanner.allRoutes = data.routes;
+                
+                let routes = [...data.routes];
+
+                // If OSRM returned only 1 route, generate a realistic Mid-Route Detour route as Alternate
+                if (routes.length === 1 && routes[0].geometry?.coordinates?.length > 10) {
+                    try {
+                        const coords = routes[0].geometry.coordinates;
+                        const midIndex = Math.floor(coords.length / 2);
+                        const midPt = coords[midIndex];
+                        const dx = -(d.lat - o.lat);
+                        const dy = (d.lng - o.lng);
+                        const len = Math.sqrt(dx * dx + dy * dy) || 1;
+                        const detourLng = midPt[0] + (dy / len) * 0.35;
+                        const detourLat = midPt[1] + (dx / len) * 0.35;
+                        
+                        const detourUrl = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${detourLng},${detourLat};${d.lng},${d.lat}?overview=full&geometries=geojson&steps=true`;
+                        const detourRes = await fetch(detourUrl);
+                        const detourData = await detourRes.json();
+                        if (detourData.code === 'Ok' && detourData.routes?.length) {
+                            routes.push(detourData.routes[0]);
+                        }
+                    } catch (e) {
+                        console.warn('Detour route generation skipped:', e);
+                    }
+                }
+
+                const titles = [
+                    '⚡ Fastest (NH Corridor)',
+                    '🌿 Alternate Bypass Corridor',
+                    '💰 Economy / Minimal Tolls'
+                ];
+
+                // Process metadata and calculate accurate tolls for all routes
+                IndiaMapPlanner.allRoutes = routes.map((r, idx) => {
+                    const coords = r.geometry.coordinates;
+                    const distKm = (r.distance / 1000).toFixed(1);
+                    const etaHours = (r.duration / 3600).toFixed(1);
+                    const tollEst = IndiaMapPlanner.estimateTollsOnRoute(coords, parseFloat(distKm));
+                    const titleStr = titles[idx] || `Route ${idx + 1}`;
+
+                    const routeData = {
+                        ...tollEst,
+                        totalDist: distKm,
+                        totalEta: etaHours,
+                        totalCost: tollEst.totalTollCost,
+                        totalTollCost: tollEst.totalTollCost,
+                        originName: o ? o.name : '—',
+                        destName: d ? d.name : '—',
+                        routeIndex: idx,
+                        title: titleStr
+                    };
+
+                    return {
+                        ...r,
+                        routeData: routeData,
+                        title: titleStr,
+                        totalDist: distKm,
+                        totalEta: etaHours,
+                        tolls: tollEst.tolls,
+                        totalTollCost: tollEst.totalTollCost,
+                        totalCost: tollEst.totalTollCost
+                    };
+                });
+
                 IndiaMapPlanner.selectedRouteIndex = 0;
                 IndiaMapPlanner._applyRoute(0, o, d);
             })
@@ -1606,43 +1671,83 @@ const IndiaMapPlanner = {
 
     _applyRoute: (index, origin, dest) => {
         const routes = IndiaMapPlanner.allRoutes;
-        if (!routes || !routes[0]) return;
+        if (!routes || !routes.length) return;
 
+        const targetIdx = (index >= 0 && index < routes.length) ? index : 0;
+        IndiaMapPlanner.selectedRouteIndex = targetIdx;
+
+        // Clear markers & existing polylines
         IndiaMapPlanner.routeTollMarkers.forEach(m => { try { m.remove(); } catch(e){} });
         IndiaMapPlanner.routeTollMarkers = [];
+        IndiaMapPlanner.routePolylines.forEach(p => { try { p.remove(); } catch(e){} });
+        IndiaMapPlanner.routePolylines = [];
 
-        IndiaMapPlanner._clearRoutePolylines();
+        // Draw Inactive Alternate Routes first (so active route is rendered on top)
+        routes.forEach((route, rIdx) => {
+            if (rIdx === targetIdx) return;
+            const coords = route.geometry.coordinates;
+            const latLngs = coords.map(p => [p[1], p[0]]);
+            const altPoly = L.polyline(latLngs, {
+                color: '#94a3b8',
+                weight: 5,
+                opacity: 0.65,
+                dashArray: '6, 8',
+                lineJoin: 'round'
+            }).addTo(IndiaMapPlanner.map);
 
-        // Selected single optimal primary route
-        const primary = routes[0];
-        const coords  = primary.geometry.coordinates; // [[lng, lat], …]
-        const primaryLatLngs = coords.map(p => [p[1], p[0]]);
+            altPoly.bindTooltip(`<b>${route.title}</b><br>${route.totalDist} km · ${route.totalEta}h · ${route.tolls.length} Tolls (₹${route.totalTollCost})<br><span style="color:#38bdf8; font-size:10px; font-weight:700;">Click on road to switch</span>`, {
+                sticky: true
+            });
 
-        const primaryPoly = L.polyline(primaryLatLngs, { color: '#3b82f6', weight: 7, opacity: 1.0, lineJoin: 'round' })
-            .addTo(IndiaMapPlanner.map);
-        primaryPoly.bindTooltip('Optimal National Highway Route', { permanent: false, sticky: true });
+            altPoly.on('click', () => {
+                IndiaMapPlanner.selectRoute(rIdx);
+            });
+
+            altPoly.on('mouseover', () => {
+                altPoly.setStyle({ color: '#818cf8', opacity: 0.9, weight: 6 });
+            });
+            altPoly.on('mouseout', () => {
+                altPoly.setStyle({ color: '#94a3b8', opacity: 0.65, weight: 5 });
+            });
+
+            IndiaMapPlanner.routePolylines.push(altPoly);
+        });
+
+        // Draw Selected Active Route on Top
+        const activeRoute = routes[targetIdx];
+        const activeCoords = activeRoute.geometry.coordinates;
+        const activeLatLngs = activeCoords.map(p => [p[1], p[0]]);
+
+        const primaryPoly = L.polyline(activeLatLngs, {
+            color: '#3b82f6',
+            weight: 7,
+            opacity: 1.0,
+            lineJoin: 'round'
+        }).addTo(IndiaMapPlanner.map);
+
+        primaryPoly.bindTooltip(`<b>${activeRoute.title} (Active Route)</b><br>${activeRoute.totalDist} km · ${activeRoute.totalEta}h · ₹${activeRoute.totalTollCost}`, {
+            permanent: false,
+            sticky: true
+        });
+
         IndiaMapPlanner.routePolylines.push(primaryPoly);
 
-        // Store for trip and toll matching
-        IndiaMapPlanner.routeCoordinates = coords;
-
-        // Toll matching
-        const rData = IndiaMapPlanner.estimateTollsOnRoute(coords);
-        rData.totalDist   = (primary.distance / 1000).toFixed(1);
-        rData.totalEta    = (primary.duration / 3600).toFixed(1);
-        rData.originName  = origin ? origin.name : '—';
-        rData.destName    = dest ? dest.name : '—';
+        // Store active coordinates & data for simulation and navigation
+        IndiaMapPlanner.routeCoordinates = activeCoords;
+        const rData = activeRoute.routeData;
         IndiaMapPlanner.selectedRouteData = rData;
 
-        // Draw toll markers
+        // Draw toll markers along the active route
         const tollIcon = L.divIcon({
             className: '',
-            html: "<div style='background:#fbbf24;width:11px;height:11px;border-radius:50%;border:2px solid #020c18;box-shadow:0 0 8px #fbbf24'></div>",
-            iconSize: [11,11], iconAnchor: [5,5]
+            html: "<div style='background:#fbbf24;width:12px;height:12px;border-radius:50%;border:2px solid #020c18;box-shadow:0 0 10px #fbbf24'></div>",
+            iconSize: [12,12],
+            iconAnchor: [6,6]
         });
+
         rData.tolls.forEach(t => {
-            const td = window.TollSeedData?.find(s => s.id === t.id);
-            if (!td) return;
+            const td = window.TollSeedData?.find(s => s.id === t.id) || t;
+            if (!td || !td.lat || !td.lng) return;
             try {
                 const m = L.marker([td.lat, td.lng], { icon: tollIcon })
                     .bindPopup(IndiaMapPlanner._tollPopup(td, t.cost))
@@ -1651,13 +1756,13 @@ const IndiaMapPlanner = {
             } catch(e) {}
         });
 
-        // Ensure no alt-route tabs exist
-        document.getElementById('alt-route-tabs')?.remove();
+        // Render Alternate Route Selector Tabs in UI
+        IndiaMapPlanner._renderAlternateRouteTabs();
 
-        // Summary
+        // Update Summary Floating Panel
         IndiaMapPlanner.updateSummary(rData);
         document.getElementById('route-summary-panel')?.classList.remove('hidden');
-        document.getElementById('trip-badge').innerText  = 'PREVIEW MODE';
+        document.getElementById('trip-badge').innerText = 'PREVIEW MODE';
         document.getElementById('trip-badge').style.background = 'rgba(255,255,255,0.15)';
         document.getElementById('trip-badge').style.color = 'var(--text-sec)';
 
@@ -1667,35 +1772,148 @@ const IndiaMapPlanner = {
             const optFastTime = document.getElementById('opt-fastest-time');
             const optFastDetails = document.getElementById('opt-fastest-details');
             const tollCount = rData.tolls ? rData.tolls.length : 0;
-            const tollFee = rData.totalCost || 0;
+            const tollFee = rData.totalCost || rData.totalTollCost || 0;
             const etaHours = parseFloat(rData.totalEta);
             const timeStr = etaHours < 1.0 ? `${Math.round(etaHours * 60)}m` : `${Math.floor(etaHours)}h ${Math.round((etaHours % 1) * 60)}m`;
 
             if (optFastTime) optFastTime.textContent = timeStr;
-            if (optFastDetails) optFastDetails.textContent = `${rData.totalDist} km · ${tollCount} Tolls (₹${tollFee}) · Fastest`;
+            if (optFastDetails) optFastDetails.textContent = `${rData.totalDist} km · ${tollCount} Tolls (₹${tollFee}) · ${activeRoute.title}`;
         }
 
         const pad = window.innerWidth <= 768 ? [30, 30] : [50, 50];
         const padBottom = window.innerWidth <= 768 ? [0, Math.round(window.innerHeight * 0.42)] : [0, 0];
         IndiaMapPlanner.map.fitBounds(primaryPoly.getBounds(), { padding: pad, paddingBottomRight: padBottom });
-        Utils.showToast(`${rData.originName} → ${rData.destName} · ${rData.totalDist} km · ${rData.tolls.length} tolls`, 'success');
+        Utils.showToast(`Selected: ${activeRoute.title} · ${rData.totalDist} km · ${rData.tolls.length} tolls (₹${rData.totalTollCost})`, 'success');
 
-        // Update alerts ticker with regional feed for route origin state
+        // Update alerts ticker
         let routeState = '';
         if (origin && origin.state) {
             routeState = origin.state;
-        } else if (coords && coords.length > 0) {
-            routeState = IndiaMapPlanner._getLocalStateFromCoords(coords[0][1], coords[0][0]);
+        } else if (activeCoords && activeCoords.length > 0) {
+            routeState = IndiaMapPlanner._getLocalStateFromCoords(activeCoords[0][1], activeCoords[0][0]);
         }
         if (routeState) {
             IndiaMapPlanner.fetchLiveNewsAlerts(routeState);
         }
 
-        // AI Voice Announcement
+        // Voice announcement
         IndiaMapPlanner._announceRoute(rData);
 
         // Fetch on-route services
-        setTimeout(() => IndiaMapPlanner.fetchOnRouteServices(coords, rData), 800);
+        setTimeout(() => IndiaMapPlanner.fetchOnRouteServices(activeCoords, rData), 800);
+    },
+
+    selectRoute: (index) => {
+        if (!IndiaMapPlanner.allRoutes || !IndiaMapPlanner.allRoutes[index]) return;
+        IndiaMapPlanner._applyRoute(index, IndiaMapPlanner.selectedOrigin, IndiaMapPlanner.selectedDest);
+    },
+
+    _renderAlternateRouteTabs: () => {
+        const container = document.getElementById('alt-routes-selector');
+        if (!container) return;
+
+        const routes = IndiaMapPlanner.allRoutes;
+        if (!routes || routes.length <= 1) {
+            container.innerHTML = '';
+            return;
+        }
+
+        let html = '';
+        routes.forEach((r, idx) => {
+            const isSel = idx === IndiaMapPlanner.selectedRouteIndex;
+            const borderCol = isSel ? '#38bdf8' : 'rgba(255,255,255,0.08)';
+            const bgCol = isSel ? 'rgba(56,189,248,0.18)' : 'rgba(0,0,0,0.35)';
+            const titleCol = isSel ? '#38bdf8' : '#e2e8f0';
+            const etaHours = parseFloat(r.totalEta);
+            const timeStr = etaHours < 1.0 ? `${Math.round(etaHours * 60)}m` : `${Math.floor(etaHours)}h ${Math.round((etaHours % 1) * 60)}m`;
+
+            html += `
+                <div onclick="IndiaMapPlanner.selectRoute(${idx})" style="flex: 1; min-width: 125px; background: ${bgCol}; border: 1px solid ${borderCol}; border-radius: 8px; padding: 6px 8px; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 2px;" title="Click to switch to ${r.title}">
+                    <div style="font-size: 10px; font-weight: 800; color: ${titleCol}; display: flex; align-items: center; justify-content: space-between;">
+                        <span>${r.title.split('(')[0].trim()}</span>
+                        ${isSel ? '<span style="font-size:7.5px; background:#38bdf8; color:#000; padding:1px 3px; border-radius:3px; font-weight:900;">ACTIVE</span>' : ''}
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 9.5px; color: #94a3b8; margin-top: 1px;">
+                        <span>${r.totalDist} km · ${timeStr}</span>
+                        <span style="color: ${r.totalTollCost > 0 ? '#fbbf24' : '#34d399'}; font-weight: 700;">₹${r.totalTollCost}</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+    },
+
+    exploreMidRouteDetour: () => {
+        if (!IndiaMapPlanner.selectedRouteData || !IndiaMapPlanner.routeCoordinates.length) {
+            Utils.showToast('Plan a route first to explore mid-route detours.', 'warning');
+            return;
+        }
+
+        const routes = IndiaMapPlanner.allRoutes || [];
+        if (routes.length > 1) {
+            // Switch to the next alternate route as mid-route diversion
+            const nextIdx = (IndiaMapPlanner.selectedRouteIndex + 1) % routes.length;
+            IndiaMapPlanner.selectRoute(nextIdx);
+            Utils.showToast(`🔀 Mid-Route Bypass Engaged: Switched to ${routes[nextIdx].title}!`, 'success');
+        } else {
+            // Dynamically generate a midpoint detour
+            const coords = IndiaMapPlanner.routeCoordinates;
+            const o = IndiaMapPlanner.selectedOrigin || { lat: coords[0][1], lng: coords[0][0], name: 'Origin' };
+            const d = IndiaMapPlanner.selectedDest || { lat: coords[coords.length - 1][1], lng: coords[coords.length - 1][0], name: 'Destination' };
+
+            const midIndex = Math.floor(coords.length / 2);
+            const midPt = coords[midIndex];
+            const dx = -(d.lat - o.lat);
+            const dy = (d.lng - o.lng);
+            const len = Math.sqrt(dx * dx + dy * dy) || 1;
+            const detourLng = midPt[0] + (dy / len) * 0.4;
+            const detourLat = midPt[1] + (dx / len) * 0.4;
+
+            Utils.showToast('🔀 Calculating Mid-Route Bypass Corridor...', 'info');
+            const detourUrl = `https://router.project-osrm.org/route/v1/driving/${o.lng},${o.lat};${detourLng},${detourLat};${d.lng},${d.lat}?overview=full&geometries=geojson&steps=true`;
+            
+            fetch(detourUrl)
+                .then(r => r.json())
+                .then(detourData => {
+                    if (detourData.code === 'Ok' && detourData.routes?.length) {
+                        const newRoute = detourData.routes[0];
+                        const distKm = (newRoute.distance / 1000).toFixed(1);
+                        const etaHours = (newRoute.duration / 3600).toFixed(1);
+                        const tollEst = IndiaMapPlanner.estimateTollsOnRoute(newRoute.geometry.coordinates, parseFloat(distKm));
+                        
+                        const altObj = {
+                            ...newRoute,
+                            routeData: {
+                                ...tollEst,
+                                totalDist: distKm,
+                                totalEta: etaHours,
+                                totalCost: tollEst.totalTollCost,
+                                totalTollCost: tollEst.totalTollCost,
+                                originName: o.name,
+                                destName: d.name,
+                                routeIndex: IndiaMapPlanner.allRoutes.length,
+                                title: '🔀 Dynamic Mid-Bypass Detour'
+                            },
+                            title: '🔀 Dynamic Mid-Bypass Detour',
+                            totalDist: distKm,
+                            totalEta: etaHours,
+                            tolls: tollEst.tolls,
+                            totalTollCost: tollEst.totalTollCost,
+                            totalCost: tollEst.totalTollCost
+                        };
+
+                        IndiaMapPlanner.allRoutes.push(altObj);
+                        IndiaMapPlanner.selectRoute(IndiaMapPlanner.allRoutes.length - 1);
+                        Utils.showToast('🔀 Mid-Route Bypass Corridor Activated!', 'success');
+                    } else {
+                        Utils.showToast('No alternative detour available for this corridor.', 'info');
+                    }
+                })
+                .catch(() => {
+                    Utils.showToast('Unable to calculate mid-route detour at this time.', 'error');
+                });
+        }
     },
 
     _announceRoute: async (rData) => {
@@ -1726,7 +1944,7 @@ const IndiaMapPlanner = {
             text += `The estimated travel time is ${rData.totalEta} hours. `;
         }
         
-        if (rData.tolls.length > 0) {
+        if (rData.tolls && rData.tolls.length > 0) {
             text += `There are ${rData.tolls.length} tolls on this route. Total toll amount to be paid is ${rData.totalTollCost} rupees. `;
         }
         
@@ -1744,23 +1962,28 @@ const IndiaMapPlanner = {
     },
 
     _tollPopup: (td, cost) => {
+        if (!td) return '<div style="padding:10px; color:#333;">Toll Plaza</div>';
         const vType = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
         const single = td.tollRatesByVehicleClass || {};
         const ret = td.returnRatesByVehicleClass || {};
         const isExempt = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(vType);
         
-        const lmvSingle = single.LMV || td.baseRate || 50;
+        const base = td.baseRate || td.singleCost || 65;
+        const lmvSingle = single.LMV || base;
         const lmvReturn = ret.LMV || Math.round((lmvSingle * 1.5)/5)*5;
 
-        const curSingle = isExempt ? 0 : (single[vType] || lmvSingle);
+        const curSingle = isExempt ? 0 : (single[vType] || cost || lmvSingle);
         const curReturn = isExempt ? 0 : (ret[vType] || Math.round((curSingle * 1.5)/5)*5);
+        const plazaName = td.name || td.tollName || 'National Highway Toll Plaza';
+        const plazaState = td.state || 'India';
+        const corridorStr = (td.nhCorridor && td.nhCorridor !== 'N/A') ? `<strong>NH-${td.nhCorridor}</strong>` : 'National Highway';
 
         return `
         <div style="min-width:280px; font-family:var(--font-main, 'Inter', sans-serif); padding:6px 4px; color:#1e293b;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px;">
                 <div>
-                    <div style="font-weight:800; font-size:13.5px; color:#0f172a; line-height:1.2;">🏗️ ${td.name}</div>
-                    <div style="font-size:11px; color:#64748b; margin-top:2px;">${td.state || 'India'} · ${td.nhCorridor && td.nhCorridor !== 'N/A' ? '<strong>NH-' + td.nhCorridor + '</strong>' : 'National Highway'}</div>
+                    <div style="font-weight:800; font-size:13.5px; color:#0f172a; line-height:1.2;">🏗️ ${plazaName}</div>
+                    <div style="font-size:11px; color:#64748b; margin-top:2px;">${plazaState} · ${corridorStr}</div>
                 </div>
                 <span style="font-size:8.5px; font-weight:700; padding:2px 6px; border-radius:4px; background:rgba(16,185,129,0.15); color:#059669; border:1px solid rgba(16,185,129,0.3);">FASTag ACTIVE</span>
             </div>
@@ -1829,8 +2052,8 @@ const IndiaMapPlanner = {
     _clearRoutePolylines: () => {
         IndiaMapPlanner.routePolylines.forEach(p => { try { p.remove(); } catch(e){} });
         IndiaMapPlanner.routePolylines = [];
-        // Remove alt tabs
-        document.getElementById('alt-route-tabs')?.remove();
+        const container = document.getElementById('alt-routes-selector');
+        if (container) container.innerHTML = '';
         document.getElementById('route-sidebar-summary')?.classList.add('hidden');
     },
 
@@ -1977,17 +2200,29 @@ const IndiaMapPlanner = {
     // ═══════════════════════════════════════════════════════════════
     // TOLL ESTIMATION — corridor matching against route geometry
     // ═══════════════════════════════════════════════════════════════
-    estimateTollsOnRoute: coords => {
+    estimateTollsOnRoute: (coords, routeDistanceKm = null) => {
         const rawMatched = [];
         const tollIds = new Set();
 
-        if (!window.TollSeedData || coords.length === 0) return { tolls: [], totalTollCost: 0 };
+        if (!window.TollSeedData || !coords || coords.length === 0) return { tolls: [], totalTollCost: 0, totalCost: 0 };
 
         const vehicleType    = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
         const journeyType    = IndiaMapPlanner.journeyType || 'SINGLE';
         const isExempt       = ['GOVT','PRESS','ARMY','AMBULANCE','FIRE','POLICE','BIKE'].includes(vehicleType);
-        const corridorKm     = (window.NHAI_CONFIG?.routing?.tollCorridorKm) || 2.5;
-        const sampleStep     = Math.max(1, Math.floor(coords.length / 4000));
+        const corridorKm     = 3.2; // 3.2km corridor buffer for highway tracking
+        const sampleStep     = Math.max(1, Math.floor(coords.length / 3000));
+
+        // Calculate accurate real polyline distance in km
+        let realDistKm = routeDistanceKm;
+        if (!realDistKm || isNaN(realDistKm) || realDistKm <= 0) {
+            let sumDist = 0;
+            for (let j = 0; j < coords.length - 1; j++) {
+                const dLa = (coords[j+1][1] - coords[j][1]) * 111;
+                const dLn = (coords[j+1][0] - coords[j][0]) * 111 * Math.cos(coords[j][1] * Math.PI / 180);
+                sumDist += Math.sqrt(dLa * dLa + dLn * dLn);
+            }
+            realDistKm = sumDist > 0 ? sumDist : 100;
+        }
 
         TollSeedData.forEach(toll => {
             if (!toll.lat || !toll.lng || tollIds.has(toll.id)) return;
@@ -2005,10 +2240,10 @@ const IndiaMapPlanner = {
                     if (!isExempt && !(IndiaMapPlanner.isSpecialVerified && vehicleType !== 'LMV')) {
                         cost = (window.TollData && TollData.getTollCost) 
                             ? TollData.getTollCost(toll.id, vehicleType, journeyType) 
-                            : (toll.tollRatesByVehicleClass?.[vehicleType] || toll.baseRate || 50);
+                            : (toll.tollRatesByVehicleClass?.[vehicleType] || toll.baseRate || 65);
                     }
                     
-                    const singleCost = isExempt ? 0 : ((toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType]) || toll.baseRate || 50);
+                    const singleCost = isExempt ? 0 : ((toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType]) || toll.baseRate || 65);
                     const returnCost = isExempt ? 0 : ((toll.returnRatesByVehicleClass && toll.returnRatesByVehicleClass[vehicleType]) || Math.round((singleCost * 1.5)/5)*5);
 
                     rawMatched.push({ 
@@ -2017,7 +2252,9 @@ const IndiaMapPlanner = {
                         cost: cost,
                         singleCost: singleCost,
                         returnCost: returnCost,
-                        baseRate: toll.baseRate || 50,
+                        baseRate: toll.baseRate || 65,
+                        state: toll.state || 'India',
+                        nhCorridor: toll.nhCorridor || 'N/A',
                         lat: toll.lat,
                         lng: toll.lng,
                         coordIndex: i
@@ -2030,7 +2267,7 @@ const IndiaMapPlanner = {
         // 1. Sort raw matched tolls sequentially by route progression (from Origin -> Destination)
         rawMatched.sort((a, b) => a.coordIndex - b.coordIndex);
 
-        // 2. Intelligent NHAI spatial deduplication (merges duplicate slip lanes & ramp slips within 12km)
+        // 2. Intelligent NHAI spatial deduplication (merges duplicate slip lanes & ramp barriers within 12km)
         const tolls = [];
         let totalTollCost = 0;
         
@@ -2041,10 +2278,10 @@ const IndiaMapPlanner = {
             } else {
                 const last = tolls[tolls.length - 1];
                 const indexDiff = Math.abs(t.coordIndex - last.coordIndex);
-                const approxDistKm = (indexDiff / coords.length) * (parseFloat(IndiaMapPlanner.selectedRouteData?.totalDist || 100));
+                const approxDistKm = (indexDiff / coords.length) * realDistKm;
                 
                 if (approxDistKm < 12.0) {
-                    // Within 12km of previous toll on same highway: keep the mainline/higher tariff barrier
+                    // Within 12km on same highway corridor: keep the mainline/higher tariff barrier
                     if (t.cost > last.cost) {
                         totalTollCost -= last.cost;
                         tolls[tolls.length - 1] = t;
@@ -2057,8 +2294,8 @@ const IndiaMapPlanner = {
             }
         });
 
-        console.log(`[TollEngine] Matched ${tolls.length} tolls in journey order for vehicle ${vehicleType}. Total Cost: ₹${totalTollCost}`);
-        return { tolls, totalTollCost };
+        console.log(`[TollEngine] Matched ${tolls.length} tolls in journey order for vehicle ${vehicleType}. Total Cost: ₹${totalTollCost} (Distance: ${realDistKm.toFixed(1)} km)`);
+        return { tolls, totalTollCost, totalCost: totalTollCost };
     },
 
     // ═══════════════════════════════════════════════════════════════

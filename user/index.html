@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v35">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v35">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v36">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v36">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -764,6 +764,11 @@
                     </div>
                 </div>
 
+                <!-- Alternate Routes Selector Tabs (Fastest / Alternate / Economy) -->
+                <div id="alt-routes-selector" style="display: flex; gap: 6px; margin-bottom: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none;">
+                    <!-- Rendered dynamically by IndiaMapPlanner._renderAlternateRouteTabs() -->
+                </div>
+
                 <!-- Stats Pills -->
                 <div class="summary-pills">
                     <div class="summary-pill">
@@ -821,12 +826,15 @@
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="summary-actions">
+                <div class="summary-actions" style="flex-wrap: wrap;">
                     <button id="btn-view-pass" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px;">
                         <i class="fa-solid fa-tags"></i> Passes
                     </button>
                     <button id="btn-view-lanes" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px;">
                         <i class="fa-solid fa-signs-post"></i> Lanes
+                    </button>
+                    <button id="btn-mid-detour" type="button" onclick="IndiaMapPlanner.exploreMidRouteDetour()" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px; color: #38bdf8; border-color: rgba(56,189,248,0.3);" title="Explore Mid-Route Bypass / Alternative Detour">
+                        <i class="fa-solid fa-shuffle"></i> Mid-Bypass
                     </button>
                     <button id="btn-gps-mode" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px; color:var(--accent-yellow);" title="Use Real Phone GPS">
                         <i class="fa-solid fa-location-crosshairs"></i> GPS
@@ -834,10 +842,10 @@
                     <button id="btn-follow-me" class="btn btn-outline active" style="font-size: 11px; padding: 8px 10px;" title="Auto-center Map">
                         <i class="fa-solid fa-eye"></i>
                     </button>
-                    <button id="btn-start-trip" class="btn" style="flex:1; justify-content:center; font-size: 12px; background:linear-gradient(135deg,#6366f1,#3b82f6); color:#fff; box-shadow:0 4px 16px rgba(99,102,241,0.4);">
+                    <button id="btn-start-trip" class="btn" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px; background:linear-gradient(135deg,#6366f1,#3b82f6); color:#fff; box-shadow:0 4px 16px rgba(99,102,241,0.4);">
                         <i class="fa-solid fa-play"></i> Start Trip
                     </button>
-                    <button id="btn-end-trip" class="btn btn-danger hidden" style="flex:1; justify-content:center; font-size: 12px;">
+                    <button id="btn-end-trip" class="btn btn-danger hidden" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px;">
                         <i class="fa-solid fa-stop"></i> End Trip
                     </button>
                 </div>
@@ -1392,40 +1400,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v35"></script>
+    <script src="../js/config.js?v=20260823_v36"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v35"></script>
-    <script src="../js/shared/storage.js?v=20260823_v35"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v35"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v35"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v35"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v35"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v35"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v35"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v35"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v35"></script>
-    <script src="../js/themeManager.js?v=20260823_v35"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v35"></script>
+    <script src="../js/shared/utils.js?v=20260823_v36"></script>
+    <script src="../js/shared/storage.js?v=20260823_v36"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v36"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v36"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v36"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v36"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v36"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v36"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v36"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v36"></script>
+    <script src="../js/themeManager.js?v=20260823_v36"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v36"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v35"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v35"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v35"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v35"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v35"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v35"></script>
-    <script src="../js/user/notifications.js?v=20260823_v35"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v35"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v35"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v35"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v35"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v35"></script>
-    <script src="../js/user/gamification.js?v=20260823_v35"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v35"></script>
-    <script src="../js/user/userApp.js?v=20260823_v35"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v36"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v36"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v36"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v36"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v36"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v36"></script>
+    <script src="../js/user/notifications.js?v=20260823_v36"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v36"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v36"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v36"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v36"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v36"></script>
+    <script src="../js/user/gamification.js?v=20260823_v36"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v36"></script>
+    <script src="../js/user/userApp.js?v=20260823_v36"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v35"></script>
+    <script src="../js/shared/animations.js?v=20260823_v36"></script>
 </body>
 </html>
