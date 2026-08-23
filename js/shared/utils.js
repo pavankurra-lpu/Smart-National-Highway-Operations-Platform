@@ -176,9 +176,9 @@ window.toggleNhaiSidebar = function(forceOpen) {
         toggleBtn.classList.toggle('shifted', isCollapsed);
         const icon = toggleBtn.querySelector('i');
         if (icon) {
-            icon.className = isCollapsed ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+            icon.className = 'fa-solid fa-bars';
         }
-        toggleBtn.title = isCollapsed ? 'Open NHAI Operations Panel' : 'Close NHAI Panel';
+        toggleBtn.title = isCollapsed ? 'Open NHAI Operations Panel' : 'Collapse NHAI Panel';
     }
 
     if (backdrop) {
