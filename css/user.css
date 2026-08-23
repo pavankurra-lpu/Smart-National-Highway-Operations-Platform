@@ -2043,54 +2043,70 @@ body.light-mode .google-ac-subtitle {
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background: rgba(15, 23, 42, 0.90);
-        backdrop-filter: blur(24px) saturate(200%);
-        -webkit-backdrop-filter: blur(24px) saturate(200%);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        color: #fff;
-        font-size: 16px;
+        background: rgba(15, 23, 42, 0.94);
+        backdrop-filter: blur(28px) saturate(220%);
+        -webkit-backdrop-filter: blur(28px) saturate(220%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #f8fafc;
+        font-size: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         cursor: pointer;
         transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
         flex-shrink: 0;
+        -webkit-tap-highlight-color: transparent;
     }
     .mobile-bar-btn:active {
-        transform: scale(0.92);
-        background: rgba(99, 102, 241, 0.3);
+        transform: scale(0.90);
+    }
+    #btn-mobile-voice {
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.35));
+        border: 1px solid rgba(168, 85, 247, 0.45);
+        color: #e0e7ff;
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    #btn-mobile-voice i {
+        font-size: 16px;
+        filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
     }
 
     .mobile-search-pill {
         flex: 1;
         height: 44px;
-        background: rgba(15, 23, 42, 0.90);
-        backdrop-filter: blur(24px) saturate(200%);
-        -webkit-backdrop-filter: blur(24px) saturate(200%);
-        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(15, 23, 42, 0.94);
+        backdrop-filter: blur(28px) saturate(220%);
+        -webkit-backdrop-filter: blur(28px) saturate(220%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 24px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         display: flex;
         align-items: center;
-        padding: 0 14px;
-        gap: 10px;
+        padding: 0 16px;
+        gap: 12px;
         cursor: pointer;
         overflow: hidden;
         transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        -webkit-tap-highlight-color: transparent;
     }
     .mobile-search-pill:active {
-        border-color: rgba(99, 102, 241, 0.5);
+        border-color: rgba(56, 189, 248, 0.6);
+        background: rgba(15, 23, 42, 0.98);
         transform: scale(0.98);
+    }
+    .mobile-search-pill i {
+        filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
     }
 
     .mobile-search-text {
-        font-size: 12px;
+        font-size: 12.5px;
         font-weight: 600;
         color: #f1f5f9;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        letter-spacing: 0.2px;
     }
     .search-placeholder {
         color: #94a3b8;

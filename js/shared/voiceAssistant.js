@@ -264,8 +264,9 @@ const VoiceAssistant = {
                 if (origInput) origInput.value = origin.charAt(0).toUpperCase() + origin.slice(1);
                 if (destInput) destInput.value = dest.charAt(0).toUpperCase() + dest.slice(1);
 
-                const btnCalc = document.getElementById('btn-calculate-route');
-                if (btnCalc) btnCalc.click();
+                if (window.IndiaMapPlanner && typeof IndiaMapPlanner.processRoute === 'function') {
+                    IndiaMapPlanner.processRoute();
+                }
                 Utils.showToast(`Voice Route: ${origin} ➔ ${dest} 🛣️`, 'success');
                 VoiceAssistant.speak(`Calculating optimal route from ${origin} to ${dest}`);
             }, 600);
@@ -280,55 +281,10 @@ const VoiceAssistant = {
 
         if (!placeTarget) placeTarget = cleanLower;
 
-        // Search local database first
+        // Resolve via unified place resolver
         let matchedPlace = null;
-        if (window.IndiaMapData && Array.isArray(IndiaMapData.CITIES)) {
-            matchedPlace = IndiaMapData.CITIES.find(c => 
-                c.name.toLowerCase() === placeTarget || 
-                c.id.toLowerCase() === placeTarget ||
-                c.name.toLowerCase().includes(placeTarget) ||
-                placeTarget.includes(c.name.toLowerCase())
-            );
-        }
-
-        // Search in TollSeedData if user spoke a toll plaza
-        if (!matchedPlace && window.TollSeedData) {
-            const matchedToll = TollSeedData.find(t => 
-                t.name.toLowerCase().includes(placeTarget) ||
-                placeTarget.includes(t.name.toLowerCase())
-            );
-            if (matchedToll) {
-                matchedPlace = {
-                    name: matchedToll.name,
-                    state: matchedToll.state,
-                    lat: matchedToll.lat,
-                    lng: matchedToll.lng,
-                    details: `Toll Plaza [NH-${matchedToll.nhCorridor || 'Corridor'}] • Fee: ₹${matchedToll.feeLMV || '100'} LMV`,
-                    category: 'TOLL PLAZA'
-                };
-            }
-        }
-
-        // If not in local dataset, geocode via Nominatim OSM in India
-        if (!matchedPlace) {
-            try {
-                const geoUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(placeTarget + ', India')}&countrycodes=in&limit=1`;
-                const resp = await fetch(geoUrl);
-                const results = await resp.json();
-                if (results && results.length > 0) {
-                    const top = results[0];
-                    matchedPlace = {
-                        name: top.display_name.split(',')[0],
-                        state: top.display_name.split(',').slice(1, 3).join(',').trim(),
-                        lat: parseFloat(top.lat),
-                        lng: parseFloat(top.lon),
-                        details: top.display_name,
-                        category: top.type ? top.type.toUpperCase() : 'LOCATION'
-                    };
-                }
-            } catch (err) {
-                console.warn("Nominatim voice geocode error:", err);
-            }
+        if (window.IndiaMapPlanner && typeof IndiaMapPlanner.resolvePlaceQuery === 'function') {
+            matchedPlace = await IndiaMapPlanner.resolvePlaceQuery(placeTarget);
         }
 
         setTimeout(() => {
@@ -339,7 +295,6 @@ const VoiceAssistant = {
                 IndiaMapPlanner.showVoicePlaceResult(matchedPlace);
                 Utils.showToast(`Found: ${matchedPlace.name} 📍`, 'success');
             } else {
-                // If could not resolve coordinates, put into destination input
                 const destInput = document.getElementById('route-dest-input');
                 if (destInput) {
                     destInput.value = placeTarget.charAt(0).toUpperCase() + placeTarget.slice(1);

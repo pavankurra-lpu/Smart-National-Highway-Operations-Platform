@@ -125,7 +125,7 @@ const IndiaMapPlanner = {
 
         // ── Sidebar toggle (handled via inline onclick in HTML now) ─────────────────────────────────────────
 
-        // ── Autocomplete ───────────────────────────────────────────
+        // ── Autocomplete & Place Card Integration ───────────────────────────────────────────
         IndiaMapPlanner.setupAutocomplete('route-origin-input', 'origin-suggestions', city => {
             if (city.lat === 0 && city.lng === 0) {
                 IndiaMapPlanner._geocodeVillage(city, (res) => {
@@ -139,17 +139,38 @@ const IndiaMapPlanner = {
                 IndiaMapPlanner.showWeatherPopup('origin', city.name, city.lat, city.lng);
             }
         });
+
         IndiaMapPlanner.setupAutocomplete('route-dest-input', 'dest-suggestions', city => {
-            if (city.lat === 0 && city.lng === 0) {
-                IndiaMapPlanner._geocodeVillage(city, (res) => {
-                    IndiaMapPlanner.selectedDest = res;
-                    IndiaMapPlanner.setDestMarker(res);
-                    IndiaMapPlanner.showWeatherPopup('destination', res.name, res.lat, res.lng);
+            const handleDest = (res) => {
+                IndiaMapPlanner.selectedDest = res;
+                IndiaMapPlanner.selectedDestination = res;
+                IndiaMapPlanner.setDestMarker(res);
+                IndiaMapPlanner.showWeatherPopup('destination', res.name, res.lat, res.lng);
+                IndiaMapPlanner.showVoicePlaceResult({
+                    name: res.name,
+                    state: res.state || '',
+                    lat: res.lat,
+                    lng: res.lng,
+                    category: 'DESTINATION'
                 });
+            };
+
+            if (city.lat === 0 && city.lng === 0) {
+                IndiaMapPlanner._geocodeVillage(city, handleDest);
             } else {
-                IndiaMapPlanner.selectedDest = city;
-                IndiaMapPlanner.setDestMarker(city);
-                IndiaMapPlanner.showWeatherPopup('destination', city.name, city.lat, city.lng);
+                handleDest(city);
+            }
+        });
+
+        // Pressing Enter in search input resolves place and displays Google Maps place card
+        ['route-dest-input', 'route-origin-input'].forEach(inputId => {
+            const el = document.getElementById(inputId);
+            if (el) {
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && el.value.trim()) {
+                        IndiaMapPlanner.quickSearchPlace(el.value.trim());
+                    }
+                });
             }
         });
 
@@ -3001,10 +3022,87 @@ const IndiaMapPlanner = {
         IndiaMapPlanner.renderMobileSearchSuggestions('');
     },
 
-    quickSearchPlace: (placeName) => {
+    resolvePlaceQuery: async (query) => {
+        if (!query || !query.trim()) return null;
+        let clean = query.trim().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');
+        let cleanLower = clean.toLowerCase();
+
+        // 1. Search in IndiaMapPlanner.cities & IndiaMapData.nodes
+        let cityPool = IndiaMapPlanner.cities || [];
+        if (cityPool.length === 0 && window.IndiaMapData && window.IndiaMapData.nodes) {
+            cityPool = Object.values(IndiaMapData.nodes);
+        }
+
+        let found = cityPool.find(c => c.name && (
+            c.name.toLowerCase() === cleanLower ||
+            c.name.toLowerCase().startsWith(cleanLower) ||
+            cleanLower.startsWith(c.name.toLowerCase()) ||
+            c.name.toLowerCase().includes(cleanLower) ||
+            cleanLower.includes(c.name.toLowerCase())
+        ));
+
+        if (found && found.lat && found.lng) {
+            return {
+                name: found.name,
+                state: found.state || 'India',
+                lat: parseFloat(found.lat),
+                lng: parseFloat(found.lng),
+                details: `National Highway City • ${found.state || 'India'} Corridor`,
+                category: 'CITY / JUNCTION'
+            };
+        }
+
+        // 2. Search in TollSeedData
+        if (window.TollSeedData && Array.isArray(TollSeedData)) {
+            const matchedToll = TollSeedData.find(t => t.name && (
+                t.name.toLowerCase().includes(cleanLower) ||
+                cleanLower.includes(t.name.toLowerCase())
+            ));
+            if (matchedToll) {
+                return {
+                    name: matchedToll.name,
+                    state: matchedToll.state || 'India',
+                    lat: parseFloat(matchedToll.lat),
+                    lng: parseFloat(matchedToll.lng),
+                    details: `Toll Plaza [NH-${matchedToll.nhCorridor || 'Corridor'}] • Fee: ₹${matchedToll.feeLMV || '100'} LMV`,
+                    category: 'TOLL PLAZA'
+                };
+            }
+        }
+
+        // 3. Fallback to OpenStreetMap Nominatim live geocoding
+        try {
+            const geoUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(clean + ', India')}&countrycodes=in&limit=1`;
+            const resp = await fetch(geoUrl);
+            const results = await resp.json();
+            if (results && results.length > 0) {
+                const top = results[0];
+                return {
+                    name: top.display_name.split(',')[0].trim(),
+                    state: top.display_name.split(',').slice(1, 3).join(',').trim(),
+                    lat: parseFloat(top.lat),
+                    lng: parseFloat(top.lon),
+                    details: top.display_name,
+                    category: top.type ? top.type.toUpperCase() : 'LOCATION'
+                };
+            }
+        } catch (e) {
+            console.warn('Geocoding error:', e);
+        }
+
+        return null;
+    },
+
+    quickSearchPlace: async (placeName) => {
         IndiaMapPlanner.closeMobileSearch();
-        if (window.VoiceAssistant && typeof VoiceAssistant._handleVoiceRouteQuery === 'function') {
-            VoiceAssistant._handleVoiceRouteQuery(placeName);
+        Utils.showToast(`Searching "${placeName}"... 🔍`, 'info');
+
+        const place = await IndiaMapPlanner.resolvePlaceQuery(placeName);
+        if (place) {
+            IndiaMapPlanner.showVoicePlaceResult(place);
+            Utils.showToast(`Found: ${place.name} 📍`, 'success');
+        } else {
+            Utils.showToast(`Could not pinpoint "${placeName}".`, 'warning');
         }
     },
 
@@ -3221,7 +3319,6 @@ const IndiaMapPlanner = {
             { id: 'mobile-fab-avatar', text: '🚗 3D Vehicle Avatar' },
             { id: 'mobile-fab-layer', text: '🛰️ Satellite / Dark View' },
             { id: 'mobile-fab-sos', text: '🚑 1033 Rapid Emergency SOS' },
-            { id: 'btn-mobile-menu', text: '☰ NHAI Operations Menu' },
             { id: 'btn-mobile-voice', text: '🎙️ Voice Route Assistant' },
             { id: 'mobile-search-trigger', text: '🔍 Search Route & Tolls' },
             { id: 'btn-toggle-route-window', text: '▲ Expand / Minimize Route' }
