@@ -111,9 +111,6 @@ const IndiaMapPlanner = {
             if (IndiaMapPlanner.map) IndiaMapPlanner.map.invalidateSize();
         }, 200);
 
-        // Initialize SNHOP Access toolbar controls
-        IndiaMapPlanner._initSnhopTools();
-
         // Fly to center on open
         setTimeout(() => {
             if (IndiaMapPlanner.map) {
@@ -1872,6 +1869,10 @@ const IndiaMapPlanner = {
                     if (icon) icon.className = 'fa-solid fa-bars';
                 }
             }
+            const mobileSearchDisplay = document.getElementById('mobile-search-display');
+            if (mobileSearchDisplay) {
+                mobileSearchDisplay.innerHTML = `<span style="font-weight:700; color:#fff;">📍 ${rData.originName} ➔ ${rData.destName}</span> <span style="color:#38bdf8; font-size:11px; margin-left:4px;">(${rData.totalDist} km)</span>`;
+            }
             const routePanel = document.getElementById('route-summary-panel');
             if (routePanel) {
                 routePanel.classList.remove('hidden');
@@ -2956,96 +2957,102 @@ const IndiaMapPlanner = {
     },
 
     // ═══════════════════════════════════════════════════════════════
-    // SNHOP ACCESS QUICK CONTROLS (Locate Me, 3D Avatar, Map Mode)
+    // GOOGLE MAPS STYLE MOBILE CONTROLS
     // ═══════════════════════════════════════════════════════════════
-    _initSnhopTools: () => {
-        // 1. Locate Me inside SNHOP Access
-        const btnLocate = document.getElementById('snhop-btn-locate');
-        if (btnLocate) {
-            btnLocate.addEventListener('click', () => {
-                const icon = btnLocate.querySelector('i');
-                if (icon) icon.className = 'fa-solid fa-spinner fa-spin';
-                IndiaMapPlanner.getReliableUserLocation(
-                    (loc) => {
-                        const lat = loc.lat;
-                        const lng = loc.lng;
-                        if (icon) icon.className = 'fa-solid fa-location-crosshairs';
-                        if (IndiaMapPlanner.map) IndiaMapPlanner.map.flyTo([lat, lng], 13, { duration: 1.2 });
-                        
-                        if (IndiaMapPlanner.userLocationMarker) IndiaMapPlanner.userLocationMarker.remove();
-                        IndiaMapPlanner.userLocationMarker = L.marker([lat, lng], { icon: IndiaMapPlanner._getUserLocIcon() })
-                            .bindTooltip("My Location 📍", { permanent: false, direction: 'top' })
-                            .addTo(IndiaMapPlanner.map);
-                        Utils.showToast(`Located successfully via ${loc.source || 'GPS'}! 📍`, "success");
-                        const state = IndiaMapPlanner._getLocalStateFromCoords(lat, lng) || loc.state;
-                        if (state) IndiaMapPlanner.fetchLiveNewsAlerts(state);
-                    },
-                    () => {
-                        if (icon) icon.className = 'fa-solid fa-location-crosshairs';
-                        Utils.showToast("Could not retrieve GPS location.", "error");
-                    }
-                );
-            });
-        }
-
-        // 2. 3D Avatar Switcher inside SNHOP Access
-        const btnAvatar = document.getElementById('snhop-btn-avatar');
-        if (btnAvatar) {
-            btnAvatar.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const currentIndex = IndiaMapPlanner._vehicleTypes.indexOf(IndiaMapPlanner._currentVehicleAvatar || 'default');
-                const nextIndex = (currentIndex + 1) % IndiaMapPlanner._vehicleTypes.length;
-                const chosen = IndiaMapPlanner._vehicleTypes[nextIndex];
-                IndiaMapPlanner._currentVehicleAvatar = chosen;
-
-                const iconEl = document.getElementById('snhop-avatar-icon');
-                const lblEl = document.getElementById('snhop-avatar-label');
-                const vIcon = IndiaMapPlanner._vehicleIcons[chosen] || '📍';
-                const vName = IndiaMapPlanner._vehicleNames[chosen] || chosen;
-                if (iconEl) iconEl.textContent = vIcon;
-                if (lblEl) lblEl.textContent = vName;
-
-                if (IndiaMapPlanner.userLocationMarker) {
-                    const latlng = IndiaMapPlanner.userLocationMarker.getLatLng();
-                    IndiaMapPlanner.userLocationMarker.remove();
-                    IndiaMapPlanner.userLocationMarker = L.marker(latlng, { icon: IndiaMapPlanner._getUserLocIcon() })
-                        .bindTooltip("My Location", { permanent: false, direction: 'top' })
-                        .addTo(IndiaMapPlanner.map);
+    openMobileSearch: () => {
+        const sidebar = document.getElementById('nhai-sidebar');
+        if (sidebar) {
+            sidebar.classList.remove('collapsed');
+            document.getElementById('tab-btn-plan')?.click();
+            setTimeout(() => {
+                const dest = document.getElementById('route-dest-input');
+                const orig = document.getElementById('route-origin-input');
+                if (dest && !dest.value) {
+                    dest.focus();
+                } else if (orig) {
+                    orig.focus();
                 }
-                Utils.showToast(`3D Avatar switched to: ${vName} ${vIcon}`, "info");
-            });
+            }, 300);
         }
+    },
 
-        // 3. Dark Mode / Satellite View Switcher inside SNHOP Access
-        const btnTheme = document.getElementById('snhop-btn-theme');
-        if (btnTheme) {
-            btnTheme.addEventListener('click', () => {
-                const icon = document.getElementById('snhop-theme-icon');
-                const label = document.getElementById('snhop-theme-label');
-                if (IndiaMapPlanner._isSatellite) {
-                    // Switch to Dark Mode
-                    if (IndiaMapPlanner.map) {
-                        if (IndiaMapPlanner._satelliteLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._satelliteLayer);
-                        if (IndiaMapPlanner._labelsLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._labelsLayer);
-                        if (IndiaMapPlanner._streetLayer) IndiaMapPlanner._streetLayer.addTo(IndiaMapPlanner.map);
-                    }
-                    IndiaMapPlanner._isSatellite = false;
-                    if (icon) icon.className = 'fa-solid fa-moon';
-                    if (label) label.textContent = 'Dark Mode';
-                    Utils.showToast("Dark Mode enabled 🌙", "info");
-                } else {
-                    // Switch to Satellite View
-                    if (IndiaMapPlanner.map) {
-                        if (IndiaMapPlanner._streetLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._streetLayer);
-                        if (IndiaMapPlanner._satelliteLayer) IndiaMapPlanner._satelliteLayer.addTo(IndiaMapPlanner.map);
-                        if (IndiaMapPlanner._labelsLayer) IndiaMapPlanner._labelsLayer.addTo(IndiaMapPlanner.map);
-                    }
-                    IndiaMapPlanner._isSatellite = true;
-                    if (icon) icon.className = 'fa-solid fa-satellite';
-                    if (label) label.textContent = 'Satellite';
-                    Utils.showToast("Satellite View enabled 🛰️", "info");
-                }
-            });
+    openMobileAvatarModal: () => {
+        const modal = document.getElementById('mobile-avatar-modal');
+        const grid = document.getElementById('mobile-avatar-grid');
+        if (!modal || !grid) return;
+
+        grid.innerHTML = IndiaMapPlanner._vehicleTypes.map(key => {
+            const isSelected = (IndiaMapPlanner._currentVehicleAvatar || 'default') === key;
+            const icon = IndiaMapPlanner._vehicleIcons[key] || '📍';
+            const name = IndiaMapPlanner._vehicleNames[key] || key;
+            return `
+                <div class="avatar-option-card ${isSelected ? 'selected' : ''}" onclick="IndiaMapPlanner.selectMobileAvatar('${key}')" style="background:rgba(255,255,255,0.06); border:1px solid ${isSelected ? '#38bdf8':'rgba(255,255,255,0.1)'}; border-radius:12px; padding:10px 6px; text-align:center; cursor:pointer;">
+                    <div style="font-size:24px; margin-bottom:4px;">${icon}</div>
+                    <div style="font-size:10px; font-weight:700; color:#fff;">${name}</div>
+                </div>
+            `;
+        }).join('');
+
+        Utils.toggleVisibility('mobile-avatar-modal', true);
+    },
+
+    selectMobileAvatar: (key) => {
+        IndiaMapPlanner._currentVehicleAvatar = key;
+        const icon = IndiaMapPlanner._vehicleIcons[key] || '📍';
+        const name = IndiaMapPlanner._vehicleNames[key] || key;
+
+        const mobileEmoji = document.getElementById('mobile-avatar-emoji');
+        if (mobileEmoji) mobileEmoji.textContent = icon;
+
+        const dockLabel = document.getElementById('dock-avatar-label');
+        if (dockLabel) dockLabel.textContent = `Avatar: ${name}`;
+
+        if (IndiaMapPlanner.userLocationMarker) {
+            const latlng = IndiaMapPlanner.userLocationMarker.getLatLng();
+            IndiaMapPlanner.userLocationMarker.remove();
+            IndiaMapPlanner.userLocationMarker = L.marker(latlng, { icon: IndiaMapPlanner._getUserLocIcon() })
+                .bindTooltip("My Location", { permanent: false, direction: 'top' })
+                .addTo(IndiaMapPlanner.map);
+        }
+        Utils.toggleVisibility('mobile-avatar-modal', false);
+        Utils.showToast(`3D Avatar changed to ${name} ${icon}`, 'success');
+    },
+
+    toggleSatelliteStreet: () => {
+        const iconEl = document.getElementById('mobile-layer-icon');
+        const dockLayerLabel = document.getElementById('dock-layer-label');
+
+        if (IndiaMapPlanner._isSatellite) {
+            // Switch Satellite -> Dark Mode
+            if (IndiaMapPlanner.map) {
+                if (IndiaMapPlanner._satelliteLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._satelliteLayer);
+                if (IndiaMapPlanner._labelsLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._labelsLayer);
+                if (IndiaMapPlanner._streetLayer) IndiaMapPlanner._streetLayer.addTo(IndiaMapPlanner.map);
+            }
+            IndiaMapPlanner._isSatellite = false;
+            if (iconEl) iconEl.className = 'fa-solid fa-moon';
+            if (dockLayerLabel) dockLayerLabel.textContent = 'Dark Mode';
+            Utils.showToast('Dark Mode enabled 🌙', 'info');
+        } else {
+            // Switch Dark Mode -> Satellite View
+            if (IndiaMapPlanner.map) {
+                if (IndiaMapPlanner._streetLayer) IndiaMapPlanner.map.removeLayer(IndiaMapPlanner._streetLayer);
+                if (IndiaMapPlanner._satelliteLayer) IndiaMapPlanner._satelliteLayer.addTo(IndiaMapPlanner.map);
+                if (IndiaMapPlanner._labelsLayer) IndiaMapPlanner._labelsLayer.addTo(IndiaMapPlanner.map);
+            }
+            IndiaMapPlanner._isSatellite = true;
+            if (iconEl) iconEl.className = 'fa-solid fa-satellite';
+            if (dockLayerLabel) dockLayerLabel.textContent = 'Satellite View';
+            Utils.showToast('Satellite View enabled 🛰️', 'info');
+        }
+    },
+
+    triggerVoiceRoute: () => {
+        if (window.VoiceAssistant && typeof VoiceAssistant.toggleListening === 'function') {
+            VoiceAssistant.toggleListening();
+        } else {
+            IndiaMapPlanner.openMobileSearch();
+            Utils.showToast('🎙️ Speak origin and destination in Search', 'info');
         }
     },
 

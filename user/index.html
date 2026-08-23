@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v12">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v12">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v13">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v13">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -102,9 +102,39 @@
         <!-- FULL SCREEN MAP (behind everything) -->
         <div id="map"></div>
 
-        <!-- Floating Locate Me Button is dynamically injected by map planner -->
+        <!-- Google Maps Style Floating App Bar (Mobile Viewport Only) -->
+        <div class="mobile-app-bar" id="mobile-app-bar">
+            <button type="button" class="mobile-bar-btn" id="btn-mobile-menu" title="Open NHAI Operations Drawer" onclick="document.getElementById('nhai-sidebar').classList.toggle('collapsed');">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="mobile-search-pill" id="mobile-search-trigger" onclick="IndiaMapPlanner.openMobileSearch();">
+                <i class="fa-solid fa-magnifying-glass" style="color: #38bdf8; font-size: 13px;"></i>
+                <div class="mobile-search-text" id="mobile-search-display">
+                    <span class="search-placeholder">Where to? Search route & tolls...</span>
+                </div>
+            </div>
+            <button type="button" class="mobile-bar-btn" id="btn-mobile-voice" title="Voice Search" onclick="IndiaMapPlanner.triggerVoiceRoute();">
+                <i class="fa-solid fa-microphone" style="color:#6366f1;"></i>
+            </button>
+        </div>
 
-        <!-- Sidebar Toggle Button -->
+        <!-- Google Maps Style Floating Action Buttons (FABs) (Mobile Viewport Only) -->
+        <div class="mobile-fab-stack" id="mobile-fab-stack">
+            <button type="button" class="mobile-fab" id="mobile-fab-locate" title="Locate Me (GPS)" onclick="IndiaMapPlanner.locateUser();">
+                <i class="fa-solid fa-location-crosshairs"></i>
+            </button>
+            <button type="button" class="mobile-fab" id="mobile-fab-avatar" title="Choose 3D Avatar" onclick="IndiaMapPlanner.openMobileAvatarModal();">
+                <span id="mobile-avatar-emoji">🚗</span>
+            </button>
+            <button type="button" class="mobile-fab" id="mobile-fab-layer" title="Map Mode (Dark / Satellite)" onclick="IndiaMapPlanner.toggleSatelliteStreet();">
+                <i id="mobile-layer-icon" class="fa-solid fa-satellite"></i>
+            </button>
+            <button type="button" class="mobile-fab fab-sos" id="mobile-fab-sos" title="1033 Rapid Emergency SOS" onclick="document.getElementById('tab-btn-sos')?.click(); document.getElementById('nhai-sidebar').classList.remove('collapsed');">
+                <i class="fa-solid fa-truck-medical"></i>
+            </button>
+        </div>
+
+        <!-- Sidebar Toggle Button (Desktop & Drawer) -->
         <button id="sidebar-toggle" class="sidebar-toggle" title="Close NHAI Panel" onclick="
             document.getElementById('nhai-sidebar').classList.toggle('collapsed'); 
             this.classList.toggle('shifted'); 
@@ -118,8 +148,6 @@
             }">
             <i class="fa-solid fa-xmark"></i>
         </button>
-
-
 
         <!-- ==============================
              NHAI ACCESS: RIGHT SIDEBAR (Modernized shadcn/ui & KokonutUI style)
@@ -142,22 +170,6 @@
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit
                     </a>
                 </div>
-            </div>
-
-            <!-- SNHOP Quick Map & Environment Controls (Locate Me, 3D Avatar, Satellite/Dark Mode) -->
-            <div class="snhop-quick-tools" id="snhop-quick-tools">
-                <button type="button" class="snhop-tool-btn" id="snhop-btn-locate" title="Locate Me (GPS)">
-                    <i class="fa-solid fa-location-crosshairs"></i>
-                    <span>Locate Me</span>
-                </button>
-                <button type="button" class="snhop-tool-btn" id="snhop-btn-avatar" title="Choose 3D Avatar">
-                    <span id="snhop-avatar-icon">🚗</span>
-                    <span id="snhop-avatar-label">3D Avatar</span>
-                </button>
-                <button type="button" class="snhop-tool-btn" id="snhop-btn-theme" title="Dark Mode / Satellite View">
-                    <i id="snhop-theme-icon" class="fa-solid fa-satellite"></i>
-                    <span id="snhop-theme-label">Map Mode</span>
-                </button>
             </div>
 
             <!-- Active Highway Alerts Ticker (Kokonut UI Style) -->
@@ -847,6 +859,23 @@
         </div>
 
         <!-- ==============================
+             MOBILE 3D AVATAR SELECTION MODAL
+             ============================== -->
+        <div id="mobile-avatar-modal" class="modal-overlay hidden">
+            <div class="glass-panel" style="width:400px; max-width:92%; padding:18px; border-radius:20px;">
+                <div class="modal-header" style="padding-bottom:12px; margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <h3 class="modal-title" style="font-size:14px;"><i class="fa-solid fa-car-side" style="color:var(--primary);"></i> Choose 3D Avatar</h3>
+                    <button class="modal-close" onclick="Utils.toggleVisibility('mobile-avatar-modal', false)" title="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="dock-avatar-grid" id="mobile-avatar-grid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+                    <!-- Avatars populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
              RESOLUTION FEEDBACK MODAL
              ============================== -->
         <div id="resolution-feedback-modal" class="modal-overlay hidden">
@@ -1101,40 +1130,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v12"></script>
+    <script src="../js/config.js?v=20260823_v13"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v12"></script>
-    <script src="../js/shared/storage.js?v=20260823_v12"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v12"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v12"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v12"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v12"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v12"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v12"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v12"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v12"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v12"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v12"></script>
+    <script src="../js/shared/utils.js?v=20260823_v13"></script>
+    <script src="../js/shared/storage.js?v=20260823_v13"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v13"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v13"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v13"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v13"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v13"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v13"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v13"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v13"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v13"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v13"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v12"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v12"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v12"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v12"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v12"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v12"></script>
-    <script src="../js/user/notifications.js?v=20260823_v12"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v12"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v12"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v12"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v12"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v12"></script>
-    <script src="../js/user/gamification.js?v=20260823_v12"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v12"></script>
-    <script src="../js/user/userApp.js?v=20260823_v12"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v13"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v13"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v13"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v13"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v13"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v13"></script>
+    <script src="../js/user/notifications.js?v=20260823_v13"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v13"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v13"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v13"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v13"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v13"></script>
+    <script src="../js/user/gamification.js?v=20260823_v13"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v13"></script>
+    <script src="../js/user/userApp.js?v=20260823_v13"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v12"></script>
+    <script src="../js/shared/animations.js?v=20260823_v13"></script>
 </body>
 </html>
