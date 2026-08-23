@@ -135,51 +135,78 @@ const Gamification = {
 
         const achs = Gamification.getAchievements();
         const isUnlocked = !!achs[badgeId];
-        const statusText = isUnlocked 
-            ? `✅ <b style="color:#10b981;">UNLOCKED</b> on ${new Date(achs[badgeId].unlockedAt || Date.now()).toLocaleDateString()}`
-            : `🔒 <b style="color:#f43f5e;">LOCKED</b> — Complete requirement to unlock`;
 
-        Utils.showToast(`
-            ${bDef.icon} <b>${bDef.name}</b> (+${bDef.xp} XP)<br>
-            <span style="font-size:11px; color:#cbd5e1;">${bDef.desc}</span><br>
-            <span style="font-size:10px;">${statusText}</span>
-        `, isUnlocked ? 'success' : 'info');
+        const modalIcon = document.getElementById('modal-badge-icon');
+        const modalName = document.getElementById('modal-badge-name');
+        const modalXp = document.getElementById('modal-badge-xp');
+        const modalDesc = document.getElementById('modal-badge-desc');
+        const modalStatus = document.getElementById('modal-badge-status');
+
+        if (modalIcon) modalIcon.innerText = bDef.icon || '🏆';
+        if (modalName) modalName.innerText = bDef.name || 'Badge';
+        if (modalXp) modalXp.innerText = `+${bDef.xp || 200} XP Reward`;
+        if (modalDesc) modalDesc.innerText = bDef.desc || '';
+        
+        if (modalStatus) {
+            if (isUnlocked) {
+                const dateStr = new Date(achs[badgeId].unlockedAt || Date.now()).toLocaleDateString('en-IN', {
+                    day: 'numeric', month: 'short', year: 'numeric'
+                });
+                modalStatus.innerHTML = `
+                    <div style="color: #34d399; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 3px;">
+                        <i class="fa-solid fa-circle-check"></i> UNLOCKED
+                    </div>
+                    <div style="color: #94a3b8; font-size: 11px;">Unlocked on ${dateStr}</div>
+                `;
+                modalStatus.style.borderColor = 'rgba(16,185,129,0.3)';
+                modalStatus.style.background = 'rgba(16,185,129,0.1)';
+            } else {
+                modalStatus.innerHTML = `
+                    <div style="color: #f43f5e; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 3px;">
+                        <i class="fa-solid fa-lock"></i> LOCKED
+                    </div>
+                    <div style="color: #94a3b8; font-size: 11px;">Complete the requirement above to unlock this badge and claim XP</div>
+                `;
+                modalStatus.style.borderColor = 'rgba(244,63,94,0.2)';
+                modalStatus.style.background = 'rgba(0,0,0,0.3)';
+            }
+        }
+
+        Utils.toggleVisibility('driver-badge-modal', true);
     },
 
     showPerksModal: () => {
         const currentLvl = Gamification.getLevel();
-        let html = `
-            <div style="font-family:'Inter',sans-serif; padding:10px 4px; max-height:400px; overflow-y:auto;">
-                <h4 style="margin:0 0 10px 0; font-size:14px; color:#fff; display:flex; align-items:center; gap:8px;">
-                    <i class="fa-solid fa-crown" style="color:#fbbf24;"></i> NHAI Driver Rank Tiers & Perks
-                </h4>
-        `;
+        const bodyEl = document.getElementById('driver-perks-modal-body');
+        if (!bodyEl) return;
 
+        let html = '';
         Gamification.levels.forEach(lvl => {
             const isCurrent = lvl.lvl === currentLvl;
             const isUnlocked = currentLvl >= lvl.lvl;
-            const borderCol = isCurrent ? '#38bdf8' : (isUnlocked ? '#10b981' : 'rgba(255,255,255,0.08)');
+            const borderCol = isCurrent ? 'rgba(56,189,248,0.5)' : (isUnlocked ? 'rgba(16,185,129,0.35)' : 'rgba(255,255,255,0.08)');
             const bgCol = isCurrent ? 'rgba(56,189,248,0.12)' : (isUnlocked ? 'rgba(16,185,129,0.08)' : 'rgba(0,0,0,0.25)');
 
             html += `
-                <div style="background:${bgCol}; border:1px solid ${borderCol}; border-radius:8px; padding:8px 12px; margin-bottom:8px;">
+                <div style="background:${bgCol}; border:1px solid ${borderCol}; border-radius:10px; padding:10px 14px; margin-bottom:10px; transition: all 0.2s ease;">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <div style="font-weight:700; font-size:12px; color:${lvl.titleColor};">
-                            ${lvl.icon} Level ${lvl.lvl}: ${lvl.name}
+                        <div style="font-weight:800; font-size:13px; color:${lvl.titleColor}; display:flex; align-items:center; gap:6px;">
+                            <span>${lvl.icon}</span> <span>Level ${lvl.lvl}: ${lvl.name}</span>
                         </div>
-                        <span style="font-size:9.5px; font-weight:700; color:${isUnlocked ? '#10b981' : '#94a3b8'};">
+                        <span style="font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:12px; background:${isCurrent ? 'rgba(56,189,248,0.2)' : (isUnlocked ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.06)')}; color:${isCurrent ? '#38bdf8' : (isUnlocked ? '#34d399' : '#94a3b8')};">
                             ${isCurrent ? '⭐ CURRENT' : (isUnlocked ? '✓ UNLOCKED' : `${lvl.xpNeeded} XP`)}
                         </span>
                     </div>
-                    <div style="font-size:11px; color:#cbd5e1; margin-top:3px;">
-                        <i class="fa-solid fa-sparkles" style="color:#fbbf24; font-size:9px;"></i> ${lvl.perk}
+                    <div style="font-size:11.5px; color:#cbd5e1; margin-top:5px; display:flex; align-items:flex-start; gap:6px;">
+                        <i class="fa-solid fa-wand-magic-sparkles" style="color:#fbbf24; font-size:10px; margin-top:3px; flex-shrink:0;"></i>
+                        <span>${lvl.perk}</span>
                     </div>
                 </div>
             `;
         });
 
-        html += `</div>`;
-        Utils.showToast(html, 'info');
+        bodyEl.innerHTML = html;
+        Utils.toggleVisibility('driver-perks-modal', true);
     },
 
     refreshUI: () => {

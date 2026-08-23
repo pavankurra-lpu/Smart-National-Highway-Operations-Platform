@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v34">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v34">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v35">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v35">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -1085,6 +1085,59 @@
         </div>
 
         <!-- ==============================
+             DRIVER PERKS & RANKS MODAL
+             ============================== -->
+        <div id="driver-perks-modal" class="modal-overlay hidden" style="z-index: 10007;">
+            <div class="glass-panel" style="width: 580px; max-width: 95%; max-height: 90vh; display: flex; flex-direction: column; padding: 0; text-align: left; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(56,189,248,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
+                <div class="modal-header" style="padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
+                    <h3 class="modal-title" style="margin: 0; color: #fff; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-crown" style="color: #fbbf24;"></i> NHAI Driver Rank Tiers & Perks
+                    </h3>
+                    <button class="modal-close" onclick="Utils.toggleVisibility('driver-perks-modal', false)" title="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="driver-perks-modal-body" style="flex: 1; overflow-y: auto; padding: 18px 20px; max-height: 480px;">
+                    <!-- Rendered by Gamification.showPerksModal() -->
+                </div>
+                <div style="padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
+                    <span style="font-size: 11px; color: #94a3b8;"><i class="fa-solid fa-bolt" style="color: #fbbf24;"></i> Earn XP from trips, FASTag recharges & emergency reports</span>
+                    <button class="btn btn-primary" style="padding: 6px 16px; font-size: 11.5px;" onclick="Utils.toggleVisibility('driver-perks-modal', false)">
+                        Got It
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
+             DRIVER BADGE DETAIL MODAL
+             ============================== -->
+        <div id="driver-badge-modal" class="modal-overlay hidden" style="z-index: 10007;">
+            <div class="glass-panel" style="width: 440px; max-width: 95%; padding: 0; text-align: center; border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(99,102,241,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
+                <div class="modal-header" style="padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
+                    <span style="font-size: 11px; font-weight: 700; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px;">Achievement Details</span>
+                    <button class="modal-close" onclick="Utils.toggleVisibility('driver-badge-modal', false)" title="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div style="padding: 24px 20px;">
+                    <div id="modal-badge-icon" style="font-size: 48px; margin-bottom: 10px;">🏆</div>
+                    <h3 id="modal-badge-name" style="color: #fff; font-size: 18px; font-weight: 800; margin: 0 0 6px 0;">Badge Name</h3>
+                    <div id="modal-badge-xp" style="display: inline-block; font-size: 11px; font-weight: 800; color: #34d399; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); padding: 2px 8px; border-radius: 20px; margin-bottom: 12px;">+200 XP</div>
+                    <p id="modal-badge-desc" style="color: #cbd5e1; font-size: 12.5px; line-height: 1.5; margin: 0 0 16px 0;">Badge criteria description.</p>
+                    <div id="modal-badge-status" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px 14px; font-size: 11.5px;">
+                        <!-- Status text -->
+                    </div>
+                </div>
+                <div style="padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.35);">
+                    <button class="btn btn-primary w-full" style="justify-content: center; font-size: 12px;" onclick="Utils.toggleVisibility('driver-badge-modal', false)">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
              RESOLUTION FEEDBACK MODAL
              ============================== -->
         <div id="resolution-feedback-modal" class="modal-overlay hidden">
@@ -1339,40 +1392,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v34"></script>
+    <script src="../js/config.js?v=20260823_v35"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v34"></script>
-    <script src="../js/shared/storage.js?v=20260823_v34"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v34"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v34"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v34"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v34"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v34"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v34"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v34"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v34"></script>
-    <script src="../js/themeManager.js?v=20260823_v34"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v34"></script>
+    <script src="../js/shared/utils.js?v=20260823_v35"></script>
+    <script src="../js/shared/storage.js?v=20260823_v35"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v35"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v35"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v35"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v35"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v35"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v35"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v35"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v35"></script>
+    <script src="../js/themeManager.js?v=20260823_v35"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v35"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v34"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v34"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v34"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v34"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v34"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v34"></script>
-    <script src="../js/user/notifications.js?v=20260823_v34"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v34"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v34"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v34"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v34"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v34"></script>
-    <script src="../js/user/gamification.js?v=20260823_v34"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v34"></script>
-    <script src="../js/user/userApp.js?v=20260823_v34"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v35"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v35"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v35"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v35"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v35"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v35"></script>
+    <script src="../js/user/notifications.js?v=20260823_v35"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v35"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v35"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v35"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v35"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v35"></script>
+    <script src="../js/user/gamification.js?v=20260823_v35"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v35"></script>
+    <script src="../js/user/userApp.js?v=20260823_v35"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v34"></script>
+    <script src="../js/shared/animations.js?v=20260823_v35"></script>
 </body>
 </html>

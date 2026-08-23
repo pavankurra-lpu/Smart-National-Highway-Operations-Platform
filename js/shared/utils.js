@@ -46,7 +46,7 @@ const Utils = {
         // Parse message: "Title: Description"
         let title = 'System Update';
         let desc = message;
-        if (message.includes(':')) {
+        if (typeof message === 'string' && !message.includes('<') && message.includes(':')) {
             const parts = message.split(':');
             title = parts[0].trim();
             desc = parts.slice(1).join(':').trim();
