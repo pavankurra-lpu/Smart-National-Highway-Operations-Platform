@@ -218,16 +218,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Exit Animation for Landing Portal
                 animate(entryScreen, { opacity: 0, scale: 0.95 }, { duration: 0.6, easing: 'ease-in-out' });
                 
-                // Entrance for Main App Panel
+                // Entrance for Main App Panel (Desktop only)
                 setTimeout(() => {
                     const sidebar = document.getElementById('nhai-sidebar');
                     if (sidebar) {
-                        sidebar.style.opacity = '0';
-                        sidebar.style.transform = 'translateX(100px)';
-                        animate(sidebar, 
-                            { opacity: [0, 1], x: [100, 0] }, 
-                            { duration: 0.6, easing: [0.16, 1, 0.3, 1] }
-                        );
+                        if (window.innerWidth > 768) {
+                            sidebar.style.opacity = '0';
+                            sidebar.style.transform = 'translateX(100px)';
+                            animate(sidebar, 
+                                { opacity: [0, 1], x: [100, 0] }, 
+                                { duration: 0.6, easing: [0.16, 1, 0.3, 1] }
+                            );
+                        } else {
+                            sidebar.classList.add('collapsed');
+                            sidebar.style.opacity = '1';
+                            sidebar.style.transform = '';
+                        }
                     }
                     
                     // Stagger reveal the dashboard panels

@@ -1518,12 +1518,30 @@ const IndiaMapPlanner = {
             return null;
         };
 
-        if (!IndiaMapPlanner.selectedOrigin && origInput && origInput.value) {
-            IndiaMapPlanner.selectedOrigin = await resolveLocation(origInput.value, IndiaMapPlanner.selectedOrigin, 'origin');
+        const oVal = (origInput ? origInput.value.trim() : '');
+        const dVal = (destInput ? destInput.value.trim() : '');
+
+        if (oVal) {
+            if (!IndiaMapPlanner.selectedOrigin || IndiaMapPlanner.selectedOrigin.name.toLowerCase() !== oVal.toLowerCase()) {
+                const resO = await resolveLocation(oVal, null, 'origin');
+                if (resO) {
+                    IndiaMapPlanner.selectedOrigin = resO;
+                    IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+                }
+            }
         }
-        if (!IndiaMapPlanner.selectedDest && destInput && destInput.value) {
-            IndiaMapPlanner.selectedDest = await resolveLocation(destInput.value, IndiaMapPlanner.selectedDest, 'destination');
+
+        if (dVal) {
+            if (!IndiaMapPlanner.selectedDest || IndiaMapPlanner.selectedDest.name.toLowerCase() !== dVal.toLowerCase()) {
+                const resD = await resolveLocation(dVal, null, 'destination');
+                if (resD) {
+                    IndiaMapPlanner.selectedDest = resD;
+                    IndiaMapPlanner.selectedDestination = resD;
+                    IndiaMapPlanner.setDestMarker(IndiaMapPlanner.selectedDest);
+                }
+            }
         }
+
         if (!IndiaMapPlanner.selectedDest && IndiaMapPlanner.selectedDestination) {
             IndiaMapPlanner.selectedDest = IndiaMapPlanner.selectedDestination;
         }
@@ -3104,13 +3122,27 @@ const IndiaMapPlanner = {
             }
         }
 
-        // 3. Fallback to OpenStreetMap Nominatim live geocoding
+        // 3. Fallback to Dual-Engine Geocoding (Photon + Nominatim)
         try {
-            const geoUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(clean + ', India')}&countrycodes=in&limit=1`;
-            const resp = await fetch(geoUrl);
-            const results = await resp.json();
-            if (results && results.length > 0) {
-                const top = results[0];
+            const [phoRes, nomRes] = await Promise.all([
+                fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(clean)}&limit=1&lat=20.5937&lon=78.9629`).then(r => r.json()).catch(() => null),
+                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(clean + ', India')}&countrycodes=in&limit=1`).then(r => r.json()).catch(() => null)
+            ]);
+
+            if (phoRes && phoRes.features && phoRes.features.length > 0) {
+                const f = phoRes.features[0];
+                return {
+                    name: f.properties.name || clean,
+                    state: f.properties.state || 'India',
+                    lat: parseFloat(f.geometry.coordinates[1]),
+                    lng: parseFloat(f.geometry.coordinates[0]),
+                    details: `${f.properties.name || clean} • ${f.properties.state || 'India'} Corridor`,
+                    category: 'LOCATION'
+                };
+            }
+
+            if (nomRes && nomRes.length > 0) {
+                const top = nomRes[0];
                 return {
                     name: top.display_name.split(',')[0].trim(),
                     state: top.display_name.split(',').slice(1, 3).join(',').trim(),
@@ -3130,6 +3162,35 @@ const IndiaMapPlanner = {
     quickSearchPlace: async (placeName) => {
         IndiaMapPlanner.closeMobileSearch();
         Utils.showToast(`Searching "${placeName}"... 🔍`, 'info');
+
+        const cleanLower = (placeName || '').trim().toLowerCase();
+        const fromToMatch = cleanLower.match(/(?:route\s+|directions\s+)?(?:from\s+)?([a-z\s]+?)\s+to\s+([a-z\s]+)/i);
+        if (fromToMatch && fromToMatch[1] && fromToMatch[2]) {
+            const originName = fromToMatch[1].replace(/^(from|take|show|find|route|get)\s+/i, '').trim();
+            const destName = fromToMatch[2].replace(/\s+(route|highway|fastest|cheapest)$/i, '').trim();
+
+            const [origPlace, destPlace] = await Promise.all([
+                IndiaMapPlanner.resolvePlaceQuery(originName),
+                IndiaMapPlanner.resolvePlaceQuery(destName)
+            ]);
+
+            if (destPlace) {
+                if (origPlace) {
+                    IndiaMapPlanner.selectedOrigin = {
+                        name: origPlace.name,
+                        state: origPlace.state || '',
+                        lat: origPlace.lat,
+                        lng: origPlace.lng
+                    };
+                    const origInput = document.getElementById('route-origin-input');
+                    if (origInput) origInput.value = origPlace.name;
+                    IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+                }
+                IndiaMapPlanner.showVoicePlaceResult(destPlace);
+                Utils.showToast(`Route: ${originName} ➔ ${destName} 🛣️`, 'success');
+                return;
+            }
+        }
 
         const place = await IndiaMapPlanner.resolvePlaceQuery(placeName);
         if (place) {
