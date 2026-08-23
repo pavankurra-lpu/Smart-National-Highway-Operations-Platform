@@ -2733,6 +2733,10 @@ const IndiaMapPlanner = {
         }
     },
 
+    setDestinationMarker: (place) => {
+        IndiaMapPlanner.setDestMarker(place);
+    },
+
     _getUserLocIcon: () => {
         if (!IndiaMapPlanner._currentVehicleAvatar || IndiaMapPlanner._currentVehicleAvatar === 'default') {
             return L.divIcon({
@@ -3775,13 +3779,14 @@ const IndiaMapPlanner = {
         // Set destination in inputs & state
         const destInput = document.getElementById('route-dest-input');
         if (destInput) destInput.value = place.name;
-        IndiaMapPlanner.selectedDestination = {
+        IndiaMapPlanner.selectedDest = {
             name: place.name,
             lat: parseFloat(place.lat),
             lng: parseFloat(place.lng),
             state: place.state || ''
         };
-        IndiaMapPlanner.setDestinationMarker(IndiaMapPlanner.selectedDestination);
+        IndiaMapPlanner.selectedDestination = IndiaMapPlanner.selectedDest;
+        IndiaMapPlanner.setDestMarker(IndiaMapPlanner.selectedDest);
 
         // Check if origin is already set, or use user GPS location
         const origInput = document.getElementById('route-origin-input');
