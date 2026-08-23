@@ -216,11 +216,16 @@ const IndiaMapPlanner = {
             if (!modal) return;
             const content = document.getElementById('lane-advisor-content');
             const status  = document.getElementById('lane-vehicle-status');
-            const vType   = document.getElementById('vehicle-type')?.value || 'LMV';
-            if (content && IndiaMapPlanner.selectedRouteData) {
+            const vType   = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
+            
+            if (content) {
                 content.innerHTML = LaneAdvisor.renderAdvisor(IndiaMapPlanner.selectedRouteData, IndiaMapPlanner.isSpecialVerified);
             }
-            if (status) status.innerText = `Vehicle: ${vType} | FASTag: ${document.getElementById('pref-fastag')?.checked ? 'ON' : 'OFF'}`;
+            if (status) {
+                status.innerHTML = IndiaMapPlanner.isSpecialVerified
+                    ? '🛡️ <strong>Special Vehicle Verified</strong>: Priority VIP green-corridor lanes unlocked.'
+                    : `Active Vehicle: <strong>${vType}</strong> | FASTag System: <strong>${document.getElementById('pref-fastag')?.checked ? 'Enabled' : 'Disabled'}</strong>`;
+            }
             Utils.toggleVisibility('lane-advisor-modal', true);
         });
 
