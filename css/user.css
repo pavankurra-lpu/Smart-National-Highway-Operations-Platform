@@ -2401,6 +2401,16 @@ body.light-mode .google-ac-subtitle {
         transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
+    /* Mobile: Google Maps Place Card Positioning */
+    .google-place-card {
+        bottom: 14px !important;
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        max-width: calc(100vw - 20px) !important;
+        z-index: 900 !important;
+    }
+
     /* Mobile: Remove Floating Bottom Bar */
     .reactbits-dock-container,
     #map-layer-controls {

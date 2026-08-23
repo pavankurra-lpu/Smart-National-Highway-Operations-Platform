@@ -3873,6 +3873,10 @@ const IndiaMapPlanner = {
         }
     },
 
+    openDestPicker: () => {
+        IndiaMapPlanner.openMobileSearch();
+    },
+
     closePlaceCard: () => {
         const card = document.getElementById('google-place-card');
         if (card) {
