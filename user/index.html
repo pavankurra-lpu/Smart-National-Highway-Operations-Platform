@@ -17,8 +17,8 @@
     <meta name="description" content="NHAI Smart Highway Traveller Portal – Advanced route planning, FASTag toll intelligence, and emergency SOS on Indian national highways.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-    <link rel="stylesheet" href="../css/global.css?v=20260823_v14">
-    <link rel="stylesheet" href="../css/user.css?v=20260823_v14">
+    <link rel="stylesheet" href="../css/global.css?v=20260823_v15">
+    <link rel="stylesheet" href="../css/user.css?v=20260823_v15">
     <!-- Cloudflare Turnstile Verification script -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
@@ -227,6 +227,13 @@
                  ======================== -->
             <div id="tab-plan" class="tab-content active">
                 <div class="flex-col gap-3">
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
+                        <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Trip Corridor</span>
+                        <button type="button" onclick="VoiceAssistant.startListening();" class="btn-voice-header" title="Voice Search Route / Destination (Mic)">
+                            <i class="fa-solid fa-microphone" style="color:#6366f1;"></i> Voice Search
+                        </button>
+                    </div>
 
                     <!-- Modern Connected Route Search Card -->
                     <div class="route-search-card">
@@ -840,6 +847,32 @@
         </div>
 
         <!-- ==============================
+             GOOGLE MAPS STYLE PLACE ACTION CARD (Voice / Search Place Navigation)
+             ============================== -->
+        <div id="google-place-card" class="google-place-card hidden">
+            <div class="place-card-inner">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                    <div>
+                        <div class="place-badge" id="place-badge"><i class="fa-solid fa-location-dot"></i> MATCHED LOCATION</div>
+                        <h3 class="place-name" id="place-name">Jaipur, Rajasthan</h3>
+                        <p class="place-meta" id="place-meta">National Highway Corridor • Weather: 31°C Clear Skies</p>
+                    </div>
+                    <button type="button" class="btn-sheet-mini" onclick="IndiaMapPlanner.closePlaceCard();" title="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="place-actions-row">
+                    <button type="button" class="btn" id="btn-place-directions" onclick="IndiaMapPlanner.routeToPlace();" style="flex:1.2; justify-content:center; font-size:12px; gap:8px; background:linear-gradient(135deg,#10b981,#059669); color:#fff; font-weight:700; box-shadow:0 4px 16px rgba(16,185,129,0.35);">
+                        <i class="fa-solid fa-diamond-turn-right"></i> Directions (Start Route)
+                    </button>
+                    <button type="button" class="btn btn-outline" id="btn-place-explore" onclick="IndiaMapPlanner.explorePlaceTolls();" style="flex:1; justify-content:center; font-size:12px; gap:6px; color:#38bdf8; border-color:rgba(56,189,248,0.3);">
+                        <i class="fa-solid fa-road"></i> Explore Tolls
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
              PASS PLAN MODAL
              ============================== -->
         <div id="pass-plan-modal" class="hidden">
@@ -1172,40 +1205,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
     <!-- Config (must load first) -->
-    <script src="../js/config.js?v=20260823_v14"></script>
+    <script src="../js/config.js?v=20260823_v15"></script>
 
     <!-- Shared JS -->
-    <script src="../js/shared/utils.js?v=20260823_v14"></script>
-    <script src="../js/shared/storage.js?v=20260823_v14"></script>
-    <script src="../js/shared/indiaMapData.js?v=20260823_v14"></script>
-    <script src="../js/shared/tollSeedData.js?v=20260823_v14"></script>
-    <script src="../js/shared/tollData.js?v=20260823_v14"></script>
-    <script src="../js/shared/routeGraph.js?v=20260823_v14"></script>
-    <script src="../js/shared/serviceData.js?v=20260823_v14"></script>
-    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v14"></script>
-    <script src="../js/shared/weatherEngine.js?v=20260823_v14"></script>
-    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v14"></script>
-    <script src="../js/shared/themeManager.js?v=20260823_v14"></script>
-    <script src="../js/shared/voiceAssistant.js?v=20260823_v14"></script>
+    <script src="../js/shared/utils.js?v=20260823_v15"></script>
+    <script src="../js/shared/storage.js?v=20260823_v15"></script>
+    <script src="../js/shared/indiaMapData.js?v=20260823_v15"></script>
+    <script src="../js/shared/tollSeedData.js?v=20260823_v15"></script>
+    <script src="../js/shared/tollData.js?v=20260823_v15"></script>
+    <script src="../js/shared/routeGraph.js?v=20260823_v15"></script>
+    <script src="../js/shared/serviceData.js?v=20260823_v15"></script>
+    <script src="../js/shared/specialVehicleRegistry.js?v=20260823_v15"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v15"></script>
+    <script src="../js/shared/cctvFeedEngine.js?v=20260823_v15"></script>
+    <script src="../js/shared/themeManager.js?v=20260823_v15"></script>
+    <script src="../js/shared/voiceAssistant.js?v=20260823_v15"></script>
 
     <!-- User JS -->
-    <script src="../js/user/entryScreen.js?v=20260823_v14"></script>
-    <script src="../js/user/routeEngine.js?v=20260823_v14"></script>
-    <script src="../js/user/fastagEngine.js?v=20260823_v14"></script>
-    <script src="../js/user/passPlanEngine.js?v=20260823_v14"></script>
-    <script src="../js/user/laneAdvisor.js?v=20260823_v14"></script>
-    <script src="../js/user/emergencyReporter.js?v=20260823_v14"></script>
-    <script src="../js/user/notifications.js?v=20260823_v14"></script>
-    <script src="../js/user/indiaMapPlanner.js?v=20260823_v14"></script>
-    <script src="../js/user/tripAnalytics.js?v=20260823_v14"></script>
-    <script src="../js/user/userProfile.js?v=20260823_v14"></script>
-    <script src="../js/user/vehicleGarage.js?v=20260823_v14"></script>
-    <script src="../js/user/faceAuth.js?v=20260823_v14"></script>
-    <script src="../js/user/gamification.js?v=20260823_v14"></script>
-    <script src="../js/user/userSettings.js?v=20260823_v14"></script>
-    <script src="../js/user/userApp.js?v=20260823_v14"></script>
+    <script src="../js/user/entryScreen.js?v=20260823_v15"></script>
+    <script src="../js/user/routeEngine.js?v=20260823_v15"></script>
+    <script src="../js/user/fastagEngine.js?v=20260823_v15"></script>
+    <script src="../js/user/passPlanEngine.js?v=20260823_v15"></script>
+    <script src="../js/user/laneAdvisor.js?v=20260823_v15"></script>
+    <script src="../js/user/emergencyReporter.js?v=20260823_v15"></script>
+    <script src="../js/user/notifications.js?v=20260823_v15"></script>
+    <script src="../js/user/indiaMapPlanner.js?v=20260823_v15"></script>
+    <script src="../js/user/tripAnalytics.js?v=20260823_v15"></script>
+    <script src="../js/user/userProfile.js?v=20260823_v15"></script>
+    <script src="../js/user/vehicleGarage.js?v=20260823_v15"></script>
+    <script src="../js/user/faceAuth.js?v=20260823_v15"></script>
+    <script src="../js/user/gamification.js?v=20260823_v15"></script>
+    <script src="../js/user/userSettings.js?v=20260823_v15"></script>
+    <script src="../js/user/userApp.js?v=20260823_v15"></script>
     <!-- Motion.dev Animation Library -->
     <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
-    <script src="../js/shared/animations.js?v=20260823_v14"></script>
+    <script src="../js/shared/animations.js?v=20260823_v15"></script>
 </body>
 </html>

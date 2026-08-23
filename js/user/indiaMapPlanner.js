@@ -704,6 +704,15 @@ const IndiaMapPlanner = {
         // Duplicate set for seamless continuous marquee loop (0% to -50%)
         const seamlessSet = [...formatted, ...formatted];
         container.innerHTML = seamlessSet.join('');
+
+        // Dynamically calibrate scroll speed based on actual text length (constant pixels/second)
+        setTimeout(() => {
+            const scrollW = container.scrollWidth;
+            const halfW = scrollW / 2;
+            const pxPerSec = window.innerWidth <= 768 ? 26 : 42;
+            const duration = Math.max(35, Math.round(halfW / pxPerSec));
+            container.style.animationDuration = `${duration}s`;
+        }, 50);
     },
 
     showWeatherPopup: (type, cityName, lat, lng) => {
@@ -3138,6 +3147,127 @@ const IndiaMapPlanner = {
             el.addEventListener('mouseenter', () => showTooltip(el, item.text));
             el.addEventListener('mouseleave', hideTooltip);
         });
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // GOOGLE MAPS STYLE PLACE ACTION CONTROLS
+    // ═══════════════════════════════════════════════════════════════
+    _currentVoicePlace: null,
+    _voicePlaceMarker: null,
+
+    showVoicePlaceResult: (place) => {
+        IndiaMapPlanner._currentVoicePlace = place;
+        const lat = parseFloat(place.lat);
+        const lng = parseFloat(place.lng);
+        if (isNaN(lat) || isNaN(lng)) return;
+
+        // Fly camera directly to location
+        if (IndiaMapPlanner.map) {
+            IndiaMapPlanner.map.flyTo([lat, lng], 13, { duration: 1.4 });
+        }
+
+        // Place glowing animated marker
+        if (IndiaMapPlanner._voicePlaceMarker) IndiaMapPlanner._voicePlaceMarker.remove();
+        const pinIcon = L.divIcon({
+            className: 'voice-place-pin',
+            html: `
+                <div style="position:relative; display:flex; align-items:center; justify-content:center; width:38px; height:38px;">
+                    <div style="position:absolute; width:100%; height:100%; border-radius:50%; background:rgba(56,189,248,0.45); animation:beaconPulse 1.4s infinite;"></div>
+                    <div style="position:relative; width:28px; height:28px; border-radius:50%; background:#0284c7; border:2.5px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px;">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                </div>
+            `,
+            iconSize: [38, 38],
+            iconAnchor: [19, 19]
+        });
+
+        IndiaMapPlanner._voicePlaceMarker = L.marker([lat, lng], { icon: pinIcon })
+            .bindTooltip(`📍 ${place.name}`, { permanent: false, direction: 'top' })
+            .addTo(IndiaMapPlanner.map);
+
+        // Update Google Place Card
+        const card = document.getElementById('google-place-card');
+        const nameEl = document.getElementById('place-name');
+        const metaEl = document.getElementById('place-meta');
+        const badgeEl = document.getElementById('place-badge');
+
+        if (nameEl) nameEl.textContent = place.name + (place.state ? `, ${place.state}` : '');
+        if (metaEl) metaEl.textContent = place.details || 'National Highway Corridor • Tap Directions to Start Route';
+        if (badgeEl) badgeEl.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${place.category || 'MATCHED LOCATION'}`;
+
+        if (card) card.classList.remove('hidden');
+
+        // Close sidebar if open on mobile so place is front and center
+        if (window.innerWidth <= 768) {
+            document.getElementById('nhai-sidebar')?.classList.add('collapsed');
+            document.getElementById('mobile-drawer-backdrop')?.classList.add('hidden');
+        }
+
+        // Voice confirmation
+        VoiceAssistant.speak(`Found ${place.name}. Would you like directions from your location?`);
+    },
+
+    closePlaceCard: () => {
+        const card = document.getElementById('google-place-card');
+        if (card) card.classList.add('hidden');
+        if (IndiaMapPlanner._voicePlaceMarker) {
+            IndiaMapPlanner._voicePlaceMarker.remove();
+            IndiaMapPlanner._voicePlaceMarker = null;
+        }
+    },
+
+    routeToPlace: () => {
+        const place = IndiaMapPlanner._currentVoicePlace;
+        if (!place) return;
+
+        // Set destination
+        const destInput = document.getElementById('route-dest-input');
+        if (destInput) destInput.value = place.name;
+        IndiaMapPlanner.selectedDestination = {
+            name: place.name,
+            lat: parseFloat(place.lat),
+            lng: parseFloat(place.lng),
+            state: place.state || ''
+        };
+        IndiaMapPlanner.setDestinationMarker(IndiaMapPlanner.selectedDestination);
+
+        // Check if origin is already set, or use user location
+        const origInput = document.getElementById('route-origin-input');
+        if (!origInput || !origInput.value) {
+            if (IndiaMapPlanner.userLocationMarker) {
+                const uLoc = IndiaMapPlanner.userLocationMarker.getLatLng();
+                IndiaMapPlanner.selectedOrigin = {
+                    name: 'My Location',
+                    lat: uLoc.lat,
+                    lng: uLoc.lng,
+                    state: ''
+                };
+                if (origInput) origInput.value = 'My Location';
+            } else {
+                IndiaMapPlanner.selectedOrigin = {
+                    name: 'Delhi',
+                    lat: 28.6139,
+                    lng: 77.2090,
+                    state: 'Delhi'
+                };
+                if (origInput) origInput.value = 'Delhi';
+                IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+            }
+        }
+
+        IndiaMapPlanner.closePlaceCard();
+        const btnCalc = document.getElementById('btn-calculate-route');
+        if (btnCalc) btnCalc.click();
+        VoiceAssistant.speak(`Starting route to ${place.name}`);
+    },
+
+    explorePlaceTolls: () => {
+        const place = IndiaMapPlanner._currentVoicePlace;
+        if (!place) return;
+        IndiaMapPlanner.closePlaceCard();
+        IndiaMapPlanner.map.flyTo([parseFloat(place.lat), parseFloat(place.lng)], 11, { duration: 1.2 });
+        Utils.showToast(`Exploring tolls around ${place.name} 🛣️`, 'info');
     },
 
     // ═══════════════════════════════════════════════════════════════

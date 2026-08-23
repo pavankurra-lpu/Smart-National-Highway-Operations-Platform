@@ -142,6 +142,14 @@ const Notifications = {
         // Duplicate items so scrolling marquee is seamless
         const fullContent = tickerItems.join('') + tickerItems.join('');
         tickerEl.innerHTML = fullContent;
+
+        setTimeout(() => {
+            const scrollW = tickerEl.scrollWidth;
+            const halfW = scrollW / 2;
+            const pxPerSec = window.innerWidth <= 768 ? 26 : 42;
+            const duration = Math.max(35, Math.round(halfW / pxPerSec));
+            tickerEl.style.animationDuration = `${duration}s`;
+        }, 50);
     },
 
     renderCurrent: () => {

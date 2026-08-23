@@ -239,47 +239,116 @@ const VoiceAssistant = {
         if (micEl) micEl.classList.remove('pulse-active');
     },
 
-    _handleVoiceRouteQuery: (query) => {
+    _handleVoiceRouteQuery: async (query) => {
         const modal = document.getElementById('voice-search-modal');
         const statusEl = document.getElementById('voice-modal-status');
-        if (statusEl) statusEl.textContent = 'Analyzing route... 🚀';
+        if (statusEl) statusEl.textContent = 'Searching location & highways... 🚀';
+
+        let clean = (query || '').trim().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');
+        let cleanLower = clean.toLowerCase();
+
+        // 1. Check if user specified a Route between two places: "Delhi to Jaipur", "From Chandigarh to Ludhiana", etc.
+        const fromToMatch = cleanLower.match(/(?:route\s+|directions\s+)?(?:from\s+)?([a-z\s]+?)\s+to\s+([a-z\s]+)/i);
+        const hasExplicitFromTo = fromToMatch && fromToMatch[1] && fromToMatch[2] && !cleanLower.startsWith('directions to') && !cleanLower.startsWith('navigate to') && !cleanLower.startsWith('go to');
+
+        if (hasExplicitFromTo) {
+            let origin = fromToMatch[1].replace(/^(from|take|show|find|route|get)\s+/i, '').trim();
+            let dest = fromToMatch[2].replace(/\s+(route|highway|fastest|cheapest)$/i, '').trim();
+
+            setTimeout(() => {
+                if (modal) modal.classList.add('hidden');
+                VoiceAssistant.stopListening();
+
+                const origInput = document.getElementById('route-origin-input');
+                const destInput = document.getElementById('route-dest-input');
+                if (origInput) origInput.value = origin.charAt(0).toUpperCase() + origin.slice(1);
+                if (destInput) destInput.value = dest.charAt(0).toUpperCase() + dest.slice(1);
+
+                const btnCalc = document.getElementById('btn-calculate-route');
+                if (btnCalc) btnCalc.click();
+                Utils.showToast(`Voice Route: ${origin} ➔ ${dest} 🛣️`, 'success');
+                VoiceAssistant.speak(`Calculating optimal route from ${origin} to ${dest}`);
+            }, 600);
+            return;
+        }
+
+        // 2. Single Place or "Directions to [Place]" / "Navigate to [Place]" / "[City Name]"
+        let placeTarget = cleanLower
+            .replace(/^(directions\s+to|navigate\s+to|drive\s+to|take\s+me\s+to|go\s+to|where\s+is|find|search|show\s+me|route\s+to|to)\s+/i, '')
+            .replace(/\s+(highway|corridor|toll|toll\s+plaza|city|route)$/i, '')
+            .trim();
+
+        if (!placeTarget) placeTarget = cleanLower;
+
+        // Search local database first
+        let matchedPlace = null;
+        if (window.IndiaMapData && Array.isArray(IndiaMapData.CITIES)) {
+            matchedPlace = IndiaMapData.CITIES.find(c => 
+                c.name.toLowerCase() === placeTarget || 
+                c.id.toLowerCase() === placeTarget ||
+                c.name.toLowerCase().includes(placeTarget) ||
+                placeTarget.includes(c.name.toLowerCase())
+            );
+        }
+
+        // Search in TollSeedData if user spoke a toll plaza
+        if (!matchedPlace && window.TollSeedData) {
+            const matchedToll = TollSeedData.find(t => 
+                t.name.toLowerCase().includes(placeTarget) ||
+                placeTarget.includes(t.name.toLowerCase())
+            );
+            if (matchedToll) {
+                matchedPlace = {
+                    name: matchedToll.name,
+                    state: matchedToll.state,
+                    lat: matchedToll.lat,
+                    lng: matchedToll.lng,
+                    details: `Toll Plaza [NH-${matchedToll.nhCorridor || 'Corridor'}] • Fee: ₹${matchedToll.feeLMV || '100'} LMV`,
+                    category: 'TOLL PLAZA'
+                };
+            }
+        }
+
+        // If not in local dataset, geocode via Nominatim OSM in India
+        if (!matchedPlace) {
+            try {
+                const geoUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(placeTarget + ', India')}&countrycodes=in&limit=1`;
+                const resp = await fetch(geoUrl);
+                const results = await resp.json();
+                if (results && results.length > 0) {
+                    const top = results[0];
+                    matchedPlace = {
+                        name: top.display_name.split(',')[0],
+                        state: top.display_name.split(',').slice(1, 3).join(',').trim(),
+                        lat: parseFloat(top.lat),
+                        lng: parseFloat(top.lon),
+                        details: top.display_name,
+                        category: top.type ? top.type.toUpperCase() : 'LOCATION'
+                    };
+                }
+            } catch (err) {
+                console.warn("Nominatim voice geocode error:", err);
+            }
+        }
 
         setTimeout(() => {
             if (modal) modal.classList.add('hidden');
             VoiceAssistant.stopListening();
 
-            // Extract Origin and Destination
-            let clean = query.trim().toLowerCase();
-            let origin = '';
-            let dest = '';
-
-            const fromToMatch = clean.match(/(?:route\s+|directions\s+)?(?:from\s+)?([a-z\s]+?)\s+to\s+([a-z\s]+)/i);
-            if (fromToMatch) {
-                origin = fromToMatch[1].replace(/^(from|take|show|find|route|get)\s+/i, '').trim();
-                dest = fromToMatch[2].replace(/\s+(route|highway|fastest|cheapest)$/i, '').trim();
+            if (matchedPlace && window.IndiaMapPlanner && typeof IndiaMapPlanner.showVoicePlaceResult === 'function') {
+                IndiaMapPlanner.showVoicePlaceResult(matchedPlace);
+                Utils.showToast(`Found: ${matchedPlace.name} 📍`, 'success');
             } else {
-                const toMatch = clean.match(/(?:go\s+to|navigate\s+to|drive\s+to|to)\s+([a-z\s]+)/i);
-                if (toMatch) {
-                    dest = toMatch[1].trim();
-                } else {
-                    dest = clean;
+                // If could not resolve coordinates, put into destination input
+                const destInput = document.getElementById('route-dest-input');
+                if (destInput) {
+                    destInput.value = placeTarget.charAt(0).toUpperCase() + placeTarget.slice(1);
+                    IndiaMapPlanner.openMobileSearch();
                 }
+                Utils.showToast(`Could not pinpoint "${clean}". Added to search.`, 'warning');
+                VoiceAssistant.speak(`Could not find exact location for ${placeTarget}. Please select from list.`);
             }
-
-            const origInput = document.getElementById('route-origin-input');
-            const destInput = document.getElementById('route-dest-input');
-
-            if (origin && origInput) origInput.value = origin.charAt(0).toUpperCase() + origin.slice(1);
-            if (dest && destInput) destInput.value = dest.charAt(0).toUpperCase() + dest.slice(1);
-
-            // Auto-trigger calculation
-            const btnCalc = document.getElementById('btn-calculate-route');
-            if (btnCalc) {
-                btnCalc.click();
-                Utils.showToast(`Voice Route: ${origin ? origin + ' ➔ ' : ''}${dest} 🛣️`, 'success');
-                VoiceAssistant.speak(`Calculating optimal route to ${dest}`);
-            }
-        }, 600);
+        }, 500);
     }
 };
 
