@@ -62,29 +62,36 @@ const IndiaMapPlanner = {
         window.addEventListener('offline', () => Utils.showToast('You are offline. Routing requires internet.', 'warning'));
         window.addEventListener('online',  () => Utils.showToast('Connection restored.', 'success'));
 
-        const cfg = window.NHAI_CONFIG || { map: { defaultCenter: [20.5937, 78.9629], defaultZoom: 5 } };
+        const cfg = window.NHAI_CONFIG || { map: { defaultCenter: [20.5937, 78.9629], defaultZoom: 5, minZoom: 4, maxZoom: 19 } };
 
-        // Create Leaflet map
+        // Subcontinent bounding box constraint so map never zooms out into a flat line
+        const indiaBounds = L.latLngBounds([3.5, 60.0], [39.0, 102.0]);
+
+        // Create Leaflet map with strictly controlled minZoom & bounds
         IndiaMapPlanner.map = L.map('map', {
             zoomControl: false,
             attributionControl: false,
             center: cfg.map.defaultCenter,
             zoom: cfg.map.defaultZoom,
-            worldCopyJump: true
+            minZoom: 4,
+            maxZoom: 19,
+            maxBounds: indiaBounds,
+            maxBoundsViscosity: 0.85,
+            worldCopyJump: false
         });
 
         // ── Tile layers ────────────────────────────────────────────
         const tileCfg = cfg.tiles || {};
         const satUrl = (tileCfg.satellite || {}).url || 'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';
-        const satOpts = (tileCfg.satellite || {}).options || { maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], attribution: 'Tiles &copy; Google' };
+        const satOpts = (tileCfg.satellite || {}).options || { maxZoom: 20, minZoom: 4, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], attribution: 'Tiles &copy; Google' };
         IndiaMapPlanner._satelliteLayer = L.tileLayer(satUrl, satOpts);
 
         const labelsUrl = (tileCfg.labels || {}).url || 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png';
-        const labelsOpts = (tileCfg.labels || {}).options || { maxZoom: 19, pane: 'shadowPane', opacity: 0.8 };
+        const labelsOpts = (tileCfg.labels || {}).options || { maxZoom: 19, minZoom: 4, pane: 'shadowPane', opacity: 0.8 };
         IndiaMapPlanner._labelsLayer = L.tileLayer(labelsUrl, labelsOpts);
 
         const streetUrl = (tileCfg.street || {}).url || 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-        const streetOpts = (tileCfg.street || {}).options || { maxZoom: 20, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO' };
+        const streetOpts = (tileCfg.street || {}).options || { maxZoom: 20, minZoom: 4, subdomains: ['a', 'b', 'c', 'd'], attribution: '&copy; OSM &copy; CARTO' };
         IndiaMapPlanner._streetLayer = L.tileLayer(streetUrl, streetOpts);
 
         // Default: satellite & labels layer

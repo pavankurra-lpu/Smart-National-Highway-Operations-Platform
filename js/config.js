@@ -11,13 +11,13 @@ const NHAI_CONFIG = {
         defaultZoom: 5,
         minZoom: 4,
         maxZoom: 19,
-        worldCopyJump: true,
+        worldCopyJump: false,
         // Soft India bounding box (enforced in UI)
         bounds: {
-            north: 37.6,
-            south: 6.5,
-            west: 68.0,
-            east: 97.5
+            north: 39.0,
+            south: 3.5,
+            west: 60.0,
+            east: 102.0
         }
     },
     

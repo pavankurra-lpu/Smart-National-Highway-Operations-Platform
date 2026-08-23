@@ -143,16 +143,22 @@ const AdminApp = {
             zoom = 12;
         }
 
+        const indiaBounds = L.latLngBounds([3.5, 60.0], [39.0, 102.0]);
         AdminApp.map = L.map('admin-live-map', {
             zoomControl: true,
             attributionControl: true,
             center: center,
             zoom: zoom,
-            worldCopyJump: true
+            minZoom: 4,
+            maxZoom: 19,
+            maxBounds: indiaBounds,
+            maxBoundsViscosity: 0.85,
+            worldCopyJump: false
         });
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19
+            maxZoom: 19,
+            minZoom: 4
         }).addTo(AdminApp.map);
 
         // Highlight selected plaza if specific
