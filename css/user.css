@@ -2178,11 +2178,11 @@ body.light-mode .google-ac-subtitle {
         flex-direction: column !important;
         z-index: 550 !important;
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        transform: translateX(0) !important;
+        transform: translateX(105%) !important;
     }
 
-    .sidebar.collapsed {
-        transform: translateX(105%) !important;
+    .sidebar:not(.collapsed) {
+        transform: translateX(0) !important;
     }
 
     /* Sidebar Content Scrolling Area */

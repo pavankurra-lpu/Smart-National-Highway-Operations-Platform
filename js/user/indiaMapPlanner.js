@@ -1647,6 +1647,20 @@ const IndiaMapPlanner = {
         document.getElementById('trip-badge').style.background = 'rgba(255,255,255,0.15)';
         document.getElementById('trip-badge').style.color = 'var(--text-sec)';
 
+        // Sync Google Place Card if open
+        const placeCard = document.getElementById('google-place-card');
+        if (placeCard && !placeCard.classList.contains('hidden')) {
+            const optFastTime = document.getElementById('opt-fastest-time');
+            const optFastDetails = document.getElementById('opt-fastest-details');
+            const tollCount = rData.tolls ? rData.tolls.length : 0;
+            const tollFee = rData.totalCost || 0;
+            const etaHours = parseFloat(rData.totalEta);
+            const timeStr = etaHours < 1.0 ? `${Math.round(etaHours * 60)}m` : `${Math.floor(etaHours)}h ${Math.round((etaHours % 1) * 60)}m`;
+
+            if (optFastTime) optFastTime.textContent = timeStr;
+            if (optFastDetails) optFastDetails.textContent = `${rData.totalDist} km · ${tollCount} Tolls (₹${tollFee}) · Fastest`;
+        }
+
         const pad = window.innerWidth <= 768 ? [30, 30] : [50, 50];
         const padBottom = window.innerWidth <= 768 ? [0, Math.round(window.innerHeight * 0.42)] : [0, 0];
         IndiaMapPlanner.map.fitBounds(primaryPoly.getBounds(), { padding: pad, paddingBottomRight: padBottom });
@@ -3628,8 +3642,11 @@ const IndiaMapPlanner = {
             IndiaMapPlanner.closeMobileSearch();
         }
 
+        // Automatically calculate and draw the real OSRM highway route
+        IndiaMapPlanner.processRoute();
+
         // Voice announcement
-        VoiceAssistant.speak(`Found ${place.name}. Estimated travel time is ${fastestTimeStr} with ${tollCount} tolls.`);
+        VoiceAssistant.speak(`Found ${place.name}. Route mapped: ${fastestTimeStr} with ${tollCount} tolls.`);
     },
 
     setOriginToGPS: () => {

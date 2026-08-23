@@ -252,24 +252,38 @@ const VoiceAssistant = {
         const hasExplicitFromTo = fromToMatch && fromToMatch[1] && fromToMatch[2] && !cleanLower.startsWith('directions to') && !cleanLower.startsWith('navigate to') && !cleanLower.startsWith('go to');
 
         if (hasExplicitFromTo) {
-            let origin = fromToMatch[1].replace(/^(from|take|show|find|route|get)\s+/i, '').trim();
-            let dest = fromToMatch[2].replace(/\s+(route|highway|fastest|cheapest)$/i, '').trim();
+            let originName = fromToMatch[1].replace(/^(from|take|show|find|route|get)\s+/i, '').trim();
+            let destName = fromToMatch[2].replace(/\s+(route|highway|fastest|cheapest)$/i, '').trim();
 
-            setTimeout(() => {
-                if (modal) modal.classList.add('hidden');
-                VoiceAssistant.stopListening();
+            const [origPlace, destPlace] = await Promise.all([
+                window.IndiaMapPlanner?.resolvePlaceQuery ? IndiaMapPlanner.resolvePlaceQuery(originName) : null,
+                window.IndiaMapPlanner?.resolvePlaceQuery ? IndiaMapPlanner.resolvePlaceQuery(destName) : null
+            ]);
 
+            if (modal) modal.classList.add('hidden');
+            VoiceAssistant.stopListening();
+
+            if (destPlace && window.IndiaMapPlanner) {
+                if (origPlace) {
+                    IndiaMapPlanner.selectedOrigin = {
+                        name: origPlace.name,
+                        state: origPlace.state || '',
+                        lat: origPlace.lat,
+                        lng: origPlace.lng
+                    };
+                    const origInput = document.getElementById('route-origin-input');
+                    if (origInput) origInput.value = origPlace.name;
+                    IndiaMapPlanner.setOriginMarker(IndiaMapPlanner.selectedOrigin);
+                }
+                IndiaMapPlanner.showVoicePlaceResult(destPlace);
+                Utils.showToast(`Voice Route: ${originName} ➔ ${destName} 🛣️`, 'success');
+            } else {
                 const origInput = document.getElementById('route-origin-input');
                 const destInput = document.getElementById('route-dest-input');
-                if (origInput) origInput.value = origin.charAt(0).toUpperCase() + origin.slice(1);
-                if (destInput) destInput.value = dest.charAt(0).toUpperCase() + dest.slice(1);
-
-                if (window.IndiaMapPlanner && typeof IndiaMapPlanner.processRoute === 'function') {
-                    IndiaMapPlanner.processRoute();
-                }
-                Utils.showToast(`Voice Route: ${origin} ➔ ${dest} 🛣️`, 'success');
-                VoiceAssistant.speak(`Calculating optimal route from ${origin} to ${dest}`);
-            }, 600);
+                if (origInput) origInput.value = originName.charAt(0).toUpperCase() + originName.slice(1);
+                if (destInput) destInput.value = destName.charAt(0).toUpperCase() + destName.slice(1);
+                if (window.IndiaMapPlanner?.processRoute) IndiaMapPlanner.processRoute();
+            }
             return;
         }
 
@@ -287,23 +301,21 @@ const VoiceAssistant = {
             matchedPlace = await IndiaMapPlanner.resolvePlaceQuery(placeTarget);
         }
 
-        setTimeout(() => {
-            if (modal) modal.classList.add('hidden');
-            VoiceAssistant.stopListening();
+        if (modal) modal.classList.add('hidden');
+        VoiceAssistant.stopListening();
 
-            if (matchedPlace && window.IndiaMapPlanner && typeof IndiaMapPlanner.showVoicePlaceResult === 'function') {
-                IndiaMapPlanner.showVoicePlaceResult(matchedPlace);
-                Utils.showToast(`Found: ${matchedPlace.name} 📍`, 'success');
-            } else {
-                const destInput = document.getElementById('route-dest-input');
-                if (destInput) {
-                    destInput.value = placeTarget.charAt(0).toUpperCase() + placeTarget.slice(1);
-                    IndiaMapPlanner.openMobileSearch();
-                }
-                Utils.showToast(`Could not pinpoint "${clean}". Added to search.`, 'warning');
-                VoiceAssistant.speak(`Could not find exact location for ${placeTarget}. Please select from list.`);
+        if (matchedPlace && window.IndiaMapPlanner && typeof IndiaMapPlanner.showVoicePlaceResult === 'function') {
+            IndiaMapPlanner.showVoicePlaceResult(matchedPlace);
+            Utils.showToast(`Found: ${matchedPlace.name} 📍`, 'success');
+        } else {
+            const destInput = document.getElementById('route-dest-input');
+            if (destInput) {
+                destInput.value = placeTarget.charAt(0).toUpperCase() + placeTarget.slice(1);
+                IndiaMapPlanner.openMobileSearch();
             }
-        }, 500);
+            Utils.showToast(`Could not pinpoint "${clean}". Added to search.`, 'warning');
+            VoiceAssistant.speak(`Could not find exact location for ${placeTarget}. Please select from search.`);
+        }
     }
 };
 
