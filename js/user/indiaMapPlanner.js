@@ -3703,11 +3703,8 @@ const IndiaMapPlanner = {
             IndiaMapPlanner.closeMobileSearch();
         }
 
-        // Automatically calculate and draw the real OSRM highway route
-        IndiaMapPlanner.processRoute();
-
         // Voice announcement
-        VoiceAssistant.speak(`Found ${place.name}. Route mapped: ${fastestTimeStr} with ${tollCount} tolls.`);
+        VoiceAssistant.speak(`Found ${place.name}. Estimated travel time is ${fastestTimeStr} with ${tollCount} tolls.`);
     },
 
     setOriginToGPS: () => {
