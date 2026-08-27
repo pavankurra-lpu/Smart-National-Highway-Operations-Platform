@@ -22,7 +22,7 @@ const FastagEngine = {
         }
 
         if (btnRecharge) {
-            btnRecharge.addEventListener('click', () => {
+            btnRecharge.addEventListener('click', async () => {
                 const inputAmount = document.getElementById('recharge-amount');
                 const amount = inputAmount ? parseFloat(inputAmount.value) : 0;
                 const gateway = document.getElementById('recharge-gateway').value;
@@ -31,19 +31,52 @@ const FastagEngine = {
                     return;
                 }
                 
-                // Simulate 3rd Party Payment Flow
-                btnRecharge.innerText = "Processing...";
+                btnRecharge.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Authorizing...';
                 btnRecharge.disabled = true;
 
+                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+                const token = sessionStorage.getItem('nhai_traveller_auth') || sessionStorage.getItem('nhai_admin_auth');
+
+                try {
+                    const res = await fetch(`${backendUrl}/api/wallet/recharge`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                        },
+                        body: JSON.stringify({ amount, paymentMethod: gateway })
+                    });
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        Storage.set(Storage.KEYS.FASTAG_BALANCE, data.wallet.balance);
+
+                        const history = Storage.get(Storage.KEYS.RECHARGE_HISTORY, []);
+                        history.unshift(data.transaction);
+                        Storage.set(Storage.KEYS.RECHARGE_HISTORY, history);
+
+                        Utils.showToast(`₹${data.transaction.net} credited via ${gateway} (Server Validated)!`, 'success');
+                        btnRecharge.innerHTML = '<i class="fa-solid fa-lock"></i> Proceed to Pay';
+                        btnRecharge.disabled = false;
+                        inputAmount.value = '';
+                        document.getElementById('recharge-fee').innerText = `- ₹0.00`;
+                        document.getElementById('recharge-net').innerText = `₹0.00`;
+                        FastagEngine.updateUI();
+                        return;
+                    }
+                } catch (e) {
+                    console.warn('[FastagEngine] Server unavailable, applying local offline ledger credit.');
+                }
+
+                // Local simulation fallback
                 setTimeout(() => {
-                    const fee = amount * 0.01;
-                    const net = amount - fee;
+                    const fee = Number((amount * 0.01).toFixed(2));
+                    const net = Number((amount - fee).toFixed(2));
                     
                     let balance = Storage.get(Storage.KEYS.FASTAG_BALANCE, 0);
                     balance += net;
                     Storage.set(Storage.KEYS.FASTAG_BALANCE, balance);
 
-                    // Add to history
                     const history = Storage.get(Storage.KEYS.RECHARGE_HISTORY, []);
                     history.unshift({
                         id: Utils.generateId('TXN'),
@@ -55,7 +88,7 @@ const FastagEngine = {
                     });
                     Storage.set(Storage.KEYS.RECHARGE_HISTORY, history);
 
-                    Utils.showToast(`₹${net.toFixed(2)} credited via ${gateway} successfully!`, 'success');
+                    Utils.showToast(`₹${net.toFixed(2)} credited via ${gateway} (Demo Mode)!`, 'success');
                     btnRecharge.innerHTML = '<i class="fa-solid fa-lock"></i> Proceed to Pay';
                     btnRecharge.disabled = false;
                     inputAmount.value = '';
@@ -63,7 +96,7 @@ const FastagEngine = {
                     document.getElementById('recharge-net').innerText = `₹0.00`;
 
                     FastagEngine.updateUI();
-                }, 1500);
+                }, 800);
             });
         }
 

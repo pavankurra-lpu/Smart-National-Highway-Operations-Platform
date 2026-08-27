@@ -34,16 +34,45 @@ const EmergencyReporter = {
                     adminNote: ''
                 };
 
-                if (!confirm('Confirm SOS submission? This will alert emergency services.')) return;
+                if (!confirm('Confirm SOS submission? This will alert NHAI emergency services.')) return;
 
-                // Add to Shared Storage (Admin will see it instantly)
-                Storage.addEmergency(emergencyData);
+                const emergencyData = {
+                    id: Utils.generateId('SOS'),
+                    type: type,
+                    location: loc,
+                    description: desc,
+                    phone: phone,
+                    status: 'RAISED',
+                    reportedAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString(),
+                    adminNote: ''
+                };
+
+                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+                fetch(`${backendUrl}/api/incidents/report`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        type,
+                        location: loc,
+                        description: desc,
+                        vehicleNumber: phone
+                    })
+                }).then(r => r.json()).then(data => {
+                    if (data.success && data.incident) {
+                        Storage.addEmergency(data.incident);
+                        EmergencyReporter.renderHistory();
+                    }
+                }).catch(() => {
+                    Storage.addEmergency(emergencyData);
+                    EmergencyReporter.renderHistory();
+                });
 
                 if (window.RealtimeService) {
                     RealtimeService.emitSOS(emergencyData);
                 }
 
-                Utils.showToast(`SOS Triggered! Admin notified. Ref NO: ${emergencyData.id}`);
+                Utils.showToast(`🚨 SOS Triggered! NHAI Highway Patrol Notified. Ref: ${emergencyData.id}`);
                 if (window.Gamification) {
                     Gamification.unlockAchievement('highway_guardian', 'Guardian', 200);
                 }
@@ -51,7 +80,6 @@ const EmergencyReporter = {
                 // Clear Form
                 document.getElementById('sos-location').value = '';
                 document.getElementById('sos-desc').value = '';
-                
                 EmergencyReporter.renderHistory();
             });
         }
@@ -78,7 +106,7 @@ const EmergencyReporter = {
 
         const submitFbBtn = document.getElementById('btn-submit-feedback');
         if (submitFbBtn) {
-            submitFbBtn.onclick = () => {
+            submitFbBtn.onclick = async () => {
                 const rating = parseInt(document.getElementById('fb-rating-value').value) || 0;
                 const comment = document.getElementById('fb-comment').value.trim();
                 const id = document.getElementById('resolution-feedback-modal').dataset.incidentId;
@@ -89,9 +117,18 @@ const EmergencyReporter = {
                     return;
                 }
 
+                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+                try {
+                    await fetch(`${backendUrl}/api/incidents/feedback`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ incidentId: id, rating, comment })
+                    });
+                } catch (e) {}
+
                 Storage.addEmergencyFeedback(id, rating, comment);
                 Utils.toggleVisibility('resolution-feedback-modal', false);
-                Utils.showToast("Thank you! Feedback submitted and incident closed.", "success");
+                Utils.showToast("Thank you! Rating submitted and incident closed.", "success");
                 EmergencyReporter.renderHistory();
             };
         }

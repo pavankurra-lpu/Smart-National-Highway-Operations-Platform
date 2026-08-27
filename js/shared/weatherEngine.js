@@ -179,4 +179,9 @@ const WeatherEngine = {
     }
 };
 
-window.WeatherEngine = WeatherEngine;
+if (typeof window !== 'undefined') {
+    window.WeatherEngine = WeatherEngine;
+}
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = WeatherEngine;
+}

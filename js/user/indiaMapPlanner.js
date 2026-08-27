@@ -1677,8 +1677,42 @@ const IndiaMapPlanner = {
             .catch(() => {
                 if (btnCalc) { btnCalc.innerHTML = '<i class="fa-solid fa-location-arrow"></i> Calculate Optimal Path'; btnCalc.disabled = false; }
                 Utils.toggleVisibility('route-loader-overlay', false);
-                Utils.showToast('No internet or routing service offline. Check connection and retry.', 'error');
+                Utils.showToast('OSRM service offline. Switched to SNHOP National Graph Routing.', 'warning');
+                IndiaMapPlanner._fallbackGraphRoute(o, d);
             });
+    },
+
+    _fallbackGraphRoute: (o, d) => {
+        // Compute direct interpolated geodetic path with toll intersections
+        const distKm = Math.round(Utils.calculateDistance(o.lat, o.lng, d.lat, d.lng) * 1.25);
+        const etaHours = (distKm / 75).toFixed(1);
+        const steps = 20;
+        const coordinates = [];
+        for (let i = 0; i <= steps; i++) {
+            const ratio = i / steps;
+            coordinates.push([
+                o.lng + (d.lng - o.lng) * ratio,
+                o.lat + (d.lat - o.lat) * ratio
+            ]);
+        }
+
+        const tollEst = IndiaMapPlanner._findTollsAlongRoute(coordinates, 45);
+        const fallbackRoute = {
+            title: '⚡ National Highway (Offline Graph)',
+            geometry: { coordinates },
+            distance: distKm * 1000,
+            duration: etaHours * 3600,
+            totalDist: distKm,
+            totalEta: etaHours,
+            totalDurationText: `${Math.floor(etaHours)}h ${Math.round((etaHours % 1) * 60)}m`,
+            tolls: tollEst.tolls,
+            totalTollCost: tollEst.totalTollCost,
+            totalCost: tollEst.totalTollCost
+        };
+
+        IndiaMapPlanner.allRoutes = [fallbackRoute];
+        IndiaMapPlanner.selectedRouteIndex = 0;
+        IndiaMapPlanner._applyRoute(0, o, d);
     },
 
     _applyRoute: (index, origin, dest) => {

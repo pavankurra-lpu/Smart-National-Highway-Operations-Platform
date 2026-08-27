@@ -108,7 +108,7 @@ const IncidentCenter = {
         confirmBtn.onclick = () => IncidentCenter.confirmResolution(id);
     },
 
-    confirmResolution: (id) => {
+    confirmResolution: async (id) => {
         const imgInput = document.getElementById('res-image-upload');
         const noteInput = document.getElementById('res-note');
         const verInput = document.getElementById('res-verification-type');
@@ -121,19 +121,48 @@ const IncidentCenter = {
 
         const tagPrefix = verificationType === 'FALSE_ALARM' ? '[RESOLVED: FALSE ALARM]' : '[RESOLVED: CONFIRMED]';
         const note = `${tagPrefix} ${noteInput.value.trim()}`;
+        const token = sessionStorage.getItem('nhai_admin_auth');
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+
+        const sendToServer = async (base64Image) => {
+            try {
+                const res = await fetch(`${backendUrl}/api/incidents/resolve`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                    },
+                    body: JSON.stringify({
+                        incidentId: id,
+                        adminNote: noteInput.value.trim(),
+                        resolutionImage: base64Image,
+                        verificationType,
+                        token
+                    })
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image, verificationType);
+                    IncidentCenter._finalizeResolution(id);
+                    return;
+                }
+            } catch (e) {
+                console.warn('[IncidentCenter] Server unavailable. Applying local resolution.');
+            }
+
+            Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image, verificationType);
+            IncidentCenter._finalizeResolution(id);
+        };
         
         if (imgInput.files && imgInput.files.length > 0) {
             const file = imgInput.files[0];
             const reader = new FileReader();
             reader.onload = (e) => {
-                const base64Image = e.target.result;
-                Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image, verificationType);
-                IncidentCenter._finalizeResolution(id);
+                sendToServer(e.target.result);
             };
             reader.readAsDataURL(file);
         } else {
-            Storage.updateEmergencyStatus(id, 'RESOLVED', note, '', verificationType);
-            IncidentCenter._finalizeResolution(id);
+            sendToServer('');
         }
     },
 

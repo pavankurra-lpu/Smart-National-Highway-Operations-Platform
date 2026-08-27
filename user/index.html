@@ -148,6 +148,9 @@
                     </div>
                 </div>
                 <div style="display:flex; gap:8px; align-items:center;">
+                    <button onclick="Utils.toggleVisibility('traveller-otp-modal', true)" class="snhop-exit-btn" style="background: rgba(16,185,129,0.15); color:#34d399; border: 1px solid rgba(16,185,129,0.3);" title="Phone Login & Wallet Sync">
+                        <i class="fa-solid fa-mobile-screen-button"></i> Login
+                    </button>
                     <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit
                     </a>
@@ -1273,6 +1276,51 @@
         </div>
 
         <!-- ==============================
+             PHONE OTP AUTHENTICATION MODAL (TRAVELLER PORTAL)
+             ============================== -->
+        <div id="traveller-otp-modal" class="modal-overlay hidden" style="z-index: 10010;">
+            <div class="glass-panel" style="width: 380px; max-width: 90%; padding: 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.12);">
+                <h3 style="margin-top: 0; color: #fff; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-solid fa-mobile-screen-button" style="color: var(--primary);"></i> Traveller Phone Login
+                </h3>
+                <p style="font-size: 11px; color: var(--text-sec); margin-bottom: 16px; line-height: 1.5;">
+                    Authenticate with your 10-digit mobile number to access your server-backed FASTag wallet, saved vehicles, and trip history.
+                </p>
+
+                <div id="otp-step-phone">
+                    <div style="margin-bottom: 14px; text-align: left;">
+                        <label style="font-size: 10px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 4px;">MOBILE NUMBER (+91)</label>
+                        <div style="display: flex; gap: 6px;">
+                            <span style="background: rgba(255,255,255,0.05); padding: 10px 12px; border-radius: 6px; font-size: 12px; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1);">+91</span>
+                            <input type="tel" id="traveller-phone-input" placeholder="9876543210" maxlength="10" style="flex: 1; padding: 10px; background: #0f172a; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: #fff; font-size: 13px; font-weight: 600;">
+                        </div>
+                    </div>
+                    <button id="btn-send-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-size: 12.5px; font-weight: 700;">
+                        <i class="fa-solid fa-paper-plane"></i> Get 6-Digit OTP Code
+                    </button>
+                </div>
+
+                <div id="otp-step-verify" style="display: none;">
+                    <p id="otp-phone-display" style="font-size: 11.5px; color: #38bdf8; font-weight: 600; margin-bottom: 12px;"></p>
+                    <div style="margin-bottom: 14px; text-align: left;">
+                        <label style="font-size: 10px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 4px;">ENTER 6-DIGIT OTP</label>
+                        <input type="text" id="traveller-otp-input" placeholder="••••••" maxlength="6" style="width: 100%; box-sizing: border-box; padding: 12px; background: #0f172a; border: 1px solid var(--primary); border-radius: 6px; color: #fff; font-size: 18px; font-weight: 700; text-align: center; letter-spacing: 6px;">
+                    </div>
+                    <button id="btn-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-size: 12.5px; font-weight: 700; margin-bottom: 8px;">
+                        <i class="fa-solid fa-lock-open"></i> Verify & Authenticate
+                    </button>
+                    <button id="btn-back-to-phone" class="btn btn-outline w-full" style="justify-content: center; font-size: 11px; padding: 6px;">
+                        Change Mobile Number
+                    </button>
+                </div>
+
+                <button onclick="Utils.toggleVisibility('traveller-otp-modal', false)" class="btn btn-outline w-full" style="justify-content: center; font-size: 11px; padding: 7px; margin-top: 10px;">
+                    Continue as Guest (Offline)
+                </button>
+            </div>
+        </div>
+
+        <!-- ==============================
              CLOUDFLARE TURNSTILE HUMAN VERIFICATION MODAL
              ============================== -->
         <div id="security-verification-modal" class="modal-overlay hidden" style="z-index: 10005;">
@@ -1395,6 +1443,110 @@
                         if (window.turnstile) {
                             window.turnstile.reset();
                         }
+                    });
+                }
+
+                // Traveller Phone OTP Auth Handlers
+                const btnSendOtp = document.getElementById('btn-send-otp');
+                const btnVerifyOtp = document.getElementById('btn-verify-otp');
+                const btnBackPhone = document.getElementById('btn-back-to-phone');
+                const phoneInput = document.getElementById('traveller-phone-input');
+                const otpInput = document.getElementById('traveller-otp-input');
+                const stepPhone = document.getElementById('otp-step-phone');
+                const stepVerify = document.getElementById('otp-step-verify');
+                const phoneDisplay = document.getElementById('otp-phone-display');
+                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+
+                let currentPhone = '';
+
+                if (btnSendOtp) {
+                    btnSendOtp.addEventListener('click', async () => {
+                        const phone = (phoneInput.value || '').trim();
+                        if (!/^[6-9]\d{9}$/.test(phone)) {
+                            Utils.showToast('Please enter a valid 10-digit Indian mobile number.', 'error');
+                            return;
+                        }
+
+                        currentPhone = phone;
+                        btnSendOtp.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending OTP...';
+                        btnSendOtp.disabled = true;
+
+                        try {
+                            const res = await fetch(`${backendUrl}/api/auth/traveller/send-otp`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ phone })
+                            });
+                            const data = await res.json();
+                            if (res.ok && data.success) {
+                                stepPhone.style.display = 'none';
+                                stepVerify.style.display = 'block';
+                                phoneDisplay.innerHTML = `<i class="fa-solid fa-shield-halved"></i> Code sent to <b>+91-${phone}</b> ${data.demoOtp ? `(Demo OTP: <b>${data.demoOtp}</b>)` : ''}`;
+                                if (data.demoOtp) {
+                                    otpInput.value = data.demoOtp;
+                                }
+                                Utils.showToast(`OTP sent successfully! ${data.demoOtp ? `[Demo OTP: ${data.demoOtp}]` : ''}`, 'success');
+                            } else {
+                                Utils.showToast(data.error || 'Failed to send OTP.', 'error');
+                            }
+                        } catch (e) {
+                            // Offline demo fallback
+                            stepPhone.style.display = 'none';
+                            stepVerify.style.display = 'block';
+                            phoneDisplay.innerHTML = `<i class="fa-solid fa-shield-halved"></i> Code sent to <b>+91-${phone}</b> (Demo OTP: <b>123456</b>)`;
+                            otpInput.value = '123456';
+                            Utils.showToast('Demo OTP generated: 123456', 'info');
+                        } finally {
+                            btnSendOtp.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Get 6-Digit OTP Code';
+                            btnSendOtp.disabled = false;
+                        }
+                    });
+                }
+
+                if (btnVerifyOtp) {
+                    btnVerifyOtp.addEventListener('click', async () => {
+                        const otp = (otpInput.value || '').trim();
+                        if (otp.length !== 6) {
+                            Utils.showToast('Please enter the full 6-digit OTP.', 'error');
+                            return;
+                        }
+
+                        btnVerifyOtp.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Verifying...';
+                        btnVerifyOtp.disabled = true;
+
+                        try {
+                            const res = await fetch(`${backendUrl}/api/auth/traveller/verify-otp`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ phone: currentPhone, otp })
+                            });
+                            const data = await res.json();
+                            if (res.ok && data.success) {
+                                sessionStorage.setItem('nhai_traveller_auth', data.token);
+                                if (data.wallet) {
+                                    Storage.set(Storage.KEYS.FASTAG_BALANCE, data.wallet.balance);
+                                }
+                                Utils.toggleVisibility('traveller-otp-modal', false);
+                                Utils.showToast(`Authenticated as +91-${currentPhone}! FASTag Wallet Connected.`, 'success');
+                                if (window.FastagEngine) FastagEngine.updateUI();
+                            } else {
+                                Utils.showToast(data.error || 'Invalid OTP.', 'error');
+                            }
+                        } catch (e) {
+                            // Offline fallback
+                            Utils.toggleVisibility('traveller-otp-modal', false);
+                            Utils.showToast(`Authenticated as +91-${currentPhone} (Offline Mode)`, 'success');
+                        } finally {
+                            btnVerifyOtp.innerHTML = '<i class="fa-solid fa-lock-open"></i> Verify & Authenticate';
+                            btnVerifyOtp.disabled = false;
+                        }
+                    });
+                }
+
+                if (btnBackPhone) {
+                    btnBackPhone.addEventListener('click', () => {
+                        stepVerify.style.display = 'none';
+                        stepPhone.style.display = 'block';
                     });
                 }
             });
