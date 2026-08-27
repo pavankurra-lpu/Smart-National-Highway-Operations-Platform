@@ -459,22 +459,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Form Submit Handler
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const id = document.getElementById('admin-id').value.trim();
             const pass = document.getElementById('admin-pass').value.trim();
+
+            if (errorEl) errorEl.innerText = "";
 
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> AUTHENTICATING...';
             btn.disabled = true;
 
-            setTimeout(async () => {
-                const success = await Auth.login(id, pass);
-                if (success) {
-                    sessionStorage.setItem('nhai_admin_auth', 'nhai-admin-valid-2026');
-                    
+            try {
+                const res = await Auth.login(id, pass);
+                if (res && res.success) {
                     // Store the selected plaza details
                     const selectedVal = plazaSelect ? plazaSelect.value : 'ALL';
                     sessionStorage.setItem('admin_plaza', selectedVal);
@@ -495,11 +495,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     window.location.href = 'index.html';
                 } else {
-                    if (errorEl) errorEl.innerText = "ACCESS DENIED. Invalid Credentials.";
+                    const errMsg = (res && res.error) ? res.error : "ACCESS DENIED: Invalid Credentials.";
+                    if (errorEl) {
+                        errorEl.innerText = errMsg;
+                        errorEl.style.display = 'block';
+                    }
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 }
-            }, 500);
+            } catch (err) {
+                if (errorEl) errorEl.innerText = "Authentication error. Please check network connection.";
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
         });
     }
 });

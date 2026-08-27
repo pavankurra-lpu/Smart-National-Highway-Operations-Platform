@@ -188,12 +188,12 @@ const EmergencyReporter = {
         
         if (imgEl) {
             const placeholder = document.getElementById('fb-res-placeholder');
-            if (inc.resolutionImage && inc.resolutionImage.trim() !== '') {
+            if (inc.resolutionImage && inc.resolutionImage.trim() !== '' && inc.resolutionImage.length > 10) {
                 imgEl.src = inc.resolutionImage;
                 imgEl.style.display = 'block';
                 if (placeholder) placeholder.style.display = 'none';
             } else {
-                imgEl.src = '';
+                imgEl.removeAttribute('src');
                 imgEl.style.display = 'none';
                 if (placeholder) placeholder.style.display = 'block';
             }

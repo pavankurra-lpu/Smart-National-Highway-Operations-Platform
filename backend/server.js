@@ -164,22 +164,89 @@ app.get('/api/active-journeys', (req, res) => {
     res.json(journeys);
 });
 
+// Salted Key Derivation for Secure Admin Authentication
+const AUTH_SALT = process.env.AUTH_SALT || 'snhop-national-highway-secure-salt-2026';
+function hashPassword(password) {
+    return crypto.pbkdf2Sync(password, AUTH_SALT, 100000, 64, 'sha512').toString('hex');
+}
+
+// Configured admin credentials with cryptographic hash
+const ADMIN_ID = process.env.ADMIN_ID || 'admin@nhai';
+const ADMIN_PASSWORD_HASH = process.env.ADMIN_HASH || hashPassword(process.env.ADMIN_PASS || 'NHAI@2026');
+
+// In-memory failed login tracking for lockout protection
+const failedLogins = new Map(); // ip -> { count, lockedUntil }
+
+function checkLoginLockout(ip) {
+    const record = failedLogins.get(ip);
+    if (!record) return { locked: false };
+    if (record.lockedUntil && Date.now() < record.lockedUntil) {
+        const remainingSec = Math.ceil((record.lockedUntil - Date.now()) / 1000);
+        return { locked: true, remainingSec };
+    }
+    if (record.lockedUntil && Date.now() >= record.lockedUntil) {
+        failedLogins.delete(ip);
+    }
+    return { locked: false };
+}
+
+function recordFailedLogin(ip) {
+    const record = failedLogins.get(ip) || { count: 0, lockedUntil: null };
+    record.count += 1;
+    if (record.count >= 5) {
+        record.lockedUntil = Date.now() + (15 * 60 * 1000); // 15-minute lockout
+    }
+    failedLogins.set(ip, record);
+    return record;
+}
+
+function clearFailedLogin(ip) {
+    failedLogins.delete(ip);
+}
+
 // Secure API endpoints for Admin Authentication
 app.post('/api/auth/login', loginLimiter, (req, res) => {
-    const { id, pass } = req.body;
-    const adminCreds = {
-        id: process.env.ADMIN_ID || 'admin@nhai',
-        pass: process.env.ADMIN_PASS || 'NHAI@2026'
-    };
+    const clientIp = req.ip || req.connection.remoteAddress || 'unknown';
+    const lockout = checkLoginLockout(clientIp);
+    if (lockout.locked) {
+        return res.status(429).json({ 
+            error: `Security Lockout Active: Too many failed login attempts. Please try again in ${Math.ceil(lockout.remainingSec / 60)} minute(s).` 
+        });
+    }
 
-    // NOTE: In a production environment, passwords should be securely hashed (e.g. using bcrypt)
-    // and compared using constant-time comparison algorithms rather than plain-text comparison.
-    if (id === adminCreds.id && pass === adminCreds.pass) {
-        const token = crypto.randomBytes(24).toString('hex');
-        activeAdminSessions.set(token, { createdAt: Date.now() });
-        res.json({ success: true, token });
+    const { id, pass } = req.body;
+    if (!id || !pass) {
+        return res.status(400).json({ error: 'Staff ID and Passcode are required.' });
+    }
+
+    // Cryptographic constant-time password verification using PBKDF2
+    const suppliedHash = hashPassword(pass);
+    const idMatches = (id.trim().toLowerCase() === ADMIN_ID.toLowerCase());
+    
+    let passMatches = false;
+    try {
+        const bufA = Buffer.from(suppliedHash, 'hex');
+        const bufB = Buffer.from(ADMIN_PASSWORD_HASH, 'hex');
+        if (bufA.length === bufB.length) {
+            passMatches = crypto.timingSafeEqual(bufA, bufB);
+        }
+    } catch (e) {
+        passMatches = false;
+    }
+
+    if (idMatches && passMatches) {
+        clearFailedLogin(clientIp);
+        const token = crypto.randomBytes(32).toString('hex');
+        activeAdminSessions.set(token, { createdAt: Date.now(), id: id.trim() });
+        return res.json({ success: true, token });
     } else {
-        res.status(401).json({ error: 'ACCESS DENIED. Invalid Credentials.' });
+        const failRecord = recordFailedLogin(clientIp);
+        const remainingAttempts = Math.max(0, 5 - failRecord.count);
+        return res.status(401).json({ 
+            error: remainingAttempts > 0 
+                ? `Access Denied: Invalid Credentials. (${remainingAttempts} attempt(s) remaining before account lockout)`
+                : 'Access Denied: Account temporarily locked due to repeated failed attempts.' 
+        });
     }
 });
 
@@ -188,7 +255,7 @@ app.post('/api/auth/verify', (req, res) => {
     const session = token ? activeAdminSessions.get(token) : null;
     const SESSION_HOURS = 8;
     if (session && Date.now() - session.createdAt <= SESSION_HOURS * 3600 * 1000) {
-        res.json({ valid: true });
+        res.json({ valid: true, id: session.id });
     } else {
         if (token) activeAdminSessions.delete(token);
         res.status(401).json({ valid: false });
@@ -199,6 +266,126 @@ app.post('/api/auth/logout', (req, res) => {
     const { token } = req.body;
     if (token) activeAdminSessions.delete(token);
     res.json({ success: true });
+});
+
+// ── SERVER-SIDE FASTAG LEDGER VALIDATION ENDPOINTS ─────────────────────────
+
+// Server-Side Recharge with Fee Computation & Transaction Proof
+app.post('/api/fastag/recharge', (req, res) => {
+    const { amount, paymentMethod } = req.body;
+    const numAmount = parseFloat(amount);
+    
+    if (isNaN(numAmount) || numAmount < 50 || numAmount > 50000) {
+        return res.status(400).json({ error: 'Recharge amount must be between ₹50 and ₹50,000.' });
+    }
+
+    const fee = Number((numAmount * 0.01).toFixed(2));
+    const net = Number((numAmount - fee).toFixed(2));
+    const txId = `RCH-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`;
+
+    const db = loadDB();
+    const currentBalance = typeof db.nhai_fastag_balance === 'number' ? db.nhai_fastag_balance : 1500;
+    const newBalance = Number((currentBalance + net).toFixed(2));
+
+    db.nhai_fastag_balance = newBalance;
+    if (!Array.isArray(db.nhai_recharge_history)) db.nhai_recharge_history = [];
+    
+    const record = {
+        id: txId,
+        amount: numAmount,
+        fee,
+        net,
+        method: paymentMethod || 'UPI / NetBanking',
+        date: new Date().toISOString(),
+        status: 'SUCCESS'
+    };
+    db.nhai_recharge_history.unshift(record);
+    saveDB(db);
+
+    io.emit('db-update', { key: 'nhai_fastag_balance', value: newBalance });
+    io.emit('db-update', { key: 'nhai_recharge_history', value: db.nhai_recharge_history });
+
+    res.json({ success: true, newBalance, record });
+});
+
+// Server-Side Toll Deduction with Solvency Check
+app.post('/api/fastag/deduct', (req, res) => {
+    const { tollId, tollName, cost, vehicleType, nhCorridor } = req.body;
+    const numCost = parseFloat(cost);
+
+    if (isNaN(numCost) || numCost < 0 || numCost > 5000) {
+        return res.status(400).json({ error: 'Invalid toll cost parameter.' });
+    }
+
+    const db = loadDB();
+    const currentBalance = typeof db.nhai_fastag_balance === 'number' ? db.nhai_fastag_balance : 1500;
+
+    if (currentBalance < numCost) {
+        return res.status(402).json({ 
+            error: 'Insufficient FASTag balance. Please recharge wallet before passing barrier.',
+            currentBalance,
+            required: numCost
+        });
+    }
+
+    const newBalance = Number((currentBalance - numCost).toFixed(2));
+    db.nhai_fastag_balance = newBalance;
+
+    const tripRecord = {
+        id: `TRP-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`,
+        tollId: tollId || 'TOLL-PLAZA',
+        tollName: tollName || 'National Highway Toll Plaza',
+        cost: numCost,
+        vehicleType: vehicleType || 'Car / LMV',
+        nhCorridor: nhCorridor || 'NH-48',
+        timestamp: new Date().toISOString(),
+        status: 'PAID'
+    };
+
+    if (!Array.isArray(db.nhai_trip_history)) db.nhai_trip_history = [];
+    db.nhai_trip_history.unshift(tripRecord);
+    saveDB(db);
+
+    io.emit('db-update', { key: 'nhai_fastag_balance', value: newBalance });
+    io.emit('db-update', { key: 'nhai_trip_history', value: db.nhai_trip_history });
+
+    res.json({ success: true, newBalance, tripRecord });
+});
+
+// Server-Side Incident Verification & Resolution (Admin Authenticated)
+app.post('/api/incidents/resolve', (req, res) => {
+    const { incidentId, adminNote, resolutionImage, verificationType, token } = req.body;
+
+    const session = token ? activeAdminSessions.get(token) : null;
+    const SESSION_HOURS = 8;
+    if (!session || Date.now() - session.createdAt > SESSION_HOURS * 3600 * 1000) {
+        if (token) activeAdminSessions.delete(token);
+        return res.status(403).json({ error: 'Unauthorized: Valid Admin Session Required.' });
+    }
+
+    if (!incidentId || !adminNote) {
+        return res.status(400).json({ error: 'Incident ID and Admin Summary Note are mandatory.' });
+    }
+
+    const db = loadDB();
+    if (!Array.isArray(db.nhai_emergencies)) db.nhai_emergencies = [];
+    
+    const idx = db.nhai_emergencies.findIndex(e => e.id === incidentId);
+    if (idx === -1) {
+        return res.status(404).json({ error: 'Incident not found in active database.' });
+    }
+
+    db.nhai_emergencies[idx].status = 'RESOLVED';
+    db.nhai_emergencies[idx].adminNote = adminNote;
+    if (resolutionImage) db.nhai_emergencies[idx].resolutionImage = resolutionImage;
+    db.nhai_emergencies[idx].verificationType = verificationType || 'CONFIRMED';
+    db.nhai_emergencies[idx].updatedAt = new Date().toISOString();
+    db.nhai_emergencies[idx].resolvedBy = session.id || 'admin@nhai';
+
+    saveDB(db);
+    io.emit('db-update', { key: 'nhai_emergencies', value: db.nhai_emergencies });
+
+    res.json({ success: true, incident: db.nhai_emergencies[idx] });
 });
 
 // App Health

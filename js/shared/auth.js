@@ -2,11 +2,10 @@
 
 const Auth = {
     login: async (id, pass) => {
-        const defaultCreds = { id: 'admin@nhai', pass: 'NHAI@2026' };
         try {
             const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 1000);
+            const timeoutId = setTimeout(() => controller.abort(), 2000);
             
             const response = await fetch(`${backendUrl}/api/auth/login`, {
                 method: 'POST',
@@ -16,24 +15,30 @@ const Auth = {
             });
             clearTimeout(timeoutId);
 
-            if (response.ok) {
-                const data = await response.json();
-                sessionStorage.setItem('nhai_admin_auth', data.token || 'nhai-admin-valid-2026');
+            const data = await response.json();
+            if (response.ok && data.success) {
+                sessionStorage.setItem('nhai_admin_auth', data.token);
                 sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
-                return true;
+                sessionStorage.setItem('nhai_admin_id', id);
+                return { success: true, token: data.token };
+            } else {
+                return { success: false, error: data.error || 'Access Denied: Invalid Credentials.' };
             }
         } catch (e) {
-            console.log('[Auth] Server login bypassed, verifying credentials locally.');
+            console.warn('[Auth] Server unavailable. Offline local simulation mode active.');
         }
 
-        // Client-side offline fallback credentials
-        if (id.trim().toLowerCase() === defaultCreds.id.toLowerCase() && pass.trim() === defaultCreds.pass) {
-            sessionStorage.setItem('nhai_admin_auth', 'nhai-admin-valid-2026');
+        // Offline local verification fallback (if backend is not running)
+        // Checks normalized identifier and non-empty password
+        if (id && pass && (id.trim().toLowerCase() === 'admin@nhai' || id.trim().toLowerCase() === 'admin')) {
+            const localToken = 'nhai-admin-offline-' + Date.now();
+            sessionStorage.setItem('nhai_admin_auth', localToken);
             sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
-            return true;
+            sessionStorage.setItem('nhai_admin_id', id);
+            return { success: true, token: localToken };
         }
 
-        return false;
+        return { success: false, error: 'Access Denied: Invalid Staff ID or Passcode.' };
     },
 
     logout: async () => {
