@@ -1,17 +1,11 @@
-/**
- * SNHOP Database Engine (Relational Persistence & Immutable Transaction Ledger)
- * 
- * Provides ACID file persistence, relational indexing, and cryptographic ledger verification
- * for Users, Vehicles, FASTag Wallets, Immutable Transactions, Trips, Incidents, and Alerts.
- */
-
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const DB_FILE = path.join(__dirname, 'db.json');
+const DB_FILE = process.env.RENDER_DISK_PATH
+    ? path.join(process.env.RENDER_DISK_PATH, 'db.json')
+    : (process.env.DB_PATH || path.join(__dirname, 'db.json'));
 
-// Default Database Schema
 const DEFAULT_SCHEMA = {
     meta: {
         version: '2.0.0',
@@ -21,7 +15,7 @@ const DEFAULT_SCHEMA = {
     users: [],
     vehicles: [],
     fastag_wallets: [],
-    wallet_transactions: [], // Immutable financial ledger
+    wallet_transactions: [],
     trips: [],
     incidents: [],
     admin_alerts: [],
@@ -45,7 +39,7 @@ class Database {
                 return { ...DEFAULT_SCHEMA, ...parsed };
             }
         } catch (err) {
-            console.error('[DB] Error reading database file. Initializing fresh schema:', err.message);
+            console.error('[DB] Initializing fresh schema:', err.message);
         }
         return JSON.parse(JSON.stringify(DEFAULT_SCHEMA));
     }
@@ -55,12 +49,11 @@ class Database {
             this.db.meta.last_updated = new Date().toISOString();
             fs.writeFileSync(DB_FILE, JSON.stringify(this.db, null, 2), 'utf8');
         } catch (err) {
-            console.error('[DB] Critical: Failed to persist database:', err.message);
+            console.error('[DB] Failed to persist database:', err.message);
         }
     }
 
     _ensureDefaults() {
-        // Ensure default seed data if database is fresh
         if (!Array.isArray(this.db.users)) this.db.users = [];
         if (!Array.isArray(this.db.vehicles)) this.db.vehicles = [];
         if (!Array.isArray(this.db.fastag_wallets)) this.db.fastag_wallets = [];
@@ -73,7 +66,6 @@ class Database {
         if (!Array.isArray(this.db.login_attempts)) this.db.login_attempts = [];
         if (typeof this.db.toll_states !== 'object') this.db.toll_states = {};
 
-        // Seed default demo user and wallet if empty
         if (this.db.users.length === 0) {
             const demoUser = {
                 id: 'USR-DEMO-001',
@@ -104,7 +96,6 @@ class Database {
             };
             this.db.vehicles.push(demoVehicle);
 
-            // Initial Genesis Ledger Transaction
             this.db.wallet_transactions.push({
                 id: 'TXN-GENESIS-001',
                 walletId: demoWallet.id,
@@ -124,7 +115,6 @@ class Database {
         }
     }
 
-    // ── USERS & AUTH ─────────────────────────────────────────────────────────
     findUserByPhone(phone) {
         return this.db.users.find(u => u.phone === phone) || null;
     }
@@ -144,7 +134,6 @@ class Database {
         };
         this.db.users.push(user);
 
-        // Auto-create linked FASTag wallet with default seed balance
         const walletId = `WLT-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`;
         const wallet = {
             id: walletId,
@@ -155,7 +144,6 @@ class Database {
         };
         this.db.fastag_wallets.push(wallet);
 
-        // Initial Genesis Transaction
         this.db.wallet_transactions.push({
             id: `TXN-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`,
             walletId,
@@ -175,14 +163,12 @@ class Database {
         return { user, wallet };
     }
 
-    // ── OTP MANAGEMENT ───────────────────────────────────────────────────────
     createOtp(phone, otp) {
-        // Invalidate prior OTPs for this phone
         this.db.otp_verifications = this.db.otp_verifications.filter(o => o.phone !== phone);
         const record = {
             phone,
             otpHash: crypto.createHash('sha256').update(String(otp)).digest('hex'),
-            expiresAt: Date.now() + (5 * 60 * 1000), // 5 min expiry
+            expiresAt: Date.now() + (5 * 60 * 1000),
             attempts: 0,
             verified: false,
             createdAt: Date.now()
@@ -216,7 +202,6 @@ class Database {
         return { valid: false, error: `Invalid OTP. (${5 - record.attempts} attempts remaining)` };
     }
 
-    // ── WALLET & FINANCIAL IMMUTABLE LEDGER ───────────────────────────────────
     getWalletByUserId(userId) {
         let wallet = this.db.fastag_wallets.find(w => w.userId === userId);
         if (!wallet) {
@@ -240,9 +225,6 @@ class Database {
             .slice(0, limit);
     }
 
-    /**
-     * Server-Authoritative Recharge with 1% Platform Fee
-     */
     rechargeWallet({ userId, amount, paymentMethod = 'UPI / NetBanking' }) {
         const numAmount = parseFloat(amount);
         if (isNaN(numAmount) || numAmount < 50 || numAmount > 50000) {
@@ -250,7 +232,7 @@ class Database {
         }
 
         const wallet = this.getWalletByUserId(userId);
-        const fee = Number((numAmount * 0.01).toFixed(2)); // Exact 1% platform fee
+        const fee = Number((numAmount * 0.01).toFixed(2));
         const net = Number((numAmount - fee).toFixed(2));
         const newBalance = Number((wallet.balance + net).toFixed(2));
 
@@ -278,9 +260,6 @@ class Database {
         return { wallet, transaction };
     }
 
-    /**
-     * Server-Authoritative Toll Deduction with Solvency Check
-     */
     deductToll({ userId, tollId, tollName, cost, vehicleType, nhCorridor }) {
         const numCost = parseFloat(cost);
         if (isNaN(numCost) || numCost < 0 || numCost > 5000) {
@@ -320,7 +299,6 @@ class Database {
         wallet.updatedAt = new Date().toISOString();
         this.db.wallet_transactions.unshift(transaction);
 
-        // Also record in trips table
         const trip = {
             id: `TRP-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`,
             userId,
@@ -338,9 +316,6 @@ class Database {
         return { wallet, transaction, trip };
     }
 
-    /**
-     * Server-Authoritative Pass Purchase (Daily Return or Monthly Pass)
-     */
     purchasePass({ userId, passType, tollId, tollName, cost, validityDays = 30 }) {
         const numCost = parseFloat(cost);
         const wallet = this.getWalletByUserId(userId);
@@ -382,7 +357,6 @@ class Database {
         return { wallet, transaction };
     }
 
-    // ── EMERGENCY INCIDENTS & DISPATCH ───────────────────────────────────────
     getAllIncidents(limit = 100) {
         return this.db.incidents.slice(0, limit);
     }
@@ -403,7 +377,7 @@ class Database {
             description: description || 'Emergency road assistance requested.',
             nhCorridor: nhCorridor || 'NH-48',
             vehicleNumber: vehicleNumber || 'N/A',
-            status: 'RAISED', // RAISED -> DISPATCHED -> RESOLVED -> CLOSED
+            status: 'RAISED',
             adminNote: '',
             resolutionImage: '',
             verificationType: 'CONFIRMED',
@@ -445,7 +419,6 @@ class Database {
         return incident;
     }
 
-    // ── HIGHWAY ALERTS & TOLL CONGESTION ─────────────────────────────────────
     getAlerts(limit = 20) {
         return this.db.admin_alerts.slice(0, limit);
     }

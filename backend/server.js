@@ -13,25 +13,21 @@ const db = require('./db');
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: '10mb' })); // Support base64 image proof payloads
+app.use(express.json({ limit: '10mb' }));
 
-// JWT Secret Key
-const JWT_SECRET = process.env.JWT_SECRET || 'snhop-national-highway-jwt-secret-2026';
+const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
 const ADMIN_ID = process.env.ADMIN_ID || 'admin@nhai';
 const ADMIN_PASS = process.env.ADMIN_PASS || 'NHAI@2026';
 const ADMIN_HASH = process.env.ADMIN_HASH || bcrypt.hashSync(ADMIN_PASS, 10);
 
-// Global Rate Limiter (600 req/min per IP)
 app.use(rateLimit({ windowMs: 60 * 1000, max: 600 }));
 
-// Sensitive Auth Rate Limiter (10 requests per 15 minutes)
 const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 10,
     message: { error: 'Too many authentication attempts. Please try again in 15 minutes.' }
 });
 
-// Create HTTP & WebSocket Server
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -40,8 +36,7 @@ const io = new Server(server, {
     }
 });
 
-// In-memory failed admin login tracking for brute force lockout
-const failedLogins = new Map(); // ip -> { count, lockedUntil }
+const failedLogins = new Map();
 
 function checkLoginLockout(ip) {
     const record = failedLogins.get(ip);
@@ -60,13 +55,12 @@ function recordFailedLogin(ip) {
     const record = failedLogins.get(ip) || { count: 0, lockedUntil: null };
     record.count += 1;
     if (record.count >= 5) {
-        record.lockedUntil = Date.now() + (15 * 60 * 1000); // 15-minute lockout
+        record.lockedUntil = Date.now() + (15 * 60 * 1000);
     }
     failedLogins.set(ip, record);
     return record;
 }
 
-// ── AUTHENTICATION MIDDLEWARES ─────────────────────────────────────────────
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'] || req.headers['x-auth-token'];
     const token = authHeader && (authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader);
@@ -104,9 +98,6 @@ function authenticateAdmin(req, res, next) {
     }
 }
 
-// ── 1. AUTHENTICATION ROUTES ───────────────────────────────────────────────
-
-// Traveller Phone OTP Request
 app.post('/api/auth/traveller/send-otp', loginLimiter, (req, res) => {
     const { phone } = req.body;
     if (!phone || !/^[6-9]\d{9}$/.test(phone.trim())) {
@@ -114,7 +105,6 @@ app.post('/api/auth/traveller/send-otp', loginLimiter, (req, res) => {
     }
 
     const cleanPhone = phone.trim();
-    // Generate cryptographically random 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000);
     db.createOtp(cleanPhone, otp);
 
@@ -122,7 +112,6 @@ app.post('/api/auth/traveller/send-otp', loginLimiter, (req, res) => {
         console.log(`[SMS Gateway Simulated] OTP generated for +91-${cleanPhone}: ${otp} (Valid for 5 mins)`);
     }
 
-    // Never leak OTP in production API response
     res.json({
         success: true,
         message: `OTP sent to +91-${cleanPhone.substring(0, 3)}****${cleanPhone.substring(7)}`,
@@ -130,7 +119,6 @@ app.post('/api/auth/traveller/send-otp', loginLimiter, (req, res) => {
     });
 });
 
-// Traveller OTP Verification & Login
 app.post('/api/auth/traveller/verify-otp', (req, res) => {
     const { phone, otp, name } = req.body;
     if (!phone || !otp) {
@@ -169,7 +157,6 @@ app.post('/api/auth/traveller/verify-otp', (req, res) => {
     });
 });
 
-// Admin Login with Rate Limiting & Bcrypt Hash Verification
 app.post('/api/auth/admin/login', loginLimiter, (req, res) => {
     const clientIp = req.ip || req.connection.remoteAddress || 'unknown';
     const lockout = checkLoginLockout(clientIp);
@@ -217,7 +204,6 @@ app.post('/api/auth/admin/login', loginLimiter, (req, res) => {
     }
 });
 
-// Admin Session Verification
 app.post('/api/auth/admin/verify', (req, res) => {
     const authHeader = req.headers['authorization'] || req.headers['x-admin-token'];
     const token = (authHeader && authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader) || req.body?.token;
@@ -233,9 +219,7 @@ app.post('/api/auth/admin/verify', (req, res) => {
     res.status(401).json({ valid: false, error: 'Invalid or expired admin token' });
 });
 
-// Legacy Route Aliases for Compatibility
 app.post('/api/auth/login', (req, res, next) => {
-    // Forward to admin login handler
     req.url = '/api/auth/admin/login';
     app.handle(req, res, next);
 });
@@ -245,9 +229,6 @@ app.post('/api/auth/verify', (req, res, next) => {
     app.handle(req, res, next);
 });
 
-// ── 2. FASTAG FINANCIAL LEDGER ROUTES (SERVER-AUTHORITATIVE) ───────────────
-
-// Get Wallet Balance & Transactions
 app.get('/api/wallet', authenticateToken, (req, res) => {
     const userId = req.user.id;
     const wallet = db.getWalletByUserId(userId);
@@ -255,7 +236,6 @@ app.get('/api/wallet', authenticateToken, (req, res) => {
     res.json({ success: true, wallet, transactions });
 });
 
-// Server-Authoritative Recharge
 app.post('/api/wallet/recharge', authenticateToken, (req, res) => {
     try {
         const userId = req.user.id;
@@ -267,7 +247,6 @@ app.post('/api/wallet/recharge', authenticateToken, (req, res) => {
             paymentMethod: paymentMethod || 'UPI / NetBanking'
         });
 
-        // Broadcast real-time balance sync to all connected instances for this user
         io.emit('wallet-updated', { userId, newBalance: wallet.balance, transaction });
 
         res.json({
@@ -281,7 +260,6 @@ app.post('/api/wallet/recharge', authenticateToken, (req, res) => {
     }
 });
 
-// Server-Authoritative Toll Deduction
 app.post('/api/wallet/deduct', authenticateToken, (req, res) => {
     try {
         const userId = req.user.id;
@@ -296,7 +274,6 @@ app.post('/api/wallet/deduct', authenticateToken, (req, res) => {
             nhCorridor
         });
 
-        // Broadcast real-time balance update
         io.emit('wallet-updated', { userId, newBalance: wallet.balance, transaction });
         io.emit('trip-completed', { userId, trip });
 
@@ -319,7 +296,6 @@ app.post('/api/wallet/deduct', authenticateToken, (req, res) => {
     }
 });
 
-// Server-Authoritative Pass Purchase
 app.post('/api/wallet/buy-pass', authenticateToken, (req, res) => {
     try {
         const userId = req.user.id;
@@ -350,7 +326,6 @@ app.post('/api/wallet/buy-pass', authenticateToken, (req, res) => {
     }
 });
 
-// Get Immutable Financial Ledger
 app.get('/api/wallet/transactions', authenticateToken, (req, res) => {
     const userId = req.user.id;
     const wallet = db.getWalletByUserId(userId);
@@ -358,15 +333,11 @@ app.get('/api/wallet/transactions', authenticateToken, (req, res) => {
     res.json({ success: true, transactions });
 });
 
-// ── 3. EMERGENCY INCIDENTS & DISPATCH ROUTES (REAL-TIME) ───────────────────
-
-// Get Incidents List
 app.get('/api/incidents', (req, res) => {
     const incidents = db.getAllIncidents(100);
     res.json({ success: true, incidents });
 });
 
-// Report Incident (SOS from Traveler)
 app.post('/api/incidents/report', (req, res) => {
     const { userId, type, location, lat, lng, description, nhCorridor, vehicleNumber } = req.body;
     
@@ -385,9 +356,6 @@ app.post('/api/incidents/report', (req, res) => {
         vehicleNumber
     });
 
-    console.log(`[SOS Dispatch Center] New Emergency Logged: ${incident.id} - ${incident.type} @ ${incident.location}`);
-
-    // Broadcast to all Admin Operations Control clients in real-time
     io.emit('incident-created', incident);
     io.emit('db-update', { key: 'nhai_emergencies', value: db.getAllIncidents(100) });
 
@@ -398,7 +366,6 @@ app.post('/api/incidents/report', (req, res) => {
     });
 });
 
-// Dispatch Emergency Responders (Admin Action)
 app.post('/api/incidents/dispatch', authenticateAdmin, (req, res) => {
     const { incidentId, etaMinutes, responderUnit } = req.body;
     if (!incidentId) return res.status(400).json({ error: 'Incident ID is required.' });
@@ -419,7 +386,6 @@ app.post('/api/incidents/dispatch', authenticateAdmin, (req, res) => {
     res.json({ success: true, incident });
 });
 
-// Resolve Emergency Incident with Mandatory Proof (Admin Action)
 app.post('/api/incidents/resolve', authenticateAdmin, (req, res) => {
     const { incidentId, adminNote, resolutionImage, verificationType } = req.body;
 
@@ -438,9 +404,6 @@ app.post('/api/incidents/resolve', authenticateAdmin, (req, res) => {
 
     if (!incident) return res.status(404).json({ error: 'Incident not found.' });
 
-    console.log(`[Incident Center] Incident ${incidentId} resolved by ${req.admin?.id} (${verificationType || 'CONFIRMED'})`);
-
-    // Real-time broadcast to all travelers and admin portals
     io.emit('incident-resolved', incident);
     io.emit('db-update', { key: 'nhai_emergencies', value: db.getAllIncidents(100) });
 
@@ -451,7 +414,6 @@ app.post('/api/incidents/resolve', authenticateAdmin, (req, res) => {
     });
 });
 
-// Traveler Feedback & Rating Submission
 app.post('/api/incidents/feedback', (req, res) => {
     const { incidentId, rating, comment } = req.body;
     if (!incidentId) return res.status(400).json({ error: 'Incident ID is required.' });
@@ -470,9 +432,8 @@ app.post('/api/incidents/feedback', (req, res) => {
     res.json({ success: true, incident });
 });
 
-// ── 4. LIVE METEOROLOGICAL WEATHER API (OPEN-METEO + CACHE) ─────────────────
-const weatherCache = new Map(); // "lat,lng" -> { data, timestamp }
-const WEATHER_CACHE_TTL = 15 * 60 * 1000; // 15 min cache
+const weatherCache = new Map();
+const WEATHER_CACHE_TTL = 15 * 60 * 1000;
 
 app.get('/api/weather', async (req, res) => {
     const lat = parseFloat(req.query.lat) || 28.6139;
@@ -567,8 +528,6 @@ function getLocalFallbackWeather(lat) {
     };
 }
 
-// ── 5. HIGHWAY ALERTS & TOLL OPERATIONS ────────────────────────────────────
-
 app.get('/api/alerts', (req, res) => {
     res.json({ success: true, alerts: db.getAlerts(30) });
 });
@@ -587,7 +546,6 @@ app.post('/api/alerts/broadcast', authenticateAdmin, (req, res) => {
         createdBy: req.admin?.id || 'admin@nhai'
     });
 
-    // Real-time broadcast to all connected traveler tabs/devices
     io.emit('broadcast-alert', alert);
     io.emit('db-update', { key: 'nhai_admin_alerts', value: db.getAlerts(30) });
 
@@ -614,7 +572,6 @@ app.post('/api/tolls/congestion', authenticateAdmin, (req, res) => {
     res.json({ success: true, tollState: updated });
 });
 
-// App Health
 app.get('/health', (req, res) => {
     res.json({
         status: 'SNHOP Real-Time National Highway Backend Live',
@@ -630,33 +587,19 @@ app.get('/health', (req, res) => {
     });
 });
 
-// ── WEBSOCKET REAL-TIME CONNECTION HANDLING ────────────────────────────────
 io.on('connection', (socket) => {
-    console.log(`[Socket.IO] Client connected: ${socket.id}`);
-
-    // Join room (admin-room or user-specific room)
     socket.on('join-room', (room) => {
         socket.join(room);
-        console.log(`[Socket.IO] Socket ${socket.id} joined room: ${room}`);
     });
 
-    // Live vehicle GPS tracking
     socket.on('update-position', (data) => {
         socket.broadcast.emit('vehicle-moved', data);
     });
 
-    socket.on('disconnect', () => {
-        console.log(`[Socket.IO] Client disconnected: ${socket.id}`);
-    });
+    socket.on('disconnect', () => {});
 });
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log('\n============================================================');
-    console.log(`🚦 SNHOP Live Highway Operations Server running on http://localhost:${PORT}`);
-    console.log('   - Real-time Socket.IO WebSocket enabled');
-    console.log('   - Server-Authoritative FASTag Financial Ledger active');
-    console.log('   - PBKDF2 / Bcrypt Authentication & Rate-Limiting active');
-    console.log('   - Open-Meteo Weather API integration active');
-    console.log('============================================================\n');
+    console.log(`SNHOP Server running on port ${PORT}`);
 });

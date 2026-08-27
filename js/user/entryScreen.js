@@ -1,44 +1,216 @@
-// Entry Screen Animation Logic
-
 const EntryScreen = {
     init: () => {
-        const btnUnlock = document.getElementById('btn-unlock-portal');
         const entryScreen = document.getElementById('entry-screen');
         const appContainer = document.getElementById('user-app');
+        
+        const stepPhone = document.getElementById('entry-step-phone');
+        const stepVerify = document.getElementById('entry-step-verify');
+        const stepAuth = document.getElementById('entry-step-authenticated');
+        const badge = document.getElementById('entry-auth-badge');
+        
+        const phoneInput = document.getElementById('entry-phone-input');
+        const otpInput = document.getElementById('entry-otp-input');
+        const phoneTarget = document.getElementById('entry-phone-target');
+        const userText = document.getElementById('entry-auth-user-text');
+        
+        const btnSendOtp = document.getElementById('btn-entry-send-otp');
+        const btnVerifyOtp = document.getElementById('btn-entry-verify-otp');
+        const btnChangePhone = document.getElementById('btn-entry-change-phone');
+        const btnResendOtp = document.getElementById('btn-entry-resend-otp');
+        const btnSwitchUser = document.getElementById('btn-entry-switch-user');
+        const btnGuestMode = document.getElementById('btn-entry-guest-mode');
+        const btnUnlock = document.getElementById('btn-unlock-portal');
 
-        if (btnUnlock && entryScreen) {
-            btnUnlock.addEventListener('click', () => {
-                entryScreen.classList.add('fade-out');
-                
-                // Greeting Voice (non-blocking)
+        let pendingPhone = '';
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
+
+        const unlockDashboard = () => {
+            if (!entryScreen) return;
+            entryScreen.classList.add('fade-out');
+
+            try {
+                if (window.VoiceAssistant) {
+                    const profile = window.Storage ? Storage.get('nhai_user_profile') : null;
+                    const name = profile && profile.name ? profile.name : "Traveller";
+                    const hour = new Date().getHours();
+                    let greeting = "Good day";
+                    if (hour >= 5 && hour < 12) greeting = "Good morning";
+                    else if (hour >= 12 && hour < 17) greeting = "Good afternoon";
+                    else if (hour >= 17 && hour < 22) greeting = "Good evening";
+                    else greeting = "Welcome";
+                    window.VoiceAssistant.speak(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
+                }
+            } catch (e) {}
+
+            setTimeout(() => {
+                entryScreen.style.display = 'none';
+                if (appContainer) appContainer.classList.remove('hidden');
+
+                if (window.IndiaMapPlanner && IndiaMapPlanner.map) {
+                    IndiaMapPlanner.map.invalidateSize();
+                    setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 100);
+                    setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 400);
+                    IndiaMapPlanner.askForLocationPermission();
+                }
+
+                if (window.FastagEngine && typeof FastagEngine.syncFromServer === 'function') {
+                    FastagEngine.syncFromServer();
+                }
+            }, 450);
+        };
+
+        const updateAuthState = () => {
+            const token = sessionStorage.getItem('nhai_traveller_auth');
+            const savedPhone = sessionStorage.getItem('nhai_traveller_phone');
+
+            if (token && savedPhone) {
+                if (stepPhone) stepPhone.style.display = 'none';
+                if (stepVerify) stepVerify.style.display = 'none';
+                if (stepAuth) stepAuth.style.display = 'block';
+                if (userText) userText.innerText = `Connected: +91-${savedPhone}`;
+                if (badge) {
+                    badge.innerText = 'Authenticated & Synced';
+                    badge.style.color = '#10b981';
+                    badge.style.borderColor = 'rgba(16,185,129,0.3)';
+                    badge.style.background = 'rgba(16,185,129,0.1)';
+                }
+            } else {
+                if (stepPhone) stepPhone.style.display = 'block';
+                if (stepVerify) stepVerify.style.display = 'none';
+                if (stepAuth) stepAuth.style.display = 'none';
+                if (badge) {
+                    badge.innerText = 'FASTag Secure Ledger';
+                    badge.style.color = '#94a3b8';
+                    badge.style.borderColor = 'rgba(255,255,255,0.1)';
+                    badge.style.background = 'rgba(255,255,255,0.06)';
+                }
+            }
+        };
+
+        if (btnSendOtp) {
+            btnSendOtp.addEventListener('click', async () => {
+                const phone = (phoneInput.value || '').trim();
+                if (!/^[6-9]\d{9}$/.test(phone)) {
+                    if (window.Utils) Utils.showToast('Please enter a valid 10-digit Indian mobile number.', 'error');
+                    return;
+                }
+
+                pendingPhone = phone;
+                btnSendOtp.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending OTP...';
+                btnSendOtp.disabled = true;
+
                 try {
-                    if (window.VoiceAssistant) {
-                        const profile = window.Storage ? Storage.get('nhai_user_profile') : null;
-                        const name = profile && profile.name ? profile.name : "Traveller";
-                        const hour = new Date().getHours();
-                        let greeting = "Good day";
-                        if (hour >= 5 && hour < 12) greeting = "Good morning";
-                        else if (hour >= 12 && hour < 17) greeting = "Good afternoon";
-                        else if (hour >= 17 && hour < 22) greeting = "Good evening";
-                        else greeting = "Welcome";
-                        window.VoiceAssistant.speak(`${greeting}, ${name}. Welcome to the NHAI Smart Highway Portal.`);
-                    }
-                } catch (e) { console.warn('Voice greeting error:', e); }
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 12000);
+                    const res = await fetch(`${backendUrl}/api/auth/traveller/send-otp`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ phone }),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    const data = await res.json();
 
-                setTimeout(() => {
-                    entryScreen.style.display = 'none';
-                    if (appContainer) appContainer.classList.remove('hidden');
-                    
-                    // Trigger map resize since it is now revealed
-                    if (window.IndiaMapPlanner && IndiaMapPlanner.map) {
-                        IndiaMapPlanner.map.invalidateSize();
-                        setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 100);
-                        setTimeout(() => IndiaMapPlanner.map.invalidateSize(), 400);
-                        IndiaMapPlanner.askForLocationPermission();
+                    if (res.ok && data.success) {
+                        if (stepPhone) stepPhone.style.display = 'none';
+                        if (stepVerify) stepVerify.style.display = 'block';
+                        if (phoneTarget) phoneTarget.innerText = `+91-${phone}`;
+                        if (otpInput) {
+                            otpInput.value = '';
+                            otpInput.focus();
+                        }
+                        if (window.Utils) Utils.showToast(`6-Digit OTP sent to +91-${phone}`, 'success');
+                    } else {
+                        if (window.Utils) Utils.showToast(data.error || 'Failed to send OTP.', 'error');
                     }
-                }, 450);
+                } catch (e) {
+                    if (stepPhone) stepPhone.style.display = 'none';
+                    if (stepVerify) stepVerify.style.display = 'block';
+                    if (phoneTarget) phoneTarget.innerText = `+91-${phone}`;
+                    if (window.Utils) Utils.showToast('Authentication server waking up. Please enter OTP.', 'info');
+                } finally {
+                    btnSendOtp.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send 6-Digit OTP Code';
+                    btnSendOtp.disabled = false;
+                }
             });
         }
+
+        if (btnVerifyOtp) {
+            btnVerifyOtp.addEventListener('click', async () => {
+                const otp = (otpInput.value || '').trim();
+                if (otp.length !== 6) {
+                    if (window.Utils) Utils.showToast('Please enter the full 6-digit OTP code.', 'error');
+                    return;
+                }
+
+                btnVerifyOtp.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Verifying...';
+                btnVerifyOtp.disabled = true;
+
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 12000);
+                    const res = await fetch(`${backendUrl}/api/auth/traveller/verify-otp`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ phone: pendingPhone, otp }),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    const data = await res.json();
+
+                    if (res.ok && data.success && data.token) {
+                        sessionStorage.setItem('nhai_traveller_auth', data.token);
+                        sessionStorage.setItem('nhai_traveller_phone', pendingPhone);
+                        if (data.wallet && window.Storage) {
+                            Storage.set(Storage.KEYS.FASTAG_BALANCE, data.wallet.balance);
+                        }
+                        if (window.Utils) Utils.showToast(`Verified! Welcome +91-${pendingPhone}`, 'success');
+                        unlockDashboard();
+                    } else {
+                        if (window.Utils) Utils.showToast(data.error || 'Invalid OTP code. Please try again.', 'error');
+                    }
+                } catch (e) {
+                    if (window.Utils) Utils.showToast('Server connection issue. Please retry verification.', 'error');
+                } finally {
+                    btnVerifyOtp.innerHTML = '<i class="fa-solid fa-lock-open"></i> Verify & Launch Dashboard';
+                    btnVerifyOtp.disabled = false;
+                }
+            });
+        }
+
+        if (btnChangePhone) {
+            btnChangePhone.addEventListener('click', () => {
+                if (stepVerify) stepVerify.style.display = 'none';
+                if (stepPhone) stepPhone.style.display = 'block';
+                if (phoneInput) phoneInput.focus();
+            });
+        }
+
+        if (btnResendOtp) {
+            btnResendOtp.addEventListener('click', () => {
+                if (btnSendOtp) btnSendOtp.click();
+            });
+        }
+
+        if (btnSwitchUser) {
+            btnSwitchUser.addEventListener('click', () => {
+                sessionStorage.removeItem('nhai_traveller_auth');
+                sessionStorage.removeItem('nhai_traveller_phone');
+                updateAuthState();
+            });
+        }
+
+        if (btnUnlock) {
+            btnUnlock.addEventListener('click', unlockDashboard);
+        }
+
+        if (btnGuestMode) {
+            btnGuestMode.addEventListener('click', () => {
+                unlockDashboard();
+            });
+        }
+
+        updateAuthState();
     }
 };
 
