@@ -56,6 +56,7 @@ const EntryScreen = {
                 if (window.FastagEngine && typeof FastagEngine.syncFromServer === 'function') {
                     FastagEngine.syncFromServer();
                 }
+                window.updateTravellerAuthUI();
             }, 450);
         };
 
@@ -85,6 +86,7 @@ const EntryScreen = {
                     badge.style.background = 'rgba(255,255,255,0.06)';
                 }
             }
+            window.updateTravellerAuthUI();
         };
 
         if (btnSendOtp) {
@@ -101,7 +103,7 @@ const EntryScreen = {
 
                 try {
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 12000);
+                    const timeoutId = setTimeout(() => controller.abort(), 15000);
                     const res = await fetch(`${backendUrl}/api/auth/traveller/send-otp`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -124,10 +126,7 @@ const EntryScreen = {
                         if (window.Utils) Utils.showToast(data.error || 'Failed to send OTP.', 'error');
                     }
                 } catch (e) {
-                    if (stepPhone) stepPhone.style.display = 'none';
-                    if (stepVerify) stepVerify.style.display = 'block';
-                    if (phoneTarget) phoneTarget.innerText = `+91-${phone}`;
-                    if (window.Utils) Utils.showToast('Authentication server waking up. Please enter OTP.', 'info');
+                    if (window.Utils) Utils.showToast('Unable to reach server. Please check internet connection.', 'error');
                 } finally {
                     btnSendOtp.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send 6-Digit OTP Code';
                     btnSendOtp.disabled = false;
@@ -148,7 +147,7 @@ const EntryScreen = {
 
                 try {
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 12000);
+                    const timeoutId = setTimeout(() => controller.abort(), 15000);
                     const res = await fetch(`${backendUrl}/api/auth/traveller/verify-otp`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -170,7 +169,7 @@ const EntryScreen = {
                         if (window.Utils) Utils.showToast(data.error || 'Invalid OTP code. Please try again.', 'error');
                     }
                 } catch (e) {
-                    if (window.Utils) Utils.showToast('Server connection issue. Please retry verification.', 'error');
+                    if (window.Utils) Utils.showToast('Server connection timeout. Please retry.', 'error');
                 } finally {
                     btnVerifyOtp.innerHTML = '<i class="fa-solid fa-lock-open"></i> Verify & Launch Dashboard';
                     btnVerifyOtp.disabled = false;
@@ -194,9 +193,7 @@ const EntryScreen = {
 
         if (btnSwitchUser) {
             btnSwitchUser.addEventListener('click', () => {
-                sessionStorage.removeItem('nhai_traveller_auth');
-                sessionStorage.removeItem('nhai_traveller_phone');
-                updateAuthState();
+                window.logoutTraveller();
             });
         }
 
@@ -211,6 +208,68 @@ const EntryScreen = {
         }
 
         updateAuthState();
+    }
+};
+
+window.logoutTraveller = () => {
+    sessionStorage.removeItem('nhai_traveller_auth');
+    sessionStorage.removeItem('nhai_traveller_phone');
+    if (window.Storage) {
+        Storage.set(Storage.KEYS.FASTAG_BALANCE, 0);
+    }
+    if (window.FastagEngine && typeof window.FastagEngine.updateUI === 'function') {
+        window.FastagEngine.updateUI();
+    }
+    if (window.Utils) {
+        Utils.showToast('Logged out of Traveller Portal.', 'info');
+    }
+    const entryScreen = document.getElementById('entry-screen');
+    const userApp = document.getElementById('user-app');
+    if (entryScreen && userApp) {
+        entryScreen.classList.remove('fade-out');
+        entryScreen.style.display = 'flex';
+        userApp.classList.add('hidden');
+    }
+    if (window.EntryScreen && typeof window.EntryScreen.init === 'function') {
+        window.EntryScreen.init();
+    }
+    window.updateTravellerAuthUI();
+};
+
+window.updateTravellerAuthUI = () => {
+    const token = sessionStorage.getItem('nhai_traveller_auth');
+    const phone = sessionStorage.getItem('nhai_traveller_phone');
+    const authText = document.getElementById('sidebar-auth-text');
+    const authIcon = document.getElementById('sidebar-auth-icon');
+    const authBtn = document.getElementById('btn-sidebar-auth');
+
+    if (authText && authBtn) {
+        if (token && phone) {
+            authText.innerText = `Logout (+91-${phone.substring(0, 3)}..${phone.substring(8)})`;
+            if (authIcon) authIcon.className = 'fa-solid fa-right-from-bracket';
+            authBtn.style.background = 'rgba(239, 68, 68, 0.15)';
+            authBtn.style.color = '#f87171';
+            authBtn.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+            authBtn.title = 'Click to Log Out / Switch Mobile Number';
+        } else {
+            authText.innerText = 'Login';
+            if (authIcon) authIcon.className = 'fa-solid fa-mobile-screen-button';
+            authBtn.style.background = 'rgba(16, 185, 129, 0.15)';
+            authBtn.style.color = '#34d399';
+            authBtn.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+            authBtn.title = 'Phone Login & Wallet Sync';
+        }
+    }
+};
+
+window.handleSidebarAuthClick = () => {
+    const token = sessionStorage.getItem('nhai_traveller_auth');
+    if (token) {
+        window.logoutTraveller();
+    } else {
+        Utils.toggleVisibility('traveller-otp-modal', true);
+        const modalPhone = document.getElementById('traveller-phone-input');
+        if (modalPhone) modalPhone.focus();
     }
 };
 

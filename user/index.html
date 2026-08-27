@@ -196,8 +196,8 @@
                     </div>
                 </div>
                 <div style="display:flex; gap:8px; align-items:center;">
-                    <button onclick="Utils.toggleVisibility('traveller-otp-modal', true)" class="snhop-exit-btn" style="background: rgba(16,185,129,0.15); color:#34d399; border: 1px solid rgba(16,185,129,0.3);" title="Phone Login & Wallet Sync">
-                        <i class="fa-solid fa-mobile-screen-button"></i> Login
+                    <button id="btn-sidebar-auth" onclick="window.handleSidebarAuthClick()" class="snhop-exit-btn" style="background: rgba(16,185,129,0.15); color:#34d399; border: 1px solid rgba(16,185,129,0.3);" title="Phone Login & Wallet Sync">
+                        <i class="fa-solid fa-mobile-screen-button" id="sidebar-auth-icon"></i> <span id="sidebar-auth-text">Login</span>
                     </button>
                     <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit
@@ -1494,7 +1494,6 @@
                     });
                 }
 
-                // Traveller Phone OTP Auth Handlers
                 const btnSendOtp = document.getElementById('btn-send-otp');
                 const btnVerifyOtp = document.getElementById('btn-verify-otp');
                 const btnBackPhone = document.getElementById('btn-back-to-phone');
@@ -1503,7 +1502,7 @@
                 const stepPhone = document.getElementById('otp-step-phone');
                 const stepVerify = document.getElementById('otp-step-verify');
                 const phoneDisplay = document.getElementById('otp-phone-display');
-                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+                const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
 
                 let currentPhone = '';
 
@@ -1520,30 +1519,30 @@
                         btnSendOtp.disabled = true;
 
                         try {
+                            const controller = new AbortController();
+                            const timeoutId = setTimeout(() => controller.abort(), 15000);
                             const res = await fetch(`${backendUrl}/api/auth/traveller/send-otp`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ phone })
+                                body: JSON.stringify({ phone }),
+                                signal: controller.signal
                             });
+                            clearTimeout(timeoutId);
                             const data = await res.json();
                             if (res.ok && data.success) {
                                 stepPhone.style.display = 'none';
                                 stepVerify.style.display = 'block';
-                                phoneDisplay.innerHTML = `<i class="fa-solid fa-shield-halved"></i> Code sent to <b>+91-${phone}</b> ${data.demoOtp ? `(Demo OTP: <b>${data.demoOtp}</b>)` : ''}`;
-                                if (data.demoOtp) {
-                                    otpInput.value = data.demoOtp;
+                                phoneDisplay.innerHTML = `<i class="fa-solid fa-shield-halved"></i> Code sent to <b>+91-${phone}</b>`;
+                                if (otpInput) {
+                                    otpInput.value = '';
+                                    otpInput.focus();
                                 }
-                                Utils.showToast(`OTP sent successfully! ${data.demoOtp ? `[Demo OTP: ${data.demoOtp}]` : ''}`, 'success');
+                                Utils.showToast(`6-Digit OTP sent to +91-${phone}`, 'success');
                             } else {
                                 Utils.showToast(data.error || 'Failed to send OTP.', 'error');
                             }
                         } catch (e) {
-                            // Offline demo fallback
-                            stepPhone.style.display = 'none';
-                            stepVerify.style.display = 'block';
-                            phoneDisplay.innerHTML = `<i class="fa-solid fa-shield-halved"></i> Code sent to <b>+91-${phone}</b> (Demo OTP: <b>123456</b>)`;
-                            otpInput.value = '123456';
-                            Utils.showToast('Demo OTP generated: 123456', 'info');
+                            Utils.showToast('Unable to reach authentication server. Please check your connection.', 'error');
                         } finally {
                             btnSendOtp.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Get 6-Digit OTP Code';
                             btnSendOtp.disabled = false;
@@ -1555,7 +1554,7 @@
                     btnVerifyOtp.addEventListener('click', async () => {
                         const otp = (otpInput.value || '').trim();
                         if (otp.length !== 6) {
-                            Utils.showToast('Please enter the full 6-digit OTP.', 'error');
+                            Utils.showToast('Please enter the full 6-digit OTP code.', 'error');
                             return;
                         }
 
@@ -1563,27 +1562,35 @@
                         btnVerifyOtp.disabled = true;
 
                         try {
+                            const controller = new AbortController();
+                            const timeoutId = setTimeout(() => controller.abort(), 15000);
                             const res = await fetch(`${backendUrl}/api/auth/traveller/verify-otp`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ phone: currentPhone, otp })
+                                body: JSON.stringify({ phone: currentPhone, otp }),
+                                signal: controller.signal
                             });
+                            clearTimeout(timeoutId);
                             const data = await res.json();
-                            if (res.ok && data.success) {
+                            if (res.ok && data.success && data.token) {
                                 sessionStorage.setItem('nhai_traveller_auth', data.token);
+                                sessionStorage.setItem('nhai_traveller_phone', currentPhone);
                                 if (data.wallet) {
                                     Storage.set(Storage.KEYS.FASTAG_BALANCE, data.wallet.balance);
                                 }
                                 Utils.toggleVisibility('traveller-otp-modal', false);
-                                Utils.showToast(`Authenticated as +91-${currentPhone}! FASTag Wallet Connected.`, 'success');
-                                if (window.FastagEngine) FastagEngine.updateUI();
+                                Utils.showToast(`Connected as +91-${currentPhone}! FASTag wallet synced.`, 'success');
+                                if (window.FastagEngine && typeof window.FastagEngine.syncFromServer === 'function') {
+                                    window.FastagEngine.syncFromServer();
+                                }
+                                if (window.updateTravellerAuthUI) {
+                                    window.updateTravellerAuthUI();
+                                }
                             } else {
-                                Utils.showToast(data.error || 'Invalid OTP.', 'error');
+                                Utils.showToast(data.error || 'Invalid OTP code.', 'error');
                             }
                         } catch (e) {
-                            // Offline fallback
-                            Utils.toggleVisibility('traveller-otp-modal', false);
-                            Utils.showToast(`Authenticated as +91-${currentPhone} (Offline Mode)`, 'success');
+                            Utils.showToast('Authentication server timeout. Please try again.', 'error');
                         } finally {
                             btnVerifyOtp.innerHTML = '<i class="fa-solid fa-lock-open"></i> Verify & Authenticate';
                             btnVerifyOtp.disabled = false;
@@ -1596,6 +1603,10 @@
                         stepVerify.style.display = 'none';
                         stepPhone.style.display = 'block';
                     });
+                }
+
+                if (window.updateTravellerAuthUI) {
+                    window.updateTravellerAuthUI();
                 }
             });
         </script>

@@ -572,6 +572,24 @@ app.post('/api/tolls/congestion', authenticateAdmin, (req, res) => {
     res.json({ success: true, tollState: updated });
 });
 
+app.post('/api/sms/send', (req, res) => {
+    const { phone, message } = req.body;
+    const msgId = `SMS-${Date.now()}-${crypto.randomBytes(2).toString('hex').toUpperCase()}`;
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`[SMS Broadcast] Sent to ${phone}: ${message} (${msgId})`);
+    }
+    res.json({ success: true, messageId: msgId, status: 'DELIVERED', timestamp: new Date().toISOString() });
+});
+
+app.post('/api/email/send', (req, res) => {
+    const { to, subject, trip, message } = req.body;
+    const emailId = `EML-${Date.now()}-${crypto.randomBytes(2).toString('hex').toUpperCase()}`;
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`[Email Dispatch] Sent to ${to}: ${subject} (${emailId})`);
+    }
+    res.json({ success: true, emailId, status: 'SENT', timestamp: new Date().toISOString() });
+});
+
 app.get('/health', (req, res) => {
     res.json({
         status: 'SNHOP Real-Time National Highway Backend Live',

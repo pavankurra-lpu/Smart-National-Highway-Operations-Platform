@@ -1,15 +1,14 @@
 const SMSAlerts = {
     sendSMS: (phoneNumber, message) => {
-        // Simulation of API call
-        console.log(`[SMSService] Sending to ${phoneNumber}: ${message}`);
-        fetch('/api/sms/send', {
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
+        fetch(`${backendUrl}/api/sms/send`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 phone: phoneNumber,
                 message: message
             })
-        }).catch(err => console.log('[SMSService] Simulation: Endpoint not found, but logic verified.'));
+        }).catch(() => {});
     },
     
     alertTollAhead: (phone, plazaName) => {
