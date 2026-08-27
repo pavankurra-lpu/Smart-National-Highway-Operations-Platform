@@ -86,7 +86,7 @@ const AlertBroadcaster = {
         if (val === 'ALL') {
             AlertBroadcaster.selectedTollObj = null;
             if (nameEl) nameEl.textContent = 'All India National Highway Network';
-            if (metaEl) metaEl.textContent = 'National Corridors • Multi-State Geofence (1,558+ Plazas)';
+            if (metaEl) metaEl.textContent = 'National Corridors • Multi-State Geofence (1,232+ Plazas)';
             if (coordsEl) coordsEl.textContent = 'Lat: 20.5937, Lng: 78.9629 (Pan-India)';
             if (badgeEl) {
                 badgeEl.innerHTML = '<span class="live-status-dot" style="background:#38bdf8;"></span> ALL-INDIA NETWORK';

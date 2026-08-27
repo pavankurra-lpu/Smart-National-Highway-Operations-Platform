@@ -134,7 +134,7 @@ const Notifications = {
             tickerItems = [
                 `<span><i class="fa-solid fa-satellite-dish" style="color:#38bdf8;"></i> GPS Telemetry Active · Real-time National Highway monitoring enabled.</span>`,
                 `<span><i class="fa-solid fa-shield-halved" style="color:#10b981;"></i> 1033 National Emergency Dispatch ready 24/7 across all corridors.</span>`,
-                `<span><i class="fa-solid fa-wallet" style="color:#a855f7;"></i> Automated FASTag Toll clearance operational on 1,558+ Indian plazas.</span>`,
+                `<span><i class="fa-solid fa-wallet" style="color:#a855f7;"></i> Automated FASTag Toll clearance operational on 1,232+ Indian plazas.</span>`,
                 `<span><i class="fa-solid fa-triangle-exclamation" style="color:#fbbf24;"></i> Heavy vehicle lane discipline mandatory across all Expressways.</span>`
             ];
         }

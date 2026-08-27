@@ -32,7 +32,7 @@ SNHOP operates with a **Hybrid Dual-Tier System Architecture**:
 ## 🚀 Key System Features
 
 ### 🟢 Traveller Portal (Highway Commuters)
-- **All-India Route Planning Map**: Interactive route planning across an expansive national graph (1,558+ operational toll plazas), utilizing Leaflet.js with Map Layer switching (Standard / Dark / Satellite Hybrid) and OSRM integration.
+- **All-India Route Planning Map**: Interactive route planning across an expansive national graph (1,232+ operational toll plazas), utilizing Leaflet.js with Map Layer switching (Standard / Dark / Satellite Hybrid) and OSRM integration.
 - **Live Weather Intelligence**: Real-time meteorological queries powered by **Open-Meteo API** (with local deterministic fallback), tracking rain, fog, thunderstorms, and extreme heatwaves to adjust travel ETAs dynamically.
 - **Dijkstra Multi-Modal Routing**: Computes 'Fastest Route', 'Lowest Toll Route', and 'Balanced Route' using custom weighted graph algorithms.
 - **FASTag Digital Wallet**: Simulates 3rd-party platform recharges (with server-validated 1% platform convenience fee calculation) and automatic plaza barrier deductions.
@@ -102,7 +102,7 @@ node tests/test_adaptive_engine.js
 ## 🏆 Key Engineering Highlights
 
 - **Multi-Signal Tri-Factor Arbitration:** Developed an auditable recommendation engine fusing rolling wallet burn rates, time-of-day congestion vectors, and decaying emergency incident signals into deterministic pass and route advisories.
-- **Graph-Based Routing Core:** Implemented a custom weighted graph incorporating Dijkstra's algorithm to compute multi-modal routes ('Lowest Toll', 'Fastest Speed', 'Balanced') across 1,558+ Indian toll nodes.
+- **Graph-Based Routing Core:** Implemented a custom weighted graph incorporating Dijkstra's algorithm to compute multi-modal routes ('Lowest Toll', 'Fastest Speed', 'Balanced') across 1,232+ Indian toll nodes.
 - **Defensive API Architecture:** Built server-side validation for FASTag fee computation, balance verification, cryptographic session management, and rate limiting against brute-force intrusion.
 
 ---
