@@ -72,9 +72,7 @@ function authenticateToken(req, res, next) {
     const token = authHeader && (authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader);
 
     if (!token) {
-        // Allow fallback demo user if no token present in local dev mode
-        req.user = { id: 'USR-DEMO-001', role: 'traveller' };
-        return next();
+        return res.status(401).json({ error: 'Authentication required. Please provide a valid session token.' });
     }
 
     try {
@@ -82,11 +80,6 @@ function authenticateToken(req, res, next) {
         req.user = decoded;
         next();
     } catch (err) {
-        // If local token format, allow fallback
-        if (token.startsWith('nhai-admin') || token.startsWith('token-') || token.startsWith('USR-')) {
-            req.user = { id: token.startsWith('nhai-admin') ? 'ADMIN-OFFICER' : 'USR-DEMO-001', role: token.startsWith('nhai-admin') ? 'admin' : 'traveller' };
-            return next();
-        }
         return res.status(401).json({ error: 'Session expired or invalid token. Please log in again.' });
     }
 }
@@ -107,10 +100,6 @@ function authenticateAdmin(req, res, next) {
         req.admin = decoded;
         next();
     } catch (err) {
-        if (token.startsWith('nhai-admin') || token === 'nhai-admin-valid-2026') {
-            req.admin = { id: ADMIN_ID, role: 'admin' };
-            return next();
-        }
         return res.status(401).json({ error: 'Admin session expired. Please re-authenticate.' });
     }
 }
@@ -125,17 +114,18 @@ app.post('/api/auth/traveller/send-otp', loginLimiter, (req, res) => {
     }
 
     const cleanPhone = phone.trim();
-    // Generate secure 6-digit OTP
+    // Generate cryptographically random 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000);
     db.createOtp(cleanPhone, otp);
 
-    console.log(`[SMS Gateway Simulator] OTP for ${cleanPhone}: >> ${otp} << (Valid for 5 mins)`);
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`[SMS Gateway Simulated] OTP generated for +91-${cleanPhone}: ${otp} (Valid for 5 mins)`);
+    }
 
+    // Never leak OTP in production API response
     res.json({
         success: true,
         message: `OTP sent to +91-${cleanPhone.substring(0, 3)}****${cleanPhone.substring(7)}`,
-        // Include demoOtp for seamless evaluation in test environments
-        demoOtp: otp,
         expiresInSec: 300
     });
 });
@@ -229,28 +219,37 @@ app.post('/api/auth/admin/login', loginLimiter, (req, res) => {
 
 // Admin Session Verification
 app.post('/api/auth/admin/verify', (req, res) => {
-    const { token } = req.body;
-    if (!token) return res.status(401).json({ valid: false });
+    const authHeader = req.headers['authorization'] || req.headers['x-admin-token'];
+    const token = (authHeader && authHeader.startsWith('Bearer ') ? authHeader.substring(7) : authHeader) || req.body?.token;
+    if (!token) return res.status(401).json({ valid: false, error: 'Token missing' });
 
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
         if (decoded.role === 'admin') {
             return res.json({ valid: true, admin: decoded });
         }
-    } catch (e) {
-        if (token.startsWith('nhai-admin') || token === 'nhai-admin-valid-2026') {
-            return res.json({ valid: true, admin: { id: ADMIN_ID, role: 'admin' } });
-        }
-    }
+    } catch (e) {}
 
-    res.status(401).json({ valid: false });
+    res.status(401).json({ valid: false, error: 'Invalid or expired admin token' });
+});
+
+// Legacy Route Aliases for Compatibility
+app.post('/api/auth/login', (req, res, next) => {
+    // Forward to admin login handler
+    req.url = '/api/auth/admin/login';
+    app.handle(req, res, next);
+});
+
+app.post('/api/auth/verify', (req, res, next) => {
+    req.url = '/api/auth/admin/verify';
+    app.handle(req, res, next);
 });
 
 // ── 2. FASTAG FINANCIAL LEDGER ROUTES (SERVER-AUTHORITATIVE) ───────────────
 
 // Get Wallet Balance & Transactions
 app.get('/api/wallet', authenticateToken, (req, res) => {
-    const userId = req.user?.id || 'USR-DEMO-001';
+    const userId = req.user.id;
     const wallet = db.getWalletByUserId(userId);
     const transactions = db.getTransactionsByWalletId(wallet.id, 30);
     res.json({ success: true, wallet, transactions });
@@ -259,7 +258,7 @@ app.get('/api/wallet', authenticateToken, (req, res) => {
 // Server-Authoritative Recharge
 app.post('/api/wallet/recharge', authenticateToken, (req, res) => {
     try {
-        const userId = req.user?.id || 'USR-DEMO-001';
+        const userId = req.user.id;
         const { amount, paymentMethod } = req.body;
 
         const { wallet, transaction } = db.rechargeWallet({
@@ -285,7 +284,7 @@ app.post('/api/wallet/recharge', authenticateToken, (req, res) => {
 // Server-Authoritative Toll Deduction
 app.post('/api/wallet/deduct', authenticateToken, (req, res) => {
     try {
-        const userId = req.user?.id || 'USR-DEMO-001';
+        const userId = req.user.id;
         const { tollId, tollName, cost, vehicleType, nhCorridor } = req.body;
 
         const { wallet, transaction, trip } = db.deductToll({
@@ -323,7 +322,7 @@ app.post('/api/wallet/deduct', authenticateToken, (req, res) => {
 // Server-Authoritative Pass Purchase
 app.post('/api/wallet/buy-pass', authenticateToken, (req, res) => {
     try {
-        const userId = req.user?.id || 'USR-DEMO-001';
+        const userId = req.user.id;
         const { passType, tollId, tollName, cost, validityDays } = req.body;
 
         const { wallet, transaction } = db.purchasePass({
@@ -353,7 +352,7 @@ app.post('/api/wallet/buy-pass', authenticateToken, (req, res) => {
 
 // Get Immutable Financial Ledger
 app.get('/api/wallet/transactions', authenticateToken, (req, res) => {
-    const userId = req.user?.id || 'USR-DEMO-001';
+    const userId = req.user.id;
     const wallet = db.getWalletByUserId(userId);
     const transactions = db.getTransactionsByWalletId(wallet.id, 100);
     res.json({ success: true, transactions });

@@ -97,13 +97,36 @@ const FastagEngine = {
 
                     FastagEngine.updateUI();
                 }, 800);
-            });
-        }
+        // Initial server balance sync if user is authenticated
+        FastagEngine.syncFromServer();
 
         // Listen for cross-tab updates (e.g. from Admin or multiple tabs)
         window.addEventListener('local-storage-update', () => {
             FastagEngine.updateUI();
         });
+    },
+
+    syncFromServer: async () => {
+        const token = sessionStorage.getItem('nhai_traveller_auth');
+        if (!token) return;
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
+        try {
+            const res = await fetch(`${backendUrl}/api/wallet`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.wallet) {
+                    Storage.set(Storage.KEYS.FASTAG_BALANCE, data.wallet.balance);
+                }
+                if (Array.isArray(data.transactions)) {
+                    Storage.set(Storage.KEYS.RECHARGE_HISTORY, data.transactions);
+                }
+                FastagEngine.updateUI();
+            }
+        } catch (e) {
+            console.warn('[FastagEngine] Could not sync wallet from backend:', e.message);
+        }
     },
 
     updateUI: () => {

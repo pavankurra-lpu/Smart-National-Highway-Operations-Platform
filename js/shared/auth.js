@@ -1,13 +1,14 @@
 // Secure Admin Auth against the Express Backend
-
 const Auth = {
     login: async (id, pass) => {
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
+        
         try {
-            const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 2000);
+            // 15s timeout to allow Render free tier wake-up from cold sleep
+            const timeoutId = setTimeout(() => controller.abort(), 15000);
             
-            const response = await fetch(`${backendUrl}/api/auth/login`, {
+            const response = await fetch(`${backendUrl}/api/auth/admin/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id, pass }),
@@ -16,29 +17,21 @@ const Auth = {
             clearTimeout(timeoutId);
 
             const data = await response.json();
-            if (response.ok && data.success) {
+            if (response.ok && data.success && data.token) {
                 sessionStorage.setItem('nhai_admin_auth', data.token);
                 sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
                 sessionStorage.setItem('nhai_admin_id', id);
                 return { success: true, token: data.token };
             } else {
-                return { success: false, error: data.error || 'Access Denied: Invalid Credentials.' };
+                return { success: false, error: data.error || 'Access Denied: Invalid Staff ID or Passcode.' };
             }
         } catch (e) {
-            console.warn('[Auth] Server unavailable. Offline local simulation mode active.');
+            console.error('[Auth] Server authentication error:', e);
+            if (e.name === 'AbortError') {
+                return { success: false, error: 'Authentication timeout: Live server is waking up. Please retry in 5 seconds.' };
+            }
+            return { success: false, error: 'Access Denied: Unable to reach authentication server. Please check internet connection.' };
         }
-
-        // Offline local verification fallback (if backend is not running)
-        // Checks normalized identifier and non-empty password
-        if (id && pass && (id.trim().toLowerCase() === 'admin@nhai' || id.trim().toLowerCase() === 'admin')) {
-            const localToken = 'nhai-admin-offline-' + Date.now();
-            sessionStorage.setItem('nhai_admin_auth', localToken);
-            sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
-            sessionStorage.setItem('nhai_admin_id', id);
-            return { success: true, token: localToken };
-        }
-
-        return { success: false, error: 'Access Denied: Invalid Staff ID or Passcode.' };
     },
 
     logout: async () => {
@@ -59,30 +52,29 @@ const Auth = {
             return;
         }
 
-        // Fast-path: local session tokens are valid immediately
-        if (token.startsWith('nhai-admin') || token.startsWith('token-') || token === 'mock-local-token-xyz') {
-            return;
-        }
-
-        // Check with backend only if non-local token
+        // Verify token with backend server
         try {
-            const backendUrl = window.NHAI_CONFIG?.backend?.url || 'http://localhost:3000';
+            const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 800);
-            const response = await fetch(`${backendUrl}/api/auth/verify`, {
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
+            const response = await fetch(`${backendUrl}/api/auth/admin/verify`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
                 body: JSON.stringify({ token }),
                 signal: controller.signal
             });
             clearTimeout(timeoutId);
 
-            if (!response.ok && response.status === 401) {
+            if (!response.ok) {
                 sessionStorage.removeItem('nhai_admin_auth');
                 window.location.replace('login.html');
             }
         } catch (e) {
-            // Server offline: allow session
+            // If offline or network glitch, do not log out immediately if token exists
+            console.warn('[Auth Guard] Could not verify token with backend:', e.message);
         }
     }
 };

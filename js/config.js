@@ -87,8 +87,8 @@ const NHAI_CONFIG = {
 
     /* ── SECURE BACKEND CONFIGURATION ──────────────────────── */
     backend: {
-        // Live Deployed Backend on Render
-        url: (window.location.hostname === 'localhost' && window.location.port === '3000')
+        // Direct connection to deployed backend on Render (with localhost dev override)
+        url: (typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost' && window.location.port === '3000')
             ? 'http://localhost:3000'
             : 'https://smart-national-highway-operations.onrender.com'
     }
