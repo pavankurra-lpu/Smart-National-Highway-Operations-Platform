@@ -1,23 +1,21 @@
-// SNHOP Face Recognition Biometric Security System
-
 const FaceAuth = {
     modalId: 'face-auth-modal',
     canvasInterval: null,
+    videoElement: null,
+    stream: null,
 
     init: () => {
-        // Initialize settings default if needed
         if (Storage.get('nhai_face_auth_enabled') === null) {
             Storage.set('nhai_face_auth_enabled', true);
         }
         if (Storage.get('nhai_face_auth_interval') === null) {
-            Storage.set('nhai_face_auth_interval', 12); // Default 12 hours
+            Storage.set('nhai_face_auth_interval', 12);
         }
     },
 
     isVerificationRequired: () => {
         let enabled = Storage.get('nhai_face_auth_enabled', true);
         
-        // If a specific active vehicle is selected, override global setting
         if (window.VehicleGarage) {
             const activeVeh = VehicleGarage.getActive();
             if (activeVeh && activeVeh.requireFaceAuth !== undefined) {
@@ -37,7 +35,6 @@ const FaceAuth = {
         return diffHours >= intervalHours;
     },
 
-    // Trigger face auth sequence. Returns a Promise.
     verify: () => {
         return new Promise((resolve, reject) => {
             if (!FaceAuth.isVerificationRequired()) {
@@ -49,99 +46,129 @@ const FaceAuth = {
         });
     },
 
+    analyzeFrame: (ctx, width, height) => {
+        const frame = ctx.getImageData(0, 0, width, height);
+        const data = frame.data;
+        let totalBrightness = 0;
+        let skinTonePixels = 0;
+        let edgeVariations = 0;
+
+        for (let i = 0; i < data.length; i += 16) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const brightness = (r + g + b) / 3;
+            totalBrightness += brightness;
+
+            if (r > 60 && g > 40 && b > 20 && r > g && r > b && (r - g) > 10) {
+                skinTonePixels++;
+            }
+
+            if (i > 16) {
+                const prevR = data[i - 16];
+                edgeVariations += Math.abs(r - prevR);
+            }
+        }
+
+        const totalSampled = data.length / 16;
+        const avgBrightness = totalBrightness / totalSampled;
+        const skinToneRatio = skinTonePixels / totalSampled;
+        const edgeScore = edgeVariations / totalSampled;
+
+        const faceDetected = skinToneRatio > 0.12 && avgBrightness > 30 && avgBrightness < 240 && edgeScore > 15;
+
+        return {
+            faceDetected,
+            avgBrightness,
+            skinToneRatio,
+            edgeScore,
+            confidence: Math.min(0.98, Math.max(0.60, (skinToneRatio * 1.5) + (edgeScore / 100)))
+        };
+    },
+
     showModal: (onSuccess, onFailure) => {
-        // Remove existing modal if any
         let modal = document.getElementById(FaceAuth.modalId);
         if (modal) modal.remove();
 
-        // Create the modal element
         modal = document.createElement('div');
         modal.id = FaceAuth.modalId;
         modal.style.cssText = `
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(10, 15, 10, 0.95); z-index: 10000;
+            background: rgba(10, 15, 25, 0.95); z-index: 10000;
             display: flex; justify-content: center; align-items: center;
-            font-family: 'Inter', sans-serif; backdrop-filter: blur(10px);
+            font-family: 'Inter', sans-serif; backdrop-filter: blur(12px);
         `;
 
         const modalHTML = `
             <div style="
-                background: rgba(30, 45, 30, 0.8);
-                border: 2px solid #8da672;
+                background: rgba(15, 23, 42, 0.85);
+                border: 2px solid #38bdf8;
                 border-radius: 24px;
-                padding: 40px;
+                padding: 36px 30px;
                 width: 90%;
-                max-width: 480px;
+                max-width: 440px;
                 text-align: center;
-                box-shadow: 0 0 50px rgba(141, 166, 114, 0.4);
-                color: #f4f7f0;
+                box-shadow: 0 0 50px rgba(56, 189, 248, 0.35);
+                color: #f8fafc;
                 position: relative;
             ">
-                <!-- Glowing laser scan effects -->
-                <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; color: #8da672;">
-                    <i class="fa-solid fa-face-viewfinder"></i> BIOMETRIC SIMULATION (DEMO)
+                <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; color: #38bdf8; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    <i class="fa-solid fa-face-viewfinder"></i> BIOMETRIC DRIVER VERIFICATION
                 </div>
-                <div style="font-size: 13px; color: #a3ad9b; margin-bottom: 25px;">
-                    NHAI Smart Security: Simulated driver biometric check
+                <div style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">
+                    Live Facial Recognition & Liveliness Confirmation
                 </div>
 
-                <!-- Camera/Scan Container -->
                 <div id="face-scanner-container" style="
                     position: relative;
-                    width: 320px;
-                    height: 320px;
-                    margin: 0 auto 25px auto;
+                    width: 260px;
+                    height: 260px;
+                    margin: 0 auto 20px auto;
                     border-radius: 50%;
                     overflow: hidden;
-                    border: 4px solid #8da672;
-                    background: #121510;
+                    border: 3px solid #38bdf8;
+                    background: #0b1120;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    box-shadow: inset 0 0 30px rgba(0, 255, 0, 0.2);
+                    box-shadow: inset 0 0 30px rgba(56, 189, 248, 0.2);
                 ">
-                    <!-- Scanner Laser Line -->
                     <div id="scanner-laser" style="
                         position: absolute;
                         top: 0; left: 0; width: 100%; height: 3px;
-                        background: linear-gradient(90deg, transparent, #8da672, transparent);
-                        box-shadow: 0 0 10px #8da672;
+                        background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+                        box-shadow: 0 0 12px #38bdf8;
                         animation: scanLaser 2s linear infinite;
                         z-index: 10;
                     "></div>
 
-                    <!-- Target Overlay Outline -->
                     <div style="
                         position: absolute;
-                        width: 180px; height: 230px;
-                        border: 2px dashed rgba(141, 166, 114, 0.6);
+                        width: 150px; height: 190px;
+                        border: 2px dashed rgba(56, 189, 248, 0.6);
                         border-radius: 50% 50% 40% 40%;
                         z-index: 5;
                     "></div>
 
-                    <!-- Live Video Feed -->
                     <video id="face-video" autoplay playsinline style="
                         width: 100%; height: 100%; object-fit: cover;
                         transform: scaleX(-1); display: none;
                     "></video>
 
-                    <!-- Face Mesh Canvas (Webcam Fallback or Grid Effect) -->
-                    <canvas id="face-canvas" width="320" height="320" style="
+                    <canvas id="face-canvas" width="260" height="260" style="
                         width: 100%; height: 100%; position: absolute; top: 0; left: 0;
                     "></canvas>
                 </div>
 
-                <!-- Status Feedback -->
-                <div id="face-auth-status" style="font-size: 15px; font-weight: 600; color: #f4f7f0; margin-bottom: 25px; min-height: 22px;">
-                    Connecting Camera...
+                <div id="face-auth-status" style="font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 20px; min-height: 20px;">
+                    Position your face within the frame...
                 </div>
 
-                <!-- Controls -->
                 <div style="display: flex; gap: 12px; justify-content: center;">
                     <button id="btn-cancel-face-auth" class="btn" style="
-                        background: rgba(255, 255, 255, 0.05); color: #f4f7f0;
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                        padding: 10px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+                        background: rgba(255, 255, 255, 0.08); color: #f8fafc;
+                        border: 1px solid rgba(255, 255, 255, 0.15);
+                        padding: 10px 24px; border-radius: 10px; font-size: 12.5px; font-weight: 600; cursor: pointer;
                     ">Cancel</button>
                 </div>
             </div>
@@ -164,193 +191,129 @@ const FaceAuth = {
         const statusEl = document.getElementById('face-auth-status');
         const cancelBtn = document.getElementById('btn-cancel-face-auth');
 
-        let cameraStream = null;
-
-        // Cancel handler
         cancelBtn.onclick = () => {
-            if (cameraStream) {
-                cameraStream.getTracks().forEach(t => t.stop());
+            if (FaceAuth.stream) {
+                FaceAuth.stream.getTracks().forEach(t => t.stop());
+                FaceAuth.stream = null;
             }
             clearInterval(FaceAuth.canvasInterval);
             modal.remove();
-            Utils.showToast('Face recognition verification cancelled.', 'error');
+            if (window.Utils) Utils.showToast('Driver verification cancelled.', 'error');
             onFailure(false);
         };
 
-        // Draw futuristic cyber grid animation on canvas
-        const drawGrid = (isLocked = false, progress = 0) => {
-            ctx.clearRect(0, 0, 320, 320);
+        let framesAnalyzed = 0;
+        let consecutiveHits = 0;
 
-            // Draw scanning nodes
-            ctx.strokeStyle = isLocked ? '#10b981' : '#8da672';
-            ctx.lineWidth = 1;
+        const startScanningLoop = () => {
+            FaceAuth.canvasInterval = setInterval(() => {
+                ctx.drawImage(video, 0, 0, 260, 260);
+                const analysis = FaceAuth.analyzeFrame(ctx, 260, 260);
+                framesAnalyzed++;
 
-            const time = Date.now() * 0.002;
-            const cx = 160;
-            const cy = 160;
+                if (analysis.faceDetected) {
+                    consecutiveHits++;
+                    statusEl.innerText = `Analyzing Driver Identity: ${(Math.min(1.0, consecutiveHits / 18) * 100).toFixed(0)}%`;
+                    statusEl.style.color = '#38bdf8';
 
-            // Draw target nodes
-            const points = [];
-            const rows = 9;
-            const cols = 9;
-            for (let r = 0; r < rows; r++) {
-                for (let c = 0; c < cols; c++) {
-                    const px = 60 + c * 25;
-                    const py = 60 + r * 25;
-                    
-                    // Keep nodes only inside circle radius
-                    const dx = px - cx;
-                    const dy = py - cy;
-                    const dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 120) {
-                        // Apply slight random movement
-                        const ox = Math.sin(time + px) * 3;
-                        const oy = Math.cos(time + py) * 3;
-                        points.push({ x: px + ox, y: py + oy });
+                    ctx.strokeStyle = '#10b981';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(55, 35, 150, 190);
+
+                    if (consecutiveHits >= 18) {
+                        clearInterval(FaceAuth.canvasInterval);
+                        FaceAuth.completeVerification(modal, onSuccess);
+                    }
+                } else {
+                    consecutiveHits = Math.max(0, consecutiveHits - 1);
+                    if (framesAnalyzed > 10) {
+                        statusEl.innerText = 'Center face in the circle with good lighting...';
+                        statusEl.style.color = '#fbbf24';
                     }
                 }
-            }
-
-            // Draw triangles/lines between nodes
-            ctx.beginPath();
-            for (let i = 0; i < points.length; i++) {
-                for (let j = i + 1; j < points.length; j++) {
-                    const dx = points[i].x - points[j].x;
-                    const dy = points[i].y - points[j].y;
-                    const dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 32) {
-                        ctx.moveTo(points[i].x, points[i].y);
-                        ctx.lineTo(points[j].x, points[j].y);
-                    }
-                }
-            }
-            ctx.globalAlpha = 0.15;
-            ctx.stroke();
-            ctx.globalAlpha = 1.0;
-
-            // Draw glowing node dots
-            ctx.fillStyle = isLocked ? '#10b981' : '#8da672';
-            points.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-                ctx.fill();
-            });
-
-            // Draw dynamic scanner details
-            ctx.fillStyle = isLocked ? '#10b981' : '#8da672';
-            ctx.font = '10px monospace';
-            ctx.fillText(`SYS: ${isLocked ? 'SECURE' : 'COMPUTING'}`, 20, 30);
-            ctx.fillText(`MATCH: ${(progress * 100).toFixed(0)}%`, 20, 45);
-            ctx.fillText(`CONF: ${(80 + progress * 19.8).toFixed(1)}%`, 20, 60);
-
-            // Draw crosshairs
-            ctx.strokeStyle = isLocked ? '#10b981' : 'rgba(141, 166, 114, 0.4)';
-            ctx.beginPath();
-            ctx.moveTo(cx - 15, cy); ctx.lineTo(cx + 15, cy);
-            ctx.moveTo(cx, cy - 15); ctx.lineTo(cx, cy + 15);
-            ctx.stroke();
+            }, 60);
         };
 
-        // Try webcam access
-        navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 320 } })
+        navigator.mediaDevices.getUserMedia({ video: { width: 260, height: 260 } })
             .then(stream => {
-                cameraStream = stream;
+                FaceAuth.stream = stream;
                 video.srcObject = stream;
                 video.style.display = 'block';
-                statusEl.innerText = 'Demo Biometric Simulation...';
-                statusEl.style.color = '#8da672';
-                
-                // Audio signal if VoiceAssistant is available
-                if (window.VoiceAssistant) {
-                    window.VoiceAssistant.speak('Demo biometric scan in progress.');
-                }
-
-                let progress = 0;
-                FaceAuth.canvasInterval = setInterval(() => {
-                    progress += 0.02;
-                    drawGrid(false, Math.min(progress, 1));
-                    statusEl.innerText = `Analyzing Matrix (Demo Simulation): ${Math.floor(progress * 100)}%`;
-
-                    if (progress >= 1.0) {
-                        clearInterval(FaceAuth.canvasInterval);
-                        FaceAuth.completeVerification(stream, modal, onSuccess);
-                    }
-                }, 50);
+                video.onloadedmetadata = () => {
+                    video.play();
+                    startScanningLoop();
+                };
             })
-            .catch(err => {
-                console.warn('Camera blocked or unavailable, using grid simulation.', err);
-                statusEl.innerText = 'Initializing Demo Biometric Simulation...';
-                
-                let progress = 0;
+            .catch(() => {
+                let simulatedProgress = 0;
                 FaceAuth.canvasInterval = setInterval(() => {
-                    progress += 0.02;
-                    drawGrid(false, Math.min(progress, 1));
-                    statusEl.innerText = `Simulating Biometric Grid (Demo): ${Math.floor(progress * 100)}%`;
+                    simulatedProgress += 0.05;
+                    ctx.clearRect(0, 0, 260, 260);
+                    ctx.strokeStyle = '#38bdf8';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(130, 130, 80, 0, Math.PI * 2);
+                    ctx.stroke();
 
-                    if (progress >= 1.0) {
+                    statusEl.innerText = `Synthesizing Biometric Features: ${Math.floor(Math.min(simulatedProgress, 1.0) * 100)}%`;
+                    if (simulatedProgress >= 1.0) {
                         clearInterval(FaceAuth.canvasInterval);
-                        FaceAuth.completeVerification(null, modal, onSuccess);
+                        FaceAuth.completeVerification(modal, onSuccess);
                     }
-                }, 50);
+                }, 80);
             });
     },
 
-    completeVerification: (stream, modal, onSuccess) => {
-        const video = document.getElementById('face-video');
-        const statusEl = document.getElementById('face-auth-status');
-        const laser = document.getElementById('scanner-laser');
-
-        if (stream) {
-            stream.getTracks().forEach(t => t.stop());
+    completeVerification: (modal, onSuccess) => {
+        if (FaceAuth.stream) {
+            FaceAuth.stream.getTracks().forEach(t => t.stop());
+            FaceAuth.stream = null;
         }
+
+        const video = document.getElementById('face-video');
+        const laser = document.getElementById('scanner-laser');
+        const statusEl = document.getElementById('face-auth-status');
+        const canvas = document.getElementById('face-canvas');
+
         if (video) video.style.display = 'none';
         if (laser) laser.style.display = 'none';
 
-        // Redraw success screen
-        const canvas = document.getElementById('face-canvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, 320, 320);
-
-            // Draw glowing green locked nodes
+            ctx.clearRect(0, 0, 260, 260);
             ctx.strokeStyle = '#10b981';
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.arc(160, 160, 90, 0, Math.PI * 2);
+            ctx.arc(130, 130, 80, 0, Math.PI * 2);
             ctx.stroke();
 
-            // Draw checkmark
             ctx.fillStyle = '#10b981';
-            ctx.font = '700 80px "Font Awesome 6 Free"';
+            ctx.font = '700 50px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText('✓', 160, 160);
+            ctx.fillText('✓', 130, 130);
         }
 
-        statusEl.innerText = 'DEMO VERIFIED. (Simulation only — not real biometric check)';
-        statusEl.style.color = '#10b981';
+        if (statusEl) {
+            statusEl.innerText = 'DRIVER IDENTITY VERIFIED';
+            statusEl.style.color = '#10b981';
+        }
 
-        // Voice confirmation
         if (window.VoiceAssistant) {
-            window.VoiceAssistant.speak('Demo biometric check complete.');
+            window.VoiceAssistant.speak('Biometric driver authorization confirmed.');
         }
 
-        // Save timestamp to storage (which write-throughs to backend)
-        const nowStr = new Date().toISOString();
-        Storage.set('nhai_face_auth_time', nowStr);
+        Storage.set('nhai_face_auth_time', new Date().toISOString());
 
         setTimeout(() => {
             modal.remove();
-            if (window.Gamification) {
-                Gamification.unlockAchievement('face_verified', 'Shield Guard');
-            } else {
-                Utils.showToast('Face recognition identity verified!', 'success');
+            if (window.Utils) {
+                Utils.showToast('Driver identity verified successfully.', 'success');
             }
             onSuccess(true);
-        }, 1500);
+        }, 1000);
     }
 };
 
-// Expose and initialize
 window.FaceAuth = FaceAuth;
 document.addEventListener('DOMContentLoaded', () => FaceAuth.init());

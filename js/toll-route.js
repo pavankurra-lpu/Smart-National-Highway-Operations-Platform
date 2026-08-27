@@ -485,19 +485,27 @@ function plotRealRoute(start, end) {
 
 function findTollsOnRoute(routeCoords, startName, endName, distanceM, durationS) {
     if (!window.TollSeedData) return;
-    
-    const tollsOnRoute = [];
-    TollSeedData.forEach(toll => {
-        // Simple distance check to route points (cheap geofencing)
-        for (let i = 0; i < routeCoords.length; i += 10) { // Sample every 10th point for speed
-            const pt = routeCoords[i];
-            const dist = Math.sqrt(Math.pow(toll.lat - pt[0], 2) + Math.pow(toll.lng - pt[1], 2));
-            if (dist < 0.015) { // Approx 1.5km
-                tollsOnRoute.push(toll);
-                break;
+
+    let tollsOnRoute = [];
+    if (window.GNSSTollMatcher && typeof window.GNSSTollMatcher.matchRouteTolls === 'function') {
+        tollsOnRoute = window.GNSSTollMatcher.matchRouteTolls(routeCoords, window.TollSeedData, {
+            corridorWidthKm: 0.15,
+            candidateRadiusKm: 1.5
+        });
+    } else {
+        TollSeedData.forEach(toll => {
+            for (let i = 0; i < routeCoords.length; i += 5) {
+                const pt = routeCoords[i];
+                const dLat = (toll.lat - pt[0]) * 111.0;
+                const dLng = (toll.lng - pt[1]) * 111.0 * Math.cos((pt[0] * Math.PI) / 180.0);
+                const distKm = Math.sqrt(dLat * dLat + dLng * dLng);
+                if (distKm <= 0.2) {
+                    tollsOnRoute.push(toll);
+                    break;
+                }
             }
-        }
-    });
+        });
+    }
 
     displayRouteDetails(startName, endName, distanceM, durationS, tollsOnRoute);
 }
