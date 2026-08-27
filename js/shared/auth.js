@@ -49,7 +49,14 @@ const Auth = {
         sessionStorage.removeItem('nhai_admin_auth');
         sessionStorage.removeItem('admin_plaza');
         sessionStorage.removeItem('admin_plaza_data');
-        window.location.href = 'login.html';
+        const loc = window.location.pathname;
+        if (loc.includes('/admin/')) {
+            window.location.href = loc.substring(0, loc.lastIndexOf('/admin/') + 7) + 'login.html';
+        } else if (loc.endsWith('/admin')) {
+            window.location.href = loc + '/login.html';
+        } else {
+            window.location.href = 'login.html';
+        }
     },
 
     isAuthenticated: () => {

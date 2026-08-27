@@ -32,40 +32,45 @@ const AlertBroadcaster = {
 
         sel.innerHTML = '';
 
-        // Option 1: All Plazas (National Broadcast)
-        const allOpt = document.createElement('option');
-        allOpt.value = 'ALL';
-        allOpt.textContent = '⭐ All India (National Highway Network)';
-        sel.appendChild(allOpt);
-
-        // Group toll plazas by State
-        const stateGroups = {};
-        allTolls.forEach(toll => {
-            const st = toll.state || 'National Highway';
-            if (!stateGroups[st]) stateGroups[st] = [];
-            stateGroups[st].push(toll);
-        });
-
-        Object.keys(stateGroups).sort().forEach(st => {
-            const optgroup = document.createElement('optgroup');
-            optgroup.label = `📍 ${st}`;
-            stateGroups[st].forEach(t => {
-                const opt = document.createElement('option');
-                opt.value = t.id || t.name;
-                const corr = t.nhCorridor && t.nhCorridor !== 'N/A' ? ` [NH-${t.nhCorridor}]` : '';
-                opt.textContent = `🏗️ ${t.name}${corr}`;
-                opt.dataset.tollJson = JSON.stringify(t);
-                optgroup.appendChild(opt);
-            });
-            sel.appendChild(optgroup);
-        });
-
-        // If logged in as specific plaza, auto-select it!
         if (loggedInPlaza !== 'ALL') {
-            const matchedOpt = Array.from(sel.options).find(o => o.value === loggedInPlaza || (o.dataset.tollJson && o.dataset.tollJson.includes(loggedInPlaza)));
-            if (matchedOpt) {
-                sel.value = matchedOpt.value;
+            // Toll Operator: Scoped strictly to assigned toll and adjacent toll-to-toll corridor
+            const assignedToll = allTolls.find(t => t.id === loggedInPlaza || (t.name && t.name.toLowerCase().includes(loggedInPlaza.toLowerCase())));
+            if (assignedToll) {
+                const opt = document.createElement('option');
+                opt.value = assignedToll.id || assignedToll.name;
+                const corr = assignedToll.nhCorridor && assignedToll.nhCorridor !== 'N/A' ? ` [NH-${assignedToll.nhCorridor}]` : '';
+                opt.textContent = `📍 Assigned Toll: ${assignedToll.name}${corr}`;
+                opt.dataset.tollJson = JSON.stringify(assignedToll);
+                sel.appendChild(opt);
             }
+        } else {
+            // Super Admin: Option 1: All Plazas (National Broadcast)
+            const allOpt = document.createElement('option');
+            allOpt.value = 'ALL';
+            allOpt.textContent = '⭐ All India (National Highway Network)';
+            sel.appendChild(allOpt);
+
+            // Group toll plazas by State
+            const stateGroups = {};
+            allTolls.forEach(toll => {
+                const st = toll.state || 'National Highway';
+                if (!stateGroups[st]) stateGroups[st] = [];
+                stateGroups[st].push(toll);
+            });
+
+            Object.keys(stateGroups).sort().forEach(st => {
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = `📍 ${st}`;
+                stateGroups[st].forEach(t => {
+                    const opt = document.createElement('option');
+                    opt.value = t.id || t.name;
+                    const corr = t.nhCorridor && t.nhCorridor !== 'N/A' ? ` [NH-${t.nhCorridor}]` : '';
+                    opt.textContent = `🏗️ ${t.name}${corr}`;
+                    opt.dataset.tollJson = JSON.stringify(t);
+                    optgroup.appendChild(opt);
+                });
+                sel.appendChild(optgroup);
+            });
         }
 
         AlertBroadcaster.updateConnectedCard();

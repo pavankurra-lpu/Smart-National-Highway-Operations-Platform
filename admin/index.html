@@ -50,20 +50,48 @@
         <!-- Main Content Area -->
         <main class="admin-main">
 
-            <div class="dashboard-header">
-                <div>
-                    <h2 style="display:flex; align-items:center; gap:10px;">
-                        Operations Control (Admin)
-                        <span id="admin-region-badge" style="font-size: 11px; padding: 3px 8px; background: rgba(16,185,129,0.15); border: 1px solid var(--primary); color: var(--primary); border-radius: 12px; font-weight: 700;">ALL INDIA</span>
-                    </h2>
-                    <p>National Highway Authority of India</p>
-                </div>
-                <div style="display: flex; gap: 15px; align-items: center;">
-                    <button class="theme-toggle-btn btn btn-outline" style="padding: 4px 8px; border:none;"></button>
-                    <div class="live-indicator">
-                        <div class="live-dot"></div>
-                        SYSTEM LIVE
+            <div class="dashboard-header" style="background:#09090b; border-bottom:1px solid rgba(255,255,255,0.08); padding:14px 24px;">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <!-- Government of India Official Emblem -->
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg viewBox="0 0 100 100" width="30" height="30" style="flex-shrink:0;">
+                            <path d="M 20,80 L 80,80 L 74,74 L 26,74 Z" fill="#fafafa"/>
+                            <path d="M 28,74 L 72,74 L 70,68 L 30,68 Z" fill="#fafafa"/>
+                            <circle cx="50" cy="71" r="2.5" fill="none" stroke="#09090b" stroke-width="0.8"/>
+                            <circle cx="50" cy="71" r="0.6" fill="#09090b"/>
+                            <path d="M 32,68 C 32,62 68,62 68,68 Z" fill="#fafafa" opacity="0.85"/>
+                            <path d="M 50,22 C 43,22 42,28 44,34 C 41,36 39,40 40,45 C 41,51 43,55 43,62 C 45,62 46,62 47,61 C 46,57 47,53 46,51 C 45,44 55,44 54,51 C 53,53 54,57 53,61 C 54,62 55,62 57,62 C 57,55 59,51 60,45 C 61,40 59,36 56,34 C 58,28 57,22 50,22 Z" fill="#fafafa"/>
+                            <text x="50" y="92" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="8.5" fill="#fafafa" text-anchor="middle">सत्यमेव जयते</text>
+                        </svg>
+                        <div style="display:flex; flex-direction:column; width:3px; height:24px; border-radius:2px; overflow:hidden;">
+                            <div style="flex:1; background:#FF671F;"></div>
+                            <div style="flex:1; background:#FFFFFF;"></div>
+                            <div style="flex:1; background:#048A43;"></div>
+                        </div>
+                        <div style="display:flex; flex-direction:column; text-align:left;">
+                            <span style="font-size:11px; font-weight:700; color:#fff; line-height:1.2;">भारत सरकार</span>
+                            <span style="font-size:8px; font-weight:600; color:#94a3b8; line-height:1.2;">GOVERNMENT OF INDIA</span>
+                        </div>
                     </div>
+
+                    <div style="width:1px; height:20px; background:rgba(255,255,255,0.15);"></div>
+
+                    <!-- NHAI Operations Title -->
+                    <div>
+                        <h2 style="display:flex; align-items:center; gap:10px; font-size:15px; font-weight:800; color:#fff; margin:0;">
+                            Operations Control Command
+                            <span id="admin-region-badge" style="font-size: 10px; padding: 2px 8px; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.3); color: #38bdf8; border-radius: 9999px; font-weight: 700;">ALL INDIA</span>
+                        </h2>
+                        <p style="font-size:10.5px; color:#a1a1aa; margin:2px 0 0 0;">National Highways Authority of India (NHAI)</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <div class="nhai-central-pill">
+                        <span class="nhai-central-dot"></span>
+                        <span>NHAI CENTRAL CONNECTED</span>
+                    </div>
+                    <button class="theme-toggle-btn btn btn-outline" style="padding: 4px 8px; border:none;"></button>
                 </div>
             </div>
 

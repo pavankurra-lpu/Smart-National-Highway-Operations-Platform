@@ -140,13 +140,13 @@ const AdminApp = {
         // If a specific toll plaza is assigned, center directly on it
         if (AdminApp.plazaData && AdminApp.plazaData.lat && AdminApp.plazaData.lng) {
             center = [AdminApp.plazaData.lat, AdminApp.plazaData.lng];
-            zoom = 12;
+            zoom = 14;
         }
 
         const indiaBounds = L.latLngBounds([3.5, 60.0], [39.0, 102.0]);
         AdminApp.map = L.map('admin-live-map', {
             zoomControl: true,
-            attributionControl: true,
+            attributionControl: false,
             center: center,
             zoom: zoom,
             minZoom: 4,
@@ -166,16 +166,16 @@ const AdminApp = {
             const p = AdminApp.plazaData;
             const tollIcon = L.divIcon({
                 className: '',
-                html: `<div style="background: linear-gradient(135deg, #6366f1, #3b82f6); color:#fff; width:36px; height:36px; border-radius:10px; border:2px solid #fff; box-shadow:0 0 20px rgba(99,102,241,0.8); display:flex; align-items:center; justify-content:center; font-size:16px;">🏗️</div>`,
-                iconSize: [36, 36],
-                iconAnchor: [18, 18]
+                html: `<div style="background: #38bdf8; color:#09090b; width:40px; height:40px; border-radius:12px; border:2px solid #fff; box-shadow:0 0 24px rgba(56,189,248,0.8); display:flex; align-items:center; justify-content:center; font-size:20px;">⛩️</div>`,
+                iconSize: [40, 40],
+                iconAnchor: [20, 20]
             });
             L.marker([p.lat, p.lng], { icon: tollIcon })
                 .bindPopup(`
-                    <div style="font-family:'Inter',sans-serif; color:#0f172a; padding:4px;">
-                        <strong style="font-size:13px;">🏗️ ${p.name}</strong><br>
+                    <div style="font-family:'Inter',sans-serif; color:#09090b; padding:4px;">
+                        <strong style="font-size:13px; color:#09090b;">⛩️ ${p.name}</strong><br>
                         <span style="font-size:11px; color:#64748b;">${p.district ? p.district + ', ' : ''}${p.state || 'India'}</span><br>
-                        <span style="font-size:11px; color:#4338ca; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
+                        <span style="font-size:11px; color:#0284c7; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
                     </div>
                 `)
                 .addTo(AdminApp.map)

@@ -127,6 +127,19 @@ const TrafficControl = {
         const congF = document.getElementById('traffic-congestion-filter')?.value || '';
         const currentStates = Storage.get(Storage.KEYS.TOLL_STATES, {});
 
+        const assignedPlaza = sessionStorage.getItem('admin_plaza');
+        if (assignedPlaza && assignedPlaza !== 'ALL') {
+            const cleanAssigned = assignedPlaza.toLowerCase();
+            TrafficControl.filteredData = sourceData.filter(plaza => {
+                const pName = (plaza.name || '').toLowerCase();
+                const pId = (plaza.id || '').toLowerCase();
+                return pId === cleanAssigned || pName.includes(cleanAssigned);
+            });
+            TrafficControl.updateStats();
+            TrafficControl.renderGrid();
+            return;
+        }
+
         TrafficControl.filteredData = sourceData.filter(plaza => {
             if (search) {
                 const searchStr = `${plaza.name} ${plaza.state} ${plaza.id}`.toLowerCase();
@@ -142,7 +155,6 @@ const TrafficControl = {
             if (TrafficControl.useGpsFilter && TrafficControl.gpsCoords) {
                 const plazaLat = plaza.lat || 0;
                 const plazaLng = plaza.lng || 0;
-                // If plaza coords are mock, treat as distance-eligible for demo stability
                 if (plazaLat !== 0 && plazaLng !== 0) {
                     const dist = TrafficControl.calcDistance(
                         TrafficControl.gpsCoords.lat, 
@@ -150,9 +162,8 @@ const TrafficControl = {
                         plazaLat, 
                         plazaLng
                     );
-                    if (dist > 150) return false; // Only local Plazas within 150 km
+                    if (dist > 150) return false;
                 } else if (TrafficControl.gpsCoords.lat !== 26.9124) {
-                    // Filter out untracked coordinate plazas if using real GPS to avoid confusion
                     return false;
                 }
             }

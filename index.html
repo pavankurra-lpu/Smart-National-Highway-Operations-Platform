@@ -15,7 +15,8 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 100vh;
-            background: radial-gradient(ellipse at 50% 30%, #0d121f 0%, #030712 100%);
+            background: #09090b;
+            color: #f4f4f5;
             overflow-x: hidden;
             position: relative;
         }
@@ -505,77 +506,58 @@
     <!-- Reactbits Grid Background -->
     <div class="reactbits-bg-grid"></div>
 
-    <!-- Header Navigation -->
-    <header class="gateway-header">
-        <div class="brand-logo">
-            <!-- Government of India Official Emblem Logo SVG -->
-            <svg class="emblem-svg" viewBox="0 0 100 100" width="34" height="34" style="margin-right: 2px;">
-                <!-- Pedestal / Base -->
-                <path d="M 20,80 L 80,80 L 74,74 L 26,74 Z" fill="#fafafa"/>
-                <path d="M 28,74 L 72,74 L 70,68 L 30,68 Z" fill="#fafafa"/>
-                <!-- Dharma Chakra in base center -->
-                <circle cx="50" cy="71" r="2.5" fill="none" stroke="#09090b" stroke-width="0.8"/>
-                <circle cx="50" cy="71" r="0.6" fill="#09090b"/>
-                <!-- Bull and Horse indicators in base -->
-                <path d="M 36,70 C 35,69 33,70 33,72 C 34,73 37,73 37,71 Z" fill="#09090b" opacity="0.7"/>
-                <path d="M 64,70 C 65,69 67,70 67,72 C 66,73 63,73 63,71 Z" fill="#09090b" opacity="0.7"/>
-                <!-- Lotus base -->
-                <path d="M 32,68 C 32,62 68,62 68,68 Z" fill="#fafafa" opacity="0.85"/>
-                
-                <!-- Central Lion -->
-                <path d="M 50,22 C 43,22 42,28 44,34 C 41,36 39,40 40,45 C 41,51 43,55 43,62 C 45,62 46,62 47,61 C 46,57 47,53 46,51 C 45,44 55,44 54,51 C 53,53 54,57 53,61 C 54,62 55,62 57,62 C 57,55 59,51 60,45 C 61,40 59,36 56,34 C 58,28 57,22 50,22 Z" fill="#fafafa"/>
-                <path d="M 46,36 C 47,38 49,38 50,37 C 51,38 53,38 54,36 C 53,34 47,34 46,36 Z" fill="#09090b" opacity="0.3"/>
-                <path d="M 44,46 C 47,48 48,47 50,49 C 52,47 53,48 56,46" fill="none" stroke="#09090b" stroke-width="0.5" opacity="0.4"/>
-                
-                <!-- Left profile Lion -->
-                <path d="M 28,46 C 26,36 36,31 36,39 C 34,45 36,49 36,51 C 35,54 34,56 35,59 C 36,59 38,59 38,58 C 37,55 38,53 37,51 C 38,46 33,41 33,37 C 33,34 36,33 38,36 C 39,38 39,41 39,43 L 40,59 L 36,59" fill="#fafafa"/>
-                
-                <!-- Right profile Lion -->
-                <path d="M 72,46 C 74,36 64,31 64,39 C 66,45 64,49 64,51 C 65,54 66,56 65,59 C 64,59 62,59 62,58 C 63,55 62,53 62,51 C 61,46 66,41 66,37 C 66,34 63,33 61,36 C 60,38 60,41 60,43 L 60,59 L 64,59" fill="#fafafa"/>
-                
-                <circle cx="48" cy="27" r="0.8" fill="#09090b"/>
-                <circle cx="52" cy="27" r="0.8" fill="#09090b"/>
-                <circle cx="33" cy="31" r="0.6" fill="#09090b"/>
-                <circle cx="67" cy="31" r="0.6" fill="#09090b"/>
-                
-                <!-- Satyameva Jayate tagline -->
-                <text x="50" y="90" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="8.5" fill="#fafafa" text-anchor="middle" letter-spacing="0.5">सत्यमेव जयते</text>
-            </svg>
+    <!-- Header Navigation (Official Government of India & NHAI Bar) -->
+    <header class="nhai-official-header">
+        <div class="nhai-header-left">
+            <!-- Government of India Official Emblem -->
+            <div class="nhai-emblem-unit">
+                <svg class="nhai-emblem-svg" viewBox="0 0 100 100">
+                    <path d="M 20,80 L 80,80 L 74,74 L 26,74 Z" fill="#fafafa"/>
+                    <path d="M 28,74 L 72,74 L 70,68 L 30,68 Z" fill="#fafafa"/>
+                    <circle cx="50" cy="71" r="2.5" fill="none" stroke="#09090b" stroke-width="0.8"/>
+                    <circle cx="50" cy="71" r="0.6" fill="#09090b"/>
+                    <path d="M 32,68 C 32,62 68,62 68,68 Z" fill="#fafafa" opacity="0.85"/>
+                    <path d="M 50,22 C 43,22 42,28 44,34 C 41,36 39,40 40,45 C 41,51 43,55 43,62 C 45,62 46,62 47,61 C 46,57 47,53 46,51 C 45,44 55,44 54,51 C 53,53 54,57 53,61 C 54,62 55,62 57,62 C 57,55 59,51 60,45 C 61,40 59,36 56,34 C 58,28 57,22 50,22 Z" fill="#fafafa"/>
+                    <path d="M 28,46 C 26,36 36,31 36,39 C 34,45 36,49 36,51 C 35,54 34,56 35,59 C 36,59 38,59 38,58 C 37,55 38,53 37,51 C 38,46 33,41 33,37 C 33,34 36,33 38,36 C 39,38 39,41 39,43 L 40,59 L 36,59" fill="#fafafa"/>
+                    <path d="M 72,46 C 74,36 64,31 64,39 C 66,45 64,49 64,51 C 65,54 66,56 65,59 C 64,59 62,59 62,58 C 63,55 62,53 62,51 C 61,46 66,41 66,37 C 66,34 63,33 61,36 C 60,38 60,41 60,43 L 60,59 L 64,59" fill="#fafafa"/>
+                    <text x="50" y="92" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="8.5" fill="#fafafa" text-anchor="middle">सत्यमेव जयते</text>
+                </svg>
 
-            <!-- Official Tricolor vertical bar -->
-            <div class="tricolor-bar">
-                <div class="color-saffron"></div>
-                <div class="color-white"></div>
-                <div class="color-green"></div>
+                <div class="nhai-tricolor-strip">
+                    <div class="saffron"></div>
+                    <div class="white"></div>
+                    <div class="green"></div>
+                </div>
+
+                <div class="nhai-text-govt">
+                    <div class="nhai-text-hindi">भारत सरकार</div>
+                    <div class="nhai-text-eng">GOVERNMENT OF INDIA</div>
+                </div>
             </div>
 
-            <!-- Govt of India Text Group -->
-            <div class="logo-text-group" style="margin-right: 18px;">
-                <div class="logo-title-main">भारत सरकार</div>
-                <div class="logo-subtitle-main">GOVERNMENT OF INDIA</div>
-            </div>
+            <div class="nhai-header-divider"></div>
 
-            <!-- Inter-logo Divider line -->
-            <div class="brand-logo-divider" style="width: 1px; height: 26px; background: rgba(255, 255, 255, 0.15); margin-right: 18px;"></div>
+            <!-- NHAI Authority Branding -->
+            <div class="nhai-emblem-unit">
+                <svg class="nhai-emblem-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="46" fill="#022c22" stroke="#10b981" stroke-width="3"/>
+                    <path d="M 50 15 L 28 85 L 34 85 L 50 25 L 66 85 L 72 85 Z" fill="#38bdf8"/>
+                    <path d="M 50 25 L 48 85 L 52 85 Z" fill="#fff"/>
+                    <text x="50" y="55" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="14" fill="#fff" text-anchor="middle">NHAI</text>
+                </svg>
 
-            <!-- NHAI Emblem SVG -->
-            <svg class="emblem-svg" viewBox="0 0 100 100" width="34" height="34" style="margin-right: 10px;">
-                <circle cx="50" cy="50" r="46" fill="#022c22" stroke="#10b981" stroke-width="3"/>
-                <path d="M 50 15 L 28 85 L 34 85 L 50 25 L 66 85 L 72 85 Z" fill="#38bdf8"/>
-                <path d="M 50 25 L 48 85 L 52 85 Z" fill="#fff"/>
-                <text x="50" y="55" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="15" fill="#fff" text-anchor="middle" letter-spacing="1">NHAI</text>
-            </svg>
-
-            <!-- NHAI Text Group -->
-            <div class="logo-text-group brand-logo-nhai-text">
-                <div class="logo-title-main" style="color: #a1a1aa; font-size: 10.5px;">भारतीय राष्ट्रीय राजमार्ग प्राधिकरण</div>
-                <div class="logo-subtitle-main" style="color: #71717a; font-size: 8px; margin-top: 2px;">NATIONAL HIGHWAYS AUTHORITY OF INDIA</div>
+                <div class="nhai-text-authority">
+                    <div class="nhai-text-hindi">भारतीय राष्ट्रीय राजमार्ग प्राधिकरण</div>
+                    <div class="nhai-text-eng">NATIONAL HIGHWAYS AUTHORITY OF INDIA</div>
+                </div>
             </div>
         </div>
 
-        <div class="system-status">
-            <span class="status-dot"></span>
-            <span>NHAI CENTRAL CONNECTED</span>
+        <div class="nhai-header-right">
+            <div class="nhai-central-pill">
+                <span class="nhai-central-dot"></span>
+                <span>NHAI CENTRAL CONNECTED</span>
+            </div>
         </div>
     </header>
 

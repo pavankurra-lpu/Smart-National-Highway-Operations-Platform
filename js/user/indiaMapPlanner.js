@@ -266,33 +266,37 @@ const IndiaMapPlanner = {
         const btnReturn = document.getElementById('btn-trip-return');
         
         const setJourneyType = (type) => {
-            IndiaMapPlanner.journeyType = type;
+            const isReturn = (type === 'RETURN' || type === 'RETURN_2WAY' || type === '2WAY');
+            IndiaMapPlanner.journeyType = isReturn ? 'RETURN' : 'SINGLE';
+            
             if (btnSingle && btnReturn) {
-                if (type === 'SINGLE') {
+                if (!isReturn) {
                     btnSingle.classList.add('active');
-                    btnSingle.style.background = 'var(--primary)';
-                    btnSingle.style.color = '#021a12';
+                    btnSingle.style.background = '#38bdf8';
+                    btnSingle.style.color = '#09090b';
                     btnReturn.classList.remove('active');
                     btnReturn.style.background = 'transparent';
-                    btnReturn.style.color = '#94a3b8';
+                    btnReturn.style.color = '#a1a1aa';
                 } else {
                     btnReturn.classList.add('active');
-                    btnReturn.style.background = '#34d399';
-                    btnReturn.style.color = '#021a12';
+                    btnReturn.style.background = '#38bdf8';
+                    btnReturn.style.color = '#09090b';
                     btnSingle.classList.remove('active');
                     btnSingle.style.background = 'transparent';
-                    btnSingle.style.color = '#94a3b8';
+                    btnSingle.style.color = '#a1a1aa';
                 }
             }
             if (IndiaMapPlanner.selectedRouteData && IndiaMapPlanner.routeCoordinates.length > 0) {
                 const tollEstimate = IndiaMapPlanner.estimateTollsOnRoute(IndiaMapPlanner.routeCoordinates);
                 IndiaMapPlanner.selectedRouteData.tolls = tollEstimate.tolls;
                 IndiaMapPlanner.selectedRouteData.totalTollCost = tollEstimate.totalTollCost;
+                IndiaMapPlanner.selectedRouteData.totalCost = tollEstimate.totalTollCost;
                 IndiaMapPlanner.updateSummary(IndiaMapPlanner.selectedRouteData);
-                Utils.showToast(`Trip mode: ${type === 'SINGLE' ? '1-Way Single' : '2-Way Return (24h)'} • Toll: ₹${tollEstimate.totalTollCost}`, 'info');
+                Utils.showToast(`Trip corridor: ${isReturn ? '24hr Return (2-Way)' : '1-Way Single'} • Total Toll: ₹${tollEstimate.totalTollCost}`, 'info');
             }
         };
 
+        IndiaMapPlanner.setTripType = setJourneyType;
         if (btnSingle) btnSingle.addEventListener('click', () => setJourneyType('SINGLE'));
         if (btnReturn) btnReturn.addEventListener('click', () => setJourneyType('RETURN'));
 
@@ -1722,12 +1726,55 @@ const IndiaMapPlanner = {
         const targetIdx = (index >= 0 && index < routes.length) ? index : 0;
         IndiaMapPlanner.selectedRouteIndex = targetIdx;
 
-        // Distinct high-contrast highway palette for all routes
+        // Google Maps Navigation Style Route Palette (Vibrant Blue & Eco-Green)
         const ROUTE_THEMES = [
-            { color: '#3b82f6', altColor: '#2563eb', border: '#38bdf8', bg: 'rgba(56,189,248,0.2)', tagCol: '#38bdf8', halo: 'rgba(59,130,246,0.6)' },
-            { color: '#10b981', altColor: '#059669', border: '#34d399', bg: 'rgba(16,185,129,0.2)', tagCol: '#34d399', halo: 'rgba(16,185,129,0.6)' },
-            { color: '#a855f7', altColor: '#7c3aed', border: '#c084fc', bg: 'rgba(168,85,247,0.2)', tagCol: '#c084fc', halo: 'rgba(168,85,247,0.6)' }
+            { 
+                name: 'Fastest Route', 
+                color: '#1a73e8', 
+                altColor: '#174ea6', 
+                border: '#38bdf8', 
+                bg: 'rgba(56,189,248,0.15)', 
+                tagCol: '#38bdf8', 
+                halo: 'rgba(26,115,232,0.4)',
+                weight: 7
+            },
+            { 
+                name: 'Eco / Low Toll Corridor', 
+                color: '#0f9d58', 
+                altColor: '#0b8043', 
+                border: '#34a853', 
+                bg: 'rgba(15,157,88,0.15)', 
+                tagCol: '#34d399', 
+                halo: 'rgba(15,157,88,0.4)',
+                weight: 6
+            },
+            { 
+                name: 'Scenic / NH Corridor', 
+                color: '#60a5fa', 
+                altColor: '#3b82f6', 
+                border: '#93c5fd', 
+                bg: 'rgba(96,165,250,0.15)', 
+                tagCol: '#93c5fd', 
+                halo: 'rgba(96,165,250,0.4)',
+                weight: 6
+            }
         ];
+
+        // Unique plaza emoji generator
+        const getTollEmoji = (toll) => {
+            const name = (toll.name || toll.tollName || '').toLowerCase();
+            const state = (toll.state || '').toLowerCase();
+            if (name.includes('express') || name.includes('super')) return '⚡';
+            if (name.includes('bridge') || name.includes('flyover') || name.includes('setu')) return '🌉';
+            if (name.includes('bypass') || name.includes('ring')) return '🔄';
+            if (name.includes('ghat') || name.includes('hill') || state.includes('himachal') || state.includes('uttarakhand')) return '🏔️';
+            if (name.includes('port') || name.includes('coast') || state.includes('goa') || state.includes('kerala')) return '🌊';
+            if (name.includes('border') || name.includes('check')) return '🛂';
+            if (name.includes('gate') || name.includes('entry')) return '⛩️';
+            const emojis = ['🛣️', '🏷️', '🎟️', '⛩️', '🏢', '⚡', '🛡️', '🛰️'];
+            const idx = Math.abs((toll.id || toll.name || '').split('').reduce((acc, c) => acc + c.charCodeAt(0), 0)) % emojis.length;
+            return emojis[idx];
+        };
 
         // Clear markers & existing polylines
         IndiaMapPlanner.routeTollMarkers.forEach(m => { try { m.remove(); } catch(e){} });
@@ -1744,9 +1791,8 @@ const IndiaMapPlanner = {
             
             const altPoly = L.polyline(latLngs, {
                 color: theme.color,
-                weight: 6,
+                weight: theme.weight || 6,
                 opacity: 0.85,
-                dashArray: '8, 8',
                 lineJoin: 'round'
             }).addTo(IndiaMapPlanner.map);
 
@@ -1759,10 +1805,10 @@ const IndiaMapPlanner = {
             });
 
             altPoly.on('mouseover', () => {
-                altPoly.setStyle({ color: theme.border, opacity: 1.0, weight: 8 });
+                altPoly.setStyle({ color: theme.border, opacity: 1.0, weight: (theme.weight || 6) + 2 });
             });
             altPoly.on('mouseout', () => {
-                altPoly.setStyle({ color: theme.color, opacity: 0.85, weight: 6 });
+                altPoly.setStyle({ color: theme.color, opacity: 0.85, weight: theme.weight || 6 });
             });
 
             IndiaMapPlanner.routePolylines.push(altPoly);
@@ -1776,7 +1822,7 @@ const IndiaMapPlanner = {
 
         const primaryPoly = L.polyline(activeLatLngs, {
             color: activeTheme.color,
-            weight: 8,
+            weight: (activeTheme.weight || 7) + 1,
             opacity: 1.0,
             lineJoin: 'round'
         }).addTo(IndiaMapPlanner.map);
@@ -1793,18 +1839,24 @@ const IndiaMapPlanner = {
         const rData = activeRoute.routeData;
         IndiaMapPlanner.selectedRouteData = rData;
 
-        // Draw toll markers along the active route
-        const tollIcon = L.divIcon({
-            className: '',
-            html: "<div style='background:#fbbf24;width:12px;height:12px;border-radius:50%;border:2px solid #020c18;box-shadow:0 0 10px #fbbf24'></div>",
-            iconSize: [12,12],
-            iconAnchor: [6,6]
-        });
-
+        // Draw toll markers along the active route with unique emojis and price pill
         rData.tolls.forEach(t => {
             const td = window.TollSeedData?.find(s => s.id === t.id) || t;
             if (!td || !td.lat || !td.lng) return;
             try {
+                const emoji = getTollEmoji(td);
+                const displayCost = t.cost ? `₹${t.cost}` : 'Toll';
+                const tollIcon = L.divIcon({
+                    className: 'snhop-toll-marker-unit',
+                    html: `
+                        <div style="display:inline-flex; align-items:center; gap:4px; background:rgba(9,9,11,0.92); border:1px solid #38bdf8; border-radius:12px; padding:2px 6px; box-shadow:0 4px 12px rgba(0,0,0,0.6); transform:translate(-50%, -50%); cursor:pointer;">
+                            <span style="font-size:12px; line-height:1;">${emoji}</span>
+                            <span style="font-size:10px; font-weight:800; color:#38bdf8; font-family:'Space Grotesk',sans-serif; line-height:1;">${displayCost}</span>
+                        </div>
+                    `,
+                    iconSize: [50, 20],
+                    iconAnchor: [25, 10]
+                });
                 const m = L.marker([td.lat, td.lng], { icon: tollIcon })
                     .bindPopup(IndiaMapPlanner._tollPopup(td, t.cost))
                     .addTo(IndiaMapPlanner.map);
