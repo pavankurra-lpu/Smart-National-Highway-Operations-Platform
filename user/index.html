@@ -183,32 +183,33 @@
              NHAI ACCESS: RIGHT SIDEBAR (Modernized shadcn/ui & KokonutUI style)
              ============================== -->
         <aside class="sidebar" id="nhai-sidebar">
-            <div class="sidebar-header" style="background:#0b0f17; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,0.08);">
-                <div style="display:flex; align-items:center; gap:10px;">
-                    <!-- Dandi March Mahatma Gandhi Heritage Vector -->
-                    <svg viewBox="0 0 100 100" width="32" height="32" style="flex-shrink:0;">
-                        <path d="M 4,88 Q 50,86 96,88" stroke="#f59e0b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                        <line x1="62" y1="40" x2="84" y2="88" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
-                        <circle cx="48" cy="22" r="8" fill="#ffffff"/>
-                        <circle cx="51" cy="22" r="2.5" fill="#0b0f17"/>
-                        <path d="M 45,21 Q 48,19 54,21" stroke="#0b0f17" stroke-width="1.2" fill="none"/>
-                        <path d="M 56,22 L 59,23" stroke="#ffffff" stroke-width="1.2"/>
-                        <path d="M 45,30 C 38,36 36,48 40,58 C 42,62 46,65 52,65 C 58,65 62,56 60,46 C 58,38 52,30 45,30 Z" fill="#ffffff"/>
-                        <path d="M 41,36 C 34,42 32,56 36,66 C 38,70 42,72 45,68 C 47,62 45,52 46,42 Z" fill="#f8fafc" opacity="0.9"/>
-                        <path d="M 50,38 Q 58,39 62,40" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none"/>
-                        <path d="M 54,64 L 66,76 L 72,88" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        <path d="M 44,64 L 38,76 L 32,88" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        <circle cx="28" cy="38" r="4.5" fill="#f59e0b" opacity="0.75"/>
-                        <path d="M 24,44 C 20,48 20,58 24,66 L 30,66 C 32,58 32,48 28,44 Z" fill="#f59e0b" opacity="0.75"/>
+            <div class="sidebar-header" style="background:#080b11; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.07);">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <!-- 1. GoI 4-Lions Emblem -->
+                    <svg class="nhai-emblem-svg" viewBox="0 0 100 100" width="28" height="28" style="flex-shrink:0;">
+                        <path d="M 16,74 L 84,74 L 80,80 L 20,80 Z" fill="#ffffff" opacity="0.95"/>
+                        <rect x="22" y="80" width="56" height="3" fill="#ffffff" rx="1"/>
+                        <circle cx="50" cy="74" r="5.5" fill="#080b11" stroke="#ffffff" stroke-width="1.2"/>
+                        <circle cx="50" cy="74" r="1.5" fill="#ffffff"/>
+                        <path d="M 44,20 C 44,14 56,14 56,20 C 60,22 62,28 60,34 C 61,40 59,46 58,52 C 58,60 56,68 56,71 L 44,71 C 44,68 42,60 42,52 C 41,46 39,40 40,34 C 38,28 40,22 44,20 Z" fill="#ffffff"/>
+                        <path d="M 40,24 C 36,22 30,22 28,28 C 26,34 27,42 28,48 C 29,54 32,62 38,69 L 42,69 C 38,60 36,50 36,40 C 36,32 38,28 40,24 Z" fill="#ffffff" opacity="0.95"/>
+                        <path d="M 60,24 C 64,22 70,22 72,28 C 74,34 73,42 72,48 C 71,54 68,62 62,69 L 58,69 C 62,60 64,50 64,40 C 64,32 62,28 60,24 Z" fill="#ffffff" opacity="0.95"/>
+                        <text x="50" y="93" font-family="'Inter', sans-serif" font-weight="900" font-size="7" fill="#ffffff" text-anchor="middle">सत्यमेव जयते</text>
                     </svg>
-                    <div style="display:flex; flex-direction:column; width:3px; height:24px; border-radius:2px; overflow:hidden;">
+
+                    <!-- Tricolor Bar -->
+                    <div style="display:flex; flex-direction:column; width:3px; height:24px; border-radius:2px; overflow:hidden; flex-shrink:0;">
                         <div style="flex:1; background:#FF671F;"></div>
                         <div style="flex:1; background:#FFFFFF;"></div>
                         <div style="flex:1; background:#048A43;"></div>
                     </div>
+
+                    <!-- 2. Mahatma Gandhi Medallion -->
+                    <img src="../assets/gandhiji.png" alt="Mahatma Gandhi" style="width:26px; height:26px; border-radius:50%; object-fit:cover; border:1.5px solid #d99b26; box-shadow:0 0 8px rgba(217,155,38,0.35); flex-shrink:0;" onerror="this.src='../assets/gandhiji.jpg'">
+
                     <div>
-                        <div style="font-size:12px; font-weight:800; color:#fff; line-height:1.2;">भारत सरकार · सत्यमेव जयते</div>
-                        <div style="font-size:8px; font-weight:700; color:#f59e0b; line-height:1.2; letter-spacing:0.5px;">NHAI TRAVELLER PORTAL</div>
+                        <div style="font-size:11.5px; font-weight:800; color:#fff; line-height:1.2;">NHAI · सत्यमेव जयते</div>
+                        <div style="font-size:7.5px; font-weight:700; color:#d99b26; line-height:1.2; letter-spacing:0.4px;">TRAVELLER PORTAL</div>
                     </div>
                 </div>
                 <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#cbd5e1; padding:5px 10px; border-radius:6px; font-size:11px; text-decoration:none; display:flex; align-items:center; gap:4px;">
