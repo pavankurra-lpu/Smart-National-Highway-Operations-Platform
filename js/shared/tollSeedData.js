@@ -2014,6 +2014,39 @@ const TollSeedData = [
   },
   {
     "id": "TP_62",
+    "name": "Toll Plaza - Agroh Pathways (SH 38A)",
+    "lat": 22.6082627,
+    "lng": 75.794841,
+    "state": "Madhya Pradesh",
+    "district": "Indore, Umariya",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_63",
     "name": "Delhi interchange toll plaza",
     "lat": 22.461826,
     "lng": 73.116685,
@@ -2046,7 +2079,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_63",
+    "id": "TP_64",
     "name": "Toll tax",
     "lat": 22.2613413,
     "lng": 73.1097255,
@@ -2079,7 +2112,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_64",
+    "id": "TP_65",
     "name": "Patariya goyal toll plaza",
     "lat": 23.1318889,
     "lng": 76.6903708,
@@ -2112,7 +2145,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_65",
+    "id": "TP_66",
     "name": "Toll plaza adalaj",
     "lat": 23.1867852,
     "lng": 72.5597838,
@@ -2145,7 +2178,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_66",
+    "id": "TP_67",
     "name": "Toll Plaza Udaypura",
     "lat": 23.1318658,
     "lng": 78.5061526,
@@ -2178,7 +2211,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_67",
+    "id": "TP_68",
     "name": "Heavy Vehicle Toll Plaza (SH 36)",
     "lat": 22.1807062,
     "lng": 75.1874675,
@@ -2211,7 +2244,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_68",
+    "id": "TP_69",
     "name": "Toll Plaza 1",
     "lat": 22.4346019,
     "lng": 73.0817252,
@@ -2244,7 +2277,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_69",
+    "id": "TP_70",
     "name": "TCIL BINA TOLL PLAZA BINA KURWAI",
     "lat": 24.1542875,
     "lng": 78.0647344,
@@ -2277,7 +2310,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_70",
+    "id": "TP_71",
     "name": "Toll Plaza Sanand",
     "lat": 23.0083523,
     "lng": 72.3462578,
@@ -2310,7 +2343,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_71",
+    "id": "TP_72",
+    "name": "Indore Dewas Toll Way",
+    "lat": 22.8247857,
+    "lng": 75.9382992,
+    "state": "Madhya Pradesh",
+    "district": "Indore",
+    "nhCorridor": "National Highway",
+    "baseRate": 125,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 125,
+      "LCV": 200,
+      "BUS_2AXLE": 410,
+      "COM_3AXLE": 450,
+      "MAV_4_6": 650,
+      "OVERSIZED": 800,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 300,
+      "BUS_2AXLE": 620,
+      "COM_3AXLE": 675,
+      "MAV_4_6": 975,
+      "OVERSIZED": 1200,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_73",
+    "name": "Pagara Village New Toll Plaza",
+    "lat": 24.5010087,
+    "lng": 77.1896776,
+    "state": "Madhya Pradesh",
+    "district": "Pagara, Raghogarh -Vijaypur",
+    "nhCorridor": "National Highway",
+    "baseRate": 75,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 75,
+      "LCV": 120,
+      "BUS_2AXLE": 250,
+      "COM_3AXLE": 270,
+      "MAV_4_6": 390,
+      "OVERSIZED": 480,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 180,
+      "BUS_2AXLE": 370,
+      "COM_3AXLE": 405,
+      "MAV_4_6": 585,
+      "OVERSIZED": 720,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_74",
     "name": "Toll Plaza Anand",
     "lat": 22.5945061,
     "lng": 72.9816343,
@@ -2343,7 +2442,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_72",
+    "id": "TP_75",
     "name": "SAVLI TOLL PLAZA",
     "lat": 22.4344265,
     "lng": 73.3269698,
@@ -2376,7 +2475,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_73",
+    "id": "TP_76",
     "name": "Toll Plaza - Bina Khimalasa Malthone",
     "lat": 24.2130451,
     "lng": 78.2899696,
@@ -2409,7 +2508,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_74",
+    "id": "TP_77",
     "name": "Bharuch Toll Booth No 4",
     "lat": 21.6929982,
     "lng": 72.9306388,
@@ -2442,7 +2541,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_75",
+    "id": "TP_78",
     "name": "Prantij Toll Plaza",
     "lat": 23.4367869,
     "lng": 72.8527971,
@@ -2475,7 +2574,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_76",
+    "id": "TP_79",
     "name": "Matar Toll Plaza 2",
     "lat": 22.0073323,
     "lng": 73.0063267,
@@ -2508,7 +2607,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_77",
+    "id": "TP_80",
+    "name": "Bharuch Toll Booth 3",
+    "lat": 21.6932288,
+    "lng": 72.9244948,
+    "state": "Gujarat",
+    "district": "Bharuch, Verwada",
+    "nhCorridor": "National Highway",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_81",
     "name": "Falna Toll Booth",
     "lat": 25.2811203,
     "lng": 73.1978528,
@@ -2541,7 +2673,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_78",
+    "id": "TP_82",
     "name": "Ma Corporation Transport&Contruction",
     "lat": 23.1260895,
     "lng": 72.5264057,
@@ -2574,7 +2706,106 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_79",
+    "id": "TP_83",
+    "name": "Bharuch Toll Booth No 1",
+    "lat": 21.698882,
+    "lng": 72.9238524,
+    "state": "Gujarat",
+    "district": "Bharuch, Dehgam",
+    "nhCorridor": "National Highway",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_84",
+    "name": "Waghodiya toll PLAZA",
+    "lat": 22.4332495,
+    "lng": 73.3266039,
+    "state": "Gujarat",
+    "district": "Jarod",
+    "nhCorridor": "National Highway",
+    "baseRate": 175,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 175,
+      "LCV": 280,
+      "BUS_2AXLE": 580,
+      "COM_3AXLE": 630,
+      "MAV_4_6": 910,
+      "OVERSIZED": 1120,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 260,
+      "LCV": 420,
+      "BUS_2AXLE": 865,
+      "COM_3AXLE": 945,
+      "MAV_4_6": 1365,
+      "OVERSIZED": 1680,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_85",
+    "name": "Samiyala Toll Plaza 4",
+    "lat": 22.255711,
+    "lng": 73.1099008,
+    "state": "Gujarat",
+    "district": "Vadodara",
+    "nhCorridor": "National Highway",
+    "baseRate": 155,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 155,
+      "LCV": 250,
+      "BUS_2AXLE": 510,
+      "COM_3AXLE": 560,
+      "MAV_4_6": 805,
+      "OVERSIZED": 990,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 230,
+      "LCV": 370,
+      "BUS_2AXLE": 765,
+      "COM_3AXLE": 835,
+      "MAV_4_6": 1210,
+      "OVERSIZED": 1490,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_86",
     "name": "Panthawada Toll Plaza",
     "lat": 24.4937955,
     "lng": 72.26899,
@@ -2607,7 +2838,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_80",
+    "id": "TP_87",
     "name": "Gangotri Toll Plaza",
     "lat": 22.2068294,
     "lng": 74.7556518,
@@ -2640,7 +2871,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_81",
+    "id": "TP_88",
     "name": "Toll Plaza Bundi",
     "lat": 25.1903456,
     "lng": 75.3749166,
@@ -2673,7 +2904,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_82",
+    "id": "TP_89",
     "name": "Sabarmati Toll Naka",
     "lat": 23.0877336,
     "lng": 72.5912415,
@@ -2706,7 +2937,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_83",
+    "id": "TP_90",
     "name": "Toll Plaza NE1NADIAD",
     "lat": 22.6959786,
     "lng": 72.8953867,
@@ -2739,7 +2970,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_84",
+    "id": "TP_91",
     "name": "Taswade Toll Plaza",
     "lat": 17.3657584,
     "lng": 74.1228938,
@@ -2772,7 +3003,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_85",
+    "id": "TP_92",
     "name": "Aanewadi Toll Plaza",
     "lat": 17.8121637,
     "lng": 73.9701979,
@@ -2805,7 +3036,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_86",
+    "id": "TP_93",
     "name": "Khed Shivapur Toll Plaza",
     "lat": 18.3313818,
     "lng": 73.8524647,
@@ -2838,7 +3069,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_87",
+    "id": "TP_94",
     "name": "Sukekulan toll plaza",
     "lat": 15.6895092,
     "lng": 73.8377659,
@@ -2871,7 +3102,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_88",
+    "id": "TP_95",
     "name": "Khetkher toll plaza",
     "lat": 17.330374,
     "lng": 73.518754,
@@ -2904,7 +3135,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_89",
+    "id": "TP_96",
+    "name": "New construction of toll plaza",
+    "lat": 17.3672899,
+    "lng": 74.1216921,
+    "state": "Maharashtra",
+    "district": "Varade",
+    "nhCorridor": "National Highway",
+    "baseRate": 135,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 200,
+      "LCV": 325,
+      "BUS_2AXLE": 670,
+      "COM_3AXLE": 730,
+      "MAV_4_6": 1055,
+      "OVERSIZED": 1295,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_97",
     "name": "Toll Plaza",
     "lat": 15.6632261,
     "lng": 73.8386607,
@@ -2937,7 +3201,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_90",
+    "id": "TP_98",
     "name": "Toll booth new mahabaleshwar",
     "lat": 17.9158807,
     "lng": 73.6617861,
@@ -2970,7 +3234,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_91",
+    "id": "TP_99",
     "name": "forest toll",
     "lat": 17.9342192,
     "lng": 73.6700284,
@@ -3003,7 +3267,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_92",
+    "id": "TP_100",
     "name": "Panhala Tourist Toll Plazza",
     "lat": 16.805744,
     "lng": 74.1146218,
@@ -3036,7 +3300,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_93",
+    "id": "TP_101",
     "name": "Keri Toll Naka",
     "lat": 15.6133642,
     "lng": 74.0744019,
@@ -3069,7 +3333,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_94",
+    "id": "TP_102",
     "name": "Old Mahabaleshwar Toll Naka",
     "lat": 17.9592543,
     "lng": 73.6675147,
@@ -3102,7 +3366,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_95",
+    "id": "TP_103",
+    "name": "Pollution and Passanger toll collection booth",
+    "lat": 17.9199389,
+    "lng": 73.6700668,
+    "state": "Maharashtra",
+    "district": "Satara, Mahabaleshwar",
+    "nhCorridor": "National Highway",
+    "baseRate": 190,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 305,
+      "BUS_2AXLE": 625,
+      "COM_3AXLE": 685,
+      "MAV_4_6": 990,
+      "OVERSIZED": 1215,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 285,
+      "LCV": 455,
+      "BUS_2AXLE": 940,
+      "COM_3AXLE": 1025,
+      "MAV_4_6": 1480,
+      "OVERSIZED": 1825,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_104",
     "name": "Toll b.k",
     "lat": 18.0992854,
     "lng": 73.3251819,
@@ -3135,7 +3432,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_96",
+    "id": "TP_105",
     "name": "Gajapur-Vishalgad Check Post",
     "lat": 16.8887259,
     "lng": 73.7611073,
@@ -3168,7 +3465,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_97",
+    "id": "TP_106",
     "name": "Niwali Toll Plaza",
     "lat": 17.0519994,
     "lng": 73.4314011,
@@ -3201,7 +3498,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_98",
+    "id": "TP_107",
+    "name": "Taswade Toll Naka",
+    "lat": 17.3683356,
+    "lng": 74.1210075,
+    "state": "Maharashtra",
+    "district": "Varade",
+    "nhCorridor": "National Highway",
+    "baseRate": 140,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 225,
+      "BUS_2AXLE": 460,
+      "COM_3AXLE": 505,
+      "MAV_4_6": 730,
+      "OVERSIZED": 895,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 210,
+      "LCV": 335,
+      "BUS_2AXLE": 695,
+      "COM_3AXLE": 755,
+      "MAV_4_6": 1090,
+      "OVERSIZED": 1345,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_108",
     "name": "KRDCL TOLL PLAZA Sherewad",
     "lat": 15.2603113,
     "lng": 75.1776295,
@@ -3234,7 +3564,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_99",
+    "id": "TP_109",
     "name": "Hediyala Toll Plaza",
     "lat": 14.5470099,
     "lng": 75.5470961,
@@ -3267,7 +3597,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_100",
+    "id": "TP_110",
     "name": "Bawada Toll Plaza",
     "lat": 17.9402977,
     "lng": 75.0060691,
@@ -3300,7 +3630,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_101",
+    "id": "TP_111",
     "name": "Toll Booth Dharwad",
     "lat": 15.456925,
     "lng": 74.938308,
@@ -3333,7 +3663,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_102",
+    "id": "TP_112",
     "name": "Dharwad State Highway Toll Marewad",
     "lat": 15.528224,
     "lng": 75.049934,
@@ -3366,7 +3696,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_103",
+    "id": "TP_113",
     "name": "Yevalewadi toll naka",
     "lat": 17.298496,
     "lng": 74.4141,
@@ -3399,7 +3729,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_104",
+    "id": "TP_114",
     "name": "Toll naka savadatti",
     "lat": 15.7384006,
     "lng": 75.0637758,
@@ -3432,7 +3762,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_105",
+    "id": "TP_115",
     "name": "Bhavaninagar(rajuri) Toll Plaza",
     "lat": 17.9457849,
     "lng": 74.6527876,
@@ -3465,7 +3795,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_106",
+    "id": "TP_116",
     "name": "Undawadi Toll Plaza",
     "lat": 18.2709505,
     "lng": 74.5256244,
@@ -3498,7 +3828,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_107",
+    "id": "TP_117",
+    "name": "Anewadi Toll Plaza from Mumbai Pune Side",
+    "lat": 17.8092509,
+    "lng": 73.9720763,
+    "state": "Maharashtra",
+    "district": "Mahigaon, Anewadi",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_118",
     "name": "Chinchani Toll Plaza",
     "lat": 16.4183556,
     "lng": 74.5422578,
@@ -3531,7 +3894,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_108",
+    "id": "TP_119",
+    "name": "Chinchani Toll Booth",
+    "lat": 16.4187637,
+    "lng": 74.5396125,
+    "state": "Karnataka",
+    "district": "Chinchani",
+    "nhCorridor": "National Highway",
+    "baseRate": 160,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 255,
+      "BUS_2AXLE": 530,
+      "COM_3AXLE": 575,
+      "MAV_4_6": 830,
+      "OVERSIZED": 1025,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 240,
+      "LCV": 385,
+      "BUS_2AXLE": 790,
+      "COM_3AXLE": 865,
+      "MAV_4_6": 1250,
+      "OVERSIZED": 1535,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_120",
     "name": "Ganebail toll booth",
     "lat": 15.691288,
     "lng": 74.5032508,
@@ -3564,7 +3960,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_109",
+    "id": "TP_121",
     "name": "Bailhongal Savadatti Toll Plaza",
     "lat": 15.8007564,
     "lng": 74.805121,
@@ -3597,7 +3993,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_110",
+    "id": "TP_122",
     "name": "Kabbur Toll Plaza",
     "lat": 16.3549904,
     "lng": 74.7086393,
@@ -3630,7 +4026,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_111",
+    "id": "TP_123",
+    "name": "NH965, Bhavaninagar Toll Booth",
+    "lat": 17.9445068,
+    "lng": 74.658717,
+    "state": "Maharashtra",
+    "district": "Bhavaninagar, Rajuri",
+    "nhCorridor": "NH-965",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_124",
+    "name": "Matar Toll plaza 4",
+    "lat": 22.0026782,
+    "lng": 73.0052273,
+    "state": "Gujarat",
+    "district": "Matar",
+    "nhCorridor": "National Highway",
+    "baseRate": 130,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 210,
+      "BUS_2AXLE": 430,
+      "COM_3AXLE": 470,
+      "MAV_4_6": 675,
+      "OVERSIZED": 830,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 195,
+      "LCV": 310,
+      "BUS_2AXLE": 645,
+      "COM_3AXLE": 700,
+      "MAV_4_6": 1015,
+      "OVERSIZED": 1250,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_125",
     "name": "Bhuteda Interchange Toll Booth 4",
     "lat": 23.6104209,
     "lng": 75.151827,
@@ -3663,7 +4125,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_112",
+    "id": "TP_126",
     "name": "Gopalpura Toll Plaza Bhilwara",
     "lat": 25.2739666,
     "lng": 75.0934683,
@@ -3696,7 +4158,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_113",
+    "id": "TP_127",
     "name": "Dabhasi toll gate",
     "lat": 22.4134322,
     "lng": 72.8518328,
@@ -3729,7 +4191,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_114",
+    "id": "TP_128",
     "name": "Barwaikheda toll plaza",
     "lat": 22.6290195,
     "lng": 76.8330564,
@@ -3762,7 +4224,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_115",
+    "id": "TP_129",
     "name": "Lal ka Khera Toll Plaza , NHAI",
     "lat": 25.4934366,
     "lng": 75.3106724,
@@ -3795,7 +4257,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_116",
+    "id": "TP_130",
+    "name": "Bhuteda Interchange Toll Booth 1",
+    "lat": 23.6101165,
+    "lng": 75.152629,
+    "state": "Madhya Pradesh",
+    "district": "Bhuteda",
+    "nhCorridor": "National Highway",
+    "baseRate": 80,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 80,
+      "LCV": 130,
+      "BUS_2AXLE": 265,
+      "COM_3AXLE": 290,
+      "MAV_4_6": 415,
+      "OVERSIZED": 510,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_131",
     "name": "DALAWADA TOLL PLAZA",
     "lat": 23.9781838,
     "lng": 75.4125655,
@@ -3828,7 +4323,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_117",
+    "id": "TP_132",
     "name": "Toll Plaza Tornod, Dhar",
     "lat": 22.6464416,
     "lng": 75.3118774,
@@ -3861,7 +4356,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_118",
+    "id": "TP_133",
     "name": "Varaval toll plaza",
     "lat": 25.0141095,
     "lng": 73.1569813,
@@ -3894,7 +4389,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_119",
+    "id": "TP_134",
+    "name": "Toll Plaza NE1 Anand 2",
+    "lat": 22.5912887,
+    "lng": 72.9846707,
+    "state": "Gujarat",
+    "district": "Chikhodra",
+    "nhCorridor": "National Highway",
+    "baseRate": 190,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 305,
+      "BUS_2AXLE": 625,
+      "COM_3AXLE": 685,
+      "MAV_4_6": 990,
+      "OVERSIZED": 1215,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 285,
+      "LCV": 455,
+      "BUS_2AXLE": 940,
+      "COM_3AXLE": 1025,
+      "MAV_4_6": 1480,
+      "OVERSIZED": 1825,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_135",
     "name": "Bagodra Toll plaza",
     "lat": 22.6307085,
     "lng": 72.1793289,
@@ -3927,7 +4455,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_120",
+    "id": "TP_136",
     "name": "kheda highway toll 110rs toll",
     "lat": 22.7178917,
     "lng": 72.7363123,
@@ -3960,7 +4488,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_121",
+    "id": "TP_137",
     "name": "Chitora Toll Plaza",
     "lat": 23.7254265,
     "lng": 78.809089,
@@ -3993,7 +4521,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_122",
+    "id": "TP_138",
     "name": "Toll Plaza",
     "lat": 23.1022411,
     "lng": 76.8757769,
@@ -4026,7 +4554,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_123",
+    "id": "TP_139",
     "name": "Aroli Toll Plaza",
     "lat": 25.0910946,
     "lng": 75.1989951,
@@ -4059,7 +4587,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_124",
+    "id": "TP_140",
     "name": "Guna Bypass Toll Plaza",
     "lat": 24.6203699,
     "lng": 77.2614611,
@@ -4092,7 +4620,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_125",
+    "id": "TP_141",
     "name": "Rampura Toll Plaza",
     "lat": 16.8232777,
     "lng": 75.4736643,
@@ -4125,7 +4653,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_126",
+    "id": "TP_142",
     "name": "Toll Booth",
     "lat": 15.9661733,
     "lng": 75.5287344,
@@ -4158,7 +4686,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_127",
+    "id": "TP_143",
     "name": "Toll Plaza",
     "lat": 15.7632771,
     "lng": 74.6479883,
@@ -4191,7 +4719,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_128",
+    "id": "TP_144",
     "name": "Parking Toll",
     "lat": 16.798817,
     "lng": 74.173566,
@@ -4224,7 +4752,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_129",
+    "id": "TP_145",
     "name": "M7W9+G7Q Toll Naka",
     "lat": 16.6963187,
     "lng": 74.2682821,
@@ -4257,7 +4785,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_130",
+    "id": "TP_146",
     "name": "Patas Toll Naka",
     "lat": 18.424246,
     "lng": 74.466237,
@@ -4290,7 +4818,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_131",
+    "id": "TP_147",
     "name": "WRM5+M26 Toll Booth",
     "lat": 17.9340322,
     "lng": 73.8075027,
@@ -4323,7 +4851,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_132",
+    "id": "TP_148",
     "name": "Toll Plaza",
     "lat": 17.3601757,
     "lng": 75.0806356,
@@ -4356,7 +4884,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_133",
+    "id": "TP_149",
     "name": "Athani Toll Plaza",
     "lat": 16.7362418,
     "lng": 75.1303565,
@@ -4389,7 +4917,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_134",
+    "id": "TP_150",
+    "name": "Patas Toll Gate Towards Solapur",
+    "lat": 18.4245368,
+    "lng": 74.463593,
+    "state": "Maharashtra",
+    "district": "Patas",
+    "nhCorridor": "National Highway",
+    "baseRate": 130,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 210,
+      "BUS_2AXLE": 430,
+      "COM_3AXLE": 470,
+      "MAV_4_6": 675,
+      "OVERSIZED": 830,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 195,
+      "LCV": 310,
+      "BUS_2AXLE": 645,
+      "COM_3AXLE": 700,
+      "MAV_4_6": 1015,
+      "OVERSIZED": 1250,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_151",
     "name": "MCHC+5W9 Toll naka",
     "lat": 17.6778834,
     "lng": 73.4223604,
@@ -4422,7 +4983,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_135",
+    "id": "TP_152",
     "name": "Toll Plaza",
     "lat": 16.8684159,
     "lng": 74.5458362,
@@ -4455,7 +5016,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_136",
+    "id": "TP_153",
+    "name": "Idalhond Cross TOLL BOOTH",
+    "lat": 15.6995786,
+    "lng": 74.5024055,
+    "state": "Karnataka",
+    "district": "Nittur, Idalhond",
+    "nhCorridor": "NH-748",
+    "baseRate": 90,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 90,
+      "LCV": 145,
+      "BUS_2AXLE": 295,
+      "COM_3AXLE": 325,
+      "MAV_4_6": 470,
+      "OVERSIZED": 575,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_154",
+    "name": "MR 10 Toll Booth",
+    "lat": 22.7755624,
+    "lng": 75.8603399,
+    "state": "Madhya Pradesh",
+    "district": "Indore",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_155",
     "name": "Indian Toll Kanta",
     "lat": 23.1768289,
     "lng": 75.8136569,
@@ -4488,7 +5115,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_137",
+    "id": "TP_156",
+    "name": "Ahmedabad Vadodra Expressways Toll Plaza",
+    "lat": 22.9758301,
+    "lng": 72.6503416,
+    "state": "Gujarat",
+    "district": "Ahmedabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_157",
     "name": "Mukati toll kanta ( khandwa )",
     "lat": 22.5785288,
     "lng": 75.6490948,
@@ -4521,7 +5181,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_138",
+    "id": "TP_158",
     "name": "Bhiladi Toll Plaza",
     "lat": 24.1438883,
     "lng": 71.9771345,
@@ -4554,7 +5214,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_139",
+    "id": "TP_159",
     "name": "Raisen Toll Booth",
     "lat": 23.3265955,
     "lng": 77.8095326,
@@ -4587,7 +5247,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_140",
+    "id": "TP_160",
     "name": "Titarpani Toll Plaza",
     "lat": 23.2133573,
     "lng": 79.0416846,
@@ -4620,7 +5280,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_141",
+    "id": "TP_161",
     "name": "Methoon Toll Plaza",
     "lat": 24.4200677,
     "lng": 76.5038842,
@@ -4653,7 +5313,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_142",
+    "id": "TP_162",
     "name": "Toll Plaza",
     "lat": 22.4138276,
     "lng": 73.149418,
@@ -4686,7 +5346,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_143",
+    "id": "TP_163",
+    "name": "Toll Plaza",
+    "lat": 22.7219698,
+    "lng": 72.7265028,
+    "state": "Gujarat",
+    "district": "Vansar",
+    "nhCorridor": "National Highway",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_164",
     "name": "Milanpur Toll Plaza",
     "lat": 21.8637989,
     "lng": 77.9571339,
@@ -4719,7 +5412,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_144",
+    "id": "TP_165",
+    "name": "Khandi Obari Toll Plaza",
+    "lat": 23.9936144,
+    "lng": 73.6278246,
+    "state": "Rajasthan",
+    "district": "Parbeela",
+    "nhCorridor": "NH-48",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_166",
+    "name": "Toll Gate 1",
+    "lat": 22.9726063,
+    "lng": 72.6597187,
+    "state": "Gujarat",
+    "district": "Ahmedabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_167",
     "name": "Khalghat Toll Plaza",
     "lat": 21.7986108,
     "lng": 75.1715472,
@@ -4752,7 +5511,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_145",
+    "id": "TP_168",
     "name": "W796+GVJ Toll plaza Toll plaza",
     "lat": 14.918839,
     "lng": 75.2621821,
@@ -4785,7 +5544,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_146",
+    "id": "TP_169",
+    "name": "Panchagani toll booth",
+    "lat": 17.9234131,
+    "lng": 73.7977464,
+    "state": "Maharashtra",
+    "district": "Panchgani",
+    "nhCorridor": "National Highway",
+    "baseRate": 75,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 75,
+      "LCV": 120,
+      "BUS_2AXLE": 250,
+      "COM_3AXLE": 270,
+      "MAV_4_6": 390,
+      "OVERSIZED": 480,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 180,
+      "BUS_2AXLE": 370,
+      "COM_3AXLE": 405,
+      "MAV_4_6": 585,
+      "OVERSIZED": 720,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_170",
     "name": "KRDCL Hamsabhavi Toll Plaza",
     "lat": 14.5615075,
     "lng": 75.3470298,
@@ -4818,7 +5610,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_147",
+    "id": "TP_171",
     "name": "Toll Plaza",
     "lat": 18.1918824,
     "lng": 74.6177995,
@@ -4851,7 +5643,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_148",
+    "id": "TP_172",
     "name": "Sardewadi Toll Plaza",
     "lat": 18.0964705,
     "lng": 75.067482,
@@ -4884,7 +5676,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_149",
+    "id": "TP_173",
     "name": "Sadashivagada Toll naka Bus Stop.",
     "lat": 14.8514217,
     "lng": 74.1308555,
@@ -4917,7 +5709,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_150",
+    "id": "TP_174",
     "name": "Toll",
     "lat": 17.7602,
     "lng": 75.4645,
@@ -4950,7 +5742,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_151",
+    "id": "TP_175",
     "name": "Barad toll naka",
     "lat": 17.9514757,
     "lng": 74.5873411,
@@ -4983,7 +5775,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_152",
+    "id": "TP_176",
     "name": "Janjira Fort - Rajpuri Panchayat toll Gate",
     "lat": 18.305065,
     "lng": 72.9703117,
@@ -5016,7 +5808,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_153",
+    "id": "TP_177",
+    "name": "Toll Booth",
+    "lat": 17.9341968,
+    "lng": 73.8057547,
+    "state": "Maharashtra",
+    "district": "Panchgani",
+    "nhCorridor": "National Highway",
+    "baseRate": 75,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 75,
+      "LCV": 120,
+      "BUS_2AXLE": 250,
+      "COM_3AXLE": 270,
+      "MAV_4_6": 390,
+      "OVERSIZED": 480,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 180,
+      "BUS_2AXLE": 370,
+      "COM_3AXLE": 405,
+      "MAV_4_6": 585,
+      "OVERSIZED": 720,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_178",
     "name": "Hangal Toll gate",
     "lat": 14.8045488,
     "lng": 75.1516396,
@@ -5049,7 +5874,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_154",
+    "id": "TP_179",
+    "name": "Kolhapur Toll Both",
+    "lat": 16.7074983,
+    "lng": 74.2712781,
+    "state": "Maharashtra",
+    "district": "Uchgaon",
+    "nhCorridor": "National Highway",
+    "baseRate": 190,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 305,
+      "BUS_2AXLE": 625,
+      "COM_3AXLE": 685,
+      "MAV_4_6": 990,
+      "OVERSIZED": 1215,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 285,
+      "LCV": 455,
+      "BUS_2AXLE": 940,
+      "COM_3AXLE": 1025,
+      "MAV_4_6": 1480,
+      "OVERSIZED": 1825,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_180",
     "name": "TOLL GATE SHELIM (Site pollem)",
     "lat": 14.9201608,
     "lng": 74.0770152,
@@ -5082,7 +5940,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_155",
+    "id": "TP_181",
     "name": "Nubra Check post",
     "lat": 34.1823704,
     "lng": 77.5955749,
@@ -5115,7 +5973,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_156",
+    "id": "TP_182",
     "name": "BUDDHA HARDWARE & POWER TOLLS",
     "lat": 34.1119468,
     "lng": 77.5897991,
@@ -5148,7 +6006,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_157",
+    "id": "TP_183",
     "name": "Gara Moura Toll Booth ਗਾਰਾ ਮੋੜ ਟੋਲ ਨਾਕਾ",
     "lat": 31.2116442,
     "lng": 76.6405593,
@@ -5181,7 +6039,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_158",
+    "id": "TP_184",
     "name": "Toll Booth Jabalpur To Bhopal/Narsinghpur Road",
     "lat": 23.1505875,
     "lng": 79.7220124,
@@ -5214,7 +6072,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_159",
+    "id": "TP_185",
     "name": "SARASDOL TOLL PLAZA",
     "lat": 23.1159597,
     "lng": 79.0491927,
@@ -5247,7 +6105,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_160",
+    "id": "TP_186",
     "name": "Till plaza",
     "lat": 23.9931646,
     "lng": 76.8076264,
@@ -5280,7 +6138,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_161",
+    "id": "TP_187",
     "name": "Toll plaza Ramnagar",
     "lat": 25.279019,
     "lng": 77.6158091,
@@ -5313,7 +6171,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_162",
+    "id": "TP_188",
     "name": "DpJain Toll Both Bachai",
     "lat": 22.8961,
     "lng": 79.2930581,
@@ -5346,7 +6204,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_163",
+    "id": "TP_189",
     "name": "Malthon Toll Plaza Sagar",
     "lat": 24.3221381,
     "lng": 78.5262915,
@@ -5379,7 +6237,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_164",
+    "id": "TP_190",
     "name": "Toll Plaza 5",
     "lat": 25.4908158,
     "lng": 80.4640489,
@@ -5412,7 +6270,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_165",
+    "id": "TP_191",
+    "name": "Baberu Rd Toll Plaza Bundelkhand Expy",
+    "lat": 25.4919516,
+    "lng": 80.4704989,
+    "state": "Uttar Pradesh",
+    "district": "Jari, Bilbai",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_192",
+    "name": "Toll Plaza 2",
+    "lat": 25.4919116,
+    "lng": 80.4747429,
+    "state": "Uttar Pradesh",
+    "district": "Bilbai",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_193",
     "name": "Toll plaza mudiyapara",
     "lat": 22.1559498,
     "lng": 81.2285911,
@@ -5445,7 +6369,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_166",
+    "id": "TP_194",
     "name": "Madai Toll Plaza",
     "lat": 22.5500372,
     "lng": 79.6006883,
@@ -5478,7 +6402,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_167",
+    "id": "TP_195",
     "name": "Bakori toll plaza",
     "lat": 22.8746647,
     "lng": 79.3056182,
@@ -5511,7 +6435,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_168",
+    "id": "TP_196",
     "name": "Toll Tax Karrapur Sagar MadhyaPradesh",
     "lat": 23.9475641,
     "lng": 78.8822906,
@@ -5544,7 +6468,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_169",
+    "id": "TP_197",
     "name": "Toll Plaza",
     "lat": 25.2169872,
     "lng": 78.4645957,
@@ -5577,7 +6501,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_170",
+    "id": "TP_198",
     "name": "Indore Ichapur Toll Plaza",
     "lat": 21.7844216,
     "lng": 76.2399197,
@@ -5610,7 +6534,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_171",
+    "id": "TP_199",
     "name": "Sonvarsaa Toll Plaza",
     "lat": 24.3955202,
     "lng": 81.8032202,
@@ -5643,7 +6567,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_172",
+    "id": "TP_200",
     "name": "Mungwari Toll Plaza, NH-34",
     "lat": 24.6440789,
     "lng": 79.3360888,
@@ -5676,7 +6600,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_173",
+    "id": "TP_201",
     "name": "Toll plaza Kota interchange",
     "lat": 24.8985229,
     "lng": 75.9625173,
@@ -5709,7 +6633,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_174",
+    "id": "TP_202",
     "name": "Toll plaza Chechat interchange",
     "lat": 24.7596437,
     "lng": 75.9088631,
@@ -5742,7 +6666,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_175",
+    "id": "TP_203",
     "name": "TOLL PLAZA CHOTIYA",
     "lat": 22.7665959,
     "lng": 82.4803011,
@@ -5775,7 +6699,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_176",
+    "id": "TP_204",
     "name": "Gopalpur Toll Plaza",
     "lat": 25.1682012,
     "lng": 82.479214,
@@ -5808,7 +6732,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_177",
+    "id": "TP_205",
     "name": "Zalimpura Toll Plaza",
     "lat": 25.267174,
     "lng": 76.1445326,
@@ -5841,7 +6765,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_178",
+    "id": "TP_206",
     "name": "Dhule Toll Gate",
     "lat": 20.8330671,
     "lng": 74.7542153,
@@ -5874,7 +6798,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_179",
+    "id": "TP_207",
     "name": "Toll Plaza Satna Panna Road",
     "lat": 24.5772717,
     "lng": 80.6908223,
@@ -5907,7 +6831,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_180",
+    "id": "TP_208",
     "name": "NHAI 6LANE FASTAG TOLL- LALANAGAR BHADOHI",
     "lat": 25.2673381,
     "lng": 82.4888923,
@@ -5940,7 +6864,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_181",
+    "id": "TP_209",
     "name": "Pathoroudi Toll Plaza",
     "lat": 23.2493196,
     "lng": 82.0592287,
@@ -5973,7 +6897,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_182",
+    "id": "TP_210",
     "name": "Paraghat Toll Plaza",
     "lat": 22.0113244,
     "lng": 82.3240988,
@@ -6006,7 +6930,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_183",
+    "id": "TP_211",
     "name": "Katni toll plaza",
     "lat": 23.8838349,
     "lng": 80.3390549,
@@ -6039,7 +6963,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_184",
+    "id": "TP_212",
     "name": "Toll Plaza",
     "lat": 23.1050292,
     "lng": 80.0302539,
@@ -6072,7 +6996,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_185",
+    "id": "TP_213",
     "name": "Toll Plaza 2",
     "lat": 25.4923311,
     "lng": 81.9982876,
@@ -6105,7 +7029,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_186",
+    "id": "TP_214",
+    "name": "Karrapur Toll Plaza",
+    "lat": 23.9462886,
+    "lng": 78.8810368,
+    "state": "Madhya Pradesh",
+    "district": "Chhapri",
+    "nhCorridor": "NH-934",
+    "baseRate": 155,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 155,
+      "LCV": 250,
+      "BUS_2AXLE": 510,
+      "COM_3AXLE": 560,
+      "MAV_4_6": 805,
+      "OVERSIZED": 990,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 230,
+      "LCV": 370,
+      "BUS_2AXLE": 765,
+      "COM_3AXLE": 835,
+      "MAV_4_6": 1210,
+      "OVERSIZED": 1490,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_215",
     "name": "toll plaza mandawara",
     "lat": 25.2138156,
     "lng": 75.8647527,
@@ -6138,7 +7095,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_187",
+    "id": "TP_216",
+    "name": "Chechat Toll Plaza",
+    "lat": 24.7586881,
+    "lng": 75.9040699,
+    "state": "Rajasthan",
+    "district": "Barodiya Kal, Chechat",
+    "nhCorridor": "National Highway",
+    "baseRate": 90,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 90,
+      "LCV": 145,
+      "BUS_2AXLE": 295,
+      "COM_3AXLE": 325,
+      "MAV_4_6": 470,
+      "OVERSIZED": 575,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_217",
     "name": "NHAI TOLL PLAZA",
     "lat": 24.4045101,
     "lng": 81.0789805,
@@ -6171,7 +7161,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_188",
+    "id": "TP_218",
     "name": "Toll plaza 1",
     "lat": 24.5191689,
     "lng": 75.8095999,
@@ -6204,7 +7194,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_189",
+    "id": "TP_219",
     "name": "Toll Plaza Bargawan Road",
     "lat": 24.1463378,
     "lng": 82.4915518,
@@ -6237,7 +7227,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_190",
+    "id": "TP_220",
     "name": "Fatehapur toll plaza rajsthan",
     "lat": 25.1217538,
     "lng": 76.5730701,
@@ -6270,7 +7260,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_191",
+    "id": "TP_221",
     "name": "Mengaon Toll Plaza",
     "lat": 21.9010125,
     "lng": 75.6044531,
@@ -6303,7 +7293,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_192",
+    "id": "TP_222",
     "name": "Piplai Toll plaza",
     "lat": 23.7158228,
     "lng": 76.0078276,
@@ -6336,7 +7326,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_193",
+    "id": "TP_223",
     "name": "Talen Mirzapur Toll Plaza",
     "lat": 23.5854322,
     "lng": 76.737044,
@@ -6369,7 +7359,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_194",
+    "id": "TP_224",
     "name": "Maharajpur Toll Plaza",
     "lat": 23.2944324,
     "lng": 82.3839748,
@@ -6402,7 +7392,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_195",
+    "id": "TP_225",
     "name": "Lawada toll plaza",
     "lat": 21.8596193,
     "lng": 80.1067029,
@@ -6435,7 +7425,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_196",
+    "id": "TP_226",
+    "name": "Deepakheda Toll plaza 2",
+    "lat": 23.9734624,
+    "lng": 75.4102401,
+    "state": "Madhya Pradesh",
+    "district": "Semalkheda",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_227",
     "name": "Toll Plaza bela NHAI",
     "lat": 24.4934561,
     "lng": 81.143439,
@@ -6468,7 +7491,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_197",
+    "id": "TP_228",
     "name": "NHAI Atarila raja Toll Plaza Mirzapur UP",
     "lat": 24.9674541,
     "lng": 82.2899007,
@@ -6501,7 +7524,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_198",
+    "id": "TP_229",
     "name": "11 mile toll plaza",
     "lat": 23.1602793,
     "lng": 77.4886989,
@@ -6534,7 +7557,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_199",
+    "id": "TP_230",
     "name": "Vijyasan Dham Toll Gate, विजयासन धाम टोल गेट",
     "lat": 22.726887,
     "lng": 77.4929941,
@@ -6567,7 +7590,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_200",
+    "id": "TP_231",
     "name": "Madhav group Toll Plaza Bhurkal",
     "lat": 22.6521006,
     "lng": 80.0083859,
@@ -6600,7 +7623,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_201",
+    "id": "TP_232",
     "name": "Toll Plaza, Bishankheda, टोल प्लाजा, बिशन खेड़ा",
     "lat": 23.0222459,
     "lng": 77.5707594,
@@ -6633,7 +7656,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_202",
+    "id": "TP_233",
+    "name": "Toll plaza 2",
+    "lat": 24.5182565,
+    "lng": 75.8077914,
+    "state": "Madhya Pradesh",
+    "district": "Neemthur",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_234",
     "name": "Kirar toll booth",
     "lat": 23.0186405,
     "lng": 81.6059186,
@@ -6666,7 +7722,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_203",
+    "id": "TP_235",
     "name": "Toll get",
     "lat": 24.9410152,
     "lng": 76.0969644,
@@ -6699,7 +7755,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_204",
+    "id": "TP_236",
     "name": "Bilaspur Limha Toll Plaza",
     "lat": 22.289361,
     "lng": 82.3028592,
@@ -6732,7 +7788,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_205",
+    "id": "TP_237",
     "name": "malwa toll kata",
     "lat": 22.7787333,
     "lng": 75.8422316,
@@ -6765,7 +7821,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_206",
+    "id": "TP_238",
     "name": "Toll tax 1",
     "lat": 25.16869,
     "lng": 76.0804178,
@@ -6798,7 +7854,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_207",
+    "id": "TP_239",
     "name": "Uhar Toll plaza new",
     "lat": 24.026315,
     "lng": 77.7941436,
@@ -6831,7 +7887,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_208",
+    "id": "TP_240",
     "name": "Toll Plaza Beohari",
     "lat": 24.1002316,
     "lng": 81.3588446,
@@ -6864,7 +7920,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_209",
+    "id": "TP_241",
     "name": "Madanpur Toll Plaza",
     "lat": 22.4549646,
     "lng": 82.4832926,
@@ -6897,7 +7953,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_210",
+    "id": "TP_242",
     "name": "CHACHAKHEDI TOLL PLAZA",
     "lat": 23.58181,
     "lng": 76.189686,
@@ -6930,7 +7986,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_211",
+    "id": "TP_243",
+    "name": "Toll Plaza 3",
+    "lat": 25.490866,
+    "lng": 81.9994215,
+    "state": "Uttar Pradesh",
+    "district": "Bhopat Pur",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_244",
     "name": "Sohagi Toll Naka Check Post",
     "lat": 24.9540945,
     "lng": 81.6862514,
@@ -6963,7 +8052,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_212",
+    "id": "TP_245",
     "name": "Toll Plaza 1",
     "lat": 23.7652286,
     "lng": 75.7390839,
@@ -6996,7 +8085,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_213",
+    "id": "TP_246",
+    "name": "Toll Plaza 1",
+    "lat": 23.7087766,
+    "lng": 75.7414366,
+    "state": "Madhya Pradesh",
+    "district": "Mundlasondhya",
+    "nhCorridor": "National Highway",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_247",
     "name": "Naya kheda toll",
     "lat": 23.9491651,
     "lng": 75.7212767,
@@ -7029,7 +8151,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_214",
+    "id": "TP_248",
+    "name": "Toll plaza 8",
+    "lat": 25.166824,
+    "lng": 76.079172,
+    "state": "Rajasthan",
+    "district": "Mandola",
+    "nhCorridor": "National Highway",
+    "baseRate": 130,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 210,
+      "BUS_2AXLE": 430,
+      "COM_3AXLE": 470,
+      "MAV_4_6": 675,
+      "OVERSIZED": 830,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 195,
+      "LCV": 310,
+      "BUS_2AXLE": 645,
+      "COM_3AXLE": 700,
+      "MAV_4_6": 1015,
+      "OVERSIZED": 1250,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_249",
     "name": "Khambara toll plaza",
     "lat": 21.693715,
     "lng": 78.389999,
@@ -7062,7 +8217,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_215",
+    "id": "TP_250",
+    "name": "Toll plaza 7",
+    "lat": 25.166506,
+    "lng": 76.079917,
+    "state": "Rajasthan",
+    "district": "Mandola",
+    "nhCorridor": "National Highway",
+    "baseRate": 130,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 210,
+      "BUS_2AXLE": 430,
+      "COM_3AXLE": 470,
+      "MAV_4_6": 675,
+      "OVERSIZED": 830,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 195,
+      "LCV": 310,
+      "BUS_2AXLE": 645,
+      "COM_3AXLE": 700,
+      "MAV_4_6": 1015,
+      "OVERSIZED": 1250,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_251",
     "name": "Gvr Toll Plaza",
     "lat": 24.7423271,
     "lng": 82.1094796,
@@ -7095,7 +8283,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_216",
+    "id": "TP_252",
     "name": "Kudiya Toll",
     "lat": 24.653732,
     "lng": 80.78665,
@@ -7128,7 +8316,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_217",
+    "id": "TP_253",
     "name": "Rau pitampur toll plaza",
     "lat": 22.6289511,
     "lng": 75.7869221,
@@ -7161,7 +8349,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_218",
+    "id": "TP_254",
     "name": "Toll booth no. 2",
     "lat": 25.1156148,
     "lng": 81.754057,
@@ -7194,7 +8382,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_219",
+    "id": "TP_255",
     "name": "Akodiya ajnai toll plaza mp",
     "lat": 23.3893629,
     "lng": 76.6270342,
@@ -7227,7 +8415,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_220",
+    "id": "TP_256",
     "name": "NHAI TOLL PLAZA",
     "lat": 25.2407727,
     "lng": 75.9471368,
@@ -7260,7 +8448,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_221",
+    "id": "TP_257",
     "name": "Sirmour Toll Plaza",
     "lat": 24.837058,
     "lng": 81.3660245,
@@ -7293,7 +8481,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_222",
+    "id": "TP_258",
+    "name": "Toll Plaza 3",
+    "lat": 23.7706495,
+    "lng": 75.7393109,
+    "state": "Madhya Pradesh",
+    "district": "Lotiya Kishna",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_259",
     "name": "Atarra Toll plaza",
     "lat": 25.3867192,
     "lng": 80.6051247,
@@ -7326,7 +8547,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_223",
+    "id": "TP_260",
+    "name": "Dalawada Toll plaza 3",
+    "lat": 23.9736047,
+    "lng": 75.4088908,
+    "state": "Madhya Pradesh",
+    "district": "Sitamau",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_261",
     "name": "Jabalpur Fastag services and toll market",
     "lat": 23.1620072,
     "lng": 79.9584397,
@@ -7359,7 +8613,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_224",
+    "id": "TP_262",
+    "name": "Toll Tax 5",
+    "lat": 25.1658194,
+    "lng": 76.0862074,
+    "state": "Rajasthan",
+    "district": "Mandola",
+    "nhCorridor": "National Highway",
+    "baseRate": 130,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 210,
+      "BUS_2AXLE": 430,
+      "COM_3AXLE": 470,
+      "MAV_4_6": 675,
+      "OVERSIZED": 830,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 195,
+      "LCV": 310,
+      "BUS_2AXLE": 645,
+      "COM_3AXLE": 700,
+      "MAV_4_6": 1015,
+      "OVERSIZED": 1250,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_263",
+    "name": "Toll Plaza 3",
+    "lat": 25.4927923,
+    "lng": 80.4735681,
+    "state": "Uttar Pradesh",
+    "district": "Bilbai",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_264",
     "name": "Mundla sondhiya Toll Plaza TP 3",
     "lat": 23.7136685,
     "lng": 75.7408525,
@@ -7392,7 +8712,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_225",
+    "id": "TP_265",
+    "name": "Toll Plaza Lalanagar",
+    "lat": 25.2691789,
+    "lng": 82.482846,
+    "state": "Uttar Pradesh",
+    "district": "Lalanagar, Parwatpur",
+    "nhCorridor": "National Highway",
+    "baseRate": 90,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 90,
+      "LCV": 145,
+      "BUS_2AXLE": 295,
+      "COM_3AXLE": 325,
+      "MAV_4_6": 470,
+      "OVERSIZED": 575,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_266",
     "name": "Kajikhedi toll plaza",
     "lat": 23.4934656,
     "lng": 75.6859725,
@@ -7425,7 +8778,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_226",
+    "id": "TP_267",
+    "name": "Toll Plaza 1",
+    "lat": 25.4916238,
+    "lng": 80.4758875,
+    "state": "Uttar Pradesh",
+    "district": "Bilbai",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_268",
+    "name": "Toll Plaza 6",
+    "lat": 25.4928008,
+    "lng": 80.4634219,
+    "state": "Uttar Pradesh",
+    "district": "Jari",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_269",
     "name": "Toll Plaza",
     "lat": 24.2349528,
     "lng": 80.7887845,
@@ -7458,7 +8877,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_227",
+    "id": "TP_270",
     "name": "Boras Toll Plaza",
     "lat": 23.0302602,
     "lng": 78.5151964,
@@ -7491,7 +8910,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_228",
+    "id": "TP_271",
     "name": "Balaji Toll Kata",
     "lat": 22.9243448,
     "lng": 75.8924687,
@@ -7524,7 +8943,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_229",
+    "id": "TP_272",
     "name": "Mandana Toll Booth",
     "lat": 24.9664599,
     "lng": 75.9346632,
@@ -7557,7 +8976,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_230",
+    "id": "TP_273",
     "name": "Kaza Toll Plaza",
     "lat": 16.3857462,
     "lng": 80.5329395,
@@ -7590,7 +9009,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_231",
+    "id": "TP_274",
     "name": "Veeravalli Toll Plaza",
     "lat": 16.9851173,
     "lng": 81.4764142,
@@ -7623,7 +9042,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_232",
+    "id": "TP_275",
     "name": "Tarluvada Toll Plaza",
     "lat": 17.8885982,
     "lng": 83.3451672,
@@ -7656,7 +9075,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_233",
+    "id": "TP_276",
     "name": "Sri Vraha Lakshmi Narasimha Swamy temple TOLL GATE",
     "lat": 17.7806747,
     "lng": 83.2583471,
@@ -7689,7 +9108,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_234",
+    "id": "TP_277",
     "name": "Vempadu Toll Plaza",
     "lat": 17.3976984,
     "lng": 82.6757884,
@@ -7722,7 +9141,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_235",
+    "id": "TP_278",
     "name": "Keesara Toll Plaza (TIS 227)",
     "lat": 16.7181505,
     "lng": 80.3243561,
@@ -7755,7 +9174,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_236",
+    "id": "TP_279",
     "name": "Marripalem Toll Plaza",
     "lat": 17.7475253,
     "lng": 83.06895,
@@ -7788,7 +9207,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_237",
+    "id": "TP_280",
     "name": "Madapam Toll Plaza",
     "lat": 18.377068,
     "lng": 84.0004231,
@@ -7821,7 +9240,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_238",
+    "id": "TP_281",
     "name": "EthaKota Toll Plaza ఈతకోట టోల్ ప్లాజ",
     "lat": 16.7152126,
     "lng": 81.8278458,
@@ -7854,7 +9273,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_239",
+    "id": "TP_282",
     "name": "Jonnada Toll Plaza",
     "lat": 18.0112654,
     "lng": 83.407779,
@@ -7887,7 +9306,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_240",
+    "id": "TP_283",
     "name": "Puligadda-Repalle Tollgate Point",
     "lat": 16.0412162,
     "lng": 80.9015879,
@@ -7920,7 +9339,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_241",
+    "id": "TP_284",
     "name": "Toll gate crosing place",
     "lat": 16.3602305,
     "lng": 80.5265182,
@@ -7953,7 +9372,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_242",
+    "id": "TP_285",
     "name": "Vijayawada Airport Tollgate",
     "lat": 16.5224482,
     "lng": 80.7901703,
@@ -7986,7 +9405,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_243",
+    "id": "TP_286",
     "name": "Devasthanam Tollgate",
     "lat": 16.9637563,
     "lng": 81.2552961,
@@ -8019,7 +9438,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_244",
+    "id": "TP_287",
     "name": "UppaChalaka Toll Plaza",
     "lat": 17.2680277,
     "lng": 80.6796807,
@@ -8052,7 +9471,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_245",
+    "id": "TP_288",
     "name": "Reddy pallem Toll Plaza",
     "lat": 15.993588,
     "lng": 80.5988081,
@@ -8085,7 +9504,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_246",
+    "id": "TP_289",
     "name": "Kalaparu toll plaza",
     "lat": 16.6606455,
     "lng": 81.0043095,
@@ -8118,7 +9537,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_247",
+    "id": "TP_290",
     "name": "Toll Plaza",
     "lat": 17.882776,
     "lng": 83.1542737,
@@ -8151,7 +9570,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_248",
+    "id": "TP_291",
     "name": "Mopidevi Tollgate",
     "lat": 16.0549132,
     "lng": 80.9142399,
@@ -8184,7 +9603,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_249",
+    "id": "TP_292",
     "name": "Athaang Devanhalli Tollways",
     "lat": 13.1931379,
     "lng": 77.6498686,
@@ -8217,7 +9636,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_250",
+    "id": "TP_293",
     "name": "Mysore Road Toll Booth",
     "lat": 12.9059002,
     "lng": 77.4706832,
@@ -8250,7 +9669,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_251",
+    "id": "TP_294",
     "name": "Bengaluru Nelamangala Toll Plaza",
     "lat": 13.0496321,
     "lng": 77.4943283,
@@ -8283,7 +9702,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_252",
+    "id": "TP_295",
     "name": "Vijayamangalam Toll Plaza",
     "lat": 11.2456599,
     "lng": 77.5197036,
@@ -8316,7 +9735,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_253",
+    "id": "TP_296",
     "name": "Electronic City Toll Plaza",
     "lat": 12.8419698,
     "lng": 77.6754762,
@@ -8349,7 +9768,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_254",
+    "id": "TP_297",
     "name": "Bengaluru Mysuru Toll booth - Phase 2",
     "lat": 12.4726139,
     "lng": 76.7604896,
@@ -8382,7 +9801,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_255",
+    "id": "TP_298",
     "name": "Nice Toll Plaza Magadi road Tumkur road entrance",
     "lat": 12.9901783,
     "lng": 77.4720025,
@@ -8415,7 +9834,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_256",
+    "id": "TP_299",
     "name": "Palakkad - coimbatore highway toll plaza",
     "lat": 10.8116556,
     "lng": 76.7961824,
@@ -8448,7 +9867,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_257",
+    "id": "TP_300",
+    "name": "Toll Gate Electronic city phase 1",
+    "lat": 12.8455924,
+    "lng": 77.6674593,
+    "state": "Karnataka",
+    "district": "Konappana Agrahara",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_301",
     "name": "Hattikeri Toll Booth",
     "lat": 14.7107622,
     "lng": 74.2937887,
@@ -8481,7 +9933,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_258",
+    "id": "TP_302",
     "name": "Hosur toll",
     "lat": 12.7767259,
     "lng": 77.7770723,
@@ -8514,7 +9966,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_259",
+    "id": "TP_303",
     "name": "Kallambella",
     "lat": 13.638797,
     "lng": 76.9373018,
@@ -8547,7 +9999,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_260",
+    "id": "TP_304",
     "name": "KN Hundy Toll Plaza",
     "lat": 12.2130339,
     "lng": 76.6629785,
@@ -8580,7 +10032,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_261",
+    "id": "TP_305",
     "name": "Bannerghatta Toll Plaza",
     "lat": 12.8500321,
     "lng": 77.5907382,
@@ -8613,7 +10065,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_262",
+    "id": "TP_306",
     "name": "Shantigrama Toll Plaza",
     "lat": 12.9827126,
     "lng": 76.228991,
@@ -8646,7 +10098,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_263",
+    "id": "TP_307",
     "name": "Nelamangala Toll plaza office",
     "lat": 13.0904609,
     "lng": 77.4017139,
@@ -8679,7 +10131,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_264",
+    "id": "TP_308",
     "name": "Chokkenahalli Toll Plaza",
     "lat": 13.3020161,
     "lng": 77.1620066,
@@ -8712,7 +10164,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_265",
+    "id": "TP_309",
     "name": "Toll Plaza",
     "lat": 10.8598214,
     "lng": 76.565736,
@@ -8745,7 +10197,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_266",
+    "id": "TP_310",
     "name": "Toll plaza",
     "lat": 11.7727122,
     "lng": 75.490765,
@@ -8778,7 +10230,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_267",
+    "id": "TP_311",
     "name": "Madugulapally Toll Plaza",
     "lat": 16.979383,
     "lng": 79.453573,
@@ -8811,7 +10263,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_268",
+    "id": "TP_312",
     "name": "Komalla Toll Plaza",
     "lat": 17.7774163,
     "lng": 79.2835625,
@@ -8844,7 +10296,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_269",
+    "id": "TP_313",
     "name": "Medapi Toll Plaza",
     "lat": 16.0248494,
     "lng": 79.4818223,
@@ -8877,7 +10329,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_270",
+    "id": "TP_314",
     "name": "Peddakonduru Toll plaza",
     "lat": 14.8269568,
     "lng": 79.7247889,
@@ -8910,7 +10362,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_271",
+    "id": "TP_315",
     "name": "KOMATIPALLI TOLL PLAZA",
     "lat": 18.0217374,
     "lng": 79.499925,
@@ -8943,7 +10395,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_272",
+    "id": "TP_316",
     "name": "Ravi Guntapalli Tollplaza",
     "lat": 15.2252211,
     "lng": 79.4591881,
@@ -8976,7 +10428,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_273",
+    "id": "TP_317",
     "name": "Munjuluru Toll Plaza",
     "lat": 16.3199258,
     "lng": 81.2207866,
@@ -9009,7 +10461,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_274",
+    "id": "TP_318",
     "name": "BADAVA Toll Plaza",
     "lat": 16.8504745,
     "lng": 80.6335844,
@@ -9042,7 +10494,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_275",
+    "id": "TP_319",
     "name": "GMR TOLL GATE",
     "lat": 17.2328727,
     "lng": 78.9604997,
@@ -9075,7 +10527,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_276",
+    "id": "TP_320",
     "name": "Painam Palli Toll plaza",
     "lat": 17.0731751,
     "lng": 80.0393131,
@@ -9108,7 +10560,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_277",
+    "id": "TP_321",
     "name": "Toll Plaza",
     "lat": 17.2466497,
     "lng": 79.5805353,
@@ -9141,7 +10593,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_278",
+    "id": "TP_322",
     "name": "Chintapally Toll Plaza",
     "lat": 17.4715859,
     "lng": 79.9803967,
@@ -9174,7 +10626,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_279",
+    "id": "TP_323",
     "name": "Thallapalle Toll Plaza",
     "lat": 16.5307265,
     "lng": 79.3819449,
@@ -9207,7 +10659,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_280",
+    "id": "TP_324",
+    "name": "NHAI Pampampallam Toll Plaza",
+    "lat": 10.8131485,
+    "lng": 76.7979885,
+    "state": "Kerala",
+    "district": "Attapallam, Pudussery East",
+    "nhCorridor": "National Highway",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_325",
     "name": "Hirehalli Toll Plaza NHAI -150A",
     "lat": 14.5041555,
     "lng": 76.671178,
@@ -9240,7 +10725,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_281",
+    "id": "TP_326",
     "name": "Bangalore MysoreToll Plaza NH-275",
     "lat": 12.8403431,
     "lng": 77.4184674,
@@ -9273,7 +10758,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_282",
+    "id": "TP_327",
     "name": "SH - 3 Koratagere - Madhugiri Toll Plaza",
     "lat": 13.579989,
     "lng": 77.2394627,
@@ -9306,7 +10791,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_283",
+    "id": "TP_328",
     "name": "Krishnagiri Toll Plaza",
     "lat": 12.5445665,
     "lng": 78.201221,
@@ -9339,7 +10824,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_284",
+    "id": "TP_329",
     "name": "KRDCL TOLL PLAZA OBALAPURA",
     "lat": 13.4361604,
     "lng": 77.1608629,
@@ -9372,7 +10857,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_285",
+    "id": "TP_330",
     "name": "BENGALURU - CHINTAMANI STATE TOLL PLAZA",
     "lat": 13.2600732,
     "lng": 77.9430252,
@@ -9405,7 +10890,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_286",
+    "id": "TP_331",
     "name": "Gadduru (Nangli ) Toll Plaza",
     "lat": 13.1943387,
     "lng": 78.5451842,
@@ -9438,7 +10923,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_287",
+    "id": "TP_332",
     "name": "Karipur International Airport Toll Plaza",
     "lat": 11.1405932,
     "lng": 75.9488841,
@@ -9471,7 +10956,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_288",
+    "id": "TP_333",
     "name": "Kananakatte toll plaza",
     "lat": 14.5377675,
     "lng": 76.4267983,
@@ -9504,7 +10989,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_289",
+    "id": "TP_334",
     "name": "Toll plaza",
     "lat": 13.0570825,
     "lng": 77.4719257,
@@ -9537,7 +11022,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_290",
+    "id": "TP_335",
     "name": "Nalluru Devanahalli Toll Plaza",
     "lat": 13.2074417,
     "lng": 77.7619195,
@@ -9570,7 +11055,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_291",
+    "id": "TP_336",
     "name": "Somanahalli, Kanakapura road Toll Plaza",
     "lat": 12.7839713,
     "lng": 77.5009989,
@@ -9603,7 +11088,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_292",
+    "id": "TP_337",
     "name": "Rasampalayam Toll plaza (Namakkal to Karur)",
     "lat": 11.1938125,
     "lng": 78.1031875,
@@ -9636,7 +11121,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_293",
+    "id": "TP_338",
+    "name": "Nice Road Toll Plaza, Tumakuru Road",
+    "lat": 13.0423991,
+    "lng": 77.4752725,
+    "state": "Karnataka",
+    "district": "Madanayakanahalli",
+    "nhCorridor": "National Highway",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_339",
     "name": "Gadanki Toll Plaza",
     "lat": 13.4780527,
     "lng": 79.1877754,
@@ -9669,7 +11187,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_294",
+    "id": "TP_340",
     "name": "Kallakudi Toll Plaza",
     "lat": 10.9972787,
     "lng": 78.9668508,
@@ -9702,7 +11220,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_295",
+    "id": "TP_341",
     "name": "Mahasamudram toll plaza",
     "lat": 13.195033,
     "lng": 79.0159474,
@@ -9735,7 +11253,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_296",
+    "id": "TP_342",
     "name": "PATIMEDHAPALLI Toll Plaza",
     "lat": 14.6237961,
     "lng": 78.7835209,
@@ -9768,7 +11286,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_297",
+    "id": "TP_343",
     "name": "Karagadahalli Toll Plaza",
     "lat": 12.2606368,
     "lng": 78.0899281,
@@ -9801,7 +11319,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_298",
+    "id": "TP_344",
     "name": "Bengaluru Mysuru Toll booth - Phase 1",
     "lat": 12.8595689,
     "lng": 77.4311077,
@@ -9834,7 +11352,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_299",
+    "id": "TP_345",
+    "name": "NICE Toll Plaza",
+    "lat": 12.9023966,
+    "lng": 77.4708733,
+    "state": "Karnataka",
+    "district": "Bengaluru",
+    "nhCorridor": "National Highway",
+    "baseRate": 185,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 185,
+      "LCV": 295,
+      "BUS_2AXLE": 610,
+      "COM_3AXLE": 665,
+      "MAV_4_6": 960,
+      "OVERSIZED": 1185,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 280,
+      "LCV": 445,
+      "BUS_2AXLE": 915,
+      "COM_3AXLE": 1000,
+      "MAV_4_6": 1445,
+      "OVERSIZED": 1775,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_346",
     "name": "Toll plaza Belakavadi",
     "lat": 12.2842821,
     "lng": 77.1328073,
@@ -9867,7 +11418,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_300",
+    "id": "TP_347",
     "name": "Brahamarakotlu Toll Plaza",
     "lat": 12.875261,
     "lng": 75.0038619,
@@ -9900,7 +11451,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_301",
+    "id": "TP_348",
+    "name": "Rasampalayam Toll Plaza - Karur to Salem",
+    "lat": 11.1931872,
+    "lng": 78.1000974,
+    "state": "Tamil Nadu",
+    "district": "Rasampalayam",
+    "nhCorridor": "National Highway",
+    "baseRate": 135,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 200,
+      "LCV": 325,
+      "BUS_2AXLE": 670,
+      "COM_3AXLE": 730,
+      "MAV_4_6": 1055,
+      "OVERSIZED": 1295,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_349",
     "name": "Chowlagere Toll Plaza",
     "lat": 12.9631254,
     "lng": 75.9918251,
@@ -9933,7 +11517,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_302",
+    "id": "TP_350",
     "name": "Veeracholapuram West Toll Plaza",
     "lat": 11.7363842,
     "lng": 79.0095807,
@@ -9966,7 +11550,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_303",
+    "id": "TP_351",
+    "name": "Electronic City Flyover Toll",
+    "lat": 12.8455293,
+    "lng": 77.6722834,
+    "state": "Karnataka",
+    "district": "Konappana Agrahara",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_352",
+    "name": "NHAI Thiruvangad Toll Plaza",
+    "lat": 11.7716401,
+    "lng": 75.4937202,
+    "state": "Kerala",
+    "district": "Thalassery",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_353",
     "name": "Pongalur Toll gate(TOLL started)",
     "lat": 10.9779038,
     "lng": 77.3450743,
@@ -9999,7 +11649,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_304",
+    "id": "TP_354",
     "name": "Holegadde Toll Plaza / NH 66",
     "lat": 14.3593044,
     "lng": 74.4191218,
@@ -10032,7 +11682,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_305",
+    "id": "TP_355",
     "name": "Hejamadi Toll",
     "lat": 13.1060967,
     "lng": 74.7863637,
@@ -10065,7 +11715,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_306",
+    "id": "TP_356",
     "name": "Toll plaza",
     "lat": 13.0133727,
     "lng": 74.792977,
@@ -10098,7 +11748,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_307",
+    "id": "TP_357",
     "name": "Buchireddypalem Toll Plaza",
     "lat": 14.5431722,
     "lng": 79.8620955,
@@ -10131,7 +11781,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_308",
+    "id": "TP_358",
     "name": "Singarenipally Toll Gate",
     "lat": 17.1916569,
     "lng": 79.8713957,
@@ -10164,7 +11814,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_309",
+    "id": "TP_359",
     "name": "Mekalavaripalle Toll Plaza",
     "lat": 15.6675733,
     "lng": 79.351901,
@@ -10197,7 +11847,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_310",
+    "id": "TP_360",
     "name": "Vedurupavuluru Toll Plaza",
     "lat": 16.5726724,
     "lng": 80.7151888,
@@ -10230,7 +11880,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_311",
+    "id": "TP_361",
     "name": "Kottagudem TOLL plaza",
     "lat": 17.406428,
     "lng": 79.6421309,
@@ -10263,7 +11913,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_312",
+    "id": "TP_362",
+    "name": "Surampalli Toll Plaza",
+    "lat": 16.572996,
+    "lng": 80.7165494,
+    "state": "Andhra Pradesh",
+    "district": "Surampalli, Vedurupavuluru",
+    "nhCorridor": "NH-16",
+    "baseRate": 125,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 125,
+      "LCV": 200,
+      "BUS_2AXLE": 410,
+      "COM_3AXLE": 450,
+      "MAV_4_6": 650,
+      "OVERSIZED": 800,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 300,
+      "BUS_2AXLE": 620,
+      "COM_3AXLE": 675,
+      "MAV_4_6": 975,
+      "OVERSIZED": 1200,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_363",
     "name": "Renikunta Toll Gate, KNR-HYD Rd",
     "lat": 18.2943003,
     "lng": 79.1171998,
@@ -10296,7 +11979,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_313",
+    "id": "TP_364",
     "name": "Toll Plaza Brahmanapalle",
     "lat": 14.7570435,
     "lng": 79.2617051,
@@ -10329,7 +12012,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_314",
+    "id": "TP_365",
     "name": "Pedagruvu Toll Plaza",
     "lat": 18.1773016,
     "lng": 82.7444298,
@@ -10362,7 +12045,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_315",
+    "id": "TP_366",
     "name": "Muthojipet Toll Plaza Office",
     "lat": 17.9740602,
     "lng": 79.9141619,
@@ -10395,7 +12078,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_316",
+    "id": "TP_367",
     "name": "Toll Plaza 4",
     "lat": 18.0480166,
     "lng": 83.2517968,
@@ -10428,7 +12111,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_317",
+    "id": "TP_368",
     "name": "Millampali Toll Plaza",
     "lat": 16.0625273,
     "lng": 79.3051204,
@@ -10461,7 +12144,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_318",
+    "id": "TP_369",
     "name": "Toll gate",
     "lat": 12.8589456,
     "lng": 77.657029,
@@ -10494,7 +12177,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_319",
+    "id": "TP_370",
     "name": "V. Kota Toll Plaza",
     "lat": 13.0373909,
     "lng": 78.5152467,
@@ -10527,7 +12210,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_320",
+    "id": "TP_371",
     "name": "Punganur Toll Plaza",
     "lat": 13.3361755,
     "lng": 78.6130095,
@@ -10560,7 +12243,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_321",
+    "id": "TP_372",
     "name": "Balenahalli Toll Plaza",
     "lat": 14.0328073,
     "lng": 76.6368198,
@@ -10593,7 +12276,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_322",
+    "id": "TP_373",
     "name": "Hulikunte Toll Plaza",
     "lat": 13.2708433,
     "lng": 77.348219,
@@ -10626,7 +12309,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_323",
+    "id": "TP_374",
     "name": "Lingalapura Toll Plaza",
     "lat": 13.4438811,
     "lng": 76.1378037,
@@ -10659,7 +12342,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_324",
+    "id": "TP_375",
     "name": "Nagampatti Toll Plaza",
     "lat": 12.4007494,
     "lng": 78.3924021,
@@ -10692,7 +12375,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_325",
+    "id": "TP_376",
+    "name": "Pongalur Toll Plaza",
+    "lat": 10.9782873,
+    "lng": 77.3441165,
+    "state": "Tamil Nadu",
+    "district": "Palladam, Madhapur",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_377",
     "name": "Inamkariyandal Toll Plaza",
     "lat": 12.2873114,
     "lng": 79.0690826,
@@ -10725,7 +12441,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_326",
+    "id": "TP_378",
     "name": "Rajathadri Toll Plaza, KB Cross Tiptur District",
     "lat": 13.3191086,
     "lng": 76.6963033,
@@ -10758,7 +12474,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_327",
+    "id": "TP_379",
     "name": "L&T Toll Gate, Madukkarai",
     "lat": 10.895565,
     "lng": 76.9458161,
@@ -10791,7 +12507,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_328",
+    "id": "TP_380",
     "name": "BCE Krishnarajapura Toll Plaza",
     "lat": 13.0034204,
     "lng": 78.255867,
@@ -10824,7 +12540,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_329",
+    "id": "TP_381",
     "name": "Elurpatti Toll Plaza",
     "lat": 11.0325453,
     "lng": 78.2743206,
@@ -10857,7 +12573,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_330",
+    "id": "TP_382",
     "name": "Bhuvanahally Gate Toll Plaza",
     "lat": 12.4423006,
     "lng": 76.1017357,
@@ -10890,7 +12606,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_331",
+    "id": "TP_383",
     "name": "Basapuram Toll Plaza",
     "lat": 14.7083358,
     "lng": 78.8723771,
@@ -10923,7 +12639,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_332",
+    "id": "TP_384",
     "name": "KRDCL TOLL PLAZA HULIYURUDURGA",
     "lat": 12.8611193,
     "lng": 77.0394155,
@@ -10956,7 +12672,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_333",
+    "id": "TP_385",
     "name": "Ammapettai Toll Plaza",
     "lat": 11.6108401,
     "lng": 77.7357498,
@@ -10989,7 +12705,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_334",
+    "id": "TP_386",
     "name": "Sira - Madakasira (Rolla) Toll Plaza",
     "lat": 13.8553485,
     "lng": 77.1172317,
@@ -11022,7 +12738,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_335",
+    "id": "TP_387",
     "name": "Horsely Hills Toll",
     "lat": 13.6682531,
     "lng": 78.4184806,
@@ -11055,7 +12771,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_336",
+    "id": "TP_388",
     "name": "Korlapahad Toll Booth",
     "lat": 17.1596639,
     "lng": 79.4748511,
@@ -11088,7 +12804,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_337",
+    "id": "TP_389",
     "name": "ORR Exit No 10 Taramatipet",
     "lat": 17.3729034,
     "lng": 78.6813536,
@@ -11121,7 +12837,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_338",
+    "id": "TP_390",
     "name": "Maruru Toll Plaza",
     "lat": 14.5020927,
     "lng": 77.6312111,
@@ -11154,7 +12870,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_339",
+    "id": "TP_391",
     "name": "L&T IDPL Toll Plaza",
     "lat": 16.5356454,
     "lng": 77.9450342,
@@ -11187,7 +12903,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_340",
+    "id": "TP_392",
     "name": "Ghatkesar Toll Plaza (ORR)(9)",
     "lat": 17.4417236,
     "lng": 78.6671613,
@@ -11220,7 +12936,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_341",
+    "id": "TP_393",
     "name": "TSPA Junction, ORR Entry 18 Tollbooth",
     "lat": 17.3523146,
     "lng": 78.3583784,
@@ -11253,7 +12969,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_342",
+    "id": "TP_394",
     "name": "Bollapalli Toll plaza",
     "lat": 15.8865647,
     "lng": 80.0708156,
@@ -11286,7 +13002,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_343",
+    "id": "TP_395",
     "name": "Bhiknoor Toll Plaza",
     "lat": 18.2047596,
     "lng": 78.3984841,
@@ -11319,7 +13035,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_344",
+    "id": "TP_396",
     "name": "Nehru ORR Toll Booth",
     "lat": 17.2569168,
     "lng": 78.3756093,
@@ -11352,7 +13068,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_345",
+    "id": "TP_397",
     "name": "Chagalamarri Toll Plaza",
     "lat": 14.9795772,
     "lng": 78.5748068,
@@ -11385,7 +13101,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_346",
+    "id": "TP_398",
     "name": "Nannur Toll Plaza",
     "lat": 15.7409164,
     "lng": 78.0707785,
@@ -11418,7 +13134,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_347",
+    "id": "TP_399",
     "name": "Toll plaza",
     "lat": 17.005243,
     "lng": 78.194232,
@@ -11451,7 +13167,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_348",
+    "id": "TP_400",
+    "name": "TSPA Toll Plaza",
+    "lat": 17.3483646,
+    "lng": 78.3594275,
+    "state": "Telangana",
+    "district": "Hyderabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_401",
     "name": "Edulanagulapalli Toll Booth Exit 2",
     "lat": 17.4631571,
     "lng": 78.2491863,
@@ -11484,7 +13233,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_349",
+    "id": "TP_402",
     "name": "Mallampet 4A Exit Toll Plaza",
     "lat": 17.5617211,
     "lng": 78.3660877,
@@ -11517,7 +13266,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_350",
+    "id": "TP_403",
     "name": "Teldarupalli toll plaza",
     "lat": 17.2133426,
     "lng": 80.0998338,
@@ -11550,7 +13299,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_351",
+    "id": "TP_404",
     "name": "Upputuru Toll Plaza",
     "lat": 15.9348936,
     "lng": 80.2904107,
@@ -11583,7 +13332,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_352",
+    "id": "TP_405",
     "name": "Jawahar nagar toll plazza",
     "lat": 18.2121077,
     "lng": 80.0285695,
@@ -11616,7 +13365,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_353",
+    "id": "TP_406",
     "name": "Toll plaza",
     "lat": 18.2168844,
     "lng": 83.1105056,
@@ -11649,7 +13398,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_354",
+    "id": "TP_407",
     "name": "Venkatapalem Toll Plaza",
     "lat": 16.5050417,
     "lng": 80.5434683,
@@ -11682,7 +13431,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_355",
+    "id": "TP_408",
+    "name": "Toll Plaza 2",
+    "lat": 18.0529936,
+    "lng": 83.2525451,
+    "state": "Andhra Pradesh",
+    "district": "Jami",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_409",
     "name": "Paluvai Toll Plaza Macherla to Dachepalli",
     "lat": 16.5341341,
     "lng": 79.5106517,
@@ -11715,7 +13497,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_356",
+    "id": "TP_410",
     "name": "Hasanabad toll plaza",
     "lat": 15.907055,
     "lng": 79.0972178,
@@ -11748,7 +13530,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_357",
+    "id": "TP_411",
     "name": "Toll Gate Mogalthur",
     "lat": 16.4231079,
     "lng": 81.6392333,
@@ -11781,7 +13563,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_358",
+    "id": "TP_412",
     "name": "Gantyada Toll Plaza.....",
     "lat": 18.146127,
     "lng": 83.2840142,
@@ -11814,7 +13596,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_359",
+    "id": "TP_413",
     "name": "Fastag Sales",
     "lat": 16.6722283,
     "lng": 82.1473895,
@@ -11847,7 +13629,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_360",
+    "id": "TP_414",
     "name": "PANDHILLA PALLI Toll Palza",
     "lat": 15.4657045,
     "lng": 79.0723455,
@@ -11880,7 +13662,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_361",
+    "id": "TP_415",
     "name": "BODDUGUDEM TOLL PLAZA",
     "lat": 17.4074295,
     "lng": 79.3007199,
@@ -11913,7 +13695,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_362",
+    "id": "TP_416",
     "name": "Parking place of toll plaza of NH 216",
     "lat": 15.6835334,
     "lng": 80.1928467,
@@ -11946,7 +13728,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_363",
+    "id": "TP_417",
     "name": "Yadagirigutta Entry Manual Toll",
     "lat": 17.5923044,
     "lng": 78.9458719,
@@ -11979,7 +13761,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_364",
+    "id": "TP_418",
     "name": "Jas Toll Plaza, Mumbai Highway",
     "lat": 13.1135127,
     "lng": 77.3755669,
@@ -12012,7 +13794,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_365",
+    "id": "TP_419",
     "name": "Mudivedu toll plaza",
     "lat": 13.6985018,
     "lng": 78.5188357,
@@ -12045,7 +13827,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_366",
+    "id": "TP_420",
     "name": "Attugulipura Toll Plaza",
     "lat": 11.8246775,
     "lng": 77.0082808,
@@ -12078,7 +13860,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_367",
+    "id": "TP_421",
     "name": "Inagaluru Toll plaza",
     "lat": 14.0511236,
     "lng": 78.0324856,
@@ -12111,7 +13893,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_368",
+    "id": "TP_422",
     "name": "BANDAPALLI TOLL GATE",
     "lat": 14.1311987,
     "lng": 78.7566821,
@@ -12144,7 +13926,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_369",
+    "id": "TP_423",
     "name": "Toll Booth",
     "lat": 11.4410858,
     "lng": 75.699814,
@@ -12177,7 +13959,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_370",
+    "id": "TP_424",
     "name": "Toll Plaza, Velampatti",
     "lat": 10.9935573,
     "lng": 77.418018,
@@ -12210,7 +13992,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_371",
+    "id": "TP_425",
     "name": "Yerradoddi Toll plaza",
     "lat": 14.1692458,
     "lng": 78.1348261,
@@ -12243,7 +14025,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_372",
+    "id": "TP_426",
     "name": "Manavasi Toll plaza",
     "lat": 10.9317189,
     "lng": 78.218417,
@@ -12276,7 +14058,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_373",
+    "id": "TP_427",
     "name": "Vallam Toll Plaza",
     "lat": 12.7702253,
     "lng": 79.1489823,
@@ -12309,7 +14091,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_374",
+    "id": "TP_428",
     "name": "Kallapura Toll Plaza",
     "lat": 14.0803379,
     "lng": 75.534635,
@@ -12342,7 +14124,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_375",
+    "id": "TP_429",
     "name": "NHAI Olavanna Toll Plaza - Southbound",
     "lat": 11.239739,
     "lng": 75.83902,
@@ -12375,7 +14157,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_376",
+    "id": "TP_430",
     "name": "Bengaluru - Hoskote Toll (N)",
     "lat": 13.059891,
     "lng": 77.770645,
@@ -12408,7 +14190,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_377",
+    "id": "TP_431",
     "name": "Near toll plaza",
     "lat": 13.1468446,
     "lng": 78.2855893,
@@ -12441,7 +14223,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_378",
+    "id": "TP_432",
     "name": "BCE Agrahara Toll Plaza",
     "lat": 13.0422318,
     "lng": 78.0002146,
@@ -12474,7 +14256,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_379",
+    "id": "TP_433",
     "name": "L&T Toll Roads Ltd - Thoppur",
     "lat": 12.0064188,
     "lng": 78.079735,
@@ -12507,7 +14289,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_380",
+    "id": "TP_434",
     "name": "Vembukudi Toll Plaza",
     "lat": 10.8746255,
     "lng": 79.2104679,
@@ -12540,7 +14322,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_381",
+    "id": "TP_435",
     "name": "Kovvuru Toll Plaza",
     "lat": 17.027275,
     "lng": 81.719525,
@@ -12573,7 +14355,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_382",
+    "id": "TP_436",
+    "name": "Shadnagar toll Plaza",
+    "lat": 17.0063409,
+    "lng": 78.1944864,
+    "state": "Telangana",
+    "district": "Chilkamarri",
+    "nhCorridor": "National Highway",
+    "baseRate": 140,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 225,
+      "BUS_2AXLE": 460,
+      "COM_3AXLE": 505,
+      "MAV_4_6": 730,
+      "OVERSIZED": 895,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 210,
+      "LCV": 335,
+      "BUS_2AXLE": 695,
+      "COM_3AXLE": 755,
+      "MAV_4_6": 1090,
+      "OVERSIZED": 1345,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_437",
     "name": "S.G.T.P.L Toll Plaza",
     "lat": 15.432356,
     "lng": 76.40543,
@@ -12606,7 +14421,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_383",
+    "id": "TP_438",
+    "name": "TGPA - Toll Plaza",
+    "lat": 17.3492594,
+    "lng": 78.3610998,
+    "state": "Telangana",
+    "district": "Hyderabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_439",
     "name": "Nalavadi Toll Plaza",
     "lat": 15.369722,
     "lng": 75.3575,
@@ -12639,7 +14487,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_384",
+    "id": "TP_440",
+    "name": "Uppugundur Toll Plaza",
+    "lat": 15.6833769,
+    "lng": 80.191808,
+    "state": "Andhra Pradesh",
+    "district": "Peddaganjam",
+    "nhCorridor": "NH-216",
+    "baseRate": 145,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 145,
+      "LCV": 230,
+      "BUS_2AXLE": 480,
+      "COM_3AXLE": 520,
+      "MAV_4_6": 755,
+      "OVERSIZED": 930,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 220,
+      "LCV": 350,
+      "BUS_2AXLE": 720,
+      "COM_3AXLE": 785,
+      "MAV_4_6": 1130,
+      "OVERSIZED": 1390,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_441",
     "name": "Thimmalapura Toll Plaza",
     "lat": 15.0573141,
     "lng": 76.3569663,
@@ -12672,7 +14553,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_385",
+    "id": "TP_442",
     "name": "Toll Plaza, Tamalwadi (IRB)",
     "lat": 17.8521195,
     "lng": 75.9655465,
@@ -12705,7 +14586,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_386",
+    "id": "TP_443",
     "name": "Nandani tol naka Toll plaza",
     "lat": 17.4732182,
     "lng": 75.8552061,
@@ -12738,7 +14619,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_387",
+    "id": "TP_444",
+    "name": "Toll plaza Entry",
+    "lat": 17.2533136,
+    "lng": 78.3799034,
+    "state": "Telangana",
+    "district": "Gandiguda, Hyderabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 170,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 170,
+      "LCV": 270,
+      "BUS_2AXLE": 560,
+      "COM_3AXLE": 610,
+      "MAV_4_6": 885,
+      "OVERSIZED": 1090,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 255,
+      "LCV": 410,
+      "BUS_2AXLE": 840,
+      "COM_3AXLE": 920,
+      "MAV_4_6": 1325,
+      "OVERSIZED": 1630,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_445",
     "name": "Halligudi Toll Plaza",
     "lat": 15.3908223,
     "lng": 75.8551505,
@@ -12771,7 +14685,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_388",
+    "id": "TP_446",
     "name": "Bongloor Toll Plaza (Exit 12)",
     "lat": 17.2379551,
     "lng": 78.5840869,
@@ -12804,7 +14718,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_389",
+    "id": "TP_447",
+    "name": "Toll gate Exit 10",
+    "lat": 17.3715326,
+    "lng": 78.6809026,
+    "state": "Telangana",
+    "district": "Hyderabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 185,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 185,
+      "LCV": 295,
+      "BUS_2AXLE": 610,
+      "COM_3AXLE": 665,
+      "MAV_4_6": 960,
+      "OVERSIZED": 1185,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 280,
+      "LCV": 445,
+      "BUS_2AXLE": 915,
+      "COM_3AXLE": 1000,
+      "MAV_4_6": 1445,
+      "OVERSIZED": 1775,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_448",
     "name": "Hitnal Toll Plaza",
     "lat": 15.3234547,
     "lng": 76.3035622,
@@ -12837,7 +14784,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_390",
+    "id": "TP_449",
     "name": "Valsang Toll Plaza",
     "lat": 17.5898796,
     "lng": 76.0745723,
@@ -12870,7 +14817,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_391",
+    "id": "TP_450",
     "name": "Raviryala Toll Booth (Exit 13)",
     "lat": 17.2125306,
     "lng": 78.530827,
@@ -12903,7 +14850,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_392",
+    "id": "TP_451",
+    "name": "SDPT-KNR TOLL ROAD LINK",
+    "lat": 18.2962822,
+    "lng": 79.1092001,
+    "state": "Telangana",
+    "district": "Gundlapalli",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_452",
     "name": "Telakantigudem Toll Plaza",
     "lat": 16.9583691,
     "lng": 79.2599722,
@@ -12936,7 +14916,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_393",
+    "id": "TP_453",
     "name": "Sameerpalem toll gate",
     "lat": 15.1776425,
     "lng": 79.7777055,
@@ -12969,7 +14949,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_394",
+    "id": "TP_454",
+    "name": "SVSD 1st GHAT ROAD TOLL GATE",
+    "lat": 16.9514969,
+    "lng": 81.2583425,
+    "state": "Andhra Pradesh",
+    "district": "Dwaraka Tirumala",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_455",
+    "name": "V3QC+J6R Toll Plaza",
+    "lat": 15.8890774,
+    "lng": 80.0705829,
+    "state": "Andhra Pradesh",
+    "district": "Bollapalli",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_456",
     "name": "Manapuram Toll Plaza",
     "lat": 18.3699063,
     "lng": 83.3348574,
@@ -13002,7 +15048,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_395",
+    "id": "TP_457",
     "name": "Narsapuram Ferry Toll",
     "lat": 16.4394154,
     "lng": 81.7086485,
@@ -13035,7 +15081,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_396",
+    "id": "TP_458",
     "name": "Parking place for NH 16 toll plaza",
     "lat": 15.3587943,
     "lng": 80.0389483,
@@ -13068,7 +15114,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_397",
+    "id": "TP_459",
     "name": "Parking place for NH 16 toll plaza kavali",
     "lat": 14.8533548,
     "lng": 79.987181,
@@ -13101,7 +15147,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_398",
+    "id": "TP_460",
     "name": "Krishnavaram toll plaza skip turn",
     "lat": 17.2046551,
     "lng": 82.1022617,
@@ -13134,7 +15180,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_399",
+    "id": "TP_461",
     "name": "Shikaram Toll Plaza",
     "lat": 16.0449067,
     "lng": 78.9171911,
@@ -13167,7 +15213,106 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_400",
+    "id": "TP_462",
+    "name": "Tanguturu Byepass Toll Plaza",
+    "lat": 15.35817,
+    "lng": 80.040108,
+    "state": "Andhra Pradesh",
+    "district": "Tanguturu",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_463",
+    "name": "Kaza Toll Plaza",
+    "lat": 16.386186,
+    "lng": 80.533941,
+    "state": "Andhra Pradesh",
+    "district": "Kaza",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_464",
+    "name": "Sri Ranagapatna toll office",
+    "lat": 12.473343,
+    "lng": 76.759802,
+    "state": "Karnataka",
+    "district": "Ganangooru",
+    "nhCorridor": "National Highway",
+    "baseRate": 135,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 200,
+      "LCV": 325,
+      "BUS_2AXLE": 670,
+      "COM_3AXLE": 730,
+      "MAV_4_6": 1055,
+      "OVERSIZED": 1295,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_465",
     "name": "Javoor Toll Booth",
     "lat": 13.7947524,
     "lng": 75.9820518,
@@ -13200,7 +15345,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_401",
+    "id": "TP_466",
+    "name": "Ancheypalya- Yeshwanthpur Toll Entry",
+    "lat": 13.0554306,
+    "lng": 77.4790901,
+    "state": "Karnataka",
+    "district": "Madanayakanahalli",
+    "nhCorridor": "National Highway",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_467",
     "name": "Toll Road Start",
     "lat": 11.1988396,
     "lng": 77.4093364,
@@ -13233,7 +15411,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_402",
+    "id": "TP_468",
+    "name": "Parle G Toll Gate",
+    "lat": 13.05012,
+    "lng": 77.493293,
+    "state": "Karnataka",
+    "district": "Bengaluru",
+    "nhCorridor": "National Highway",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_469",
     "name": "KRDCL TOLL PLAZA GUDEMARANAHALLI",
     "lat": 13.0437252,
     "lng": 77.2605301,
@@ -13266,7 +15477,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_403",
+    "id": "TP_470",
+    "name": "Navayuga Toll",
+    "lat": 13.201194,
+    "lng": 77.66096,
+    "state": "Karnataka",
+    "district": "Akkalenahalli Mallena - Halli",
+    "nhCorridor": "National Highway",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_471",
+    "name": "Hoskote Toll Gate",
+    "lat": 13.0606876,
+    "lng": 77.7718091,
+    "state": "Karnataka",
+    "district": "Amanidoddakere",
+    "nhCorridor": "NH-4",
+    "baseRate": 90,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 90,
+      "LCV": 145,
+      "BUS_2AXLE": 295,
+      "COM_3AXLE": 325,
+      "MAV_4_6": 470,
+      "OVERSIZED": 575,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_472",
     "name": "IRB Toll Office",
     "lat": 13.9337222,
     "lng": 74.5970429,
@@ -13299,7 +15576,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_404",
+    "id": "TP_473",
     "name": "Tirunnavaya ROB Toll",
     "lat": 10.872806,
     "lng": 75.983804,
@@ -13332,7 +15609,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_405",
+    "id": "TP_474",
     "name": "Toll Gate bus stop",
     "lat": 12.2651744,
     "lng": 76.6325559,
@@ -13365,7 +15642,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_406",
+    "id": "TP_475",
+    "name": "Nelmangala Toll",
+    "lat": 13.115273,
+    "lng": 77.373733,
+    "state": "Karnataka",
+    "district": "Nelamangala Town",
+    "nhCorridor": "National Highway",
+    "baseRate": 90,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 90,
+      "LCV": 145,
+      "BUS_2AXLE": 295,
+      "COM_3AXLE": 325,
+      "MAV_4_6": 470,
+      "OVERSIZED": 575,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_476",
     "name": "No.1 Toll Gate",
     "lat": 10.876694,
     "lng": 78.709914,
@@ -13398,7 +15708,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_407",
+    "id": "TP_477",
     "name": "Jajarakal Toll Plaza",
     "lat": 14.9813715,
     "lng": 76.8343304,
@@ -13431,7 +15741,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_408",
+    "id": "TP_478",
     "name": "Yedshi Toll Plaza",
     "lat": 18.3072177,
     "lng": 75.9890717,
@@ -13464,7 +15774,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_409",
+    "id": "TP_479",
     "name": "Toll gate Gummadidala",
     "lat": 17.673115,
     "lng": 78.3716483,
@@ -13497,7 +15807,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_410",
+    "id": "TP_480",
     "name": "Ichgaon Toll Plaza",
     "lat": 17.592448,
     "lng": 75.5910059,
@@ -13530,7 +15840,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_411",
+    "id": "TP_481",
     "name": "TOLL PLAZA ASHIV",
     "lat": 18.1278951,
     "lng": 76.3582491,
@@ -13563,7 +15873,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_412",
+    "id": "TP_482",
     "name": "Dharmaram toll plaza",
     "lat": 18.2658952,
     "lng": 77.787632,
@@ -13596,7 +15906,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_413",
+    "id": "TP_483",
     "name": "Taddanpally Toll Plaza Shivampet",
     "lat": 17.6965948,
     "lng": 78.0954136,
@@ -13629,7 +15939,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_414",
+    "id": "TP_484",
     "name": "Jodi dharmapuram toll plaza",
     "lat": 14.9876795,
     "lng": 77.9155372,
@@ -13662,7 +15972,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_415",
+    "id": "TP_485",
     "name": "XJ5F+8CC Kirasave Toll Plaza",
     "lat": 12.9583407,
     "lng": 76.6234684,
@@ -13695,7 +16005,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_416",
+    "id": "TP_486",
+    "name": "Toll gate musallah",
+    "lat": 12.7756956,
+    "lng": 77.7772976,
+    "state": "Karnataka",
+    "district": "Attibele",
+    "nhCorridor": "National Highway",
+    "baseRate": 175,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 175,
+      "LCV": 280,
+      "BUS_2AXLE": 580,
+      "COM_3AXLE": 630,
+      "MAV_4_6": 910,
+      "OVERSIZED": 1120,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 260,
+      "LCV": 420,
+      "BUS_2AXLE": 865,
+      "COM_3AXLE": 945,
+      "MAV_4_6": 1365,
+      "OVERSIZED": 1680,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_487",
     "name": "Durgamvari Palli Toll Gate",
     "lat": 13.7143248,
     "lng": 78.873221,
@@ -13728,7 +16071,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_417",
+    "id": "TP_488",
     "name": "NH 66 Toll Plaza vettichira Malappuram",
     "lat": 10.9273586,
     "lng": 76.0285576,
@@ -13761,7 +16104,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_418",
+    "id": "TP_489",
     "name": "Toll Gate to Yercaud",
     "lat": 11.7208966,
     "lng": 78.1789904,
@@ -13794,7 +16137,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_419",
+    "id": "TP_490",
+    "name": "NICE Toll Plaza",
+    "lat": 12.9900293,
+    "lng": 77.4728139,
+    "state": "Karnataka",
+    "district": "Bengaluru",
+    "nhCorridor": "National Highway",
+    "baseRate": 80,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 80,
+      "LCV": 130,
+      "BUS_2AXLE": 265,
+      "COM_3AXLE": 290,
+      "MAV_4_6": 415,
+      "OVERSIZED": 510,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_491",
     "name": "Samayapuram Toll Plaza",
     "lat": 10.9293845,
     "lng": 78.744034,
@@ -13827,7 +16203,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_420",
+    "id": "TP_492",
     "name": "Kariyamangalam Toll Plaza",
     "lat": 12.2881314,
     "lng": 78.8283224,
@@ -13860,7 +16236,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_421",
+    "id": "TP_493",
     "name": "Guilalu Toll Plaza",
     "lat": 14.0537975,
     "lng": 76.5605183,
@@ -13893,7 +16269,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_422",
+    "id": "TP_494",
     "name": "Vaniyambadi Toll Plaza",
     "lat": 12.643866,
     "lng": 78.5798248,
@@ -13926,7 +16302,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_423",
+    "id": "TP_495",
     "name": "G B I tolls Inayathpasha",
     "lat": 12.8699494,
     "lng": 77.5660579,
@@ -13959,7 +16335,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_424",
+    "id": "TP_496",
+    "name": "Vaniyambadi Toll Plaza",
+    "lat": 12.6485283,
+    "lng": 78.5832512,
+    "state": "Tamil Nadu",
+    "district": "Peddakallupalli",
+    "nhCorridor": "NH-46",
+    "baseRate": 170,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 170,
+      "LCV": 270,
+      "BUS_2AXLE": 560,
+      "COM_3AXLE": 610,
+      "MAV_4_6": 885,
+      "OVERSIZED": 1090,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 255,
+      "LCV": 410,
+      "BUS_2AXLE": 840,
+      "COM_3AXLE": 920,
+      "MAV_4_6": 1325,
+      "OVERSIZED": 1630,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_497",
     "name": "L&T Toll Booth",
     "lat": 10.9759251,
     "lng": 76.9618531,
@@ -13992,7 +16401,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_425",
+    "id": "TP_498",
     "name": "Penur Toll Plaza",
     "lat": 17.7783555,
     "lng": 75.5242315,
@@ -14025,7 +16434,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_426",
+    "id": "TP_499",
     "name": "Tidagundi toll vptpl",
     "lat": 17.0083833,
     "lng": 75.7588592,
@@ -14058,7 +16467,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_427",
+    "id": "TP_500",
     "name": "Toll plaza Exit 8 inside",
     "lat": 17.5143213,
     "lng": 78.6475782,
@@ -14091,7 +16500,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_428",
+    "id": "TP_501",
     "name": "Munnanur Toll plaza",
     "lat": 16.7455583,
     "lng": 78.2847021,
@@ -14124,7 +16533,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_429",
+    "id": "TP_502",
     "name": "Toll Booth, Exit No.11, Pedda Amberpet",
     "lat": 17.3196607,
     "lng": 78.6560078,
@@ -14157,7 +16566,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_430",
+    "id": "TP_503",
     "name": "Mulawad Toll plaza",
     "lat": 16.6374887,
     "lng": 75.7317156,
@@ -14190,7 +16599,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_431",
+    "id": "TP_504",
     "name": "Gudur Toll Plaza, Bibinagar",
     "lat": 17.4856361,
     "lng": 78.8213317,
@@ -14223,7 +16632,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_432",
+    "id": "TP_505",
     "name": "Chitlapalle Toll Plaza",
     "lat": 17.0779633,
     "lng": 77.5810611,
@@ -14256,7 +16665,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_433",
+    "id": "TP_506",
     "name": "Jellipalli Toll Plaza",
     "lat": 14.7928555,
     "lng": 77.3621147,
@@ -14289,7 +16698,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_434",
+    "id": "TP_507",
     "name": "ORR Narsingi Entry Toll Gate - 18A",
     "lat": 17.3823383,
     "lng": 78.3506999,
@@ -14322,7 +16731,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_435",
+    "id": "TP_508",
     "name": "Toll Naka Aurad Shahajani",
     "lat": 18.0420955,
     "lng": 76.9357458,
@@ -14355,7 +16764,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_436",
+    "id": "TP_509",
     "name": "Toll plaza under construction",
     "lat": 17.7098294,
     "lng": 82.3835959,
@@ -14388,7 +16797,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_437",
+    "id": "TP_510",
     "name": "gavarayyapeta toll plaza",
     "lat": 17.4585997,
     "lng": 82.1062929,
@@ -14421,7 +16830,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_438",
+    "id": "TP_511",
     "name": "Toll Plaza",
     "lat": 17.6816761,
     "lng": 83.1529851,
@@ -14454,7 +16863,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_439",
+    "id": "TP_512",
     "name": "Forest Toll gate",
     "lat": 16.3308279,
     "lng": 79.0847286,
@@ -14487,7 +16896,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_440",
+    "id": "TP_513",
     "name": "Toll Gate Alagadapa",
     "lat": 16.8713478,
     "lng": 79.6391275,
@@ -14520,7 +16929,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_441",
+    "id": "TP_514",
+    "name": "Sunambatti - Musunur Toll Plaza (TIS )",
+    "lat": 14.8519141,
+    "lng": 79.9877616,
+    "state": "Andhra Pradesh",
+    "district": "Musunuru",
+    "nhCorridor": "National Highway",
+    "baseRate": 175,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 175,
+      "LCV": 280,
+      "BUS_2AXLE": 580,
+      "COM_3AXLE": 630,
+      "MAV_4_6": 910,
+      "OVERSIZED": 1120,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 260,
+      "LCV": 420,
+      "BUS_2AXLE": 865,
+      "COM_3AXLE": 945,
+      "MAV_4_6": 1365,
+      "OVERSIZED": 1680,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_515",
+    "name": "RAMRAJUPALEM TOLL Gate",
+    "lat": 17.714417,
+    "lng": 82.3839822,
+    "state": "Andhra Pradesh",
+    "district": "Ramarajupalem",
+    "nhCorridor": "National Highway",
+    "baseRate": 140,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 225,
+      "BUS_2AXLE": 460,
+      "COM_3AXLE": 505,
+      "MAV_4_6": 730,
+      "OVERSIZED": 895,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 210,
+      "LCV": 335,
+      "BUS_2AXLE": 695,
+      "COM_3AXLE": 755,
+      "MAV_4_6": 1090,
+      "OVERSIZED": 1345,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_516",
     "name": "kothapalli Toll Plaza",
     "lat": 15.1047954,
     "lng": 79.1670069,
@@ -14553,7 +17028,172 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_442",
+    "id": "TP_517",
+    "name": "Nallajerla Toll Bus Station",
+    "lat": 16.9855152,
+    "lng": 81.4725301,
+    "state": "Andhra Pradesh",
+    "district": "Veerampalem",
+    "nhCorridor": "National Highway",
+    "baseRate": 175,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 175,
+      "LCV": 280,
+      "BUS_2AXLE": 580,
+      "COM_3AXLE": 630,
+      "MAV_4_6": 910,
+      "OVERSIZED": 1120,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 260,
+      "LCV": 420,
+      "BUS_2AXLE": 865,
+      "COM_3AXLE": 945,
+      "MAV_4_6": 1365,
+      "OVERSIZED": 1680,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_518",
+    "name": "SH 2 TOLL PLAZA",
+    "lat": 16.9765018,
+    "lng": 79.4562846,
+    "state": "Telangana",
+    "district": "",
+    "nhCorridor": "National Highway",
+    "baseRate": 150,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 225,
+      "LCV": 360,
+      "BUS_2AXLE": 740,
+      "COM_3AXLE": 810,
+      "MAV_4_6": 1170,
+      "OVERSIZED": 1440,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_519",
+    "name": "Kalaparru Toll Plaza",
+    "lat": 16.665411,
+    "lng": 81.008511,
+    "state": "Andhra Pradesh",
+    "district": "Kalaparru",
+    "nhCorridor": "National Highway",
+    "baseRate": 135,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 200,
+      "LCV": 325,
+      "BUS_2AXLE": 670,
+      "COM_3AXLE": 730,
+      "MAV_4_6": 1055,
+      "OVERSIZED": 1295,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_520",
+    "name": "Kaza Toll Plaza",
+    "lat": 16.38,
+    "lng": 80.53,
+    "state": "Andhra Pradesh",
+    "district": "Namburu",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_521",
+    "name": "Fastag service center toll plaza",
+    "lat": 17.8883256,
+    "lng": 83.3464566,
+    "state": "Andhra Pradesh",
+    "district": "Gambhiram, Palavalasa",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_522",
     "name": "Jammi Dornala toll plaza",
     "lat": 15.8993438,
     "lng": 79.1257631,
@@ -14586,7 +17226,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_443",
+    "id": "TP_523",
     "name": "Toll Gate",
     "lat": 16.729484,
     "lng": 82.2021599,
@@ -14619,7 +17259,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_444",
+    "id": "TP_524",
     "name": "Tummalacheruvu Toll Plaza",
     "lat": 16.5383282,
     "lng": 79.7989194,
@@ -14652,7 +17292,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_445",
+    "id": "TP_525",
     "name": "Talikote Toll Naka",
     "lat": 16.4174999,
     "lng": 76.2508754,
@@ -14685,7 +17325,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_446",
+    "id": "TP_526",
+    "name": "Toll entry gate shamshabad - gachibowli main",
+    "lat": 17.2499283,
+    "lng": 78.3754083,
+    "state": "Telangana",
+    "district": "Hyderabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 170,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 170,
+      "LCV": 270,
+      "BUS_2AXLE": 560,
+      "COM_3AXLE": 610,
+      "MAV_4_6": 885,
+      "OVERSIZED": 1090,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 255,
+      "LCV": 410,
+      "BUS_2AXLE": 840,
+      "COM_3AXLE": 920,
+      "MAV_4_6": 1325,
+      "OVERSIZED": 1630,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_527",
     "name": "Toll PLAZA HARWAL JEWARGI ROAD",
     "lat": 17.0160993,
     "lng": 76.6696267,
@@ -14718,7 +17391,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_447",
+    "id": "TP_528",
     "name": "Toll Naka",
     "lat": 17.9576,
     "lng": 75.3311,
@@ -14751,7 +17424,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_448",
+    "id": "TP_529",
     "name": "Rajendra Toll Exit (Exit 17)",
     "lat": 17.3237016,
     "lng": 78.3756032,
@@ -14784,7 +17457,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_449",
+    "id": "TP_530",
     "name": "Forest toll gate",
     "lat": 16.1109625,
     "lng": 78.8967966,
@@ -14817,7 +17490,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_450",
+    "id": "TP_531",
+    "name": "ORR Exit Toll Booth at TSPA",
+    "lat": 17.3504464,
+    "lng": 78.3609432,
+    "state": "Telangana",
+    "district": "Himayath Sagar, Hyderabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_532",
     "name": "Dhaktiwadi Toll Plaza.",
     "lat": 17.8302253,
     "lng": 76.7725401,
@@ -14850,7 +17556,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_451",
+    "id": "TP_533",
     "name": "Neopolis Toll Plaza(1A)",
     "lat": 17.4066257,
     "lng": 78.3156367,
@@ -14883,7 +17589,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_452",
+    "id": "TP_534",
     "name": "Mundaragi Toll plaza",
     "lat": 15.1381357,
     "lng": 75.8898573,
@@ -14916,7 +17622,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_453",
+    "id": "TP_535",
     "name": "Toll Administrative Building | Nanakramguda Toll Plaza",
     "lat": 17.4073884,
     "lng": 78.354408,
@@ -14949,7 +17655,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_454",
+    "id": "TP_536",
     "name": "Phulwadi toll plaza",
     "lat": 17.8000284,
     "lng": 76.1936278,
@@ -14982,7 +17688,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_455",
+    "id": "TP_537",
     "name": "KRDCL TOLL PLAZA CHATTAR",
     "lat": 15.9104174,
     "lng": 76.4462446,
@@ -15015,7 +17721,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_456",
+    "id": "TP_538",
     "name": "TOLL GATE",
     "lat": 15.772978,
     "lng": 76.3074601,
@@ -15048,7 +17754,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_457",
+    "id": "TP_539",
     "name": "KRDCL Toll plaza",
     "lat": 16.0459056,
     "lng": 76.587126,
@@ -15081,7 +17787,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_458",
+    "id": "TP_540",
     "name": "Gadag Mundaragi Toll Booth",
     "lat": 15.3587846,
     "lng": 75.6873056,
@@ -15114,7 +17820,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_459",
+    "id": "TP_541",
     "name": "Pullur Toll Plaza",
     "lat": 15.88775,
     "lng": 78.0169762,
@@ -15147,7 +17853,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_460",
+    "id": "TP_542",
     "name": "KRDC Toll Gate",
     "lat": 15.469442,
     "lng": 76.576488,
@@ -15180,7 +17886,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_461",
+    "id": "TP_543",
     "name": "Kumbhari Toll",
     "lat": 17.6528037,
     "lng": 75.9833983,
@@ -15213,7 +17919,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_462",
+    "id": "TP_544",
     "name": "Moka Toll Plaza",
     "lat": 15.1947669,
     "lng": 76.9993461,
@@ -15246,7 +17952,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_463",
+    "id": "TP_545",
     "name": "Mangapatnam toll plaza",
     "lat": 14.7341792,
     "lng": 78.2640769,
@@ -15279,7 +17985,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_464",
+    "id": "TP_546",
     "name": "Dhannur Toll Plaza",
     "lat": 16.1542714,
     "lng": 76.0857853,
@@ -15312,7 +18018,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_465",
+    "id": "TP_547",
     "name": "Hotgi Toll",
     "lat": 17.6151525,
     "lng": 75.940495,
@@ -15345,7 +18051,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_466",
+    "id": "TP_548",
     "name": "Dhone Toll gate",
     "lat": 15.4864765,
     "lng": 77.9009433,
@@ -15378,7 +18084,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_467",
+    "id": "TP_549",
     "name": "KRDCL TOLL PLAZA TIPPANAL",
     "lat": 15.5430193,
     "lng": 76.4473323,
@@ -15411,7 +18117,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_468",
+    "id": "TP_550",
     "name": "Bellary Toll Parking (No Entry)",
     "lat": 15.1122153,
     "lng": 76.9132575,
@@ -15444,7 +18150,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_469",
+    "id": "TP_551",
     "name": "Raichur Mantralayam Road Gunjahalli Toll Gate",
     "lat": 16.0326219,
     "lng": 77.4046774,
@@ -15477,7 +18183,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_470",
+    "id": "TP_552",
     "name": "Patancheru Toll Plaza",
     "lat": 17.5242271,
     "lng": 78.2721269,
@@ -15510,7 +18216,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_471",
+    "id": "TP_553",
     "name": "Kasepalli Toll Plaza",
     "lat": 15.0617387,
     "lng": 77.6304333,
@@ -15543,7 +18249,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_472",
+    "id": "TP_554",
     "name": "Toll Naka",
     "lat": 17.670571,
     "lng": 75.9312863,
@@ -15576,7 +18282,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_473",
+    "id": "TP_555",
     "name": "Old Toll gate Bus stop",
     "lat": 16.480172,
     "lng": 80.6170636,
@@ -15609,7 +18315,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_474",
+    "id": "TP_556",
     "name": "Toll Plaza Pottipadu NHAI",
     "lat": 16.5724359,
     "lng": 80.8624702,
@@ -15642,7 +18348,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_475",
+    "id": "TP_557",
     "name": "Talegaon Toll Plaza",
     "lat": 18.7143346,
     "lng": 73.6245195,
@@ -15675,7 +18381,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_476",
+    "id": "TP_558",
     "name": "Thane-Mulund Toll Naka",
     "lat": 19.1691295,
     "lng": 72.966799,
@@ -15708,7 +18414,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_477",
+    "id": "TP_559",
     "name": "Shedung Toll Plaza",
     "lat": 18.9473867,
     "lng": 73.1788668,
@@ -15741,7 +18447,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_478",
+    "id": "TP_560",
     "name": "MTHL TOLL PLAZA (Chirle Side)",
     "lat": 18.9515974,
     "lng": 73.019629,
@@ -15774,7 +18480,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_479",
+    "id": "TP_561",
     "name": "Surat interchange Toll Plaza",
     "lat": 21.4133971,
     "lng": 72.9624393,
@@ -15807,7 +18513,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_480",
+    "id": "TP_562",
     "name": "Toll Plaza Dari",
     "lat": 20.961272,
     "lng": 70.3343116,
@@ -15840,7 +18546,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_481",
+    "id": "TP_563",
     "name": "Kobadi Toll Both",
     "lat": 21.619652,
     "lng": 72.1411942,
@@ -15873,7 +18579,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_482",
+    "id": "TP_564",
+    "name": "Mulund Exit Toll Booth",
+    "lat": 19.1717646,
+    "lng": 72.9679319,
+    "state": "Maharashtra",
+    "district": "Mumbai",
+    "nhCorridor": "National Highway",
+    "baseRate": 75,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 75,
+      "LCV": 120,
+      "BUS_2AXLE": 250,
+      "COM_3AXLE": 270,
+      "MAV_4_6": 390,
+      "OVERSIZED": 480,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 180,
+      "BUS_2AXLE": 370,
+      "COM_3AXLE": 405,
+      "MAV_4_6": 585,
+      "OVERSIZED": 720,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_565",
     "name": "Bagwada Toll plaza",
     "lat": 20.435072,
     "lng": 72.9171493,
@@ -15906,7 +18645,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_483",
+    "id": "TP_566",
     "name": "Choryasi Toll Plaza",
     "lat": 21.3030757,
     "lng": 72.9541547,
@@ -15939,7 +18678,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_484",
+    "id": "TP_567",
     "name": "MBPT Toll Plaza",
     "lat": 18.973877,
     "lng": 72.8454072,
@@ -15972,7 +18711,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_485",
+    "id": "TP_568",
     "name": "Peth road toll plaza",
     "lat": 20.2234447,
     "lng": 73.6649025,
@@ -16005,7 +18744,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_486",
+    "id": "TP_569",
     "name": "Mumbai Expressway Toll",
     "lat": 18.8011905,
     "lng": 73.2855554,
@@ -16038,7 +18777,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_487",
+    "id": "TP_570",
     "name": "Samruddhi Mahamarg Mumbai Toll Plaza",
     "lat": 19.3271401,
     "lng": 73.2013766,
@@ -16071,7 +18810,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_488",
+    "id": "TP_571",
     "name": "Padgha Toll Plaza",
     "lat": 19.3614221,
     "lng": 73.1655962,
@@ -16104,7 +18843,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_489",
+    "id": "TP_572",
     "name": "Toll Plaza Dapchari",
     "lat": 20.0749232,
     "lng": 72.9136889,
@@ -16137,7 +18876,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_490",
+    "id": "TP_573",
     "name": "Virar - Mumbai Interchange Toll Plaza 2",
     "lat": 19.4826859,
     "lng": 72.9012642,
@@ -16170,7 +18909,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_491",
+    "id": "TP_574",
     "name": "kharegaon toll",
     "lat": 19.214013,
     "lng": 73.0084225,
@@ -16203,7 +18942,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_492",
+    "id": "TP_575",
     "name": "toll naka",
     "lat": 17.7851771,
     "lng": 75.7057893,
@@ -16236,7 +18975,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_493",
+    "id": "TP_576",
+    "name": "Appa Junction Toll Booth",
+    "lat": 17.3503194,
+    "lng": 78.3591953,
+    "state": "Telangana",
+    "district": "Peeramcheru, Hyderabad",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_577",
     "name": "Unguturu Toll Plaza",
     "lat": 16.8237475,
     "lng": 81.4306883,
@@ -16269,7 +19041,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_494",
+    "id": "TP_578",
     "name": "Shahapur Toll Plaza",
     "lat": 15.3578685,
     "lng": 76.312873,
@@ -16302,7 +19074,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_495",
+    "id": "TP_579",
     "name": "Toll Gate",
     "lat": 17.279073,
     "lng": 82.4011973,
@@ -16335,7 +19107,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_496",
+    "id": "TP_580",
     "name": "Kharel Toll Plaza",
     "lat": 20.8644026,
     "lng": 73.0703865,
@@ -16368,7 +19140,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_497",
+    "id": "TP_581",
     "name": "Supa Toll Plaza",
     "lat": 18.9330714,
     "lng": 74.4929498,
@@ -16401,7 +19173,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_498",
+    "id": "TP_582",
     "name": "Kamothe Toll Plaza",
     "lat": 19.029873,
     "lng": 73.0898239,
@@ -16434,7 +19206,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_499",
+    "id": "TP_583",
     "name": "NHAI Pithadiya Toll Plaza",
     "lat": 21.8054042,
     "lng": 70.6638499,
@@ -16467,7 +19239,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_500",
+    "id": "TP_584",
     "name": "Sachin Toll Place",
     "lat": 21.0904275,
     "lng": 72.9224953,
@@ -16500,7 +19272,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_501",
+    "id": "TP_585",
     "name": "Karodi Toll Plaza",
     "lat": 19.89115,
     "lng": 75.205495,
@@ -16533,7 +19305,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_502",
+    "id": "TP_586",
     "name": "Dumiyani Toll Booth NH27",
     "lat": 21.7513616,
     "lng": 70.3267031,
@@ -16566,7 +19338,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_503",
+    "id": "TP_587",
     "name": "Kharpada Toll Plaza",
     "lat": 18.8449993,
     "lng": 73.0945707,
@@ -16599,7 +19371,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_504",
+    "id": "TP_588",
     "name": "Charoti Toll Plaza",
     "lat": 19.8905644,
     "lng": 72.9427231,
@@ -16632,7 +19404,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_505",
+    "id": "TP_589",
     "name": "Ena Toll Plaza",
     "lat": 21.1084615,
     "lng": 73.0304712,
@@ -16665,7 +19437,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_506",
+    "id": "TP_590",
     "name": "Toll Booth Limbe Jalgaon pitti engineering limbe jalgaon",
     "lat": 19.7797821,
     "lng": 75.1946452,
@@ -16698,7 +19470,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_507",
+    "id": "TP_591",
     "name": "Toll Booth",
     "lat": 19.5138261,
     "lng": 74.2010124,
@@ -16731,7 +19503,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_508",
+    "id": "TP_592",
     "name": "Toll Booth",
     "lat": 19.8669631,
     "lng": 75.5058864,
@@ -16764,7 +19536,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_509",
+    "id": "TP_593",
     "name": "Toll Plaza - Chalakwadi",
     "lat": 19.1722336,
     "lng": 74.0770347,
@@ -16797,7 +19569,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_510",
+    "id": "TP_594",
     "name": "Shil Phata Toll plaza",
     "lat": 19.0976933,
     "lng": 73.071674,
@@ -16830,7 +19602,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_511",
+    "id": "TP_595",
     "name": "Vanana Toll Plaza",
     "lat": 21.6650169,
     "lng": 69.7095448,
@@ -16863,7 +19635,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_512",
+    "id": "TP_596",
     "name": "Takararwadi Toll Plaza",
     "lat": 18.2957703,
     "lng": 74.1110078,
@@ -16896,7 +19668,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_513",
+    "id": "TP_597",
     "name": "Pune - Moshi Toll Naka (S)",
     "lat": 18.6860353,
     "lng": 73.8464409,
@@ -16929,7 +19701,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_514",
+    "id": "TP_598",
+    "name": "Anand nagar toll plaza",
+    "lat": 19.1723394,
+    "lng": 72.9686353,
+    "state": "Maharashtra",
+    "district": "Mumbai",
+    "nhCorridor": "National Highway",
+    "baseRate": 75,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 75,
+      "LCV": 120,
+      "BUS_2AXLE": 250,
+      "COM_3AXLE": 270,
+      "MAV_4_6": 390,
+      "OVERSIZED": 480,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 180,
+      "BUS_2AXLE": 370,
+      "COM_3AXLE": 405,
+      "MAV_4_6": 585,
+      "OVERSIZED": 720,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_599",
     "name": "LBS TOLL PLAZA",
     "lat": 19.1849124,
     "lng": 72.9553258,
@@ -16962,7 +19767,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_515",
+    "id": "TP_600",
     "name": "Samruddhi Highway Aurangabad-Jambhala Toll Booth",
     "lat": 19.9402247,
     "lng": 75.1642389,
@@ -16995,7 +19800,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_516",
+    "id": "TP_601",
     "name": "Sundarpara Toll Plaza",
     "lat": 20.9017622,
     "lng": 70.5152183,
@@ -17028,7 +19833,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_517",
+    "id": "TP_602",
     "name": "Hatnur Toll Plaza",
     "lat": 20.1928695,
     "lng": 75.1330671,
@@ -17061,7 +19866,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_518",
+    "id": "TP_603",
     "name": "Dumbarwadi Ahmednager-Kalyan Toll Plaza",
     "lat": 19.2441755,
     "lng": 74.0131927,
@@ -17094,7 +19899,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_519",
+    "id": "TP_604",
     "name": "Toll Plaza 2",
     "lat": 19.9313803,
     "lng": 74.9499405,
@@ -17127,7 +19932,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_520",
+    "id": "TP_605",
     "name": "Ichchapur toll plaza",
     "lat": 20.9663741,
     "lng": 74.4388127,
@@ -17160,7 +19965,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_521",
+    "id": "TP_606",
     "name": "Pandane Toll Plaza",
     "lat": 20.3712028,
     "lng": 73.8469777,
@@ -17193,7 +19998,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_522",
+    "id": "TP_607",
     "name": "Samruddhi Mahamarg Sinnar Interchange Toll Plaza 3",
     "lat": 19.7939035,
     "lng": 74.064624,
@@ -17226,7 +20031,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_523",
+    "id": "TP_608",
+    "name": "ATAL SETU SHELGHAR TOLL PLAZA",
+    "lat": 18.9520761,
+    "lng": 73.0188881,
+    "state": "Maharashtra",
+    "district": "Gavthan",
+    "nhCorridor": "National Highway",
+    "baseRate": 170,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 170,
+      "LCV": 270,
+      "BUS_2AXLE": 560,
+      "COM_3AXLE": 610,
+      "MAV_4_6": 885,
+      "OVERSIZED": 1090,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 255,
+      "LCV": 410,
+      "BUS_2AXLE": 840,
+      "COM_3AXLE": 920,
+      "MAV_4_6": 1325,
+      "OVERSIZED": 1630,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_609",
     "name": "Pimparwadi Toll plaza",
     "lat": 19.8110546,
     "lng": 74.275788,
@@ -17259,7 +20097,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_524",
+    "id": "TP_610",
+    "name": "Toll Booth - Chalakwadi",
+    "lat": 19.1715498,
+    "lng": 74.076356,
+    "state": "Maharashtra",
+    "district": "Pimpalwandi, Chalakwadi",
+    "nhCorridor": "National Highway",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_611",
     "name": "Toll Plaza 2",
     "lat": 19.7511972,
     "lng": 73.7734934,
@@ -17292,7 +20163,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_525",
+    "id": "TP_612",
     "name": "Toll Plaza Khamb",
     "lat": 18.4645504,
     "lng": 73.1961369,
@@ -17325,7 +20196,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_526",
+    "id": "TP_613",
     "name": "Banpimpri Toll Plaza",
     "lat": 18.8247646,
     "lng": 74.886242,
@@ -17358,7 +20229,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_527",
+    "id": "TP_614",
     "name": "Toll plaza NH548D Vaidyakinhi",
     "lat": 18.7896505,
     "lng": 75.5782439,
@@ -17391,7 +20262,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_528",
+    "id": "TP_615",
     "name": "Subgavhan Toll Plaza Maharashtra NH-53",
     "lat": 20.8629175,
     "lng": 74.9712767,
@@ -17424,7 +20295,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_529",
+    "id": "TP_616",
     "name": "Dongrale Toll Plaza",
     "lat": 20.7662373,
     "lng": 74.5745603,
@@ -17457,7 +20328,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_530",
+    "id": "TP_617",
     "name": "Badewadi Toll Plaza",
     "lat": 19.172074,
     "lng": 75.3383027,
@@ -17490,7 +20361,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_531",
+    "id": "TP_618",
     "name": "MMKlPL Toll Station",
     "lat": 19.9800944,
     "lng": 74.4909985,
@@ -17523,7 +20394,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_532",
+    "id": "TP_619",
     "name": "Toll booth",
     "lat": 21.1349244,
     "lng": 73.4783716,
@@ -17556,7 +20427,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_533",
+    "id": "TP_620",
+    "name": "Toll Naka",
+    "lat": 19.212296,
+    "lng": 73.008022,
+    "state": "Maharashtra",
+    "district": "Thane",
+    "nhCorridor": "National Highway",
+    "baseRate": 80,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 80,
+      "LCV": 130,
+      "BUS_2AXLE": 265,
+      "COM_3AXLE": 290,
+      "MAV_4_6": 415,
+      "OVERSIZED": 510,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_621",
     "name": "Pimparkhed toll Plaza",
     "lat": 20.3029509,
     "lng": 74.7589301,
@@ -17589,7 +20493,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_534",
+    "id": "TP_622",
+    "name": "Kharpada toll naka",
+    "lat": 18.8449026,
+    "lng": 73.095784,
+    "state": "Maharashtra",
+    "district": "Nanoshi, Karnala",
+    "nhCorridor": "National Highway",
+    "baseRate": 160,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 255,
+      "BUS_2AXLE": 530,
+      "COM_3AXLE": 575,
+      "MAV_4_6": 830,
+      "OVERSIZED": 1025,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 240,
+      "LCV": 385,
+      "BUS_2AXLE": 790,
+      "COM_3AXLE": 865,
+      "MAV_4_6": 1250,
+      "OVERSIZED": 1535,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_623",
+    "name": "Airoli Toll Naka",
+    "lat": 19.153206,
+    "lng": 72.965019,
+    "state": "Maharashtra",
+    "district": "Mumbai",
+    "nhCorridor": "National Highway",
+    "baseRate": 190,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 305,
+      "BUS_2AXLE": 625,
+      "COM_3AXLE": 685,
+      "MAV_4_6": 990,
+      "OVERSIZED": 1215,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 285,
+      "LCV": 455,
+      "BUS_2AXLE": 940,
+      "COM_3AXLE": 1025,
+      "MAV_4_6": 1480,
+      "OVERSIZED": 1825,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_624",
     "name": "Madsangavi Toll Booth",
     "lat": 20.001774,
     "lng": 73.880013,
@@ -17622,7 +20592,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_535",
+    "id": "TP_625",
     "name": "Toll Plaza Lasur",
     "lat": 19.929864,
     "lng": 74.987389,
@@ -17655,7 +20625,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_536",
+    "id": "TP_626",
+    "name": "Shivaji nagar toll Atal setu",
+    "lat": 18.9621038,
+    "lng": 73.0099798,
+    "state": "Maharashtra",
+    "district": "Gavthan",
+    "nhCorridor": "National Highway",
+    "baseRate": 170,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 170,
+      "LCV": 270,
+      "BUS_2AXLE": 560,
+      "COM_3AXLE": 610,
+      "MAV_4_6": 885,
+      "OVERSIZED": 1090,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 255,
+      "LCV": 410,
+      "BUS_2AXLE": 840,
+      "COM_3AXLE": 920,
+      "MAV_4_6": 1325,
+      "OVERSIZED": 1630,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_627",
     "name": "Samruddhi Highway Toll Booth No.1 Igatpuri",
     "lat": 19.6768072,
     "lng": 73.5765519,
@@ -17688,7 +20691,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_537",
+    "id": "TP_628",
     "name": "Gorsar Toll gate",
     "lat": 21.3182594,
     "lng": 69.9100315,
@@ -17721,7 +20724,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_538",
+    "id": "TP_629",
     "name": "Cantonment Toll",
     "lat": 18.5076234,
     "lng": 73.8887104,
@@ -17754,7 +20757,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_539",
+    "id": "TP_630",
+    "name": "Samruddhi Mahamarg Sinnar Interchange Toll Plaza 2",
+    "lat": 19.7900785,
+    "lng": 74.0689401,
+    "state": "Maharashtra",
+    "district": "Datli, Gonde",
+    "nhCorridor": "National Highway",
+    "baseRate": 150,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 225,
+      "LCV": 360,
+      "BUS_2AXLE": 740,
+      "COM_3AXLE": 810,
+      "MAV_4_6": 1170,
+      "OVERSIZED": 1440,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_631",
+    "name": "Toll Plaza 6",
+    "lat": 19.7928404,
+    "lng": 74.0605988,
+    "state": "Maharashtra",
+    "district": "Datli, Gonde",
+    "nhCorridor": "National Highway",
+    "baseRate": 150,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 225,
+      "LCV": 360,
+      "BUS_2AXLE": 740,
+      "COM_3AXLE": 810,
+      "MAV_4_6": 1170,
+      "OVERSIZED": 1440,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_632",
     "name": "Khalapur toll road",
     "lat": 18.8305523,
     "lng": 73.2846445,
@@ -17787,7 +20856,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_540",
+    "id": "TP_633",
     "name": "Toll Plaza 3",
     "lat": 19.8923826,
     "lng": 74.7732117,
@@ -17820,7 +20889,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_541",
+    "id": "TP_634",
     "name": "rayate toll plaza",
     "lat": 19.259376,
     "lng": 73.225579,
@@ -17853,7 +20922,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_542",
+    "id": "TP_635",
     "name": "Toll Plaza",
     "lat": 18.7272165,
     "lng": 73.6522855,
@@ -17886,7 +20955,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_543",
+    "id": "TP_636",
     "name": "Dahisar Toll Plaza",
     "lat": 19.2570112,
     "lng": 72.8712787,
@@ -17919,7 +20988,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_544",
+    "id": "TP_637",
     "name": "Gadoi Toll Plaza",
     "lat": 21.4248694,
     "lng": 70.2952188,
@@ -17952,7 +21021,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_545",
+    "id": "TP_638",
+    "name": "Toll Plaza",
+    "lat": 19.9287302,
+    "lng": 74.9420367,
+    "state": "Maharashtra",
+    "district": "Karanjgaon",
+    "nhCorridor": "National Highway",
+    "baseRate": 170,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 170,
+      "LCV": 270,
+      "BUS_2AXLE": 560,
+      "COM_3AXLE": 610,
+      "MAV_4_6": 885,
+      "OVERSIZED": 1090,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 255,
+      "LCV": 410,
+      "BUS_2AXLE": 840,
+      "COM_3AXLE": 920,
+      "MAV_4_6": 1325,
+      "OVERSIZED": 1630,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_639",
+    "name": "Samruddhi Highway Toll Booth No.2 Igatpuri",
+    "lat": 19.6762986,
+    "lng": 73.5773807,
+    "state": "Maharashtra",
+    "district": "Naigaon, Nandgaonsado",
+    "nhCorridor": "National Highway",
+    "baseRate": 135,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 200,
+      "LCV": 325,
+      "BUS_2AXLE": 670,
+      "COM_3AXLE": 730,
+      "MAV_4_6": 1055,
+      "OVERSIZED": 1295,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_640",
     "name": "Ahmednagar toll plaza",
     "lat": 19.0870444,
     "lng": 74.6976117,
@@ -17985,7 +21120,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_546",
+    "id": "TP_641",
     "name": "Samarth Toll kata",
     "lat": 21.2054564,
     "lng": 75.3501328,
@@ -18018,7 +21153,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_547",
+    "id": "TP_642",
     "name": "Toll Plaza Ghoti",
     "lat": 19.7088038,
     "lng": 73.614685,
@@ -18051,7 +21186,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_548",
+    "id": "TP_643",
     "name": "Toll Naka",
     "lat": 18.4984658,
     "lng": 73.9975798,
@@ -18084,7 +21219,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_549",
+    "id": "TP_644",
     "name": "Shirpur Toll Plaza",
     "lat": 21.3198407,
     "lng": 74.8892248,
@@ -18117,7 +21252,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_550",
+    "id": "TP_645",
     "name": "Toll Plaza",
     "lat": 18.75302,
     "lng": 73.4451188,
@@ -18150,7 +21285,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_551",
+    "id": "TP_646",
     "name": "Vashi Bridge Toll",
     "lat": 19.0683576,
     "lng": 72.9855164,
@@ -18183,7 +21318,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_552",
+    "id": "TP_647",
+    "name": "Toll Plaza Thane",
+    "lat": 19.2119876,
+    "lng": 73.0070889,
+    "state": "Maharashtra",
+    "district": "Thane",
+    "nhCorridor": "NH-3",
+    "baseRate": 80,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 80,
+      "LCV": 130,
+      "BUS_2AXLE": 265,
+      "COM_3AXLE": 290,
+      "MAV_4_6": 415,
+      "OVERSIZED": 510,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_648",
     "name": "Shani Shingnapur Toll Plaza N.1",
     "lat": 19.3833628,
     "lng": 74.8456511,
@@ -18216,7 +21384,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_553",
+    "id": "TP_649",
+    "name": "Toll Gate",
+    "lat": 18.7603067,
+    "lng": 73.4300605,
+    "state": "Maharashtra",
+    "district": "Lonavala",
+    "nhCorridor": "National Highway",
+    "baseRate": 155,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 155,
+      "LCV": 250,
+      "BUS_2AXLE": 510,
+      "COM_3AXLE": 560,
+      "MAV_4_6": 805,
+      "OVERSIZED": 990,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 230,
+      "LCV": 370,
+      "BUS_2AXLE": 765,
+      "COM_3AXLE": 835,
+      "MAV_4_6": 1210,
+      "OVERSIZED": 1490,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_650",
     "name": "Baswant Toll Plaza",
     "lat": 20.1417634,
     "lng": 73.9764143,
@@ -18249,7 +21450,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_554",
+    "id": "TP_651",
     "name": "Harsul Toll Naka",
     "lat": 19.9348526,
     "lng": 75.3538361,
@@ -18282,7 +21483,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_555",
+    "id": "TP_652",
+    "name": "Pune contonment toll booth",
+    "lat": 18.5064194,
+    "lng": 73.8934623,
+    "state": "Maharashtra",
+    "district": "Pune",
+    "nhCorridor": "National Highway",
+    "baseRate": 135,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 200,
+      "LCV": 325,
+      "BUS_2AXLE": 670,
+      "COM_3AXLE": 730,
+      "MAV_4_6": 1055,
+      "OVERSIZED": 1295,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_653",
     "name": "Mumbra Bypass Toll Gate",
     "lat": 19.1615196,
     "lng": 73.0254412,
@@ -18315,7 +21549,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_556",
+    "id": "TP_654",
     "name": "Songir Toll Plaza",
     "lat": 21.0511662,
     "lng": 74.7850443,
@@ -18348,7 +21582,106 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_557",
+    "id": "TP_655",
+    "name": "Highway toll plaza , Hivargaon",
+    "lat": 19.5168131,
+    "lng": 74.201695,
+    "state": "Maharashtra",
+    "district": "Hiwargaon Pawasa",
+    "nhCorridor": "National Highway",
+    "baseRate": 125,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 125,
+      "LCV": 200,
+      "BUS_2AXLE": 410,
+      "COM_3AXLE": 450,
+      "MAV_4_6": 650,
+      "OVERSIZED": 800,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 300,
+      "BUS_2AXLE": 620,
+      "COM_3AXLE": 675,
+      "MAV_4_6": 975,
+      "OVERSIZED": 1200,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_656",
+    "name": "Kharghar Toll Booth",
+    "lat": 19.0373427,
+    "lng": 73.0783349,
+    "state": "Maharashtra",
+    "district": "Panvel",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_657",
+    "name": "Moshi Toll Plaza",
+    "lat": 18.6845626,
+    "lng": 73.8503373,
+    "state": "Maharashtra",
+    "district": "Pune, Pimpri-Chinchwad",
+    "nhCorridor": "National Highway",
+    "baseRate": 150,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 225,
+      "LCV": 360,
+      "BUS_2AXLE": 740,
+      "COM_3AXLE": 810,
+      "MAV_4_6": 1170,
+      "OVERSIZED": 1440,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_658",
     "name": "Malegaon Road Toll Plaza",
     "lat": 18.1366984,
     "lng": 74.5506297,
@@ -18381,7 +21714,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_558",
+    "id": "TP_659",
     "name": "Chandwad Toll Plaza",
     "lat": 20.3251191,
     "lng": 74.2106872,
@@ -18414,7 +21747,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_559",
+    "id": "TP_660",
+    "name": "Pen Toll Gate",
+    "lat": 18.7894089,
+    "lng": 73.2765822,
+    "state": "Maharashtra",
+    "district": "Anandwadi",
+    "nhCorridor": "National Highway",
+    "baseRate": 155,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 155,
+      "LCV": 250,
+      "BUS_2AXLE": 510,
+      "COM_3AXLE": 560,
+      "MAV_4_6": 805,
+      "OVERSIZED": 990,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 230,
+      "LCV": 370,
+      "BUS_2AXLE": 765,
+      "COM_3AXLE": 835,
+      "MAV_4_6": 1210,
+      "OVERSIZED": 1490,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_661",
     "name": "Kasurdi Toll Plaza",
     "lat": 18.4831748,
     "lng": 74.2349443,
@@ -18447,7 +21813,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_560",
+    "id": "TP_662",
     "name": "Chandloi Toll Plaza",
     "lat": 18.8378827,
     "lng": 73.8800567,
@@ -18480,7 +21846,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_561",
+    "id": "TP_663",
     "name": "Indapur Road Toll Plaza",
     "lat": 18.1426198,
     "lng": 74.5985788,
@@ -18513,7 +21879,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_562",
+    "id": "TP_664",
     "name": "Kon toll naka",
     "lat": 19.2529289,
     "lng": 73.0987459,
@@ -18546,7 +21912,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_563",
+    "id": "TP_665",
     "name": "Katai Toll",
     "lat": 19.168615,
     "lng": 73.0793352,
@@ -18579,7 +21945,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_564",
+    "id": "TP_666",
     "name": "Toll Plaza for big vehicle",
     "lat": 22.5505047,
     "lng": 70.3494464,
@@ -18612,7 +21978,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_565",
+    "id": "TP_667",
     "name": "Dharampur-Danta Toll plaza",
     "lat": 22.2480681,
     "lng": 69.6842663,
@@ -18645,7 +22011,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_566",
+    "id": "TP_668",
     "name": "OkhaMadi Toll Plaza 105",
     "lat": 22.0800893,
     "lng": 69.1333308,
@@ -18678,7 +22044,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_567",
+    "id": "TP_669",
     "name": "Samakhiali Toll Plaza",
     "lat": 23.3085297,
     "lng": 70.4906208,
@@ -18711,7 +22077,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_568",
+    "id": "TP_670",
     "name": "Bed Toll Plaza",
     "lat": 22.427211,
     "lng": 69.914093,
@@ -18744,7 +22110,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_569",
+    "id": "TP_671",
     "name": "Toll Plaza Varsamedi",
     "lat": 23.1458701,
     "lng": 70.1075977,
@@ -18777,7 +22143,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_570",
+    "id": "TP_672",
     "name": "DA TOLL ROAD PRIVATE LIMITED",
     "lat": 18.9299436,
     "lng": 72.8321245,
@@ -18810,7 +22176,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_571",
+    "id": "TP_673",
+    "name": "Khadi Pul New Mumbai / Toll Naka",
+    "lat": 19.06351,
+    "lng": 72.979313,
+    "state": "Maharashtra",
+    "district": "",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_674",
     "name": "Khopoli - Shedung Expressway Exit Toll Plaza",
     "lat": 18.9658908,
     "lng": 73.1614321,
@@ -18843,7 +22242,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_572",
+    "id": "TP_675",
+    "name": "Kon Village Toll Gate",
+    "lat": 18.9578863,
+    "lng": 73.1516021,
+    "state": "Maharashtra",
+    "district": "Kon",
+    "nhCorridor": "National Highway",
+    "baseRate": 170,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 170,
+      "LCV": 270,
+      "BUS_2AXLE": 560,
+      "COM_3AXLE": 610,
+      "MAV_4_6": 885,
+      "OVERSIZED": 1090,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 255,
+      "LCV": 410,
+      "BUS_2AXLE": 840,
+      "COM_3AXLE": 920,
+      "MAV_4_6": 1325,
+      "OVERSIZED": 1630,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_676",
     "name": "Khaniwade Toll Plaza",
     "lat": 19.520452,
     "lng": 72.9169309,
@@ -18876,7 +22308,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_573",
+    "id": "TP_677",
     "name": "Somatane Toll Booth",
     "lat": 18.7002164,
     "lng": 73.6921155,
@@ -18909,7 +22341,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_574",
+    "id": "TP_678",
     "name": "Toll Global Logistic India (Thermofisher)",
     "lat": 19.3489988,
     "lng": 73.132666,
@@ -18942,7 +22374,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_575",
+    "id": "TP_679",
+    "name": "Talegaon Toll Gate",
+    "lat": 18.7140577,
+    "lng": 73.6458486,
+    "state": "Maharashtra",
+    "district": "Urse",
+    "nhCorridor": "National Highway",
+    "baseRate": 150,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 225,
+      "LCV": 360,
+      "BUS_2AXLE": 740,
+      "COM_3AXLE": 810,
+      "MAV_4_6": 1170,
+      "OVERSIZED": 1440,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_680",
     "name": "Wada Manor Road Toll Booth",
     "lat": 19.6821311,
     "lng": 73.0000777,
@@ -18975,7 +22440,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_576",
+    "id": "TP_681",
     "name": "Chandhve Toll Plaza",
     "lat": 18.0549932,
     "lng": 73.46561,
@@ -19008,7 +22473,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_577",
+    "id": "TP_682",
     "name": "Ghodbundar Toll Gate",
     "lat": 19.2825781,
     "lng": 72.9069055,
@@ -19041,7 +22506,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_578",
+    "id": "TP_683",
     "name": "Dhehare Toll Booth",
     "lat": 19.2555569,
     "lng": 74.6716284,
@@ -19074,7 +22539,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_579",
+    "id": "TP_684",
+    "name": "IRB Toll Plaza Office Shilphata",
+    "lat": 19.0964838,
+    "lng": 73.0724631,
+    "state": "Maharashtra",
+    "district": "Panvel",
+    "nhCorridor": "NH-4",
+    "baseRate": 185,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 185,
+      "LCV": 295,
+      "BUS_2AXLE": 610,
+      "COM_3AXLE": 665,
+      "MAV_4_6": 960,
+      "OVERSIZED": 1185,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 280,
+      "LCV": 445,
+      "BUS_2AXLE": 915,
+      "COM_3AXLE": 1000,
+      "MAV_4_6": 1445,
+      "OVERSIZED": 1775,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_685",
+    "name": "Toll Get Villa's lonavala",
+    "lat": 18.7627601,
+    "lng": 73.4398803,
+    "state": "Maharashtra",
+    "district": "Varsoli",
+    "nhCorridor": "National Highway",
+    "baseRate": 155,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 155,
+      "LCV": 250,
+      "BUS_2AXLE": 510,
+      "COM_3AXLE": 560,
+      "MAV_4_6": 805,
+      "OVERSIZED": 990,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 230,
+      "LCV": 370,
+      "BUS_2AXLE": 765,
+      "COM_3AXLE": 835,
+      "MAV_4_6": 1210,
+      "OVERSIZED": 1490,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_686",
     "name": "STAR POWER TOLLS",
     "lat": 18.5480368,
     "lng": 73.988912,
@@ -19107,7 +22638,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_580",
+    "id": "TP_687",
     "name": "Toll Plaza palaswa",
     "lat": 23.490462,
     "lng": 70.942715,
@@ -19140,7 +22671,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_581",
+    "id": "TP_688",
     "name": "Soladi Toll Plaza",
     "lat": 23.0015588,
     "lng": 71.3727615,
@@ -19173,7 +22704,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_582",
+    "id": "TP_689",
     "name": "Toll Plaza",
     "lat": 23.791278,
     "lng": 71.42765,
@@ -19206,7 +22737,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_583",
+    "id": "TP_690",
     "name": "Surajbari Toll Plaza",
     "lat": 23.2336088,
     "lng": 70.6896665,
@@ -19239,7 +22770,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_584",
+    "id": "TP_691",
     "name": "Vaghasiya Toll PLaza",
     "lat": 22.6478924,
     "lng": 70.9555528,
@@ -19272,7 +22803,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_585",
+    "id": "TP_692",
     "name": "Toll Plaza, Aniyari, SH 7, For Car Toll free",
     "lat": 23.0371849,
     "lng": 70.928303,
@@ -19305,7 +22836,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_586",
+    "id": "TP_693",
     "name": "Toll Plaza Kukma",
     "lat": 23.2122203,
     "lng": 69.7931462,
@@ -19338,7 +22869,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_587",
+    "id": "TP_694",
     "name": "Taarana Toll Plaza",
     "lat": 22.7414528,
     "lng": 70.4885689,
@@ -19371,7 +22902,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_588",
+    "id": "TP_695",
     "name": "Kuchadi Toll Plaza",
     "lat": 21.6975406,
     "lng": 69.5334692,
@@ -19404,7 +22935,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_589",
+    "id": "TP_696",
     "name": "Bhirandiyara Toll Plaza NH 341",
     "lat": 23.6335021,
     "lng": 69.6921815,
@@ -19437,7 +22968,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_590",
+    "id": "TP_697",
     "name": "Toll Booth",
     "lat": 23.325431,
     "lng": 69.310363,
@@ -19470,7 +23001,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_591",
+    "id": "TP_698",
     "name": "Pintu Navin Toll Plaza",
     "lat": 22.8168951,
     "lng": 69.7178364,
@@ -19503,7 +23034,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_592",
+    "id": "TP_699",
     "name": "Bhuj-Nakhatrana Toll (Deshalpur)",
     "lat": 23.1957663,
     "lng": 69.4712501,
@@ -19536,7 +23067,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_593",
+    "id": "TP_700",
     "name": "Dinesh Gardan Tolls",
     "lat": 18.4958111,
     "lng": 73.8042175,
@@ -19569,7 +23100,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_594",
+    "id": "TP_701",
     "name": "Toll Plaza 1",
     "lat": 24.587663,
     "lng": 71.720119,
@@ -19602,7 +23133,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_595",
+    "id": "TP_702",
     "name": "Toll Plaza Tharad 1",
     "lat": 24.4184667,
     "lng": 71.6491598,
@@ -19635,7 +23166,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_596",
+    "id": "TP_703",
     "name": "Toll Plaza 2 entry point",
     "lat": 24.7150635,
     "lng": 71.7729896,
@@ -19668,7 +23199,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_597",
+    "id": "TP_704",
     "name": "Veer Tejaji Toll Gate, Bore",
     "lat": 25.1020098,
     "lng": 71.5596491,
@@ -19701,7 +23232,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_598",
+    "id": "TP_705",
     "name": "Toll plaza 1",
     "lat": 24.9746875,
     "lng": 71.9079375,
@@ -19734,7 +23265,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_599",
+    "id": "TP_706",
+    "name": "Toll Plaza 3 exit point",
+    "lat": 24.7141166,
+    "lng": 71.7725776,
+    "state": "Rajasthan",
+    "district": "Pratappura",
+    "nhCorridor": "National Highway",
+    "baseRate": 160,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 255,
+      "BUS_2AXLE": 530,
+      "COM_3AXLE": 575,
+      "MAV_4_6": 830,
+      "OVERSIZED": 1025,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 240,
+      "LCV": 385,
+      "BUS_2AXLE": 790,
+      "COM_3AXLE": 865,
+      "MAV_4_6": 1250,
+      "OVERSIZED": 1535,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_707",
     "name": "Toll plaza",
     "lat": 24.9463103,
     "lng": 71.4227179,
@@ -19767,7 +23331,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_600",
+    "id": "TP_708",
     "name": "Bhordu Toll Plaza",
     "lat": 24.4473687,
     "lng": 71.7516486,
@@ -19800,7 +23364,106 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_601",
+    "id": "TP_709",
+    "name": "Toll plaza",
+    "lat": 24.9753093,
+    "lng": 71.908989,
+    "state": "Rajasthan",
+    "district": "Ajodar",
+    "nhCorridor": "National Highway",
+    "baseRate": 185,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 185,
+      "LCV": 295,
+      "BUS_2AXLE": 610,
+      "COM_3AXLE": 665,
+      "MAV_4_6": 960,
+      "OVERSIZED": 1185,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 280,
+      "LCV": 445,
+      "BUS_2AXLE": 915,
+      "COM_3AXLE": 1000,
+      "MAV_4_6": 1445,
+      "OVERSIZED": 1775,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_710",
+    "name": "Toll Plaza 2 entry point",
+    "lat": 24.9784375,
+    "lng": 71.9095625,
+    "state": "Rajasthan",
+    "district": "Deora",
+    "nhCorridor": "National Highway",
+    "baseRate": 185,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 185,
+      "LCV": 295,
+      "BUS_2AXLE": 610,
+      "COM_3AXLE": 665,
+      "MAV_4_6": 960,
+      "OVERSIZED": 1185,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 280,
+      "LCV": 445,
+      "BUS_2AXLE": 915,
+      "COM_3AXLE": 1000,
+      "MAV_4_6": 1445,
+      "OVERSIZED": 1775,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_711",
+    "name": "Toll Plaza 1 Entry",
+    "lat": 24.7143125,
+    "lng": 71.7689288,
+    "state": "Rajasthan",
+    "district": "Pratappura",
+    "nhCorridor": "National Highway",
+    "baseRate": 160,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 255,
+      "BUS_2AXLE": 530,
+      "COM_3AXLE": 575,
+      "MAV_4_6": 830,
+      "OVERSIZED": 1025,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 240,
+      "LCV": 385,
+      "BUS_2AXLE": 790,
+      "COM_3AXLE": 865,
+      "MAV_4_6": 1250,
+      "OVERSIZED": 1535,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_712",
     "name": "Toll plaza 2",
     "lat": 24.090631,
     "lng": 71.4705484,
@@ -19833,7 +23496,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_602",
+    "id": "TP_713",
     "name": "Naya Nagar Toll plaza",
     "lat": 25.2483447,
     "lng": 71.7333499,
@@ -19866,7 +23529,106 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_603",
+    "id": "TP_714",
+    "name": "Toll plaza 1",
+    "lat": 24.0876394,
+    "lng": 71.4691554,
+    "state": "Gujarat",
+    "district": "Jorawargadh",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_715",
+    "name": "Toll Plaza Tharad 2",
+    "lat": 24.4189704,
+    "lng": 71.6499346,
+    "state": "Gujarat",
+    "district": "Budhanpur",
+    "nhCorridor": "National Highway",
+    "baseRate": 130,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 210,
+      "BUS_2AXLE": 430,
+      "COM_3AXLE": 470,
+      "MAV_4_6": 675,
+      "OVERSIZED": 830,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 195,
+      "LCV": 310,
+      "BUS_2AXLE": 645,
+      "COM_3AXLE": 700,
+      "MAV_4_6": 1015,
+      "OVERSIZED": 1250,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_716",
+    "name": "Toll Plaza Kukma",
+    "lat": 23.2124231,
+    "lng": 69.7917176,
+    "state": "Gujarat",
+    "district": "Kukma",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_717",
     "name": "Toll plaza 1",
     "lat": 24.3820109,
     "lng": 71.6466472,
@@ -19899,7 +23661,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_604",
+    "id": "TP_718",
     "name": "Badha Toll Plaza",
     "lat": 24.9505172,
     "lng": 71.1508274,
@@ -19932,7 +23694,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_605",
+    "id": "TP_719",
+    "name": "Toll Plaza 3 exit point",
+    "lat": 24.9771708,
+    "lng": 71.9101534,
+    "state": "Rajasthan",
+    "district": "Deora",
+    "nhCorridor": "National Highway",
+    "baseRate": 185,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 185,
+      "LCV": 295,
+      "BUS_2AXLE": 610,
+      "COM_3AXLE": 665,
+      "MAV_4_6": 960,
+      "OVERSIZED": 1185,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 280,
+      "LCV": 445,
+      "BUS_2AXLE": 915,
+      "COM_3AXLE": 1000,
+      "MAV_4_6": 1445,
+      "OVERSIZED": 1775,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_720",
     "name": "Toll Plaza 2 exit point",
     "lat": 24.7640345,
     "lng": 71.8034538,
@@ -19965,7 +23760,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_606",
+    "id": "TP_721",
+    "name": "Toll plaza 4",
+    "lat": 24.3788456,
+    "lng": 71.646444,
+    "state": "Gujarat",
+    "district": "Malupur",
+    "nhCorridor": "National Highway",
+    "baseRate": 125,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 125,
+      "LCV": 200,
+      "BUS_2AXLE": 410,
+      "COM_3AXLE": 450,
+      "MAV_4_6": 650,
+      "OVERSIZED": 800,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 300,
+      "BUS_2AXLE": 620,
+      "COM_3AXLE": 675,
+      "MAV_4_6": 975,
+      "OVERSIZED": 1200,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_722",
+    "name": "Toll naka",
+    "lat": 22.0817682,
+    "lng": 69.130249,
+    "state": "Gujarat",
+    "district": "Bhogat, Kuranga",
+    "nhCorridor": "National Highway",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_723",
     "name": "New Toll Plaza Paladar",
     "lat": 24.6741441,
     "lng": 71.8272537,
@@ -19998,7 +23859,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_607",
+    "id": "TP_724",
     "name": "Paschim Madati Toll Plaza",
     "lat": 26.5688047,
     "lng": 88.2755434,
@@ -20031,7 +23892,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_608",
+    "id": "TP_725",
     "name": "Toll Plaza Koshi Maha Setu .East-West Corridor",
     "lat": 26.297759,
     "lng": 86.632943,
@@ -20064,7 +23925,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_609",
+    "id": "TP_726",
     "name": "Toll Tax Patna",
     "lat": 25.5718311,
     "lng": 85.2425462,
@@ -20097,7 +23958,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_610",
+    "id": "TP_727",
     "name": "Murli Toll Plaza",
     "lat": 25.5902776,
     "lng": 85.8759452,
@@ -20130,7 +23991,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_611",
+    "id": "TP_728",
     "name": "Rohini Gate Toll Plaza",
     "lat": 26.840113,
     "lng": 88.2999318,
@@ -20163,7 +24024,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_612",
+    "id": "TP_729",
     "name": "Surjapur Toll Plaza",
     "lat": 25.9335323,
     "lng": 87.8431469,
@@ -20196,7 +24057,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_613",
+    "id": "TP_730",
     "name": "Babhniyawan toll plaza National Highway - 319",
     "lat": 25.4982505,
     "lng": 84.4883019,
@@ -20229,7 +24090,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_614",
+    "id": "TP_731",
     "name": "Mahanth Maniyari, Toll plaza",
     "lat": 26.0387804,
     "lng": 85.4473787,
@@ -20262,7 +24123,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_615",
+    "id": "TP_732",
     "name": "Toll Plaza, Bihari Bigha",
     "lat": 25.4377525,
     "lng": 85.7803676,
@@ -20295,7 +24156,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_616",
+    "id": "TP_733",
     "name": "Runni Shaidpur Toll Plaza",
     "lat": 26.3736903,
     "lng": 85.4941241,
@@ -20328,7 +24189,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_617",
+    "id": "TP_734",
     "name": "Hariabara Toll Plaza",
     "lat": 26.1526741,
     "lng": 87.445263,
@@ -20361,7 +24222,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_618",
+    "id": "TP_735",
     "name": "Patedha Toll Tax",
     "lat": 25.8028768,
     "lng": 85.2834481,
@@ -20394,7 +24255,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_619",
+    "id": "TP_736",
     "name": "Dwipnagar (Barai) Toll Plaza",
     "lat": 25.6709905,
     "lng": 88.0801211,
@@ -20427,7 +24288,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_620",
+    "id": "TP_737",
     "name": "Pokhraira Toll Plaza",
     "lat": 26.0560046,
     "lng": 85.1827952,
@@ -20460,7 +24321,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_621",
+    "id": "TP_738",
     "name": "Toll Tax bodha chapra ami chapra saran",
     "lat": 25.7476315,
     "lng": 84.9521889,
@@ -20493,7 +24354,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_622",
+    "id": "TP_739",
     "name": "Naxalbari Toll Plaza Asian Highway - 2",
     "lat": 26.6873352,
     "lng": 88.2304847,
@@ -20526,7 +24387,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_623",
+    "id": "TP_740",
     "name": "Panikauri Toll Plaza",
     "lat": 26.5739328,
     "lng": 88.5227432,
@@ -20559,7 +24420,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_624",
+    "id": "TP_741",
+    "name": "Jajoosan Toll Plaza 1 entry point",
+    "lat": 24.7633653,
+    "lng": 71.8025151,
+    "state": "Rajasthan",
+    "district": "Lachari",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_742",
+    "name": "Toll Plaza 4 entry point",
+    "lat": 24.9734375,
+    "lng": 71.9085625,
+    "state": "Rajasthan",
+    "district": "Deora",
+    "nhCorridor": "National Highway",
+    "baseRate": 185,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 185,
+      "LCV": 295,
+      "BUS_2AXLE": 610,
+      "COM_3AXLE": 665,
+      "MAV_4_6": 960,
+      "OVERSIZED": 1185,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 280,
+      "LCV": 445,
+      "BUS_2AXLE": 915,
+      "COM_3AXLE": 1000,
+      "MAV_4_6": 1445,
+      "OVERSIZED": 1775,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_743",
     "name": "Toll plaza 2",
     "lat": 23.9140015,
     "lng": 71.3434003,
@@ -20592,7 +24519,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_625",
+    "id": "TP_744",
+    "name": "Toll plaza 1",
+    "lat": 23.9107783,
+    "lng": 71.3392359,
+    "state": "Gujarat",
+    "district": "Varanosari",
+    "nhCorridor": "National Highway",
+    "baseRate": 190,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 305,
+      "BUS_2AXLE": 625,
+      "COM_3AXLE": 685,
+      "MAV_4_6": 990,
+      "OVERSIZED": 1215,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 285,
+      "LCV": 455,
+      "BUS_2AXLE": 940,
+      "COM_3AXLE": 1025,
+      "MAV_4_6": 1480,
+      "OVERSIZED": 1825,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_745",
+    "name": "Toll Plaza 4 exit point",
+    "lat": 24.7581415,
+    "lng": 71.8021898,
+    "state": "Rajasthan",
+    "district": "Jajoosan",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_746",
     "name": "Toll plaza",
     "lat": 23.7975432,
     "lng": 71.1970677,
@@ -20625,7 +24618,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_626",
+    "id": "TP_747",
     "name": "Toll plaza",
     "lat": 25.22269,
     "lng": 71.8983681,
@@ -20658,7 +24651,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_627",
+    "id": "TP_748",
     "name": "Lakhond Toll Plaza",
     "lat": 23.2355284,
     "lng": 69.7875481,
@@ -20691,7 +24684,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_628",
+    "id": "TP_749",
+    "name": "Toll Plaza 3",
+    "lat": 24.0876407,
+    "lng": 71.470355,
+    "state": "Gujarat",
+    "district": "Jorawargadh",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_750",
     "name": "Semara raja toll plaza",
     "lat": 27.0661272,
     "lng": 83.6106693,
@@ -20724,7 +24750,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_629",
+    "id": "TP_751",
     "name": "Srirampur Toll Booth",
     "lat": 26.4383405,
     "lng": 89.897561,
@@ -20757,7 +24783,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_630",
+    "id": "TP_752",
     "name": "Amoda Mohiuddinpur Toll Plaza",
     "lat": 25.9789642,
     "lng": 83.0566661,
@@ -20790,7 +24816,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_631",
+    "id": "TP_753",
     "name": "Toll plaza basti",
     "lat": 26.8105986,
     "lng": 82.7316657,
@@ -20823,7 +24849,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_632",
+    "id": "TP_754",
     "name": "Bhagwanpur Toll Plaza (UPEIDA)",
     "lat": 26.6758765,
     "lng": 83.2868003,
@@ -20856,7 +24882,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_633",
+    "id": "TP_755",
     "name": "Sikariganj Toll Plaza",
     "lat": 26.4939056,
     "lng": 83.2040161,
@@ -20889,7 +24915,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_634",
+    "id": "TP_756",
     "name": "Fasirghat Toll Booth",
     "lat": 26.3122372,
     "lng": 89.434414,
@@ -20922,7 +24948,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_635",
+    "id": "TP_757",
     "name": "Hauj Toll Plaza NH-31",
     "lat": 25.6729473,
     "lng": 82.7270537,
@@ -20955,7 +24981,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_636",
+    "id": "TP_758",
     "name": "Mirzapur Kyampur Dandi Khurd Toll Plaza",
     "lat": 25.6859518,
     "lng": 83.546467,
@@ -20988,7 +25014,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_637",
+    "id": "TP_759",
     "name": "Harnhi Interchange Toll plaza",
     "lat": 26.618619,
     "lng": 83.243489,
@@ -21021,7 +25047,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_638",
+    "id": "TP_760",
     "name": "Mamrezpur Toll Plaza Naubatpur",
     "lat": 25.4862958,
     "lng": 84.9982264,
@@ -21054,7 +25080,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_639",
+    "id": "TP_761",
     "name": "Tenduai kalan Toll Plaza 2",
     "lat": 26.350636,
     "lng": 83.0289889,
@@ -21087,7 +25113,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_640",
+    "id": "TP_762",
     "name": "Toll Tax Phulwaria Sugauli",
     "lat": 26.7436909,
     "lng": 84.7506519,
@@ -21120,7 +25146,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_641",
+    "id": "TP_763",
     "name": "Sikarganj toll tax",
     "lat": 26.6257124,
     "lng": 85.1129236,
@@ -21153,7 +25179,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_642",
+    "id": "TP_764",
+    "name": "4XQG+M96 toll plaza",
+    "lat": 24.1391692,
+    "lng": 71.9758264,
+    "state": "Gujarat",
+    "district": "Mudetha",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_765",
+    "name": "BHILDI TOLL PLAZA",
+    "lat": 24.1445259,
+    "lng": 71.9778347,
+    "state": "Gujarat",
+    "district": "Bhildi, Mudetha",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_766",
     "name": "Toll Plaza 2",
     "lat": 26.2267992,
     "lng": 82.6682095,
@@ -21186,7 +25278,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_643",
+    "id": "TP_767",
     "name": "Toll Plaza Sathiaon No. 1 Up↑",
     "lat": 26.0433071,
     "lng": 83.2770807,
@@ -21219,7 +25311,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_644",
+    "id": "TP_768",
     "name": "Begusarai toll plaza",
     "lat": 25.4220074,
     "lng": 86.1130884,
@@ -21252,7 +25344,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_645",
+    "id": "TP_769",
     "name": "Barahima Toll tax",
     "lat": 26.4029835,
     "lng": 84.6699123,
@@ -21285,7 +25377,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_646",
+    "id": "TP_770",
     "name": "Control Room toll plaza",
     "lat": 26.1184277,
     "lng": 86.9358156,
@@ -21318,7 +25410,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_647",
+    "id": "TP_771",
     "name": "Bakaur Supaul Toll Plaza",
     "lat": 26.0687745,
     "lng": 86.5002017,
@@ -21351,7 +25443,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_648",
+    "id": "TP_772",
     "name": "Purandaha Toll Naruar",
     "lat": 26.2446062,
     "lng": 86.2430282,
@@ -21384,7 +25476,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_649",
+    "id": "TP_773",
     "name": "Maithi Toll Plaza",
     "lat": 26.1127422,
     "lng": 85.5648283,
@@ -21417,7 +25509,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_650",
+    "id": "TP_774",
     "name": "Toll. Plaza",
     "lat": 26.044178,
     "lng": 89.905768,
@@ -21450,7 +25542,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_651",
+    "id": "TP_775",
     "name": "Toll Plaza fastage all",
     "lat": 26.3501301,
     "lng": 88.0569381,
@@ -21483,7 +25575,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_652",
+    "id": "TP_776",
     "name": "Yadav Toll Plaza Varanasi",
     "lat": 25.4949044,
     "lng": 83.1476426,
@@ -21516,7 +25608,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_653",
+    "id": "TP_777",
     "name": "NPS MALPUR PASCHIM TOLL",
     "lat": 25.6698772,
     "lng": 86.0051876,
@@ -21549,7 +25641,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_654",
+    "id": "TP_778",
+    "name": "Didarganj toll palza",
+    "lat": 25.5714312,
+    "lng": 85.2457582,
+    "state": "Bihar",
+    "district": "Patna",
+    "nhCorridor": "National Highway",
+    "baseRate": 150,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 225,
+      "LCV": 360,
+      "BUS_2AXLE": 740,
+      "COM_3AXLE": 810,
+      "MAV_4_6": 1170,
+      "OVERSIZED": 1440,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_779",
     "name": "Kahachari Toll Balni Mehath Jhanjharpur Madhubani Bihar",
     "lat": 26.2820088,
     "lng": 86.2495491,
@@ -21582,7 +25707,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_655",
+    "id": "TP_780",
+    "name": "New toll plaza",
+    "lat": 22.6441391,
+    "lng": 70.9574992,
+    "state": "Gujarat",
+    "district": "Wankaner",
+    "nhCorridor": "National Highway",
+    "baseRate": 175,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 175,
+      "LCV": 280,
+      "BUS_2AXLE": 580,
+      "COM_3AXLE": 630,
+      "MAV_4_6": 910,
+      "OVERSIZED": 1120,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 260,
+      "LCV": 420,
+      "BUS_2AXLE": 865,
+      "COM_3AXLE": 945,
+      "MAV_4_6": 1365,
+      "OVERSIZED": 1680,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_781",
     "name": "Vaghasia Toll Plaza",
     "lat": 22.423099,
     "lng": 71.0887982,
@@ -21615,7 +25773,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_656",
+    "id": "TP_782",
     "name": "Tokrala Toll Booth",
     "lat": 22.575146,
     "lng": 71.9209,
@@ -21648,7 +25806,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_657",
+    "id": "TP_783",
+    "name": "Samakhiali Toll Plaza",
+    "lat": 23.3086875,
+    "lng": 70.4919375,
+    "state": "Gujarat",
+    "district": "Samakhiali",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_784",
     "name": "Dhedhuki Toll Booth",
     "lat": 22.507287,
     "lng": 71.340696,
@@ -21681,7 +25872,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_658",
+    "id": "TP_785",
     "name": "Bharudi Toll Plaza",
     "lat": 22.0826762,
     "lng": 70.7810092,
@@ -21714,7 +25905,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_659",
+    "id": "TP_786",
+    "name": "MP86+859 Vanana Toll Plaza",
+    "lat": 21.6657617,
+    "lng": 69.7104836,
+    "state": "Gujarat",
+    "district": "Digvijaygadh",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_787",
     "name": "Malvan-Viramgam Toll",
     "lat": 23.0717238,
     "lng": 71.7849816,
@@ -21747,7 +25971,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_660",
+    "id": "TP_788",
     "name": "Putru Toll Plaza Jamshedpur",
     "lat": 22.6818496,
     "lng": 86.3976659,
@@ -21780,7 +26004,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_661",
+    "id": "TP_789",
     "name": "Khireitangiree Toll Plaza (Mumbai - Kolkata Highway)",
     "lat": 21.7056324,
     "lng": 85.6971597,
@@ -21813,7 +26037,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_662",
+    "id": "TP_790",
     "name": "Hazaribagh Nagwan Toll Plaza",
     "lat": 24.0444982,
     "lng": 85.3861073,
@@ -21846,7 +26070,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_663",
+    "id": "TP_791",
     "name": "Kothiya Toll Plaza",
     "lat": 24.5421459,
     "lng": 86.9594391,
@@ -21879,7 +26103,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_664",
+    "id": "TP_792",
     "name": "Dankuni toll plaza",
     "lat": 22.6988382,
     "lng": 88.288859,
@@ -21912,7 +26136,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_665",
+    "id": "TP_793",
     "name": "Seoraphuli Toll Plaza",
     "lat": 22.7699999,
     "lng": 88.3133385,
@@ -21945,7 +26169,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_666",
+    "id": "TP_794",
     "name": "Toda Toll plaza",
     "lat": 25.242592,
     "lng": 85.786368,
@@ -21978,7 +26202,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_667",
+    "id": "TP_795",
     "name": "Toll Plaza, Saukala",
     "lat": 24.5995517,
     "lng": 84.7028361,
@@ -22011,7 +26235,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_668",
+    "id": "TP_796",
     "name": "Jala Dhulagori Toll Plaza",
     "lat": 22.5731795,
     "lng": 88.1817649,
@@ -22044,7 +26268,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_669",
+    "id": "TP_797",
     "name": "Pundag Toll Plaza",
     "lat": 23.5434065,
     "lng": 85.5039632,
@@ -22077,7 +26301,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_670",
+    "id": "TP_798",
     "name": "Kandra Toll Plaza, Jamshedpur",
     "lat": 22.8421613,
     "lng": 86.0538764,
@@ -22110,7 +26334,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_671",
+    "id": "TP_799",
     "name": "Sonapetya Toll Plaza",
     "lat": 22.3354481,
     "lng": 87.8695026,
@@ -22143,7 +26367,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_672",
+    "id": "TP_800",
     "name": "Banskopa Toll Plaza",
     "lat": 23.4911364,
     "lng": 87.3766202,
@@ -22176,7 +26400,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_673",
+    "id": "TP_801",
     "name": "Pata Toll Plaza Chandil Jamshedpur",
     "lat": 22.9301532,
     "lng": 86.0638701,
@@ -22209,7 +26433,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_674",
+    "id": "TP_802",
     "name": "Kokpara Toll Plaza (Jharkhand)",
     "lat": 22.4460566,
     "lng": 86.5983478,
@@ -22242,7 +26466,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_675",
+    "id": "TP_803",
     "name": "New toll plaza kulgo",
     "lat": 24.0088434,
     "lng": 85.9835023,
@@ -22275,7 +26499,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_676",
+    "id": "TP_804",
     "name": "Darjing Toll Plaza (Barkote - Ranchi Highway)",
     "lat": 21.9313659,
     "lng": 84.8928018,
@@ -22308,7 +26532,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_677",
+    "id": "TP_805",
     "name": "Ranchi Ring Road Toll Entry",
     "lat": 23.4015543,
     "lng": 85.4701113,
@@ -22341,7 +26565,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_678",
+    "id": "TP_806",
     "name": "Gouranga Setu Toll Plaza",
     "lat": 23.3837548,
     "lng": 88.3714073,
@@ -22374,7 +26598,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_679",
+    "id": "TP_807",
     "name": "Toll Plaza services",
     "lat": 22.6550289,
     "lng": 88.3172494,
@@ -22407,7 +26631,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_680",
+    "id": "TP_808",
     "name": "G4VW+CG8 Mandal Toll Mandal toll",
     "lat": 26.5429591,
     "lng": 86.1460827,
@@ -22440,7 +26664,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_681",
+    "id": "TP_809",
     "name": "संगम टोल पाली : Sangam Toll Pali",
     "lat": 26.0578488,
     "lng": 86.3080892,
@@ -22473,7 +26697,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_682",
+    "id": "TP_810",
     "name": "Guabari Toll Plaza Office",
     "lat": 26.4771168,
     "lng": 89.7563334,
@@ -22506,7 +26730,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_683",
+    "id": "TP_811",
     "name": "Raje Toll Plaza",
     "lat": 26.2251613,
     "lng": 86.1501359,
@@ -22539,7 +26763,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_684",
+    "id": "TP_812",
+    "name": "Deederganj Toll Plaza",
+    "lat": 25.5727891,
+    "lng": 85.2406701,
+    "state": "Bihar",
+    "district": "Patna",
+    "nhCorridor": "National Highway",
+    "baseRate": 150,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 225,
+      "LCV": 360,
+      "BUS_2AXLE": 740,
+      "COM_3AXLE": 810,
+      "MAV_4_6": 1170,
+      "OVERSIZED": 1440,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_813",
     "name": "Surjapur Toll Plaza",
     "lat": 25.8563379,
     "lng": 87.8152107,
@@ -22572,7 +26829,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_685",
+    "id": "TP_814",
     "name": "Jalalpur Toll Booth",
     "lat": 25.6188595,
     "lng": 82.7606395,
@@ -22605,7 +26862,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_686",
+    "id": "TP_815",
     "name": "Salemgarh Toll Plaza",
     "lat": 26.6316714,
     "lng": 84.2382935,
@@ -22638,7 +26895,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_687",
+    "id": "TP_816",
+    "name": "4H68+9JV Maithi Toll Plaza",
+    "lat": 26.1110197,
+    "lng": 85.5664967,
+    "state": "Bihar",
+    "district": "Maithi",
+    "nhCorridor": "National Highway",
+    "baseRate": 90,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 90,
+      "LCV": 145,
+      "BUS_2AXLE": 295,
+      "COM_3AXLE": 325,
+      "MAV_4_6": 470,
+      "OVERSIZED": 575,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_817",
     "name": "Parsoni Khem Toll Plaza",
     "lat": 26.4516622,
     "lng": 85.0228182,
@@ -22671,7 +26961,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_688",
+    "id": "TP_818",
     "name": "dhulsiras toll",
     "lat": 28.5641729,
     "lng": 77.0413344,
@@ -22704,7 +26994,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_689",
+    "id": "TP_819",
     "name": "Luharli Toll plaza",
     "lat": 28.4991686,
     "lng": 77.6272857,
@@ -22737,7 +27027,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_690",
+    "id": "TP_820",
     "name": "Gurau Toll Plaza",
     "lat": 26.9965749,
     "lng": 78.7773032,
@@ -22770,7 +27060,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_691",
+    "id": "TP_821",
     "name": "Purvanchal Expressway Toll Plaza Lucknow",
     "lat": 26.7207639,
     "lng": 81.120864,
@@ -22803,7 +27093,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_692",
+    "id": "TP_822",
     "name": "Toll Plaza Itora Bujurg Babuganj/Chadrai",
     "lat": 26.0025387,
     "lng": 81.284881,
@@ -22836,7 +27126,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_693",
+    "id": "TP_823",
     "name": "Kurana toll plaza",
     "lat": 28.628072,
     "lng": 77.7848887,
@@ -22869,7 +27159,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_694",
+    "id": "TP_824",
     "name": "MCD Toll Plaza",
     "lat": 28.5118029,
     "lng": 77.092248,
@@ -22902,7 +27192,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_695",
+    "id": "TP_825",
     "name": "Sarai Toll Plaza",
     "lat": 28.4747309,
     "lng": 77.3056344,
@@ -22935,7 +27225,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_696",
+    "id": "TP_826",
     "name": "Sheetal Toll Plaza",
     "lat": 27.4854298,
     "lng": 76.8448412,
@@ -22968,7 +27258,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_697",
+    "id": "TP_827",
     "name": "Delhi Mumbai Road Toll booth, Kherli Jeeta, Palwal",
     "lat": 28.1882936,
     "lng": 77.1722937,
@@ -23001,7 +27291,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_698",
+    "id": "TP_828",
     "name": "EPE Toll Booth Sonipat Haryana",
     "lat": 28.9174701,
     "lng": 77.1611748,
@@ -23034,7 +27324,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_699",
+    "id": "TP_829",
     "name": "Fatehabad Toll gate",
     "lat": 27.0534656,
     "lng": 78.2772647,
@@ -23067,7 +27357,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_700",
+    "id": "TP_830",
     "name": "Brijghat Toll plaza",
     "lat": 28.7657432,
     "lng": 78.1129744,
@@ -23100,7 +27390,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_701",
+    "id": "TP_831",
     "name": "MCD TOLL BOOTH, Ayanagar Border",
     "lat": 28.4810851,
     "lng": 77.1168566,
@@ -23133,7 +27423,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_702",
+    "id": "TP_832",
     "name": "Tarawa Dev Toll Plaza (NHAI)",
     "lat": 27.1958498,
     "lng": 79.3669986,
@@ -23166,7 +27456,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_703",
+    "id": "TP_833",
     "name": "Khanna Toll Plaza",
     "lat": 25.5433432,
     "lng": 80.0601062,
@@ -23199,7 +27489,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_704",
+    "id": "TP_834",
     "name": "Karman Toll Plaza",
     "lat": 27.8553906,
     "lng": 77.4026664,
@@ -23232,7 +27522,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_705",
+    "id": "TP_835",
     "name": "Etawah Chakeri Anantram Toll Plaza",
     "lat": 26.5952333,
     "lng": 79.2684644,
@@ -23265,7 +27555,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_706",
+    "id": "TP_836",
     "name": "Mundka Toll Plaza",
     "lat": 28.672662,
     "lng": 77.0112872,
@@ -23298,7 +27588,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_707",
+    "id": "TP_837",
     "name": "Bajna Toll Plaza",
     "lat": 27.8843833,
     "lng": 77.6634766,
@@ -23331,7 +27621,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_708",
+    "id": "TP_838",
+    "name": "Varnosary Toll Plaza",
+    "lat": 23.9113378,
+    "lng": 71.3399106,
+    "state": "Gujarat",
+    "district": "Varanosari",
+    "nhCorridor": "National Highway",
+    "baseRate": 190,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 190,
+      "LCV": 305,
+      "BUS_2AXLE": 625,
+      "COM_3AXLE": 685,
+      "MAV_4_6": 990,
+      "OVERSIZED": 1215,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 285,
+      "LCV": 455,
+      "BUS_2AXLE": 940,
+      "COM_3AXLE": 1025,
+      "MAV_4_6": 1480,
+      "OVERSIZED": 1825,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_839",
     "name": "Bhagwati toll cata",
     "lat": 22.5232414,
     "lng": 71.3711106,
@@ -23364,7 +27687,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_709",
+    "id": "TP_840",
     "name": "Bavdi toll plaza",
     "lat": 22.91968,
     "lng": 69.8805871,
@@ -23397,7 +27720,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_710",
+    "id": "TP_841",
+    "name": "Toll bachane ka katcha rasta",
+    "lat": 22.0782497,
+    "lng": 69.1320266,
+    "state": "Gujarat",
+    "district": "Kuranga",
+    "nhCorridor": "National Highway",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_842",
     "name": "Balidih Toll Plaza",
     "lat": 23.6686085,
     "lng": 86.0451906,
@@ -23430,7 +27786,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_711",
+    "id": "TP_843",
     "name": "Rampura Toll Plaza",
     "lat": 22.2408381,
     "lng": 87.3921822,
@@ -23463,7 +27819,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_712",
+    "id": "TP_844",
     "name": "Sukhuapada Toll Plaza.",
     "lat": 22.0741445,
     "lng": 86.6436338,
@@ -23496,7 +27852,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_713",
+    "id": "TP_845",
     "name": "Dubiakhanr Toll Plaza",
     "lat": 23.983106,
     "lng": 84.1352678,
@@ -23529,7 +27885,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_714",
+    "id": "TP_846",
     "name": "Toll Plaza Beladih",
     "lat": 24.6777805,
     "lng": 85.5042724,
@@ -23562,7 +27918,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_715",
+    "id": "TP_847",
     "name": "toll",
     "lat": 23.179701,
     "lng": 85.5752469,
@@ -23595,7 +27951,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_716",
+    "id": "TP_848",
     "name": "Mejia Toll Plaza",
     "lat": 23.5378855,
     "lng": 87.1246377,
@@ -23628,7 +27984,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_717",
+    "id": "TP_849",
     "name": "All solutions centre Hesmi Mandar Toll Plaza",
     "lat": 23.4718265,
     "lng": 85.0603986,
@@ -23661,7 +28017,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_718",
+    "id": "TP_850",
     "name": "Midnapore Bypass Toll Plaza",
     "lat": 22.4358821,
     "lng": 87.3362094,
@@ -23694,7 +28050,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_719",
+    "id": "TP_851",
     "name": "MADANGUNDI TOLL PLAZA",
     "lat": 24.3689155,
     "lng": 85.482804,
@@ -23727,7 +28083,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_720",
+    "id": "TP_852",
     "name": "Laxmannath Toll Plaza",
     "lat": 21.8386704,
     "lng": 87.2466625,
@@ -23760,7 +28116,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_721",
+    "id": "TP_853",
     "name": "Jharpokharia Toll Plaza",
     "lat": 22.1806112,
     "lng": 86.6357954,
@@ -23793,7 +28149,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_722",
+    "id": "TP_854",
     "name": "Katiyara toll plaza",
     "lat": 25.2406646,
     "lng": 83.9817722,
@@ -23826,7 +28182,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_723",
+    "id": "TP_855",
     "name": "Ishwar Gupta Setu Toll Plaza",
     "lat": 22.9663125,
     "lng": 88.4190625,
@@ -23859,7 +28215,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_724",
+    "id": "TP_856",
     "name": "AJAY BRIDGE TOLL BOOTH",
     "lat": 23.6177895,
     "lng": 87.5367186,
@@ -23892,7 +28248,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_725",
+    "id": "TP_857",
+    "name": "Turup toll plaza",
+    "lat": 23.4050517,
+    "lng": 85.4677729,
+    "state": "Jharkhand",
+    "district": "Turup",
+    "nhCorridor": "National Highway",
+    "baseRate": 165,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 250,
+      "LCV": 395,
+      "BUS_2AXLE": 815,
+      "COM_3AXLE": 890,
+      "MAV_4_6": 1285,
+      "OVERSIZED": 1585,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_858",
     "name": "TOLL PLAZA (KORAI)",
     "lat": 27.1149838,
     "lng": 77.7160221,
@@ -23925,7 +28314,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_726",
+    "id": "TP_859",
     "name": "Jaipur Rajasthan",
     "lat": 26.9618782,
     "lng": 75.7921406,
@@ -23958,7 +28347,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_727",
+    "id": "TP_860",
+    "name": "Toll Plaza Lalanagar",
+    "lat": 25.2681247,
+    "lng": 82.4858528,
+    "state": "Uttar Pradesh",
+    "district": "Chak Daphtarband",
+    "nhCorridor": "National Highway",
+    "baseRate": 90,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 90,
+      "LCV": 145,
+      "BUS_2AXLE": 295,
+      "COM_3AXLE": 325,
+      "MAV_4_6": 470,
+      "OVERSIZED": 575,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_861",
     "name": "Shahabpur Toll Plaza",
     "lat": 26.9492537,
     "lng": 81.2564469,
@@ -23991,7 +28413,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_728",
+    "id": "TP_862",
     "name": "Chaukadi Chhawani NHAI Toll Plaza",
     "lat": 26.7813861,
     "lng": 82.4169606,
@@ -24024,7 +28446,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_729",
+    "id": "TP_863",
     "name": "Baros Toll Plaza",
     "lat": 27.3355,
     "lng": 78.0311,
@@ -24057,7 +28479,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_730",
+    "id": "TP_864",
     "name": "KSHPL Toll Plaza",
     "lat": 28.9285365,
     "lng": 79.474815,
@@ -24090,7 +28512,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_731",
+    "id": "TP_865",
     "name": "Pidhi Toll Plaza",
     "lat": 26.3486189,
     "lng": 82.247095,
@@ -24123,7 +28545,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_732",
+    "id": "TP_866",
     "name": "Sitarampura Toll Plaza",
     "lat": 26.7474211,
     "lng": 75.7687425,
@@ -24156,7 +28578,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_733",
+    "id": "TP_867",
     "name": "NHAI TOLL PLAZA- Unnao",
     "lat": 26.6235018,
     "lng": 80.6994074,
@@ -24189,7 +28611,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_734",
+    "id": "TP_868",
     "name": "Sonwa Toll Plaza",
     "lat": 26.1099102,
     "lng": 75.7448628,
@@ -24222,7 +28644,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_735",
+    "id": "TP_869",
     "name": "Toll plaza NH152D",
     "lat": 28.305386,
     "lng": 76.2232149,
@@ -24255,7 +28677,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_736",
+    "id": "TP_870",
     "name": "Dighal Toll Plaza",
     "lat": 28.7774495,
     "lng": 76.6213416,
@@ -24288,7 +28710,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_737",
+    "id": "TP_871",
     "name": "Malawan Toll Plaza ETAH",
     "lat": 27.4866364,
     "lng": 78.792226,
@@ -24321,7 +28743,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_738",
+    "id": "TP_872",
     "name": "Gabhana toll plaza",
     "lat": 28.0627431,
     "lng": 77.9460746,
@@ -24354,7 +28776,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_739",
+    "id": "TP_873",
     "name": "Toll Plaza",
     "lat": 28.922431,
     "lng": 76.9523538,
@@ -24387,7 +28809,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_740",
+    "id": "TP_874",
     "name": "Sonadanga Toll Plaza",
     "lat": 23.6291785,
     "lng": 88.3601722,
@@ -24420,7 +28842,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_741",
+    "id": "TP_875",
+    "name": "Toll Plaza",
+    "lat": 22.653594,
+    "lng": 88.32725,
+    "state": "West Bengal",
+    "district": "Howrah",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_876",
     "name": "D.M.C. Toll",
     "lat": 23.4870204,
     "lng": 87.3207425,
@@ -24453,7 +28908,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_742",
+    "id": "TP_877",
     "name": "Kandra Toll Plaza (Rajamunda - Panikoili Highway)",
     "lat": 22.0521117,
     "lng": 85.4943016,
@@ -24486,7 +28941,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_743",
+    "id": "TP_878",
     "name": "Toll Booth",
     "lat": 23.0695652,
     "lng": 87.9827709,
@@ -24519,7 +28974,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_744",
+    "id": "TP_879",
     "name": "Toll plaza, Taki Road",
     "lat": 22.6980305,
     "lng": 88.6006403,
@@ -24552,7 +29007,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_745",
+    "id": "TP_880",
     "name": "Jamudihi Toll Plaza",
     "lat": 21.9912244,
     "lng": 85.1193885,
@@ -24585,7 +29040,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_746",
+    "id": "TP_881",
     "name": "Haringhata Toll Booth (NH12)",
     "lat": 22.9789925,
     "lng": 88.5460322,
@@ -24618,7 +29073,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_747",
+    "id": "TP_882",
+    "name": "Bally Till more between Bally halt road and Toll plaza",
+    "lat": 22.6571468,
+    "lng": 88.3166837,
+    "state": "West Bengal",
+    "district": "Jaypur Bil, Howrah",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_883",
     "name": "Khalerpul toll plaza",
     "lat": 23.1934757,
     "lng": 87.8371458,
@@ -24651,7 +29139,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_748",
+    "id": "TP_884",
     "name": "Lahapatra Toll Plaza",
     "lat": 23.0432781,
     "lng": 83.0903818,
@@ -24684,7 +29172,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_749",
+    "id": "TP_885",
     "name": "Banajodi (Padmapur) Toll Plaza",
     "lat": 21.712419,
     "lng": 85.582901,
@@ -24717,7 +29205,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_750",
+    "id": "TP_886",
     "name": "ACP Toll Plaza (Ajit Pratap Singh Sir)",
     "lat": 24.9958149,
     "lng": 83.0192624,
@@ -24750,7 +29238,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_751",
+    "id": "TP_887",
     "name": "Ranbirgrah Toll Plaza",
     "lat": 34.1444698,
     "lng": 74.6815566,
@@ -24783,7 +29271,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_752",
+    "id": "TP_888",
     "name": "Kaichachkoot Toll Plaza",
     "lat": 33.8743618,
     "lng": 75.0432425,
@@ -24816,7 +29304,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_753",
+    "id": "TP_889",
     "name": "Qazigund Toll Plaza",
     "lat": 33.5679284,
     "lng": 75.185816,
@@ -24849,7 +29337,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_754",
+    "id": "TP_890",
     "name": "Lamber Toll Plaza",
     "lat": 33.4774375,
     "lng": 75.1841875,
@@ -24882,7 +29370,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_755",
+    "id": "TP_891",
     "name": "Ban Toll Plaza",
     "lat": 32.8390127,
     "lng": 74.9403467,
@@ -24915,7 +29403,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_756",
+    "id": "TP_892",
     "name": "Toll Plaza Sukhani Talab",
     "lat": 32.6123716,
     "lng": 74.9374048,
@@ -24948,7 +29436,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_757",
+    "id": "TP_893",
+    "name": "Thandikhui Toll Plaza",
+    "lat": 32.6117782,
+    "lng": 74.9381347,
+    "state": "India",
+    "district": "",
+    "nhCorridor": "NH-44",
+    "baseRate": 175,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 175,
+      "LCV": 280,
+      "BUS_2AXLE": 580,
+      "COM_3AXLE": 630,
+      "MAV_4_6": 910,
+      "OVERSIZED": 1120,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 260,
+      "LCV": 420,
+      "BUS_2AXLE": 865,
+      "COM_3AXLE": 945,
+      "MAV_4_6": 1365,
+      "OVERSIZED": 1680,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_894",
     "name": "Toll Plaza, Nashri",
     "lat": 33.1305741,
     "lng": 75.294143,
@@ -24981,7 +29502,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_758",
+    "id": "TP_895",
     "name": "Jawahar tunnel Toll Plaza",
     "lat": 33.5184103,
     "lng": 75.2159757,
@@ -25014,7 +29535,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_759",
+    "id": "TP_896",
     "name": "Toll Plaza, Chenani",
     "lat": 33.0461615,
     "lng": 75.2782727,
@@ -25047,7 +29568,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_760",
+    "id": "TP_897",
     "name": "Toll For Town Entry",
     "lat": 34.3162815,
     "lng": 74.3726942,
@@ -25080,7 +29601,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_761",
+    "id": "TP_898",
     "name": "Toll token",
     "lat": 34.0823196,
     "lng": 74.057935,
@@ -25113,7 +29634,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_762",
+    "id": "TP_899",
     "name": "Dondpur toll plaza",
     "lat": 32.7627737,
     "lng": 74.8911493,
@@ -25146,7 +29667,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_763",
+    "id": "TP_900",
     "name": "Toll plaza",
     "lat": 32.5444442,
     "lng": 75.07538,
@@ -25179,7 +29700,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_764",
+    "id": "TP_901",
     "name": "Bhadoti Toll Plaza",
     "lat": 26.2247059,
     "lng": 76.3707435,
@@ -25212,7 +29733,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_765",
+    "id": "TP_902",
     "name": "Toll booth 1",
     "lat": 26.2820172,
     "lng": 82.4746574,
@@ -25245,7 +29766,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_766",
+    "id": "TP_903",
     "name": "Dausa Interchange Toll Booth 8",
     "lat": 26.9120824,
     "lng": 76.4324486,
@@ -25278,7 +29799,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_767",
+    "id": "TP_904",
     "name": "Phoop Barahi Toll Plaza",
     "lat": 26.6831844,
     "lng": 78.9178817,
@@ -25311,7 +29832,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_768",
+    "id": "TP_905",
     "name": "Toll Delhi UP",
     "lat": 28.602466,
     "lng": 77.336268,
@@ -25344,7 +29865,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_769",
+    "id": "TP_906",
     "name": "Dighal Jhunjhunu State Toll Plaza",
     "lat": 28.0688142,
     "lng": 75.3422846,
@@ -25377,7 +29898,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_770",
+    "id": "TP_907",
     "name": "Takha Toll Plaza (UPEIDA)",
     "lat": 26.8484074,
     "lng": 79.3170877,
@@ -25410,7 +29931,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_771",
+    "id": "TP_908",
     "name": "Mor Toll plaza",
     "lat": 26.1575422,
     "lng": 75.4170562,
@@ -25443,7 +29964,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_772",
+    "id": "TP_909",
     "name": "Nekawala Highway Toll Plaza",
     "lat": 27.2421675,
     "lng": 76.0643172,
@@ -25476,7 +29997,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_773",
+    "id": "TP_910",
     "name": "Rohad toll plaza",
     "lat": 28.7544039,
     "lng": 76.7954595,
@@ -25509,7 +30030,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_774",
+    "id": "TP_911",
     "name": "Bharatkund Toll Plaza",
     "lat": 26.6407292,
     "lng": 82.1345206,
@@ -25542,7 +30063,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_775",
+    "id": "TP_912",
     "name": "Revari Toll Plaza (UPEIDA)",
     "lat": 26.8456349,
     "lng": 80.7107108,
@@ -25575,7 +30096,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_776",
+    "id": "TP_913",
     "name": "Bhojpur Toll Plaza 2",
     "lat": 28.7988571,
     "lng": 77.6181692,
@@ -25608,7 +30129,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_777",
+    "id": "TP_914",
     "name": "Toll plaza Kiratpur Aligarh",
     "lat": 27.7915931,
     "lng": 78.2864291,
@@ -25641,7 +30162,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_778",
+    "id": "TP_915",
     "name": "Bhiwadi Toll Plaza",
     "lat": 28.1744,
     "lng": 76.8247,
@@ -25674,7 +30195,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_779",
+    "id": "TP_916",
     "name": "DMC TOLL PLAZA",
     "lat": 23.5070363,
     "lng": 87.310772,
@@ -25707,7 +30228,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_780",
+    "id": "TP_917",
+    "name": "Pundag Toll Plaza",
+    "lat": 23.5428151,
+    "lng": 85.5028498,
+    "state": "Jharkhand",
+    "district": "Pundag",
+    "nhCorridor": "NH-20",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_918",
+    "name": "Toll tax",
+    "lat": 23.4895731,
+    "lng": 87.3795398,
+    "state": "West Bengal",
+    "district": "Durgapur",
+    "nhCorridor": "NH-19",
+    "baseRate": 75,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 75,
+      "LCV": 120,
+      "BUS_2AXLE": 250,
+      "COM_3AXLE": 270,
+      "MAV_4_6": 390,
+      "OVERSIZED": 480,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 180,
+      "BUS_2AXLE": 370,
+      "COM_3AXLE": 405,
+      "MAV_4_6": 585,
+      "OVERSIZED": 720,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_919",
     "name": "Natundih Toll Plaza",
     "lat": 23.571288,
     "lng": 86.694843,
@@ -25740,7 +30327,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_781",
+    "id": "TP_920",
     "name": "Toll tax Nabanna Howrah",
     "lat": 22.5642598,
     "lng": 88.3183872,
@@ -25773,7 +30360,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_782",
+    "id": "TP_921",
     "name": "CHHELIGODHULI TOLL PLAZA",
     "lat": 22.0035324,
     "lng": 86.1471057,
@@ -25806,7 +30393,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_783",
+    "id": "TP_922",
     "name": "Toll booth",
     "lat": 22.9768238,
     "lng": 88.4713739,
@@ -25839,7 +30426,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_784",
+    "id": "TP_923",
     "name": "Toll 2",
     "lat": 23.318557,
     "lng": 83.3319374,
@@ -25872,7 +30459,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_785",
+    "id": "TP_924",
+    "name": "Rampura Toll Plaza NGR -PS Traffic Guard.",
+    "lat": 22.2400127,
+    "lng": 87.3919725,
+    "state": "West Bengal",
+    "district": "Rampura",
+    "nhCorridor": "National Highway",
+    "baseRate": 180,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 270,
+      "LCV": 430,
+      "BUS_2AXLE": 890,
+      "COM_3AXLE": 970,
+      "MAV_4_6": 1405,
+      "OVERSIZED": 1730,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_925",
     "name": "Kesla Toll Plaza",
     "lat": 22.017703,
     "lng": 82.8727718,
@@ -25905,7 +30525,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_786",
+    "id": "TP_926",
     "name": "Kerpa Toll",
     "lat": 24.7832058,
     "lng": 84.0640054,
@@ -25938,7 +30558,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_787",
+    "id": "TP_927",
     "name": "BGR TOLL BOOTH",
     "lat": 24.5534209,
     "lng": 87.4579201,
@@ -25971,7 +30591,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_788",
+    "id": "TP_928",
+    "name": "Vidyasagar Setu Toll Plaza",
+    "lat": 22.5650023,
+    "lng": 88.3168012,
+    "state": "West Bengal",
+    "district": "Howrah",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_929",
     "name": "Gushkara Toll Tax",
     "lat": 23.4906029,
     "lng": 87.7385545,
@@ -26004,7 +30657,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_789",
+    "id": "TP_930",
     "name": "Kalachhara Toll Plaza",
     "lat": 22.701113,
     "lng": 88.2425589,
@@ -26037,7 +30690,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_790",
+    "id": "TP_931",
     "name": "PNC Dohna Toll Plaza",
     "lat": 28.4542445,
     "lng": 79.4374629,
@@ -26070,7 +30723,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_791",
+    "id": "TP_932",
     "name": "Chomu chandwaji toll plaza",
     "lat": 27.1539984,
     "lng": 75.8206824,
@@ -26103,7 +30756,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_792",
+    "id": "TP_933",
     "name": "Treveni Toll Tax",
     "lat": 27.4036029,
     "lng": 75.8757908,
@@ -26136,7 +30789,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_793",
+    "id": "TP_934",
     "name": "NHAI Toll Plaza (Newadakanthi)",
     "lat": 26.7080425,
     "lng": 80.1203409,
@@ -26169,7 +30822,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_794",
+    "id": "TP_935",
     "name": "Toll Booth",
     "lat": 25.6202393,
     "lng": 75.4736359,
@@ -26202,7 +30855,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_795",
+    "id": "TP_936",
     "name": "Papdi Toll Plaza",
     "lat": 27.7179825,
     "lng": 76.7452094,
@@ -26235,7 +30888,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_796",
+    "id": "TP_937",
     "name": "Kondar Mod Toll Palza Karauli Rajasthan",
     "lat": 26.5372449,
     "lng": 77.0860142,
@@ -26268,7 +30921,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_797",
+    "id": "TP_938",
     "name": "Rampur fatehpur toll plaza",
     "lat": 28.4402062,
     "lng": 77.5883913,
@@ -26301,7 +30954,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_798",
+    "id": "TP_939",
     "name": "Sarai Sundarpur Toll Plaza",
     "lat": 28.578454,
     "lng": 79.8634436,
@@ -26334,7 +30987,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_799",
+    "id": "TP_940",
     "name": "Toll tax collection centre",
     "lat": 25.7263481,
     "lng": 81.9255873,
@@ -26367,7 +31020,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_800",
+    "id": "TP_941",
     "name": "Toll plaza Narnaul-Ambala Highway Kharkada",
     "lat": 28.9267729,
     "lng": 76.3759681,
@@ -26400,7 +31053,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_801",
+    "id": "TP_942",
     "name": "Morwala toll gate",
     "lat": 28.6408947,
     "lng": 76.3841805,
@@ -26433,7 +31086,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_802",
+    "id": "TP_943",
     "name": "Kaitheri Toll Plaza",
     "lat": 25.9264375,
     "lng": 79.3623125,
@@ -26466,7 +31119,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_803",
+    "id": "TP_944",
     "name": "Sultanpur between Raebareli toll plaza",
     "lat": 26.2457729,
     "lng": 81.5938473,
@@ -26499,7 +31152,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_804",
+    "id": "TP_945",
     "name": "GUNDWA TOLL PLAZA",
     "lat": 27.2488125,
     "lng": 77.4693125,
@@ -26532,7 +31185,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_805",
+    "id": "TP_946",
     "name": "Toll Booth Thirpali Bari",
     "lat": 28.3997235,
     "lng": 75.548964,
@@ -26565,7 +31218,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_806",
+    "id": "TP_947",
     "name": "MCD Toll Booth-Bhopura Border",
     "lat": 28.6986984,
     "lng": 77.3225388,
@@ -26598,7 +31251,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_807",
+    "id": "TP_948",
     "name": "Namkhana Bridge Toll Plaza",
     "lat": 21.751079,
     "lng": 88.236549,
@@ -26631,7 +31284,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_808",
+    "id": "TP_949",
     "name": "Samiran toll tax",
     "lat": 21.7815706,
     "lng": 88.3268635,
@@ -26664,7 +31317,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_809",
+    "id": "TP_950",
+    "name": "Q62Q+2CG Toll Plaza",
+    "lat": 21.7501184,
+    "lng": 88.2386071,
+    "state": "West Bengal",
+    "district": "Namkhana",
+    "nhCorridor": "National Highway",
+    "baseRate": 140,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 225,
+      "BUS_2AXLE": 460,
+      "COM_3AXLE": 505,
+      "MAV_4_6": 730,
+      "OVERSIZED": 895,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 210,
+      "LCV": 335,
+      "BUS_2AXLE": 695,
+      "COM_3AXLE": 755,
+      "MAV_4_6": 1090,
+      "OVERSIZED": 1345,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_951",
     "name": "Kalinagar Setu Toll",
     "lat": 21.9149385,
     "lng": 87.7862413,
@@ -26697,7 +31383,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_810",
+    "id": "TP_952",
     "name": "BenFish Toll",
     "lat": 21.6418586,
     "lng": 87.571695,
@@ -26730,7 +31416,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_811",
+    "id": "TP_953",
     "name": "Tengunia railway toll gate",
     "lat": 21.7787291,
     "lng": 87.692343,
@@ -26763,7 +31449,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_812",
+    "id": "TP_954",
     "name": "Nandabhanga Bridge",
     "lat": 21.775323,
     "lng": 88.2332514,
@@ -26796,7 +31482,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_813",
+    "id": "TP_955",
     "name": "Nalini Bagchi Setu Toll Plaza counter-1",
     "lat": 24.1330614,
     "lng": 88.3499281,
@@ -26829,7 +31515,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_814",
+    "id": "TP_956",
+    "name": "Toll plaza katiyara",
+    "lat": 25.2409828,
+    "lng": 83.9847946,
+    "state": "Bihar",
+    "district": "Katiyara",
+    "nhCorridor": "NH-319",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_957",
     "name": "Sodepur Toll Plaza",
     "lat": 22.8421669,
     "lng": 87.9388944,
@@ -26862,7 +31581,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_815",
+    "id": "TP_958",
     "name": "Belkuri Toll Plaza",
     "lat": 23.3890275,
     "lng": 86.2871324,
@@ -26895,7 +31614,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_816",
+    "id": "TP_959",
     "name": "Toll Plaza Sahibganj",
     "lat": 25.2765224,
     "lng": 87.5989364,
@@ -26928,7 +31647,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_817",
+    "id": "TP_960",
     "name": "Haldu toll plaza - bankura zilla parisod",
     "lat": 23.0669111,
     "lng": 87.5175223,
@@ -26961,7 +31680,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_818",
+    "id": "TP_961",
     "name": "Ramjibanpur Toll Booth",
     "lat": 22.825004,
     "lng": 87.6248563,
@@ -26994,7 +31713,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_819",
+    "id": "TP_962",
+    "name": "Karalaghat Bridge Toll Plaza",
+    "lat": 23.0693789,
+    "lng": 87.9839952,
+    "state": "West Bengal",
+    "district": "Karalaghat Bazar, Kalera",
+    "nhCorridor": "National Highway",
+    "baseRate": 155,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 155,
+      "LCV": 250,
+      "BUS_2AXLE": 510,
+      "COM_3AXLE": 560,
+      "MAV_4_6": 805,
+      "OVERSIZED": 990,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 230,
+      "LCV": 370,
+      "BUS_2AXLE": 765,
+      "COM_3AXLE": 835,
+      "MAV_4_6": 1210,
+      "OVERSIZED": 1490,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_963",
     "name": "Akhrasal Temporary bridge Toll Plaza",
     "lat": 23.1200577,
     "lng": 87.4719701,
@@ -27027,7 +31779,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_820",
+    "id": "TP_964",
     "name": "Korai toll tax",
     "lat": 25.1419479,
     "lng": 85.4833883,
@@ -27060,7 +31812,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_821",
+    "id": "TP_965",
     "name": "Mirjapur Toll Ghat",
     "lat": 22.6474061,
     "lng": 86.9972831,
@@ -27093,7 +31845,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_822",
+    "id": "TP_966",
     "name": "Toll tax plaza ,Narayanpur",
     "lat": 25.2743392,
     "lng": 84.2344506,
@@ -27126,7 +31878,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_823",
+    "id": "TP_967",
     "name": "Khandadhar falls toll gate,Banai,Sundergarh",
     "lat": 21.767599,
     "lng": 85.1060059,
@@ -27159,7 +31911,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_824",
+    "id": "TP_968",
     "name": "Toll Booth Service Haspura",
     "lat": 25.0565367,
     "lng": 84.5487193,
@@ -27192,7 +31944,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_825",
+    "id": "TP_969",
     "name": "Dubrajpur Municipality Toll Tax Collection",
     "lat": 23.7846996,
     "lng": 87.368129,
@@ -27225,7 +31977,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_826",
+    "id": "TP_970",
     "name": "Kanchrapara Municipality Toll Booth 3",
     "lat": 22.9509959,
     "lng": 88.4449058,
@@ -27258,7 +32010,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_827",
+    "id": "TP_971",
+    "name": "Toll plaza",
+    "lat": 22.0018364,
+    "lng": 86.1457062,
+    "state": "Odisha",
+    "district": "Begunia",
+    "nhCorridor": "National Highway",
+    "baseRate": 145,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 145,
+      "LCV": 230,
+      "BUS_2AXLE": 480,
+      "COM_3AXLE": 520,
+      "MAV_4_6": 755,
+      "OVERSIZED": 930,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 220,
+      "LCV": 350,
+      "BUS_2AXLE": 720,
+      "COM_3AXLE": 785,
+      "MAV_4_6": 1130,
+      "OVERSIZED": 1390,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_972",
     "name": "Paradip Port Toll Gate",
     "lat": 20.2909668,
     "lng": 86.6504228,
@@ -27291,7 +32076,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_828",
+    "id": "TP_973",
     "name": "Panikholi Toll Plaza",
     "lat": 20.897931,
     "lng": 86.2163658,
@@ -27324,7 +32109,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_829",
+    "id": "TP_974",
     "name": "Rajghat ,Toll Gate",
     "lat": 21.7649343,
     "lng": 87.1566842,
@@ -27357,7 +32142,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_830",
+    "id": "TP_975",
     "name": "Baliapala Ghata A",
     "lat": 20.9588673,
     "lng": 86.8045593,
@@ -27390,7 +32175,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_831",
+    "id": "TP_976",
+    "name": "Parking Area,Lakshannath Toll Plaza",
+    "lat": 21.8297872,
+    "lng": 87.2423827,
+    "state": "Odisha",
+    "district": "Kismatlakshmannath",
+    "nhCorridor": "National Highway",
+    "baseRate": 140,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 225,
+      "BUS_2AXLE": 460,
+      "COM_3AXLE": 505,
+      "MAV_4_6": 730,
+      "OVERSIZED": 895,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 210,
+      "LCV": 335,
+      "BUS_2AXLE": 695,
+      "COM_3AXLE": 755,
+      "MAV_4_6": 1090,
+      "OVERSIZED": 1345,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_977",
     "name": "Hasanpur Toll Plaza (- Panikoili Highway)",
     "lat": 21.1506607,
     "lng": 86.1183477,
@@ -27423,7 +32241,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_832",
+    "id": "TP_978",
     "name": "Adani Dhamra port Check Gate",
     "lat": 20.8192559,
     "lng": 86.9437362,
@@ -27456,7 +32274,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_833",
+    "id": "TP_979",
     "name": "Mituani Toll Plaza",
     "lat": 20.9456125,
     "lng": 86.3298281,
@@ -27489,7 +32307,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_834",
+    "id": "TP_980",
     "name": "RIDCOR Toll Plaza",
     "lat": 26.9631578,
     "lng": 76.5786219,
@@ -27522,7 +32340,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_835",
+    "id": "TP_981",
+    "name": "Alwar Interchange Toll Plaza 2",
+    "lat": 27.4876875,
+    "lng": 76.8454375,
+    "state": "Rajasthan",
+    "district": "Bedha, Seetal",
+    "nhCorridor": "National Highway",
+    "baseRate": 140,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 225,
+      "BUS_2AXLE": 460,
+      "COM_3AXLE": 505,
+      "MAV_4_6": 730,
+      "OVERSIZED": 895,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 210,
+      "LCV": 335,
+      "BUS_2AXLE": 695,
+      "COM_3AXLE": 755,
+      "MAV_4_6": 1090,
+      "OVERSIZED": 1345,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_982",
     "name": "Toll Booth 1",
     "lat": 26.8996542,
     "lng": 75.8471545,
@@ -27555,7 +32406,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_836",
+    "id": "TP_983",
+    "name": "Dausa Toll Fee Plaza",
+    "lat": 26.9133118,
+    "lng": 76.4264126,
+    "state": "Rajasthan",
+    "district": "Parli",
+    "nhCorridor": "National Highway",
+    "baseRate": 80,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 80,
+      "LCV": 130,
+      "BUS_2AXLE": 265,
+      "COM_3AXLE": 290,
+      "MAV_4_6": 415,
+      "OVERSIZED": 510,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_984",
+    "name": "6 LANE GKC TOLL PLAZA",
+    "lat": 26.3566875,
+    "lng": 82.2604375,
+    "state": "Uttar Pradesh",
+    "district": "Pidhi",
+    "nhCorridor": "National Highway",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_985",
     "name": "Talgram toll",
     "lat": 27.0708105,
     "lng": 79.6535088,
@@ -27588,7 +32505,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_837",
+    "id": "TP_986",
     "name": "Gumanpura toll plaza",
     "lat": 25.9926,
     "lng": 75.9385476,
@@ -27621,7 +32538,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_838",
+    "id": "TP_987",
     "name": "Toll plaza jokhawas",
     "lat": 28.1053915,
     "lng": 76.708219,
@@ -27654,7 +32571,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_839",
+    "id": "TP_988",
     "name": "MCD Toll Tax Booth-Apsara Border",
     "lat": 28.6762034,
     "lng": 77.3190177,
@@ -27687,7 +32604,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_840",
+    "id": "TP_989",
     "name": "Dasna Toll Plaza",
     "lat": 28.7076586,
     "lng": 77.5180453,
@@ -27720,7 +32637,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_841",
+    "id": "TP_990",
     "name": "Bhadari Toll plaza / Akhtiyari Kotila",
     "lat": 25.6705616,
     "lng": 81.5608172,
@@ -27753,7 +32670,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_842",
+    "id": "TP_991",
     "name": "Bad Ka Pada Toll Booth No. 1",
     "lat": 26.5282298,
     "lng": 76.2476636,
@@ -27786,7 +32703,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_843",
+    "id": "TP_992",
     "name": "Daulatpura Toll Plaza rajasthan",
     "lat": 25.8837531,
     "lng": 76.5303629,
@@ -27819,7 +32736,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_844",
+    "id": "TP_993",
     "name": "Haryana toll booth",
     "lat": 28.5427779,
     "lng": 77.0128757,
@@ -27852,7 +32769,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_845",
+    "id": "TP_994",
     "name": "NHAI Toll Plaza (Jhinjoli, Haryana)",
     "lat": 28.8501371,
     "lng": 77.0185828,
@@ -27885,7 +32802,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_846",
+    "id": "TP_995",
+    "name": "Alwar Interchange Toll Plaza 3",
+    "lat": 27.4834375,
+    "lng": 76.8431875,
+    "state": "Rajasthan",
+    "district": "Seetal",
+    "nhCorridor": "National Highway",
+    "baseRate": 140,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 225,
+      "BUS_2AXLE": 460,
+      "COM_3AXLE": 505,
+      "MAV_4_6": 730,
+      "OVERSIZED": 895,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 210,
+      "LCV": 335,
+      "BUS_2AXLE": 695,
+      "COM_3AXLE": 755,
+      "MAV_4_6": 1090,
+      "OVERSIZED": 1345,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_996",
     "name": "Umari Toll Plaza",
     "lat": 26.5138133,
     "lng": 78.9163699,
@@ -27918,7 +32868,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_847",
+    "id": "TP_997",
     "name": "Toll Plaza mode",
     "lat": 22.7963627,
     "lng": 86.1349422,
@@ -27951,7 +32901,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_848",
+    "id": "TP_998",
     "name": "Municipal Toll",
     "lat": 23.2411388,
     "lng": 87.072621,
@@ -27984,7 +32934,73 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_849",
+    "id": "TP_999",
+    "name": "Sijua Nachipur Kangsabati Toll",
+    "lat": 22.6407205,
+    "lng": 87.0078544,
+    "state": "West Bengal",
+    "district": "Sijua",
+    "nhCorridor": "National Highway",
+    "baseRate": 105,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 105,
+      "LCV": 170,
+      "BUS_2AXLE": 345,
+      "COM_3AXLE": 380,
+      "MAV_4_6": 545,
+      "OVERSIZED": 670,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 250,
+      "BUS_2AXLE": 520,
+      "COM_3AXLE": 565,
+      "MAV_4_6": 820,
+      "OVERSIZED": 1010,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1000",
+    "name": "Kuliana Toll Gate",
+    "lat": 22.06981,
+    "lng": 86.644755,
+    "state": "Odisha",
+    "district": "Kuliana, Bangan",
+    "nhCorridor": "National Highway",
+    "baseRate": 160,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 160,
+      "LCV": 255,
+      "BUS_2AXLE": 530,
+      "COM_3AXLE": 575,
+      "MAV_4_6": 830,
+      "OVERSIZED": 1025,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 240,
+      "LCV": 385,
+      "BUS_2AXLE": 790,
+      "COM_3AXLE": 865,
+      "MAV_4_6": 1250,
+      "OVERSIZED": 1535,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1001",
     "name": "Toll Tax",
     "lat": 24.158078,
     "lng": 87.776638,
@@ -28017,7 +33033,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_850",
+    "id": "TP_1002",
     "name": "Toll",
     "lat": 22.8795482,
     "lng": 88.0131272,
@@ -28050,7 +33066,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_851",
+    "id": "TP_1003",
     "name": "Dankuni New Toll ডানকুনি টোল প্লাজা",
     "lat": 22.6809296,
     "lng": 88.2970142,
@@ -28083,7 +33099,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_852",
+    "id": "TP_1004",
     "name": "Toll Gate",
     "lat": 23.1863957,
     "lng": 88.0457213,
@@ -28116,7 +33132,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_853",
+    "id": "TP_1005",
     "name": "KONNAGAR UNDERPASS TOLL",
     "lat": 22.702456,
     "lng": 88.3427918,
@@ -28149,7 +33165,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_854",
+    "id": "TP_1006",
+    "name": "Land Mejia Toll Gate",
+    "lat": 23.5352027,
+    "lng": 87.1275224,
+    "state": "West Bengal",
+    "district": "",
+    "nhCorridor": "National Highway",
+    "baseRate": 80,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 80,
+      "LCV": 130,
+      "BUS_2AXLE": 265,
+      "COM_3AXLE": 290,
+      "MAV_4_6": 415,
+      "OVERSIZED": 510,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1007",
     "name": "Daffi Toll Plaza",
     "lat": 25.2482943,
     "lng": 82.9940423,
@@ -28182,7 +33231,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_855",
+    "id": "TP_1008",
     "name": "Pakur nagar parishad bus stand toll tax",
     "lat": 24.6372886,
     "lng": 87.83328,
@@ -28215,7 +33264,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_856",
+    "id": "TP_1009",
     "name": "Ghanghri Toll Plaza",
     "lat": 24.0301408,
     "lng": 85.9486174,
@@ -28248,7 +33297,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_857",
+    "id": "TP_1010",
+    "name": "RWB Meet Up Point - Dankuni Toll Gate",
+    "lat": 22.7001357,
+    "lng": 88.2881522,
+    "state": "West Bengal",
+    "district": "Dankuni",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1011",
     "name": "Rasoiya Dhamna Toll Plaza",
     "lat": 24.3234251,
     "lng": 85.3880896,
@@ -28281,7 +33363,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_858",
+    "id": "TP_1012",
     "name": "Toll astrologer",
     "lat": 22.5179872,
     "lng": 86.5442612,
@@ -28314,7 +33396,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_859",
+    "id": "TP_1013",
+    "name": "Nivedita Setu Toll Plaza",
+    "lat": 22.6542852,
+    "lng": 88.3250598,
+    "state": "West Bengal",
+    "district": "Howrah",
+    "nhCorridor": "National Highway",
+    "baseRate": 120,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 180,
+      "LCV": 290,
+      "BUS_2AXLE": 595,
+      "COM_3AXLE": 650,
+      "MAV_4_6": 935,
+      "OVERSIZED": 1150,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1014",
     "name": "RIDCOR Toll Plaza",
     "lat": 27.6887254,
     "lng": 76.7152442,
@@ -28347,7 +33462,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_860",
+    "id": "TP_1015",
     "name": "Toll Plaza Baswaha...",
     "lat": 25.7157641,
     "lng": 78.702261,
@@ -28380,7 +33495,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_861",
+    "id": "TP_1016",
     "name": "Badagaon Toll Plaza on 730NH",
     "lat": 27.5056676,
     "lng": 82.3744962,
@@ -28413,7 +33528,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_862",
+    "id": "TP_1017",
     "name": "Radhe Krishna uriya pump adblu",
     "lat": 27.0897322,
     "lng": 75.7414433,
@@ -28446,7 +33561,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_863",
+    "id": "TP_1018",
     "name": "HITAUTA TOLL PLAZA",
     "lat": 28.2640625,
     "lng": 80.2507656,
@@ -28479,7 +33594,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_864",
+    "id": "TP_1019",
     "name": "Toll Plaza Charkhi Dadri",
     "lat": 28.6060909,
     "lng": 76.3049097,
@@ -28512,7 +33627,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_865",
+    "id": "TP_1020",
+    "name": "Toll Plaza 2",
+    "lat": 28.3035984,
+    "lng": 76.2228119,
+    "state": "Haryana",
+    "district": "Buchawas",
+    "nhCorridor": "National Highway",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1021",
     "name": "Akwabad Toll Booth",
     "lat": 26.3392488,
     "lng": 80.7054303,
@@ -28545,7 +33693,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_866",
+    "id": "TP_1022",
     "name": "Toll Plaza 3",
     "lat": 28.8251422,
     "lng": 76.3472118,
@@ -28578,7 +33726,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_867",
+    "id": "TP_1023",
     "name": "Jewar Toll Plaza",
     "lat": 28.1433598,
     "lng": 77.5724851,
@@ -28611,7 +33759,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_868",
+    "id": "TP_1024",
     "name": "Road Toll Tax Booth",
     "lat": 28.93758,
     "lng": 76.3999011,
@@ -28644,7 +33792,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_869",
+    "id": "TP_1025",
     "name": "M. C. D. Toll Tax- Auchandi Border",
     "lat": 28.8295658,
     "lng": 76.9864076,
@@ -28677,7 +33825,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_870",
+    "id": "TP_1026",
     "name": "Ratwai Toll Plaza Gwalior",
     "lat": 26.2424187,
     "lng": 78.3130923,
@@ -28710,7 +33858,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_871",
+    "id": "TP_1027",
     "name": "Toll Plaza 3",
     "lat": 27.0387186,
     "lng": 78.3351684,
@@ -28743,7 +33891,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_872",
+    "id": "TP_1028",
     "name": "Banda Toll Plaza54",
     "lat": 25.5445306,
     "lng": 80.369208,
@@ -28776,7 +33924,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_873",
+    "id": "TP_1029",
     "name": "MCD toll booth",
     "lat": 28.7144161,
     "lng": 76.9567663,
@@ -28809,7 +33957,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_874",
+    "id": "TP_1030",
     "name": "Rehan kalan Toll plaza (ADA)",
     "lat": 27.2017667,
     "lng": 78.1147842,
@@ -28842,7 +33990,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_875",
+    "id": "TP_1031",
     "name": "CNG MCD Toll booth",
     "lat": 28.6189232,
     "lng": 77.3415342,
@@ -28875,7 +34023,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_876",
+    "id": "TP_1032",
+    "name": "Jewar Toll Plaza",
+    "lat": 28.114599,
+    "lng": 77.574799,
+    "state": "Uttar Pradesh",
+    "district": "",
+    "nhCorridor": "National Highway",
+    "baseRate": 95,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 95,
+      "LCV": 150,
+      "BUS_2AXLE": 315,
+      "COM_3AXLE": 340,
+      "MAV_4_6": 495,
+      "OVERSIZED": 610,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 140,
+      "LCV": 230,
+      "BUS_2AXLE": 470,
+      "COM_3AXLE": 515,
+      "MAV_4_6": 740,
+      "OVERSIZED": 910,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1033",
     "name": "Mathani Toll Plaza",
     "lat": 21.1400414,
     "lng": 79.3651625,
@@ -28908,7 +34089,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_877",
+    "id": "TP_1034",
     "name": "Durg Bypass Toll Plaza (Dhamdhanaka)",
     "lat": 21.2144833,
     "lng": 81.2879701,
@@ -28941,7 +34122,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_878",
+    "id": "TP_1035",
     "name": "Mahagaon Toll Plaza",
     "lat": 20.2347011,
     "lng": 78.0178005,
@@ -28974,7 +34155,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_879",
+    "id": "TP_1036",
     "name": "Toll Plaza Brahmapuri",
     "lat": 20.6065573,
     "lng": 79.8238829,
@@ -29007,7 +34188,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_880",
+    "id": "TP_1037",
     "name": "Gamjal Toll Plaza",
     "lat": 19.0266552,
     "lng": 78.3626903,
@@ -29040,7 +34221,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_881",
+    "id": "TP_1038",
     "name": "Pusla toll naka",
     "lat": 21.4966152,
     "lng": 78.354355,
@@ -29073,7 +34254,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_882",
+    "id": "TP_1039",
     "name": "Selu Toll Plaza Kalmeshwar, Nagpur",
     "lat": 21.1929623,
     "lng": 78.8962471,
@@ -29106,7 +34287,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_883",
+    "id": "TP_1040",
     "name": "Taroda-Kasba Toll Plaza",
     "lat": 20.6657677,
     "lng": 76.7200875,
@@ -29139,7 +34320,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_884",
+    "id": "TP_1041",
     "name": "Toll Plaza 4",
     "lat": 20.8034737,
     "lng": 78.595433,
@@ -29172,7 +34353,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_885",
+    "id": "TP_1042",
     "name": "Nandori Toll Plaza",
     "lat": 20.2002253,
     "lng": 79.0293568,
@@ -29205,7 +34386,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_886",
+    "id": "TP_1043",
     "name": "Atlanta Toll Tax (Amrawati Highway)",
     "lat": 21.1368859,
     "lng": 78.8965705,
@@ -29238,7 +34419,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_887",
+    "id": "TP_1044",
     "name": "Toll Plaza DBC",
     "lat": 20.5501086,
     "lng": 78.3916995,
@@ -29271,7 +34452,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_888",
+    "id": "TP_1045",
     "name": "New Katol Naka Toll",
     "lat": 21.1841854,
     "lng": 79.0321168,
@@ -29304,7 +34485,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_889",
+    "id": "TP_1046",
     "name": "Dighori toll naka,",
     "lat": 21.1036478,
     "lng": 79.1454067,
@@ -29337,7 +34518,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_890",
+    "id": "TP_1047",
     "name": "TOLL PLAZA BIJORA",
     "lat": 19.7133125,
     "lng": 77.7295625,
@@ -29370,7 +34551,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_891",
+    "id": "TP_1048",
     "name": "Beliyad Toll Plaza",
     "lat": 23.7636242,
     "lng": 86.7979447,
@@ -29403,7 +34584,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_892",
+    "id": "TP_1049",
     "name": "Kishorpur Toll Plaza",
     "lat": 24.5632458,
     "lng": 88.0198369,
@@ -29436,7 +34617,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_893",
+    "id": "TP_1050",
     "name": "Toll Plaza Asansol",
     "lat": 23.720119,
     "lng": 86.9382898,
@@ -29469,7 +34650,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_894",
+    "id": "TP_1051",
     "name": "Sasaram Toll Plaza",
     "lat": 24.9571069,
     "lng": 83.9549525,
@@ -29502,7 +34683,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_895",
+    "id": "TP_1052",
     "name": "Mohania Toll Plaza",
     "lat": 25.1882628,
     "lng": 83.5615181,
@@ -29535,7 +34716,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_896",
+    "id": "TP_1053",
+    "name": "Adityapur Toll Plaza",
+    "lat": 22.7997778,
+    "lng": 86.1437746,
+    "state": "Jharkhand",
+    "district": "Jamshedpur",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1054",
     "name": "Gopgram Toll Plaza",
     "lat": 24.1506338,
     "lng": 88.1864109,
@@ -29568,7 +34782,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_897",
+    "id": "TP_1055",
+    "name": "Netaji Nagar",
+    "lat": 22.3472335,
+    "lng": 87.8655095,
+    "state": "West Bengal",
+    "district": "Soya Dighi",
+    "nhCorridor": "NH-116",
+    "baseRate": 85,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 85,
+      "LCV": 135,
+      "BUS_2AXLE": 280,
+      "COM_3AXLE": 305,
+      "MAV_4_6": 440,
+      "OVERSIZED": 545,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 130,
+      "LCV": 205,
+      "BUS_2AXLE": 420,
+      "COM_3AXLE": 460,
+      "MAV_4_6": 665,
+      "OVERSIZED": 815,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1056",
     "name": "Gobindpur toll plaza",
     "lat": 21.769857,
     "lng": 83.6808993,
@@ -29601,7 +34848,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_898",
+    "id": "TP_1057",
+    "name": "Khireitangiri toll plaza office",
+    "lat": 21.7062832,
+    "lng": 85.6968208,
+    "state": "Odisha",
+    "district": "Khireitangiri",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1058",
     "name": "Balgudar Toll Plaza",
     "lat": 25.2023832,
     "lng": 86.0819094,
@@ -29634,7 +34914,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_899",
+    "id": "TP_1059",
     "name": "Toll Plaza, Chopan Bridge",
     "lat": 24.5408209,
     "lng": 83.02185,
@@ -29667,7 +34947,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_900",
+    "id": "TP_1060",
     "name": "TOLL Coaching center",
     "lat": 23.1337317,
     "lng": 88.7386617,
@@ -29700,7 +34980,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_901",
+    "id": "TP_1061",
+    "name": "Nit toll bridge",
+    "lat": 22.7995687,
+    "lng": 86.1448538,
+    "state": "Jharkhand",
+    "district": "Jamshedpur",
+    "nhCorridor": "National Highway",
+    "baseRate": 110,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 175,
+      "BUS_2AXLE": 365,
+      "COM_3AXLE": 395,
+      "MAV_4_6": 570,
+      "OVERSIZED": 705,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 165,
+      "LCV": 265,
+      "BUS_2AXLE": 545,
+      "COM_3AXLE": 595,
+      "MAV_4_6": 860,
+      "OVERSIZED": 1055,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1062",
     "name": "DMC Road Toll Plaza",
     "lat": 23.5197095,
     "lng": 87.2679741,
@@ -29733,7 +35046,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_902",
+    "id": "TP_1063",
+    "name": "DMC Toll Booth",
+    "lat": 23.5046516,
+    "lng": 87.2974917,
+    "state": "West Bengal",
+    "district": "Durgapur",
+    "nhCorridor": "National Highway",
+    "baseRate": 80,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 80,
+      "LCV": 130,
+      "BUS_2AXLE": 265,
+      "COM_3AXLE": 290,
+      "MAV_4_6": 415,
+      "OVERSIZED": 510,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 120,
+      "LCV": 190,
+      "BUS_2AXLE": 395,
+      "COM_3AXLE": 430,
+      "MAV_4_6": 625,
+      "OVERSIZED": 770,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1064",
     "name": "Nandgaon Peth Toll Plaza.",
     "lat": 21.0104352,
     "lng": 77.8130008,
@@ -29766,7 +35112,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_903",
+    "id": "TP_1065",
     "name": "Samruddhi Malegaon Terminal Toll booth",
     "lat": 20.2833977,
     "lng": 76.9721621,
@@ -29799,7 +35145,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_904",
+    "id": "TP_1066",
     "name": "Sindkhed Raja IC 13 Toll Plaza, Samruddhi Mahamarg",
     "lat": 19.9703874,
     "lng": 76.0988573,
@@ -29832,7 +35178,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_905",
+    "id": "TP_1067",
     "name": "KKBP Toll Plaza",
     "lat": 21.2446096,
     "lng": 79.2490904,
@@ -29865,7 +35211,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_906",
+    "id": "TP_1068",
     "name": "NH Toll Booth, Pargaon",
     "lat": 18.6288342,
     "lng": 75.6978366,
@@ -29898,7 +35244,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_907",
+    "id": "TP_1069",
     "name": "Tuptakli Toll Plaza",
     "lat": 20.0780508,
     "lng": 77.7638339,
@@ -29931,7 +35277,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_908",
+    "id": "TP_1070",
     "name": "Medshi Swarkheda Toll Plaza",
     "lat": 20.3629867,
     "lng": 76.9323917,
@@ -29964,7 +35310,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_909",
+    "id": "TP_1071",
     "name": "Pardi makta Toll Plaza",
     "lat": 19.3355002,
     "lng": 77.387994,
@@ -29997,7 +35343,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_910",
+    "id": "TP_1072",
     "name": "NHAI FASTAG TOLL PLAZA- RAEBARELI",
     "lat": 26.5246249,
     "lng": 81.0663166,
@@ -30030,7 +35376,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_911",
+    "id": "TP_1073",
+    "name": "Etawah Chakeri Toll Gate",
+    "lat": 26.5945216,
+    "lng": 79.2681988,
+    "state": "Uttar Pradesh",
+    "district": "Mahmudpur Paigupur, Phoolpur",
+    "nhCorridor": "NH-19",
+    "baseRate": 75,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 75,
+      "LCV": 120,
+      "BUS_2AXLE": 250,
+      "COM_3AXLE": 270,
+      "MAV_4_6": 390,
+      "OVERSIZED": 480,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 110,
+      "LCV": 180,
+      "BUS_2AXLE": 370,
+      "COM_3AXLE": 405,
+      "MAV_4_6": 585,
+      "OVERSIZED": 720,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1074",
     "name": "BHALKHI Toll Plaza NH152D",
     "lat": 28.2122141,
     "lng": 76.1940523,
@@ -30063,7 +35442,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_912",
+    "id": "TP_1075",
     "name": "Toll Tax MCD",
     "lat": 28.7124779,
     "lng": 77.287274,
@@ -30096,7 +35475,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_913",
+    "id": "TP_1076",
+    "name": "Achina Toll Plaza",
+    "lat": 28.6408911,
+    "lng": 76.3826226,
+    "state": "Haryana",
+    "district": "Achina",
+    "nhCorridor": "NH-334B",
+    "baseRate": 135,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 135,
+      "LCV": 215,
+      "BUS_2AXLE": 445,
+      "COM_3AXLE": 485,
+      "MAV_4_6": 700,
+      "OVERSIZED": 865,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 200,
+      "LCV": 325,
+      "BUS_2AXLE": 670,
+      "COM_3AXLE": 730,
+      "MAV_4_6": 1055,
+      "OVERSIZED": 1295,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1077",
     "name": "Toll Plaza 3",
     "lat": 25.6313812,
     "lng": 79.6970976,
@@ -30129,7 +35541,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_914",
+    "id": "TP_1078",
     "name": "M.C.D. Toll Tax Plaza Harewali-1",
     "lat": 28.8347307,
     "lng": 77.0069078,
@@ -30162,7 +35574,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_915",
+    "id": "TP_1079",
     "name": "Bawani Khera Toll Plaza",
     "lat": 28.9802101,
     "lng": 76.0178566,
@@ -30195,7 +35607,7 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_916",
+    "id": "TP_1080",
     "name": "Yamuna Expressway Toll Plaza",
     "lat": 27.3031437,
     "lng": 78.0039725,
@@ -30228,7 +35640,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_917",
+    "id": "TP_1081",
+    "name": "Loni Boder MCD Toll Tax Booth",
+    "lat": 28.7031573,
+    "lng": 77.2916162,
+    "state": "Delhi",
+    "district": "Delhi",
+    "nhCorridor": "National Highway",
+    "baseRate": 155,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 155,
+      "LCV": 250,
+      "BUS_2AXLE": 510,
+      "COM_3AXLE": 560,
+      "MAV_4_6": 805,
+      "OVERSIZED": 990,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 230,
+      "LCV": 370,
+      "BUS_2AXLE": 765,
+      "COM_3AXLE": 835,
+      "MAV_4_6": 1210,
+      "OVERSIZED": 1490,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1082",
     "name": "Kair, Delhi - Haryana Toll Naka",
     "lat": 28.630531,
     "lng": 76.9173705,
@@ -30261,7 +35706,40 @@ const TollSeedData = [
     }
   },
   {
-    "id": "TP_918",
+    "id": "TP_1083",
+    "name": "Kherli Jita Toll Plaza",
+    "lat": 28.1896403,
+    "lng": 77.1721843,
+    "state": "Haryana",
+    "district": "Atta, Uleta",
+    "nhCorridor": "NH-148N",
+    "baseRate": 100,
+    "lanesInbound": 3,
+    "lanesOutbound": 3,
+    "totalLanes": 6,
+    "directionA": "Inbound (Entry / Direction A)",
+    "directionB": "Outbound (Exit / Opposite Direction B)",
+    "tollRatesByVehicleClass": {
+      "LMV": 100,
+      "LCV": 160,
+      "BUS_2AXLE": 330,
+      "COM_3AXLE": 360,
+      "MAV_4_6": 520,
+      "OVERSIZED": 640,
+      "BIKE": 0
+    },
+    "returnRatesByVehicleClass": {
+      "LMV": 150,
+      "LCV": 240,
+      "BUS_2AXLE": 495,
+      "COM_3AXLE": 540,
+      "MAV_4_6": 780,
+      "OVERSIZED": 960,
+      "BIKE": 0
+    }
+  },
+  {
+    "id": "TP_1084",
     "name": "Jalna nidhona samruddhi toll entry - towards mumbai",
     "lat": 19.8859027,
     "lng": 75.8386258,

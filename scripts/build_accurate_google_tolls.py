@@ -75,20 +75,18 @@ for idx, row in df.iterrows():
 
 print(f"Parsed {len(tolls_raw)} valid Indian toll candidates.")
 
-# Consolidate near-identical toll gantries within 1.5 km or same name within 5km
+# Consolidate duplicate records within 80 meters (exact dual gantry offset)
 consolidated = []
 for t in tolls_raw:
-    norm_name = re.sub(r'[^a-z0-9]', '', t['name'].lower())
     lat1, lng1 = t['lat'], t['lng']
     
     existing = None
     for m in consolidated:
-        m_norm = re.sub(r'[^a-z0-9]', '', m['name'].lower())
         d_lat = (m['lat'] - lat1) * 111.0
         d_lng = (m['lng'] - lng1) * 111.0 * math.cos(math.radians(lat1))
         dist_km = math.sqrt(d_lat * d_lat + d_lng * d_lng)
         
-        if (norm_name == m_norm and dist_km < 8.0) or dist_km < 1.8:
+        if dist_km < 0.08:
             existing = m
             break
             
