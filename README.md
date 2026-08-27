@@ -58,10 +58,30 @@ Since the platform is entirely built on front-end technologies without the need 
 
 ---
 
+---
+
+## 🔬 Technical Contribution: Adaptive Multi-Signal Recommendation Engine
+
+This project implements a custom multi-signal fusion algorithm ([`js/shared/adaptiveLaneEngine.js`](js/shared/adaptiveLaneEngine.js)) that couples longitudinal FASTag wallet depletion forecasting, meteorological and time-of-day congestion multipliers, and closed-loop incident risk scoring with exponential temporal decay.
+
+The complete engineering architecture, formal mathematical formulation, pseudocode, prior art comparisons, and data flow diagrams are documented in:
+👉 **[Technical Invention Disclosure (`docs/INVENTION-DISCLOSURE.md`)](docs/INVENTION-DISCLOSURE.md)**
+
+> **Notice:** This document describes a specific algorithmic mechanism implemented in this project. It has not been reviewed by a patent attorney or checked against a professional prior-art database; it is provided as engineering documentation, not a legal claim of patentability.
+
+### Running Unit Tests
+The multi-signal fusion engine includes an automated unit test suite covering cold-starts, balance depletion edge cases, false alarm decay dynamics, and severe storm rerouting:
+```bash
+node tests/test_adaptive_engine.js
+```
+
+---
+
 ## 🏆 Resume Highlight Points (CV-Worthy)
 - **Architected a Client-Side Distributed System:** Engineered a dual-portal NHAI highway management simulation utilizing `localStorage` events to achieve real-time, cross-tab state synchronization mimicking WebSockets.
 - **Implemented Graph-Based Routing Engine:** Developed a custom weighted graph incorporating Dijkstra’s algorithm to power a multi-modal planner optimizing for 'Lowest Toll', 'Fastest Speed', and 'Balanced' travel routes using live Leaflet.js mapping.
 - **Designed Complex Toll & Pass Engine:** Created an intelligent FASTag toll deduction and simulation system factoring in dynamic NHAI-style vehicle classes, pre-registered special exemptions, and automated recommendations for monthly/annual route passes.
+- **Engineered Multi-Signal Decision Arbitration:** Built an auditable tri-signal recommendation core fusing exponential moving average wallet burn rates, time-of-day congestion vectors, and decaying emergency incident signals into deterministic corridor/pass advisories.
 
 ---
 

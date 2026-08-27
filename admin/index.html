@@ -326,6 +326,14 @@
                 <p style="font-size:12px; color:var(--text-sec); margin-bottom:15px;">Incident <b id="res-modal-id-text"></b> requires a valid image proof and resolution notes to be closed.</p>
                 
                 <div style="margin-bottom:15px;">
+                    <label style="font-size:11px; font-weight:bold; color:var(--text-main);">Incident Verification Classification *</label>
+                    <select id="res-verification-type" class="w-full" style="background:var(--bg-dark); color:#fff; border:1px solid var(--border); border-radius:4px; padding:8px; font-size:11.5px; margin-top:5px;">
+                        <option value="CONFIRMED">✅ Confirmed Real Hazard (Accident / Breakdown / Obstruction)</option>
+                        <option value="FALSE_ALARM">⚠️ False Alarm / Erroneous Report (Dismiss with negative risk weight)</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom:15px;">
                     <label style="font-size:11px; font-weight:bold; color:var(--text-main);">Upload Resolution Image *</label>
                     <input type="file" id="res-image-upload" accept="image/*" class="w-full" style="font-size:11px; margin-top:5px; padding:10px; background:rgba(0,0,0,0.3); border:1px dashed var(--border); border-radius:4px;">
                 </div>
@@ -352,7 +360,9 @@
     <script src="../js/shared/indiaMapData.js?v=20260823_v33"></script>
     <script src="../js/shared/tollSeedData.js?v=20260823_v33"></script>
     <script src="../js/shared/tollData.js?v=20260823_v33"></script>
+    <script src="../js/shared/weatherEngine.js?v=20260823_v33"></script>
     <script src="../js/shared/cctvFeedEngine.js?v=20260823_v33"></script>
+    <script src="../js/shared/adaptiveLaneEngine.js?v=20260827_v1"></script>
 
     <!-- Admin dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>

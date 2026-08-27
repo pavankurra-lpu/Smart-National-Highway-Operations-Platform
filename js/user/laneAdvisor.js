@@ -237,6 +237,65 @@ const LaneAdvisor = {
                 </div>
             </div>
 
+            <!-- Adaptive Multi-Signal Recommendation Engine Banner -->
+            ${(() => {
+                if (!window.AdaptiveLaneEngine) return '';
+                const currentBal = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.FASTAG_BALANCE, 1500) : 1500;
+                const tripHist = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.TRIP_HISTORY, []) : [];
+                const rechHist = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.RECHARGE_HISTORY, []) : [];
+                const emgList = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.EMERGENCIES, []) : [];
+                const weatherSum = (window.WeatherEngine && routeData.nodes) ? WeatherEngine.generateRouteSummary(routeData.nodes) : 'CLEAR';
+
+                const evalRes = AdaptiveLaneEngine.evaluateRoute({
+                    currentBalance: currentBal,
+                    tripHistory: tripHist,
+                    rechargeHistory: rechHist,
+                    proposedTripCost: routeData.totalCost || routeData.totalTollCost || 120,
+                    weatherSummary: weatherSum,
+                    incidents: emgList,
+                    routeCorridors: [td.name, td.nhCorridor, routeData.originName, routeData.destName].filter(Boolean),
+                    tollsOnRoute: routeData.tolls || []
+                });
+
+                const decColors = {
+                    'Switch Route': { border: '#f43f5e', bg: 'rgba(244,63,94,0.12)', text: '#f43f5e', icon: 'fa-diamond-turn-right' },
+                    'Recommend Monthly Pass': { border: '#a855f7', bg: 'rgba(168,85,247,0.12)', text: '#c084fc', icon: 'fa-calendar-check' },
+                    'Recommend Trip Pass': { border: '#fbbf24', bg: 'rgba(251,191,36,0.12)', text: '#fbbf24', icon: 'fa-ticket' },
+                    'No Action': { border: '#10b981', bg: 'rgba(16,185,129,0.12)', text: '#34d399', icon: 'fa-shield-halved' }
+                };
+                const theme = decColors[evalRes.decision] || decColors['No Action'];
+
+                return `
+                    <div style="background: ${theme.bg}; border: 1px solid ${theme.border}; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+                            <div style="font-size:11px; font-weight:800; color:${theme.text}; display:flex; align-items:center; gap:6px;">
+                                <i class="fa-solid ${theme.icon}"></i> ${evalRes.decision}
+                            </div>
+                            <div style="font-size:9.5px; font-weight:700; color:#94a3b8;">
+                                Fusion Score: <strong style="color:#fff;">${evalRes.compositeScore}</strong>
+                            </div>
+                        </div>
+                        <div style="font-size:9.5px; color:#cbd5e1; line-height:1.35; margin-bottom:8px;">
+                            ${evalRes.rationale}
+                        </div>
+                        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px; background:rgba(0,0,0,0.3); padding:6px; border-radius:6px; font-size:9px; text-align:center;">
+                            <div>
+                                <span style="color:#94a3b8; display:block;">FASTag Risk</span>
+                                <strong style="color:${evalRes.signals.s_balance > 0.5 ? '#f43f5e' : '#34d399'};">${(evalRes.signals.s_balance * 100).toFixed(0)}%</strong>
+                            </div>
+                            <div style="border-left: 1px solid rgba(255,255,255,0.08);">
+                                <span style="color:#94a3b8; display:block;">ETA Delay</span>
+                                <strong style="color:${evalRes.signals.s_eta > 0.5 ? '#fbbf24' : '#34d399'};">${(evalRes.signals.s_eta * 100).toFixed(0)}%</strong>
+                            </div>
+                            <div style="border-left: 1px solid rgba(255,255,255,0.08);">
+                                <span style="color:#94a3b8; display:block;">Hazard Decay</span>
+                                <strong style="color:${evalRes.signals.s_incident > 0.4 ? '#f43f5e' : '#34d399'};">${(evalRes.signals.s_incident * 100).toFixed(0)}%</strong>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            })()}
+
             <!-- Lanes List -->
             <div style="display:flex; flex-direction:column;">
                 ${lanesHtml}

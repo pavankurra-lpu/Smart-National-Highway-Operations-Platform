@@ -97,13 +97,14 @@ const Storage = {
         Storage.set(Storage.KEYS.EMERGENCIES, emergencies);
     },
 
-    updateEmergencyStatus: (id, newStatus, adminNote = '', resolutionImage = '') => {
+    updateEmergencyStatus: (id, newStatus, adminNote = '', resolutionImage = '', verificationType = 'CONFIRMED') => {
         const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
         const idx = emergencies.findIndex(e => e.id === id);
         if (idx !== -1) {
             emergencies[idx].status = newStatus;
             if (adminNote) emergencies[idx].adminNote = adminNote;
             if (resolutionImage) emergencies[idx].resolutionImage = resolutionImage;
+            if (verificationType) emergencies[idx].verificationType = verificationType;
             emergencies[idx].updatedAt = new Date().toISOString();
             Storage.set(Storage.KEYS.EMERGENCIES, emergencies);
         }

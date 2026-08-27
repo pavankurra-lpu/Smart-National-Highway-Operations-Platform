@@ -111,25 +111,28 @@ const IncidentCenter = {
     confirmResolution: (id) => {
         const imgInput = document.getElementById('res-image-upload');
         const noteInput = document.getElementById('res-note');
+        const verInput = document.getElementById('res-verification-type');
+        const verificationType = verInput ? verInput.value : 'CONFIRMED';
         
         if (!noteInput.value.trim()) {
             Utils.showToast("Error: Admin Summary Note is mandatory.", "error"); 
             return;
         }
 
-        const note = `[RESOLVED] ${noteInput.value.trim()}`;
+        const tagPrefix = verificationType === 'FALSE_ALARM' ? '[RESOLVED: FALSE ALARM]' : '[RESOLVED: CONFIRMED]';
+        const note = `${tagPrefix} ${noteInput.value.trim()}`;
         
         if (imgInput.files && imgInput.files.length > 0) {
             const file = imgInput.files[0];
             const reader = new FileReader();
             reader.onload = (e) => {
                 const base64Image = e.target.result;
-                Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image);
+                Storage.updateEmergencyStatus(id, 'RESOLVED', note, base64Image, verificationType);
                 IncidentCenter._finalizeResolution(id);
             };
             reader.readAsDataURL(file);
         } else {
-            Storage.updateEmergencyStatus(id, 'RESOLVED', note, '');
+            Storage.updateEmergencyStatus(id, 'RESOLVED', note, '', verificationType);
             IncidentCenter._finalizeResolution(id);
         }
     },
