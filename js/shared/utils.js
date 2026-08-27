@@ -186,15 +186,3 @@ window.toggleNhaiSidebar = function(forceOpen) {
         else if (window.innerWidth <= 768) backdrop.classList.remove('hidden');
     }
 };
-
-// ReactBits Spotlight Pointer Tracking
-document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.spotlight-card, .tc-card, .l-stat, .entry-stat-box, .trip-corridor-card');
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-    });
-});

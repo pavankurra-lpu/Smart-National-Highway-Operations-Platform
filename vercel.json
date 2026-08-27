@@ -2,6 +2,14 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/login", "destination": "/admin/login.html" },
+    { "source": "/login.html", "destination": "/admin/login.html" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/", "destination": "/admin/index.html" },
+    { "source": "/user", "destination": "/user/index.html" },
+    { "source": "/user/", "destination": "/user/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

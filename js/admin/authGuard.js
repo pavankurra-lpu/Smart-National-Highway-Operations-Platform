@@ -1,5 +1,16 @@
+const getAdminLoginPath = () => {
+    const loc = window.location.pathname;
+    if (loc.includes('/admin/')) {
+        return loc.substring(0, loc.lastIndexOf('/admin/') + 7) + 'login.html';
+    }
+    if (loc.endsWith('/admin')) {
+        return loc + '/login.html';
+    }
+    return '/admin/login.html';
+};
+
 if (!sessionStorage.getItem('nhai_admin_auth')) {
-    window.location.replace('login.html');
+    window.location.replace(getAdminLoginPath());
 } else {
     const style = document.createElement('style');
     style.id = 'auth-guard-style';
@@ -16,7 +27,7 @@ if (!sessionStorage.getItem('nhai_admin_auth')) {
             revealUI();
         }).catch(() => {
             revealUI();
-            window.location.replace('login.html');
+            window.location.replace(getAdminLoginPath());
         });
     } else {
         revealUI();
@@ -28,6 +39,6 @@ window.logoutAdmin = () => {
         Auth.logout();
     } else {
         sessionStorage.removeItem('nhai_admin_auth');
-        window.location.href = 'login.html';
+        window.location.href = getAdminLoginPath();
     }
 };

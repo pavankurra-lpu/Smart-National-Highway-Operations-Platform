@@ -805,8 +805,8 @@ path.leaflet-interactive:focus,
 
 .route-field-wrapper input:focus {
     background: rgba(15, 23, 42, 0.95) !important;
-    border-color: #6366f1 !important;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25) !important;
 }
 
 .route-field-icon {
@@ -841,9 +841,9 @@ path.leaflet-interactive:focus,
     transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .route-swap-btn:hover {
-    background: #6366f1;
-    border-color: #6366f1;
-    color: #ffffff;
+    background: #f59e0b;
+    border-color: #f59e0b;
+    color: #0b0f17;
     transform: translateY(-50%) rotate(180deg) scale(1.1);
 }
 
@@ -1066,8 +1066,8 @@ body.light-mode .pref-box {
     transition: .35s;
 }
 input:checked + .slider {
-    background-color: #6366f1;
-    border-color: #6366f1;
+    background-color: #f59e0b;
+    border-color: #f59e0b;
 }
 input:checked + .slider:before {
     background-color: #ffffff;
@@ -1117,15 +1117,15 @@ input:checked + .slider:before {
     transition: all 0.2s ease;
 }
 .btn-sheet-mini:hover {
-    background: rgba(99, 102, 241, 0.25);
+    background: rgba(245, 158, 11, 0.2);
     color: #fff;
-    border-color: #6366f1;
+    border-color: #f59e0b;
 }
 
 /* ===== VOICE BUTTON IN TAB PLAN ===== */
 .btn-voice-header {
-    background: rgba(99, 102, 241, 0.15);
-    border: 1px solid rgba(99, 102, 241, 0.35);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
     border-radius: 20px;
     padding: 3px 10px;
     color: #e0e7ff;

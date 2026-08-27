@@ -5,36 +5,35 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* ===== MAP-SYNCHRONIZED DARK PALETTE (Sleek Obsidian & Zinc Aesthetic) ===== */
+/* ===== VINTAGE HIGHWAY CARTOGRAPHY PALETTE (Warm Slate, Gold & Highway Amber) ===== */
 :root {
-    --bg-dark:        #09090b; /* Zinc-950 Solid Obsidian */
-    --bg-darker:      #050507; /* Pure Deep Canvas */
-    --bg-card:        rgba(18, 18, 23, 0.88); /* Frosted Slate Glass */
-    --bg-panel:       rgba(12, 12, 16, 0.96);
+    --bg-dark:        #0b0f17; /* Deep Slate Highway Canvas */
+    --bg-darker:      #070a0f; /* Pure Dark Horizon */
+    --bg-card:        rgba(16, 22, 34, 0.92); /* Solid Vintage Slate Glass */
+    --bg-panel:       rgba(12, 16, 26, 0.96);
     
-    --primary:        #38bdf8; /* Map Navigation Sky Cyan */
-    --primary-dim:    rgba(56, 189, 248, 0.12);
-    --primary-hover:  #0284c7; /* Deep Blue-Sky */
-    --primary-glow:   rgba(56, 189, 248, 0.25);
+    --primary:        #f59e0b; /* Vintage Highway Amber / Gold */
+    --primary-dim:    rgba(245, 158, 11, 0.12);
+    --primary-hover:  #d97706; /* Classic Warm Bronze */
+    --primary-glow:   rgba(245, 158, 11, 0.25);
     
     --accent-cyan:    #38bdf8; /* Highway Sky */
-    --accent-blue:    #3b82f6; /* Route Line Blue */
-    --accent-violet:  #818cf8; /* Subtle Indigo */
-    --accent-red:     #f43f5e; /* Rose Alert */
-    --accent-yellow:  #fbbf24; /* FASTag Warm Amber */
-    --accent-green:   #10b981; /* Live Traffic Emerald */
+    --accent-blue:    #2563eb; /* Route Polyline Blue */
+    --accent-red:     #ef4444; /* Emergency SOS Red */
+    --accent-yellow:  #f59e0b; /* FASTag Vintage Gold */
+    --accent-green:   #10b981; /* Live Traffic Flow Emerald */
     
-    --text-main:      #f8fafc; /* Slate-50 Pure Crisp */
+    --text-main:      #f8fafc; /* Crisp Clean White */
     --text-sec:       #cbd5e1; /* Slate-300 */
     --text-muted:     #94a3b8; /* Slate-400 */
     
-    --border:         rgba(255, 255, 255, 0.08); /* Subtle Stroke */
+    --border:         rgba(255, 255, 255, 0.08); /* Subtle Structural Line */
     --border-light:   rgba(255, 255, 255, 0.04);
-    --border-glow:    rgba(56, 189, 248, 0.2);
+    --border-glow:    rgba(245, 158, 11, 0.25);
     
     --shadow:         0 10px 30px -8px rgba(0, 0, 0, 0.65);
     --shadow-lg:      0 20px 45px -10px rgba(0, 0, 0, 0.82);
-    --shadow-glow:    0 0 25px -4px rgba(56, 189, 248, 0.2);
+    --shadow-glow:    0 0 25px -4px rgba(245, 158, 11, 0.2);
     
     --font-main:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display:   'Space Grotesk', 'Inter', sans-serif;
@@ -44,8 +43,8 @@
     --radius-lg:      18px;
     --radius-xl:      24px;
 
-    --ring:           #38bdf8;
-    --ring-offset:    #09090b;
+    --ring:           #f59e0b;
+    --ring-offset:    #0b0f17;
 
     --transition:     all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     --glass:          blur(24px) saturate(190%);
@@ -56,13 +55,18 @@
     display: none !important;
 }
 
-/* Official Government of India & NHAI Header Bar */
+/* Map canvas vintage styling */
+.leaflet-container {
+    background: #0b0f17 !important;
+}
+
+/* Official Government of India & NHAI Header Bar with Dandi March Heritage */
 .nhai-official-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 32px;
-    background: #09090b;
+    background: #0b0f17;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     z-index: 1000;
@@ -73,26 +77,20 @@
 .nhai-header-left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
 }
 
 .nhai-emblem-unit {
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.nhai-emblem-svg {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
+    gap: 10px;
 }
 
 .nhai-tricolor-strip {
     display: flex;
     flex-direction: column;
     width: 3px;
-    height: 28px;
+    height: 30px;
     border-radius: 2px;
     overflow: hidden;
     flex-shrink: 0;
@@ -109,26 +107,32 @@
 }
 
 .nhai-text-hindi {
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 11.5px;
+    font-weight: 800;
     color: #ffffff;
     line-height: 1.2;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
 }
 
 .nhai-text-eng {
     font-size: 8.5px;
-    font-weight: 600;
-    color: #94a3b8;
+    font-weight: 700;
+    color: #f59e0b;
     line-height: 1.2;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
 }
 
 .nhai-header-divider {
     width: 1px;
     height: 24px;
     background: rgba(255, 255, 255, 0.15);
-    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+.nhai-authority-unit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .nhai-text-authority {
@@ -137,8 +141,19 @@
     text-align: left;
 }
 
-.nhai-text-authority .nhai-text-hindi {
-    color: #cbd5e1;
+.nhai-auth-hindi {
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.nhai-auth-eng {
+    font-size: 8px;
+    font-weight: 700;
+    color: #94a3b8;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
 }
 
 .nhai-header-right {
@@ -743,34 +758,17 @@ body.light-mode option {
     100% { transform: scale(1); filter: brightness(1); }
 }
 
-/* ===== REACTBITS SPOTLIGHT CARD INTERACTIVE STYLING ===== */
+/* ===== CLEAN SOLID CARD INTERACTIVE STYLING ===== */
 .spotlight-card {
     position: relative;
-    background: rgba(18, 18, 23, 0.85);
+    background: rgba(18, 24, 38, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    overflow: hidden;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
 }
 
 .spotlight-card:hover {
     border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.12);
-    transform: translateY(-2px);
-}
-
-.spotlight-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.14), transparent 45%);
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-}
-
-.spotlight-card:hover::before {
-    opacity: 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
 }

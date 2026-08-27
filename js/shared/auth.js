@@ -45,18 +45,22 @@ const Auth = {
         }
     },
 
+    getAdminLoginUrl: () => {
+        const path = window.location.pathname;
+        if (path.includes('/admin/')) {
+            return path.substring(0, path.indexOf('/admin/') + 7) + 'login.html';
+        }
+        if (path.endsWith('/admin')) {
+            return path + '/login.html';
+        }
+        return '/admin/login.html';
+    },
+
     logout: async () => {
         sessionStorage.removeItem('nhai_admin_auth');
         sessionStorage.removeItem('admin_plaza');
         sessionStorage.removeItem('admin_plaza_data');
-        const loc = window.location.pathname;
-        if (loc.includes('/admin/')) {
-            window.location.href = loc.substring(0, loc.lastIndexOf('/admin/') + 7) + 'login.html';
-        } else if (loc.endsWith('/admin')) {
-            window.location.href = loc + '/login.html';
-        } else {
-            window.location.href = 'login.html';
-        }
+        window.location.href = Auth.getAdminLoginUrl();
     },
 
     isAuthenticated: () => {
@@ -66,7 +70,7 @@ const Auth = {
     guard: async () => {
         const token = sessionStorage.getItem('nhai_admin_auth');
         if (!token) {
-            window.location.replace('login.html');
+            window.location.replace(Auth.getAdminLoginUrl());
             return;
         }
 
