@@ -98,7 +98,40 @@ function authenticateAdmin(req, res, next) {
     }
 }
 
-app.post('/api/auth/traveller/send-otp', loginLimiter, (req, res) => {
+async function sendSmsOtp(phone, otp) {
+    const { FAST2SMS_API_KEY } = process.env;
+    if (!FAST2SMS_API_KEY) return { sent: false, reason: 'not-configured' };
+
+    try {
+        const https = require('https');
+        const params = new URLSearchParams({
+            authorization: FAST2SMS_API_KEY,
+            route: 'otp',
+            variables_values: String(otp),
+            numbers: phone
+        }).toString();
+
+        await new Promise((resolve, reject) => {
+            const request = https.request({
+                hostname: 'www.fast2sms.com',
+                path: `/dev/bulkV2?${params}`,
+                method: 'GET'
+            }, (r) => {
+                let body = '';
+                r.on('data', (c) => { body += c; });
+                r.on('end', () => resolve(body));
+            });
+            request.on('error', reject);
+            request.end();
+        });
+        return { sent: true };
+    } catch (e) {
+        console.error('[SMS OTP] Fast2SMS send failed, falling back to dev mode:', e.message);
+        return { sent: false, reason: 'send-failed' };
+    }
+}
+
+app.post('/api/auth/traveller/send-otp', loginLimiter, async (req, res) => {
     const { phone } = req.body;
     if (!phone || !/^[6-9]\d{9}$/.test(phone.trim())) {
         return res.status(400).json({ error: 'Please enter a valid 10-digit Indian mobile number.' });
@@ -108,14 +141,16 @@ app.post('/api/auth/traveller/send-otp', loginLimiter, (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000);
     db.createOtp(cleanPhone, otp);
 
-    if (process.env.NODE_ENV !== 'production') {
-        console.log(`[SMS Gateway Simulated] OTP generated for +91-${cleanPhone}: ${otp} (Valid for 5 mins)`);
-    }
+    const smsResult = await sendSmsOtp(cleanPhone, otp);
+    console.log(`[SMS OTP] ${smsResult.sent ? 'Sent via Fast2SMS' : 'DEV MODE (no gateway configured)'} — +91-${cleanPhone}: ${otp} (valid 5 mins)`);
 
     res.json({
         success: true,
-        message: `OTP sent to +91-${cleanPhone.substring(0, 3)}****${cleanPhone.substring(7)}`,
-        expiresInSec: 300
+        message: smsResult.sent
+            ? `OTP sent to +91-${cleanPhone.substring(0, 3)}****${cleanPhone.substring(7)}`
+            : `DEV MODE: SMS gateway not configured. Your OTP is shown below instead of being texted.`,
+        expiresInSec: 300,
+        devOtp: smsResult.sent ? undefined : otp
     });
 });
 

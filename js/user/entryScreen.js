@@ -121,7 +121,12 @@ const EntryScreen = {
                             otpInput.value = '';
                             otpInput.focus();
                         }
-                        if (window.Utils) Utils.showToast(`6-Digit OTP sent to +91-${phone}`, 'success');
+                        if (data.devOtp !== undefined) {
+                            otpInput.value = String(data.devOtp);
+                            if (window.Utils) Utils.showToast(`Demo mode (no SMS gateway configured): your OTP is ${data.devOtp}`, 'success');
+                        } else {
+                            if (window.Utils) Utils.showToast(`6-Digit OTP sent to +91-${phone}`, 'success');
+                        }
                     } else {
                         if (window.Utils) Utils.showToast(data.error || 'Failed to send OTP.', 'error');
                     }
