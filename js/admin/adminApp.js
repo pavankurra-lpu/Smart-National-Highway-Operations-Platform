@@ -43,8 +43,8 @@ const AdminApp = {
             } else {
                 const sub = plazaData?.state ? ` (${plazaData.state})` : '';
                 badge.innerHTML = `<i class="fa-solid fa-map-pin"></i> ${AdminApp.plaza.toUpperCase()}${sub}`;
-                badge.style.background = 'rgba(99, 102, 241, 0.18)';
-                badge.style.borderColor = 'rgba(99, 102, 241, 0.45)';
+                badge.style.background = 'rgba(56, 189, 248, 0.18)';
+                badge.style.borderColor = 'rgba(56, 189, 248, 0.45)';
                 badge.style.color = '#a5b4fc';
             }
         }

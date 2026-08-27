@@ -303,7 +303,7 @@ const TrafficControl = {
                         <!-- Direction B: Outbound / Opposite Side -->
                         <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 12px;">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-                                <span style="font-size: 11px; font-weight: 700; color: #a78bfa; display:flex; align-items:center; gap:5px;">
+                                <span style="font-size: 11px; font-weight: 700; color: #38bdf8; display:flex; align-items:center; gap:5px;">
                                     <i class="fa-solid fa-arrow-trend-down"></i> Outbound (Opposite Side)
                                 </span>
                                 <span style="font-size: 9px; font-weight: 700; color: ${colorB};">${stateB}</span>

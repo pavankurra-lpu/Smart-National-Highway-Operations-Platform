@@ -112,7 +112,7 @@
                         <span id="entry-phone-target" style="font-size: 11px; color: #38bdf8; font-weight: 600;"></span>
                     </div>
                     <input type="text" id="entry-otp-input" placeholder="••••••" maxlength="6" autocomplete="one-time-code" style="width: 100%; box-sizing: border-box; padding: 12px; background: #0f172a; border: 1px solid var(--primary); border-radius: 8px; color: #fff; font-size: 20px; font-weight: 700; text-align: center; letter-spacing: 8px; margin-bottom: 12px; outline: none;">
-                    <button id="btn-entry-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%); margin-bottom: 8px;">
+                    <button id="btn-entry-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #3b82f6 0%, #0284c7 100%); margin-bottom: 8px;">
                         <i class="fa-solid fa-lock-open"></i> Verify & Launch Dashboard
                     </button>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -183,33 +183,19 @@
              NHAI ACCESS: RIGHT SIDEBAR (Modernized shadcn/ui & KokonutUI style)
              ============================== -->
         <aside class="sidebar" id="nhai-sidebar">
-            <div class="sidebar-header" style="background:#080b11; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.07);">
-                <div style="display:flex; align-items:center; gap:8px;">
-                    <!-- 1. GoI 4-Lions Emblem -->
-                    <svg class="nhai-emblem-svg" viewBox="0 0 100 100" width="28" height="28" style="flex-shrink:0;">
-                        <path d="M 16,74 L 84,74 L 80,80 L 20,80 Z" fill="#ffffff" opacity="0.95"/>
-                        <rect x="22" y="80" width="56" height="3" fill="#ffffff" rx="1"/>
-                        <circle cx="50" cy="74" r="5.5" fill="#080b11" stroke="#ffffff" stroke-width="1.2"/>
-                        <circle cx="50" cy="74" r="1.5" fill="#ffffff"/>
-                        <path d="M 44,20 C 44,14 56,14 56,20 C 60,22 62,28 60,34 C 61,40 59,46 58,52 C 58,60 56,68 56,71 L 44,71 C 44,68 42,60 42,52 C 41,46 39,40 40,34 C 38,28 40,22 44,20 Z" fill="#ffffff"/>
-                        <path d="M 40,24 C 36,22 30,22 28,28 C 26,34 27,42 28,48 C 29,54 32,62 38,69 L 42,69 C 38,60 36,50 36,40 C 36,32 38,28 40,24 Z" fill="#ffffff" opacity="0.95"/>
-                        <path d="M 60,24 C 64,22 70,22 72,28 C 74,34 73,42 72,48 C 71,54 68,62 62,69 L 58,69 C 62,60 64,50 64,40 C 64,32 62,28 60,24 Z" fill="#ffffff" opacity="0.95"/>
-                        <text x="50" y="93" font-family="'Inter', sans-serif" font-weight="900" font-size="7" fill="#ffffff" text-anchor="middle">सत्यमेव जयते</text>
+            <div class="sidebar-header" style="background:#090d16; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.08);">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <!-- Realistic NHAI Highway Logo -->
+                    <svg viewBox="0 0 100 100" width="32" height="32" style="flex-shrink:0;">
+                        <circle cx="50" cy="50" r="46" fill="#090d16" stroke="#38bdf8" stroke-width="2.5"/>
+                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#38bdf8"/>
+                        <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
+                        <text x="50" y="56" font-family="'Space Grotesk', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
                     </svg>
 
-                    <!-- Tricolor Bar -->
-                    <div style="display:flex; flex-direction:column; width:3px; height:24px; border-radius:2px; overflow:hidden; flex-shrink:0;">
-                        <div style="flex:1; background:#FF671F;"></div>
-                        <div style="flex:1; background:#FFFFFF;"></div>
-                        <div style="flex:1; background:#048A43;"></div>
-                    </div>
-
-                    <!-- 2. Mahatma Gandhi Medallion -->
-                    <img src="../assets/gandhiji.png" alt="Mahatma Gandhi" style="width:26px; height:26px; border-radius:50%; object-fit:cover; border:1.5px solid #d99b26; box-shadow:0 0 8px rgba(217,155,38,0.35); flex-shrink:0;" onerror="this.src='../assets/gandhiji.jpg'">
-
                     <div>
-                        <div style="font-size:11.5px; font-weight:800; color:#fff; line-height:1.2;">NHAI · सत्यमेव जयते</div>
-                        <div style="font-size:7.5px; font-weight:700; color:#d99b26; line-height:1.2; letter-spacing:0.4px;">TRAVELLER PORTAL</div>
+                        <div style="font-size:12px; font-weight:800; color:#f8fafc; line-height:1.2; letter-spacing:0.3px;">NHAI · सत्यमेव जयते</div>
+                        <div style="font-size:7.5px; font-weight:700; color:#38bdf8; line-height:1.2; letter-spacing:0.6px;">SATYAMEVA JAYATE • TRAVELLER PORTAL</div>
                     </div>
                 </div>
                 <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#cbd5e1; padding:5px 10px; border-radius:6px; font-size:11px; text-decoration:none; display:flex; align-items:center; gap:4px;">
@@ -287,7 +273,7 @@
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
                         <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Trip Corridor</span>
                         <button type="button" onclick="VoiceAssistant.startListening();" class="btn-voice-header" title="Voice Search Route / Destination (Mic)">
-                            <i class="fa-solid fa-microphone" style="color:#6366f1;"></i> Voice Search
+                            <i class="fa-solid fa-microphone" style="color:#38bdf8;"></i> Voice Search
                         </button>
                     </div>
 
@@ -466,14 +452,14 @@
                     </h3>
 
                     <!-- Driver XP Level & Badges (Gamified Section) -->
-                    <div class="glass-panel" style="padding: 18px; margin-bottom: 20px; border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(99, 102, 241, 0.12); position: relative; overflow: hidden; border-radius: 16px; background: rgba(15, 23, 42, 0.75);">
+                    <div class="glass-panel" style="padding: 18px; margin-bottom: 20px; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.12); position: relative; overflow: hidden; border-radius: 16px; background: rgba(15, 23, 42, 0.75);">
                         <!-- Header & Badge -->
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                             <div style="display:flex; align-items:center; gap:10px;">
-                                <div id="gamified-lvl-badge" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #3b82f6); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; box-shadow: 0 0 18px rgba(99, 102, 241, 0.6); border: 2px solid rgba(255,255,255,0.3); flex-shrink:0;">1</div>
+                                <div id="gamified-lvl-badge" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #38bdf8, #3b82f6); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; box-shadow: 0 0 18px rgba(56, 189, 248, 0.6); border: 2px solid rgba(255,255,255,0.3); flex-shrink:0;">1</div>
                                 <div>
                                     <div style="display:flex; align-items:center; gap:6px;">
-                                        <span style="font-size: 9px; font-weight: 800; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px;">Driver Rank</span>
+                                        <span style="font-size: 9px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.8px;">Driver Rank</span>
                                         <span id="gamified-tier-tag" style="font-size: 8.5px; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); padding: 1px 5px; border-radius: 4px; font-weight: 700;">Tier 1</span>
                                     </div>
                                     <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 14.5px; font-weight: 800; color: #fff;">Level 1 Highway Cadet</h4>
@@ -490,7 +476,7 @@
                             <span id="gamified-xp-pct" style="font-weight:700; color:#38bdf8;">30%</span>
                         </div>
                         <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; margin-bottom: 12px;">
-                            <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #6366f1, #38bdf8); box-shadow: 0 0 12px rgba(99, 102, 241, 0.6); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+                            <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #38bdf8, #38bdf8); box-shadow: 0 0 12px rgba(56, 189, 248, 0.6); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
                         </div>
 
                         <!-- Active Perks Pill -->
@@ -505,7 +491,7 @@
                         <!-- Achievements Grid (8 Badges) -->
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                             <p style="font-size: 10px; font-weight: 700; color: var(--text-sec); margin:0; text-transform: uppercase; letter-spacing: 0.5px;">Driver Achievement Badges</p>
-                            <span id="badges-unlocked-count" style="font-size: 9.5px; color:#818cf8; font-weight:700;">0/8 Unlocked</span>
+                            <span id="badges-unlocked-count" style="font-size: 9.5px; color:#38bdf8; font-weight:700;">0/8 Unlocked</span>
                         </div>
                         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
                             <div id="badge-face_verified" class="achievement-badge locked" onclick="Gamification.inspectBadge('face_verified')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
@@ -932,7 +918,7 @@
                     <button id="btn-follow-me" class="btn btn-outline active" style="font-size: 11px; padding: 8px 10px;" title="Auto-center Map">
                         <i class="fa-solid fa-eye"></i>
                     </button>
-                    <button id="btn-start-trip" class="btn" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px; background:linear-gradient(135deg,#6366f1,#3b82f6); color:#fff; box-shadow:0 4px 16px rgba(99,102,241,0.4);">
+                    <button id="btn-start-trip" class="btn" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px; background:linear-gradient(135deg,#38bdf8,#3b82f6); color:#fff; box-shadow:0 4px 16px rgba(56, 189, 248,0.4);">
                         <i class="fa-solid fa-play"></i> Start Trip
                     </button>
                     <button id="btn-end-trip" class="btn btn-danger hidden" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px;">
@@ -1211,9 +1197,9 @@
              DRIVER BADGE DETAIL MODAL
              ============================== -->
         <div id="driver-badge-modal" class="modal-overlay hidden" style="z-index: 10007;">
-            <div class="glass-panel" style="width: 440px; max-width: 95%; padding: 0; text-align: center; border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(99,102,241,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
+            <div class="glass-panel" style="width: 440px; max-width: 95%; padding: 0; text-align: center; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(56, 189, 248,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
                 <div class="modal-header" style="padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
-                    <span style="font-size: 11px; font-weight: 700; color: #818cf8; text-transform: uppercase; letter-spacing: 0.8px;">Achievement Details</span>
+                    <span style="font-size: 11px; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.8px;">Achievement Details</span>
                     <button class="modal-close" onclick="Utils.toggleVisibility('driver-badge-modal', false)" title="Close">
                         <i class="fa-solid fa-xmark"></i>
                     </button>

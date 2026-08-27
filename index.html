@@ -251,7 +251,7 @@
             transition: all 0.2s ease;
         }
         .portal-card.card-user .card-icon-box { color: #38bdf8; }
-        .portal-card.card-admin .card-icon-box { color: #818cf8; }
+        .portal-card.card-admin .card-icon-box { color: #38bdf8; }
         
         .portal-card:hover .card-icon-box {
             transform: scale(1.05);
@@ -506,81 +506,22 @@
     <!-- Reactbits Grid Background -->
     <div class="reactbits-bg-grid"></div>
 
-    <!-- Header Navigation (Official Government of India, NHAI & Mahatma Gandhi Heritage Bar) -->
+    <!-- Header Navigation (Official NHAI & Satyameva Jayate Bar) -->
     <header class="nhai-official-header">
         <div class="nhai-header-left">
-            <!-- 1. Government of India Official 4-Lions Emblem -->
-            <div class="nhai-emblem-unit">
-                <svg class="nhai-emblem-svg" viewBox="0 0 100 100" width="32" height="32">
-                    <!-- Abacus Base -->
-                    <path d="M 16,74 L 84,74 L 80,80 L 20,80 Z" fill="#ffffff" opacity="0.95"/>
-                    <rect x="22" y="80" width="56" height="3" fill="#ffffff" rx="1"/>
-                    
-                    <!-- Central Dharma Chakra on Abacus -->
-                    <circle cx="50" cy="74" r="5.5" fill="#080b11" stroke="#ffffff" stroke-width="1.2"/>
-                    <circle cx="50" cy="74" r="1.5" fill="#ffffff"/>
-                    <line x1="50" y1="69" x2="50" y2="79" stroke="#ffffff" stroke-width="0.7"/>
-                    <line x1="45" y1="74" x2="55" y2="74" stroke="#ffffff" stroke-width="0.7"/>
-
-                    <!-- Left Bull & Right Horse glyphs -->
-                    <path d="M 30,73 C 32,71 35,72 36,75 L 29,75 Z" fill="#ffffff" opacity="0.8"/>
-                    <path d="M 70,73 C 68,71 65,72 64,75 L 71,75 Z" fill="#ffffff" opacity="0.8"/>
-
-                    <!-- Central Lion -->
-                    <path d="M 44,20 C 44,14 56,14 56,20 C 60,22 62,28 60,34 C 61,40 59,46 58,52 C 58,60 56,68 56,71 L 44,71 C 44,68 42,60 42,52 C 41,46 39,40 40,34 C 38,28 40,22 44,20 Z" fill="#ffffff"/>
-                    <circle cx="47" cy="24" r="1" fill="#080b11"/>
-                    <circle cx="53" cy="24" r="1" fill="#080b11"/>
-                    <path d="M 48,27 L 52,27 L 50,30 Z" fill="#080b11"/>
-                    <path d="M 46,32 Q 50,34 54,32" stroke="#080b11" stroke-width="1" fill="none"/>
-
-                    <!-- Left Profile Lion -->
-                    <path d="M 40,24 C 36,22 30,22 28,28 C 26,34 27,42 28,48 C 29,54 32,62 38,69 L 42,69 C 38,60 36,50 36,40 C 36,32 38,28 40,24 Z" fill="#ffffff" opacity="0.95"/>
-                    <circle cx="31" cy="28" r="0.9" fill="#080b11"/>
-
-                    <!-- Right Profile Lion -->
-                    <path d="M 60,24 C 64,22 70,22 72,28 C 74,34 73,42 72,48 C 71,54 68,62 62,69 L 58,69 C 62,60 64,50 64,40 C 64,32 62,28 60,24 Z" fill="#ffffff" opacity="0.95"/>
-                    <circle cx="69" cy="28" r="0.9" fill="#080b11"/>
-
-                    <text x="50" y="93" font-family="'Inter', sans-serif" font-weight="900" font-size="7" fill="#ffffff" text-anchor="middle">सत्यमेव जयते</text>
-                </svg>
-
-                <div class="nhai-tricolor-strip">
-                    <div class="saffron"></div>
-                    <div class="white"></div>
-                    <div class="green"></div>
-                </div>
-
-                <div class="nhai-text-govt">
-                    <div class="nhai-text-hindi">भारत सरकार</div>
-                    <div class="nhai-text-eng">GOVERNMENT OF INDIA</div>
-                </div>
-            </div>
-
-            <div class="nhai-header-divider"></div>
-
-            <!-- 2. NHAI Authority Branding -->
-            <div class="nhai-authority-unit">
-                <svg viewBox="0 0 100 100" width="32" height="32" style="flex-shrink:0;">
-                    <circle cx="50" cy="50" r="46" fill="#0c121e" stroke="#d99b26" stroke-width="2.5"/>
-                    <path d="M 50 15 L 28 85 L 34 85 L 50 25 L 66 85 L 72 85 Z" fill="#d99b26"/>
-                    <path d="M 50 25 L 48 85 L 52 85 Z" fill="#fff"/>
-                    <text x="50" y="55" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="13" fill="#fff" text-anchor="middle">NHAI</text>
+            <div class="nhai-authority-unit" style="display:flex; align-items:center; gap:12px;">
+                <!-- Realistic NHAI Highway Logo -->
+                <svg viewBox="0 0 100 100" width="38" height="38" style="flex-shrink:0;">
+                    <circle cx="50" cy="50" r="46" fill="#090d16" stroke="#38bdf8" stroke-width="2.5"/>
+                    <!-- Converging Highway Road Perspective -->
+                    <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#38bdf8"/>
+                    <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
+                    <text x="50" y="56" font-family="'Space Grotesk', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
                 </svg>
 
                 <div class="nhai-text-authority">
-                    <div class="nhai-auth-hindi">भारतीय राष्ट्रीय राजमार्ग प्राधिकरण</div>
-                    <div class="nhai-auth-eng">NATIONAL HIGHWAYS AUTHORITY OF INDIA</div>
-                </div>
-            </div>
-
-            <div class="nhai-header-divider"></div>
-
-            <!-- 3. Mahatma Gandhi Satyameva Jayate Heritage Unit -->
-            <div class="nhai-gandhi-unit">
-                <img src="assets/gandhiji.png" alt="Mahatma Gandhi" class="nhai-gandhi-img" onerror="this.src='assets/gandhiji.jpg'">
-                <div class="nhai-text-gandhi">
-                    <div class="nhai-gandhi-satyameva">सत्यमेव जयते</div>
-                    <div class="nhai-gandhi-sub">राष्ट्रपिता महात्मा गाँधी · DANDI HERITAGE</div>
+                    <div class="nhai-auth-hindi" style="font-size:12.5px; font-weight:800; color:#f8fafc; line-height:1.2;">भारतीय राष्ट्रीय राजमार्ग प्राधिकरण · सत्यमेव जयते</div>
+                    <div class="nhai-auth-eng" style="font-size:8.5px; font-weight:700; color:#38bdf8; line-height:1.2; letter-spacing:0.5px;">NATIONAL HIGHWAYS AUTHORITY OF INDIA • SATYAMEVA JAYATE</div>
                 </div>
             </div>
         </div>

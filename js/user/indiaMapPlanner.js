@@ -946,7 +946,7 @@ const IndiaMapPlanner = {
         </svg>`,
         
         tech: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-            <rect x="10" y="12" width="44" height="30" rx="4" fill="#1e1b4b" stroke="#ffffff" stroke-width="2.5"/>
+            <rect x="10" y="12" width="44" height="30" rx="4" fill="#0f172a" stroke="#ffffff" stroke-width="2.5"/>
             <rect x="14" y="16" width="36" height="22" rx="2" fill="#0f172a"/>
             <path d="M20 22 L26 27 L20 32 M29 32 L36 32" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
             <path d="M6 44 L58 44 L52 50 L12 50 Z" fill="#ffffff"/>
@@ -957,7 +957,7 @@ const IndiaMapPlanner = {
             <path d="M22 24 C22 12 42 12 42 24" fill="none" stroke="#fef08a" stroke-width="4.5" stroke-linecap="round"/>
             <line x1="14" y1="28" x2="50" y2="28" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
             <defs>
-                <linearGradient id="g3dBag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#7e22ce"/></linearGradient>
+                <linearGradient id="g3dBag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#7e22ce"/></linearGradient>
             </defs>
         </svg>`,
         
@@ -1931,7 +1931,7 @@ const IndiaMapPlanner = {
         const ROUTE_THEMES = [
             { border: '#38bdf8', bg: 'rgba(56,189,248,0.18)', tagCol: '#38bdf8', badgeBg: '#38bdf8' },
             { border: '#34d399', bg: 'rgba(16,185,129,0.18)', tagCol: '#34d399', badgeBg: '#10b981' },
-            { border: '#c084fc', bg: 'rgba(168,85,247,0.18)', tagCol: '#c084fc', badgeBg: '#a855f7' }
+            { border: '#38bdf8', bg: 'rgba(168,85,247,0.18)', tagCol: '#38bdf8', badgeBg: '#a855f7' }
         ];
 
         let html = '';
@@ -3141,7 +3141,7 @@ const IndiaMapPlanner = {
             <circle cx="16" cy="46" r="6" fill="#0f172a"/><circle cx="16" cy="46" r="2.5" fill="#e2e8f0"/>
             <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="2.5" fill="#e2e8f0"/>
             <defs>
-                <linearGradient id="gBus" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="50%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#4c1d95"/></linearGradient>
+                <linearGradient id="gBus" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="50%" stop-color="#0369a1"/><stop offset="100%" stop-color="#4c1d95"/></linearGradient>
             </defs>
         </svg>`
     },

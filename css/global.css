@@ -5,35 +5,35 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* ===== VELVETY DIMMED HIGHWAY NOIR & ANTIQUE GOLD PALETTE ===== */
+/* ===== UNBIASED HIGHWAY SLATE & ELECTRIC CYAN PALETTE ===== */
 :root {
-    --bg-dark:        #080b11; /* Velvety Dark Slate Highway Canvas */
-    --bg-darker:      #05070b; /* Pure Deep Contrast Canvas */
-    --bg-card:        rgba(13, 18, 28, 0.94); /* Dimmed Slate Glass */
-    --bg-panel:       rgba(10, 14, 23, 0.98);
+    --bg-dark:        #090d16; /* Clean Neutral Slate Obsidian */
+    --bg-darker:      #05080f; /* Deep Horizon */
+    --bg-card:        rgba(15, 22, 36, 0.94); /* Solid Neutral Slate Glass */
+    --bg-panel:       rgba(12, 17, 28, 0.98);
     
-    --primary:        #d99b26; /* Antique Warm Highway Gold */
-    --primary-dim:    rgba(217, 155, 38, 0.12);
-    --primary-hover:  #b8821d; /* Classic Rich Bronze */
-    --primary-glow:   rgba(217, 155, 38, 0.20);
+    --primary:        #38bdf8; /* Crisp Navigation Sky Cyan */
+    --primary-dim:    rgba(56, 189, 248, 0.12);
+    --primary-hover:  #0ea5e9; /* Deep Sky */
+    --primary-glow:   rgba(56, 189, 248, 0.25);
     
-    --accent-cyan:    #38bdf8; /* Soft Navigation Sky */
+    --accent-cyan:    #38bdf8; /* Highway Sky */
     --accent-blue:    #2563eb; /* Route Polyline Blue */
     --accent-red:     #ef4444; /* Emergency SOS Red */
-    --accent-yellow:  #d99b26; /* FASTag Antique Gold */
+    --accent-yellow:  #facc15; /* Clean Alert Yellow */
     --accent-green:   #10b981; /* Live Traffic Emerald */
     
-    --text-main:      #f1f5f9; /* Soft Crisp White (Anti-Glare) */
+    --text-main:      #f8fafc; /* Crisp Clean White (Anti-Glare) */
     --text-sec:       #94a3b8; /* Slate-400 */
     --text-muted:     #64748b; /* Slate-500 */
     
-    --border:         rgba(255, 255, 255, 0.07); /* Subtle Anti-Glare Stroke */
-    --border-light:   rgba(255, 255, 255, 0.03);
-    --border-glow:    rgba(217, 155, 38, 0.20);
+    --border:         rgba(255, 255, 255, 0.08); /* Subtle Structural Line */
+    --border-light:   rgba(255, 255, 255, 0.04);
+    --border-glow:    rgba(56, 189, 248, 0.25);
     
     --shadow:         0 10px 30px -8px rgba(0, 0, 0, 0.7);
     --shadow-lg:      0 20px 45px -10px rgba(0, 0, 0, 0.85);
-    --shadow-glow:    0 0 25px -4px rgba(217, 155, 38, 0.15);
+    --shadow-glow:    0 0 25px -4px rgba(56, 189, 248, 0.2);
     
     --font-main:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display:   'Space Grotesk', 'Inter', sans-serif;
@@ -43,8 +43,8 @@
     --radius-lg:      18px;
     --radius-xl:      24px;
 
-    --ring:           #d99b26;
-    --ring-offset:    #080b11;
+    --ring:           #38bdf8;
+    --ring-offset:    #090d16;
 
     --transition:     all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     --glass:          blur(24px) saturate(190%);
@@ -57,17 +57,17 @@
 
 /* Map canvas vintage styling */
 .leaflet-container {
-    background: #080b11 !important;
+    background: #090d16 !important;
 }
 
-/* Official Government of India & NHAI & Mahatma Gandhi Header Bar */
+/* Official NHAI Header Bar with Satyameva Jayate */
 .nhai-official-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 24px;
-    background: #080b11;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: #090d16;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     z-index: 1000;
     width: 100%;
@@ -78,68 +78,12 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    flex-wrap: wrap;
-}
-
-.nhai-emblem-unit {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.nhai-emblem-svg {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-}
-
-.nhai-tricolor-strip {
-    display: flex;
-    flex-direction: column;
-    width: 3px;
-    height: 28px;
-    border-radius: 2px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.nhai-tricolor-strip .saffron { flex: 1; background: #FF671F; }
-.nhai-tricolor-strip .white   { flex: 1; background: #FFFFFF; }
-.nhai-tricolor-strip .green   { flex: 1; background: #048A43; }
-
-.nhai-text-govt {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.nhai-text-hindi {
-    font-size: 11px;
-    font-weight: 800;
-    color: #f1f5f9;
-    line-height: 1.2;
-    letter-spacing: 0.2px;
-}
-
-.nhai-text-eng {
-    font-size: 8px;
-    font-weight: 700;
-    color: #94a3b8;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-}
-
-.nhai-header-divider {
-    width: 1px;
-    height: 22px;
-    background: rgba(255, 255, 255, 0.12);
-    flex-shrink: 0;
 }
 
 .nhai-authority-unit {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
 }
 
 .nhai-text-authority {
@@ -149,56 +93,16 @@
 }
 
 .nhai-auth-hindi {
-    font-size: 10.5px;
+    font-size: 11.5px;
     font-weight: 800;
-    color: #f1f5f9;
+    color: #f8fafc;
     line-height: 1.2;
 }
 
 .nhai-auth-eng {
-    font-size: 7.5px;
+    font-size: 8px;
     font-weight: 700;
-    color: #94a3b8;
-    line-height: 1.2;
-    letter-spacing: 0.4px;
-}
-
-/* Mahatma Gandhi Satyameva Jayate Heritage Unit */
-.nhai-gandhi-unit {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.nhai-gandhi-img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1.5px solid #d99b26;
-    box-shadow: 0 0 10px rgba(217, 155, 38, 0.35);
-    background: #111827;
-    flex-shrink: 0;
-}
-
-.nhai-text-gandhi {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.nhai-gandhi-satyameva {
-    font-size: 11px;
-    font-weight: 900;
-    color: #d99b26;
-    line-height: 1.2;
-    letter-spacing: 0.4px;
-}
-
-.nhai-gandhi-sub {
-    font-size: 7.5px;
-    font-weight: 700;
-    color: #cbd5e1;
+    color: #38bdf8;
     line-height: 1.2;
     letter-spacing: 0.5px;
 }
@@ -214,12 +118,12 @@
     align-items: center;
     gap: 6px;
     padding: 5px 12px;
-    background: rgba(217, 155, 38, 0.08);
-    border: 1px solid rgba(217, 155, 38, 0.25);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
     border-radius: 9999px;
     font-size: 10px;
     font-weight: 800;
-    color: #d99b26;
+    color: #38bdf8;
     letter-spacing: 0.8px;
 }
 
@@ -227,8 +131,37 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #d99b26;
-    box-shadow: 0 0 8px #d99b26;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
+    animation: livePulse 2s infinite;
+}
+
+.nhai-header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nhai-central-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #38bdf8;
+    letter-spacing: 0.8px;
+}
+
+.nhai-central-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
     animation: livePulse 2s infinite;
 }
 
@@ -384,27 +317,27 @@ body.light-mode .glass-panel {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #2563eb 100%);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .btn-primary:hover {
-    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 50%, #2563eb 100%);
+    background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
     transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 24px rgba(2, 132, 199, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .btn-primary:active { transform: translateY(0); }
 
 .btn-outline {
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(15, 22, 36, 0.6);
     color: var(--text-main);
     border: 1px solid var(--border);
     backdrop-filter: blur(8px);
 }
 .btn-outline:hover {
-    background: rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.4);
+    background: rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.4);
     color: #ffffff;
 }
 
@@ -430,8 +363,8 @@ body.light-mode .glass-panel {
     letter-spacing: 0.5px;
     font-family: var(--font-display);
 }
-.badge-success { background: rgba(99, 102, 241, 0.18); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.4); }
-.badge-warning { background: rgba(245, 158, 11, 0.15); color: var(--accent-yellow); border: 1px solid rgba(245, 158, 11, 0.35); }
+.badge-success { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.35); }
+.badge-warning { background: rgba(250, 204, 21, 0.15); color: #facc15; border: 1px solid rgba(250, 204, 21, 0.35); }
 .badge-danger  { background: rgba(244, 63, 94, 0.18); color: var(--accent-red); border: 1px solid rgba(244, 63, 94, 0.35); }
 
 /* ===== TYPOGRAPHY ===== */
@@ -443,7 +376,7 @@ input, select, textarea {
     width: 100%;
     padding: 11px 14px;
     border-radius: var(--radius-sm);
-    background: rgba(15, 23, 42, 0.55);
+    background: rgba(15, 22, 36, 0.7);
     border: 1px solid var(--border);
     color: var(--text-main);
     font-family: var(--font-main);
@@ -453,8 +386,8 @@ input, select, textarea {
 }
 input:focus, select:focus, textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px var(--ring-offset), 0 0 0 4px rgba(99, 102, 241, 0.25);
-    background: rgba(15, 23, 42, 0.85);
+    box-shadow: 0 0 0 2px var(--ring-offset), 0 0 0 4px rgba(56, 189, 248, 0.25);
+    background: rgba(15, 22, 36, 0.95);
 }
 input::placeholder, textarea::placeholder { color: var(--text-muted); }
 option { background: var(--bg-dark); color: var(--text-main); }
@@ -604,7 +537,7 @@ body.light-mode option {
 /* Colorize icons based on type instead of borders */
 .toast-success .shadcn-toast-icon { color: #10b981; text-shadow: 0 0 10px rgba(16,185,129,0.5); }
 .toast-error .shadcn-toast-icon { color: #ef4444; text-shadow: 0 0 10px rgba(239,68,68,0.5); }
-.toast-warning .shadcn-toast-icon { color: #f59e0b; text-shadow: 0 0 10px rgba(245,158,11,0.5); }
+.toast-warning .shadcn-toast-icon { color: #38bdf8; text-shadow: 0 0 10px rgba(245,158,11,0.5); }
 .toast-info .shadcn-toast-icon { color: #3b82f6; text-shadow: 0 0 10px rgba(59,130,246,0.5); }
 
 .shadcn-toast-content {
@@ -701,9 +634,9 @@ body.light-mode option {
 /* Kokonut Gradient Button */
 .btn-kokonut {
     position: relative;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(56, 189, 248, 0.08));
-    border: 1px solid rgba(99, 102, 241, 0.35);
-    color: #818cf8;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.08));
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
     border-radius: var(--radius-sm);
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -713,7 +646,7 @@ body.light-mode option {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, #38bdf8 0%, #0284c7 50%, #3b82f6 100%);
     opacity: 0;
     z-index: -1;
     transition: opacity 0.3s ease;
@@ -721,7 +654,7 @@ body.light-mode option {
 .btn-kokonut:hover {
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px -4px rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 24px -4px rgba(56, 189, 248, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.2);
 }
 .btn-kokonut:hover::before {
@@ -741,7 +674,7 @@ body.light-mode option {
 .ai-input-wrapper:focus-within {
     background: linear-gradient(90deg, var(--primary), var(--accent-blue), var(--primary));
     background-size: 200% 200%;
-    box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.45);
+    box-shadow: 0 0 20px -5px rgba(56, 189, 248, 0.45);
 }
 @keyframes gradientFlow {
     0% { background-position: 0% 50%; }

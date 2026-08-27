@@ -261,7 +261,7 @@ const LaneAdvisor = {
 
                 const decColors = {
                     'Switch Route': { border: '#f43f5e', bg: 'rgba(244,63,94,0.12)', text: '#f43f5e', icon: 'fa-diamond-turn-right' },
-                    'Recommend Monthly Pass': { border: '#a855f7', bg: 'rgba(168,85,247,0.12)', text: '#c084fc', icon: 'fa-calendar-check' },
+                    'Recommend Monthly Pass': { border: '#a855f7', bg: 'rgba(168,85,247,0.12)', text: '#38bdf8', icon: 'fa-calendar-check' },
                     'Recommend Trip Pass': { border: '#fbbf24', bg: 'rgba(251,191,36,0.12)', text: '#fbbf24', icon: 'fa-ticket' },
                     'No Action': { border: '#10b981', bg: 'rgba(16,185,129,0.12)', text: '#34d399', icon: 'fa-shield-halved' }
                 };

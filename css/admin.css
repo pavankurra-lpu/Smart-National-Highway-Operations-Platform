@@ -52,7 +52,7 @@
     min-height: 100vh;
     background: #080c14;
     background-image: 
-        radial-gradient(at 15% 15%, rgba(99, 102, 241, 0.2) 0px, transparent 50%),
+        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.2) 0px, transparent 50%),
         radial-gradient(at 85% 85%, rgba(56, 189, 248, 0.16) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.92) 0px, #080c14 100%);
     position: relative;
@@ -64,8 +64,8 @@
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
     background-size: 32px 32px;
     pointer-events: none;
 }
@@ -84,7 +84,7 @@
     width: 4px;
 }
 .district-tolls-card-list::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.5);
+    background: rgba(56, 189, 248, 0.5);
     border-radius: 4px;
 }
 .toll-card-item {
@@ -100,14 +100,14 @@
     text-align: left;
 }
 .toll-card-item:hover {
-    background: rgba(245, 158, 11, 0.12);
-    border-color: rgba(245, 158, 11, 0.4);
+    background: rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.4);
     transform: translateX(2px);
 }
 .toll-card-item.selected {
-    background: rgba(245, 158, 11, 0.22);
-    border-color: #f59e0b;
-    box-shadow: 0 0 14px rgba(245, 158, 11, 0.35);
+    background: rgba(56, 189, 248, 0.22);
+    border-color: #38bdf8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
 }
 .toll-card-name {
     font-size: 11px;

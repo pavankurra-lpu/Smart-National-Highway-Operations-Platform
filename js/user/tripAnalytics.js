@@ -285,11 +285,11 @@ const TripAnalytics = {
             const barData = sortedPlazas.map(p => p[1]);
 
             // Create gradient
-            let barGradient = 'rgba(245, 158, 11, 0.8)';
+            let barGradient = 'rgba(56, 189, 248, 0.8)';
             try {
                 barGradient = barCtx.createLinearGradient(0, 0, 0, 120);
                 barGradient.addColorStop(0, '#f59e0b');
-                barGradient.addColorStop(1, 'rgba(245, 158, 11, 0.2)');
+                barGradient.addColorStop(1, 'rgba(56, 189, 248, 0.2)');
             } catch(e) {}
 
             TripAnalytics.barInstance = new Chart(barCtx, {

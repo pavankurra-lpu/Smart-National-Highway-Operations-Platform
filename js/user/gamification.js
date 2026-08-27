@@ -11,7 +11,7 @@ const Gamification = {
     levels: [
         { lvl: 1, name: 'Highway Cadet', xpNeeded: 500, titleColor: '#94a3b8', badgeBg: 'linear-gradient(135deg, #64748b, #475569)', icon: '🔰', perk: 'Standard Route Intelligence & 1033 SOS' },
         { lvl: 2, name: 'Eco Cruiser', xpNeeded: 1200, titleColor: '#38bdf8', badgeBg: 'linear-gradient(135deg, #0284c7, #38bdf8)', icon: '🌱', perk: '2% FASTag Cashback + Fuel Station Finder' },
-        { lvl: 3, name: 'Corridor Navigator', xpNeeded: 2500, titleColor: '#818cf8', badgeBg: 'linear-gradient(135deg, #4f46e5, #818cf8)', icon: '🧭', perk: 'AI Lane Guidance + Live Highway CCTV Access' },
+        { lvl: 3, name: 'Corridor Navigator', xpNeeded: 2500, titleColor: '#38bdf8', badgeBg: 'linear-gradient(135deg, #0284c7, #38bdf8)', icon: '🧭', perk: 'AI Lane Guidance + Live Highway CCTV Access' },
         { lvl: 4, name: 'Expressway Pro', xpNeeded: 4500, titleColor: '#34d399', badgeBg: 'linear-gradient(135deg, #059669, #34d399)', icon: '⚡', perk: '5% FASTag Recharge Bonus + Express Lanes' },
         { lvl: 5, name: 'Toll Master', xpNeeded: 7500, titleColor: '#fbbf24', badgeBg: 'linear-gradient(135deg, #d97706, #fbbf24)', icon: '🏆', perk: 'VIP Highway Lounge Access + Pass Discounts' },
         { lvl: 6, name: 'Highway Captain', xpNeeded: 12000, titleColor: '#f43f5e', badgeBg: 'linear-gradient(135deg, #e11d48, #f43f5e)', icon: '👑', perk: 'Priority Highway Patrol + 8% Fuel Rebate' },
@@ -290,7 +290,7 @@ const Gamification = {
 
         if (countBadgeEl) {
             countBadgeEl.innerText = `${unlockedCount}/8 Unlocked`;
-            countBadgeEl.style.color = unlockedCount > 0 ? '#34d399' : '#818cf8';
+            countBadgeEl.style.color = unlockedCount > 0 ? '#34d399' : '#38bdf8';
         }
     },
 
