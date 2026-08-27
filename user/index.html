@@ -195,14 +195,28 @@
                         </div>
                     </div>
                 </div>
-                <div style="display:flex; gap:8px; align-items:center;">
-                    <button id="btn-sidebar-auth" onclick="window.handleSidebarAuthClick()" class="snhop-exit-btn" style="background: rgba(16,185,129,0.15); color:#34d399; border: 1px solid rgba(16,185,129,0.3);" title="Phone Login & Wallet Sync">
-                        <i class="fa-solid fa-mobile-screen-button" id="sidebar-auth-icon"></i> <span id="sidebar-auth-text">Login</span>
-                    </button>
-                    <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit
-                    </a>
+                <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit
+                </a>
+            </div>
+
+            <!-- Dedicated User Profile & Authentication Status Bar -->
+            <div class="sidebar-user-card" id="sidebar-user-card">
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-avatar" id="sidebar-user-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="sidebar-user-details">
+                        <div class="sidebar-user-name" id="sidebar-user-name">Guest Traveller</div>
+                        <div class="sidebar-user-sub" id="sidebar-user-sub">
+                            <span class="user-status-dot"></span> Offline / Standalone Mode
+                        </div>
+                    </div>
                 </div>
+                <button id="btn-sidebar-auth" onclick="window.handleSidebarAuthClick()" class="sidebar-auth-action-btn" title="Phone Login & Wallet Sync">
+                    <i class="fa-solid fa-mobile-screen-button" id="sidebar-auth-icon"></i>
+                    <span id="sidebar-auth-text">Sign In</span>
+                </button>
             </div>
 
             <!-- Active Highway Alerts Ticker (Kokonut UI Style) -->

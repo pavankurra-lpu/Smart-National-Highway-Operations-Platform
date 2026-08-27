@@ -2070,9 +2070,14 @@ const IndiaMapPlanner = {
         window.speechSynthesis.cancel();
 
         const etaVal = parseFloat(rData.totalEta);
-        const mins = Math.round(etaVal * 60);
-        const balance = window.Storage ? window.Storage.get('nhai_fastag_balance', 0) : 0;
-        
+        let curBal = 0;
+        if (typeof FastagEngine !== 'undefined' && typeof FastagEngine.getBalance === 'function') {
+            curBal = FastagEngine.getBalance();
+        } else if (typeof Storage !== 'undefined') {
+            curBal = Storage.get(Storage.KEYS.FASTAG_BALANCE, 0);
+        }
+        const balance = Math.max(0, Math.round(Number(curBal) || 0));
+
         let weatherDesc = 'optimal';
         if (rData.destNodeId && window.IndiaMapData?.nodes[rData.destNodeId]) {
             try {
@@ -2097,7 +2102,11 @@ const IndiaMapPlanner = {
             text += `There are ${rData.tolls.length} tolls on this route. Total toll amount to be paid is ${rData.totalTollCost} rupees. `;
         }
         
-        text += `Your current FASTag account balance is ${balance} rupees. `;
+        if (balance <= 0) {
+            text += `Your FASTag wallet balance is 0 rupees. Please recharge before initiating travel. `;
+        } else {
+            text += `Your current FASTag account balance is ${balance} rupees. `;
+        }
         
         if (weatherDesc === 'optimal') {
             text += `Weather and traffic conditions are currently optimal. `;

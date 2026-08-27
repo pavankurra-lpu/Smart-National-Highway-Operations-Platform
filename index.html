@@ -155,155 +155,143 @@
         .landing-stats-box {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius);
-            padding: 20px;
-            backdrop-filter: blur(10px);
+            gap: 14px;
+            margin-top: 36px;
+            width: 100%;
         }
         .l-stat {
+            height: 98px;
+            min-height: 98px;
+            max-height: 98px;
+            box-sizing: border-box;
+            background: rgba(18, 18, 23, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(16px);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            overflow: hidden;
             text-align: left;
+        }
+        .l-stat:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
         }
         .l-stat-val {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+            font-size: 22px;
             font-weight: 700;
-            color: #fff;
+            color: #f4f4f5;
+            line-height: 1;
+            margin: 0;
+            white-space: nowrap;
         }
         .l-stat-lbl {
             font-size: 10px;
-            color: var(--text-muted);
+            color: #a1a1aa;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
+            letter-spacing: 1px;
+            margin: 0;
             font-weight: 600;
+            line-height: 1.2;
+            white-space: nowrap;
         }
 
         /* Interactive Portal Cards Group */
         .portal-cards-box {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
         .portal-card {
             display: flex;
             align-items: center;
-            gap: 24px;
-            background: rgba(20, 20, 25, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius);
-            padding: 28px;
+            gap: 20px;
+            background: rgba(18, 18, 23, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
             text-decoration: none;
             text-align: left;
-            transition: var(--transition);
-            backdrop-filter: blur(16px);
+            transition: all 0.2s ease;
+            backdrop-filter: blur(20px);
             position: relative;
-            overflow: hidden;
-        }
-        .portal-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; bottom: 0;
-            width: 4px;
-            background: transparent;
-            transition: var(--transition);
-            z-index: 3;
-        }
-        .portal-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(
-                180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-                rgba(16, 185, 129, 0.06) 0%,
-                transparent 100%
-            );
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
-            z-index: 1;
-            border-radius: inherit;
-        }
-        .portal-card.card-admin::after {
-            background: radial-gradient(
-                180px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-                rgba(14, 165, 233, 0.06) 0%,
-                transparent 100%
-            );
-        }
-        .portal-card:hover::after {
-            opacity: 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         }
         .portal-card:hover {
-            background: rgba(24, 24, 30, 0.7);
-            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(24, 24, 30, 0.95);
+            border-color: rgba(56, 189, 248, 0.35);
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.05);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.06);
         }
         .portal-card.card-user:hover {
-            border-color: rgba(16, 185, 129, 0.25);
+            border-color: rgba(56, 189, 248, 0.35);
         }
         .portal-card.card-admin:hover {
-            border-color: rgba(14, 165, 233, 0.25);
-        }
-        .portal-card.card-user::before { background: var(--primary); transform: scaleY(0); transform-origin: bottom; }
-        .portal-card.card-admin::before { background: var(--accent-blue); transform: scaleY(0); transform-origin: bottom; }
-        
-        .portal-card:hover::before {
-            transform: scaleY(1);
+            border-color: rgba(129, 140, 248, 0.35);
         }
         
         .card-icon-box {
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-sm);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 20px;
             flex-shrink: 0;
-            transition: var(--transition);
-            z-index: 2;
+            transition: all 0.2s ease;
         }
-        .portal-card.card-user .card-icon-box { color: var(--primary); }
-        .portal-card.card-admin .card-icon-box { color: var(--accent-blue); }
+        .portal-card.card-user .card-icon-box { color: #38bdf8; }
+        .portal-card.card-admin .card-icon-box { color: #818cf8; }
         
         .portal-card:hover .card-icon-box {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.08);
         }
         
         .card-details h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
-            color: #fff;
-            margin-bottom: 6px;
+            color: #f4f4f5;
+            margin: 0 0 6px 0;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .card-details h3 i {
-            font-size: 12px;
-            opacity: 0;
-            transform: translateX(-6px);
-            transition: var(--transition);
-            color: var(--primary);
-        }
-        .portal-card.card-admin h3 i { color: var(--accent-blue); }
-        
-        .portal-card:hover .card-details h3 i {
-            opacity: 1;
-            transform: translateX(0);
-        }
         .card-details p {
-            font-size: 13px;
-            color: var(--text-sec);
+            font-size: 12.5px;
+            color: #a1a1aa;
             line-height: 1.5;
             margin: 0;
+        }
+        .card-arrow {
+            margin-left: auto;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #71717a;
+            font-size: 12px;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .portal-card:hover .card-arrow {
+            color: #f4f4f5;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(3px);
         }
         .card-details {
             position: relative;
@@ -604,30 +592,29 @@
                 </p>
                 
                 <!-- NHAI System-Wide Stats Widget -->
-                <div class="landing-stats-box" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; width: 100%;">
+                <div class="landing-stats-box">
                     
-                    <!-- Reactbits-style Minimal Bento Card (Active Plazas) -->
-                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
-                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Active Plazas</div>
-                        <div class="l-stat-val" id="stat-plazas" style="background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700; line-height: 1;">1,232+</div>
+                    <!-- Active Plazas Bento Card -->
+                    <div class="l-stat">
+                        <div class="l-stat-lbl">Active Plazas</div>
+                        <div class="l-stat-val" id="stat-plazas">1,232+</div>
                     </div>
                     
-                    <!-- Reactbits-style Clock Card (Horizontal AM/PM) -->
-                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
-                        <div class="l-stat-lbl" id="stat-date" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">DATE</div>
-                        <div style="display: flex; align-items: baseline; gap: 4px;">
-                            <div id="stat-time-only" style="color: #fbbf24; font-size: 24px; font-weight: 700; line-height: 1; text-shadow: 0 0 20px rgba(251, 191, 36, 0.2);">--:--:--</div>
-                            <div id="stat-ampm" style="color: #f59e0b; font-size: 13px; font-weight: 600; text-transform: lowercase;">am</div>
+                    <!-- Real-Time Clock Card -->
+                    <div class="l-stat">
+                        <div class="l-stat-lbl" id="stat-date">DATE</div>
+                        <div style="display: flex; align-items: baseline; gap: 4px; line-height: 1;">
+                            <div id="stat-time-only" style="color: #38bdf8; font-size: 22px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
+                            <div id="stat-ampm" style="color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: lowercase;">am</div>
                         </div>
                     </div>
 
-                    <!-- Reactbits-style Minimal Bento Card -->
-                    <div class="l-stat" style="background: rgba(9, 9, 11, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; box-shadow: inset 0 0 20px rgba(255,255,255,0.01), 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.borderColor='rgba(255,255,255,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.06)';">
-                        <div class="l-stat-lbl" style="color: #71717a; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">Highway Network</div>
-                        <div class="l-stat-val" id="stat-network" style="background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 24px; font-weight: 700; line-height: 1;">1.45L+ KM</div>
+                    <!-- Highway Network Bento Card -->
+                    <div class="l-stat">
+                        <div class="l-stat-lbl">Highway Network</div>
+                        <div class="l-stat-val" id="stat-network">1.45L+ KM</div>
                     </div>
                 </div>
-
 
             </div>
 
@@ -636,25 +623,29 @@
                 
                 <!-- Traveller Card -->
                 <a href="user/index.html" class="portal-card card-user">
-                    <div class="glare"></div>
                     <div class="card-icon-box">
                         <i class="fa-solid fa-car-side"></i>
                     </div>
                     <div class="card-details">
-                        <h3>Traveller Portal (User) <i class="fa-solid fa-arrow-right"></i></h3>
+                        <h3>Traveller Portal (User)</h3>
                         <p>Plan routes dynamically, manage your digital FASTag wallet balance, simulate trips, and request emergency road assistance.</p>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
                     </div>
                 </a>
 
                 <!-- Admin Card -->
                 <a href="admin/login.html" class="portal-card card-admin">
-                    <div class="glare"></div>
                     <div class="card-icon-box">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <div class="card-details">
-                        <h3>Operations Control (Admin) <i class="fa-solid fa-arrow-right"></i></h3>
+                        <h3>Operations Control (Admin)</h3>
                         <p>Monitor live vehicle journeys, analyze revenue figures, oversee CCTV streams, broadcast highway alerts, and dispatch emergency responders.</p>
+                    </div>
+                    <div class="card-arrow">
+                        <i class="fa-solid fa-chevron-right"></i>
                     </div>
                 </a>
 

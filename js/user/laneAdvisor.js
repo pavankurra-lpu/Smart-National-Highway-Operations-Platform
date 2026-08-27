@@ -240,7 +240,9 @@ const LaneAdvisor = {
             <!-- Adaptive Multi-Signal Recommendation Engine Banner -->
             ${(() => {
                 if (!window.AdaptiveLaneEngine) return '';
-                const currentBal = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.FASTAG_BALANCE, 1500) : 1500;
+                const currentBal = (typeof FastagEngine !== 'undefined' && typeof FastagEngine.getBalance === 'function') 
+                    ? FastagEngine.getBalance() 
+                    : ((typeof Storage !== 'undefined' && Storage.get) ? (Storage.get(Storage.KEYS.FASTAG_BALANCE, 0) || 0) : 0);
                 const tripHist = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.TRIP_HISTORY, []) : [];
                 const rechHist = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.RECHARGE_HISTORY, []) : [];
                 const emgList = (typeof Storage !== 'undefined' && Storage.get) ? Storage.get(Storage.KEYS.EMERGENCIES, []) : [];

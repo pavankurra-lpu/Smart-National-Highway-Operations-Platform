@@ -247,21 +247,28 @@ window.updateTravellerAuthUI = () => {
     const authText = document.getElementById('sidebar-auth-text');
     const authIcon = document.getElementById('sidebar-auth-icon');
     const authBtn = document.getElementById('btn-sidebar-auth');
+    const userName = document.getElementById('sidebar-user-name');
+    const userSub = document.getElementById('sidebar-user-sub');
+    const userAvatar = document.getElementById('sidebar-user-avatar');
 
-    if (authText && authBtn) {
-        if (token && phone) {
-            authText.innerText = `Logout (+91-${phone.substring(0, 3)}..${phone.substring(8)})`;
-            if (authIcon) authIcon.className = 'fa-solid fa-right-from-bracket';
-            authBtn.style.background = 'rgba(239, 68, 68, 0.15)';
-            authBtn.style.color = '#f87171';
-            authBtn.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+    if (token && phone) {
+        if (userName) userName.innerText = `+91-${phone.substring(0, 5)} ${phone.substring(5)}`;
+        if (userSub) userSub.innerHTML = '<span class="user-status-dot live"></span> Server Wallet Active';
+        if (userAvatar) userAvatar.innerHTML = '<i class="fa-solid fa-shield-check" style="color:#10b981;"></i>';
+        if (authText) authText.innerText = 'Log Out';
+        if (authIcon) authIcon.className = 'fa-solid fa-right-from-bracket';
+        if (authBtn) {
+            authBtn.className = 'sidebar-auth-action-btn logged-in';
             authBtn.title = 'Click to Log Out / Switch Mobile Number';
-        } else {
-            authText.innerText = 'Login';
-            if (authIcon) authIcon.className = 'fa-solid fa-mobile-screen-button';
-            authBtn.style.background = 'rgba(16, 185, 129, 0.15)';
-            authBtn.style.color = '#34d399';
-            authBtn.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+        }
+    } else {
+        if (userName) userName.innerText = 'Guest Traveller';
+        if (userSub) userSub.innerHTML = '<span class="user-status-dot"></span> Offline / Standalone Mode';
+        if (userAvatar) userAvatar.innerHTML = '<i class="fa-solid fa-user"></i>';
+        if (authText) authText.innerText = 'Sign In';
+        if (authIcon) authIcon.className = 'fa-solid fa-mobile-screen-button';
+        if (authBtn) {
+            authBtn.className = 'sidebar-auth-action-btn';
             authBtn.title = 'Phone Login & Wallet Sync';
         }
     }
