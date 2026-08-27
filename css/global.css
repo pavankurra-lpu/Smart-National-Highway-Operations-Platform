@@ -742,3 +742,35 @@ body.light-mode option {
     50% { transform: scale(1.2); filter: brightness(1.5) drop-shadow(0 0 8px var(--primary)); }
     100% { transform: scale(1); filter: brightness(1); }
 }
+
+/* ===== REACTBITS SPOTLIGHT CARD INTERACTIVE STYLING ===== */
+.spotlight-card {
+    position: relative;
+    background: rgba(18, 18, 23, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
+}
+
+.spotlight-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.12);
+    transform: translateY(-2px);
+}
+
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: radial-gradient(350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.14), transparent 45%);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}

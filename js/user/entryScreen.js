@@ -225,20 +225,16 @@ window.logoutTraveller = () => {
     if (window.FastagEngine && typeof window.FastagEngine.updateUI === 'function') {
         window.FastagEngine.updateUI();
     }
+    window.updateTravellerAuthUI();
     if (window.Utils) {
-        Utils.showToast('Logged out of Traveller Portal.', 'info');
+        Utils.showToast('Logged out. Switched to Guest Mode. Click Sign In to connect.', 'info');
     }
     const entryScreen = document.getElementById('entry-screen');
-    const userApp = document.getElementById('user-app');
-    if (entryScreen && userApp) {
-        entryScreen.classList.remove('fade-out');
-        entryScreen.style.display = 'flex';
-        userApp.classList.add('hidden');
+    if (entryScreen && !entryScreen.classList.contains('fade-out')) {
+        if (window.EntryScreen && typeof window.EntryScreen.init === 'function') {
+            window.EntryScreen.init();
+        }
     }
-    if (window.EntryScreen && typeof window.EntryScreen.init === 'function') {
-        window.EntryScreen.init();
-    }
-    window.updateTravellerAuthUI();
 };
 
 window.updateTravellerAuthUI = () => {

@@ -216,112 +216,112 @@ const TrafficControl = {
         let html = '';
         page.forEach(plaza => {
             const tId = plaza.id;
-            const state = currentStates[tId]?.congestion || 'NORMAL';
-            const lanes = currentStates[tId]?.lanes || { total: 6, open: 6 };
+            const stateA = currentStates[tId]?.congestionA || currentStates[tId]?.congestion || 'NORMAL';
+            const stateB = currentStates[tId]?.congestionB || (stateA === 'HIGH' ? 'MODERATE' : 'NORMAL');
+            const lanesA = currentStates[tId]?.lanesA || { total: 3, open: 3 };
+            const lanesB = currentStates[tId]?.lanesB || { total: 3, open: 3 };
+            const totalLanes = lanesA.total + lanesB.total;
+            const openLanes = lanesA.open + lanesB.open;
             
             const seed = plaza.id.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
             const r = (seed % 97) / 97;
 
-            const vehicleCount = state === 'HIGH'     ? Math.floor(80  + r * 120) :
-                                 state === 'MODERATE' ? Math.floor(30  + r * 50)  :
-                                                         Math.floor(5   + r * 25);
-            const waitTime     = state === 'HIGH'     ? Math.floor(12  + r * 20)  :
-                                 state === 'MODERATE' ? Math.floor(5   + r * 8)   :
-                                                         Math.floor(1   + r * 3);
-            let base = plaza.baseRate || 50;
-            if (base < 75) {
-                const seed = tId.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-                base = 90 + (seed % 191);
-            }
-            const revenue      = Math.floor(vehicleCount * base * (0.8 + r * 0.4));
-            const congPct      = state === 'HIGH'     ? Math.floor(85  + r * 15)  :
-                                 state === 'MODERATE' ? Math.floor(45  + r * 25)  :
-                                                         Math.floor(10  + r * 20);
+            const vCountA = stateA === 'HIGH' ? Math.floor(45 + r * 60) : (stateA === 'MODERATE' ? Math.floor(18 + r * 25) : Math.floor(4 + r * 10));
+            const vCountB = stateB === 'HIGH' ? Math.floor(40 + r * 55) : (stateB === 'MODERATE' ? Math.floor(15 + r * 20) : Math.floor(3 + r * 8));
+            const waitA = stateA === 'HIGH' ? Math.floor(8 + r * 10) : (stateA === 'MODERATE' ? Math.floor(3 + r * 4) : 1);
+            const waitB = stateB === 'HIGH' ? Math.floor(7 + r * 8) : (stateB === 'MODERATE' ? Math.floor(3 + r * 3) : 1);
+            
+            let base = plaza.baseRate || 85;
+            const totalVehicles = vCountA + vCountB;
+            const revenue = Math.floor(totalVehicles * base * 1.8);
             
             const congColors = { NORMAL: '#10b981', MODERATE: '#fcd34d', HIGH: '#ff5e5e' };
-            const congColor = congColors[state];
+            const colorA = congColors[stateA];
+            const colorB = congColors[stateB];
+            const maxState = (stateA === 'HIGH' || stateB === 'HIGH') ? 'HIGH' : ((stateA === 'MODERATE' || stateB === 'MODERATE') ? 'MODERATE' : 'NORMAL');
+            const overallColor = congColors[maxState];
 
-            // Render cool modern card layouts with glassmorphic elements (Kokonut UI Spotlight card)
+            // Render modern bidirectional spotlight toll card
             html += `
                 <div class="tc-card spotlight-card" style="
-                    border-left: 4px solid ${congColor};
-                    margin-bottom: 12px;
+                    border-left: 4px solid ${overallColor};
+                    background: rgba(18, 18, 23, 0.9);
+                    border-radius: 14px;
+                    padding: 16px;
+                    margin-bottom: 16px;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
                 ">
-                    
-                    <!-- Header -->
-                    <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom: 12px;">
+                    <!-- Station Header -->
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 14px;">
                         <div>
-                            <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3;">${plaza.name}</h4>
-                            <div style="font-size: 10px; color: var(--text-sec); margin-top: 3px; letter-spacing: 0.5px;">
-                                ${tId} · <span style="text-transform: uppercase;">${plaza.state}</span>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <h4 style="margin: 0; font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2;">⛩️ ${plaza.name}</h4>
+                                <span style="font-size: 9.5px; font-weight: 700; color: #38bdf8; background: rgba(56,189,248,0.12); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(56,189,248,0.25);">
+                                    ${plaza.nhCorridor && plaza.nhCorridor !== 'N/A' ? 'NH-' + plaza.nhCorridor : 'National Highway'}
+                                </span>
+                            </div>
+                            <div style="font-size: 11px; color: #a1a1aa; margin-top: 3px;">
+                                ${tId} · <span style="text-transform: uppercase;">${plaza.state}</span> · Master Plaza Station
                             </div>
                         </div>
-                        <div style="
-                            font-size: 9px; font-weight: 800; text-transform: uppercase;
-                            color: ${congColor}; background: ${congColor}15;
-                            padding: 3px 8px; border-radius: 6px; border: 1px solid ${congColor}30;
-                            display: flex; align-items: center; gap: 4px;
-                        ">
-                            <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${congColor};"></span>
-                            ${state}
+                        <div style="text-align:right;">
+                            <div style="font-size: 9px; font-weight: 800; text-transform: uppercase; color: ${overallColor}; background: ${overallColor}15; padding: 3px 8px; border-radius: 6px; border: 1px solid ${overallColor}30; display: inline-flex; align-items: center; gap: 4px;">
+                                <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${overallColor};"></span>
+                                ${maxState} LOAD
+                            </div>
+                            <div style="font-size: 10px; color: #38bdf8; font-weight: 700; margin-top: 4px;">
+                                Total Rev: ₹${revenue.toLocaleString()}
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Live Stats Details -->
-                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 12px; background: rgba(0,0,0,0.25); padding: 8px; border-radius: 6px;">
-                        <div style="text-align: center;">
-                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Vehicles</span>
-                            <span style="font-size:12px; font-weight:700; color:#fff;">${vehicleCount}</span>
-                        </div>
-                        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.05);">
-                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Wait</span>
-                            <span style="font-size:12px; font-weight:700; color:#fff;">${waitTime}m</span>
-                        </div>
-                        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.05);">
-                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Revenue</span>
-                            <span style="font-size:12px; font-weight:700; color:var(--primary);">₹${revenue}</span>
-                        </div>
-                        <div style="text-align: center; border-left: 1px solid rgba(255,255,255,0.05);">
-                            <span style="display:block; font-size:8px; color:var(--text-sec); text-transform:uppercase;">Lanes</span>
-                            <span style="font-size:12px; font-weight:700; color:#fff;">${lanes.open}/${lanes.total}</span>
-                        </div>
-                    </div>
-
-                    <!-- Glowing Progress bar -->
-                    <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; margin-bottom: 14px;">
-                        <div style="width: ${congPct}%; height: 100%; background: ${congColor}; box-shadow: 0 0 8px ${congColor}; transition: width 0.3s ease;"></div>
-                    </div>
-
-                    <!-- Control Actions -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-                        <div style="display:flex; gap:4px; flex:1;">
-                            <button onclick="setCongestion('${tId}', 'NORMAL')" style="
-                                flex: 1; padding: 6px 0; font-size: 10px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid ${state === 'NORMAL' ? '#10b981' : 'rgba(255,255,255,0.05)'};
-                                background: ${state === 'NORMAL' ? 'rgba(16,185,129,0.15)' : 'rgba(0,0,0,0.2)'};
-                                color: ${state === 'NORMAL' ? '#10b981' : 'var(--text-sec)'};
-                            ">Normal</button>
-                            
-                            <button onclick="setCongestion('${tId}', 'MODERATE')" style="
-                                flex: 1; padding: 6px 0; font-size: 10px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid ${state === 'MODERATE' ? '#fcd34d' : 'rgba(255,255,255,0.05)'};
-                                background: ${state === 'MODERATE' ? 'rgba(252,211,77,0.15)' : 'rgba(0,0,0,0.2)'};
-                                color: ${state === 'MODERATE' ? '#fcd34d' : 'var(--text-sec)'};
-                            ">Moderate</button>
-                            
-                            <button onclick="setCongestion('${tId}', 'HIGH')" style="
-                                flex: 1; padding: 6px 0; font-size: 10px; font-weight: 600; border-radius: 6px; cursor: pointer; border: 1px solid ${state === 'HIGH' ? '#ff5e5e' : 'rgba(255,255,255,0.05)'};
-                                background: ${state === 'HIGH' ? 'rgba(255,94,94,0.15)' : 'rgba(0,0,0,0.2)'};
-                                color: ${state === 'HIGH' ? '#ff5e5e' : 'var(--text-sec)'};
-                            ">High</button>
-                        </div>
+                    <!-- Bidirectional Carriageways Grid (Inbound vs Outbound) -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px;">
                         
-                        <div style="display:flex; gap:4px;">
-                            <button onclick="TrafficControl.adjustLanes('${tId}', -1)" style="
-                                width: 28px; height: 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.2); color: #fff; font-size: 12px; cursor: pointer; display:flex; align-items:center; justify-content:center;
-                            " title="Close Lane">−</button>
-                            <button onclick="TrafficControl.adjustLanes('${tId}', 1)" style="
-                                width: 28px; height: 24px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.2); color: #fff; font-size: 12px; cursor: pointer; display:flex; align-items:center; justify-content:center;
-                            " title="Open Lane">+</button>
+                        <!-- Direction A: Inbound / Entry Side -->
+                        <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 12px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                                <span style="font-size: 11px; font-weight: 700; color: #38bdf8; display:flex; align-items:center; gap:5px;">
+                                    <i class="fa-solid fa-arrow-trend-up"></i> Inbound (Entry Side)
+                                </span>
+                                <span style="font-size: 9px; font-weight: 700; color: ${colorA};">${stateA}</span>
+                            </div>
+                            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 4px; text-align: center; margin-bottom: 8px; background: rgba(255,255,255,0.02); padding: 6px; border-radius: 6px;">
+                                <div><span style="font-size:8px; color:#a1a1aa; display:block;">QUEUE</span><strong style="font-size:11.5px; color:#fff;">${vCountA}</strong></div>
+                                <div><span style="font-size:8px; color:#a1a1aa; display:block;">WAIT</span><strong style="font-size:11.5px; color:#fff;">${waitA}m</strong></div>
+                                <div><span style="font-size:8px; color:#a1a1aa; display:block;">LANES</span><strong style="font-size:11.5px; color:#fff;">${lanesA.open}/${lanesA.total}</strong></div>
+                            </div>
+                            <div style="display:flex; gap:3px;">
+                                <button onclick="TrafficControl.setDirectionalCongestion('${tId}', 'A', 'NORMAL')" style="flex:1; padding:4px 0; font-size:9.5px; font-weight:600; border-radius:4px; cursor:pointer; border:1px solid ${stateA === 'NORMAL' ? '#10b981' : 'rgba(255,255,255,0.08)'}; background:${stateA === 'NORMAL' ? 'rgba(16,185,129,0.2)' : 'rgba(0,0,0,0.3)'}; color:${stateA === 'NORMAL' ? '#10b981' : '#a1a1aa'};">Normal</button>
+                                <button onclick="TrafficControl.setDirectionalCongestion('${tId}', 'A', 'MODERATE')" style="flex:1; padding:4px 0; font-size:9.5px; font-weight:600; border-radius:4px; cursor:pointer; border:1px solid ${stateA === 'MODERATE' ? '#fcd34d' : 'rgba(255,255,255,0.08)'}; background:${stateA === 'MODERATE' ? 'rgba(252,211,77,0.2)' : 'rgba(0,0,0,0.3)'}; color:${stateA === 'MODERATE' ? '#fcd34d' : '#a1a1aa'};">Mod</button>
+                                <button onclick="TrafficControl.setDirectionalCongestion('${tId}', 'A', 'HIGH')" style="flex:1; padding:4px 0; font-size:9.5px; font-weight:600; border-radius:4px; cursor:pointer; border:1px solid ${stateA === 'HIGH' ? '#ff5e5e' : 'rgba(255,255,255,0.08)'}; background:${stateA === 'HIGH' ? 'rgba(255,94,94,0.2)' : 'rgba(0,0,0,0.3)'}; color:${stateA === 'HIGH' ? '#ff5e5e' : '#a1a1aa'};">High</button>
+                                <button onclick="TrafficControl.adjustDirectionLanes('${tId}', 'A', -1)" style="padding:4px 6px; font-size:10px; border-radius:4px; border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.3); color:#fff; cursor:pointer;" title="Close Inbound Lane">−</button>
+                                <button onclick="TrafficControl.adjustDirectionLanes('${tId}', 'A', 1)" style="padding:4px 6px; font-size:10px; border-radius:4px; border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.3); color:#fff; cursor:pointer;" title="Open Inbound Lane">+</button>
+                            </div>
                         </div>
+
+                        <!-- Direction B: Outbound / Opposite Side -->
+                        <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 12px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                                <span style="font-size: 11px; font-weight: 700; color: #a78bfa; display:flex; align-items:center; gap:5px;">
+                                    <i class="fa-solid fa-arrow-trend-down"></i> Outbound (Opposite Side)
+                                </span>
+                                <span style="font-size: 9px; font-weight: 700; color: ${colorB};">${stateB}</span>
+                            </div>
+                            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 4px; text-align: center; margin-bottom: 8px; background: rgba(255,255,255,0.02); padding: 6px; border-radius: 6px;">
+                                <div><span style="font-size:8px; color:#a1a1aa; display:block;">QUEUE</span><strong style="font-size:11.5px; color:#fff;">${vCountB}</strong></div>
+                                <div><span style="font-size:8px; color:#a1a1aa; display:block;">WAIT</span><strong style="font-size:11.5px; color:#fff;">${waitB}m</strong></div>
+                                <div><span style="font-size:8px; color:#a1a1aa; display:block;">LANES</span><strong style="font-size:11.5px; color:#fff;">${lanesB.open}/${lanesB.total}</strong></div>
+                            </div>
+                            <div style="display:flex; gap:3px;">
+                                <button onclick="TrafficControl.setDirectionalCongestion('${tId}', 'B', 'NORMAL')" style="flex:1; padding:4px 0; font-size:9.5px; font-weight:600; border-radius:4px; cursor:pointer; border:1px solid ${stateB === 'NORMAL' ? '#10b981' : 'rgba(255,255,255,0.08)'}; background:${stateB === 'NORMAL' ? 'rgba(16,185,129,0.2)' : 'rgba(0,0,0,0.3)'}; color:${stateB === 'NORMAL' ? '#10b981' : '#a1a1aa'};">Normal</button>
+                                <button onclick="TrafficControl.setDirectionalCongestion('${tId}', 'B', 'MODERATE')" style="flex:1; padding:4px 0; font-size:9.5px; font-weight:600; border-radius:4px; cursor:pointer; border:1px solid ${stateB === 'MODERATE' ? '#fcd34d' : 'rgba(255,255,255,0.08)'}; background:${stateB === 'MODERATE' ? 'rgba(252,211,77,0.2)' : 'rgba(0,0,0,0.3)'}; color:${stateB === 'MODERATE' ? '#fcd34d' : '#a1a1aa'};">Mod</button>
+                                <button onclick="TrafficControl.setDirectionalCongestion('${tId}', 'B', 'HIGH')" style="flex:1; padding:4px 0; font-size:9.5px; font-weight:600; border-radius:4px; cursor:pointer; border:1px solid ${stateB === 'HIGH' ? '#ff5e5e' : 'rgba(255,255,255,0.08)'}; background:${stateB === 'HIGH' ? 'rgba(255,94,94,0.2)' : 'rgba(0,0,0,0.3)'}; color:${stateB === 'HIGH' ? '#ff5e5e' : '#a1a1aa'};">High</button>
+                                <button onclick="TrafficControl.adjustDirectionLanes('${tId}', 'B', -1)" style="padding:4px 6px; font-size:10px; border-radius:4px; border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.3); color:#fff; cursor:pointer;" title="Close Outbound Lane">−</button>
+                                <button onclick="TrafficControl.adjustDirectionLanes('${tId}', 'B', 1)" style="padding:4px 6px; font-size:10px; border-radius:4px; border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.3); color:#fff; cursor:pointer;" title="Open Outbound Lane">+</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             `;
@@ -330,22 +330,42 @@ const TrafficControl = {
         grid.innerHTML = html;
     },
 
-    setCongestion: (tollId, level) => {
-        Storage.setTollCongestion(tollId, level);
-        Utils.showToast(`Updated plaza ${tollId} load: ${level}`);
+    setDirectionalCongestion: (tollId, dir, level) => {
+        const states = Storage.get(Storage.KEYS.TOLL_STATES, {});
+        if (!states[tollId]) states[tollId] = {};
+        if (dir === 'A') {
+            states[tollId].congestionA = level;
+            states[tollId].congestion = level;
+        } else {
+            states[tollId].congestionB = level;
+        }
+        Storage.set(Storage.KEYS.TOLL_STATES, states);
+        Utils.showToast(`Updated ${dir === 'A' ? 'Inbound' : 'Outbound'} flow at ${tollId} to ${level}`, 'info');
         TrafficControl.applyFilters();
     },
 
-    adjustLanes: (tollId, delta) => {
+    adjustDirectionLanes: (tollId, dir, delta) => {
         const states = Storage.get(Storage.KEYS.TOLL_STATES, {});
         if (!states[tollId]) states[tollId] = {};
-        if (!states[tollId].lanes) states[tollId].lanes = { total: 6, open: 6 };
+        const key = dir === 'A' ? 'lanesA' : 'lanesB';
+        const currentLanes = states[tollId][key] || { total: 3, open: 3 };
         
-        states[tollId].lanes.open = Math.max(1, Math.min(states[tollId].lanes.total, states[tollId].lanes.open + delta));
+        let newOpen = currentLanes.open + delta;
+        if (newOpen < 1) newOpen = 1;
+        if (newOpen > currentLanes.total) newOpen = currentLanes.total;
+
+        states[tollId][key] = { total: currentLanes.total, open: newOpen };
         Storage.set(Storage.KEYS.TOLL_STATES, states);
-        
-        Utils.showToast(`Lane status updated: ${states[tollId].lanes.open}/${states[tollId].lanes.total} open.`);
-        TrafficControl.renderGrid();
+        Utils.showToast(`${dir === 'A' ? 'Inbound' : 'Outbound'} active lanes at ${tollId}: ${newOpen}/${currentLanes.total}`, 'info');
+        TrafficControl.applyFilters();
+    },
+
+    setCongestion: (tollId, level) => {
+        TrafficControl.setDirectionalCongestion(tollId, 'A', level);
+    },
+
+    adjustLanes: (tollId, delta) => {
+        TrafficControl.adjustDirectionLanes(tollId, 'A', delta);
     }
 };
 
