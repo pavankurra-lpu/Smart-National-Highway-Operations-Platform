@@ -318,6 +318,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedDistrict = districtSelect ? districtSelect.value : 'ALL';
         const cardListEl = document.getElementById('district-tolls-card-list');
 
+        // Toll gates will ONLY appear after choosing both State and District!
+        if (selectedState === 'ALL' || selectedDistrict === 'ALL') {
+            if (cardListEl) {
+                cardListEl.style.display = 'none';
+                cardListEl.innerHTML = '';
+            }
+            plazaSelect.value = 'ALL';
+            if (countBadge) {
+                countBadge.textContent = selectedState === 'ALL' ? 'All India (1,185 Plazas)' : `All ${selectedState}`;
+                countBadge.style.color = '#10b981';
+            }
+            return;
+        }
+
         let filtered = allTolls.filter(toll => {
             const tState = (toll.state || '').toLowerCase();
             const tDist = (toll.district || '').toLowerCase();
@@ -333,78 +347,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update badge with clear feedback
         if (countBadge) {
-            if (selectedDistrict !== 'ALL') {
-                countBadge.textContent = `${filtered.length} Tolls in ${selectedDistrict}`;
-            } else if (selectedState !== 'ALL') {
-                countBadge.textContent = `${filtered.length} Tolls in ${selectedState}`;
-            } else {
-                countBadge.textContent = `${allTolls.length}+ Plazas (All India)`;
-            }
+            countBadge.textContent = `${filtered.length} Tolls in ${selectedDistrict}`;
             countBadge.style.color = filtered.length > 0 ? '#10b981' : '#f43f5e';
         }
 
-        plazaSelect.innerHTML = '';
-
-        // Default super-admin option if All States / All Districts
-        if (selectedState === 'ALL' || selectedDistrict === 'ALL') {
-            const superOpt = document.createElement('option');
-            superOpt.value = 'ALL';
-            superOpt.textContent = `⭐ All Plazas (${selectedState === 'ALL' ? 'Super Admin - All India' : `All ${selectedState}`})`;
-            plazaSelect.appendChild(superOpt);
-        }
-
         if (filtered.length === 0) {
-            const noOpt = document.createElement('option');
-            noOpt.value = '';
-            noOpt.textContent = `No toll plazas found in this district`;
-            noOpt.disabled = true;
-            plazaSelect.appendChild(noOpt);
+            plazaSelect.value = 'ALL';
             if (cardListEl) {
-                cardListEl.innerHTML = '<div style="font-size:11px; color:#94a3b8; padding:12px; text-align:center;">No toll plazas registered for this district.</div>';
+                cardListEl.style.display = 'block';
+                cardListEl.innerHTML = '<div style="font-size:10px; color:#94a3b8; padding:8px; text-align:center;">No toll plazas found in this district.</div>';
             }
             return;
         }
 
-        // Populate Plaza Dropdown
-        filtered.slice(0, 300).forEach((t, idx) => {
-            const opt = document.createElement('option');
-            opt.value = t.name || t.id;
-            const corr = t.nhCorridor && t.nhCorridor !== 'N/A' ? ` [NH-${t.nhCorridor}]` : '';
-            const loc = t.district ? ` (${t.district}, ${t.state})` : (t.state ? ` (${t.state})` : '');
-            opt.textContent = `🏗️ ${t.name}${corr}${loc}`;
-            opt.dataset.tollJson = JSON.stringify(t);
-            plazaSelect.appendChild(opt);
-        });
-
-        // Auto-select first plaza if a specific district is picked
-        if (selectedDistrict !== 'ALL' && filtered.length > 0) {
-            plazaSelect.value = filtered[0].name || filtered[0].id;
-        }
+        // Auto-select first plaza in this district
+        plazaSelect.value = filtered[0].name || filtered[0].id;
 
         // Populate Interactive Quick-Click Toll Cards
         if (cardListEl) {
+            cardListEl.style.display = 'flex';
+            cardListEl.style.flexDirection = 'column';
+            cardListEl.style.gap = '4px';
             cardListEl.innerHTML = '';
-            
-            // Header for district tolls
-            if (selectedDistrict !== 'ALL' || selectedState !== 'ALL') {
-                const head = document.createElement('div');
-                head.style.cssText = 'font-size: 9.5px; color: #94a3b8; font-weight: 700; margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center;';
-                head.innerHTML = `<span><i class="fa-solid fa-hand-pointer" style="color:#10b981;"></i> Click any toll to select directly:</span> <span style="color:#10b981;">${filtered.length} Plazas</span>`;
-                cardListEl.appendChild(head);
-            }
 
             filtered.slice(0, 40).forEach((t, idx) => {
                 const card = document.createElement('div');
-                const isSelected = (selectedDistrict !== 'ALL' && idx === 0) || (plazaSelect.value === (t.name || t.id));
+                const isSelected = idx === 0;
                 card.className = `toll-card-item ${isSelected ? 'selected' : ''}`;
-                const corr = t.nhCorridor && t.nhCorridor !== 'N/A' ? `NH-${t.nhCorridor}` : 'National Hwy';
+                const corr = t.nhCorridor && t.nhCorridor !== 'N/A' ? t.nhCorridor : 'National Hwy';
                 
                 card.innerHTML = `
-                    <div style="flex:1; min-width:0; padding-right:8px;">
-                        <div class="toll-card-name"><i class="fa-solid fa-archway" style="color:#10b981; font-size:10px;"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</span></div>
-                        <div class="toll-card-location"><i class="fa-solid fa-location-dot" style="font-size:8px; color:#10b981;"></i> ${t.district || ''}, ${t.state || 'India'}</div>
+                    <div style="flex:1; min-width:0; padding-right:6px;">
+                        <div class="toll-card-name" style="font-size:10px;"><i class="fa-solid fa-archway" style="color:#10b981; font-size:9px;"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</span></div>
+                        <div class="toll-card-location" style="font-size:8.5px;"><i class="fa-solid fa-location-dot" style="font-size:7.5px; color:#10b981;"></i> ${t.district || ''}, ${t.state || 'India'}</div>
                     </div>
-                    <span class="toll-card-corridor">${corr}</span>
+                    <span class="toll-card-corridor" style="font-size:8px; padding:1px 4px;">${corr}</span>
                 `;
 
                 card.addEventListener('click', () => {
@@ -432,26 +409,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (plazaSelect) {
-        plazaSelect.addEventListener('change', () => {
-            const cardListEl = document.getElementById('district-tolls-card-list');
-            if (cardListEl) {
-                cardListEl.querySelectorAll('.toll-card-item').forEach(card => {
-                    const name = card.querySelector('.toll-card-name span')?.textContent;
-                    if (name && (plazaSelect.value.includes(name) || name.includes(plazaSelect.value))) {
-                        card.classList.add('selected');
-                    } else {
-                        card.classList.remove('selected');
-                    }
-                });
-            }
-        });
-    }
-
-    // Default to Punjab to showcase instant segregation out of the box
+    // Default to ALL states for instant clean load
     if (stateSelect) {
-        stateSelect.value = 'Punjab';
-        populateDistricts('Punjab');
+        stateSelect.value = 'ALL';
+        populateDistricts('ALL');
     }
 
     // Initial render

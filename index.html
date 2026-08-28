@@ -100,14 +100,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 24px;
+            padding: 24px 20px;
             z-index: 5;
         }
         .hero-grid {
             display: grid;
             grid-template-columns: 1.15fr 1fr;
-            gap: 60px;
-            max-width: 1100px;
+            gap: 36px;
+            max-width: 1060px;
             width: 100%;
             align-items: center;
         }
@@ -119,209 +119,251 @@
         .nhai-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            gap: 5px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
             border-radius: 20px;
-            padding: 6px 12px;
-            font-size: 10px;
+            padding: 4px 10px;
+            font-size: 9px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            color: var(--text-sec);
-            margin-bottom: 20px;
+            color: #10b981;
+            margin-bottom: 12px;
+            font-family: var(--font-display);
         }
         .hero-title {
             font-family: var(--font-display), sans-serif;
-            font-size: 46px;
+            font-size: 30px;
             font-weight: 800;
             line-height: 1.15;
-            letter-spacing: -1.5px;
-            color: #fff;
-            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            color: #f8fafc;
+            margin-bottom: 10px;
         }
         .hero-title span {
             color: var(--primary);
             position: relative;
         }
         .hero-subtitle {
-            font-size: 15px;
-            color: var(--text-sec);
-            line-height: 1.6;
-            margin-bottom: 36px;
-            max-width: 480px;
+            font-size: 12.5px;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            max-width: 460px;
         }
         
         /* Stats Dashboard Live Widget */
         .landing-stats-box {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 36px;
+            gap: 8px;
+            margin-top: 18px;
             width: 100%;
         }
         .l-stat {
-            height: 98px;
-            min-height: 98px;
-            max-height: 98px;
+            height: 72px;
+            min-height: 72px;
+            max-height: 72px;
             box-sizing: border-box;
-            background: rgba(18, 18, 23, 0.75);
+            background: rgba(19, 27, 32, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 16px 18px;
+            border-radius: 10px;
+            padding: 10px 14px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(12px);
             transition: border-color 0.2s ease, transform 0.2s ease;
             overflow: hidden;
             text-align: left;
         }
         .l-stat:hover {
-            border-color: rgba(255, 255, 255, 0.18);
+            border-color: rgba(16, 185, 129, 0.35);
             transform: translateY(-2px);
         }
         .l-stat-val {
             font-family: var(--font-display), sans-serif;
             font-variant-numeric: tabular-nums;
             font-feature-settings: "tnum";
-            font-size: 22px;
-            font-weight: 700;
-            color: #f4f4f5;
+            font-size: 16px;
+            font-weight: 800;
+            color: #f8fafc;
             line-height: 1;
             margin: 0;
             white-space: nowrap;
         }
         .l-stat-lbl {
-            font-size: 10px;
-            color: #a1a1aa;
+            font-size: 9px;
+            color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             margin: 0;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.2;
             white-space: nowrap;
+            font-family: var(--font-display);
         }
 
         /* Interactive Portal Cards Group */
         .portal-cards-box {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
         .portal-card {
             display: flex;
             align-items: center;
-            gap: 20px;
-            background: rgba(18, 18, 23, 0.85);
+            gap: 14px;
+            background: rgba(19, 27, 32, 0.88);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 14px 18px;
             text-decoration: none;
             text-align: left;
             transition: all 0.2s ease;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
         }
         .portal-card:hover {
-            background: rgba(24, 24, 30, 0.95);
-            border-color: rgba(16, 185, 129, 0.35);
-            transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.06);
-        }
-        .portal-card.card-user:hover {
+            background: rgba(24, 34, 40, 0.95);
             border-color: rgba(16, 185, 129, 0.45);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(16, 185, 129, 0.12);
-        }
-        .portal-card.card-admin:hover {
-            border-color: rgba(34, 163, 93, 0.45);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(34, 163, 93, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.12);
         }
         
         .card-icon-box {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 16px;
+            color: #10b981;
             flex-shrink: 0;
             transition: all 0.2s ease;
         }
-        .portal-card.card-user .card-icon-box {
-            color: #10b981;
-            background: rgba(16, 185, 129, 0.08);
-            border-color: rgba(16, 185, 129, 0.25);
-        }
-        .portal-card.card-admin .card-icon-box {
-            color: #22a35d;
-            background: rgba(34, 163, 93, 0.08);
-            border-color: rgba(34, 163, 93, 0.25);
-        }
-        
         .portal-card:hover .card-icon-box {
             transform: scale(1.05);
-        }
-        .portal-card.card-user:hover .card-icon-box {
-            background: rgba(16, 185, 129, 0.15);
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
-        }
-        .portal-card.card-admin:hover .card-icon-box {
-            background: rgba(34, 163, 93, 0.15);
-            box-shadow: 0 0 15px rgba(34, 163, 93, 0.25);
+            background: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
         }
         
         .card-details h3 {
             font-family: var(--font-display), sans-serif;
-            font-size: 17px;
-            font-weight: 700;
-            color: #f4f4f5;
-            margin: 0 0 6px 0;
+            font-size: 14px;
+            font-weight: 800;
+            color: #f8fafc;
+            margin: 0 0 3px 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .card-details p {
-            font-size: 12.5px;
-            color: #a1a1aa;
-            line-height: 1.5;
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.4;
             margin: 0;
         }
         .card-arrow {
             margin-left: auto;
-            width: 32px;
-            height: 32px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #71717a;
-            font-size: 12px;
+            color: #94a3b8;
+            font-size: 10px;
             flex-shrink: 0;
             transition: all 0.2s ease;
         }
         .portal-card:hover .card-arrow {
-            color: #f4f4f5;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(3px);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.15);
+            transform: translateX(2px);
         }
         .card-details {
             position: relative;
             z-index: 2;
         }
 
+        /* ===== ABOUT SECTION STYLING (Shadcn + KokonutUI + BklitUI) ===== */
+        .landing-about-section {
+            max-width: 1060px;
+            margin: 10px auto 40px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 5;
+        }
+        .about-bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .about-card {
+            background: rgba(19, 27, 32, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 18px;
+            text-align: left;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .about-card:hover {
+            border-color: rgba(16, 185, 129, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+        }
+        .about-card-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #f8fafc;
+            font-family: var(--font-display);
+            margin: 0 0 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .about-card-desc {
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin: 0 0 12px;
+        }
+        .about-pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .about-pill {
+            font-size: 9px;
+            font-weight: 700;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: var(--font-display);
+        }
+
         /* Footer Panel */
         .gateway-footer {
-            padding: 24px 48px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 11px;
-            color: var(--text-muted);
+            padding: 16px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 10px;
+            color: #64748b;
             text-align: center;
             backdrop-filter: blur(12px);
             z-index: 10;
@@ -585,15 +627,15 @@
                     <!-- Active Plazas Bento Card -->
                     <div class="l-stat">
                         <div class="l-stat-lbl">National Plazas</div>
-                        <div class="l-stat-val" id="stat-plazas">1,160+ NETC</div>
+                        <div class="l-stat-val" id="stat-plazas">1,185 NETC</div>
                     </div>
                     
                     <!-- Real-Time Clock Card -->
                     <div class="l-stat">
                         <div class="l-stat-lbl" id="stat-date">DATE</div>
                         <div style="display: flex; align-items: baseline; gap: 4px; line-height: 1;">
-                            <div id="stat-time-only" style="color: #10b981; font-size: 22px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
-                            <div id="stat-ampm" style="color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: lowercase;">am</div>
+                            <div id="stat-time-only" style="color: #10b981; font-size: 18px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
+                            <div id="stat-ampm" style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: lowercase;">am</div>
                         </div>
                     </div>
 
@@ -642,9 +684,88 @@
         </div>
     </main>
 
+    <!-- Embedded Modern About & Architecture Section (shadcn / reactbits / bklitui / kokonutui) -->
+    <section id="about-section" class="landing-about-section">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+            <div>
+                <span class="nhai-badge" style="margin-bottom: 4px;"><i class="fa-solid fa-code-branch"></i> SYSTEM OVERVIEW & ARCHITECTURE</span>
+                <h2 style="font-size: 18px; font-weight: 800; color: #f8fafc; font-family: var(--font-display); margin: 0; letter-spacing: 0.5px;">
+                    Smart National Highway Operations Platform
+                </h2>
+                <p style="font-size: 10.5px; color: #94a3b8; margin: 2px 0 0;">
+                    Next-Generation Unified Operations Suite for India's National Highway Network
+                </p>
+            </div>
+            <div style="display: flex; gap: 6px;">
+                <button type="button" class="btn btn-outline" onclick="Utils.toggleVisibility('active-tolls-modal', true); window.loadModalTolls && window.loadModalTolls();" style="padding: 5px 10px; font-size: 9.5px; border-radius: 6px; font-family: var(--font-display);">
+                    <i class="fa-solid fa-archway"></i> Explore 1,185 Plazas
+                </button>
+                <button type="button" class="btn btn-primary" onclick="Utils.toggleVisibility('about-project-modal', true)" style="padding: 5px 10px; font-size: 9.5px; border-radius: 6px; font-family: var(--font-display);">
+                    <i class="fa-solid fa-circle-info"></i> Full Technical Spec
+                </button>
+            </div>
+        </div>
+
+        <div class="about-bento-grid">
+            <!-- Card 1: Core Platform Architecture -->
+            <div class="about-card">
+                <div>
+                    <h3 class="about-card-title">
+                        <i class="fa-solid fa-network-wired" style="color: #10b981;"></i> 1,185 Plazas & Live GIS
+                    </h3>
+                    <p class="about-card-desc">
+                        Full-scale synchronization of 1,185 official NHAI fee plazas across 24 states and UTs with GNSS geodesic cross-track calculations, virtual gantry crossing, and Dijkstra route optimization.
+                    </p>
+                </div>
+                <div class="about-pill-list">
+                    <span class="about-pill">1,185 Toll Plazas</span>
+                    <span class="about-pill">GNSS Matcher</span>
+                    <span class="about-pill">Leaflet GIS</span>
+                    <span class="about-pill">Dijkstra Routing</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Multi-Signal AI & Emergency Ops -->
+            <div class="about-card">
+                <div>
+                    <h3 class="about-card-title">
+                        <i class="fa-solid fa-shield-halved" style="color: #34d399;"></i> Tri-Signal AI & 1033 SOS
+                    </h3>
+                    <p class="about-card-desc">
+                        Fuses Open-Meteo live weather telemetry, real-time traffic congestion, and temporal incident risk decay for dynamic route and lane recommendations. Instant 1033 SOS dispatch with proof-of-resolution ledger.
+                    </p>
+                </div>
+                <div class="about-pill-list">
+                    <span class="about-pill">Tri-Signal Arbitration</span>
+                    <span class="about-pill">1033 Rapid SOS</span>
+                    <span class="about-pill">Open-Meteo Weather</span>
+                    <span class="about-pill">FASTag 3D Wallet</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Creator & System Specifications -->
+            <div class="about-card">
+                <div>
+                    <h3 class="about-card-title">
+                        <i class="fa-solid fa-user-astronaut" style="color: #10b981;"></i> Creator & Specifications
+                    </h3>
+                    <p class="about-card-desc">
+                        Architected & engineered by <strong>Pavan Kurra</strong> as an enterprise highway operations platform. Compliant with NHAI & MoRTH operational blueprints with zero-trust cryptographic sessions.
+                    </p>
+                </div>
+                <div class="about-pill-list">
+                    <span class="about-pill">Architect: Pavan Kurra</span>
+                    <span class="about-pill">NHAI / MoRTH Standards</span>
+                    <span class="about-pill">Vanilla ES6+</span>
+                    <span class="about-pill">Zero-Trust Auth</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer Panel -->
     <footer class="gateway-footer">
-        *Inspired by the National Highways Authority of India (NHAI) and FASTag workflow design. Fully client-side state synchronization enabled. Created by pavan.kurra
+        *Inspired by the National Highways Authority of India (NHAI) and FASTag workflow design. Fully client-side state synchronization enabled. Created by Pavan Kurra
     </footer>
 
     <!-- About Project Modal -->
