@@ -168,25 +168,25 @@
 /* ===== PROFESSIONAL LIGHT MODE (Zinc SaaS) ===== */
 body.light-mode {
     --bg-dark:        #ffffff; /* Pure White */
-    --bg-darker:      #fafafa; /* Zinc-50 */
-    --bg-card:        rgba(255, 255, 255, 0.85);
+    --bg-darker:      #f8fafc; /* Slate-50 */
+    --bg-card:        rgba(255, 255, 255, 0.92);
     --bg-panel:       rgba(255, 255, 255, 0.98);
     
-    --primary:        #059669; /* Emerald-600 */
-    --primary-dim:    rgba(5, 150, 105, 0.08);
-    --primary-hover:  #047857; /* Emerald-700 */
+    --primary:        #0284c7; /* Sky-600 (Harmonized with dark mode brand) */
+    --primary-dim:    rgba(2, 132, 199, 0.08);
+    --primary-hover:  #0369a1; /* Sky-700 */
     
     --text-main:      #09090b; /* Zinc-950 */
-    --text-sec:       #71717a; /* Zinc-500 */
-    --text-muted:     #a1a1aa; /* Zinc-400 */
+    --text-sec:       #64748b; /* Slate-500 */
+    --text-muted:     #94a3b8; /* Slate-400 */
     
     --border:         rgba(9, 9, 11, 0.08); /* Zinc-200 subtle */
     --border-light:   rgba(9, 9, 11, 0.04);
     
-    --shadow:         0 10px 30px -10px rgba(5, 150, 105, 0.05);
+    --shadow:         0 10px 30px -10px rgba(2, 132, 199, 0.08);
     --shadow-lg:      0 20px 50px -12px rgba(9, 9, 11, 0.06);
 
-    --ring:           #059669; /* Emerald-600 */
+    --ring:           #0284c7; /* Sky-600 */
     --ring-offset:    #ffffff; /* White */
 }
 

@@ -883,7 +883,7 @@ path.leaflet-interactive:focus,
 .wave-bar {
     width: 3px;
     border-radius: 3px;
-    background: linear-gradient(180deg, #38bdf8 0%, #38bdf8 100%);
+    background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 100%);
     animation: waveBarBounce 1.1s ease-in-out infinite alternate;
 }
 .wave-bar.bar-1 { height: 6px; animation-delay: 0.1s; }
@@ -1293,6 +1293,9 @@ input:checked + .slider:before {
     border-color: #10b981;
     color: #fff;
 }
+.origin-chip:active {
+    transform: scale(0.95);
+}
 
 .place-badge {
     font-size: 9.5px;
@@ -1369,6 +1372,9 @@ input:checked + .slider:before {
     border-color: #38bdf8;
     box-shadow: 0 0 14px rgba(56, 189, 248, 0.2);
 }
+.route-option-card:active {
+    transform: scale(0.97);
+}
 .route-opt-header {
     display: flex;
     align-items: center;
@@ -1391,7 +1397,7 @@ input:checked + .slider:before {
 }
 .route-opt-tag.alt {
     color: #38bdf8;
-    background: rgba(167, 139, 250, 0.2);
+    background: rgba(56, 189, 248, 0.2);
 }
 .route-opt-details {
     font-size: 9.5px;
@@ -1433,10 +1439,13 @@ input:checked + .slider:before {
     transform: scale(0.92);
 }
 .place-action-btn.primary {
-    background: linear-gradient(135deg, #0284c7, #0369a1);
-    border-color: rgba(56, 189, 248, 0.4);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    background: rgba(56, 189, 248, 0.12);
+    border-color: rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+}
+.place-action-btn.primary:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #ffffff;
 }
 .place-action-btn.start {
     background: linear-gradient(135deg, #10b981, #059669);
@@ -1737,7 +1746,7 @@ body.light-mode #admin-broadcasts-panel {
 
 /* ===== FASTAG CARD (Kokonut UI Cyber Indigo & Sapphire Glass) ===== */
 .fastag-card {
-    background: linear-gradient(135deg, #0f172a 0%, #0f172a 50%, #1e3a8a 100%) !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.14) !important;
     padding: 20px 22px;
     border-radius: 16px;
@@ -2109,7 +2118,7 @@ body.light-mode .google-ac-item:hover {
 .google-ac-icon-box.icon-hospital  { background: linear-gradient(135deg, #dc2626, #991b1b); color: #ffffff; box-shadow: 0 3px 10px rgba(220,38,38,0.35); }
 .google-ac-icon-box.icon-institute { background: linear-gradient(135deg, #0d9488, #0f766e); color: #ffffff; box-shadow: 0 3px 10px rgba(13,148,136,0.35); }
 .google-ac-icon-box.icon-tech      { background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; box-shadow: 0 3px 10px rgba(2, 132, 199,0.35); }
-.google-ac-icon-box.icon-mall      { background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; box-shadow: 0 3px 10px rgba(2, 132, 199,0.35); }
+.google-ac-icon-box.icon-mall      { background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: #ffffff; box-shadow: 0 3px 10px rgba(139,92,246,0.35); }
 .google-ac-icon-box.icon-fuel      { background: linear-gradient(135deg, #ca8a04, #a16207); color: #ffffff; box-shadow: 0 3px 10px rgba(202,138,4,0.35); }
 .google-ac-icon-box.icon-hotel     { background: linear-gradient(135deg, #65a30d, #4d7c0f); color: #ffffff; box-shadow: 0 3px 10px rgba(101,163,13,0.35); }
 .google-ac-icon-box.icon-city      { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; box-shadow: 0 3px 10px rgba(37,99,235,0.35); }
@@ -2479,7 +2488,7 @@ body.light-mode .google-ac-subtitle {
     width: 58px;
     height: 58px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #38bdf8, #38bdf8);
+    background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
     color: #fff;
     font-size: 24px;
     display: flex;
@@ -3146,21 +3155,21 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
 }
 
 .badge-emerald {
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.35);
 }
 
 .badge-amber {
-    background: rgba(56, 189, 248, 0.12);
+    background: rgba(245, 158, 11, 0.12);
     color: #fbbf24;
-    border: 1px solid rgba(56, 189, 248, 0.3);
+    border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .badge-blue {
-    background: rgba(14, 165, 233, 0.12);
+    background: rgba(56, 189, 248, 0.12);
     color: #38bdf8;
-    border: 1px solid rgba(14, 165, 233, 0.3);
+    border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
 /* React Bits Holographic Empty State */
