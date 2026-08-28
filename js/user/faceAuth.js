@@ -102,17 +102,17 @@ const FaceAuth = {
         const modalHTML = `
             <div style="
                 background: rgba(15, 23, 42, 0.85);
-                border: 2px solid #38bdf8;
+                border: 2px solid #f2a93b;
                 border-radius: 24px;
                 padding: 36px 30px;
                 width: 90%;
                 max-width: 440px;
                 text-align: center;
-                box-shadow: 0 0 50px rgba(56, 189, 248, 0.35);
+                box-shadow: 0 0 50px rgba(242, 169, 59, 0.35);
                 color: #f8fafc;
                 position: relative;
             ">
-                <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; color: #38bdf8; display:flex; align-items:center; justify-content:center; gap:8px;">
+                <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; color: #f2a93b; display:flex; align-items:center; justify-content:center; gap:8px;">
                     <i class="fa-solid fa-face-viewfinder"></i> BIOMETRIC DRIVER VERIFICATION
                 </div>
                 <div style="font-size: 12px; color: #94a3b8; margin-bottom: 20px;">
@@ -126,18 +126,18 @@ const FaceAuth = {
                     margin: 0 auto 20px auto;
                     border-radius: 50%;
                     overflow: hidden;
-                    border: 3px solid #38bdf8;
+                    border: 3px solid #f2a93b;
                     background: #0b1120;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    box-shadow: inset 0 0 30px rgba(56, 189, 248, 0.2);
+                    box-shadow: inset 0 0 30px rgba(242, 169, 59, 0.2);
                 ">
                     <div id="scanner-laser" style="
                         position: absolute;
                         top: 0; left: 0; width: 100%; height: 3px;
-                        background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-                        box-shadow: 0 0 12px #38bdf8;
+                        background: linear-gradient(90deg, transparent, #f2a93b, transparent);
+                        box-shadow: 0 0 12px #f2a93b;
                         animation: scanLaser 2s linear infinite;
                         z-index: 10;
                     "></div>
@@ -145,7 +145,7 @@ const FaceAuth = {
                     <div style="
                         position: absolute;
                         width: 150px; height: 190px;
-                        border: 2px dashed rgba(56, 189, 248, 0.6);
+                        border: 2px dashed rgba(242, 169, 59, 0.6);
                         border-radius: 50% 50% 40% 40%;
                         z-index: 5;
                     "></div>
@@ -214,7 +214,7 @@ const FaceAuth = {
                 if (analysis.faceDetected) {
                     consecutiveHits++;
                     statusEl.innerText = `Analyzing Driver Identity: ${(Math.min(1.0, consecutiveHits / 18) * 100).toFixed(0)}%`;
-                    statusEl.style.color = '#38bdf8';
+                    statusEl.style.color = '#f2a93b';
 
                     ctx.strokeStyle = '#10b981';
                     ctx.lineWidth = 2;
@@ -249,7 +249,7 @@ const FaceAuth = {
                 FaceAuth.canvasInterval = setInterval(() => {
                     simulatedProgress += 0.05;
                     ctx.clearRect(0, 0, 260, 260);
-                    ctx.strokeStyle = '#38bdf8';
+                    ctx.strokeStyle = '#f2a93b';
                     ctx.lineWidth = 2;
                     ctx.beginPath();
                     ctx.arc(130, 130, 80, 0, Math.PI * 2);

@@ -10,8 +10,8 @@ const Gamification = {
 
     levels: [
         { lvl: 1, name: 'Highway Cadet', xpNeeded: 500, titleColor: '#94a3b8', badgeBg: 'linear-gradient(135deg, #64748b, #475569)', icon: '🔰', perk: 'Standard Route Intelligence & 1033 SOS' },
-        { lvl: 2, name: 'Eco Cruiser', xpNeeded: 1200, titleColor: '#38bdf8', badgeBg: 'linear-gradient(135deg, #0284c7, #38bdf8)', icon: '🌱', perk: '2% FASTag Cashback + Fuel Station Finder' },
-        { lvl: 3, name: 'Corridor Navigator', xpNeeded: 2500, titleColor: '#38bdf8', badgeBg: 'linear-gradient(135deg, #0284c7, #38bdf8)', icon: '🧭', perk: 'AI Lane Guidance + Live Highway CCTV Access' },
+        { lvl: 2, name: 'Eco Cruiser', xpNeeded: 1200, titleColor: '#f2a93b', badgeBg: 'linear-gradient(135deg, #d98f22, #f2a93b)', icon: '🌱', perk: '2% FASTag Cashback + Fuel Station Finder' },
+        { lvl: 3, name: 'Corridor Navigator', xpNeeded: 2500, titleColor: '#f2a93b', badgeBg: 'linear-gradient(135deg, #d98f22, #f2a93b)', icon: '🧭', perk: 'AI Lane Guidance + Live Highway CCTV Access' },
         { lvl: 4, name: 'Expressway Pro', xpNeeded: 4500, titleColor: '#34d399', badgeBg: 'linear-gradient(135deg, #059669, #34d399)', icon: '⚡', perk: '5% FASTag Recharge Bonus + Express Lanes' },
         { lvl: 5, name: 'Toll Master', xpNeeded: 7500, titleColor: '#fbbf24', badgeBg: 'linear-gradient(135deg, #d97706, #fbbf24)', icon: '🏆', perk: 'VIP Highway Lounge Access + Pass Discounts' },
         { lvl: 6, name: 'Highway Captain', xpNeeded: 12000, titleColor: '#f43f5e', badgeBg: 'linear-gradient(135deg, #e11d48, #f43f5e)', icon: '👑', perk: 'Priority Highway Patrol + 8% Fuel Rebate' },
@@ -184,8 +184,8 @@ const Gamification = {
         Gamification.levels.forEach(lvl => {
             const isCurrent = lvl.lvl === currentLvl;
             const isUnlocked = currentLvl >= lvl.lvl;
-            const borderCol = isCurrent ? 'rgba(56,189,248,0.5)' : (isUnlocked ? 'rgba(16,185,129,0.35)' : 'rgba(255,255,255,0.08)');
-            const bgCol = isCurrent ? 'rgba(56,189,248,0.12)' : (isUnlocked ? 'rgba(16,185,129,0.08)' : 'rgba(0,0,0,0.25)');
+            const borderCol = isCurrent ? 'rgba(242, 169, 59,0.5)' : (isUnlocked ? 'rgba(16,185,129,0.35)' : 'rgba(255,255,255,0.08)');
+            const bgCol = isCurrent ? 'rgba(242, 169, 59,0.12)' : (isUnlocked ? 'rgba(16,185,129,0.08)' : 'rgba(0,0,0,0.25)');
 
             html += `
                 <div style="background:${bgCol}; border:1px solid ${borderCol}; border-radius:10px; padding:10px 14px; margin-bottom:10px; transition: all 0.2s ease;">
@@ -193,7 +193,7 @@ const Gamification = {
                         <div style="font-weight:800; font-size:13px; color:${lvl.titleColor}; display:flex; align-items:center; gap:6px;">
                             <span>${lvl.icon}</span> <span>Level ${lvl.lvl}: ${lvl.name}</span>
                         </div>
-                        <span style="font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:12px; background:${isCurrent ? 'rgba(56,189,248,0.2)' : (isUnlocked ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.06)')}; color:${isCurrent ? '#38bdf8' : (isUnlocked ? '#34d399' : '#94a3b8')};">
+                        <span style="font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:12px; background:${isCurrent ? 'rgba(242, 169, 59,0.2)' : (isUnlocked ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.06)')}; color:${isCurrent ? '#f2a93b' : (isUnlocked ? '#34d399' : '#94a3b8')};">
                             ${isCurrent ? '⭐ CURRENT' : (isUnlocked ? '✓ UNLOCKED' : `${lvl.xpNeeded} XP`)}
                         </span>
                     </div>
@@ -238,7 +238,7 @@ const Gamification = {
         }
         if (tierTag) {
             tierTag.innerText = `Tier ${levelVal}`;
-            tierTag.style.color = activeLvl.titleColor || '#38bdf8';
+            tierTag.style.color = activeLvl.titleColor || '#f2a93b';
             tierTag.style.borderColor = `${activeLvl.titleColor}40`;
         }
         if (activePerkEl) {
@@ -290,7 +290,7 @@ const Gamification = {
 
         if (countBadgeEl) {
             countBadgeEl.innerText = `${unlockedCount}/8 Unlocked`;
-            countBadgeEl.style.color = unlockedCount > 0 ? '#34d399' : '#38bdf8';
+            countBadgeEl.style.color = unlockedCount > 0 ? '#34d399' : '#f2a93b';
         }
     },
 

@@ -96,7 +96,7 @@ const Notifications = {
         // 1. Add active admin broadcast alerts
         adminAlerts.slice(0, 5).forEach(a => {
             const icon = a.type === 'EMERGENCY' ? 'fa-triangle-exclamation' : (a.type === 'TRAFFIC' ? 'fa-car-burst' : 'fa-bullhorn');
-            const color = a.type === 'EMERGENCY' ? '#f43f5e' : (a.type === 'TRAFFIC' ? '#f59e0b' : '#38bdf8');
+            const color = a.type === 'EMERGENCY' ? '#f43f5e' : (a.type === 'TRAFFIC' ? '#f59e0b' : '#f2a93b');
             tickerItems.push(`
                 <span style="color:${color}; font-weight:700;">
                     <i class="fa-solid ${icon}"></i> [NHAI BROADCAST]: ${a.title} — ${a.message}
@@ -132,7 +132,7 @@ const Notifications = {
         // 3. Fallback standard national advisories if no critical alerts
         if (tickerItems.length === 0) {
             tickerItems = [
-                `<span><i class="fa-solid fa-satellite-dish" style="color:#38bdf8;"></i> GPS Telemetry Active · Real-time National Highway monitoring enabled.</span>`,
+                `<span><i class="fa-solid fa-satellite-dish" style="color:#f2a93b;"></i> GPS Telemetry Active · Real-time National Highway monitoring enabled.</span>`,
                 `<span><i class="fa-solid fa-shield-halved" style="color:#10b981;"></i> 1033 National Emergency Dispatch ready 24/7 across all corridors.</span>`,
                 `<span><i class="fa-solid fa-wallet" style="color:#a855f7;"></i> Automated FASTag Toll clearance operational on 1,232+ Indian plazas.</span>`,
                 `<span><i class="fa-solid fa-triangle-exclamation" style="color:#fbbf24;"></i> Heavy vehicle lane discipline mandatory across all Expressways.</span>`
@@ -169,7 +169,7 @@ const Notifications = {
         
         const typeIcons = {
             'TRAFFIC': '<i class="fa-solid fa-car-burst" style="color:var(--accent-yellow)"></i>',
-            'WEATHER': '<i class="fa-solid fa-cloud-showers-heavy" style="color:#3b82f6"></i>',
+            'WEATHER': '<i class="fa-solid fa-cloud-showers-heavy" style="color:#f2a93b"></i>',
             'EMERGENCY': '<i class="fa-solid fa-triangle-exclamation" style="color:var(--accent-red)"></i>',
             'INFO': '<i class="fa-solid fa-circle-info" style="color:var(--primary)"></i>'
         };
@@ -196,7 +196,7 @@ const Notifications = {
             } else {
                 proximityBadge = `
                     <div style="margin-top:4px; font-size:9.5px; color:#94a3b8;">
-                        <i class="fa-solid fa-satellite-dish" style="color:#38bdf8;"></i> 10km Geofence Area • ${dist.toFixed(0)} km from current location
+                        <i class="fa-solid fa-satellite-dish" style="color:#f2a93b;"></i> 10km Geofence Area • ${dist.toFixed(0)} km from current location
                     </div>
                 `;
             }
@@ -210,7 +210,7 @@ const Notifications = {
                 </div>
                 <div style="font-size:11.5px; color:#cbd5e1; line-height:1.4;">${alert.message}</div>
                 ${proximityBadge}
-                <div style="font-size:9px; color:#38bdf8; margin-top:5px; font-weight:600; display:flex; align-items:center; gap:6px;">
+                <div style="font-size:9px; color:#f2a93b; margin-top:5px; font-weight:600; display:flex; align-items:center; gap:6px;">
                     <span><i class="fa-solid fa-archway"></i> ${alert.plaza || 'All Corridors'}</span>
                     <span>•</span>
                     <span><i class="fa-regular fa-clock"></i> ${Utils.formatDateTime ? Utils.formatDateTime(alert.timestamp) : new Date(alert.timestamp).toLocaleTimeString()}</span>
@@ -237,7 +237,7 @@ const Notifications = {
         alerts.forEach(alert => {
             if (alert.lat && alert.lng && (alert.lat !== 20.5937 || alert.lng !== 78.9629)) {
                 const radiusMeters = (alert.radiusKm || 10) * 1000; // 10,000 meters (10 km)
-                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#38bdf8');
+                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#f2a93b');
 
                 const circle = L.circle([alert.lat, alert.lng], {
                     radius: radiusMeters,
@@ -247,7 +247,7 @@ const Notifications = {
                     fillOpacity: 0.12,
                     dashArray: '5, 8'
                 }).bindPopup(`
-                    <div style="font-family:'Inter',sans-serif; color:#0f172a; padding:4px;">
+                    <div style="font-family:'Inter',sans-serif; color:#14100b; padding:4px;">
                         <strong style="color:${color}; font-size:12px;"><i class="fa-solid fa-tower-broadcast"></i> 10km NHAI Broadcast Zone</strong><br>
                         <strong style="font-size:11.5px;">${alert.title}</strong><br>
                         <p style="font-size:11px; color:#475569; margin:4px 0;">${alert.message}</p>

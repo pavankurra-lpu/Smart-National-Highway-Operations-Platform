@@ -152,8 +152,8 @@ const Analytics = {
                         type: 'bar',
                         label: 'Transit Counts',
                         data: trafficValues,
-                        backgroundColor: 'rgba(14, 165, 233, 0.4)',
-                        borderColor: '#0ea5e9',
+                        backgroundColor: 'rgba(242, 169, 59, 0.4)',
+                        borderColor: '#d98f22',
                         borderWidth: 1,
                         borderRadius: 4,
                         barThickness: 12,
@@ -170,7 +170,7 @@ const Analytics = {
                         position: 'top',
                         labels: {
                             color: '#a1a1aa',
-                            font: { size: 9, family: 'Space Grotesk', weight: '500' },
+                            font: { size: 9, family: var(--font-display), weight: '500' },
                             boxWidth: 8,
                             padding: 10
                         }
@@ -179,7 +179,7 @@ const Analytics = {
                         backgroundColor: 'rgba(9, 9, 11, 0.95)',
                         borderColor: 'rgba(255,255,255,0.08)',
                         borderWidth: 1,
-                        titleFont: { family: 'Space Grotesk', size: 10 },
+                        titleFont: { family: var(--font-display), size: 10 },
                         bodyFont: { family: 'Inter', size: 10 },
                         padding: 8
                     }

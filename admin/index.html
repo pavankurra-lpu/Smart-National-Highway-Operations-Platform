@@ -47,23 +47,31 @@
             </div>
         </aside>
 
+        <!-- Backdrop for mobile drawer -->
+        <div id="admin-sidebar-backdrop" class="admin-sidebar-backdrop" onclick="document.querySelector('.admin-sidebar').classList.remove('open'); this.classList.remove('active');"></div>
+
         <!-- Main Content Area -->
         <main class="admin-main">
 
-            <div class="dashboard-header" style="background:#090d16; border-bottom:1px solid rgba(255,255,255,0.08); padding:12px 24px;">
+            <div class="dashboard-header" style="background:#14100b; border-bottom:1px solid rgba(255,255,255,0.08); padding:12px 24px;">
                 <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+                    <!-- Mobile Sidebar Hamburger Toggle -->
+                    <button class="admin-mobile-toggle" onclick="document.querySelector('.admin-sidebar').classList.toggle('open'); document.getElementById('admin-sidebar-backdrop').classList.toggle('active');" title="Toggle Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
                     <!-- Realistic NHAI Highway Logo -->
                     <svg viewBox="0 0 100 100" width="34" height="34" style="flex-shrink:0;">
-                        <circle cx="50" cy="50" r="46" fill="#090d16" stroke="#38bdf8" stroke-width="2.5"/>
-                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#38bdf8"/>
+                        <circle cx="50" cy="50" r="46" fill="#14100b" stroke="#f2a93b" stroke-width="2.5"/>
+                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#f2a93b"/>
                         <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
-                        <text x="50" y="56" font-family="'Space Grotesk', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
+                        <text x="50" y="56" font-family="var(--font-display), 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
                     </svg>
 
                     <div>
                         <h2 style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:800; color:#f8fafc; margin:0;">
                             Operations Control Command · सत्यमेव जयते
-                            <span id="admin-region-badge" style="font-size: 9.5px; padding: 2px 7px; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.3); color: #38bdf8; border-radius: 9999px; font-weight: 700;">ALL INDIA</span>
+                            <span id="admin-region-badge" style="font-size: 9.5px; padding: 2px 7px; background: rgba(242, 169, 59,0.12); border: 1px solid rgba(242, 169, 59,0.3); color: #f2a93b; border-radius: 9999px; font-weight: 700;">ALL INDIA</span>
                         </h2>
                         <p style="font-size:10px; color:#94a3b8; margin:2px 0 0 0;">National Highways Authority of India • SATYAMEVA JAYATE</p>
                     </div>
@@ -223,17 +231,17 @@
                         </div>
 
                         <!-- Connected Toll Gate Info Card -->
-                        <div id="bc-connected-toll-card" style="background:rgba(15,23,42,0.6); border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:15px; border-left:4px solid #38bdf8;">
+                        <div id="bc-connected-toll-card" style="background:rgba(15,23,42,0.6); border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:15px; border-left:4px solid #f2a93b;">
                             <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                                 <div>
                                     <div style="font-size:10px; color:var(--text-sec); text-transform:uppercase; letter-spacing:0.5px; font-weight:700;">
-                                        <i class="fa-solid fa-archway" style="color:#38bdf8;"></i> Connected Toll Gate
+                                        <i class="fa-solid fa-archway" style="color:#f2a93b;"></i> Connected Toll Gate
                                     </div>
                                     <h4 id="bc-toll-name" style="margin:2px 0 0 0; font-size:14px; font-weight:700; color:#fff;">All India National Highway Network</h4>
                                     <div id="bc-toll-meta" style="font-size:11px; color:#94a3b8; margin-top:2px;">National Corridors • Multi-State Geofence</div>
                                 </div>
                                 <div style="text-align:right;">
-                                    <span style="font-size:10px; background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); padding:2px 6px; border-radius:4px; font-weight:700;">
+                                    <span style="font-size:10px; background:rgba(242, 169, 59,0.15); color:#f2a93b; border:1px solid rgba(242, 169, 59,0.3); padding:2px 6px; border-radius:4px; font-weight:700;">
                                         📡 10 km Range
                                     </span>
                                     <div id="bc-toll-coords" style="font-size:9.5px; color:#64748b; font-family:monospace; margin-top:3px;">Lat: 20.5937, Lng: 78.9629</div>
@@ -283,8 +291,8 @@
                             </div>
 
                             <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.25); padding:8px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-                                <span style="font-size:11px; color:#94a3b8;"><i class="fa-solid fa-satellite-dish" style="color:#38bdf8;"></i> Geofence Radius:</span>
-                                <span style="font-size:11px; font-weight:700; color:#38bdf8;">10 km Range (10,000m Coverage)</span>
+                                <span style="font-size:11px; color:#94a3b8;"><i class="fa-solid fa-satellite-dish" style="color:#f2a93b;"></i> Geofence Radius:</span>
+                                <span style="font-size:11px; font-weight:700; color:#f2a93b;">10 km Range (10,000m Coverage)</span>
                             </div>
 
                             <button id="btn-broadcast" class="btn btn-danger" style="justify-content: center; font-weight:700; font-size:13px; padding:10px 0;">
@@ -299,7 +307,7 @@
                             <h3 style="margin:0; font-size:16px; display:flex; align-items:center; gap:8px;">
                                 <i class="fa-solid fa-bullhorn" style="color:var(--accent-yellow);"></i> Active 10km Broadcasts
                             </h3>
-                            <span id="active-broadcast-count" class="badge" style="background:rgba(56,189,248,0.15); color:#38bdf8; border:1px solid rgba(56,189,248,0.3); font-size:10px;">0 Active</span>
+                            <span id="active-broadcast-count" class="badge" style="background:rgba(242, 169, 59,0.15); color:#f2a93b; border:1px solid rgba(242, 169, 59,0.3); font-size:10px;">0 Active</span>
                         </div>
                         <div id="active-broadcasts-list" style="flex:1; overflow-y:auto; max-height:460px; display:flex; flex-direction:column; gap:10px;">
                             <!-- Filled dynamically by AlertBroadcaster.renderActiveAlerts() -->

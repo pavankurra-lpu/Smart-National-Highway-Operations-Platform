@@ -21,6 +21,12 @@ const AdminApp = {
                 if (btn.getAttribute('data-view') === 'view-overview' && AdminApp.map) {
                     setTimeout(() => AdminApp.map.invalidateSize(), 100);
                 }
+
+                // Auto close mobile drawer
+                const sidebar = document.querySelector('.admin-sidebar');
+                const backdrop = document.getElementById('admin-sidebar-backdrop');
+                if (sidebar) sidebar.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('active');
             });
         });
 
@@ -37,15 +43,15 @@ const AdminApp = {
         if (badge) {
             if (AdminApp.plaza === 'ALL') {
                 badge.innerHTML = '<i class="fa-solid fa-earth-asia"></i> ALL INDIA (SUPER ADMIN)';
-                badge.style.background = 'rgba(59, 130, 246, 0.15)';
-                badge.style.borderColor = 'rgba(59, 130, 246, 0.4)';
-                badge.style.color = '#38bdf8';
+                badge.style.background = 'rgba(242, 169, 59, 0.15)';
+                badge.style.borderColor = 'rgba(242, 169, 59, 0.4)';
+                badge.style.color = '#f2a93b';
             } else {
                 const sub = plazaData?.state ? ` (${plazaData.state})` : '';
                 badge.innerHTML = `<i class="fa-solid fa-map-pin"></i> ${AdminApp.plaza.toUpperCase()}${sub}`;
-                badge.style.background = 'rgba(56, 189, 248, 0.18)';
-                badge.style.borderColor = 'rgba(56, 189, 248, 0.45)';
-                badge.style.color = '#a5b4fc';
+                badge.style.background = 'rgba(242, 169, 59, 0.18)';
+                badge.style.borderColor = 'rgba(242, 169, 59, 0.45)';
+                badge.style.color = '#f5c451';
             }
         }
 
@@ -166,7 +172,7 @@ const AdminApp = {
             const p = AdminApp.plazaData;
             const tollIcon = L.divIcon({
                 className: '',
-                html: `<div style="background: #38bdf8; color:#09090b; width:40px; height:40px; border-radius:12px; border:2px solid #fff; box-shadow:0 0 24px rgba(56,189,248,0.8); display:flex; align-items:center; justify-content:center; font-size:20px;">⛩️</div>`,
+                html: `<div style="background: #f2a93b; color:#09090b; width:40px; height:40px; border-radius:12px; border:2px solid #fff; box-shadow:0 0 24px rgba(242, 169, 59,0.8); display:flex; align-items:center; justify-content:center; font-size:20px;">⛩️</div>`,
                 iconSize: [40, 40],
                 iconAnchor: [20, 20]
             });
@@ -175,7 +181,7 @@ const AdminApp = {
                     <div style="font-family:'Inter',sans-serif; color:#09090b; padding:4px;">
                         <strong style="font-size:13px; color:#09090b;">⛩️ ${p.name}</strong><br>
                         <span style="font-size:11px; color:#64748b;">${p.district ? p.district + ', ' : ''}${p.state || 'India'}</span><br>
-                        <span style="font-size:11px; color:#0284c7; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
+                        <span style="font-size:11px; color:#d98f22; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
                     </div>
                 `)
                 .addTo(AdminApp.map)
@@ -192,7 +198,7 @@ const AdminApp = {
         } else {
             const icon = L.divIcon({
                 className: '',
-                html: `<div style="background:#3b82f6; width:12px; height:12px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 6px #3b82f6;"></div>`,
+                html: `<div style="background:#f2a93b; width:12px; height:12px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 6px #f2a93b;"></div>`,
                 iconSize: [12, 12],
                 iconAnchor: [6, 6]
             });
@@ -263,7 +269,7 @@ const AdminApp = {
             const statusColors = {
                 'RAISED': '#ef4444',
                 'ACKNOWLEDGED': '#f59e0b',
-                'DISPATCHED': '#0ea5e9'
+                'DISPATCHED': '#d98f22'
             };
             const color = statusColors[e.status] || '#ef4444';
 
@@ -284,7 +290,7 @@ const AdminApp = {
 
                 const marker = L.marker([lat, lng], { icon })
                     .bindPopup(`
-                        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; padding: 2px;">
+                        <div style="font-family: var(--font-display), sans-serif; font-size: 11px; padding: 2px;">
                             <strong style="color: ${color}; font-size:12px; display:block; margin-bottom:4px;">🚨 SOS [${e.id}]</strong>
                             <strong style="color:#fff;">Type:</strong> ${e.type}<br>
                             <strong style="color:#fff;">Loc:</strong> ${e.location}<br>
@@ -314,7 +320,7 @@ const AdminApp = {
         alerts.forEach(alert => {
             if (alert.lat && alert.lng && (alert.lat !== 20.5937 || alert.lng !== 78.9629)) {
                 const radiusMeters = (alert.radiusKm || 10) * 1000;
-                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#38bdf8');
+                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#f2a93b');
                 
                 const circle = L.circle([alert.lat, alert.lng], {
                     radius: radiusMeters,
@@ -324,7 +330,7 @@ const AdminApp = {
                     fillOpacity: 0.12,
                     dashArray: '6, 6'
                 }).bindPopup(`
-                    <div style="font-family:'Inter',sans-serif; color:#0f172a; padding:4px;">
+                    <div style="font-family:'Inter',sans-serif; color:#14100b; padding:4px;">
                         <strong style="color:${color}; font-size:12px;">📡 10km Broadcast Geofence</strong><br>
                         <strong style="font-size:11.5px;">${alert.title}</strong><br>
                         <span style="font-size:11px; color:#64748b;">${alert.plaza || 'Toll Gate'} (${alert.radiusKm || 10}km Radius)</span>

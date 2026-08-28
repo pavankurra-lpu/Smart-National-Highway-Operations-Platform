@@ -89,7 +89,7 @@
             <!-- Interactive Traveller Phone OTP Authentication Card -->
             <div id="entry-auth-container" style="margin-top: 20px; width: 100%; max-width: 440px; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 20px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5); backdrop-filter: blur(16px); text-align: left;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <span style="font-size: 11px; font-weight: 700; color: #38bdf8; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                    <span style="font-size: 11px; font-weight: 700; color: #f2a93b; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
                         <i class="fa-solid fa-shield-halved"></i> TRAVELLER AUTHENTICATION
                     </span>
                     <span id="entry-auth-badge" style="font-size: 9.5px; color: #94a3b8; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">FASTag Secure Ledger</span>
@@ -99,7 +99,7 @@
                     <label style="font-size: 10px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 6px;">ENTER 10-DIGIT MOBILE NUMBER (+91)</label>
                     <div style="display: flex; gap: 8px; margin-bottom: 12px;">
                         <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 10px 12px; color: #94a3b8; font-size: 12.5px; font-weight: 600;">+91</span>
-                        <input type="tel" id="entry-phone-input" placeholder="e.g. 9876543210" maxlength="10" autocomplete="tel" style="flex: 1; padding: 10px 14px; background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; color: #fff; font-size: 13.5px; font-weight: 600; outline: none;">
+                        <input type="tel" id="entry-phone-input" placeholder="e.g. 9876543210" maxlength="10" autocomplete="tel" style="flex: 1; padding: 10px 14px; background: #14100b; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; color: #fff; font-size: 13.5px; font-weight: 600; outline: none;">
                     </div>
                     <button id="btn-entry-send-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
                         <i class="fa-solid fa-paper-plane"></i> Send 6-Digit OTP Code
@@ -109,15 +109,15 @@
                 <div id="entry-step-verify" style="display: none;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
                         <label style="font-size: 10px; color: #94a3b8; font-weight: 700;">ENTER 6-DIGIT OTP</label>
-                        <span id="entry-phone-target" style="font-size: 11px; color: #38bdf8; font-weight: 600;"></span>
+                        <span id="entry-phone-target" style="font-size: 11px; color: #f2a93b; font-weight: 600;"></span>
                     </div>
-                    <input type="text" id="entry-otp-input" placeholder="••••••" maxlength="6" autocomplete="one-time-code" style="width: 100%; box-sizing: border-box; padding: 12px; background: #0f172a; border: 1px solid var(--primary); border-radius: 8px; color: #fff; font-size: 20px; font-weight: 700; text-align: center; letter-spacing: 8px; margin-bottom: 12px; outline: none;">
-                    <button id="btn-entry-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #3b82f6 0%, #0284c7 100%); margin-bottom: 8px;">
+                    <input type="text" id="entry-otp-input" placeholder="••••••" maxlength="6" autocomplete="one-time-code" style="width: 100%; box-sizing: border-box; padding: 12px; background: #14100b; border: 1px solid var(--primary); border-radius: 8px; color: #fff; font-size: 20px; font-weight: 700; text-align: center; letter-spacing: 8px; margin-bottom: 12px; outline: none;">
+                    <button id="btn-entry-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #f2a93b 0%, #d98f22 100%); margin-bottom: 8px;">
                         <i class="fa-solid fa-lock-open"></i> Verify & Launch Dashboard
                     </button>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <button id="btn-entry-change-phone" style="background: none; border: none; color: #94a3b8; font-size: 11px; cursor: pointer; text-decoration: underline;">Change Phone</button>
-                        <button id="btn-entry-resend-otp" style="background: none; border: none; color: #38bdf8; font-size: 11px; cursor: pointer; font-weight: 600;">Resend OTP</button>
+                        <button id="btn-entry-resend-otp" style="background: none; border: none; color: #f2a93b; font-size: 11px; cursor: pointer; font-weight: 600;">Resend OTP</button>
                     </div>
                 </div>
 
@@ -183,19 +183,19 @@
              NHAI ACCESS: RIGHT SIDEBAR (Modernized shadcn/ui & KokonutUI style)
              ============================== -->
         <aside class="sidebar" id="nhai-sidebar">
-            <div class="sidebar-header" style="background:#090d16; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.08);">
+            <div class="sidebar-header" style="background:#14100b; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.08);">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <!-- Realistic NHAI Highway Logo -->
                     <svg viewBox="0 0 100 100" width="32" height="32" style="flex-shrink:0;">
-                        <circle cx="50" cy="50" r="46" fill="#090d16" stroke="#38bdf8" stroke-width="2.5"/>
-                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#38bdf8"/>
+                        <circle cx="50" cy="50" r="46" fill="#14100b" stroke="#f2a93b" stroke-width="2.5"/>
+                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#f2a93b"/>
                         <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
-                        <text x="50" y="56" font-family="'Space Grotesk', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
+                        <text x="50" y="56" font-family="var(--font-display), 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
                     </svg>
 
                     <div>
                         <div style="font-size:12px; font-weight:800; color:#f8fafc; line-height:1.2; letter-spacing:0.3px;">NHAI · सत्यमेव जयते</div>
-                        <div style="font-size:7.5px; font-weight:700; color:#38bdf8; line-height:1.2; letter-spacing:0.6px;">SATYAMEVA JAYATE • TRAVELLER PORTAL</div>
+                        <div style="font-size:7.5px; font-weight:700; color:#f2a93b; line-height:1.2; letter-spacing:0.6px;">SATYAMEVA JAYATE • TRAVELLER PORTAL</div>
                     </div>
                 </div>
                 <a href="../index.html" class="snhop-exit-btn" title="Exit to Gateway" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#cbd5e1; padding:5px 10px; border-radius:6px; font-size:11px; text-decoration:none; display:flex; align-items:center; gap:4px;">
@@ -225,7 +225,7 @@
             <!-- Active Highway Alerts Ticker (Kokonut UI Style) -->
             <div class="alerts-ticker-container">
                 <div class="alerts-ticker-label">
-                    <span class="live-status-dot" style="background:#38bdf8;box-shadow:0 0 6px #38bdf8;"></span>
+                    <span class="live-status-dot" style="background:#f2a93b;box-shadow:0 0 6px #f2a93b;"></span>
                     <span>NHAI LIVE FEED</span>
                 </div>
                 <div class="alerts-ticker-marquee">
@@ -273,7 +273,7 @@
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
                         <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Trip Corridor</span>
                         <button type="button" onclick="VoiceAssistant.startListening();" class="btn-voice-header" title="Voice Search Route / Destination (Mic)">
-                            <i class="fa-solid fa-microphone" style="color:#38bdf8;"></i> Voice Search
+                            <i class="fa-solid fa-microphone" style="color:#f2a93b;"></i> Voice Search
                         </button>
                     </div>
 
@@ -314,7 +314,7 @@
                     <!-- Journey Tariff Mode (Trip Corridor: 1-Way vs 24hr Return) -->
                     <div class="trip-corridor-card" style="background: rgba(24, 24, 27, 0.65); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.25);">
                         <div style="display:flex; align-items:center; gap:8px;">
-                            <div style="width:30px; height:30px; border-radius:8px; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.25); color:#38bdf8; display:flex; align-items:center; justify-content:center; font-size:13px;">
+                            <div style="width:30px; height:30px; border-radius:8px; background:rgba(242, 169, 59,0.12); border:1px solid rgba(242, 169, 59,0.25); color:#f2a93b; display:flex; align-items:center; justify-content:center; font-size:13px;">
                                 <i class="fa-solid fa-arrows-left-right"></i>
                             </div>
                             <div>
@@ -323,7 +323,7 @@
                             </div>
                         </div>
                         <div class="trip-type-segmented" style="display:flex; background:rgba(9,9,11,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:3px; gap:4px;">
-                            <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; border:none; cursor:pointer; background:#38bdf8; color:#09090b; transition:all 0.15s ease;">
+                            <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; border:none; cursor:pointer; background:#f2a93b; color:#09090b; transition:all 0.15s ease;">
                                 <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i> One Way
                             </button>
                             <button type="button" id="btn-trip-return" class="btn-trip-mode" style="padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#a1a1aa; transition:all 0.15s ease;">
@@ -452,15 +452,15 @@
                     </h3>
 
                     <!-- Driver XP Level & Badges (Gamified Section) -->
-                    <div class="glass-panel" style="padding: 18px; margin-bottom: 20px; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.12); position: relative; overflow: hidden; border-radius: 16px; background: rgba(15, 23, 42, 0.75);">
+                    <div class="glass-panel" style="padding: 18px; margin-bottom: 20px; border: 1px solid rgba(242, 169, 59, 0.3); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(242, 169, 59, 0.12); position: relative; overflow: hidden; border-radius: 16px; background: rgba(15, 23, 42, 0.75);">
                         <!-- Header & Badge -->
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                             <div style="display:flex; align-items:center; gap:10px;">
-                                <div id="gamified-lvl-badge" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #38bdf8, #3b82f6); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; box-shadow: 0 0 18px rgba(56, 189, 248, 0.6); border: 2px solid rgba(255,255,255,0.3); flex-shrink:0;">1</div>
+                                <div id="gamified-lvl-badge" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #f2a93b, #f2a93b); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; box-shadow: 0 0 18px rgba(242, 169, 59, 0.6); border: 2px solid rgba(255,255,255,0.3); flex-shrink:0;">1</div>
                                 <div>
                                     <div style="display:flex; align-items:center; gap:6px;">
-                                        <span style="font-size: 9px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.8px;">Driver Rank</span>
-                                        <span id="gamified-tier-tag" style="font-size: 8.5px; background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); padding: 1px 5px; border-radius: 4px; font-weight: 700;">Tier 1</span>
+                                        <span style="font-size: 9px; font-weight: 800; color: #f2a93b; text-transform: uppercase; letter-spacing: 0.8px;">Driver Rank</span>
+                                        <span id="gamified-tier-tag" style="font-size: 8.5px; background: rgba(242, 169, 59,0.15); color: #f2a93b; border: 1px solid rgba(242, 169, 59,0.3); padding: 1px 5px; border-radius: 4px; font-weight: 700;">Tier 1</span>
                                     </div>
                                     <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 14.5px; font-weight: 800; color: #fff;">Level 1 Highway Cadet</h4>
                                 </div>
@@ -473,10 +473,10 @@
                         <!-- XP progress bar -->
                         <div style="font-size: 10.5px; color: var(--text-sec); display:flex; justify-content:space-between; margin-bottom:5px;">
                             <span id="gamified-xp-text" style="font-weight:600; color:#cbd5e1;">150 / 500 XP</span>
-                            <span id="gamified-xp-pct" style="font-weight:700; color:#38bdf8;">30%</span>
+                            <span id="gamified-xp-pct" style="font-weight:700; color:#f2a93b;">30%</span>
                         </div>
                         <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; margin-bottom: 12px;">
-                            <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #38bdf8, #38bdf8); box-shadow: 0 0 12px rgba(56, 189, 248, 0.6); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+                            <div id="gamified-xp-bar" style="width: 30%; height: 100%; background: linear-gradient(90deg, #f2a93b, #f2a93b); box-shadow: 0 0 12px rgba(242, 169, 59, 0.6); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
                         </div>
 
                         <!-- Active Perks Pill -->
@@ -485,13 +485,13 @@
                                 <i class="fa-solid fa-wand-magic-sparkles" style="color:#fbbf24;"></i>
                                 <span id="gamified-active-perk">Perk: Standard Route Intelligence & 1033 SOS</span>
                             </div>
-                            <span onclick="Gamification.showPerksModal()" style="font-size:9.5px; color:#38bdf8; cursor:pointer; font-weight:700; text-decoration:underline;">All Perks</span>
+                            <span onclick="Gamification.showPerksModal()" style="font-size:9.5px; color:#f2a93b; cursor:pointer; font-weight:700; text-decoration:underline;">All Perks</span>
                         </div>
 
                         <!-- Achievements Grid (8 Badges) -->
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                             <p style="font-size: 10px; font-weight: 700; color: var(--text-sec); margin:0; text-transform: uppercase; letter-spacing: 0.5px;">Driver Achievement Badges</p>
-                            <span id="badges-unlocked-count" style="font-size: 9.5px; color:#38bdf8; font-weight:700;">0/8 Unlocked</span>
+                            <span id="badges-unlocked-count" style="font-size: 9.5px; color:#f2a93b; font-weight:700;">0/8 Unlocked</span>
                         </div>
                         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
                             <div id="badge-face_verified" class="achievement-badge locked" onclick="Gamification.inspectBadge('face_verified')" style="opacity: 0.35; transition: all 0.3s ease; text-align: center; background: rgba(0,0,0,0.25); padding: 8px 4px; border-radius: 8px; border: 1px solid transparent; cursor:pointer;">
@@ -587,7 +587,7 @@
                                     <i class="fa-solid fa-chart-pie" style="color:var(--accent-blue);"></i> Expense Breakdown
                                 </p>
                                 <span class="chart-neon-badge badge-blue">
-                                    <span class="live-status-dot" style="background:#38bdf8;box-shadow:0 0 8px #38bdf8;"></span> DONUT CHART
+                                    <span class="live-status-dot" style="background:#f2a93b;box-shadow:0 0 8px #f2a93b;"></span> DONUT CHART
                                 </span>
                             </div>
                             <div id="donutChart-wrapper" style="height: 125px; width: 100%; display: flex; align-items: center; justify-content: center; position: relative;">
@@ -643,7 +643,7 @@
                             <span class="field-label">Additional Details</span>
                             <textarea id="sos-desc" rows="3" placeholder="Describe the situation briefly..."></textarea>
                         </div>
-                        <button id="btn-submit-sos" class="btn btn-kokonut w-full" style="justify-content: center; font-size: 13px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.05)); border-color: rgba(239, 68, 68, 0.3); color: var(--accent-red);">
+                        <button id="btn-submit-sos" class="btn btn-danger w-full" style="justify-content: center; font-size: 13px;">
                             <i class="fa-solid fa-paper-plane"></i> Dispatch SOS to Admin
                         </button>
                     </div>
@@ -808,7 +808,7 @@
                 <!-- Header with Title & Action Controls -->
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
                     <h3 class="summary-route-title" id="summary-title" style="margin:0; font-size:13px;">
-                        <i class="fa-solid fa-route" style="color:#38bdf8;"></i> Route Summary
+                        <i class="fa-solid fa-route" style="color:#f2a93b;"></i> Route Summary
                     </h3>
                     <div style="display:flex; gap:6px; align-items:center;">
                         <button type="button" id="btn-toggle-route-window" onclick="IndiaMapPlanner.toggleRouteSummary();" class="btn-sheet-mini" title="Minimize / Expand">
@@ -861,9 +861,9 @@
                 </div>
 
                 <!-- Upcoming Toll Plaza & Live Traffic Box -->
-                <div id="upcoming-toll-box" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-left: 3px solid #38bdf8; border-radius: 10px; padding: 8px 10px; margin: 8px 0; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+                <div id="upcoming-toll-box" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(242, 169, 59, 0.25); border-left: 3px solid #f2a93b; border-radius: 10px; padding: 8px 10px; margin: 8px 0; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-size: 9.5px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px;">
+                        <span style="font-size: 9.5px; font-weight: 800; color: #f2a93b; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px;">
                             <i class="fa-solid fa-road-barrier"></i> Upcoming Toll Traffic
                         </span>
                         <span id="upcoming-toll-dist" style="font-size: 9px; color: #94a3b8; font-weight: 600;">Next Barrier</span>
@@ -909,7 +909,7 @@
                     <button id="btn-view-lanes" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px;">
                         <i class="fa-solid fa-signs-post"></i> Lanes
                     </button>
-                    <button id="btn-mid-detour" type="button" onclick="IndiaMapPlanner.exploreMidRouteDetour()" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px; color: #38bdf8; border-color: rgba(56,189,248,0.3);" title="Explore Mid-Route Bypass / Alternative Detour">
+                    <button id="btn-mid-detour" type="button" onclick="IndiaMapPlanner.exploreMidRouteDetour()" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px; color: #f2a93b; border-color: rgba(242, 169, 59,0.3);" title="Explore Mid-Route Bypass / Alternative Detour">
                         <i class="fa-solid fa-shuffle"></i> Mid-Bypass
                     </button>
                     <button id="btn-gps-mode" class="btn btn-outline" style="font-size: 11px; padding: 8px 10px; color:var(--accent-yellow);" title="Use Real Phone GPS">
@@ -918,7 +918,7 @@
                     <button id="btn-follow-me" class="btn btn-outline active" style="font-size: 11px; padding: 8px 10px;" title="Auto-center Map">
                         <i class="fa-solid fa-eye"></i>
                     </button>
-                    <button id="btn-start-trip" class="btn" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px; background:linear-gradient(135deg,#38bdf8,#3b82f6); color:#fff; box-shadow:0 4px 16px rgba(56, 189, 248,0.4);">
+                    <button id="btn-start-trip" class="btn btn-go" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px;">
                         <i class="fa-solid fa-play"></i> Start Trip
                     </button>
                     <button id="btn-end-trip" class="btn btn-danger hidden" style="flex:1; min-width: 100px; justify-content:center; font-size: 12px;">
@@ -1157,9 +1157,9 @@
                     Listening for Route...
                 </h3>
                 <p style="font-size:12px; color:#94a3b8; line-height:1.5; margin:0 0 16px;" id="voice-modal-prompt">
-                    Say e.g. <span style="color:#38bdf8; font-weight:600;">"Delhi to Jaipur"</span> or <span style="color:#38bdf8; font-weight:600;">"Chandigarh to Amritsar"</span>
+                    Say e.g. <span style="color:#f2a93b; font-weight:600;">"Delhi to Jaipur"</span> or <span style="color:#f2a93b; font-weight:600;">"Chandigarh to Amritsar"</span>
                 </p>
-                <div id="voice-modal-transcript" style="min-height:36px; padding:8px 12px; background:rgba(0,0,0,0.3); border-radius:10px; border:1px dashed rgba(255,255,255,0.15); font-size:13px; font-weight:600; color:#38bdf8;">
+                <div id="voice-modal-transcript" style="min-height:36px; padding:8px 12px; background:rgba(0,0,0,0.3); border-radius:10px; border:1px dashed rgba(255,255,255,0.15); font-size:13px; font-weight:600; color:#f2a93b;">
                     "..."
                 </div>
                 <button type="button" class="btn btn-outline w-full" onclick="VoiceAssistant.stopListening();" style="margin-top:16px; justify-content:center; font-size:11.5px;">
@@ -1172,7 +1172,7 @@
              DRIVER PERKS & RANKS MODAL
              ============================== -->
         <div id="driver-perks-modal" class="modal-overlay hidden" style="z-index: 10007;">
-            <div class="glass-panel" style="width: 580px; max-width: 95%; max-height: 90vh; display: flex; flex-direction: column; padding: 0; text-align: left; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(56,189,248,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
+            <div class="glass-panel" style="width: 580px; max-width: 95%; max-height: 90vh; display: flex; flex-direction: column; padding: 0; text-align: left; border: 1px solid rgba(242, 169, 59, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(242, 169, 59,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
                 <div class="modal-header" style="padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
                     <h3 class="modal-title" style="margin: 0; color: #fff; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
                         <i class="fa-solid fa-crown" style="color: #fbbf24;"></i> NHAI Driver Rank Tiers & Perks
@@ -1197,9 +1197,9 @@
              DRIVER BADGE DETAIL MODAL
              ============================== -->
         <div id="driver-badge-modal" class="modal-overlay hidden" style="z-index: 10007;">
-            <div class="glass-panel" style="width: 440px; max-width: 95%; padding: 0; text-align: center; border: 1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(56, 189, 248,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
+            <div class="glass-panel" style="width: 440px; max-width: 95%; padding: 0; text-align: center; border: 1px solid rgba(242, 169, 59, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(242, 169, 59,0.2); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
                 <div class="modal-header" style="padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
-                    <span style="font-size: 11px; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.8px;">Achievement Details</span>
+                    <span style="font-size: 11px; font-weight: 700; color: #f2a93b; text-transform: uppercase; letter-spacing: 0.8px;">Achievement Details</span>
                     <button class="modal-close" onclick="Utils.toggleVisibility('driver-badge-modal', false)" title="Close">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -1345,22 +1345,23 @@
                         <label style="font-size: 10px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 4px;">MOBILE NUMBER (+91)</label>
                         <div style="display: flex; gap: 6px;">
                             <span style="background: rgba(255,255,255,0.05); padding: 10px 12px; border-radius: 6px; font-size: 12px; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1);">+91</span>
-                            <input type="tel" id="traveller-phone-input" placeholder="9876543210" maxlength="10" style="flex: 1; padding: 10px; background: #0f172a; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: #fff; font-size: 13px; font-weight: 600;">
+                            <input type="tel" id="traveller-phone-input" placeholder="9876543210" maxlength="10" style="flex: 1; padding: 10px; background: #14100b; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; color: #fff; font-size: 13px; font-weight: 600;">
                         </div>
                     </div>
-                    <button id="btn-send-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-size: 12.5px; font-weight: 700;">
-                        <i class="fa-solid fa-paper-plane"></i> Get 6-Digit OTP Code
+                    <button id="btn-entry-send-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; margin-bottom: 8px;">
+                        <i class="fa-solid fa-paper-plane"></i> Send OTP
                     </button>
                 </div>
 
-                <div id="otp-step-verify" style="display: none;">
-                    <p id="otp-phone-display" style="font-size: 11.5px; color: #38bdf8; font-weight: 600; margin-bottom: 12px;"></p>
-                    <div style="margin-bottom: 14px; text-align: left;">
-                        <label style="font-size: 10px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 4px;">ENTER 6-DIGIT OTP</label>
-                        <input type="text" id="traveller-otp-input" placeholder="••••••" maxlength="6" style="width: 100%; box-sizing: border-box; padding: 12px; background: #0f172a; border: 1px solid var(--primary); border-radius: 6px; color: #fff; font-size: 18px; font-weight: 700; text-align: center; letter-spacing: 6px;">
+                <!-- Step 2: OTP Entry Step -->
+                <div id="traveller-step-entry-otp" class="hidden">
+                    <p id="entry-otp-phone-display" style="font-size: 11.5px; color: var(--primary); font-weight: 600; margin-bottom: 12px;"></p>
+                    <div style="margin-bottom: 14px;">
+                        <label style="font-size: 10px; font-weight: 700; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">6-Digit OTP</label>
+                        <input type="text" id="traveller-entry-otp-input" placeholder="• • • • • •" maxlength="6" style="text-align: center; font-size: 20px; letter-spacing: 8px; font-family: monospace; font-weight: 800; padding: 10px; border-radius: 10px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 100%; box-sizing: border-box;">
                     </div>
-                    <button id="btn-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-size: 12.5px; font-weight: 700; margin-bottom: 8px;">
-                        <i class="fa-solid fa-lock-open"></i> Verify & Authenticate
+                    <button id="btn-entry-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; margin-bottom: 8px;">
+                        <i class="fa-solid fa-circle-check"></i> Verify & Enter Portal
                     </button>
                     <button id="btn-back-to-phone" class="btn btn-outline w-full" style="justify-content: center; font-size: 11px; padding: 6px;">
                         Change Mobile Number

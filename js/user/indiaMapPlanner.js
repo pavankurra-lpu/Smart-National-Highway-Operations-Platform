@@ -272,14 +272,14 @@ const IndiaMapPlanner = {
             if (btnSingle && btnReturn) {
                 if (!isReturn) {
                     btnSingle.classList.add('active');
-                    btnSingle.style.background = '#38bdf8';
+                    btnSingle.style.background = '#f2a93b';
                     btnSingle.style.color = '#09090b';
                     btnReturn.classList.remove('active');
                     btnReturn.style.background = 'transparent';
                     btnReturn.style.color = '#a1a1aa';
                 } else {
                     btnReturn.classList.add('active');
-                    btnReturn.style.background = '#38bdf8';
+                    btnReturn.style.background = '#f2a93b';
                     btnReturn.style.color = '#09090b';
                     btnSingle.classList.remove('active');
                     btnSingle.style.background = 'transparent';
@@ -733,7 +733,7 @@ const IndiaMapPlanner = {
 
         const formatted = alerts.map((alert, i) => {
             const badgeTime = i === 0 ? 'LIVE' : `${(i * 2 + 1)}m ago`;
-            return `<span><i class="fa-solid fa-triangle-exclamation" style="color: #fbbf24; margin-right: 4px;"></i> <strong style="color: #38bdf8; font-size: 9.5px; margin-right: 4px;">[${badgeTime}]</strong> ${alert}</span>`;
+            return `<span><i class="fa-solid fa-triangle-exclamation" style="color: #fbbf24; margin-right: 4px;"></i> <strong style="color: #f2a93b; font-size: 9.5px; margin-right: 4px;">[${badgeTime}]</strong> ${alert}</span>`;
         });
 
         // Duplicate set for seamless continuous marquee loop (0% to -50%)
@@ -774,7 +774,7 @@ const IndiaMapPlanner = {
                 } else if (code >= 300 && code < 600) {
                     condition = 'Heavy Rain';
                     icon = 'fa-cloud-showers-heavy';
-                    color = '#3b82f6';
+                    color = '#f2a93b';
                     advisory = 'Slippery roads. Reduce speed by 20%.';
                 } else if (code >= 200 && code < 300) {
                     condition = 'Thunderstorm';
@@ -873,14 +873,14 @@ const IndiaMapPlanner = {
             <path d="M32 6 L38 24 L58 36 L58 42 L38 34 L38 50 L44 54 L44 58 L32 54 L20 58 L20 54 L26 50 L26 34 L6 42 L6 36 L26 24 Z" fill="url(#g3dPlane)"/>
             <ellipse cx="32" cy="14" rx="2.5" ry="4" fill="#bae6fd"/>
             <defs>
-                <linearGradient id="g3dPlane" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#e0f2fe"/><stop offset="100%" stop-color="#38bdf8"/></linearGradient>
+                <linearGradient id="g3dPlane" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#e0f2fe"/><stop offset="100%" stop-color="#f2a93b"/></linearGradient>
             </defs>
         </svg>`,
         
         station: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
             <path d="M16 10 C16 6 48 6 48 10 L52 42 C52 50 44 52 32 52 C20 52 12 50 12 42 Z" fill="url(#g3dTrain)"/>
-            <path d="M18 16 L46 16 L44 30 L20 30 Z" fill="#0f172a"/>
-            <path d="M22 18 L42 18 L40 28 L24 28 Z" fill="#38bdf8"/>
+            <path d="M18 16 L46 16 L44 30 L20 30 Z" fill="#14100b"/>
+            <path d="M22 18 L42 18 L40 28 L24 28 Z" fill="#f2a93b"/>
             <circle cx="20" cy="42" r="3.5" fill="#facc15"/><circle cx="44" cy="42" r="3.5" fill="#facc15"/>
             <line x1="20" y1="52" x2="14" y2="60" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
             <line x1="44" y1="52" x2="50" y2="60" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
@@ -946,9 +946,9 @@ const IndiaMapPlanner = {
         </svg>`,
         
         tech: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
-            <rect x="10" y="12" width="44" height="30" rx="4" fill="#0f172a" stroke="#ffffff" stroke-width="2.5"/>
-            <rect x="14" y="16" width="36" height="22" rx="2" fill="#0f172a"/>
-            <path d="M20 22 L26 27 L20 32 M29 32 L36 32" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="10" y="12" width="44" height="30" rx="4" fill="#14100b" stroke="#ffffff" stroke-width="2.5"/>
+            <rect x="14" y="16" width="36" height="22" rx="2" fill="#14100b"/>
+            <path d="M20 22 L26 27 L20 32 M29 32 L36 32" stroke="#f2a93b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
             <path d="M6 44 L58 44 L52 50 L12 50 Z" fill="#ffffff"/>
         </svg>`,
         
@@ -957,13 +957,13 @@ const IndiaMapPlanner = {
             <path d="M22 24 C22 12 42 12 42 24" fill="none" stroke="#fef08a" stroke-width="4.5" stroke-linecap="round"/>
             <line x1="14" y1="28" x2="50" y2="28" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
             <defs>
-                <linearGradient id="g3dBag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#7e22ce"/></linearGradient>
+                <linearGradient id="g3dBag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2a93b"/><stop offset="100%" stop-color="#7e22ce"/></linearGradient>
             </defs>
         </svg>`,
         
         fuel: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
             <rect x="12" y="10" width="30" height="46" rx="4" fill="#ffffff"/>
-            <rect x="16" y="16" width="22" height="16" rx="2" fill="#0f172a"/>
+            <rect x="16" y="16" width="22" height="16" rx="2" fill="#14100b"/>
             <text x="27" y="28" fill="#facc15" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">₹</text>
             <path d="M42 24 L48 24 L52 30 L52 46 L48 50 L44 46" fill="none" stroke="#fef08a" stroke-width="3" stroke-linecap="round"/>
         </svg>`,
@@ -980,9 +980,9 @@ const IndiaMapPlanner = {
             <rect x="8" y="24" width="18" height="32" rx="2" fill="#93c5fd"/>
             <rect x="24" y="10" width="20" height="46" rx="2" fill="#ffffff"/>
             <rect x="42" y="20" width="14" height="36" rx="2" fill="#bfdbfe"/>
-            <circle cx="17" cy="30" r="1.5" fill="#1e3a8a"/><circle cx="17" cy="38" r="1.5" fill="#1e3a8a"/>
-            <circle cx="34" cy="18" r="1.5" fill="#1e3a8a"/><circle cx="34" cy="26" r="1.5" fill="#1e3a8a"/><circle cx="34" cy="34" r="1.5" fill="#1e3a8a"/>
-            <circle cx="49" cy="28" r="1.5" fill="#1e3a8a"/><circle cx="49" cy="36" r="1.5" fill="#1e3a8a"/>
+            <circle cx="17" cy="30" r="1.5" fill="#2a2016"/><circle cx="17" cy="38" r="1.5" fill="#2a2016"/>
+            <circle cx="34" cy="18" r="1.5" fill="#2a2016"/><circle cx="34" cy="26" r="1.5" fill="#2a2016"/><circle cx="34" cy="34" r="1.5" fill="#2a2016"/>
+            <circle cx="49" cy="28" r="1.5" fill="#2a2016"/><circle cx="49" cy="36" r="1.5" fill="#2a2016"/>
         </svg>`,
         
         place: `<svg viewBox="0 0 64 64" width="22" height="22" style="filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
@@ -1018,9 +1018,9 @@ const IndiaMapPlanner = {
             <rect x="36" y="14" width="8" height="6" rx="1" fill="#93c5fd"/>
             <rect x="20" y="26" width="8" height="6" rx="1" fill="#93c5fd"/>
             <rect x="36" y="26" width="8" height="6" rx="1" fill="#93c5fd"/>
-            <rect x="26" y="42" width="12" height="14" rx="1" fill="#1e3a8a"/>
+            <rect x="26" y="42" width="12" height="14" rx="1" fill="#2a2016"/>
             <defs>
-                <linearGradient id="g3dBuild" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#60a5fa"/></linearGradient>
+                <linearGradient id="g3dBuild" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f5c451"/></linearGradient>
             </defs>
         </svg>`,
 
@@ -1732,9 +1732,9 @@ const IndiaMapPlanner = {
                 name: 'Fastest Route', 
                 color: '#1a73e8', 
                 altColor: '#174ea6', 
-                border: '#38bdf8', 
-                bg: 'rgba(56,189,248,0.15)', 
-                tagCol: '#38bdf8', 
+                border: '#f2a93b', 
+                bg: 'rgba(242, 169, 59,0.15)', 
+                tagCol: '#f2a93b', 
                 halo: 'rgba(26,115,232,0.4)',
                 weight: 7
             },
@@ -1750,8 +1750,8 @@ const IndiaMapPlanner = {
             },
             { 
                 name: 'Scenic / NH Corridor', 
-                color: '#60a5fa', 
-                altColor: '#3b82f6', 
+                color: '#f5c451', 
+                altColor: '#f2a93b', 
                 border: '#93c5fd', 
                 bg: 'rgba(96,165,250,0.15)', 
                 tagCol: '#93c5fd', 
@@ -1849,9 +1849,9 @@ const IndiaMapPlanner = {
                 const tollIcon = L.divIcon({
                     className: 'snhop-toll-marker-unit',
                     html: `
-                        <div style="display:inline-flex; align-items:center; gap:4px; background:rgba(9,9,11,0.92); border:1px solid #38bdf8; border-radius:12px; padding:2px 6px; box-shadow:0 4px 12px rgba(0,0,0,0.6); transform:translate(-50%, -50%); cursor:pointer;">
+                        <div style="display:inline-flex; align-items:center; gap:4px; background:rgba(9,9,11,0.92); border:1px solid #f2a93b; border-radius:12px; padding:2px 6px; box-shadow:0 4px 12px rgba(0,0,0,0.6); transform:translate(-50%, -50%); cursor:pointer;">
                             <span style="font-size:12px; line-height:1;">${emoji}</span>
-                            <span style="font-size:10px; font-weight:800; color:#38bdf8; font-family:'Space Grotesk',sans-serif; line-height:1;">${displayCost}</span>
+                            <span style="font-size:10px; font-weight:800; color:#f2a93b; font-family:var(--font-display),sans-serif; line-height:1;">${displayCost}</span>
                         </div>
                     `,
                     iconSize: [50, 20],
@@ -1929,9 +1929,9 @@ const IndiaMapPlanner = {
         }
 
         const ROUTE_THEMES = [
-            { border: '#38bdf8', bg: 'rgba(56,189,248,0.18)', tagCol: '#38bdf8', badgeBg: '#38bdf8' },
+            { border: '#f2a93b', bg: 'rgba(242, 169, 59,0.18)', tagCol: '#f2a93b', badgeBg: '#f2a93b' },
             { border: '#34d399', bg: 'rgba(16,185,129,0.18)', tagCol: '#34d399', badgeBg: '#10b981' },
-            { border: '#38bdf8', bg: 'rgba(168,85,247,0.18)', tagCol: '#38bdf8', badgeBg: '#a855f7' }
+            { border: '#f2a93b', bg: 'rgba(168,85,247,0.18)', tagCol: '#f2a93b', badgeBg: '#a855f7' }
         ];
 
         let html = '';
@@ -2189,10 +2189,10 @@ const IndiaMapPlanner = {
         const corridorStr = (td.nhCorridor && td.nhCorridor !== 'N/A') ? `<strong>NH-${td.nhCorridor}</strong>` : 'National Highway';
 
         return `
-        <div style="min-width:280px; font-family:var(--font-main, 'Inter', sans-serif); padding:6px 4px; color:#1e293b;">
+        <div style="min-width:280px; font-family:var(--font-main, 'Inter', sans-serif); padding:6px 4px; color:#241e17;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px;">
                 <div>
-                    <div style="font-weight:800; font-size:13.5px; color:#0f172a; line-height:1.2;">🏗️ ${plazaName}</div>
+                    <div style="font-weight:800; font-size:13.5px; color:#14100b; line-height:1.2;">🏗️ ${plazaName}</div>
                     <div style="font-size:11px; color:#64748b; margin-top:2px;">${plazaState} · ${corridorStr}</div>
                 </div>
                 <span style="font-size:8.5px; font-weight:700; padding:2px 6px; border-radius:4px; background:rgba(16,185,129,0.15); color:#059669; border:1px solid rgba(16,185,129,0.3);">FASTag ACTIVE</span>
@@ -2202,7 +2202,7 @@ const IndiaMapPlanner = {
             <div style="background:linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.95)); border-radius:8px; padding:8px 10px; margin:8px 0; color:#fff; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
                 <div>
                     <div style="font-size:9.5px; color:#94a3b8; text-transform:uppercase; letter-spacing:0.5px; font-weight:600;">Selected Vehicle (${vType})</div>
-                    <div style="font-size:11px; font-weight:700; color:#38bdf8; margin-top:1px;">
+                    <div style="font-size:11px; font-weight:700; color:#f2a93b; margin-top:1px;">
                         ${isExempt ? '✨ 100% Toll Exempt' : 'Single: <span style="color:#fbbf24; font-size:13px;">₹' + curSingle + '</span>'}
                     </div>
                 </div>
@@ -2253,7 +2253,7 @@ const IndiaMapPlanner = {
             </div>
 
             <div style="margin-top:6px; display:flex; justify-content:space-between; align-items:center; font-size:9.5px; color:#64748b;">
-                <span>🎟️ Local Monthly Pass: <strong style="color:#0f172a;">₹${td.monthlyPassLocal || 360}</strong></span>
+                <span>🎟️ Local Monthly Pass: <strong style="color:#14100b;">₹${td.monthlyPassLocal || 360}</strong></span>
                 <span style="color:#94a3b8;">${td.concessionaire || 'NHAI Managed'}</span>
             </div>
         </div>`;
@@ -2306,7 +2306,7 @@ const IndiaMapPlanner = {
                     });
 
                     if (matchesRoute) {
-                        const alertColor = latestAlert.type === 'EMERGENCY' ? '#f43f5e' : (latestAlert.type === 'TRAFFIC' ? '#f59e0b' : '#38bdf8');
+                        const alertColor = latestAlert.type === 'EMERGENCY' ? '#f43f5e' : (latestAlert.type === 'TRAFFIC' ? '#f59e0b' : '#f2a93b');
                         const icon = latestAlert.type === 'EMERGENCY' ? 'fa-triangle-exclamation' : (latestAlert.type === 'TRAFFIC' ? 'fa-car-burst' : 'fa-tower-broadcast');
                         html += `
                             <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-left: 3px solid ${alertColor}; border-radius: 10px; padding: 8px 10px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
@@ -2314,7 +2314,7 @@ const IndiaMapPlanner = {
                                 <div style="flex:1; min-width:0;">
                                     <div style="font-size: 10.5px; font-weight: 700; color: ${alertColor}; display:flex; justify-content:space-between; align-items:center;">
                                         <span>LIVE NHAI ALERT: ${latestAlert.title}</span>
-                                        <span style="font-size:8px; background:rgba(56,189,248,0.15); color:#38bdf8; padding:1px 4px; border-radius:3px;">📡 10km Range</span>
+                                        <span style="font-size:8px; background:rgba(242, 169, 59,0.15); color:#f2a93b; padding:1px 4px; border-radius:3px;">📡 10km Range</span>
                                     </div>
                                     <div style="font-size: 9.5px; color: #cbd5e1; line-height: 1.35; margin-top: 2px;">${latestAlert.message}</div>
                                 </div>
@@ -2328,7 +2328,7 @@ const IndiaMapPlanner = {
                 <div style="position: relative; margin-bottom: 12px; z-index: 2;">
                     <div style="position: absolute; left: -22.5px; top: 3.5px; width: 8px; height: 8px; border-radius: 50%; background: var(--primary); border: 2px solid #000; box-shadow: 0 0 8px var(--primary-glow);"></div>
                     <div style="font-size: 11px; font-weight: 700; color: #fff;">${rData.originName}</div>
-                    <div style="font-size: 8.5px; color: var(--text-muted);">Start of Journey • <span style="color:#38bdf8; font-weight:600;">${jType}</span></div>
+                    <div style="font-size: 8.5px; color: var(--text-muted);">Start of Journey • <span style="color:#f2a93b; font-weight:600;">${jType}</span></div>
                 </div>
             `;
             if (rData.tolls.length > 0) {
@@ -2397,7 +2397,7 @@ const IndiaMapPlanner = {
             }
             const mobileSearchDisplay = document.getElementById('mobile-search-display');
             if (mobileSearchDisplay) {
-                mobileSearchDisplay.innerHTML = `<span style="font-weight:700; color:#fff;">📍 ${rData.originName} ➔ ${rData.destName}</span> <span style="color:#38bdf8; font-size:11px; margin-left:4px;">(${rData.totalDist} km)</span>`;
+                mobileSearchDisplay.innerHTML = `<span style="font-weight:700; color:#fff;">📍 ${rData.originName} ➔ ${rData.destName}</span> <span style="color:#f2a93b; font-size:11px; margin-left:4px;">(${rData.totalDist} km)</span>`;
             }
             const routePanel = document.getElementById('route-summary-panel');
             if (routePanel) {
@@ -2756,7 +2756,7 @@ const IndiaMapPlanner = {
                     if (!IndiaMapPlanner.carMarker) {
                         const carIcon = L.divIcon({
                             className: '',
-                            html: "<div style='background:#3b82f6;width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #3b82f6'></div>",
+                            html: "<div style='background:#f2a93b;width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 12px #f2a93b'></div>",
                             iconSize: [18,18], iconAnchor: [9,9]
                         });
                         IndiaMapPlanner.carMarker = L.marker([latitude, longitude], { icon: carIcon }).addTo(IndiaMapPlanner.map);
@@ -3050,14 +3050,14 @@ const IndiaMapPlanner = {
             <ellipse cx="32" cy="54" rx="24" ry="5" fill="rgba(0,0,0,0.3)"/>
             <path d="M12 40 L20 22 L44 22 L52 40 L56 46 L8 46 Z" fill="url(#gRedCar)"/>
             <path d="M22 24 L25 36 L39 36 L42 24 Z" fill="url(#gGlass)"/>
-            <circle cx="18" cy="46" r="6" fill="#0f172a"/><circle cx="18" cy="46" r="3" fill="#94a3b8"/>
-            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="3" fill="#94a3b8"/>
-            <polygon points="46,20 54,20 52,23 48,23" fill="#1e293b"/>
+            <circle cx="18" cy="46" r="6" fill="#14100b"/><circle cx="18" cy="46" r="3" fill="#94a3b8"/>
+            <circle cx="46" cy="46" r="6" fill="#14100b"/><circle cx="46" cy="46" r="3" fill="#94a3b8"/>
+            <polygon points="46,20 54,20 52,23 48,23" fill="#241e17"/>
             <rect x="7" y="41" width="4" height="3" rx="1" fill="#facc15"/>
             <rect x="53" y="41" width="4" height="3" rx="1" fill="#facc15"/>
             <defs>
                 <linearGradient id="gRedCar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171"/><stop offset="50%" stop-color="#ef4444"/><stop offset="100%" stop-color="#991b1b"/></linearGradient>
-                <linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#0284c7"/></linearGradient>
+                <linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#d98f22"/></linearGradient>
             </defs>
         </svg>`,
         
@@ -3067,10 +3067,10 @@ const IndiaMapPlanner = {
             <path d="M10 42 L16 18 L48 18 L54 42 L56 46 L8 46 Z" fill="url(#gBlueSuv)"/>
             <path d="M18 20 L22 34 L32 34 L32 20 Z" fill="url(#gGlass)"/>
             <path d="M34 20 L34 34 L44 34 L46 20 Z" fill="url(#gGlass)"/>
-            <circle cx="18" cy="46" r="7" fill="#0f172a"/><circle cx="18" cy="46" r="3.5" fill="#cbd5e1"/>
-            <circle cx="46" cy="46" r="7" fill="#0f172a"/><circle cx="46" cy="46" r="3.5" fill="#cbd5e1"/>
+            <circle cx="18" cy="46" r="7" fill="#14100b"/><circle cx="18" cy="46" r="3.5" fill="#cbd5e1"/>
+            <circle cx="46" cy="46" r="7" fill="#14100b"/><circle cx="46" cy="46" r="3.5" fill="#cbd5e1"/>
             <defs>
-                <linearGradient id="gBlueSuv" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#38bdf8"/><stop offset="50%" stop-color="#0284c7"/><stop offset="100%" stop-color="#075985"/></linearGradient>
+                <linearGradient id="gBlueSuv" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2a93b"/><stop offset="50%" stop-color="#d98f22"/><stop offset="100%" stop-color="#075985"/></linearGradient>
             </defs>
         </svg>`,
         
@@ -3078,8 +3078,8 @@ const IndiaMapPlanner = {
             <ellipse cx="32" cy="54" rx="24" ry="5" fill="rgba(16,185,129,0.35)"/>
             <path d="M12 40 Q20 18 32 18 Q44 18 52 40 L54 46 L10 46 Z" fill="url(#gEvGreen)"/>
             <path d="M20 23 Q32 21 44 23 L42 34 L22 34 Z" fill="url(#gGlass)"/>
-            <circle cx="18" cy="46" r="6" fill="#0f172a"/><circle cx="18" cy="46" r="2.5" fill="#10b981"/>
-            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="2.5" fill="#10b981"/>
+            <circle cx="18" cy="46" r="6" fill="#14100b"/><circle cx="18" cy="46" r="2.5" fill="#10b981"/>
+            <circle cx="46" cy="46" r="6" fill="#14100b"/><circle cx="46" cy="46" r="2.5" fill="#10b981"/>
             <polygon points="32,38 29,43 33,43 31,48 35,42 32,42" fill="#10b981"/>
             <defs>
                 <linearGradient id="gEvGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="50%" stop-color="#10b981"/><stop offset="100%" stop-color="#065f46"/></linearGradient>
@@ -3091,8 +3091,8 @@ const IndiaMapPlanner = {
             <rect x="8" y="16" width="48" height="30" rx="6" fill="url(#gCamper)"/>
             <rect x="14" y="20" width="12" height="12" rx="2" fill="url(#gGlass)"/>
             <rect x="30" y="20" width="12" height="12" rx="2" fill="url(#gGlass)"/>
-            <circle cx="18" cy="46" r="6" fill="#0f172a"/><circle cx="18" cy="46" r="3" fill="#e2e8f0"/>
-            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="3" fill="#e2e8f0"/>
+            <circle cx="18" cy="46" r="6" fill="#14100b"/><circle cx="18" cy="46" r="3" fill="#e2e8f0"/>
+            <circle cx="46" cy="46" r="6" fill="#14100b"/><circle cx="46" cy="46" r="3" fill="#e2e8f0"/>
             <defs>
                 <linearGradient id="gCamper" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fb923c"/><stop offset="50%" stop-color="#ea580c"/><stop offset="100%" stop-color="#9a3412"/></linearGradient>
             </defs>
@@ -3100,8 +3100,8 @@ const IndiaMapPlanner = {
         
         'scooter': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
             <ellipse cx="32" cy="54" rx="20" ry="4" fill="rgba(0,0,0,0.3)"/>
-            <circle cx="16" cy="46" r="6" fill="#0f172a"/><circle cx="16" cy="46" r="3" fill="#cbd5e1"/>
-            <circle cx="48" cy="46" r="6" fill="#0f172a"/><circle cx="48" cy="46" r="3" fill="#cbd5e1"/>
+            <circle cx="16" cy="46" r="6" fill="#14100b"/><circle cx="16" cy="46" r="3" fill="#cbd5e1"/>
+            <circle cx="48" cy="46" r="6" fill="#14100b"/><circle cx="48" cy="46" r="3" fill="#cbd5e1"/>
             <path d="M16 46 L26 46 L34 38 L42 22 L46 22" stroke="#06b6d4" stroke-width="4" fill="none" stroke-linecap="round"/>
             <path d="M26 46 L30 32 L38 32 L34 46 Z" fill="#0891b2"/>
             <circle cx="46" cy="20" r="3" fill="#facc15"/>
@@ -3109,8 +3109,8 @@ const IndiaMapPlanner = {
         
         'motorcycle': `<svg viewBox="0 0 64 64" width="38" height="38" style="filter:drop-shadow(0 4px 6px rgba(0,0,0,0.4));">
             <ellipse cx="32" cy="54" rx="22" ry="4" fill="rgba(0,0,0,0.3)"/>
-            <circle cx="14" cy="44" r="7" fill="#0f172a"/><circle cx="14" cy="44" r="3.5" fill="#f59e0b"/>
-            <circle cx="50" cy="44" r="7" fill="#0f172a"/><circle cx="50" cy="44" r="3.5" fill="#f59e0b"/>
+            <circle cx="14" cy="44" r="7" fill="#14100b"/><circle cx="14" cy="44" r="3.5" fill="#f59e0b"/>
+            <circle cx="50" cy="44" r="7" fill="#14100b"/><circle cx="50" cy="44" r="3.5" fill="#f59e0b"/>
             <path d="M14 44 L28 32 L40 32 L50 44" stroke="#e11d48" stroke-width="5" fill="none" stroke-linecap="round"/>
             <path d="M26 30 L36 24 L44 26 L42 34 Z" fill="#be123c"/>
             <path d="M42 26 L46 20 L48 20" stroke="#475569" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -3121,9 +3121,9 @@ const IndiaMapPlanner = {
             <rect x="6" y="16" width="32" height="28" rx="2" fill="url(#gTruckTrailer)"/>
             <path d="M38 24 L46 24 L52 34 L52 44 L38 44 Z" fill="url(#gTruckCab)"/>
             <path d="M44 26 L48 26 L50 32 L44 32 Z" fill="url(#gGlass)"/>
-            <circle cx="14" cy="46" r="6" fill="#0f172a"/><circle cx="14" cy="46" r="2.5" fill="#94a3b8"/>
-            <circle cx="28" cy="46" r="6" fill="#0f172a"/><circle cx="28" cy="46" r="2.5" fill="#94a3b8"/>
-            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="2.5" fill="#94a3b8"/>
+            <circle cx="14" cy="46" r="6" fill="#14100b"/><circle cx="14" cy="46" r="2.5" fill="#94a3b8"/>
+            <circle cx="28" cy="46" r="6" fill="#14100b"/><circle cx="28" cy="46" r="2.5" fill="#94a3b8"/>
+            <circle cx="46" cy="46" r="6" fill="#14100b"/><circle cx="46" cy="46" r="2.5" fill="#94a3b8"/>
             <defs>
                 <linearGradient id="gTruckTrailer" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#475569"/></linearGradient>
                 <linearGradient id="gTruckCab" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#b45309"/></linearGradient>
@@ -3138,10 +3138,10 @@ const IndiaMapPlanner = {
             <rect x="30" y="20" width="8" height="10" rx="1.5" fill="url(#gGlass)"/>
             <rect x="40" y="20" width="8" height="10" rx="1.5" fill="url(#gGlass)"/>
             <rect x="50" y="20" width="6" height="14" rx="1.5" fill="url(#gGlass)"/>
-            <circle cx="16" cy="46" r="6" fill="#0f172a"/><circle cx="16" cy="46" r="2.5" fill="#e2e8f0"/>
-            <circle cx="46" cy="46" r="6" fill="#0f172a"/><circle cx="46" cy="46" r="2.5" fill="#e2e8f0"/>
+            <circle cx="16" cy="46" r="6" fill="#14100b"/><circle cx="16" cy="46" r="2.5" fill="#e2e8f0"/>
+            <circle cx="46" cy="46" r="6" fill="#14100b"/><circle cx="46" cy="46" r="2.5" fill="#e2e8f0"/>
             <defs>
-                <linearGradient id="gBus" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="50%" stop-color="#0369a1"/><stop offset="100%" stop-color="#4c1d95"/></linearGradient>
+                <linearGradient id="gBus" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="50%" stop-color="#b57314"/><stop offset="100%" stop-color="#4c1d95"/></linearGradient>
             </defs>
         </svg>`
     },
@@ -3747,8 +3747,8 @@ const IndiaMapPlanner = {
 
         container.innerHTML = items.map(item => {
             const icon = item.isToll ? 'fa-road' : 'fa-location-dot';
-            const iconBg = item.isToll ? 'rgba(245,158,11,0.15)' : 'rgba(56,189,248,0.15)';
-            const iconCol = item.isToll ? '#f59e0b' : '#38bdf8';
+            const iconBg = item.isToll ? 'rgba(245,158,11,0.15)' : 'rgba(242, 169, 59,0.15)';
+            const iconCol = item.isToll ? '#f59e0b' : '#f2a93b';
             return `
                 <div class="mobile-suggestion-item" onclick="IndiaMapPlanner.quickSearchPlace('${item.name.replace(/'/g, "\\'")}');">
                     <div class="mobile-suggestion-icon" style="background:${iconBg}; color:${iconCol};">
@@ -3803,7 +3803,7 @@ const IndiaMapPlanner = {
             const icon = IndiaMapPlanner._vehicleIcons[key] || '📍';
             const name = IndiaMapPlanner._vehicleNames[key] || key;
             return `
-                <div class="avatar-option-card ${isSelected ? 'selected' : ''}" onclick="IndiaMapPlanner.selectMobileAvatar('${key}')" style="background:rgba(255,255,255,0.06); border:1px solid ${isSelected ? '#38bdf8':'rgba(255,255,255,0.1)'}; border-radius:14px; padding:12px 6px; text-align:center; cursor:pointer; transition:all 0.2s cubic-bezier(0.2,0.8,0.2,1);">
+                <div class="avatar-option-card ${isSelected ? 'selected' : ''}" onclick="IndiaMapPlanner.selectMobileAvatar('${key}')" style="background:rgba(255,255,255,0.06); border:1px solid ${isSelected ? '#f2a93b':'rgba(255,255,255,0.1)'}; border-radius:14px; padding:12px 6px; text-align:center; cursor:pointer; transition:all 0.2s cubic-bezier(0.2,0.8,0.2,1);">
                     <div style="font-size:26px; margin-bottom:6px;">${icon}</div>
                     <div style="font-size:10.5px; font-weight:700; color:#fff;">${name}</div>
                 </div>
@@ -4111,8 +4111,8 @@ const IndiaMapPlanner = {
             className: 'voice-place-pin',
             html: `
                 <div style="position:relative; display:flex; align-items:center; justify-content:center; width:38px; height:38px;">
-                    <div style="position:absolute; width:100%; height:100%; border-radius:50%; background:rgba(56,189,248,0.45); animation:beaconPulse 1.4s infinite;"></div>
-                    <div style="position:relative; width:28px; height:28px; border-radius:50%; background:#0284c7; border:2.5px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px;">
+                    <div style="position:absolute; width:100%; height:100%; border-radius:50%; background:rgba(242, 169, 59,0.45); animation:beaconPulse 1.4s infinite;"></div>
+                    <div style="position:relative; width:28px; height:28px; border-radius:50%; background:#d98f22; border:2.5px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px;">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                 </div>
@@ -4308,7 +4308,7 @@ const IndiaMapPlanner = {
             const filtered = popular.filter(p => p.name.toLowerCase().includes(q) || (p.state && p.state.toLowerCase().includes(q)));
             list.innerHTML = filtered.map(p => `
                 <div class="mobile-suggestion-item" onclick="IndiaMapPlanner.selectOriginFromPicker('${p.name}', ${p.lat}, ${p.lng}, ${!!p.isGps});" style="padding:10px 12px; border-radius:10px; cursor:pointer;">
-                    <i class="fa-solid ${p.isGps ? 'fa-location-crosshairs' : 'fa-city'}" style="color:${p.isGps ? '#10b981' : '#38bdf8'}; font-size:14px;"></i>
+                    <i class="fa-solid ${p.isGps ? 'fa-location-crosshairs' : 'fa-city'}" style="color:${p.isGps ? '#10b981' : '#f2a93b'}; font-size:14px;"></i>
                     <div style="flex:1;">
                         <div style="font-size:12px; font-weight:700; color:#fff;">${p.name}</div>
                         ${p.state ? `<div style="font-size:10px; color:#94a3b8;">${p.state}</div>` : ''}

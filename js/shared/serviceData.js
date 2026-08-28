@@ -5,7 +5,7 @@ const ServiceData = {
     types: [
         { id: 'hospital', name: 'Hospital / Trauma Center', icon: 'fa-hospital', color: '#ff5e5e' },
         { id: 'food', name: 'Food Court', icon: 'fa-utensils', color: '#fcd34d' },
-        { id: 'fuel', name: 'Petrol Bunk', icon: 'fa-gas-pump', color: '#3b82f6' },
+        { id: 'fuel', name: 'Petrol Bunk', icon: 'fa-gas-pump', color: '#f2a93b' },
         { id: 'police', name: 'Highway Patrol Station', icon: 'fa-shield-halved', color: '#64ffda' },
         { id: 'mechanic', name: 'Mechanic / Garage', icon: 'fa-wrench', color: '#a8a29e' },
         { id: 'toilet', name: 'Public Restroom', icon: 'fa-restroom', color: '#ffffff' }
