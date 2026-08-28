@@ -226,13 +226,13 @@
         }
         .portal-card:hover {
             background: rgba(24, 24, 30, 0.95);
-            border-color: rgba(242, 169, 59, 0.35);
+            border-color: rgba(59, 130, 246, 0.35);
             transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(242, 169, 59, 0.06);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.06);
         }
         .portal-card.card-user:hover {
-            border-color: rgba(242, 169, 59, 0.45);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(242, 169, 59, 0.12);
+            border-color: rgba(59, 130, 246, 0.45);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(59, 130, 246, 0.12);
         }
         .portal-card.card-admin:hover {
             border-color: rgba(34, 163, 93, 0.45);
@@ -253,9 +253,9 @@
             transition: all 0.2s ease;
         }
         .portal-card.card-user .card-icon-box {
-            color: #f2a93b;
-            background: rgba(242, 169, 59, 0.08);
-            border-color: rgba(242, 169, 59, 0.25);
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.25);
         }
         .portal-card.card-admin .card-icon-box {
             color: #22a35d;
@@ -267,8 +267,8 @@
             transform: scale(1.05);
         }
         .portal-card.card-user:hover .card-icon-box {
-            background: rgba(242, 169, 59, 0.15);
-            box-shadow: 0 0 15px rgba(242, 169, 59, 0.25);
+            background: rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
         }
         .portal-card.card-admin:hover .card-icon-box {
             background: rgba(34, 163, 93, 0.15);
@@ -535,8 +535,8 @@
             <!-- 2. NHAI Realistic Authority Emblem -->
             <div class="nhai-authority-unit" style="display:flex; align-items:center; gap:8px;">
                 <svg viewBox="0 0 100 100" width="30" height="30" style="flex-shrink:0;">
-                    <circle cx="50" cy="50" r="46" fill="#14100b" stroke="#f2a93b" stroke-width="2.5"/>
-                    <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#f2a93b"/>
+                    <circle cx="50" cy="50" r="46" fill="#0b0f19" stroke="#3b82f6" stroke-width="2.5"/>
+                    <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#3b82f6"/>
                     <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
                     <text x="50" y="56" font-family="var(--font-display), 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
                 </svg>
@@ -551,9 +551,9 @@
 
             <!-- 3. Mahatma Gandhi Satyameva Jayate Unit -->
             <div class="nhai-gandhi-unit" style="display:flex; align-items:center; gap:8px;">
-                <img src="assets/gandhiji.png" alt="Mahatma Gandhi" style="width:28px; height:28px; border-radius:50%; object-fit:cover; border:1.5px solid #f2a93b; box-shadow:0 0 10px rgba(242, 169, 59,0.4); flex-shrink:0;" onerror="this.src='assets/gandhiji.jpg'">
+                <img src="assets/gandhiji.png" alt="Mahatma Gandhi" style="width:28px; height:28px; border-radius:50%; object-fit:cover; border:1.5px solid #3b82f6; box-shadow:0 0 10px rgba(59, 130, 246,0.4); flex-shrink:0;" onerror="this.src='assets/gandhiji.jpg'">
                 <div class="nhai-text-gandhi">
-                    <div style="font-size:11.5px; font-weight:900; color:#f2a93b; line-height:1.2;">सत्यमेव जयते</div>
+                    <div style="font-size:11.5px; font-weight:900; color:#3b82f6; line-height:1.2;">सत्यमेव जयते</div>
                     <div style="font-size:7.5px; font-weight:700; color:#cbd5e1; line-height:1.2;">SATYAMEVA JAYATE</div>
                 </div>
             </div>
@@ -592,7 +592,7 @@
                     <div class="l-stat">
                         <div class="l-stat-lbl" id="stat-date">DATE</div>
                         <div style="display: flex; align-items: baseline; gap: 4px; line-height: 1;">
-                            <div id="stat-time-only" style="color: #f2a93b; font-size: 22px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
+                            <div id="stat-time-only" style="color: #3b82f6; font-size: 22px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
                             <div id="stat-ampm" style="color: #94a3b8; font-size: 11px; font-weight: 600; text-transform: lowercase;">am</div>
                         </div>
                     </div>
@@ -704,11 +704,11 @@
 
     <!-- Active Toll Plazas Explorer Modal -->
     <div id="active-tolls-modal" class="modal-overlay hidden" style="z-index: 10006;">
-        <div class="glass-panel" style="width: 860px; max-width: 95%; max-height: 88vh; display: flex; flex-direction: column; padding: 0; text-align: left; border: 1px solid rgba(242, 169, 59, 0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(242, 169, 59,0.15); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
+        <div class="glass-panel" style="width: 860px; max-width: 95%; max-height: 88vh; display: flex; flex-direction: column; padding: 0; text-align: left; border: 1px solid rgba(59, 130, 246, 0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(59, 130, 246,0.15); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-radius: 16px; overflow: hidden;">
             <div style="padding: 18px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35);">
                 <div>
                     <h3 style="margin: 0; color: #fff; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
-                        <i class="fa-solid fa-archway" style="color: #f2a93b;"></i> Active National Highway Toll Plazas
+                        <i class="fa-solid fa-archway" style="color: #3b82f6;"></i> Active National Highway Toll Plazas
                     </h3>
                     <p style="margin: 3px 0 0 0; font-size: 11px; color: #94a3b8;">1,232+ operational FASTag toll gates across Indian national highway network</p>
                 </div>
@@ -728,7 +728,7 @@
                         <option value="ALL">⭐ All States (National Network)</option>
                     </select>
                 </div>
-                <div style="display: flex; align-items: center; font-size: 11.5px; color: #f2a93b; font-weight: 700; white-space: nowrap;">
+                <div style="display: flex; align-items: center; font-size: 11.5px; color: #3b82f6; font-weight: 700; white-space: nowrap;">
                     <span id="modal-toll-count-badge">Loading Plazas...</span>
                 </div>
             </div>
@@ -980,7 +980,7 @@
 
                 if (countBadge) {
                     countBadge.textContent = `${filtered.length} Plazas Found`;
-                    countBadge.style.color = filtered.length > 0 ? '#f2a93b' : '#f43f5e';
+                    countBadge.style.color = filtered.length > 0 ? '#3b82f6' : '#f43f5e';
                 }
 
                 if (filtered.length === 0) {
@@ -1002,18 +1002,18 @@
                     const loc = t.district ? `${t.district}, ${t.state}` : (t.state || 'India');
 
                     html += `
-                        <div style="background: rgba(15,23,42,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease;" onmouseover="this.style.borderColor='rgba(242, 169, 59,0.4)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)';">
+                        <div style="background: rgba(15,23,42,0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s ease;" onmouseover="this.style.borderColor='rgba(59, 130, 246,0.4)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)';">
                             <div>
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; margin-bottom: 4px;">
                                     <h4 style="margin: 0; font-size: 13px; font-weight: 700; color: #fff; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${t.name}">
                                         🏗️ ${t.name}
                                     </h4>
-                                    <span style="font-size: 8.5px; font-weight: 800; color: #f2a93b; background: rgba(242, 169, 59,0.12); border: 1px solid rgba(242, 169, 59,0.25); padding: 1px 5px; border-radius: 4px; flex-shrink: 0;">
+                                    <span style="font-size: 8.5px; font-weight: 800; color: #3b82f6; background: rgba(59, 130, 246,0.12); border: 1px solid rgba(59, 130, 246,0.25); padding: 1px 5px; border-radius: 4px; flex-shrink: 0;">
                                         ${corr}
                                     </span>
                                 </div>
                                 <div style="font-size: 10.5px; color: #94a3b8; margin-bottom: 8px;">
-                                    <i class="fa-solid fa-location-dot" style="font-size: 9px; color: #f2a93b;"></i> ${loc}
+                                    <i class="fa-solid fa-location-dot" style="font-size: 9px; color: #3b82f6;"></i> ${loc}
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-size: 10.5px;">

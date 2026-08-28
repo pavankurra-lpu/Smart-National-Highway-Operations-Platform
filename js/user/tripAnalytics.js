@@ -62,7 +62,7 @@ const TripAnalytics = {
                         </div>
                         <div style="text-align: right;">
                             <p style="color: var(--accent-yellow); font-size: 13px; font-weight: 800; margin: 0; font-family:var(--font-display);">₹${(t.cost || 0).toFixed(2)}</p>
-                            <span style="display:inline-block; font-size: 9px; font-weight:700; color: var(--accent-blue); background:rgba(242, 169, 59,0.1); padding:2px 6px; border-radius:4px; margin-top:2px;">${t.totalDistance || 0} km</span>
+                            <span style="display:inline-block; font-size: 9px; font-weight:700; color: var(--accent-blue); background:rgba(59, 130, 246,0.1); padding:2px 6px; border-radius:4px; margin-top:2px;">${t.totalDistance || 0} km</span>
                         </div>
                     </div>
                     <div style="display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.05);">
@@ -213,7 +213,7 @@ const TripAnalytics = {
 
             const donutLabels = Object.keys(vehicleCosts).length ? Object.keys(vehicleCosts) : ['Primary Car'];
             const donutData = Object.keys(vehicleCosts).length ? Object.values(vehicleCosts) : [0.01]; // placeholder if zero
-            const donutColors = Object.keys(vehicleCosts).length ? ['#10b981', '#ff671f', '#d98f22', '#a855f7'] : ['rgba(255,255,255,0.06)'];
+            const donutColors = Object.keys(vehicleCosts).length ? ['#10b981', '#ff671f', '#2563eb', '#a855f7'] : ['rgba(255,255,255,0.06)'];
 
             TripAnalytics.donutInstance = new Chart(donutCtx, {
                 type: 'doughnut',
@@ -285,11 +285,11 @@ const TripAnalytics = {
             const barData = sortedPlazas.map(p => p[1]);
 
             // Create gradient
-            let barGradient = 'rgba(242, 169, 59, 0.8)';
+            let barGradient = 'rgba(59, 130, 246, 0.8)';
             try {
                 barGradient = barCtx.createLinearGradient(0, 0, 0, 120);
                 barGradient.addColorStop(0, '#f59e0b');
-                barGradient.addColorStop(1, 'rgba(242, 169, 59, 0.2)');
+                barGradient.addColorStop(1, 'rgba(59, 130, 246, 0.2)');
             } catch(e) {}
 
             TripAnalytics.barInstance = new Chart(barCtx, {

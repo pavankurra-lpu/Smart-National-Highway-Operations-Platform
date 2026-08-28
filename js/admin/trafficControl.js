@@ -256,7 +256,7 @@ const TrafficControl = {
                         <div>
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <h4 style="margin: 0; font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2;">⛩️ ${plaza.name}</h4>
-                                <span style="font-size: 9.5px; font-weight: 700; color: #f2a93b; background: rgba(242, 169, 59,0.12); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(242, 169, 59,0.25);">
+                                <span style="font-size: 9.5px; font-weight: 700; color: #3b82f6; background: rgba(59, 130, 246,0.12); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(59, 130, 246,0.25);">
                                     ${plaza.nhCorridor && plaza.nhCorridor !== 'N/A' ? 'NH-' + plaza.nhCorridor : 'National Highway'}
                                 </span>
                             </div>
@@ -269,7 +269,7 @@ const TrafficControl = {
                                 <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${overallColor};"></span>
                                 ${maxState} LOAD
                             </div>
-                            <div style="font-size: 10px; color: #f2a93b; font-weight: 700; margin-top: 4px;">
+                            <div style="font-size: 10px; color: #3b82f6; font-weight: 700; margin-top: 4px;">
                                 Total Rev: ₹${revenue.toLocaleString()}
                             </div>
                         </div>
@@ -281,7 +281,7 @@ const TrafficControl = {
                         <!-- Direction A: Inbound / Entry Side -->
                         <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 12px;">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-                                <span style="font-size: 11px; font-weight: 700; color: #f2a93b; display:flex; align-items:center; gap:5px;">
+                                <span style="font-size: 11px; font-weight: 700; color: #3b82f6; display:flex; align-items:center; gap:5px;">
                                     <i class="fa-solid fa-arrow-trend-up"></i> Inbound (Entry Side)
                                 </span>
                                 <span style="font-size: 9px; font-weight: 700; color: ${colorA};">${stateA}</span>
@@ -303,7 +303,7 @@ const TrafficControl = {
                         <!-- Direction B: Outbound / Opposite Side -->
                         <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 12px;">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-                                <span style="font-size: 11px; font-weight: 700; color: #f2a93b; display:flex; align-items:center; gap:5px;">
+                                <span style="font-size: 11px; font-weight: 700; color: #3b82f6; display:flex; align-items:center; gap:5px;">
                                     <i class="fa-solid fa-arrow-trend-down"></i> Outbound (Opposite Side)
                                 </span>
                                 <span style="font-size: 9px; font-weight: 700; color: ${colorB};">${stateB}</span>

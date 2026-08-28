@@ -1,38 +1,38 @@
 /* ====================================================================
    NHAI SMART HIGHWAY OPERATIONS PLATFORM (SNHOP) - GLOBAL DESIGN SYSTEM
-   Theme: Warm Asphalt (#14100b), Milestone Amber (#f2a93b), Highway Green (#22a35d)
+   Theme: Warm Asphalt (#0b0f19), Milestone Amber (#3b82f6), Highway Green (#22a35d)
    ==================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
 
 /* ===== WARM ASPHALT & MILESTONE AMBER PALETTE ===== */
 :root {
-    --bg-dark:        #14100b; /* Warm Asphalt */
-    --bg-darker:      #0b0806; /* Night Tarmac */
-    --bg-card:        rgba(26, 21, 16, 0.94); /* Warm Asphalt Solid Glass */
-    --bg-panel:       rgba(20, 16, 11, 0.98);
+    --bg-dark:        #0b0f19; /* Warm Asphalt */
+    --bg-darker:      #050811; /* Night Tarmac */
+    --bg-card:        rgba(17, 24, 39, 0.94); /* Warm Asphalt Solid Glass */
+    --bg-panel:       rgba(15, 23, 42, 0.98);
     
-    --primary:        #f2a93b; /* Milestone Amber — Primary / Action */
-    --primary-dim:    rgba(242, 169, 59, 0.12);
-    --primary-hover:  #d98f22; /* Deep Amber */
-    --primary-glow:   rgba(242, 169, 59, 0.25);
+    --primary:        #3b82f6; /* Milestone Amber — Primary / Action */
+    --primary-dim:    rgba(59, 130, 246, 0.12);
+    --primary-hover:  #2563eb; /* Deep Amber */
+    --primary-glow:   rgba(59, 130, 246, 0.25);
     
     --accent-green:   #22a35d; /* Highway Green — routes, live status, 'go' */
-    --accent-red:     #e0453a; /* Signal Red — emergency/SOS only */
-    --accent-yellow:  #f5c451; /* Caution Gold — secondary highlight */
-    --accent-amber:   #f2a93b; /* Reflector Amber */
+    --accent-red:     #ef4444; /* Signal Red — emergency/SOS only */
+    --accent-yellow:  #60a5fa; /* Caution Gold — secondary highlight */
+    --accent-amber:   #3b82f6; /* Reflector Amber */
     
-    --text-main:      #f6f1e7; /* Warm Reflector White */
-    --text-sec:       #a89a83; /* Warm Slate */
-    --text-muted:     #736756; /* Tarmac Muted */
+    --text-main:      #f8fafc; /* Warm Reflector White */
+    --text-sec:       #94a3b8; /* Warm Slate */
+    --text-muted:     #64748b; /* Tarmac Muted */
     
-    --border:         rgba(246, 241, 231, 0.08); /* Subtle Structural Line */
-    --border-light:   rgba(246, 241, 231, 0.04);
-    --border-glow:    rgba(242, 169, 59, 0.25);
+    --border:         rgba(255, 255, 255, 0.08); /* Subtle Structural Line */
+    --border-light:   rgba(255, 255, 255, 0.04);
+    --border-glow:    rgba(59, 130, 246, 0.25);
     
     --shadow:         0 10px 30px -8px rgba(0, 0, 0, 0.75);
     --shadow-lg:      0 20px 45px -10px rgba(0, 0, 0, 0.9);
-    --shadow-glow:    0 0 25px -4px rgba(242, 169, 59, 0.2);
+    --shadow-glow:    0 0 25px -4px rgba(59, 130, 246, 0.2);
     
     --font-main:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display:   'Oswald', 'Inter', sans-serif;
@@ -42,8 +42,8 @@
     --radius-lg:      18px;
     --radius-xl:      24px;
 
-    --ring:           #f2a93b;
-    --ring-offset:    #14100b;
+    --ring:           #3b82f6;
+    --ring-offset:    #0b0f19;
 
     --transition:     all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     --glass:          blur(24px) saturate(190%);
@@ -56,7 +56,7 @@
 
 /* Map canvas warm asphalt styling */
 .leaflet-container {
-    background: #14100b !important;
+    background: #0b0f19 !important;
 }
 
 /* Official NHAI Header Bar with Satyameva Jayate */
@@ -65,8 +65,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 24px;
-    background: #14100b;
-    border-bottom: 1px solid rgba(246, 241, 231, 0.08);
+    background: #0b0f19;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     z-index: 1000;
     width: 100%;
@@ -94,14 +94,14 @@
 .nhai-auth-hindi {
     font-size: 11.5px;
     font-weight: 800;
-    color: #f6f1e7;
+    color: #f8fafc;
     line-height: 1.2;
 }
 
 .nhai-auth-eng {
     font-size: 8px;
     font-weight: 700;
-    color: #f2a93b;
+    color: #3b82f6;
     line-height: 1.2;
     letter-spacing: 0.5px;
     font-family: var(--font-display);
@@ -118,12 +118,12 @@
     align-items: center;
     gap: 6px;
     padding: 5px 12px;
-    background: rgba(242, 169, 59, 0.08);
-    border: 1px solid rgba(242, 169, 59, 0.25);
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.25);
     border-radius: 9999px;
     font-size: 10px;
     font-weight: 800;
-    color: #f2a93b;
+    color: #3b82f6;
     letter-spacing: 0.8px;
     font-family: var(--font-display);
 }
@@ -132,8 +132,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #f2a93b;
-    box-shadow: 0 0 8px #f2a93b;
+    background: #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
     animation: livePulse 2s infinite;
 }
 
@@ -144,9 +144,9 @@ body.light-mode {
     --bg-card:        rgba(255, 255, 255, 0.95);
     --bg-panel:       rgba(255, 255, 255, 0.98);
     
-    --primary:        #d98f22; /* Deep Milestone Amber */
+    --primary:        #2563eb; /* Deep Milestone Amber */
     --primary-dim:    rgba(217, 143, 34, 0.1);
-    --primary-hover:  #b57314;
+    --primary-hover:  #1d4ed8;
     
     --text-main:      #1c1712; /* Deep Charcoal */
     --text-sec:       #6e6252;
@@ -158,7 +158,7 @@ body.light-mode {
     --shadow:         0 10px 30px -10px rgba(217, 143, 34, 0.08);
     --shadow-lg:      0 20px 50px -12px rgba(28, 23, 18, 0.08);
 
-    --ring:           #d98f22;
+    --ring:           #2563eb;
     --ring-offset:    #ffffff;
 }
 
@@ -229,7 +229,7 @@ body, html {
     width: 100%;
     height: 100%;
     background: var(--bg-dark);
-    background-image: radial-gradient(rgba(246, 241, 231, 0.03) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 24px 24px;
     color: var(--text-main);
     overflow-x: hidden;
@@ -312,16 +312,16 @@ body.light-mode .glass-panel {
 
 .btn-primary {
     background: var(--primary);
-    color: #14100b;
+    color: #ffffff;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 16px rgba(242, 169, 59, 0.35);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
 }
 .btn-primary:hover {
     background: var(--primary-hover);
-    color: #0b0806;
+    color: #ffffff;
     transform: translateY(-1px);
-    box-shadow: 0 6px 22px rgba(242, 169, 59, 0.45);
+    box-shadow: 0 6px 22px rgba(59, 130, 246, 0.45);
 }
 .btn-primary:active { transform: translateY(0); }
 
@@ -356,7 +356,7 @@ body.light-mode .glass-panel {
 .btn-danger:active { transform: translateY(0); }
 
 .btn-outline {
-    background: rgba(26, 21, 16, 0.6);
+    background: rgba(17, 24, 39, 0.6);
     color: var(--text-main);
     border: 1px solid var(--border);
     backdrop-filter: blur(8px);
@@ -380,8 +380,8 @@ body.light-mode .glass-panel {
     font-family: var(--font-display);
 }
 .badge-success { background: rgba(34, 163, 93, 0.15); color: #22a35d; border: 1px solid rgba(34, 163, 93, 0.35); }
-.badge-warning { background: rgba(242, 169, 59, 0.15); color: #f2a93b; border: 1px solid rgba(242, 169, 59, 0.35); }
-.badge-danger  { background: rgba(224, 69, 58, 0.18); color: #e0453a; border: 1px solid rgba(224, 69, 58, 0.35); }
+.badge-warning { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.35); }
+.badge-danger  { background: rgba(224, 69, 58, 0.18); color: #ef4444; border: 1px solid rgba(224, 69, 58, 0.35); }
 
 /* ===== TYPOGRAPHY ===== */
 h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; font-family: var(--font-display); letter-spacing: 0.3px; }
@@ -393,7 +393,7 @@ input, select, textarea {
     padding: 8px 11px;
     border-radius: var(--radius-sm);
     font-size: 12px;
-    background: rgba(26, 21, 16, 0.7);
+    background: rgba(17, 24, 39, 0.7);
     border: 1px solid var(--border);
     color: var(--text-main);
     font-family: var(--font-main);
@@ -403,8 +403,8 @@ input, select, textarea {
 }
 input:focus, select:focus, textarea:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 2px var(--ring-offset), 0 0 0 4px rgba(242, 169, 59, 0.25);
-    background: rgba(26, 21, 16, 0.95);
+    box-shadow: 0 0 0 2px var(--ring-offset), 0 0 0 4px rgba(59, 130, 246, 0.25);
+    background: rgba(17, 24, 39, 0.95);
 }
 input::placeholder, textarea::placeholder { color: var(--text-muted); }
 option { background: var(--bg-dark); color: var(--text-main); }
@@ -454,8 +454,8 @@ body.light-mode textarea:focus {
 
 @keyframes pulse {
     0%   { box-shadow: 0 0 0 0 var(--primary-glow); }
-    70%  { box-shadow: 0 0 0 10px rgba(242, 169, 59, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(242, 169, 59, 0); }
+    70%  { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
 }
 
 @keyframes livePulse {
@@ -472,10 +472,10 @@ body.light-mode textarea:focus {
 .reactbits-shiny-text {
     background: linear-gradient(
         120deg,
-        rgba(242, 169, 59, 0.8) 0%,
-        #f6f1e7 40%,
+        rgba(59, 130, 246, 0.8) 0%,
+        #f8fafc 40%,
         rgba(34, 163, 93, 0.9) 60%,
-        rgba(242, 169, 59, 0.8) 100%
+        rgba(59, 130, 246, 0.8) 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -496,8 +496,8 @@ body.light-mode textarea:focus {
     z-index: 0;
     opacity: 0.35;
     background-image: 
-        linear-gradient(to right, rgba(242, 169, 59, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(242, 169, 59, 0.05) 1px, transparent 1px);
+        linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
     mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
@@ -519,11 +519,11 @@ body.light-mode textarea:focus {
     align-items: center;
 }
 .shadcn-toast {
-    background: rgba(20, 16, 11, 0.88);
-    border: 1px solid rgba(246, 241, 231, 0.12);
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 32px;
     padding: 12px 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(246,241,231,0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255,255,255,0.05);
     color: var(--text-main);
     pointer-events: auto;
     display: flex;
@@ -543,9 +543,9 @@ body.light-mode textarea:focus {
     flex-shrink: 0;
 }
 .toast-success .shadcn-toast-icon { color: #22a35d; text-shadow: 0 0 10px rgba(34,163,93,0.5); }
-.toast-error .shadcn-toast-icon { color: #e0453a; text-shadow: 0 0 10px rgba(224,69,58,0.5); }
-.toast-warning .shadcn-toast-icon { color: #f2a93b; text-shadow: 0 0 10px rgba(242,169,59,0.5); }
-.toast-info .shadcn-toast-icon { color: #f5c451; text-shadow: 0 0 10px rgba(245,196,81,0.5); }
+.toast-error .shadcn-toast-icon { color: #ef4444; text-shadow: 0 0 10px rgba(224,69,58,0.5); }
+.toast-warning .shadcn-toast-icon { color: #3b82f6; text-shadow: 0 0 10px rgba(59,130,246,0.5); }
+.toast-info .shadcn-toast-icon { color: #60a5fa; text-shadow: 0 0 10px rgba(245,196,81,0.5); }
 
 .shadcn-toast-content {
     display: flex;
@@ -555,7 +555,7 @@ body.light-mode textarea:focus {
 .shadcn-toast-title {
     font-weight: 700;
     font-size: 13px;
-    color: #f6f1e7;
+    color: #f8fafc;
     font-family: var(--font-display);
 }
 .shadcn-toast-description {
@@ -563,7 +563,7 @@ body.light-mode textarea:focus {
     color: var(--text-sec);
 }
 .shadcn-toast-close {
-    background: rgba(246,241,231,0.1);
+    background: rgba(255,255,255,0.1);
     border: none;
     border-radius: 50%;
     width: 20px;
@@ -571,14 +571,14 @@ body.light-mode textarea:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #a89a83;
+    color: #94a3b8;
     cursor: pointer;
     font-size: 10px;
     transition: all 0.2s;
     margin-left: 8px;
 }
 .shadcn-toast-close:hover {
-    background: rgba(246,241,231,0.2);
+    background: rgba(255,255,255,0.2);
     color: #fff;
 }
 
@@ -639,13 +639,13 @@ body.light-mode textarea:focus {
 /* ===== SPOTLIGHT CARDS ===== */
 .spotlight-card {
     position: relative;
-    background: rgba(26, 21, 16, 0.88);
-    border: 1px solid rgba(246, 241, 231, 0.08);
+    background: rgba(17, 24, 39, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
 }
 .spotlight-card:hover {
-    border-color: rgba(242, 169, 59, 0.4);
+    border-color: rgba(59, 130, 246, 0.4);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     transform: translateY(-1px);
 }

@@ -124,10 +124,10 @@ const Analytics = {
         let gradient = null;
         try {
             gradient = ctx.createLinearGradient(0, 0, 0, 200);
-            gradient.addColorStop(0, 'rgba(242, 169, 59, 0.35)');
-            gradient.addColorStop(1, 'rgba(242, 169, 59, 0.0)');
+            gradient.addColorStop(0, 'rgba(59, 130, 246, 0.35)');
+            gradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
         } catch (e) {
-            gradient = 'rgba(242, 169, 59, 0.1)';
+            gradient = 'rgba(59, 130, 246, 0.1)';
         }
 
         Analytics.chartInstance = new Chart(ctx, {
@@ -139,12 +139,12 @@ const Analytics = {
                         type: 'line',
                         label: 'Revenue (₹)',
                         data: revenueValues,
-                        borderColor: '#f2a93b',
+                        borderColor: '#3b82f6',
                         borderWidth: 2,
                         fill: true,
                         backgroundColor: gradient,
                         tension: 0.35,
-                        pointBackgroundColor: '#f2a93b',
+                        pointBackgroundColor: '#3b82f6',
                         pointBorderColor: '#ffffff',
                         pointHoverRadius: 5,
                         yAxisID: 'y-rev'
@@ -170,15 +170,15 @@ const Analytics = {
                         display: true,
                         position: 'top',
                         labels: {
-                            color: '#a89a83',
+                            color: '#94a3b8',
                             font: { size: 9, family: "'Oswald', 'Inter', sans-serif", weight: '500' },
                             boxWidth: 8,
                             padding: 8
                         }
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(20, 16, 11, 0.95)',
-                        borderColor: 'rgba(246, 241, 231, 0.1)',
+                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
                         borderWidth: 1,
                         titleFont: { family: "'Oswald', 'Inter', sans-serif", size: 10 },
                         bodyFont: { family: "'Inter', sans-serif", size: 9.5 },
@@ -189,7 +189,7 @@ const Analytics = {
                     x: {
                         grid: { display: false },
                         border: { display: false },
-                        ticks: { color: '#736756', font: { size: 8.5, family: "'Inter', sans-serif" } }
+                        ticks: { color: '#64748b', font: { size: 8.5, family: "'Inter', sans-serif" } }
                     },
                     'y-rev': {
                         type: 'linear',
@@ -198,7 +198,7 @@ const Analytics = {
                         grid: { display: false },
                         border: { display: false },
                         ticks: {
-                            color: '#736756',
+                            color: '#64748b',
                             font: { size: 8.5, family: "'Inter', sans-serif" },
                             callback: (v) => '₹' + v
                         }
@@ -210,7 +210,7 @@ const Analytics = {
                         grid: { display: false },
                         border: { display: false },
                         ticks: {
-                            color: '#736756',
+                            color: '#64748b',
                             font: { size: 8.5, family: "'Inter', sans-serif" }
                         }
                     }
