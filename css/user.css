@@ -10,42 +10,77 @@
     overflow: hidden;
 }
 
-/* ===== ENTRY / SPLASH SCREEN (Sleek Obsidian Minimalist Luxury) ===== */
+/* ===== ENTRY / SPLASH SCREEN FULL-PAGE SYSTEM ===== */
 #entry-screen {
     position: fixed;
     inset: 0;
-    background: #09090b;
+    background: #14100b;
     z-index: 999999 !important;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     transition: opacity 0.4s ease-out;
-    padding: 24px;
-}
-
-#entry-screen::before {
-    display: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 #entry-screen.fade-out { opacity: 0; pointer-events: none; }
 
 .entry-glass-card {
     position: relative;
-    max-width: 500px;
-    width: 100%;
-    background: rgba(18, 18, 23, 0.95);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 32px 28px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    width: 100vw;
+    height: 100vh;
+    background: #14100b;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    z-index: 10;
+}
+
+.entry-left-hero {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 44px 52px;
+    background: linear-gradient(145deg, rgba(26, 21, 16, 0.96), rgba(11, 8, 6, 0.98));
+    border-right: 1px solid rgba(246, 241, 231, 0.08);
+    text-align: left;
+    position: relative;
+}
+
+.entry-right-auth {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
-    z-index: 10;
+    padding: 36px 52px;
+    background: rgba(20, 16, 11, 0.75);
+    backdrop-filter: blur(20px);
+    overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+    #entry-screen {
+        overflow-y: auto;
+    }
+    .entry-glass-card {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+    .entry-left-hero {
+        padding: 20px 16px;
+        border-right: none;
+        border-bottom: 1px solid rgba(246, 241, 231, 0.08);
+    }
+    .entry-right-auth {
+        padding: 20px 16px;
+    }
 }
 
 .entry-brand-badge {

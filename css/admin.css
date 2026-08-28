@@ -44,25 +44,61 @@
     100% { background-position: -200% 0; }
 }
 
-/* Login Screen Background */
+/* Login Screen Full-Page System */
 .admin-login-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     background: #14100b;
-    background-image: 
-        radial-gradient(at 15% 15%, rgba(242, 169, 59, 0.2) 0px, transparent 50%),
-        radial-gradient(at 85% 85%, rgba(242, 169, 59, 0.16) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.92) 0px, #14100b 100%);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
     position: relative;
     overflow-x: hidden;
-    padding: 20px;
 }
-.admin-login-body::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+
+.admin-login-fullscreen {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    background: #14100b;
+    position: relative;
+    z-index: 1;
+}
+
+.admin-login-left-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 44px 52px;
+    background: linear-gradient(145deg, rgba(26, 21, 16, 0.95), rgba(11, 8, 6, 0.98));
+    border-right: 1px solid rgba(246, 241, 231, 0.08);
+    position: relative;
+}
+
+.admin-login-right-pane {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 36px 52px;
+    background: rgba(20, 16, 11, 0.75);
+    backdrop-filter: blur(20px);
+    overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+    .admin-login-fullscreen {
+        flex-direction: column;
+    }
+    .admin-login-left-pane {
+        padding: 20px 16px;
+        border-right: none;
+        border-bottom: 1px solid rgba(246, 241, 231, 0.08);
+    }
+    .admin-login-right-pane {
+        padding: 20px 16px;
+    }
+}
     background-image: 
         linear-gradient(rgba(242, 169, 59, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(242, 169, 59, 0.04) 1px, transparent 1px);

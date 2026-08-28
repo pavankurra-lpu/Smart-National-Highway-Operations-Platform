@@ -25,118 +25,134 @@
 <body>    <!-- ==============================
          SOPHISTICATED ENTRY / SPLASH SCREEN
          ============================== -->
+    <!-- ==============================
+         SOPHISTICATED FULL-PAGE ENTRY SYSTEM
+         ============================== -->
     <div id="entry-screen">
         <div class="entry-glass-card">
-            <!-- Brand Badge -->
-            <div class="entry-brand-badge">
-                <span class="entry-live-dot"></span>
-                <span>NHAI OPERATIONS • NATIONAL TRAVELLER PORTAL</span>
-            </div>
-
-            <!-- Emblem -->
-            <div class="entry-icon-emblem">
-                <i class="fa-solid fa-route"></i>
-            </div>
-
-            <h1 class="entry-hero-title">National Highway Operations</h1>
-            <p class="entry-hero-desc">High-precision navigation, automated FASTag toll calculation, live CCTV telemetry, and 24/7 emergency dispatch across India's National Highway Network.</p>
-
-            <!-- High-Value Network Stats Grid -->
-            <div class="entry-stats-grid">
-                <div class="entry-stat-box">
-                    <span class="entry-stat-num">1,232+</span>
-                    <span class="entry-stat-lbl">Active Toll Plazas</span>
-                </div>
-                <div class="entry-stat-box">
-                    <span class="entry-stat-num">145K+</span>
-                    <span class="entry-stat-lbl">Highway KM Mapped</span>
-                </div>
-                <div class="entry-stat-box">
-                    <span class="entry-stat-num">100%</span>
-                    <span class="entry-stat-lbl">FASTag Coverage</span>
-                </div>
-                <div class="entry-stat-box">
-                    <span class="entry-stat-num">1033</span>
-                    <span class="entry-stat-lbl">24/7 Rapid SOS</span>
-                </div>
-            </div>
-
-            <!-- Infinite Scrolling Live Feature Marquee (Silky Smooth) -->
-            <div class="entry-marquee-wrapper">
-                <div class="entry-marquee-track">
-                    <!-- Set 1 -->
-                    <span class="entry-marquee-item"><i class="fa-solid fa-satellite-dish"></i> GPS Telemetry</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-wallet"></i> FASTag 3D Wallet</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-route"></i> Dijkstra Routing</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-microphone-lines"></i> AI Voice Guide</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-truck-medical"></i> 1033 Rapid SOS</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-chart-pie"></i> Bento Trip Analytics</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-video"></i> Live CCTV Feeds</span>
-
-                    <!-- Set 2 (Duplicate for Seamless Loop) -->
-                    <span class="entry-marquee-item"><i class="fa-solid fa-satellite-dish"></i> GPS Telemetry</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-wallet"></i> FASTag 3D Wallet</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-route"></i> Dijkstra Routing</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-microphone-lines"></i> AI Voice Guide</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-truck-medical"></i> 1033 Rapid SOS</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-chart-pie"></i> Bento Trip Analytics</span>
-                    <span class="entry-marquee-item"><i class="fa-solid fa-video"></i> Live CCTV Feeds</span>
-                </div>
-            </div>
-
-            <!-- Interactive Traveller Phone OTP Authentication Card -->
-            <div id="entry-auth-container" style="margin-top: 20px; width: 100%; max-width: 440px; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 20px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5); backdrop-filter: blur(16px); text-align: left;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <span style="font-size: 11px; font-weight: 700; color: #f2a93b; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
-                        <i class="fa-solid fa-shield-halved"></i> TRAVELLER AUTHENTICATION
-                    </span>
-                    <span id="entry-auth-badge" style="font-size: 9.5px; color: #94a3b8; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">FASTag Secure Ledger</span>
-                </div>
-
-                <div id="entry-step-phone">
-                    <label style="font-size: 10px; color: #94a3b8; font-weight: 700; display: block; margin-bottom: 6px;">ENTER 10-DIGIT MOBILE NUMBER (+91)</label>
-                    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-                        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 10px 12px; color: #94a3b8; font-size: 12.5px; font-weight: 600;">+91</span>
-                        <input type="tel" id="entry-phone-input" placeholder="e.g. 9876543210" maxlength="10" autocomplete="tel" style="flex: 1; padding: 10px 14px; background: #14100b; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; color: #fff; font-size: 13.5px; font-weight: 600; outline: none;">
+            <!-- Left Hero / Network Information Pane -->
+            <div class="entry-left-hero">
+                <div>
+                    <!-- Brand Top Header -->
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                        <img src="../assets/gov_india_emblem.png" alt="Government of India" style="height: 36px; width: auto; object-fit: contain; background: rgba(255,255,255,0.06); padding: 2px 5px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="width: 3px; height: 26px; display: flex; flex-direction: column; border-radius: 2px; overflow: hidden;">
+                            <div style="flex: 1; background: #FF671F;"></div>
+                            <div style="flex: 1; background: #FFFFFF;"></div>
+                            <div style="flex: 1; background: #048A43;"></div>
+                        </div>
+                        <div>
+                            <div style="font-size: 12px; font-weight: 800; color: #f8fafc; line-height: 1.2;">भारत सरकार • NHAI</div>
+                            <div style="font-size: 8px; font-weight: 700; color: #a89a83; line-height: 1.2;">NATIONAL HIGHWAYS AUTHORITY OF INDIA</div>
+                        </div>
                     </div>
-                    <button id="btn-entry-send-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
-                        <i class="fa-solid fa-paper-plane"></i> Send 6-Digit OTP Code
-                    </button>
-                </div>
 
-                <div id="entry-step-verify" style="display: none;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                        <label style="font-size: 10px; color: #94a3b8; font-weight: 700;">ENTER 6-DIGIT OTP</label>
-                        <span id="entry-phone-target" style="font-size: 11px; color: #f2a93b; font-weight: 600;"></span>
+                    <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(242, 169, 59, 0.12); border: 1px solid rgba(242, 169, 59, 0.25); display: inline-flex; align-items: center; justify-content: center; color: #f2a93b; font-size: 18px; margin-bottom: 12px;">
+                        <i class="fa-solid fa-route"></i>
                     </div>
-                    <input type="text" id="entry-otp-input" placeholder="••••••" maxlength="6" autocomplete="one-time-code" style="width: 100%; box-sizing: border-box; padding: 12px; background: #14100b; border: 1px solid var(--primary); border-radius: 8px; color: #fff; font-size: 20px; font-weight: 700; text-align: center; letter-spacing: 8px; margin-bottom: 12px; outline: none;">
-                    <button id="btn-entry-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 12px; font-weight: 700; font-size: 13px; border-radius: 10px; background: linear-gradient(135deg, #f2a93b 0%, #d98f22 100%); margin-bottom: 8px;">
-                        <i class="fa-solid fa-lock-open"></i> Verify & Launch Dashboard
-                    </button>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <button id="btn-entry-change-phone" style="background: none; border: none; color: #94a3b8; font-size: 11px; cursor: pointer; text-decoration: underline;">Change Phone</button>
-                        <button id="btn-entry-resend-otp" style="background: none; border: none; color: #f2a93b; font-size: 11px; cursor: pointer; font-weight: 600;">Resend OTP</button>
+
+                    <h1 class="entry-hero-title" style="font-size: 24px; font-weight: 800; color: #f6f1e7; font-family: var(--font-display); letter-spacing: 0.5px; margin: 0 0 6px;">
+                        NATIONAL TRAVELLER PORTAL
+                    </h1>
+                    <p class="entry-hero-desc" style="font-size: 11.5px; color: #a89a83; line-height: 1.4; margin: 0 0 20px;">
+                        High-precision navigation, automated FASTag toll calculation, live weather telemetry, and 24/7 emergency dispatch across India's National Highway Network.
+                    </p>
+
+                    <!-- High-Value Network Stats Grid -->
+                    <div class="entry-stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 16px;">
+                        <div class="entry-stat-box" style="padding: 8px 6px;">
+                            <span class="entry-stat-num" style="font-size: 12.5px;">1,160+</span>
+                            <span class="entry-stat-lbl" style="font-size: 8px;">Active Plazas</span>
+                        </div>
+                        <div class="entry-stat-box" style="padding: 8px 6px;">
+                            <span class="entry-stat-num" style="font-size: 12.5px;">1.50L+</span>
+                            <span class="entry-stat-lbl" style="font-size: 8px;">Highway KM</span>
+                        </div>
+                        <div class="entry-stat-box" style="padding: 8px 6px;">
+                            <span class="entry-stat-num" style="font-size: 12.5px;">100%</span>
+                            <span class="entry-stat-lbl" style="font-size: 8px;">FASTag Live</span>
+                        </div>
+                        <div class="entry-stat-box" style="padding: 8px 6px;">
+                            <span class="entry-stat-num" style="font-size: 12.5px;">1033</span>
+                            <span class="entry-stat-lbl" style="font-size: 8px;">Rapid SOS</span>
+                        </div>
+                    </div>
+
+                    <!-- Infinite Scrolling Live Feature Marquee -->
+                    <div class="entry-marquee-wrapper" style="margin-bottom: 16px;">
+                        <div class="entry-marquee-track">
+                            <span class="entry-marquee-item"><i class="fa-solid fa-satellite-dish"></i> GPS Telemetry</span>
+                            <span class="entry-marquee-item"><i class="fa-solid fa-wallet"></i> FASTag 3D Wallet</span>
+                            <span class="entry-marquee-item"><i class="fa-solid fa-shield-halved"></i> NHAI Certified</span>
+                            <span class="entry-marquee-item"><i class="fa-solid fa-route"></i> Dijkstra Routing</span>
+                            <span class="entry-marquee-item"><i class="fa-solid fa-microphone-lines"></i> AI Voice Guide</span>
+                            <span class="entry-marquee-item"><i class="fa-solid fa-truck-medical"></i> 1033 Rapid SOS</span>
+                        </div>
                     </div>
                 </div>
 
-                <div id="entry-step-authenticated" style="display: none; text-align: center;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
-                        <i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 16px;"></i>
-                        <span id="entry-auth-user-text" style="font-size: 13px; color: #f8fafc; font-weight: 700;">Authenticated</span>
-                    </div>
-                    <button id="btn-unlock-portal" class="btn btn-enter-portal" style="width: 100%; margin: 0 0 8px;">
-                        <span>Enter Traveller Dashboard</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                    <button id="btn-entry-switch-user" style="background: none; border: none; color: #94a3b8; font-size: 11px; cursor: pointer; text-decoration: underline;">Log Out / Switch Mobile Number</button>
+                <!-- Bottom Gateway Link -->
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(246, 241, 231, 0.08); padding-top: 14px;">
+                    <a href="../index.html" style="font-size: 11px; color: #a89a83; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s;" onmouseover="this.style.color='#f6f1e7';" onmouseout="this.style.color='#a89a83';">
+                        <i class="fa-solid fa-arrow-left"></i> Public Portal Gateway
+                    </a>
+                    <span style="font-size: 9.5px; color: #736756;">NHAI Central v2.0</span>
                 </div>
+            </div>
 
-                <div id="entry-guest-divider" style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center;">
-                    <button id="btn-entry-guest-mode" style="background: none; border: none; color: #94a3b8; font-size: 11px; cursor: pointer;">
-                        <i class="fa-solid fa-user-clock"></i> Continue in Guest / Exploration Mode
-                    </button>
+            <!-- Right Interactive Traveller Phone OTP Authentication Pane -->
+            <div class="entry-right-auth">
+                <div id="entry-auth-container" style="width: 100%; max-width: 440px; background: rgba(26, 21, 16, 0.94); border: 1px solid rgba(246, 241, 231, 0.1); border-radius: 14px; padding: 22px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6); text-align: left;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <span style="font-size: 11px; font-weight: 700; color: #f2a93b; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; font-family: var(--font-display);">
+                            <i class="fa-solid fa-shield-halved"></i> TRAVELLER AUTHENTICATION
+                        </span>
+                        <span id="entry-auth-badge" style="font-size: 9px; color: #a89a83; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">FASTag Secure Ledger</span>
+                    </div>
+
+                    <div id="entry-step-phone">
+                        <label style="font-size: 9.5px; color: #a89a83; font-weight: 700; display: block; margin-bottom: 5px; font-family: var(--font-display);">ENTER 10-DIGIT MOBILE NUMBER (+91)</label>
+                        <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                            <span style="background: rgba(11, 8, 6, 0.8); border: 1px solid rgba(246, 241, 231, 0.12); border-radius: 6px; padding: 8px 10px; color: #a89a83; font-size: 11.5px; font-weight: 600;">+91</span>
+                            <input type="tel" id="entry-phone-input" placeholder="e.g. 9876543210" maxlength="10" autocomplete="tel" style="flex: 1; padding: 8px 12px; background: #0b0806; border: 1px solid rgba(246, 241, 231, 0.12); border-radius: 6px; color: #fff; font-size: 12.5px; font-weight: 600; outline: none;">
+                        </div>
+                        <button id="btn-entry-send-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 10px; font-weight: 700; font-size: 12px; border-radius: 8px; font-family: var(--font-display);">
+                            <i class="fa-solid fa-paper-plane"></i> Send 6-Digit OTP Code
+                        </button>
+                    </div>
+
+                    <div id="entry-step-verify" style="display: none;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <label style="font-size: 9.5px; color: #a89a83; font-weight: 700; font-family: var(--font-display);">ENTER 6-DIGIT OTP</label>
+                            <span id="entry-phone-target" style="font-size: 10.5px; color: #f2a93b; font-weight: 600;"></span>
+                        </div>
+                        <input type="text" id="entry-otp-input" placeholder="••••••" maxlength="6" autocomplete="one-time-code" style="width: 100%; box-sizing: border-box; padding: 10px; background: #0b0806; border: 1px solid var(--primary); border-radius: 6px; color: #fff; font-size: 18px; font-weight: 700; text-align: center; letter-spacing: 6px; margin-bottom: 10px; outline: none;">
+                        <button id="btn-entry-verify-otp" class="btn btn-primary w-full" style="justify-content: center; padding: 10px; font-weight: 700; font-size: 12px; border-radius: 8px; margin-bottom: 8px; font-family: var(--font-display);">
+                            <i class="fa-solid fa-lock-open"></i> Verify & Launch Dashboard
+                        </button>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <button id="btn-entry-change-phone" style="background: none; border: none; color: #a89a83; font-size: 10.5px; cursor: pointer; text-decoration: underline;">Change Phone</button>
+                            <button id="btn-entry-resend-otp" style="background: none; border: none; color: #f2a93b; font-size: 10.5px; cursor: pointer; font-weight: 600;">Resend OTP</button>
+                        </div>
+                    </div>
+
+                    <div id="entry-step-authenticated" style="display: none; text-align: center;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px;">
+                            <i class="fa-solid fa-circle-check" style="color: #22a35d; font-size: 16px;"></i>
+                            <span id="entry-auth-user-text" style="font-size: 12px; color: #f8fafc; font-weight: 700;">Authenticated</span>
+                        </div>
+                        <button id="btn-unlock-portal" class="btn btn-enter-portal" style="width: 100%; margin: 0 0 8px;">
+                            <span>Enter Traveller Dashboard</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button id="btn-entry-switch-user" style="background: none; border: none; color: #a89a83; font-size: 10.5px; cursor: pointer; text-decoration: underline;">Log Out / Switch Mobile Number</button>
+                    </div>
+
+                    <div id="entry-guest-divider" style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                        <button id="btn-entry-guest-mode" style="background: none; border: none; color: #a89a83; font-size: 10.5px; cursor: pointer;">
+                            <i class="fa-solid fa-user-clock"></i> Continue in Guest / Exploration Mode
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -267,44 +283,43 @@
             <!-- ========================
                  TAB: ROUTE PLANNER
                  ======================== -->
-            <div id="tab-plan" class="tab-content active">
+            <!-- ========================
+                 TAB: ROUTE PLANNING
+                 ======================== -->
+            <div id="tab-plan" class="tab-content active" style="padding-top: 2px;">
                 <div class="flex-col gap-2">
 
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
-                        <span style="font-size:9.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; font-family:var(--font-display);">Trip Corridor</span>
-                        <button type="button" onclick="VoiceAssistant.startListening();" class="btn-voice-header" title="Voice Search Route / Destination (Mic)" style="padding:3px 8px; font-size:9.5px; border-radius:6px;">
-                            <i class="fa-solid fa-microphone" style="color:#f2a93b;"></i> Voice Search
-                        </button>
-                    </div>
-
                     <!-- Modern Connected Route Search Card -->
-                    <div class="route-search-card" style="padding:10px; border-radius:10px;">
-                        <div class="route-path-track" style="padding-top:20px; padding-bottom:8px;">
-                            <div class="track-node origin-node" style="width:8px; height:8px;"></div>
+                    <div class="route-search-card" style="padding:8px 10px; border-radius:10px;">
+                        <div class="route-path-track" style="padding-top:18px; padding-bottom:6px;">
+                            <div class="track-node origin-node" style="width:7px; height:7px;"></div>
                             <div class="track-line"></div>
-                            <div class="track-node dest-node" style="width:8px; height:8px;"></div>
+                            <div class="track-node dest-node" style="width:7px; height:7px;"></div>
                         </div>
-                        <div class="route-inputs-container" style="gap:6px;">
+                        <div class="route-inputs-container" style="gap:5px;">
                             <div class="route-input-group">
-                                <label class="route-input-label" style="font-size:8.5px; font-family:var(--font-display); letter-spacing:0.5px;">ORIGIN</label>
-                                <div class="route-field-wrapper">
-                                    <input type="text" id="route-origin-input" placeholder="Search city, toll, or landmark..." autocomplete="off" style="font-size:11px; padding:6px 28px 6px 8px;">
-                                    <button type="button" id="btn-clear-origin" class="route-field-clear" style="display:none;" title="Clear origin"><i class="fa-solid fa-circle-xmark"></i></button>
-                                    <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon" style="font-size:10px;"></i>
+                                <label class="route-input-label" style="font-size:8px; font-family:var(--font-display); letter-spacing:0.5px;">ORIGIN</label>
+                                <div class="route-field-wrapper" style="position:relative; display:flex; align-items:center;">
+                                    <input type="text" id="route-origin-input" placeholder="Search city, toll, or landmark..." autocomplete="off" style="font-size:11px; padding:5px 50px 5px 24px; width:100%; box-sizing:border-box;">
+                                    <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon" style="font-size:9.5px; position:absolute; left:7px;"></i>
+                                    <button type="button" id="btn-clear-origin" class="route-field-clear" style="display:none; position:absolute; right:26px;" title="Clear origin"><i class="fa-solid fa-circle-xmark"></i></button>
+                                    <button type="button" onclick="VoiceAssistant.startListening();" class="route-field-mic" title="Voice Search Route (Mic)" style="position:absolute; right:5px; background:rgba(242, 169, 59, 0.15); border:1px solid rgba(242, 169, 59, 0.3); color:#f2a93b; font-size:9.5px; cursor:pointer; width:19px; height:19px; border-radius:4px; display:flex; align-items:center; justify-content:center;">
+                                        <i class="fa-solid fa-microphone"></i>
+                                    </button>
                                 </div>
                                 <div id="origin-suggestions" class="autocomplete-dropdown"></div>
                             </div>
 
-                            <button id="btn-swap-locations" type="button" class="route-swap-btn" title="Swap Origin and Destination" style="width:24px; height:24px; font-size:10px;">
+                            <button id="btn-swap-locations" type="button" class="route-swap-btn" title="Swap Origin and Destination" style="width:22px; height:22px; font-size:9.5px;">
                                 <i class="fa-solid fa-arrow-down-up-across-line"></i>
                             </button>
 
                             <div class="route-input-group">
-                                <label class="route-input-label" style="font-size:8.5px; font-family:var(--font-display); letter-spacing:0.5px;">DESTINATION</label>
-                                <div class="route-field-wrapper">
-                                    <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off" style="font-size:11px; padding:6px 28px 6px 8px;">
-                                    <button type="button" id="btn-clear-dest" class="route-field-clear" style="display:none;" title="Clear destination"><i class="fa-solid fa-circle-xmark"></i></button>
-                                    <i class="fa-solid fa-location-dot route-field-icon dest-icon" style="font-size:10px;"></i>
+                                <label class="route-input-label" style="font-size:8px; font-family:var(--font-display); letter-spacing:0.5px;">DESTINATION</label>
+                                <div class="route-field-wrapper" style="position:relative; display:flex; align-items:center;">
+                                    <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off" style="font-size:11px; padding:5px 26px 5px 24px; width:100%; box-sizing:border-box;">
+                                    <i class="fa-solid fa-location-dot route-field-icon dest-icon" style="font-size:9.5px; position:absolute; left:7px;"></i>
+                                    <button type="button" id="btn-clear-dest" class="route-field-clear" style="display:none; position:absolute; right:6px;" title="Clear destination"><i class="fa-solid fa-circle-xmark"></i></button>
                                 </div>
                                 <div id="dest-suggestions" class="autocomplete-dropdown"></div>
                             </div>
@@ -312,36 +327,36 @@
                     </div>
 
                     <!-- Journey Tariff Mode (Trip Corridor: 1-Way vs 24hr Return) -->
-                    <div class="trip-corridor-card" style="background: rgba(26, 21, 16, 0.7); border: 1px solid rgba(246, 241, 231, 0.08); border-radius: 10px; padding: 7px 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                        <div style="display:flex; align-items:center; gap:7px;">
-                            <div style="width:24px; height:24px; border-radius:6px; background:rgba(242, 169, 59,0.12); border:1px solid rgba(242, 169, 59,0.25); color:#f2a93b; display:flex; align-items:center; justify-content:center; font-size:10.5px;">
+                    <div class="trip-corridor-card" style="background: rgba(26, 21, 16, 0.7); border: 1px solid rgba(246, 241, 231, 0.08); border-radius: 8px; padding: 5px 8px; display: flex; align-items: center; justify-content: space-between; gap: 6px;">
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <div style="width:20px; height:20px; border-radius:5px; background:rgba(242, 169, 59,0.12); border:1px solid rgba(242, 169, 59,0.25); color:#f2a93b; display:flex; align-items:center; justify-content:center; font-size:9.5px;">
                                 <i class="fa-solid fa-arrows-left-right"></i>
                             </div>
                             <div>
-                                <span style="font-size:10.5px; font-weight:700; color:#f6f1e7; display:block; font-family:var(--font-display);">Trip Corridor</span>
-                                <span style="font-size:8.5px; color:#a89a83;">FASTag Toll Tariff</span>
+                                <span style="font-size:9.5px; font-weight:700; color:#f6f1e7; display:block; font-family:var(--font-display);">Trip Tariff Mode</span>
+                                <span style="font-size:8px; color:#a89a83;">FASTag Corridor</span>
                             </div>
                         </div>
-                        <div class="trip-type-segmented" style="display:flex; background:rgba(11,8,6,0.7); border:1px solid rgba(246,241,231,0.08); border-radius:6px; padding:2px; gap:2px;">
-                            <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:4px 8px; border-radius:4px; font-size:9.5px; font-weight:700; border:none; cursor:pointer; background:#f2a93b; color:#14100b; font-family:var(--font-display);">
-                                <i class="fa-solid fa-arrow-right" style="font-size:8.5px;"></i> One Way
+                        <div class="trip-type-segmented" style="display:flex; background:rgba(11,8,6,0.7); border:1px solid rgba(246,241,231,0.08); border-radius:5px; padding:2px; gap:2px;">
+                            <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:3px 7px; border-radius:3px; font-size:9px; font-weight:700; border:none; cursor:pointer; background:#f2a93b; color:#14100b; font-family:var(--font-display);">
+                                <i class="fa-solid fa-arrow-right" style="font-size:8px;"></i> One Way
                             </button>
-                            <button type="button" id="btn-trip-return" class="btn-trip-mode" style="padding:4px 8px; border-radius:4px; font-size:9.5px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#a89a83; font-family:var(--font-display);">
-                                <i class="fa-solid fa-rotate" style="font-size:8.5px;"></i> 24h Return
+                            <button type="button" id="btn-trip-return" class="btn-trip-mode" style="padding:3px 7px; border-radius:3px; font-size:9px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#a89a83; font-family:var(--font-display);">
+                                <i class="fa-solid fa-rotate" style="font-size:8px;"></i> 24h Return
                             </button>
                         </div>
                     </div>
 
                     <!-- Modern AI Voice Guide Card (Kokonut UI Audio Equalizer) -->
-                    <div class="snhop-voice-card" style="padding:8px 10px; border-radius:10px;">
-                        <div class="voice-card-header" style="margin-bottom:6px;">
-                            <div class="voice-card-brand" style="gap:7px;">
-                                <div class="voice-wave-icon" style="width:24px; height:24px; font-size:10px; border-radius:6px;">
+                    <div class="snhop-voice-card" style="padding:6px 8px; border-radius:8px;">
+                        <div class="voice-card-header" style="margin-bottom:4px;">
+                            <div class="voice-card-brand" style="gap:6px;">
+                                <div class="voice-wave-icon" style="width:20px; height:20px; font-size:9px; border-radius:5px;">
                                     <i class="fa-solid fa-volume-high"></i>
                                 </div>
                                 <div>
-                                    <span class="voice-card-title" style="font-size:10.5px; font-family:var(--font-display);">AI Voice Guide</span>
-                                    <span class="voice-card-desc" style="font-size:8px;">English highway announcements</span>
+                                    <span class="voice-card-title" style="font-size:9.5px; font-family:var(--font-display);">AI Voice Guide</span>
+                                    <span class="voice-card-desc" style="font-size:7.5px;">English highway audio</span>
                                 </div>
                             </div>
                             <!-- Kokonut UI Animated Audio Wave Bars -->
@@ -352,13 +367,13 @@
                                 <span class="wave-bar bar-4"></span>
                                 <span class="wave-bar bar-5"></span>
                             </div>
-                            <label class="switch" style="width:32px; height:18px;">
+                            <label class="switch" style="width:28px; height:16px;">
                                 <input type="checkbox" id="pref-voice-enable" checked>
                                 <span class="slider round"></span>
                             </label>
                         </div>
                         <div class="voice-gender-selector">
-                            <select id="pref-voice-gender" style="font-size:10px; padding:4px 8px; border-radius:6px;">
+                            <select id="pref-voice-gender" style="font-size:9px; padding:3px 6px; border-radius:4px;">
                                 <option value="male">🎙️ Male Voice (Natural UK/US)</option>
                                 <option value="female">🎙️ Female Voice (Natural UK/US)</option>
                             </select>
@@ -366,16 +381,16 @@
                     </div>
 
                     <!-- High-tech Calculate Route Button -->
-                    <button id="btn-calc-route" class="btn btn-primary w-full" style="justify-content: center; margin-top: 2px; padding: 9px; font-weight: 700; font-size: 12px; letter-spacing: 0.3px; font-family: var(--font-display);">
+                    <button id="btn-calc-route" class="btn btn-primary w-full" style="justify-content: center; padding: 7.5px; font-weight: 700; font-size: 11.5px; letter-spacing: 0.3px; font-family: var(--font-display);">
                         <i class="fa-solid fa-location-arrow"></i> Calculate Optimal Path
                     </button>
 
                     <!-- Dynamic Toll Timeline Container -->
-                    <div id="route-sidebar-summary" class="hidden flex-col gap-3" style="margin-top: 15px; border-top: 1px solid var(--border-light); padding-top: 15px;">
-                        <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-sec); display:flex; align-items:center; gap:6px; margin: 0 0 10px;">
-                            <i class="fa-solid fa-timeline" style="color:var(--primary)"></i> Journey Route Timeline
+                    <div id="route-sidebar-summary" class="hidden flex-col gap-2" style="margin-top: 10px; border-top: 1px solid var(--border-light); padding-top: 10px;">
+                        <h4 style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--text-sec); display:flex; align-items:center; gap:5px; margin: 0 0 6px;">
+                            <i class="fa-solid fa-timeline" style="color:var(--primary)"></i> Route Timeline
                         </h4>
-                        <div id="route-timeline-steps" class="flex-col gap-2" style="position: relative; padding-left: 18px; border-left: 1px dashed rgba(255, 255, 255, 0.1);">
+                        <div id="route-timeline-steps" class="flex-col gap-2" style="position: relative; padding-left: 14px; border-left: 1px dashed rgba(255, 255, 255, 0.1);">
                             <!-- Steps will be generated here dynamically -->
                         </div>
                     </div>
@@ -385,59 +400,58 @@
             <!-- ========================
                  TAB: FASTAG
                  ======================== -->
-            <div id="tab-fastag" class="tab-content" style="padding-top: 0;">
-                <!-- Sticky Top Section -->
-                <div style="position: sticky; top: 0; background: var(--bg-panel); z-index: 10; padding-top: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light);">
+            <div id="tab-fastag" class="tab-content" style="padding-top: 2px;">
+                <div class="flex-col gap-2">
                     <!-- Balance Card -->
-                    <div class="fastag-card" style="margin-bottom: 10px; padding: 10px 12px;">
-                        <p class="fastag-live-label">
-                            Wallet Balance
-                        </p>
-                        <div id="ui-fastag-bal" class="balance-text">&#8377;0.00</div>
-                        <span id="ui-fastag-status" class="badge"></span>
+                    <div class="fastag-card" style="margin-bottom: 6px; padding: 8px 12px; border-radius: 10px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <p class="fastag-live-label" style="font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin: 0; color: #a89a83; font-family: var(--font-display);">
+                                Wallet Balance
+                            </p>
+                            <span id="ui-fastag-status" class="badge" style="font-size: 8px; padding: 1px 6px;"></span>
+                        </div>
+                        <div id="ui-fastag-bal" class="balance-text" style="font-size: 18px; font-weight: 800; font-family: var(--font-display); margin: 2px 0 0;">&#8377;0.00</div>
                     </div>
 
                     <!-- Recharge Panel -->
-                    <div class="glass-panel" style="margin-bottom: 0;">
-                        <p class="recharge-section-title"><i class="fa-solid fa-rotate" style="color:var(--primary)"></i> 3rd-Party Recharge Simulation</p>
-                        <p style="font-size: 11px; color: var(--accent-yellow); margin-bottom: 8px; display:flex; align-items:center; gap:5px;">
+                    <div class="glass-panel" style="margin-bottom: 0; padding: 8px 10px;">
+                        <p class="recharge-section-title" style="font-size: 9.5px; font-weight: 700; margin: 0 0 4px; font-family: var(--font-display); display:flex; align-items:center; gap:5px;"><i class="fa-solid fa-rotate" style="color:var(--primary)"></i> 3rd-Party Recharge Simulation</p>
+                        <p style="font-size: 8.5px; color: var(--accent-yellow); margin-bottom: 6px; display:flex; align-items:center; gap:4px;">
                             <i class="fa-solid fa-circle-info"></i> Platform deducts 1% convenience fee.
                         </p>
                         <div class="flex-col gap-2">
-                            <div class="quick-recharge-pills" style="display:flex; gap:6px; margin-bottom:2px;">
-                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:6px 4px; font-size:10.5px; font-weight:700; justify-content:center; border-radius:8px;" onclick="document.getElementById('recharge-amount').value=500; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;500</button>
-                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:6px 4px; font-size:10.5px; font-weight:700; justify-content:center; border-radius:8px;" onclick="document.getElementById('recharge-amount').value=1000; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;1,000</button>
-                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:6px 4px; font-size:10.5px; font-weight:700; justify-content:center; border-radius:8px;" onclick="document.getElementById('recharge-amount').value=2000; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;2,000</button>
+                            <div class="quick-recharge-pills" style="display:flex; gap:4px; margin-bottom:2px;">
+                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:4px 2px; font-size:9.5px; font-weight:700; justify-content:center; border-radius:6px;" onclick="document.getElementById('recharge-amount').value=500; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;500</button>
+                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:4px 2px; font-size:9.5px; font-weight:700; justify-content:center; border-radius:6px;" onclick="document.getElementById('recharge-amount').value=1000; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;1,000</button>
+                                <button type="button" class="btn btn-outline quick-amt-chip" style="flex:1; padding:4px 2px; font-size:9.5px; font-weight:700; justify-content:center; border-radius:6px;" onclick="document.getElementById('recharge-amount').value=2000; document.getElementById('recharge-amount').dispatchEvent(new Event('input'))">+ &#8377;2,000</button>
                             </div>
-                            <input type="number" id="recharge-amount" placeholder="Enter Custom Amount (Min &#8377;500)" min="500">
-                            <div class="recharge-fee-row" style="font-size: 11px; color: var(--text-sec);">
+                            <input type="number" id="recharge-amount" placeholder="Custom Amount (Min &#8377;500)" min="500" style="padding:5px 8px; font-size:11px;">
+                            <div class="recharge-fee-row" style="font-size: 9.5px; color: var(--text-sec); display:flex; justify-content:space-between;">
                                 <span>Platform Fee (1%):</span>
                                 <span id="recharge-fee" style="color: var(--accent-red); font-weight:700;">- &#8377;0.00</span>
                             </div>
-                            <div class="recharge-fee-row" style="font-weight: bold; font-size: 13px; margin-bottom: 5px;">
+                            <div class="recharge-fee-row" style="font-weight: bold; font-size: 11px; margin-bottom: 2px; display:flex; justify-content:space-between;">
                                 <span>Net Credited:</span>
                                 <span id="recharge-net" style="color: var(--primary);">&#8377;0.00</span>
                             </div>
-                            <select id="recharge-gateway" style="font-size: 11px; margin-bottom: 5px;">
+                            <select id="recharge-gateway" style="font-size: 10px; padding: 4px 6px; margin-bottom: 2px;">
                                 <option>PhonePe UPI</option>
                                 <option>Google Pay UPI</option>
                                 <option>Paytm</option>
                                 <option>Net Banking</option>
                             </select>
-                            <button id="btn-recharge" class="btn btn-kokonut w-full" style="justify-content: center; height: 36px; font-size: 11px;">
+                            <button id="btn-recharge" class="btn btn-kokonut w-full" style="justify-content: center; height: 30px; font-size: 10.5px; font-weight: 700;">
                                 <i class="fa-solid fa-lock"></i> Proceed to Pay
                             </button>
                         </div>
                     </div>
-                </div>
 
-                <div style="padding: 18px 0;">
                     <!-- Transaction History -->
-                    <div>
-                        <h4 style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; display:flex; align-items:center; gap:6px;">
+                    <div style="margin-top: 6px;">
+                        <h4 style="font-size: 9.5px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; display:flex; align-items:center; gap:5px; font-family: var(--font-display);">
                             <i class="fa-solid fa-clock-rotate-left"></i> Recent Transactions
                         </h4>
-                        <div id="fastag-history-list" style="font-size: 11px;"></div>
+                        <div id="fastag-history-list" style="font-size: 10px;"></div>
                     </div>
                 </div>
             </div>
@@ -611,15 +625,15 @@
             <!-- ========================
                  TAB: SOS EMERGENCY
                  ======================== -->
-            <div id="tab-sos" class="tab-content">
-                <div class="sos-panel">
-                    <h3 class="sos-title">
-                        <i class="fa-solid fa-tower-broadcast"></i> Incident Report
+            <div id="tab-sos" class="tab-content" style="padding-top: 2px;">
+                <div class="sos-panel" style="padding: 10px 12px; border-radius: 10px; margin-bottom: 10px;">
+                    <h3 class="sos-title" style="font-size: 11.5px; font-weight: 700; margin-bottom: 6px; font-family: var(--font-display); display:flex; align-items:center; gap:6px; color: var(--accent-red);">
+                        <i class="fa-solid fa-tower-broadcast"></i> Incident Emergency Report
                     </h3>
-                    <div class="flex-col gap-3">
+                    <div class="flex-col gap-2">
                         <div>
-                            <span class="field-label">Incident Type</span>
-                            <select id="sos-type">
+                            <span class="field-label" style="font-size: 8.5px; font-family: var(--font-display); letter-spacing: 0.5px;">Incident Type</span>
+                            <select id="sos-type" style="padding: 5px 8px; font-size: 11px;">
                                 <option value="BREAKDOWN">Vehicle Breakdown</option>
                                 <option value="ACCIDENT">Accident</option>
                                 <option value="MEDICAL">Health Emergency</option>
@@ -629,22 +643,22 @@
                             </select>
                         </div>
                         <div>
-                            <span class="field-label">Location (Highway/Toll/Geo)</span>
-                            <div class="ai-input-wrapper">
-                                <input type="text" id="sos-location" placeholder="E.g. Near Plaza 42" style="padding-left: 36px;">
-                                <i class="fa-solid fa-location-crosshairs" style="position: absolute; left: 12px; top: 12px; color: var(--accent-red); font-size: 14px;"></i>
+                            <span class="field-label" style="font-size: 8.5px; font-family: var(--font-display); letter-spacing: 0.5px;">Location (Highway / Toll / Landmark)</span>
+                            <div class="ai-input-wrapper" style="position: relative;">
+                                <input type="text" id="sos-location" placeholder="E.g. Near Plaza 42" style="padding: 5px 8px 5px 28px; font-size: 11px; width: 100%; box-sizing: border-box;">
+                                <i class="fa-solid fa-location-crosshairs" style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: var(--accent-red); font-size: 11px;"></i>
                             </div>
                         </div>
                         <div>
-                            <span class="field-label">Phone Number</span>
-                            <input type="tel" id="sos-phone" placeholder="10-digit number" value="9876543210">
+                            <span class="field-label" style="font-size: 8.5px; font-family: var(--font-display); letter-spacing: 0.5px;">Phone Number (+91)</span>
+                            <input type="tel" id="sos-phone" placeholder="10-digit number" value="9876543210" style="padding: 5px 8px; font-size: 11px;">
                         </div>
                         <div>
-                            <span class="field-label">Additional Details</span>
-                            <textarea id="sos-desc" rows="3" placeholder="Describe the situation briefly..."></textarea>
+                            <span class="field-label" style="font-size: 8.5px; font-family: var(--font-display); letter-spacing: 0.5px;">Additional Details</span>
+                            <textarea id="sos-desc" rows="2" placeholder="Describe the situation briefly..." style="padding: 5px 8px; font-size: 11px;"></textarea>
                         </div>
-                        <button id="btn-submit-sos" class="btn btn-danger w-full" style="justify-content: center; font-size: 13px;">
-                            <i class="fa-solid fa-paper-plane"></i> Dispatch SOS to Admin
+                        <button id="btn-submit-sos" class="btn btn-danger w-full" style="justify-content: center; padding: 7.5px; font-size: 11.5px; font-weight: 700; font-family: var(--font-display);">
+                            <i class="fa-solid fa-paper-plane"></i> Dispatch SOS to Highway Command
                         </button>
                     </div>
                 </div>
