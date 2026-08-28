@@ -124,10 +124,10 @@ const Analytics = {
         let gradient = null;
         try {
             gradient = ctx.createLinearGradient(0, 0, 0, 200);
-            gradient.addColorStop(0, 'rgba(59, 130, 246, 0.35)');
-            gradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.35)');
+            gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
         } catch (e) {
-            gradient = 'rgba(59, 130, 246, 0.1)';
+            gradient = 'rgba(16, 185, 129, 0.1)';
         }
 
         Analytics.chartInstance = new Chart(ctx, {
@@ -139,12 +139,12 @@ const Analytics = {
                         type: 'line',
                         label: 'Revenue (₹)',
                         data: revenueValues,
-                        borderColor: '#3b82f6',
+                        borderColor: '#10b981',
                         borderWidth: 2,
                         fill: true,
                         backgroundColor: gradient,
                         tension: 0.35,
-                        pointBackgroundColor: '#3b82f6',
+                        pointBackgroundColor: '#10b981',
                         pointBorderColor: '#ffffff',
                         pointHoverRadius: 5,
                         yAxisID: 'y-rev'
@@ -177,7 +177,7 @@ const Analytics = {
                         }
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                        backgroundColor: 'rgba(14, 20, 24, 0.95)',
                         borderColor: 'rgba(255, 255, 255, 0.1)',
                         borderWidth: 1,
                         titleFont: { family: "'Oswald', 'Inter', sans-serif", size: 10 },

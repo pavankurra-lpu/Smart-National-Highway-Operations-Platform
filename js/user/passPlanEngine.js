@@ -68,9 +68,9 @@ const PassPlanEngine = {
         const monthlyPass = TollData.passes?.MONTHLY_PLAZA;
         const monthlyCost = Math.floor(routeData.totalTollCost * (monthlyPass?.multiplier || 33));
         html += `
-            <div class="plan-card" style="border-color: rgba(59, 130, 246, 0.5);">
+            <div class="plan-card" style="border-color: rgba(16, 185, 129, 0.5);">
                 <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                    <strong style="color:#3b82f6;">Monthly Plaza Pass (Standard)</strong>
+                    <strong style="color:#10b981;">Monthly Plaza Pass (Standard)</strong>
                     <span style="color:#fff; font-weight:bold;">${Utils.formatCurrency(monthlyCost)}</span>
                 </div>
                 <p style="font-size:10px;">Unlimited trips for the selected route plazas for 30 days.</p>

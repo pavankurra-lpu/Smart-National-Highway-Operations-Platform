@@ -47,7 +47,7 @@
 /* Login Screen Full-Page System */
 .admin-login-body {
     min-height: 100vh;
-    background: #0b0f19;
+    background: #090d10;
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
@@ -59,7 +59,7 @@
     display: flex;
     width: 100vw;
     min-height: 100vh;
-    background: #0b0f19;
+    background: #090d10;
     position: relative;
     z-index: 1;
 }
@@ -70,7 +70,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 44px 52px;
-    background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(11, 8, 6, 0.98));
+    background: linear-gradient(145deg, rgba(19, 27, 32, 0.95), rgba(11, 8, 6, 0.98));
     border-right: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
 }
@@ -81,7 +81,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 36px 52px;
-    background: rgba(15, 23, 42, 0.75);
+    background: rgba(14, 20, 24, 0.75);
     backdrop-filter: blur(20px);
     overflow-y: auto;
 }
@@ -100,8 +100,8 @@
     }
 }
     background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
     background-size: 32px 32px;
     pointer-events: none;
 }
@@ -120,7 +120,7 @@
     width: 4px;
 }
 .district-tolls-card-list::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.5);
+    background: rgba(16, 185, 129, 0.5);
     border-radius: 4px;
 }
 .toll-card-item {
@@ -136,14 +136,14 @@
     text-align: left;
 }
 .toll-card-item:hover {
-    background: rgba(59, 130, 246, 0.12);
-    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.4);
     transform: translateX(2px);
 }
 .toll-card-item.selected {
-    background: rgba(59, 130, 246, 0.22);
-    border-color: #3b82f6;
-    box-shadow: 0 0 14px rgba(59, 130, 246, 0.35);
+    background: rgba(16, 185, 129, 0.22);
+    border-color: #10b981;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
 }
 .toll-card-name {
     font-size: 11px;
@@ -156,9 +156,9 @@
 .toll-card-corridor {
     font-size: 9px;
     font-weight: 700;
-    color: #3b82f6;
-    background: rgba(59, 130, 246, 0.12);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
     border-radius: 4px;
     padding: 1px 5px;
     white-space: nowrap;
@@ -495,7 +495,7 @@
     transition: var(--transition);
 }
 .spotlight-card:hover {
-    border-color: rgba(59, 130, 246, 0.35);
+    border-color: rgba(16, 185, 129, 0.35);
     box-shadow: var(--shadow);
 }
 
@@ -515,9 +515,9 @@
     gap: 4px;
 }
 .preset-chip:hover {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: rgba(59, 130, 246, 0.45);
-    color: #3b82f6;
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.45);
+    color: #10b981;
     transform: translateY(-1px);
 }
 .preset-chip:active {
@@ -530,9 +530,9 @@
 /* ===== ADMIN MOBILE RESPONSIVE DRAWER (<900px) ===== */
 .admin-mobile-toggle {
     display: none;
-    background: rgba(59, 130, 246, 0.12);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    color: #3b82f6;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 14px;
@@ -562,7 +562,7 @@
         bottom: 0 !important;
         width: 280px !important;
         z-index: 999 !important;
-        background: #0b0f19 !important;
+        background: #090d10 !important;
         border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
         transform: translateX(-105%) !important;
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;

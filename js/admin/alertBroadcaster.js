@@ -94,10 +94,10 @@ const AlertBroadcaster = {
             if (metaEl) metaEl.textContent = 'National Corridors • Multi-State Geofence (1,232+ Plazas)';
             if (coordsEl) coordsEl.textContent = 'Lat: 20.5937, Lng: 78.9629 (Pan-India)';
             if (badgeEl) {
-                badgeEl.innerHTML = '<span class="live-status-dot" style="background:#3b82f6;"></span> ALL-INDIA NETWORK';
-                badgeEl.style.background = 'rgba(59, 130, 246,0.15)';
-                badgeEl.style.color = '#3b82f6';
-                badgeEl.style.borderColor = 'rgba(59, 130, 246,0.3)';
+                badgeEl.innerHTML = '<span class="live-status-dot" style="background:#10b981;"></span> ALL-INDIA NETWORK';
+                badgeEl.style.background = 'rgba(16, 185, 129,0.15)';
+                badgeEl.style.color = '#10b981';
+                badgeEl.style.borderColor = 'rgba(16, 185, 129,0.3)';
             }
         } else {
             let tollObj = null;
@@ -260,7 +260,7 @@ const AlertBroadcaster = {
         const typeColors = {
             'EMERGENCY': '#ef4444',
             'TRAFFIC': '#f59e0b',
-            'WEATHER': '#3b82f6',
+            'WEATHER': '#10b981',
             'INFO': '#10b981'
         };
         const typeIcons = {
@@ -272,27 +272,27 @@ const AlertBroadcaster = {
 
         let html = '';
         alerts.forEach(alert => {
-            const color = typeColors[alert.type] || '#3b82f6';
+            const color = typeColors[alert.type] || '#10b981';
             const icon = typeIcons[alert.type] || 'fa-bullhorn';
             const radius = alert.radiusKm || 10;
             const timeStr = Utils.formatDateTime ? Utils.formatDateTime(alert.timestamp) : new Date(alert.timestamp).toLocaleTimeString();
 
             html += `
-                <div style="background:rgba(15,23,42,0.65); border:1px solid var(--border); border-left:4px solid ${color}; border-radius:8px; padding:12px; position:relative;">
+                <div style="background:rgba(14,20,24,0.65); border:1px solid var(--border); border-left:4px solid ${color}; border-radius:8px; padding:12px; position:relative;">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
                         <div style="flex:1; min-width:0;">
                             <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
                                 <span style="font-size:9px; font-weight:800; text-transform:uppercase; color:${color}; background:${color}18; border:1px solid ${color}35; padding:2px 6px; border-radius:4px;">
                                     <i class="fa-solid ${icon}"></i> ${alert.type}
                                 </span>
-                                <span style="font-size:9px; font-weight:700; color:#3b82f6; background:rgba(59, 130, 246,0.12); border:1px solid rgba(59, 130, 246,0.25); padding:2px 6px; border-radius:4px;">
+                                <span style="font-size:9px; font-weight:700; color:#10b981; background:rgba(16, 185, 129,0.12); border:1px solid rgba(16, 185, 129,0.25); padding:2px 6px; border-radius:4px;">
                                     📡 ${radius}km Geofence
                                 </span>
                             </div>
                             <h4 style="margin:0 0 4px 0; font-size:12.5px; font-weight:700; color:#fff; line-height:1.3;">${alert.title}</h4>
                             <p style="margin:0; font-size:11px; color:#cbd5e1; line-height:1.4;">${alert.message}</p>
                             <div style="margin-top:6px; font-size:9.5px; color:#94a3b8; display:flex; align-items:center; gap:8px;">
-                                <span><i class="fa-solid fa-archway" style="color:#3b82f6;"></i> ${alert.plaza || 'All Plazas'}</span>
+                                <span><i class="fa-solid fa-archway" style="color:#10b981;"></i> ${alert.plaza || 'All Plazas'}</span>
                                 <span>•</span>
                                 <span><i class="fa-regular fa-clock"></i> ${timeStr}</span>
                             </div>

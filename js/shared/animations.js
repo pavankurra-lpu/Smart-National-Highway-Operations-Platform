@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('mouseenter', () => {
             animate(card, { scale: 1.015, translateZ: 0 }, { duration: 0.2, easing: 'ease-out' });
             card.style.borderColor = 'var(--primary)';
-            card.style.boxShadow = '0 10px 30px -5px rgba(59, 130, 246, 0.25)';
+            card.style.boxShadow = '0 10px 30px -5px rgba(16, 185, 129, 0.25)';
         });
         card.addEventListener('mouseleave', () => {
             animate(card, { scale: 1.0, translateZ: 0 }, { duration: 0.2, easing: 'ease-out' });

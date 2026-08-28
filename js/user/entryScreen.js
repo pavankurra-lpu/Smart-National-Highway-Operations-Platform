@@ -247,6 +247,11 @@ window.updateTravellerAuthUI = () => {
     const userSub = document.getElementById('sidebar-user-sub');
     const userAvatar = document.getElementById('sidebar-user-avatar');
 
+    const tabFastag = document.getElementById('tab-btn-fastag');
+    const tabAnalytics = document.getElementById('tab-btn-analytics');
+    const tabSettings = document.getElementById('tab-btn-settings');
+    const tabPlan = document.getElementById('tab-btn-plan');
+
     if (token && phone) {
         if (userName) userName.innerText = `+91-${phone.substring(0, 5)} ${phone.substring(5)}`;
         if (userSub) userSub.innerHTML = '<span class="user-status-dot live"></span> Server Wallet Active';
@@ -257,15 +262,31 @@ window.updateTravellerAuthUI = () => {
             authBtn.className = 'sidebar-auth-action-btn logged-in';
             authBtn.title = 'Click to Log Out / Switch Mobile Number';
         }
+
+        // Full access when authenticated
+        if (tabFastag) tabFastag.style.display = '';
+        if (tabAnalytics) tabAnalytics.style.display = '';
+        if (tabSettings) tabSettings.style.display = '';
     } else {
         if (userName) userName.innerText = 'Guest Traveller';
-        if (userSub) userSub.innerHTML = '<span class="user-status-dot"></span> Offline / Standalone Mode';
+        if (userSub) userSub.innerHTML = '<span class="user-status-dot"></span> Offline / Guest Mode';
         if (userAvatar) userAvatar.innerHTML = '<i class="fa-solid fa-user"></i>';
         if (authText) authText.innerText = 'Sign In';
         if (authIcon) authIcon.className = 'fa-solid fa-mobile-screen-button';
         if (authBtn) {
             authBtn.className = 'sidebar-auth-action-btn';
             authBtn.title = 'Phone Login & Wallet Sync';
+        }
+
+        // Guest mode: only Route and Emergency SOS allowed
+        if (tabFastag) tabFastag.style.display = 'none';
+        if (tabAnalytics) tabAnalytics.style.display = 'none';
+        if (tabSettings) tabSettings.style.display = 'none';
+
+        // Auto redirect to Route tab if on restricted tab
+        const activeTabBtn = document.querySelector('.tab-btn.active');
+        if (activeTabBtn && ['tab-btn-fastag', 'tab-btn-analytics', 'tab-btn-settings'].includes(activeTabBtn.id)) {
+            if (tabPlan) tabPlan.click();
         }
     }
 };

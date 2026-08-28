@@ -43,15 +43,15 @@ const AdminApp = {
         if (badge) {
             if (AdminApp.plaza === 'ALL') {
                 badge.innerHTML = '<i class="fa-solid fa-earth-asia"></i> ALL INDIA (SUPER ADMIN)';
-                badge.style.background = 'rgba(59, 130, 246, 0.15)';
-                badge.style.borderColor = 'rgba(59, 130, 246, 0.4)';
-                badge.style.color = '#3b82f6';
+                badge.style.background = 'rgba(16, 185, 129, 0.15)';
+                badge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                badge.style.color = '#10b981';
             } else {
                 const sub = plazaData?.state ? ` (${plazaData.state})` : '';
                 badge.innerHTML = `<i class="fa-solid fa-map-pin"></i> ${AdminApp.plaza.toUpperCase()}${sub}`;
-                badge.style.background = 'rgba(59, 130, 246, 0.18)';
-                badge.style.borderColor = 'rgba(59, 130, 246, 0.45)';
-                badge.style.color = '#60a5fa';
+                badge.style.background = 'rgba(16, 185, 129, 0.18)';
+                badge.style.borderColor = 'rgba(16, 185, 129, 0.45)';
+                badge.style.color = '#34d399';
             }
         }
 
@@ -175,16 +175,16 @@ const AdminApp = {
             const p = AdminApp.plazaData;
             const tollIcon = L.divIcon({
                 className: '',
-                html: `<div style="background: #3b82f6; color:#ffffff; width:34px; height:34px; border-radius:10px; border:2px solid #fff; box-shadow:0 0 20px rgba(59, 130, 246,0.8); display:flex; align-items:center; justify-content:center; font-size:16px;">⛩️</div>`,
+                html: `<div style="background: #10b981; color:#ffffff; width:34px; height:34px; border-radius:10px; border:2px solid #fff; box-shadow:0 0 20px rgba(16, 185, 129,0.8); display:flex; align-items:center; justify-content:center; font-size:16px;">⛩️</div>`,
                 iconSize: [34, 34],
                 iconAnchor: [17, 17]
             });
             L.marker([p.lat, p.lng], { icon: tollIcon })
                 .bindPopup(`
-                    <div style="font-family:'Inter',sans-serif; color:#f8fafc; background:#0b0f19; padding:6px; border-radius:6px;">
+                    <div style="font-family:'Inter',sans-serif; color:#f8fafc; background:#090d10; padding:6px; border-radius:6px;">
                         <strong style="font-size:12px; color:#f8fafc;">⛩️ ${p.name}</strong><br>
                         <span style="font-size:10px; color:#94a3b8;">${p.district ? p.district + ', ' : ''}${p.state || 'India'}</span><br>
-                        <span style="font-size:10px; color:#3b82f6; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
+                        <span style="font-size:10px; color:#10b981; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
                     </div>
                 `)
                 .addTo(AdminApp.map)
@@ -196,18 +196,18 @@ const AdminApp = {
             TollSeedData.forEach(toll => {
                 if (renderedCount > 350 || !toll.lat || !toll.lng) return;
                 const congestion = tollStates[toll.id]?.congestion || 'NORMAL';
-                const col = congestion === 'HIGH' ? '#ef4444' : (congestion === 'MODERATE' ? '#3b82f6' : '#22a35d');
+                const col = congestion === 'HIGH' ? '#ef4444' : (congestion === 'MODERATE' ? '#10b981' : '#22a35d');
                 
                 const icon = L.divIcon({
                     className: '',
-                    html: `<div style="background:${col}; width:8px; height:8px; border-radius:50%; border:1px solid #0b0f19; box-shadow:0 0 6px ${col};"></div>`,
+                    html: `<div style="background:${col}; width:8px; height:8px; border-radius:50%; border:1px solid #090d10; box-shadow:0 0 6px ${col};"></div>`,
                     iconSize: [8, 8],
                     iconAnchor: [4, 4]
                 });
                 
                 L.marker([toll.lat, toll.lng], { icon })
                     .bindPopup(`
-                        <div style="font-family:'Inter',sans-serif; color:#f8fafc; background:#0b0f19; padding:4px;">
+                        <div style="font-family:'Inter',sans-serif; color:#f8fafc; background:#090d10; padding:4px;">
                             <strong style="font-size:11.5px; color:#f8fafc;">${toll.name}</strong><br>
                             <span style="font-size:9.5px; color:#94a3b8;">${toll.district ? toll.district + ', ' : ''}${toll.state || ''}</span><br>
                             <span style="font-size:9.5px; color:${col}; font-weight:700;">Status: ${congestion}</span>
@@ -236,7 +236,7 @@ const AdminApp = {
         } else {
             const icon = L.divIcon({
                 className: '',
-                html: `<div style="background:#3b82f6; width:12px; height:12px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 6px #3b82f6;"></div>`,
+                html: `<div style="background:#10b981; width:12px; height:12px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 6px #10b981;"></div>`,
                 iconSize: [12, 12],
                 iconAnchor: [6, 6]
             });
@@ -307,7 +307,7 @@ const AdminApp = {
             const statusColors = {
                 'RAISED': '#ef4444',
                 'ACKNOWLEDGED': '#f59e0b',
-                'DISPATCHED': '#2563eb'
+                'DISPATCHED': '#059669'
             };
             const color = statusColors[e.status] || '#ef4444';
 
@@ -358,7 +358,7 @@ const AdminApp = {
         alerts.forEach(alert => {
             if (alert.lat && alert.lng && (alert.lat !== 20.5937 || alert.lng !== 78.9629)) {
                 const radiusMeters = (alert.radiusKm || 10) * 1000;
-                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#3b82f6');
+                const color = alert.type === 'EMERGENCY' ? '#ef4444' : (alert.type === 'TRAFFIC' ? '#f59e0b' : '#10b981');
                 
                 const circle = L.circle([alert.lat, alert.lng], {
                     radius: radiusMeters,
@@ -368,7 +368,7 @@ const AdminApp = {
                     fillOpacity: 0.12,
                     dashArray: '6, 6'
                 }).bindPopup(`
-                    <div style="font-family:'Inter',sans-serif; color:#0b0f19; padding:4px;">
+                    <div style="font-family:'Inter',sans-serif; color:#090d10; padding:4px;">
                         <strong style="color:${color}; font-size:12px;">📡 10km Broadcast Geofence</strong><br>
                         <strong style="font-size:11.5px;">${alert.title}</strong><br>
                         <span style="font-size:11px; color:#64748b;">${alert.plaza || 'Toll Gate'} (${alert.radiusKm || 10}km Radius)</span>

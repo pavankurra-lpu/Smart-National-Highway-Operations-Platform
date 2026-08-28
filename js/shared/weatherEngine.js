@@ -3,7 +3,7 @@
 const WeatherEngine = {
     conditions: [
         { code: 'CLEAR', name: 'Clear Skies', icon: 'fa-sun', color: '#fcd34d', risk: 'LOW', tempMod: 0 },
-        { code: 'RAIN', name: 'Heavy Rain / Showers', icon: 'fa-cloud-showers-heavy', color: '#3b82f6', risk: 'MEDIUM', tempMod: -5 },
+        { code: 'RAIN', name: 'Heavy Rain / Showers', icon: 'fa-cloud-showers-heavy', color: '#10b981', risk: 'MEDIUM', tempMod: -5 },
         { code: 'FOG', name: 'Dense Fog / Mist', icon: 'fa-smog', color: '#a8a29e', risk: 'HIGH', tempMod: -3 },
         { code: 'STORM', name: 'Severe Thunderstorm', icon: 'fa-cloud-bolt', color: '#8b5cf6', risk: 'HIGH', tempMod: -8 },
         { code: 'HEAT', name: 'Extreme Heatwave', icon: 'fa-temperature-arrow-up', color: '#ef4444', risk: 'HIGH', tempMod: +8 }

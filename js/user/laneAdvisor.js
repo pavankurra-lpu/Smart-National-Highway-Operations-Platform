@@ -143,7 +143,7 @@ const LaneAdvisor = {
                     <label style="font-size:10px; font-weight:700; color:var(--text-sec); text-transform:uppercase; white-space:nowrap;">
                         <i class="fa-solid fa-layer-group" style="color:var(--primary);"></i> Select Plaza:
                     </label>
-                    <select onchange="LaneAdvisor.onPlazaChanged(this.value)" style="flex:1; font-size:11px; font-weight:600; background:rgba(15,23,42,0.9); color:#fff; border:1px solid rgba(255,255,255,0.15); padding:5px 8px; border-radius:6px; outline:none; cursor:pointer;">
+                    <select onchange="LaneAdvisor.onPlazaChanged(this.value)" style="flex:1; font-size:11px; font-weight:600; background:rgba(14,20,24,0.9); color:#fff; border:1px solid rgba(255,255,255,0.15); padding:5px 8px; border-radius:6px; outline:none; cursor:pointer;">
                         ${routeData.tolls.map((t, idx) => {
                             const tId = t.id || t;
                             const tName = t.name || window.TollSeedData?.find(s => s.id === tId)?.name || `Toll Plaza ${idx + 1}`;
@@ -162,8 +162,8 @@ const LaneAdvisor = {
             const isClosed = l.status === 'CLOSED';
             const isSelected = LaneAdvisor.selectedLane === l.laneNum;
 
-            let borderCol = isSelected ? '#3b82f6' : (isRec ? 'var(--primary)' : 'var(--border-light)');
-            let bgCol = isSelected ? 'rgba(59, 130, 246,0.16)' : (isRec ? 'rgba(0,229,179,0.1)' : 'rgba(0,0,0,0.25)');
+            let borderCol = isSelected ? '#10b981' : (isRec ? 'var(--primary)' : 'var(--border-light)');
+            let bgCol = isSelected ? 'rgba(16, 185, 129,0.16)' : (isRec ? 'rgba(0,229,179,0.1)' : 'rgba(0,0,0,0.25)');
             
             let statusBadge = isClosed 
                 ? `<span style="font-size:9px; padding:2px 6px; border-radius:4px; background:rgba(239,68,68,0.2); color:#f43f5e; font-weight:700; border:1px solid rgba(239,68,68,0.4);">🔴 CLOSED</span>`
@@ -188,7 +188,7 @@ const LaneAdvisor = {
                             <i class="fa-solid ${l.icon}" style="color:${isRec ? 'var(--primary)' : '#94a3b8'}; font-size:12px;"></i>
                             <strong style="color:#fff; font-size:12.5px;">${l.laneNum}</strong>
                             ${isRec ? `<span style="font-size:8px; font-weight:800; background:var(--primary); color:#000; padding:1px 5px; border-radius:3px; letter-spacing:0.4px;">⭐ RECOMMENDED</span>` : ''}
-                            ${isSelected ? `<span style="font-size:8px; font-weight:800; background:#3b82f6; color:#000; padding:1px 5px; border-radius:3px;">SELECTED</span>` : ''}
+                            ${isSelected ? `<span style="font-size:8px; font-weight:800; background:#10b981; color:#000; padding:1px 5px; border-radius:3px;">SELECTED</span>` : ''}
                         </div>
                         <div style="font-size:11px; font-weight:600; color:var(--text-main); margin-bottom:2px;">${l.type}</div>
                         <div style="font-size:9.5px; color:var(--text-muted); line-height:1.3;">${l.description}</div>
@@ -205,8 +205,8 @@ const LaneAdvisor = {
                             font-weight: 700;
                             padding: 3px 8px;
                             border-radius: 4px;
-                            border: 1px solid ${isSelected ? '#3b82f6' : 'rgba(255,255,255,0.15)'};
-                            background: ${isSelected ? '#3b82f6' : 'rgba(255,255,255,0.06)'};
+                            border: 1px solid ${isSelected ? '#10b981' : 'rgba(255,255,255,0.15)'};
+                            background: ${isSelected ? '#10b981' : 'rgba(255,255,255,0.06)'};
                             color: ${isSelected ? '#000' : '#fff'};
                             cursor: pointer;
                             transition: all 0.2s;
@@ -220,7 +220,7 @@ const LaneAdvisor = {
             ${plazaSelectHtml}
 
             <!-- Plaza Header Banner -->
-            <div style="background:linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.95)); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:10px 12px; margin-bottom:12px;">
+            <div style="background:linear-gradient(135deg, rgba(14,20,24,0.95), rgba(30,41,59,0.95)); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:10px 12px; margin-bottom:12px;">
                 <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                     <div>
                         <div style="font-size:13px; font-weight:800; color:#fff;">📍 ${plazaName}</div>
@@ -233,7 +233,7 @@ const LaneAdvisor = {
 
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:6px; border-top:1px solid rgba(255,255,255,0.08); font-size:10px; color:#cbd5e1;">
                     <span><i class="fa-solid fa-bars-staggered" style="color:var(--primary);"></i> Active Toll Lanes: <strong style="color:#fff;">${openLanes} / ${totalLanes} Open</strong></span>
-                    <span><i class="fa-solid fa-car-side" style="color:#3b82f6;"></i> Vehicle: <strong style="color:#fff;">${vType}</strong></span>
+                    <span><i class="fa-solid fa-car-side" style="color:#10b981;"></i> Vehicle: <strong style="color:#fff;">${vType}</strong></span>
                 </div>
             </div>
 
@@ -261,7 +261,7 @@ const LaneAdvisor = {
 
                 const decColors = {
                     'Switch Route': { border: '#f43f5e', bg: 'rgba(244,63,94,0.12)', text: '#f43f5e', icon: 'fa-diamond-turn-right' },
-                    'Recommend Monthly Pass': { border: '#a855f7', bg: 'rgba(168,85,247,0.12)', text: '#3b82f6', icon: 'fa-calendar-check' },
+                    'Recommend Monthly Pass': { border: '#a855f7', bg: 'rgba(168,85,247,0.12)', text: '#10b981', icon: 'fa-calendar-check' },
                     'Recommend Trip Pass': { border: '#fbbf24', bg: 'rgba(251,191,36,0.12)', text: '#fbbf24', icon: 'fa-ticket' },
                     'No Action': { border: '#10b981', bg: 'rgba(16,185,129,0.12)', text: '#34d399', icon: 'fa-shield-halved' }
                 };

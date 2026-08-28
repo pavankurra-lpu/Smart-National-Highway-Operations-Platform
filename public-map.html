@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; background: #0b0f19; color: #fff; font-family: 'Inter', sans-serif; }
+        body, html { margin: 0; padding: 0; height: 100%; background: #090d10; color: #fff; font-family: 'Inter', sans-serif; }
         #public-map { width: 100%; height: 100%; }
-        .header { position: absolute; top: 0; left: 0; width: 100%; padding: 15px 20px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .brand { font-size: 18px; font-weight: 800; letter-spacing: 1px; color: #3b82f6; text-transform: uppercase; display: flex; align-items: center; gap: 10px; font-family: 'Oswald', sans-serif; }
-        .nav-btn { color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); padding: 8px 16px; border-radius: 6px; transition: 0.3s; }
-        .nav-btn:hover { background: rgba(59, 130, 246, 0.25); color: #3b82f6; }
+        .header { position: absolute; top: 0; left: 0; width: 100%; padding: 15px 20px; background: rgba(14, 20, 24, 0.95); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .brand { font-size: 18px; font-weight: 800; letter-spacing: 1px; color: #10b981; text-transform: uppercase; display: flex; align-items: center; gap: 10px; font-family: 'Oswald', sans-serif; }
+        .nav-btn { color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 8px 16px; border-radius: 6px; transition: 0.3s; }
+        .nav-btn:hover { background: rgba(16, 185, 129, 0.25); color: #10b981; }
     </style>
 </head>
 <body>
@@ -43,7 +43,7 @@
                 TollSeedData.forEach(toll => {
                     if (rendered > 300 || !toll.lat || !toll.lng) return;
                     const congestion = tollStates[toll.id]?.congestion || 'NORMAL';
-                    const colors = { NORMAL: '#22a35d', MODERATE: '#3b82f6', HIGH: '#ef4444' };
+                    const colors = { NORMAL: '#22a35d', MODERATE: '#10b981', HIGH: '#ef4444' };
                     const cc = colors[congestion];
                     
                     const icon = L.divIcon({
@@ -65,7 +65,7 @@
                 const data = positions[tripId];
                 const icon = L.divIcon({
                     className: '',
-                    html: `<div style="background:#3b82f6; width:12px; height:12px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 10px #3b82f6;"></div>`,
+                    html: `<div style="background:#10b981; width:12px; height:12px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 10px #10b981;"></div>`,
                     iconSize: [12, 12], iconAnchor: [6, 6]
                 });
                 L.marker([data.lat, data.lng], { icon })

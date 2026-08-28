@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 countBadge.textContent = `${allTolls.length}+ Plazas (All India)`;
             }
-            countBadge.style.color = filtered.length > 0 ? '#3b82f6' : '#f43f5e';
+            countBadge.style.color = filtered.length > 0 ? '#10b981' : '#f43f5e';
         }
 
         plazaSelect.innerHTML = '';
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedDistrict !== 'ALL' || selectedState !== 'ALL') {
                 const head = document.createElement('div');
                 head.style.cssText = 'font-size: 9.5px; color: #94a3b8; font-weight: 700; margin-bottom: 2px; display: flex; justify-content: space-between; align-items: center;';
-                head.innerHTML = `<span><i class="fa-solid fa-hand-pointer" style="color:#3b82f6;"></i> Click any toll to select directly:</span> <span style="color:#3b82f6;">${filtered.length} Plazas</span>`;
+                head.innerHTML = `<span><i class="fa-solid fa-hand-pointer" style="color:#10b981;"></i> Click any toll to select directly:</span> <span style="color:#10b981;">${filtered.length} Plazas</span>`;
                 cardListEl.appendChild(head);
             }
 
@@ -401,8 +401,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 card.innerHTML = `
                     <div style="flex:1; min-width:0; padding-right:8px;">
-                        <div class="toll-card-name"><i class="fa-solid fa-archway" style="color:#3b82f6; font-size:10px;"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</span></div>
-                        <div class="toll-card-location"><i class="fa-solid fa-location-dot" style="font-size:8px; color:#3b82f6;"></i> ${t.district || ''}, ${t.state || 'India'}</div>
+                        <div class="toll-card-name"><i class="fa-solid fa-archway" style="color:#10b981; font-size:10px;"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</span></div>
+                        <div class="toll-card-location"><i class="fa-solid fa-location-dot" style="font-size:8px; color:#10b981;"></i> ${t.district || ''}, ${t.state || 'India'}</div>
                     </div>
                     <span class="toll-card-corridor">${corr}</span>
                 `;
