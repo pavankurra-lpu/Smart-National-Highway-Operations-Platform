@@ -59,23 +59,27 @@
     background: #090d10 !important;
 }
 
-/* ===== REACTBITS MINIMALIST SMOOTH SCROLLBAR ===== */
+/* ===== REACTBITS & KOKONUTUI SMOOTH PERFORMANCE SCROLL SYSTEM ===== */
+html, body {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
 }
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+    background: transparent;
 }
 ::-webkit-scrollbar-thumb {
     background: rgba(16, 185, 129, 0.35);
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: background 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(16, 185, 129, 0.75);
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.85);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
 }
 * {
     scrollbar-width: thin;

@@ -53,15 +53,15 @@
         <!-- Main Content Area -->
         <main class="admin-main">
 
-            <div class="dashboard-header" style="background:#090d10; border-bottom:1px solid rgba(255,255,255,0.08); padding:12px 24px;">
-                <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+            <div class="dashboard-header" style="background:#090d10; border-bottom:1px solid rgba(255,255,255,0.08); padding:8px 16px; margin-bottom: 10px;">
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
                     <!-- Mobile Sidebar Hamburger Toggle -->
                     <button class="admin-mobile-toggle" onclick="document.querySelector('.admin-sidebar').classList.toggle('open'); document.getElementById('admin-sidebar-backdrop').classList.toggle('active');" title="Toggle Sidebar">
                         <i class="fa-solid fa-bars"></i>
                     </button>
 
                     <!-- Realistic NHAI Highway Logo -->
-                    <svg viewBox="0 0 100 100" width="34" height="34" style="flex-shrink:0;">
+                    <svg viewBox="0 0 100 100" width="30" height="30" style="flex-shrink:0;">
                         <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#10b981" stroke-width="2.5"/>
                         <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#10b981"/>
                         <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
@@ -69,20 +69,20 @@
                     </svg>
 
                     <div>
-                        <h2 style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:800; color:#f8fafc; margin:0;">
-                            Operations Control Command · सत्यमेव जयते
-                            <span id="admin-region-badge" style="font-size: 9.5px; padding: 2px 7px; background: rgba(16, 185, 129,0.12); border: 1px solid rgba(16, 185, 129,0.3); color: #10b981; border-radius: 9999px; font-weight: 700;">ALL INDIA</span>
+                        <h2 style="display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:800; color:#f8fafc; margin:0; font-family: var(--font-display);">
+                            OPERATIONS COMMAND CENTER
+                            <span id="admin-region-badge" style="font-size: 8.5px; padding: 1px 6px; background: rgba(16, 185, 129,0.12); border: 1px solid rgba(16, 185, 129,0.3); color: #10b981; border-radius: 9999px; font-weight: 700;">ALL INDIA</span>
                         </h2>
-                        <p style="font-size:10px; color:#94a3b8; margin:2px 0 0 0;">National Highways Authority of India • SATYAMEVA JAYATE</p>
+                        <p style="font-size:9px; color:#94a3b8; margin:1px 0 0 0;">National Highways Authority of India • Central Monitoring Grid</p>
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 12px; align-items: center;">
-                    <div class="nhai-central-pill">
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <div class="nhai-central-pill" style="padding: 3px 8px; font-size: 9.5px;">
                         <span class="nhai-central-dot"></span>
-                        <span>NHAI CENTRAL CONNECTED</span>
+                        <span>NHAI LIVE FEED</span>
                     </div>
-                    <button class="theme-toggle-btn btn btn-outline" style="padding: 4px 8px; border:none;"></button>
+                    <button class="theme-toggle-btn btn btn-outline" style="padding: 3px 6px; border:none; font-size: 11px;"></button>
                 </div>
             </div>
 
@@ -92,27 +92,36 @@
             <section id="view-overview" class="view-section active animate-stagger-group">
                 <div class="stats-grid">
                     <div class="stat-card spotlight-card">
-                        <h3>Revenue (Today)</h3>
-                        <div class="value" id="stat-revenue-today" style="color: var(--primary);">₹0</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <h3>Revenue (Today)</h3>
+                            <span style="font-size: 8px; color: #10b981; background: rgba(16, 185, 129, 0.12); padding: 1px 5px; border-radius: 4px; font-weight: 700;">● Live</span>
+                        </div>
+                        <div class="value" id="stat-revenue-today" style="color: #10b981;">₹0</div>
                     </div>
                     <div class="stat-card spotlight-card">
-                        <h3>Revenue (This Month)</h3>
-                        <div class="value" id="stat-revenue-month" style="color: var(--primary);">₹0</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <h3>Revenue (This Month)</h3>
+                            <span style="font-size: 8px; color: #34d399; background: rgba(52, 211, 153, 0.12); padding: 1px 5px; border-radius: 4px; font-weight: 700;">● MTD</span>
+                        </div>
+                        <div class="value" id="stat-revenue-month" style="color: #34d399;">₹0</div>
                     </div>
                     <div class="stat-card spotlight-card">
-                        <h3>Revenue (This Year)</h3>
-                        <div class="value" id="stat-revenue-year" style="color: var(--primary);">₹0</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                            <h3>Revenue (This Year)</h3>
+                            <span style="font-size: 8px; color: #f8fafc; background: rgba(255, 255, 255, 0.08); padding: 1px 5px; border-radius: 4px; font-weight: 700;">● YTD</span>
+                        </div>
+                        <div class="value" id="stat-revenue-year" style="color: #f8fafc;">₹0</div>
                     </div>
                 </div>
 
                 <div class="overview-dashboard-grid">
-                    <div class="stat-card spotlight-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 360px;">
-                        <h4 style="font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin: 10px 14px 8px; font-family: var(--font-display);"><i class="fa-solid fa-map-location-dot" style="color: var(--primary); margin-right: 5px;"></i> Live Operations Map</h4>
-                        <div id="admin-live-map" class="admin-live-map-container" style="flex: 1; border-top: 1px solid var(--border-light); min-height: 280px;"></div>
+                    <div class="stat-card spotlight-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 300px;">
+                        <h4 style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 8px 12px 6px; font-family: var(--font-display);"><i class="fa-solid fa-map-location-dot" style="color: var(--primary); margin-right: 5px;"></i> Live Operations Map</h4>
+                        <div id="admin-live-map" class="admin-live-map-container" style="flex: 1; border-top: 1px solid var(--border-light); min-height: 240px;"></div>
                     </div>
-                    <div class="stat-card spotlight-card chart-card" style="display: flex; flex-direction: column; height: 360px; padding: 12px 14px;">
-                        <h4 style="font-size: 10.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; margin-top: 0; font-family: var(--font-display);"><i class="fa-solid fa-chart-line" style="color: var(--primary); margin-right: 5px;"></i> Highway Transit & Revenue Analytics</h4>
-                        <div style="flex: 1; position: relative; min-height: 260px;">
+                    <div class="stat-card spotlight-card chart-card" style="display: flex; flex-direction: column; height: 300px; padding: 10px 12px;">
+                        <h4 style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; margin-top: 0; font-family: var(--font-display);"><i class="fa-solid fa-chart-line" style="color: var(--primary); margin-right: 5px;"></i> Highway Transit & Revenue Analytics</h4>
+                        <div style="flex: 1; position: relative; min-height: 230px;">
                             <canvas id="admin-revenue-chart"></canvas>
                         </div>
                     </div>
