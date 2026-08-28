@@ -197,11 +197,11 @@
 
 /* Dashboard Area */
 .admin-main {
-    flex: 1; padding: 40px; overflow-y: auto; background: var(--bg-dark);
+    flex: 1; padding: 18px 24px; overflow-y: auto; background: var(--bg-dark);
 }
 .dashboard-header {
     display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 16px;
 }
 .live-indicator {
     display: inline-flex; align-items: center; gap: 8px;
@@ -222,12 +222,12 @@
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 /* Grid Layouts */
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 40px; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 16px; }
 .stat-card {
     background: var(--card-bg); 
     border: 1px solid var(--border-light);
-    padding: 24px; 
-    border-radius: var(--radius);
+    padding: 12px 16px; 
+    border-radius: var(--radius-sm);
     text-align: left;
     transition: var(--transition);
 }
@@ -244,8 +244,8 @@
     margin-bottom: 8px; 
 }
 .stat-card .value { 
-    font-size: 32px; 
-    font-weight: 800; 
+    font-size: 20px; 
+    font-weight: 800; font-family: var(--font-display); 
     color: var(--text-main); 
 }
 
@@ -273,7 +273,7 @@
     border: 1px solid var(--border-light);
 }
 .data-table th, .data-table td {
-    padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border-light);
+    padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border-light);
 }
 .data-table th { 
     background: rgba(0,0,0,0.4); 
@@ -282,7 +282,7 @@
     letter-spacing: 1px;
     font-weight: 700;
 }
-.data-table td { font-size: 13px; color: var(--text-sec); }
+.data-table td { font-size: 11px; color: var(--text-sec); }
 .data-table tbody tr:hover { background: rgba(255,255,255,0.02); }
 .data-table tr:last-child td { border-bottom: none; }
 
@@ -300,11 +300,11 @@
     background: var(--card-bg);
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
-    padding: 20px;
+    padding: 12px 14px;
     transition: var(--transition);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
 }
 .tc-card:hover {
     border-color: var(--primary);
@@ -450,49 +450,17 @@
     height: 100% !important;
 }
 
-/* Kokonut UI: Spotlight Hover Glowing Effect */
+/* Card Hover Effect without mouse movement background */
 .spotlight-card {
     position: relative;
-    overflow: hidden;
     background: var(--bg-card);
     backdrop-filter: var(--glass);
     border: 1px solid var(--border-light);
     transition: var(--transition);
 }
-
-.spotlight-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        220px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-        rgba(16, 185, 129, 0.08) 0%,
-        transparent 100%
-    );
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    pointer-events: none;
-    z-index: 1;
-    border-radius: inherit;
-}
-
-.spotlight-card:hover::after {
-    opacity: 1;
-}
-
-/* Make sure inner elements stay above the spotlight radial shadow */
-.spotlight-card > * {
-    position: relative;
-    z-index: 2;
-}
-
-/* Light mode specific override for spotlight gradient */
-body.light-mode .spotlight-card::after {
-    background: radial-gradient(
-        220px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-        rgba(5, 150, 105, 0.06) 0%,
-        transparent 100%
-    );
+.spotlight-card:hover {
+    border-color: rgba(242, 169, 59, 0.35);
+    box-shadow: var(--shadow);
 }
 
 /* Quick Dispatch Preset Chips in Broadcast Control */

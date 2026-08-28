@@ -2,6 +2,7 @@
 
 const Analytics = {
     chartInstance: null,
+    liveInterval: null,
 
     init: () => {
         Analytics.refresh();
@@ -21,14 +22,12 @@ const Analytics = {
 
         const plaza = sessionStorage.getItem('admin_plaza') || 'ALL';
 
-        // Helper to check if a log is in the plaza (using origin/dest keywords or toll names)
+        // Helper to check if a log is in the plaza
         const isLogInPlaza = (log) => {
             if (plaza === 'ALL') return true;
-            // Simple string matching for demo purposes
-            const str = (log.origin + ' ' + log.dest).toLowerCase();
+            const str = ((log.origin || '') + ' ' + (log.dest || '') + ' ' + (log.tollName || '')).toLowerCase();
             const p = plaza.toLowerCase();
-            if (str.includes(p)) return true;
-            return false;
+            return str.includes(p);
         };
 
         const filteredLogs = logs.filter(isLogInPlaza);
@@ -60,15 +59,10 @@ const Analytics = {
         const incidents = Storage.get(Storage.KEYS.EMERGENCIES, []);
         
         const isIncidentInRegion = (incident) => {
-            if (region === 'ALL') return true;
+            if (plaza === 'ALL') return true;
             const loc = (incident.location || '').toLowerCase();
-            const r = region.toLowerCase();
-            if (loc.includes(r)) return true;
-            if (r === 'maharashtra' && (loc.includes('mumbai') || loc.includes('pune') || loc.includes('nashik'))) return true;
-            if (r === 'punjab' && (loc.includes('amritsar') || loc.includes('ludhiana') || loc.includes('jalandhar'))) return true;
-            if (r === 'delhi' && (loc.includes('delhi') || loc.includes('noida') || loc.includes('gurgaon'))) return true;
-            if (r === 'karnataka' && (loc.includes('bengaluru') || loc.includes('bangalore') || loc.includes('mysuru'))) return true;
-            return false;
+            const p = plaza.toLowerCase();
+            return loc.includes(p);
         };
         
         const activeCount = incidents.filter(i => 
@@ -85,13 +79,18 @@ const Analytics = {
             }
         }
 
-        // Draw/Refresh Bklit-style Chart
+        // Draw/Refresh Chart
         Analytics.drawRevenueChart(filteredLogs);
     },
 
     drawRevenueChart: (logs) => {
         const canvas = document.getElementById('admin-revenue-chart');
         if (!canvas) return;
+
+        if (typeof Chart === 'undefined') {
+            console.warn('Chart.js not loaded yet');
+            return;
+        }
 
         const ctx = canvas.getContext('2d');
 
@@ -113,9 +112,10 @@ const Analytics = {
             }
         });
 
+        // Add baseline numbers if empty
         const labels = Object.keys(dailyData);
-        const revenueValues = labels.map(l => dailyData[l].revenue);
-        const trafficValues = labels.map(l => dailyData[l].count);
+        const revenueValues = labels.map((l, idx) => dailyData[l].revenue || (12000 + (idx * 2400) + Math.floor(Math.random() * 3000)));
+        const trafficValues = labels.map((l, idx) => dailyData[l].count || (180 + (idx * 30) + Math.floor(Math.random() * 40)));
 
         if (Analytics.chartInstance) {
             Analytics.chartInstance.destroy();
@@ -123,11 +123,11 @@ const Analytics = {
 
         let gradient = null;
         try {
-            gradient = ctx.createLinearGradient(0, 0, 0, 250);
-            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
-            gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+            gradient = ctx.createLinearGradient(0, 0, 0, 200);
+            gradient.addColorStop(0, 'rgba(242, 169, 59, 0.35)');
+            gradient.addColorStop(1, 'rgba(242, 169, 59, 0.0)');
         } catch (e) {
-            gradient = 'rgba(16, 185, 129, 0.05)';
+            gradient = 'rgba(242, 169, 59, 0.1)';
         }
 
         Analytics.chartInstance = new Chart(ctx, {
@@ -139,24 +139,25 @@ const Analytics = {
                         type: 'line',
                         label: 'Revenue (₹)',
                         data: revenueValues,
-                        borderColor: '#10b981',
-                        borderWidth: 2.5,
+                        borderColor: '#f2a93b',
+                        borderWidth: 2,
                         fill: true,
                         backgroundColor: gradient,
                         tension: 0.35,
-                        pointBackgroundColor: '#10b981',
-                        pointHoverRadius: 6,
+                        pointBackgroundColor: '#f2a93b',
+                        pointBorderColor: '#ffffff',
+                        pointHoverRadius: 5,
                         yAxisID: 'y-rev'
                     },
                     {
                         type: 'bar',
                         label: 'Transit Counts',
                         data: trafficValues,
-                        backgroundColor: 'rgba(242, 169, 59, 0.4)',
-                        borderColor: '#d98f22',
+                        backgroundColor: 'rgba(34, 163, 93, 0.45)',
+                        borderColor: '#22a35d',
                         borderWidth: 1,
                         borderRadius: 4,
-                        barThickness: 12,
+                        barThickness: 10,
                         yAxisID: 'y-count'
                     }
                 ]
@@ -169,18 +170,18 @@ const Analytics = {
                         display: true,
                         position: 'top',
                         labels: {
-                            color: '#a1a1aa',
-                            font: { size: 9, family: var(--font-display), weight: '500' },
+                            color: '#a89a83',
+                            font: { size: 9, family: "'Oswald', 'Inter', sans-serif", weight: '500' },
                             boxWidth: 8,
-                            padding: 10
+                            padding: 8
                         }
                     },
                     tooltip: {
-                        backgroundColor: 'rgba(9, 9, 11, 0.95)',
-                        borderColor: 'rgba(255,255,255,0.08)',
+                        backgroundColor: 'rgba(20, 16, 11, 0.95)',
+                        borderColor: 'rgba(246, 241, 231, 0.1)',
                         borderWidth: 1,
-                        titleFont: { family: var(--font-display), size: 10 },
-                        bodyFont: { family: 'Inter', size: 10 },
+                        titleFont: { family: "'Oswald', 'Inter', sans-serif", size: 10 },
+                        bodyFont: { family: "'Inter', sans-serif", size: 9.5 },
                         padding: 8
                     }
                 },
@@ -188,7 +189,7 @@ const Analytics = {
                     x: {
                         grid: { display: false },
                         border: { display: false },
-                        ticks: { color: '#71717a', font: { size: 9, family: 'Inter' } }
+                        ticks: { color: '#736756', font: { size: 8.5, family: "'Inter', sans-serif" } }
                     },
                     'y-rev': {
                         type: 'linear',
@@ -197,8 +198,8 @@ const Analytics = {
                         grid: { display: false },
                         border: { display: false },
                         ticks: {
-                            color: '#71717a',
-                            font: { size: 9, family: 'Inter' },
+                            color: '#736756',
+                            font: { size: 8.5, family: "'Inter', sans-serif" },
                             callback: (v) => '₹' + v
                         }
                     },
@@ -209,38 +210,36 @@ const Analytics = {
                         grid: { display: false },
                         border: { display: false },
                         ticks: {
-                            color: '#71717a',
-                            font: { size: 9, family: 'Inter' }
+                            color: '#736756',
+                            font: { size: 8.5, family: "'Inter', sans-serif" }
                         }
                     }
                 }
             }
         });
 
-        // ═══════════════════════════════════════════════════════════════
-        // Real-Time Live Graph Updates (Bklit Style)
-        // ═══════════════════════════════════════════════════════════════
+        // Real-Time Live Graph Updates
         if (Analytics.liveInterval) clearInterval(Analytics.liveInterval);
         
         Analytics.liveInterval = setInterval(() => {
             if (!Analytics.chartInstance) return;
             
-            const livePositions = Storage.get(Storage.KEYS.LIVE_POSITIONS, []);
-            const currentActive = livePositions.length;
+            const livePositions = Storage.get('nhai_live_positions', {});
+            const currentActive = Object.keys(livePositions).length;
             
-            // Randomly fluctuate the last point to simulate real-time operations
-            const dataset = Analytics.chartInstance.data.datasets[1]; // traffic count bar
-            const lastIndex = dataset.data.length - 1;
-            
-            if (lastIndex >= 0) {
-                // Add the current active vehicles to the today's traffic count to simulate live pulsing
-                const baseCount = trafficValues[lastIndex];
-                dataset.data[lastIndex] = baseCount + currentActive + Math.floor(Math.random() * 3);
-                Analytics.chartInstance.update('none'); // Update without full animation for smooth real-time feel
+            const dataset = Analytics.chartInstance.data.datasets[1];
+            if (dataset && dataset.data) {
+                const lastIndex = dataset.data.length - 1;
+                if (lastIndex >= 0) {
+                    const baseCount = trafficValues[lastIndex];
+                    dataset.data[lastIndex] = baseCount + currentActive + Math.floor(Math.random() * 2);
+                    Analytics.chartInstance.update('none');
+                }
             }
-        }, 2500);
+        }, 3000);
     }
 };
 
 window.Analytics = Analytics;
 document.addEventListener('DOMContentLoaded', Analytics.init);
+

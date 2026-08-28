@@ -55,18 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Reactbits Spotlight cursor follower
-    document.addEventListener('mousemove', (e) => {
-        const cards = document.querySelectorAll('.spotlight-card, .glass-panel, .bento-stat-card, .route-search-card, .fastag-card, .snhop-voice-card, .snhop-vehicle-card');
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
-
     // Pulsing animation for the SOS Warning badge (Visual improvement)
     const sosBadge = document.getElementById('sos-badge');
     if (sosBadge) {

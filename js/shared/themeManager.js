@@ -9,17 +9,6 @@ const ThemeManager = {
             btn.addEventListener('click', ThemeManager.toggle);
         });
 
-        // Kokonut UI: Spotlight hover coordinate tracker with delegation
-        document.addEventListener('mousemove', (e) => {
-            const card = e.target.closest('.spotlight-card');
-            if (!card) return;
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-
         // Cross-tab sync
         window.addEventListener('storage', e => {
             if (e.key === 'nhai_theme') ThemeManager._applyTheme(e.newValue || 'dark');

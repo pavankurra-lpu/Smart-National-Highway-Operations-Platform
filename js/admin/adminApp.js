@@ -162,31 +162,69 @@ const AdminApp = {
             worldCopyJump: false
         });
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // CartoDB Dark Tarmac Tile Layer
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             maxZoom: 19,
-            minZoom: 4
+            minZoom: 4,
+            subdomains: 'abcd'
         }).addTo(AdminApp.map);
 
-        // Highlight selected plaza if specific
+        // Render Toll Plaza Markers
         if (AdminApp.plazaData && AdminApp.plazaData.lat && AdminApp.plazaData.lng) {
+            // Specific assigned plaza
             const p = AdminApp.plazaData;
             const tollIcon = L.divIcon({
                 className: '',
-                html: `<div style="background: #f2a93b; color:#09090b; width:40px; height:40px; border-radius:12px; border:2px solid #fff; box-shadow:0 0 24px rgba(242, 169, 59,0.8); display:flex; align-items:center; justify-content:center; font-size:20px;">⛩️</div>`,
-                iconSize: [40, 40],
-                iconAnchor: [20, 20]
+                html: `<div style="background: #f2a93b; color:#14100b; width:34px; height:34px; border-radius:10px; border:2px solid #fff; box-shadow:0 0 20px rgba(242, 169, 59,0.8); display:flex; align-items:center; justify-content:center; font-size:16px;">⛩️</div>`,
+                iconSize: [34, 34],
+                iconAnchor: [17, 17]
             });
             L.marker([p.lat, p.lng], { icon: tollIcon })
                 .bindPopup(`
-                    <div style="font-family:'Inter',sans-serif; color:#09090b; padding:4px;">
-                        <strong style="font-size:13px; color:#09090b;">⛩️ ${p.name}</strong><br>
-                        <span style="font-size:11px; color:#64748b;">${p.district ? p.district + ', ' : ''}${p.state || 'India'}</span><br>
-                        <span style="font-size:11px; color:#d98f22; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
+                    <div style="font-family:'Inter',sans-serif; color:#f6f1e7; background:#14100b; padding:6px; border-radius:6px;">
+                        <strong style="font-size:12px; color:#f6f1e7;">⛩️ ${p.name}</strong><br>
+                        <span style="font-size:10px; color:#a89a83;">${p.district ? p.district + ', ' : ''}${p.state || 'India'}</span><br>
+                        <span style="font-size:10px; color:#f2a93b; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
                     </div>
                 `)
                 .addTo(AdminApp.map)
                 .openPopup();
+        } else if (window.TollSeedData && window.TollSeedData.length > 0) {
+            // Super Admin: Render representative network markers
+            const tollStates = Storage.get(Storage.KEYS.TOLL_STATES, {});
+            let renderedCount = 0;
+            TollSeedData.forEach(toll => {
+                if (renderedCount > 350 || !toll.lat || !toll.lng) return;
+                const congestion = tollStates[toll.id]?.congestion || 'NORMAL';
+                const col = congestion === 'HIGH' ? '#e0453a' : (congestion === 'MODERATE' ? '#f2a93b' : '#22a35d');
+                
+                const icon = L.divIcon({
+                    className: '',
+                    html: `<div style="background:${col}; width:8px; height:8px; border-radius:50%; border:1px solid #14100b; box-shadow:0 0 6px ${col};"></div>`,
+                    iconSize: [8, 8],
+                    iconAnchor: [4, 4]
+                });
+                
+                L.marker([toll.lat, toll.lng], { icon })
+                    .bindPopup(`
+                        <div style="font-family:'Inter',sans-serif; color:#f6f1e7; background:#14100b; padding:4px;">
+                            <strong style="font-size:11.5px; color:#f6f1e7;">${toll.name}</strong><br>
+                            <span style="font-size:9.5px; color:#a89a83;">${toll.district ? toll.district + ', ' : ''}${toll.state || ''}</span><br>
+                            <span style="font-size:9.5px; color:${col}; font-weight:700;">Status: ${congestion}</span>
+                        </div>
+                    `)
+                    .addTo(AdminApp.map);
+                renderedCount++;
+            });
         }
+
+        // Invalidate size to ensure complete canvas render
+        setTimeout(() => {
+            if (AdminApp.map) AdminApp.map.invalidateSize();
+        }, 250);
+        window.addEventListener('resize', () => {
+            if (AdminApp.map) AdminApp.map.invalidateSize();
+        });
     },
 
     updateVehicleMarker: (data) => {
