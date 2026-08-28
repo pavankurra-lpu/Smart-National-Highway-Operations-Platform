@@ -136,7 +136,7 @@
 
 /* Sidebar Admin */
 .admin-sidebar {
-    width: 260px; 
+    width: 220px; 
     background: var(--bg-panel); 
     backdrop-filter: var(--glass);
     border-right: 1px solid var(--border);
@@ -161,8 +161,8 @@
 .admin-nav {
     display: flex; 
     flex-direction: column; 
-    padding: 20px 12px;
-    gap: 4px;
+    padding: 10px 8px;
+    gap: 3px;
 }
 .admin-nav-btn {
     padding: 10px 14px; 

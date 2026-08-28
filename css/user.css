@@ -281,13 +281,13 @@ path.leaflet-interactive:focus,
 /* ===== SIDEBAR (SNHOP Access — Kokonut UI & Reactbits Frosted Obsidian Glass) ===== */
 .sidebar {
     position: absolute;
-    top: 16px; right: 16px;
-    width: 410px; height: calc(100vh - 32px);
+    top: 12px; right: 12px;
+    width: 350px; height: calc(100vh - 24px);
     background: rgba(11, 15, 25, 0.88);
     backdrop-filter: blur(32px) saturate(200%);
     -webkit-backdrop-filter: blur(32px) saturate(200%);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -399,8 +399,8 @@ path.leaflet-interactive:focus,
 
 /* ===== DEDICATED SIDEBAR USER AUTH CARD ===== */
 .sidebar-user-card {
-    margin: 8px 12px 2px 12px;
-    padding: 9px 12px;
+    margin: 6px 10px 2px 10px;
+    padding: 6px 10px;
     background: rgba(18, 18, 23, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
@@ -421,9 +421,9 @@ path.leaflet-interactive:focus,
 }
 
 .sidebar-user-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
@@ -440,7 +440,7 @@ path.leaflet-interactive:focus,
 }
 
 .sidebar-user-name {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     color: #f4f4f5;
     white-space: nowrap;
@@ -473,9 +473,9 @@ path.leaflet-interactive:focus,
 }
 
 .sidebar-auth-action-btn {
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 10px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -650,10 +650,10 @@ path.leaflet-interactive:focus,
     display: flex;
     flex-wrap: nowrap;
     background: rgba(24, 24, 27, 0.7);
-    padding: 4px;
-    margin: 8px 12px 10px;
-    border-radius: 12px;
-    gap: 4px;
+    padding: 3px;
+    margin: 6px 10px 8px;
+    border-radius: 10px;
+    gap: 3px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
 }
@@ -661,11 +661,11 @@ path.leaflet-interactive:focus,
 .tab-btn {
     flex: 1;
     min-width: 0;
-    padding: 7px 4px;
+    padding: 5px 3px;
     border: 1px solid transparent;
     background: transparent;
     color: #a1a1aa;
-    font-size: 11px;
+    font-size: 9.5px;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
@@ -678,7 +678,7 @@ path.leaflet-interactive:focus,
 }
 
 .tab-btn i {
-    font-size: 12.5px;
+    font-size: 11px;
     transition: transform 0.15s ease;
 }
 
@@ -848,9 +848,9 @@ path.leaflet-interactive:focus,
 }
 
 .voice-wave-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
     background: rgba(242, 169, 59, 0.15);
     border: 1px solid rgba(242, 169, 59, 0.3);
     color: #f5c451;
@@ -918,7 +918,7 @@ path.leaflet-interactive:focus,
 
 
 .tab-content {
-    padding: 18px 16px;
+    padding: 10px 10px;
     flex: 1;
     overflow-y: auto;
     display: none;
@@ -928,12 +928,12 @@ path.leaflet-interactive:focus,
 
 /* ===== SECTION LABELS ===== */
 .field-label {
-    font-size: 11px;
+    font-size: 9.5px;
     font-weight: 700;
     letter-spacing: 0.5px;
     color: var(--text-muted);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     display: block;
 }
 
@@ -941,17 +941,17 @@ path.leaflet-interactive:focus,
 .sidebar-toggle {
     position: fixed !important;
     top: 20px !important;
-    right: 436px !important;
+    right: 372px !important;
     z-index: 10000 !important;
-    width: 42px !important;
-    height: 42px !important;
+    width: 36px !important;
+    height: 36px !important;
     border-radius: 50% !important;
     background: rgba(10, 16, 30, 0.94) !important;
     backdrop-filter: blur(28px) saturate(200%) !important;
     -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
     border: 1px solid rgba(255, 255, 255, 0.16) !important;
     color: #f2a93b !important;
-    font-size: 15px !important;
+    font-size: 13px !important;
     cursor: pointer !important;
     display: flex !important;
     align-items: center !important;
@@ -984,8 +984,8 @@ path.leaflet-interactive:focus,
         top: 12px !important;
         left: 12px !important;
         right: auto !important;
-        width: 44px !important;
-        height: 44px !important;
+        width: 38px !important;
+        height: 38px !important;
     }
     .sidebar-toggle.shifted {
         right: auto !important;
@@ -1071,10 +1071,10 @@ input:checked + .slider:before {
     -webkit-backdrop-filter: blur(28px) saturate(190%);
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    padding: 16px 20px;
-    border-radius: var(--radius-lg);
-    min-width: 320px;
-    max-width: 430px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 360px;
     animation: fadeIn 0.4s ease-out;
 }
 
@@ -1601,9 +1601,9 @@ input:checked + .slider:before {
     border-color: rgba(242, 169, 59, 0.4);
 }
 .mobile-suggestion-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
     background: rgba(242, 169, 59, 0.15);
     color: #f2a93b;
     display: flex;
@@ -2281,7 +2281,7 @@ body.light-mode .google-ac-subtitle {
         right: 0 !important;
         left: auto !important;
         width: 88vw !important;
-        max-width: 380px !important;
+        max-width: 330px !important;
         height: 100dvh !important;
         max-height: 100dvh !important;
         border-radius: 20px 0 0 20px !important;
@@ -2307,7 +2307,7 @@ body.light-mode .google-ac-subtitle {
         flex: 1;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch;
-        padding: 12px 14px 80px !important;
+        padding: 8px 10px 65px !important;
     }
 
     /* Dedicated Bottom-Docked Route Results Window for Mobile (Does NOT cover the map) */

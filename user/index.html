@@ -268,43 +268,43 @@
                  TAB: ROUTE PLANNER
                  ======================== -->
             <div id="tab-plan" class="tab-content active">
-                <div class="flex-col gap-3">
+                <div class="flex-col gap-2">
 
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2px;">
-                        <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Trip Corridor</span>
-                        <button type="button" onclick="VoiceAssistant.startListening();" class="btn-voice-header" title="Voice Search Route / Destination (Mic)">
+                        <span style="font-size:9.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; font-family:var(--font-display);">Trip Corridor</span>
+                        <button type="button" onclick="VoiceAssistant.startListening();" class="btn-voice-header" title="Voice Search Route / Destination (Mic)" style="padding:3px 8px; font-size:9.5px; border-radius:6px;">
                             <i class="fa-solid fa-microphone" style="color:#f2a93b;"></i> Voice Search
                         </button>
                     </div>
 
                     <!-- Modern Connected Route Search Card -->
-                    <div class="route-search-card">
-                        <div class="route-path-track">
-                            <div class="track-node origin-node"></div>
+                    <div class="route-search-card" style="padding:10px; border-radius:10px;">
+                        <div class="route-path-track" style="padding-top:20px; padding-bottom:8px;">
+                            <div class="track-node origin-node" style="width:8px; height:8px;"></div>
                             <div class="track-line"></div>
-                            <div class="track-node dest-node"></div>
+                            <div class="track-node dest-node" style="width:8px; height:8px;"></div>
                         </div>
-                        <div class="route-inputs-container">
+                        <div class="route-inputs-container" style="gap:6px;">
                             <div class="route-input-group">
-                                <label class="route-input-label">ORIGIN</label>
+                                <label class="route-input-label" style="font-size:8.5px; font-family:var(--font-display); letter-spacing:0.5px;">ORIGIN</label>
                                 <div class="route-field-wrapper">
-                                    <input type="text" id="route-origin-input" placeholder="Search city, toll, or landmark..." autocomplete="off">
+                                    <input type="text" id="route-origin-input" placeholder="Search city, toll, or landmark..." autocomplete="off" style="font-size:11px; padding:6px 28px 6px 8px;">
                                     <button type="button" id="btn-clear-origin" class="route-field-clear" style="display:none;" title="Clear origin"><i class="fa-solid fa-circle-xmark"></i></button>
-                                    <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon"></i>
+                                    <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon" style="font-size:10px;"></i>
                                 </div>
                                 <div id="origin-suggestions" class="autocomplete-dropdown"></div>
                             </div>
 
-                            <button id="btn-swap-locations" type="button" class="route-swap-btn" title="Swap Origin and Destination">
+                            <button id="btn-swap-locations" type="button" class="route-swap-btn" title="Swap Origin and Destination" style="width:24px; height:24px; font-size:10px;">
                                 <i class="fa-solid fa-arrow-down-up-across-line"></i>
                             </button>
 
                             <div class="route-input-group">
-                                <label class="route-input-label">DESTINATION</label>
+                                <label class="route-input-label" style="font-size:8.5px; font-family:var(--font-display); letter-spacing:0.5px;">DESTINATION</label>
                                 <div class="route-field-wrapper">
-                                    <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off">
+                                    <input type="text" id="route-dest-input" placeholder="Where do you want to go?" autocomplete="off" style="font-size:11px; padding:6px 28px 6px 8px;">
                                     <button type="button" id="btn-clear-dest" class="route-field-clear" style="display:none;" title="Clear destination"><i class="fa-solid fa-circle-xmark"></i></button>
-                                    <i class="fa-solid fa-location-dot route-field-icon dest-icon"></i>
+                                    <i class="fa-solid fa-location-dot route-field-icon dest-icon" style="font-size:10px;"></i>
                                 </div>
                                 <div id="dest-suggestions" class="autocomplete-dropdown"></div>
                             </div>
@@ -312,36 +312,36 @@
                     </div>
 
                     <!-- Journey Tariff Mode (Trip Corridor: 1-Way vs 24hr Return) -->
-                    <div class="trip-corridor-card" style="background: rgba(24, 24, 27, 0.65); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.25);">
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <div style="width:30px; height:30px; border-radius:8px; background:rgba(242, 169, 59,0.12); border:1px solid rgba(242, 169, 59,0.25); color:#f2a93b; display:flex; align-items:center; justify-content:center; font-size:13px;">
+                    <div class="trip-corridor-card" style="background: rgba(26, 21, 16, 0.7); border: 1px solid rgba(246, 241, 231, 0.08); border-radius: 10px; padding: 7px 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                        <div style="display:flex; align-items:center; gap:7px;">
+                            <div style="width:24px; height:24px; border-radius:6px; background:rgba(242, 169, 59,0.12); border:1px solid rgba(242, 169, 59,0.25); color:#f2a93b; display:flex; align-items:center; justify-content:center; font-size:10.5px;">
                                 <i class="fa-solid fa-arrows-left-right"></i>
                             </div>
                             <div>
-                                <span style="font-size:11.5px; font-weight:700; color:#f4f4f5; display:block;">Trip Corridor</span>
-                                <span style="font-size:9.5px; color:#a1a1aa;">FASTag Toll Tariff</span>
+                                <span style="font-size:10.5px; font-weight:700; color:#f6f1e7; display:block; font-family:var(--font-display);">Trip Corridor</span>
+                                <span style="font-size:8.5px; color:#a89a83;">FASTag Toll Tariff</span>
                             </div>
                         </div>
-                        <div class="trip-type-segmented" style="display:flex; background:rgba(9,9,11,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:3px; gap:4px;">
-                            <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; border:none; cursor:pointer; background:#f2a93b; color:#09090b; transition:all 0.15s ease;">
-                                <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i> One Way
+                        <div class="trip-type-segmented" style="display:flex; background:rgba(11,8,6,0.7); border:1px solid rgba(246,241,231,0.08); border-radius:6px; padding:2px; gap:2px;">
+                            <button type="button" id="btn-trip-single" class="btn-trip-mode active" style="padding:4px 8px; border-radius:4px; font-size:9.5px; font-weight:700; border:none; cursor:pointer; background:#f2a93b; color:#14100b; font-family:var(--font-display);">
+                                <i class="fa-solid fa-arrow-right" style="font-size:8.5px;"></i> One Way
                             </button>
-                            <button type="button" id="btn-trip-return" class="btn-trip-mode" style="padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#a1a1aa; transition:all 0.15s ease;">
-                                <i class="fa-solid fa-rotate" style="font-size:10px;"></i> 24h Return
+                            <button type="button" id="btn-trip-return" class="btn-trip-mode" style="padding:4px 8px; border-radius:4px; font-size:9.5px; font-weight:700; border:none; cursor:pointer; background:transparent; color:#a89a83; font-family:var(--font-display);">
+                                <i class="fa-solid fa-rotate" style="font-size:8.5px;"></i> 24h Return
                             </button>
                         </div>
                     </div>
 
                     <!-- Modern AI Voice Guide Card (Kokonut UI Audio Equalizer) -->
-                    <div class="snhop-voice-card">
-                        <div class="voice-card-header">
-                            <div class="voice-card-brand">
-                                <div class="voice-wave-icon">
+                    <div class="snhop-voice-card" style="padding:8px 10px; border-radius:10px;">
+                        <div class="voice-card-header" style="margin-bottom:6px;">
+                            <div class="voice-card-brand" style="gap:7px;">
+                                <div class="voice-wave-icon" style="width:24px; height:24px; font-size:10px; border-radius:6px;">
                                     <i class="fa-solid fa-volume-high"></i>
                                 </div>
                                 <div>
-                                    <span class="voice-card-title">AI Voice Guide</span>
-                                    <span class="voice-card-desc">English highway announcements</span>
+                                    <span class="voice-card-title" style="font-size:10.5px; font-family:var(--font-display);">AI Voice Guide</span>
+                                    <span class="voice-card-desc" style="font-size:8px;">English highway announcements</span>
                                 </div>
                             </div>
                             <!-- Kokonut UI Animated Audio Wave Bars -->
@@ -352,13 +352,13 @@
                                 <span class="wave-bar bar-4"></span>
                                 <span class="wave-bar bar-5"></span>
                             </div>
-                            <label class="switch">
+                            <label class="switch" style="width:32px; height:18px;">
                                 <input type="checkbox" id="pref-voice-enable" checked>
                                 <span class="slider round"></span>
                             </label>
                         </div>
                         <div class="voice-gender-selector">
-                            <select id="pref-voice-gender">
+                            <select id="pref-voice-gender" style="font-size:10px; padding:4px 8px; border-radius:6px;">
                                 <option value="male">🎙️ Male Voice (Natural UK/US)</option>
                                 <option value="female">🎙️ Female Voice (Natural UK/US)</option>
                             </select>
@@ -366,7 +366,7 @@
                     </div>
 
                     <!-- High-tech Calculate Route Button -->
-                    <button id="btn-calc-route" class="btn btn-kokonut w-full" style="justify-content: center; margin-top: 4px; padding: 14px; font-weight: 700; font-size: 13px; letter-spacing: 0.3px;">
+                    <button id="btn-calc-route" class="btn btn-primary w-full" style="justify-content: center; margin-top: 2px; padding: 9px; font-weight: 700; font-size: 12px; letter-spacing: 0.3px; font-family: var(--font-display);">
                         <i class="fa-solid fa-location-arrow"></i> Calculate Optimal Path
                     </button>
 
@@ -389,7 +389,7 @@
                 <!-- Sticky Top Section -->
                 <div style="position: sticky; top: 0; background: var(--bg-panel); z-index: 10; padding-top: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light);">
                     <!-- Balance Card -->
-                    <div class="fastag-card" style="margin-bottom: 16px;">
+                    <div class="fastag-card" style="margin-bottom: 10px; padding: 10px 12px;">
                         <p class="fastag-live-label">
                             Wallet Balance
                         </p>
@@ -452,17 +452,17 @@
                     </h3>
 
                     <!-- Driver XP Level & Badges (Gamified Section) -->
-                    <div class="glass-panel" style="padding: 18px; margin-bottom: 20px; border: 1px solid rgba(242, 169, 59, 0.3); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(242, 169, 59, 0.12); position: relative; overflow: hidden; border-radius: 16px; background: rgba(15, 23, 42, 0.75);">
+                    <div class="glass-panel" style="padding: 12px; margin-bottom: 12px; border: 1px solid rgba(242, 169, 59, 0.3); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 25px rgba(242, 169, 59, 0.12); position: relative; overflow: hidden; border-radius: 16px; background: rgba(15, 23, 42, 0.75);">
                         <!-- Header & Badge -->
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                             <div style="display:flex; align-items:center; gap:10px;">
-                                <div id="gamified-lvl-badge" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #f2a93b, #f2a93b); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; box-shadow: 0 0 18px rgba(242, 169, 59, 0.6); border: 2px solid rgba(255,255,255,0.3); flex-shrink:0;">1</div>
+                                <div id="gamified-lvl-badge" style="width: 30px; height: 30px; border-radius: 50%; background: #f2a93b; color: #14100b; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; box-shadow: 0 0 18px rgba(242, 169, 59, 0.6); border: 2px solid rgba(255,255,255,0.3); flex-shrink:0;">1</div>
                                 <div>
                                     <div style="display:flex; align-items:center; gap:6px;">
                                         <span style="font-size: 9px; font-weight: 800; color: #f2a93b; text-transform: uppercase; letter-spacing: 0.8px;">Driver Rank</span>
                                         <span id="gamified-tier-tag" style="font-size: 8.5px; background: rgba(242, 169, 59,0.15); color: #f2a93b; border: 1px solid rgba(242, 169, 59,0.3); padding: 1px 5px; border-radius: 4px; font-weight: 700;">Tier 1</span>
                                     </div>
-                                    <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 14.5px; font-weight: 800; color: #fff;">Level 1 Highway Cadet</h4>
+                                    <h4 id="gamified-lvl-title" style="margin: 2px 0 0 0; font-size: 12px; font-weight: 800; font-family: var(--font-display); color: #fff;">Level 1 Highway Cadet</h4>
                                 </div>
                             </div>
                             <button type="button" id="btn-daily-checkin" onclick="Gamification.claimDailyCheckIn()" style="background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.35); color: #34d399; font-size: 10px; font-weight: 700; padding: 5px 9px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: all 0.2s ease;">
@@ -537,7 +537,7 @@
                             <p id="total-trips" class="bento-stat-value">0</p>
                         </div>
                         <div class="bento-stat-card">
-                            <span class="bento-stat-icon" style="color:var(--accent-blue);"><i class="fa-solid fa-road"></i></span>
+                            <span class="bento-stat-icon" style="color:var(--accent-green);"><i class="fa-solid fa-road"></i></span>
                             <p class="bento-stat-label">Distance</p>
                             <p id="total-distance" class="bento-stat-value">0 km</p>
                         </div>
@@ -584,7 +584,7 @@
                         <div class="analytics-chart-panel">
                             <div class="chart-panel-header">
                                 <p class="chart-panel-title">
-                                    <i class="fa-solid fa-chart-pie" style="color:var(--accent-blue);"></i> Expense Breakdown
+                                    <i class="fa-solid fa-chart-pie" style="color:var(--accent-green);"></i> Expense Breakdown
                                 </p>
                                 <span class="chart-neon-badge badge-blue">
                                     <span class="live-status-dot" style="background:#f2a93b;box-shadow:0 0 8px #f2a93b;"></span> DONUT CHART
@@ -662,7 +662,7 @@
                  TAB: SETTINGS
                  ======================== -->
             <div id="tab-settings" class="tab-content">
-                <div class="pref-box" style="margin-bottom: 16px;">
+                <div class="pref-box" style="margin-bottom: 10px; padding: 8px 10px;">
                     <p class="pref-label"><i class="fa-solid fa-user"></i> Profile</p>
                     <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
                         <div id="profile-pic-preview" style="width:50px; height:50px; border-radius:50%; background:var(--bg-dark); border:2px solid var(--primary); display:flex; align-items:center; justify-content:center; overflow:hidden;">
@@ -677,11 +677,11 @@
                 </div>
 
                 <!-- Travel & Routing Preferences -->
-                <div class="pref-box" style="margin-bottom: 16px;">
+                <div class="pref-box" style="margin-bottom: 10px; padding: 8px 10px;">
                     <p class="pref-label"><i class="fa-solid fa-sliders"></i> Travel Preferences</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
-                            <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Use FASTag</span>
+                            <span style="font-size: 11px; font-weight: 600; color: var(--text-main);">Use FASTag</span>
                             <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Deduct toll from wallet</p>
                         </div>
                         <label class="switch">
@@ -692,7 +692,7 @@
                 </div>
 
                 <!-- Vehicle & Biometric Management -->
-                <div class="pref-box" style="margin-bottom: 16px;">
+                <div class="pref-box" style="margin-bottom: 10px; padding: 8px 10px;">
                     <p class="pref-label"><i class="fa-solid fa-car"></i> Vehicle & Biometrics</p>
 
                     <!-- Active Vehicle Category selector -->
@@ -735,7 +735,7 @@
                     <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; margin-bottom: 15px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                             <div>
-                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Require Face Verification</span>
+                                <span style="font-size: 11px; font-weight: 600; color: var(--text-main);">Require Face Verification</span>
                                 <p style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Global biometric validation prompt</p>
                             </div>
                             <label class="switch">
@@ -745,7 +745,7 @@
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Verification Interval</span>
+                                <span style="font-size: 11px; font-weight: 600; color: var(--text-main);">Verification Interval</span>
                             </div>
                             <select id="pref-face-interval" style="font-size: 11px; padding: 4px; border-radius: 4px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); color: #fff;">
                                 <option value="12">Every 12 Hours</option>
