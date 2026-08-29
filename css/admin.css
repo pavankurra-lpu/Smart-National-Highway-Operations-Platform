@@ -136,14 +136,14 @@
     text-align: left;
 }
 .toll-card-item:hover {
-    background: rgba(16, 185, 129, 0.12);
-    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(234, 179, 8, 0.4);
     transform: translateX(2px);
 }
 .toll-card-item.selected {
-    background: rgba(16, 185, 129, 0.22);
-    border-color: #10b981;
-    box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
+    background: rgba(234, 179, 8, 0.22);
+    border-color: #eab308;
+    box-shadow: 0 0 14px rgba(234, 179, 8, 0.35);
 }
 .toll-card-name {
     font-size: 11px;
@@ -156,9 +156,9 @@
 .toll-card-corridor {
     font-size: 9px;
     font-weight: 700;
-    color: #10b981;
-    background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #eab308;
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.3);
     border-radius: 4px;
     padding: 1px 5px;
     white-space: nowrap;
@@ -224,15 +224,15 @@
     text-align: center;
 }
 .admin-nav-btn:hover { 
-    background: rgba(16, 185, 129, 0.08); 
-    border-color: rgba(16, 185, 129, 0.2);
+    background: rgba(234, 179, 8, 0.08); 
+    border-color: rgba(234, 179, 8, 0.2);
     color: #f8fafc; 
 }
 .admin-nav-btn.active { 
-    background: rgba(16, 185, 129, 0.15); 
-    border-color: rgba(16, 185, 129, 0.4);
-    color: #10b981;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    background: rgba(234, 179, 8, 0.15); 
+    border-color: rgba(234, 179, 8, 0.4);
+    color: #eab308;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
 }
 
 /* Dashboard Area - Smooth Hardware-Accelerated Scrolling */
@@ -506,17 +506,18 @@
     gap: 6px;
 }
 
-.tc-btn-group, .tc-lane-controls {
+.tc-actions {
     display: flex;
     gap: 4px;
 }
 
 .tc-btn {
-    padding: 4px 8px;
-    font-size: 9.5px;
-    border: 1px solid rgba(255,255,255,0.12);
+    flex: 1;
+    padding: 5px 2px;
+    font-size: 9px;
+    border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.05);
-    color: #cbd5e1;
+    color: var(--text-sec);
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.15s ease;
@@ -528,8 +529,8 @@
     color: #fff;
 }
 
-.tc-btn-active-green { background: rgba(16, 185, 129, 0.2); color: #10b981; border-color: rgba(16, 185, 129, 0.4); }
-.tc-btn-active-yellow { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border-color: rgba(245, 158, 11, 0.4); }
+.tc-btn-active-green { background: rgba(34, 163, 93, 0.2); color: #22a35d; border-color: rgba(34, 163, 93, 0.4); }
+.tc-btn-active-yellow { background: rgba(234, 179, 8, 0.2); color: #eab308; border-color: rgba(234, 179, 8, 0.4); }
 .tc-btn-active-red { background: rgba(239, 68, 68, 0.2); color: #ef4444; border-color: rgba(239, 68, 68, 0.4); }
 
 /* Modern Overview Dashboard Layout */
@@ -561,7 +562,7 @@
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .spotlight-card:hover {
-    border-color: rgba(16, 185, 129, 0.35);
+    border-color: rgba(234, 179, 8, 0.35);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
@@ -582,9 +583,9 @@
     font-family: var(--font-display);
 }
 .preset-chip:hover {
-    background: rgba(16, 185, 129, 0.15);
-    border-color: rgba(16, 185, 129, 0.45);
-    color: #10b981;
+    background: rgba(234, 179, 8, 0.15);
+    border-color: rgba(234, 179, 8, 0.45);
+    color: #eab308;
     transform: translateY(-1px);
 }
 .preset-chip:active {
@@ -597,9 +598,9 @@
 /* ===== ADMIN MOBILE RESPONSIVE DRAWER (<900px) ===== */
 .admin-mobile-toggle {
     display: none;
-    background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    color: #10b981;
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    color: #eab308;
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 14px;

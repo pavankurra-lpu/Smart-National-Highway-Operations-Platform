@@ -62,8 +62,8 @@
 
                     <!-- Realistic NHAI Highway Logo -->
                     <svg viewBox="0 0 100 100" width="30" height="30" style="flex-shrink:0;">
-                        <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#10b981" stroke-width="2.5"/>
-                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#10b981"/>
+                        <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#eab308" stroke-width="2.5"/>
+                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#eab308"/>
                         <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
                         <text x="50" y="56" font-family="var(--font-display), 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
                     </svg>
@@ -71,7 +71,7 @@
                     <div>
                         <h2 style="display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:800; color:#f8fafc; margin:0; font-family: var(--font-display);">
                             OPERATIONS COMMAND CENTER
-                            <span id="admin-region-badge" style="font-size: 8.5px; padding: 1px 6px; background: rgba(16, 185, 129,0.12); border: 1px solid rgba(16, 185, 129,0.3); color: #10b981; border-radius: 9999px; font-weight: 700;">ALL INDIA</span>
+                            <span id="admin-region-badge" style="font-size: 8.5px; padding: 1px 6px; background: rgba(234, 179, 8,0.12); border: 1px solid rgba(234, 179, 8,0.3); color: #eab308; border-radius: 9999px; font-weight: 700;">ALL INDIA</span>
                         </h2>
                         <p style="font-size:9px; color:#94a3b8; margin:1px 0 0 0;">National Highways Authority of India • Central Monitoring Grid</p>
                     </div>
@@ -94,9 +94,9 @@
                     <div class="stat-card spotlight-card">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
                             <h3>Revenue (Today)</h3>
-                            <span style="font-size: 8px; color: #10b981; background: rgba(16, 185, 129, 0.12); padding: 1px 5px; border-radius: 4px; font-weight: 700;">● Live</span>
+                            <span style="font-size: 8px; color: #eab308; background: rgba(234, 179, 8, 0.12); padding: 1px 5px; border-radius: 4px; font-weight: 700;">● Live</span>
                         </div>
-                        <div class="value" id="stat-revenue-today" style="color: #10b981;">₹0</div>
+                        <div class="value" id="stat-revenue-today" style="color: #eab308;">₹0</div>
                     </div>
                     <div class="stat-card spotlight-card">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
@@ -234,23 +234,23 @@
                             <h3 style="margin:0; font-size:16px; display:flex; align-items:center; gap:8px;">
                                 <i class="fa-solid fa-tower-broadcast" style="color:var(--accent-red);"></i> Toll Gate Broadcast Control
                             </h3>
-                            <span class="badge" id="bc-status-badge" style="background:rgba(16,185,129,0.15); color:#10b981; border:1px solid rgba(16,185,129,0.3); font-size:10px; padding:3px 8px; border-radius:12px; display:flex; align-items:center; gap:4px;">
-                                <span class="live-status-dot" style="background:#10b981;"></span> AUTO-CONNECTED
+                            <span class="badge" id="bc-status-badge" style="background:rgba(234, 179, 8,0.15); color:#eab308; border:1px solid rgba(234, 179, 8,0.3); font-size:10px; padding:3px 8px; border-radius:12px; display:flex; align-items:center; gap:4px;">
+                                <span class="live-status-dot" style="background:#eab308;"></span> AUTO-CONNECTED
                             </span>
                         </div>
 
                         <!-- Connected Toll Gate Info Card -->
-                        <div id="bc-connected-toll-card" style="background:rgba(14,20,24,0.6); border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:15px; border-left:4px solid #10b981;">
+                        <div id="bc-connected-toll-card" style="background:rgba(14,20,24,0.6); border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:15px; border-left:4px solid #eab308;">
                             <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                                 <div>
                                     <div style="font-size:10px; color:var(--text-sec); text-transform:uppercase; letter-spacing:0.5px; font-weight:700;">
-                                        <i class="fa-solid fa-archway" style="color:#10b981;"></i> Connected Toll Gate
+                                        <i class="fa-solid fa-archway" style="color:#eab308;"></i> Connected Toll Gate
                                     </div>
                                     <h4 id="bc-toll-name" style="margin:2px 0 0 0; font-size:14px; font-weight:700; color:#fff;">All India National Highway Network</h4>
                                     <div id="bc-toll-meta" style="font-size:11px; color:#94a3b8; margin-top:2px;">National Corridors • Multi-State Geofence</div>
                                 </div>
                                 <div style="text-align:right;">
-                                    <span style="font-size:10px; background:rgba(16, 185, 129,0.15); color:#10b981; border:1px solid rgba(16, 185, 129,0.3); padding:2px 6px; border-radius:4px; font-weight:700;">
+                                    <span style="font-size:10px; background:rgba(234, 179, 8,0.15); color:#eab308; border:1px solid rgba(234, 179, 8,0.3); padding:2px 6px; border-radius:4px; font-weight:700;">
                                         📡 10 km Range
                                     </span>
                                     <div id="bc-toll-coords" style="font-size:9.5px; color:#64748b; font-family:monospace; margin-top:3px;">Lat: 20.5937, Lng: 78.9629</div>
@@ -300,8 +300,8 @@
                             </div>
 
                             <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.25); padding:8px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.05);">
-                                <span style="font-size:11px; color:#94a3b8;"><i class="fa-solid fa-satellite-dish" style="color:#10b981;"></i> Geofence Radius:</span>
-                                <span style="font-size:11px; font-weight:700; color:#10b981;">10 km Range (10,000m Coverage)</span>
+                                <span style="font-size:11px; color:#94a3b8;"><i class="fa-solid fa-satellite-dish" style="color:#eab308;"></i> Geofence Radius:</span>
+                                <span style="font-size:11px; font-weight:700; color:#eab308;">10 km Range (10,000m Coverage)</span>
                             </div>
 
                             <button id="btn-broadcast" class="btn btn-danger" style="justify-content: center; font-weight:700; font-size:13px; padding:10px 0;">
@@ -316,7 +316,7 @@
                             <h3 style="margin:0; font-size:16px; display:flex; align-items:center; gap:8px;">
                                 <i class="fa-solid fa-bullhorn" style="color:var(--accent-yellow);"></i> Active 10km Broadcasts
                             </h3>
-                            <span id="active-broadcast-count" class="badge" style="background:rgba(16, 185, 129,0.15); color:#10b981; border:1px solid rgba(16, 185, 129,0.3); font-size:10px;">0 Active</span>
+                            <span id="active-broadcast-count" class="badge" style="background:rgba(234, 179, 8,0.15); color:#eab308; border:1px solid rgba(234, 179, 8,0.3); font-size:10px;">0 Active</span>
                         </div>
                         <div id="active-broadcasts-list" style="flex:1; overflow-y:auto; max-height:460px; display:flex; flex-direction:column; gap:10px;">
                             <!-- Filled dynamically by AlertBroadcaster.renderActiveAlerts() -->

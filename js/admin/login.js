@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             plazaSelect.value = 'ALL';
             if (countBadge) {
                 countBadge.textContent = selectedState === 'ALL' ? 'All India (1,185 Plazas)' : `All ${selectedState}`;
-                countBadge.style.color = '#10b981';
+                countBadge.style.color = '#eab308';
             }
             return;
         }
@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update badge with clear feedback
         if (countBadge) {
             countBadge.textContent = `${filtered.length} Tolls in ${selectedDistrict}`;
-            countBadge.style.color = filtered.length > 0 ? '#10b981' : '#f43f5e';
+            countBadge.style.color = filtered.length > 0 ? '#eab308' : '#f43f5e';
         }
 
         if (filtered.length === 0) {
@@ -378,8 +378,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 card.innerHTML = `
                     <div style="flex:1; min-width:0; padding-right:6px;">
-                        <div class="toll-card-name" style="font-size:10px;"><i class="fa-solid fa-archway" style="color:#10b981; font-size:9px;"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</span></div>
-                        <div class="toll-card-location" style="font-size:8.5px;"><i class="fa-solid fa-location-dot" style="font-size:7.5px; color:#10b981;"></i> ${t.district || ''}, ${t.state || 'India'}</div>
+                        <div class="toll-card-name" style="font-size:10px;"><i class="fa-solid fa-archway" style="color:#eab308; font-size:9px;"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${t.name}</span></div>
+                        <div class="toll-card-location" style="font-size:8.5px;"><i class="fa-solid fa-location-dot" style="font-size:7.5px; color:#eab308;"></i> ${t.district || ''}, ${t.state || 'India'}</div>
                     </div>
                     <span class="toll-card-corridor" style="font-size:8px; padding:1px 4px;">${corr}</span>
                 `;

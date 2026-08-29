@@ -87,8 +87,8 @@ const TollData = {
     },
 
     passes: {
-        MONTHLY_LOCAL: { price: 360, label: 'Monthly Pass (Local Plaza - within 20km)' },
-        ANNUAL_NH: { price: 3300, label: 'Annual Pass (National Highways)', eligibility: 'LMV' },
+        MONTHLY_LOCAL: { price: 350, label: 'Monthly Pass (Local Plaza - within 20km)' },
+        ANNUAL_NH: { price: 3075, label: 'Annual Pass (National Highways)', eligibility: 'LMV' },
         MONTHLY_PLAZA: { multiplier: 33.5, label: 'Commercial Monthly Pass (50 Trips)' }, 
         RETURN: { multiplier: 1.5, label: 'Return Pass (2-Way within 24h)' }, 
     },
@@ -138,7 +138,7 @@ const TollData = {
             singleRates: plaza.tollRatesByVehicleClass || {},
             returnRates: plaza.returnRatesByVehicleClass || {},
             monthlyRates: plaza.monthlyPassByVehicleClass || {},
-            localMonthlyPass: plaza.monthlyPassLocal || 360
+            localMonthlyPass: plaza.monthlyPassLocal || 350
         };
     }
 };
