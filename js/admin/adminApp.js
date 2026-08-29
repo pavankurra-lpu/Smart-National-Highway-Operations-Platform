@@ -139,15 +139,15 @@ const AdminApp = {
         const mapEl = document.getElementById('admin-live-map');
         if (!mapEl) return;
 
-        // Default: Center of India
-        let center = [20.5937, 78.9629];
-        let zoom = 5;
-
-        // If a specific toll plaza is assigned, center directly on it
-        if (AdminApp.plazaData && AdminApp.plazaData.lat && AdminApp.plazaData.lng) {
-            center = [AdminApp.plazaData.lat, AdminApp.plazaData.lng];
-            zoom = 14;
+        // Determine Assigned Toll Plaza (Defaults to assigned plaza or flagship NHAI Plaza)
+        let activePlaza = AdminApp.plazaData;
+        if ((!activePlaza || !activePlaza.lat) && window.TollSeedData && window.TollSeedData.length > 0) {
+            activePlaza = window.TollSeedData.find(t => t.id === 'TP_1' || t.name.includes('Kherki') || t.name.includes('Western')) || window.TollSeedData[0];
+            AdminApp.plazaData = activePlaza;
         }
+
+        const center = (activePlaza && activePlaza.lat && activePlaza.lng) ? [activePlaza.lat, activePlaza.lng] : [28.3986, 76.9856];
+        const zoom = 16; // Locked high-detail toll plaza area zoom
 
         const indiaBounds = L.latLngBounds([3.5, 60.0], [39.0, 102.0]);
         AdminApp.map = L.map('admin-live-map', {
@@ -177,54 +177,11 @@ const AdminApp = {
             opacity: 0.95
         }).addTo(AdminApp.map);
 
-        // Render Toll Plaza Markers
-        if (AdminApp.plazaData && AdminApp.plazaData.lat && AdminApp.plazaData.lng) {
-            // Specific assigned plaza
-            const p = AdminApp.plazaData;
-            const tollIcon = L.divIcon({
-                className: '',
-                html: `<div style="background: #10b981; color:#ffffff; width:34px; height:34px; border-radius:10px; border:2px solid #fff; box-shadow:0 0 20px rgba(16, 185, 129,0.8); display:flex; align-items:center; justify-content:center; font-size:16px;">⛩️</div>`,
-                iconSize: [34, 34],
-                iconAnchor: [17, 17]
-            });
-            L.marker([p.lat, p.lng], { icon: tollIcon })
-                .bindPopup(`
-                    <div style="font-family:'Inter',sans-serif; color:#f8fafc; background:#090d10; padding:6px; border-radius:6px;">
-                        <strong style="font-size:12px; color:#f8fafc;">⛩️ ${p.name}</strong><br>
-                        <span style="font-size:10px; color:#94a3b8;">${p.district ? p.district + ', ' : ''}${p.state || 'India'}</span><br>
-                        <span style="font-size:10px; color:#10b981; font-weight:bold;">${p.nhCorridor && p.nhCorridor !== 'N/A' ? 'NH-' + p.nhCorridor : 'National Highway'}</span>
-                    </div>
-                `)
-                .addTo(AdminApp.map)
-                .openPopup();
-        } else if (window.TollSeedData && window.TollSeedData.length > 0) {
-            // Super Admin: Render representative network markers
-            const tollStates = Storage.get(Storage.KEYS.TOLL_STATES, {});
-            let renderedCount = 0;
-            TollSeedData.forEach(toll => {
-                if (renderedCount > 350 || !toll.lat || !toll.lng) return;
-                const congestion = tollStates[toll.id]?.congestion || 'NORMAL';
-                const col = congestion === 'HIGH' ? '#ef4444' : (congestion === 'MODERATE' ? '#10b981' : '#22a35d');
-                
-                const icon = L.divIcon({
-                    className: '',
-                    html: `<div style="background:${col}; width:8px; height:8px; border-radius:50%; border:1px solid #090d10; box-shadow:0 0 6px ${col};"></div>`,
-                    iconSize: [8, 8],
-                    iconAnchor: [4, 4]
-                });
-                
-                L.marker([toll.lat, toll.lng], { icon })
-                    .bindPopup(`
-                        <div style="font-family:'Inter',sans-serif; color:#f8fafc; background:#090d10; padding:4px;">
-                            <strong style="font-size:11.5px; color:#f8fafc;">${toll.name}</strong><br>
-                            <span style="font-size:9.5px; color:#94a3b8;">${toll.district ? toll.district + ', ' : ''}${toll.state || ''}</span><br>
-                            <span style="font-size:9.5px; color:${col}; font-weight:700;">Status: ${congestion}</span>
-                        </div>
-                    `)
-                    .addTo(AdminApp.map);
-                renderedCount++;
-            });
-        }
+        // Render Current Assigned Toll Plaza Area Marker & Geofence
+        AdminApp.renderPlazaArea(activePlaza);
+
+        // Populate Admin Toll Plaza Switcher dropdown
+        AdminApp.initPlazaSwitcher(activePlaza?.id);
 
         // Invalidate size to ensure complete canvas render
         setTimeout(() => {
@@ -233,6 +190,72 @@ const AdminApp = {
         window.addEventListener('resize', () => {
             if (AdminApp.map) AdminApp.map.invalidateSize();
         });
+    },
+
+    plazaMarker: null,
+    plazaCircle: null,
+
+    renderPlazaArea: (plaza) => {
+        if (!AdminApp.map || !plaza || !plaza.lat || !plaza.lng) return;
+
+        if (AdminApp.plazaMarker) try { AdminApp.map.removeLayer(AdminApp.plazaMarker); } catch(e){}
+        if (AdminApp.plazaCircle) try { AdminApp.map.removeLayer(AdminApp.plazaCircle); } catch(e){}
+
+        const tollIcon = L.divIcon({
+            className: '',
+            html: `<div style="background: #eab308; color:#090d10; width:38px; height:38px; border-radius:12px; border:2.5px solid #ffffff; box-shadow:0 0 24px rgba(234, 179, 8, 0.9); display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900;">⛩️</div>`,
+            iconSize: [38, 38],
+            iconAnchor: [19, 19]
+        });
+
+        AdminApp.plazaCircle = L.circle([plaza.lat, plaza.lng], {
+            radius: 800,
+            color: '#eab308',
+            weight: 2,
+            dashArray: '6, 6',
+            fillColor: '#eab308',
+            fillOpacity: 0.08
+        }).addTo(AdminApp.map);
+
+        AdminApp.plazaMarker = L.marker([plaza.lat, plaza.lng], { icon: tollIcon, zIndexOffset: 1000 })
+            .bindPopup(`
+                <div style="font-family:'Inter',sans-serif; color:#f8fafc; background:#090d10; padding:8px 10px; border-radius:8px; min-width:180px;">
+                    <div style="font-size:8.5px; color:#eab308; font-weight:800; text-transform:uppercase; letter-spacing:0.8px;">⛩️ ASSIGNED TOLL PLAZA</div>
+                    <strong style="font-size:13px; color:#ffffff; display:block; margin:2px 0;">${plaza.name}</strong>
+                    <div style="font-size:10px; color:#94a3b8;">${plaza.district ? plaza.district + ', ' : ''}${plaza.state || 'India'}</div>
+                    <div style="margin-top:4px; font-size:10px; color:#34d399; font-weight:700;">${plaza.nhCorridor && plaza.nhCorridor !== 'N/A' ? 'Corridor: NH-' + plaza.nhCorridor : 'National Highway'}</div>
+                    <div style="margin-top:2px; font-size:9.5px; color:#38bdf8;">● 8 FASTag RFID Electronic Lanes Active</div>
+                </div>
+            `)
+            .addTo(AdminApp.map);
+
+        AdminApp.plazaMarker.openPopup();
+    },
+
+    initPlazaSwitcher: (activeId) => {
+        const sel = document.getElementById('admin-plaza-switcher');
+        if (!sel || !window.TollSeedData) return;
+
+        let html = '';
+        window.TollSeedData.slice(0, 80).forEach(t => {
+            const isSel = t.id === activeId ? 'selected' : '';
+            html += `<option value="${t.id}" ${isSel}>⛩️ ${t.name} (${t.state || 'NHAI'})</option>`;
+        });
+        sel.innerHTML = html;
+    },
+
+    switchPlaza: (plazaId) => {
+        const toll = window.TollSeedData?.find(t => t.id === plazaId);
+        if (!toll || !toll.lat || !toll.lng || !AdminApp.map) return;
+
+        AdminApp.plazaData = toll;
+        AdminApp.map.flyTo([toll.lat, toll.lng], 16, { duration: 1.2 });
+        AdminApp.renderPlazaArea(toll);
+
+        const badge = document.getElementById('admin-region-badge');
+        if (badge) {
+            badge.innerHTML = `<i class="fa-solid fa-map-pin"></i> ${toll.name.toUpperCase()}`;
+        }
     },
 
     updateVehicleMarker: (data) => {

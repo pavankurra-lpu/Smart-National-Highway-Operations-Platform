@@ -62,10 +62,10 @@
 
                     <!-- Realistic NHAI Highway Logo -->
                     <svg viewBox="0 0 100 100" width="30" height="30" style="flex-shrink:0;">
-                        <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#eab308" stroke-width="2.5"/>
-                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#eab308"/>
-                        <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
-                        <text x="50" y="56" font-family="var(--font-display), 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
+                        <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#ffffff" stroke-width="2.5"/>
+                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#ffffff"/>
+                        <line x1="50" y1="28" x2="50" y2="84" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+                        <text x="50" y="56" font-family="'Oswald', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#090d10" text-anchor="middle" letter-spacing="1">NHAI</text>
                     </svg>
 
                     <div>
@@ -116,7 +116,13 @@
 
                 <div class="overview-dashboard-grid">
                     <div class="stat-card spotlight-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; height: 300px;">
-                        <h4 style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 8px 12px 6px; font-family: var(--font-display);"><i class="fa-solid fa-map-location-dot" style="color: var(--primary); margin-right: 5px;"></i> Live Operations Map</h4>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin: 8px 12px 6px;">
+                            <h4 style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 0; font-family: var(--font-display);">
+                                <i class="fa-solid fa-map-location-dot" style="color: var(--primary); margin-right: 5px;"></i> Live Plaza Operations Map
+                            </h4>
+                            <select id="admin-plaza-switcher" onchange="AdminApp.switchPlaza(this.value)" style="background:#090d10; border:1px solid rgba(234, 179, 8, 0.4); color:#fde047; font-size:10px; font-weight:700; border-radius:6px; padding:2px 8px; cursor:pointer; outline:none; max-width:240px;" title="Switch Toll Plaza Area">
+                            </select>
+                        </div>
                         <div id="admin-live-map" class="admin-live-map-container" style="flex: 1; border-top: 1px solid var(--border-light); min-height: 240px;"></div>
                     </div>
                     <div class="stat-card spotlight-card chart-card" style="display: flex; flex-direction: column; height: 300px; padding: 10px 12px;">

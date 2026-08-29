@@ -36,10 +36,10 @@
                     <!-- Official Government of India & NHAI Bilingual Header -->
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
                         <svg viewBox="0 0 100 100" width="46" height="46" style="flex-shrink:0;">
-                            <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#eab308" stroke-width="2.5"/>
-                            <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#eab308"/>
-                            <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
-                            <text x="50" y="56" font-family="'Oswald', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
+                            <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#ffffff" stroke-width="2.5"/>
+                            <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#ffffff"/>
+                            <line x1="50" y1="28" x2="50" y2="84" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+                            <text x="50" y="56" font-family="'Oswald', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#090d10" text-anchor="middle" letter-spacing="1">NHAI</text>
                         </svg>
                         <div>
                             <div style="font-size: 13.5px; font-weight: 800; color: #f8fafc; line-height: 1.2;">भारतीय राष्ट्रीय राजमार्ग प्राधिकरण</div>
@@ -197,6 +197,104 @@
         <!-- FULL SCREEN MAP (behind everything) -->
         <div id="map"></div>
 
+        <!-- ==============================
+             3D DRIVING COCKPIT SPEEDOMETER & ROAD HUD (Appears when moving)
+             ============================== -->
+        <div id="driving-cockpit-hud" class="driving-cockpit-hud hidden">
+            <!-- 1. Top 3D Floating Highway Road Banner -->
+            <div class="hud-top-road-card">
+                <div class="hud-road-shield">
+                    <span id="hud-road-ref">NH-48</span>
+                </div>
+                <div class="hud-road-details">
+                    <div class="hud-road-name-row">
+                        <i id="hud-compass-arrow" class="fa-solid fa-location-arrow hud-compass"></i>
+                        <span id="hud-road-name" class="hud-road-name">Western Express Highway</span>
+                    </div>
+                    <div class="hud-road-sub">
+                        <span id="hud-trip-progress">0.0 km done</span> • <span id="hud-eta-val">Calculating ETA...</span>
+                    </div>
+                </div>
+                <div class="hud-speed-limit-badge" title="National Highway Speed Limit">
+                    <span class="limit-num" id="hud-speed-limit">100</span>
+                    <span class="limit-lbl">MAX</span>
+                </div>
+            </div>
+
+            <!-- 2. Futuristic 3D Speedometer Gauge Cockpit Unit -->
+            <div class="hud-speedometer-unit">
+                <div class="speedometer-ring-container">
+                    <svg class="speedometer-svg" viewBox="0 0 160 160">
+                        <circle class="speedo-track" cx="80" cy="80" r="68"></circle>
+                        <circle id="speedo-progress-arc" class="speedo-arc" cx="80" cy="80" r="68"></circle>
+                    </svg>
+                    <div class="speedometer-core-text">
+                        <span id="hud-speed-num" class="hud-speed-num">0</span>
+                        <span class="hud-speed-unit">KM/H</span>
+                    </div>
+                </div>
+                <div class="hud-status-bar">
+                    <span class="hud-status-chip live"><i class="fa-solid fa-satellite-dish"></i> CRUISE GPS</span>
+                    <span class="hud-status-chip fastag"><i class="fa-solid fa-shield-check"></i> FASTAG ARMED</span>
+                </div>
+                <div class="hud-cockpit-controls">
+                    <button type="button" class="hud-ctrl-btn" onclick="IndiaMapPlanner.adjustSimSpeed(-100);" title="Speed Down">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <button type="button" class="hud-ctrl-btn primary" id="btn-hud-pause" onclick="IndiaMapPlanner.toggleTripPause();" title="Pause / Resume">
+                        <i class="fa-solid fa-pause"></i>
+                    </button>
+                    <button type="button" class="hud-ctrl-btn" onclick="IndiaMapPlanner.adjustSimSpeed(100);" title="Speed Up">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button type="button" class="hud-ctrl-btn danger" onclick="IndiaMapPlanner.endLiveTrip();" title="Stop & Exit Navigation">
+                        <i class="fa-solid fa-power-off"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==============================
+             PRE-TOLL APPROACHING NOTIFICATION POPUP (Toll ahead + deduction + balance)
+             ============================== -->
+        <div id="pre-toll-hud-modal" class="pre-toll-hud-modal hidden">
+            <div class="pre-toll-modal-card">
+                <div class="pre-toll-header">
+                    <div class="pre-toll-icon-box">
+                        <i class="fa-solid fa-archway"></i>
+                    </div>
+                    <div class="pre-toll-title-block">
+                        <div class="pre-toll-badge">⛩️ TOLL PLAZA AHEAD</div>
+                        <h3 id="pre-toll-name" class="pre-toll-name">Approaching Toll Plaza...</h3>
+                        <p id="pre-toll-sub" class="pre-toll-sub">Approaching Barrier in ~1.2 km</p>
+                    </div>
+                    <button type="button" class="pre-toll-close" onclick="IndiaMapPlanner.dismissPreTollPopup();" title="Dismiss">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div class="pre-toll-ledger-grid">
+                    <div class="pre-toll-stat-box fee">
+                        <span class="pre-toll-stat-label"><i class="fa-solid fa-receipt"></i> TOLL FEE</span>
+                        <span id="pre-toll-fee" class="pre-toll-stat-val fee">₹85</span>
+                    </div>
+                    <div class="pre-toll-stat-box cur-bal">
+                        <span class="pre-toll-stat-label"><i class="fa-solid fa-wallet"></i> FASTAG WALLET</span>
+                        <span id="pre-toll-cur-bal" class="pre-toll-stat-val cur-bal">₹1,250</span>
+                    </div>
+                    <div class="pre-toll-stat-box rem-bal">
+                        <span class="pre-toll-stat-label"><i class="fa-solid fa-scale-balanced"></i> AFTER TOLL</span>
+                        <span id="pre-toll-rem-bal" class="pre-toll-stat-val rem-bal">₹1,165</span>
+                    </div>
+                </div>
+
+                <div class="pre-toll-footer-note">
+                    <i class="fa-solid fa-circle-check" style="color:#22c55e;"></i>
+                    <span>Automatic NETC FASTag clearance active. Barrier will auto-open.</span>
+                </div>
+            </div>
+        </div>
+
         <!-- Floating Sidebar Toggle Button (Desktop & Mobile) -->
         <button type="button" id="sidebar-toggle" class="sidebar-toggle" onclick="window.toggleNhaiSidebar();" title="Toggle NHAI Operations Panel">
             <i class="fa-solid fa-bars"></i>
@@ -234,10 +332,10 @@
                 <div style="display:flex; align-items:center; gap:8px;">
                     <!-- Realistic NHAI Highway Logo -->
                     <svg viewBox="0 0 100 100" width="26" height="26" style="flex-shrink:0;">
-                        <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#eab308" stroke-width="2.5"/>
-                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#eab308"/>
-                        <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
-                        <text x="50" y="56" font-family="var(--font-display), 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
+                        <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#ffffff" stroke-width="2.5"/>
+                        <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#ffffff"/>
+                        <line x1="50" y1="28" x2="50" y2="84" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+                        <text x="50" y="56" font-family="'Oswald', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#090d10" text-anchor="middle" letter-spacing="1">NHAI</text>
                     </svg>
 
                     <div>

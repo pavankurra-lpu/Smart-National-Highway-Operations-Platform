@@ -70,13 +70,22 @@ const TollData = {
 
     // Official NHAI Fee Rules Multipliers by Vehicle Category (Gazette of India Fee Schedule)
     categoryMultipliers: {
-        'LMV': 1.0,          // Car / Jeep / Van / Tata Ace (Private)
+        'LMV': 1.0,          // Car / Jeep / Van / SUV (Private Light Vehicle)
+        'CAR': 1.0,
+        'VAN': 1.0,
+        'SUV': 1.0,
         'LCV': 1.62,         // Light Commercial Vehicle / Mini-Bus
         'BUS_2AXLE': 3.39,   // Bus / 2-Axle Truck
+        'BUS': 3.39,
+        'TRUCK': 3.39,
+        'BUS_TRUCK': 3.39,
         'COM_3AXLE': 3.70,   // 3-Axle Commercial Vehicle
+        'MAV_3AXLE': 3.70,
         'MAV_4_6': 5.32,     // 4 to 6-Axle Heavy MAV / Construction Machinery
+        'HCM_EME': 5.32,
         'OVERSIZED': 6.48,   // 7+ Axles Over-sized Vehicle
         'BIKE': 0.0,         // Two-Wheeler (NHAI Toll Exempt under NH Fee Rules)
+        'TWO_WHEELER': 0.0,
         // Priority / Pre-Registered Exempt Vehicles (Rule 11)
         'GOVT': 0.0,
         'PRESS': 0.0,

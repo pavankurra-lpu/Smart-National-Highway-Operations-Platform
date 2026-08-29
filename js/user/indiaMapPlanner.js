@@ -2669,38 +2669,59 @@ const IndiaMapPlanner = {
         if (IndiaMapPlanner.carMarker) { try { IndiaMapPlanner.carMarker.remove(); } catch(e){} }
         const carIcon = L.divIcon({
             className: '',
-            html: "<div class='car-marker' style='background:#ef4444;width:20px;height:20px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 15px rgba(239,68,68,0.8);position:relative;'><div style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:4px;height:4px;background:#fff;border-radius:50%;'></div></div>",
-            iconSize: [20,20], iconAnchor: [10,10]
+            html: "<div class='car-marker' style='background:#ef4444;width:22px;height:22px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 18px rgba(239,68,68,0.9);position:relative;'><div style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;background:#fff;border-radius:50%;'></div></div>",
+            iconSize: [22,22], iconAnchor: [11,11]
         });
         const start = IndiaMapPlanner.routeCoordinates[0];
         IndiaMapPlanner.carMarker = L.marker([start[1], start[0]], { icon: carIcon, zIndexOffset: 1000 })
-            .bindTooltip('🚗 My Vehicle', { permanent: false, direction: 'top' })
+            .bindTooltip('🚗 Live Vehicle Navigation', { permanent: false, direction: 'top' })
             .addTo(IndiaMapPlanner.map);
 
         // Initialize Trail
         if (IndiaMapPlanner.trailPolyline) IndiaMapPlanner.trailPolyline.remove();
-        IndiaMapPlanner.trailPolyline = L.polyline([], { color: '#ef4444', weight: 4, opacity: 0.6, dashArray: '5, 10' }).addTo(IndiaMapPlanner.map);
+        IndiaMapPlanner.trailPolyline = L.polyline([], { color: '#ef4444', weight: 5, opacity: 0.75, dashArray: '6, 10' }).addTo(IndiaMapPlanner.map);
 
         let step = 0;
+        IndiaMapPlanner.currentStep = 0;
+        IndiaMapPlanner.isNavPaused = false;
+        IndiaMapPlanner.approachedTollIds = new Set();
+        IndiaMapPlanner.chargedTollIds = new Set();
         const coords = IndiaMapPlanner.routeCoordinates;
         
-        // Simulation logic: Use a fixed number of steps but with a more reasonable density
-        // For a 500km trip, let's say 200 steps (2.5km per step)
-        const totalDist = parseFloat(IndiaMapPlanner.selectedRouteData.totalDist);
+        // Simulation step density
+        const totalDist = parseFloat(IndiaMapPlanner.selectedRouteData.totalDist) || 100;
         const jump = Math.max(1, Math.floor(coords.length / (totalDist > 100 ? 200 : 100)));
 
-        Utils.showToast('Live Trip started! FASTag deductions active.', 'success');
+        // Activate 3D Cockpit Driving HUD & Auto-collapse sidebars
+        document.body.classList.add('navigating-3d-hud');
+        document.getElementById('driving-cockpit-hud')?.classList.remove('hidden');
 
-        const speedMs = parseInt(document.getElementById('sim-speed')?.value || 600);
+        // Initial initial speed & road display
+        IndiaMapPlanner.currentSpeedKmh = 82;
+        IndiaMapPlanner.updateCockpitSpeedometer(82, 0, 0, totalDist);
+        IndiaMapPlanner.updateRoadHud(start[1], start[0], 0, coords);
+
+        Utils.showToast('🚀 Live 3D Highway Navigation started! FASTag Armed.', 'success');
+        if (window.VoiceAssistant && typeof VoiceAssistant.speak === 'function') {
+            VoiceAssistant.speak(`Navigation started to ${IndiaMapPlanner.selectedRouteData.destName}. Highway speed limit is 100 kilometers per hour. FASTag automated tolling active.`);
+        }
+
+        const speedMs = parseInt(document.getElementById('sim-speed')?.value || 500);
         IndiaMapPlanner.tripInterval = setInterval(() => {
+            if (IndiaMapPlanner.isNavPaused) return;
+
             if (step >= coords.length) {
                 IndiaMapPlanner.endLiveTrip();
                 Utils.showToast('Destination Reached! 🎉', 'success');
+                if (window.VoiceAssistant && typeof VoiceAssistant.speak === 'function') {
+                    VoiceAssistant.speak(`You have reached your destination ${IndiaMapPlanner.selectedRouteData.destName}. Thank you for travelling with NHAI.`);
+                }
                 return;
             }
             
             const pt = coords[step];
-            IndiaMapPlanner.updateTripPosition(pt[1], pt[0]);
+            IndiaMapPlanner.currentStep = step;
+            IndiaMapPlanner.updateTripPosition(pt[1], pt[0], step, coords);
             
             step += jump;
             if (step >= coords.length && step - jump < coords.length - 1) step = coords.length - 1; 
@@ -2712,8 +2733,10 @@ const IndiaMapPlanner = {
             simSpeedInput.addEventListener('input', (e) => {
                 if (IndiaMapPlanner.isTripLive && IndiaMapPlanner.tripInterval) {
                     clearInterval(IndiaMapPlanner.tripInterval);
-                    const newSpeed = parseInt(e.target.value || 600);
+                    const newSpeed = parseInt(e.target.value || 500);
                     IndiaMapPlanner.tripInterval = setInterval(() => {
+                        if (IndiaMapPlanner.isNavPaused) return;
+
                         if (step >= coords.length) {
                             IndiaMapPlanner.endLiveTrip();
                             Utils.showToast('Destination Reached! 🎉', 'success');
@@ -2721,7 +2744,8 @@ const IndiaMapPlanner = {
                         }
                         
                         const pt = coords[step];
-                        IndiaMapPlanner.updateTripPosition(pt[1], pt[0]);
+                        IndiaMapPlanner.currentStep = step;
+                        IndiaMapPlanner.updateTripPosition(pt[1], pt[0], step, coords);
                         
                         step += jump;
                         if (step >= coords.length && step - jump < coords.length - 1) step = coords.length - 1; 
@@ -2750,7 +2774,9 @@ const IndiaMapPlanner = {
 
         IndiaMapPlanner.gpsWatchId = navigator.geolocation.watchPosition(
             (pos) => {
-                const { latitude, longitude } = pos.coords;
+                const { latitude, longitude, speed, heading } = pos.coords;
+                const realSpeedKmh = speed ? Math.round(speed * 3.6) : (IndiaMapPlanner.isTripLive ? 75 : 0);
+                
                 if (!IndiaMapPlanner.isTripLive) {
                     // Pre-trip GPS lock
                     if (!IndiaMapPlanner.carMarker) {
@@ -2764,6 +2790,7 @@ const IndiaMapPlanner = {
                     IndiaMapPlanner.carMarker.setLatLng([latitude, longitude]);
                     IndiaMapPlanner.map.setView([latitude, longitude], 15);
                 } else {
+                    IndiaMapPlanner.currentSpeedKmh = realSpeedKmh;
                     IndiaMapPlanner.updateTripPosition(latitude, longitude);
                 }
                 
@@ -2791,7 +2818,161 @@ const IndiaMapPlanner = {
         }
     },
 
-    updateTripPosition: (lat, lng) => {
+    // ═══════════════════════════════════════════════════════════════
+    // 3D COCKPIT SPEEDOMETER & ROAD HUD CONTROLS
+    // ═══════════════════════════════════════════════════════════════
+    updateCockpitSpeedometer: (speedKmh, headingDeg = 0, currentProgressKm = 0, totalDistKm = 100) => {
+        const speedNumEl = document.getElementById('hud-speed-num');
+        const arcEl = document.getElementById('speedo-progress-arc');
+        const compassEl = document.getElementById('hud-compass-arrow');
+        const progressEl = document.getElementById('hud-trip-progress');
+        const etaEl = document.getElementById('hud-eta-val');
+
+        if (speedNumEl) speedNumEl.textContent = Math.round(speedKmh);
+
+        // Circular SVG gauge (Circumference ~ 427 for r=68)
+        if (arcEl) {
+            const maxSpeed = 160;
+            const fraction = Math.min(1.0, Math.max(0, speedKmh / maxSpeed));
+            const dashOffset = 427 - (427 * fraction * 0.75); // 270 degree arc
+            arcEl.style.strokeDashoffset = dashOffset;
+            
+            if (speedKmh > 115) {
+                arcEl.style.stroke = '#ef4444'; // Red overspeed
+            } else if (speedKmh > 95) {
+                arcEl.style.stroke = '#fde047'; // Amber high cruising
+            } else {
+                arcEl.style.stroke = '#22c55e'; // Green safe cruising
+            }
+        }
+
+        if (compassEl) {
+            compassEl.style.transform = `rotate(${headingDeg}deg)`;
+        }
+
+        if (progressEl) {
+            progressEl.textContent = `${currentProgressKm.toFixed(1)} km / ${totalDistKm.toFixed(1)} km`;
+        }
+
+        if (etaEl && speedKmh > 0) {
+            const remKm = Math.max(0, totalDistKm - currentProgressKm);
+            const remHours = remKm / (speedKmh || 80);
+            const hrs = Math.floor(remHours);
+            const mins = Math.round((remHours % 1) * 60);
+            etaEl.textContent = hrs > 0 ? `${hrs}h ${mins}m left` : `${mins} min left`;
+        }
+    },
+
+    updateRoadHud: (lat, lng, stepIndex = 0, coords = null) => {
+        const roadRefEl = document.getElementById('hud-road-ref');
+        const roadNameEl = document.getElementById('hud-road-name');
+        
+        let corridor = IndiaMapPlanner.selectedRouteData?.tolls?.[0]?.nhCorridor;
+        if (!corridor || corridor === 'N/A' || corridor === 'Unknown') {
+            corridor = 'NH-48';
+        }
+        const refStr = corridor.startsWith('NH-') || corridor.startsWith('NE-') ? corridor : 'NH-' + corridor;
+
+        if (roadRefEl) roadRefEl.textContent = refStr;
+        if (roadNameEl) {
+            const oName = IndiaMapPlanner.selectedRouteData?.originName || 'Origin';
+            const dName = IndiaMapPlanner.selectedRouteData?.destName || 'Destination';
+            roadNameEl.textContent = `${refStr} · ${oName} ➔ ${dName} Corridor`;
+        }
+    },
+
+    toggleTripPause: () => {
+        IndiaMapPlanner.isNavPaused = !IndiaMapPlanner.isNavPaused;
+        const btn = document.getElementById('btn-hud-pause');
+        if (IndiaMapPlanner.isNavPaused) {
+            // Speed = 0 km/h: Restore panels smoothly
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            document.body.classList.remove('navigating-3d-hud');
+            IndiaMapPlanner.updateCockpitSpeedometer(0);
+            Utils.showToast('⏸️ Journey Paused. Controls restored.', 'info');
+        } else {
+            // Speed > 0: Auto-collapse panels and resume driving
+            if (btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            document.body.classList.add('navigating-3d-hud');
+            IndiaMapPlanner.updateCockpitSpeedometer(84);
+            Utils.showToast('▶️ Resumed Cruising.', 'success');
+        }
+    },
+
+    adjustSimSpeed: (deltaMs) => {
+        const simSpeedInput = document.getElementById('sim-speed');
+        if (simSpeedInput) {
+            let cur = parseInt(simSpeedInput.value || 500);
+            cur = Math.max(100, Math.min(1500, cur + deltaMs));
+            simSpeedInput.value = cur;
+            simSpeedInput.dispatchEvent(new Event('input'));
+            const speedKmh = Math.round(75 + (1500 - cur) / 18);
+            IndiaMapPlanner.updateCockpitSpeedometer(speedKmh);
+            Utils.showToast(`Cruise Pace: ${cur}ms (${speedKmh} km/h)`, 'info');
+        }
+    },
+
+    dismissPreTollPopup: () => {
+        document.getElementById('pre-toll-hud-modal')?.classList.add('hidden');
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // PRE-TOLL APPROACHING DETECTION & AI ANNOUNCEMENT
+    // ═══════════════════════════════════════════════════════════════
+    checkApproachingTolls: (lat, lng) => {
+        if (!IndiaMapPlanner.selectedRouteData || !IndiaMapPlanner.selectedRouteData.tolls) return;
+        const vehicleType = document.getElementById('route-vehicle-selector')?.value || document.getElementById('vehicle-type')?.value || 'LMV';
+
+        IndiaMapPlanner.selectedRouteData.tolls.forEach(routeToll => {
+            const tollId = routeToll.id;
+            if (IndiaMapPlanner.approachedTollIds.has(tollId) || IndiaMapPlanner.chargedTollIds.has(tollId)) return;
+
+            const toll = window.TollSeedData?.find(s => s.id === tollId) || routeToll;
+            if (!toll.lat || !toll.lng) return;
+
+            const dLat = (toll.lat - lat) * 111;
+            const dLng = (toll.lng - lng) * 111 * Math.cos(lat * Math.PI / 180);
+            const distKm = Math.sqrt(dLat*dLat + dLng*dLng);
+
+            // Trigger Pre-Toll Approaching Alert when within 2.5km and >= 0.8km
+            if (distKm <= 2.5 && distKm >= 0.8) {
+                IndiaMapPlanner.approachedTollIds.add(tollId);
+
+                let cost = TollData.getTollCost(tollId, vehicleType);
+                if (IndiaMapPlanner.isSpecialVerified) cost = 0;
+                const curBal = Storage.get(Storage.KEYS.FASTAG_BALANCE, 1250);
+                const remBal = Math.max(0, curBal - cost);
+
+                // Populate Pre-Toll HUD Modal
+                const modal = document.getElementById('pre-toll-hud-modal');
+                const nameEl = document.getElementById('pre-toll-name');
+                const subEl = document.getElementById('pre-toll-sub');
+                const feeEl = document.getElementById('pre-toll-fee');
+                const curBalEl = document.getElementById('pre-toll-cur-bal');
+                const remBalEl = document.getElementById('pre-toll-rem-bal');
+
+                if (nameEl) nameEl.textContent = toll.name || 'NH Toll Plaza';
+                if (subEl) subEl.textContent = `Approaching Barrier in ~${distKm.toFixed(1)} km · NHAI FASTag Lane Armed`;
+                if (feeEl) feeEl.textContent = `₹${cost}`;
+                if (curBalEl) curBalEl.textContent = `₹${curBal}`;
+                if (remBalEl) remBalEl.textContent = `₹${remBal}`;
+
+                if (modal) modal.classList.remove('hidden');
+
+                // AI Voice Announcement
+                if (window.VoiceAssistant && typeof VoiceAssistant.speak === 'function') {
+                    VoiceAssistant.speak(`Toll ahead: ${toll.name || 'Toll Plaza'}. A toll fee of rupees ${cost} will be deducted from your FASTag account. Your current balance is rupees ${curBal}.`);
+                }
+
+                // Auto-dismiss HUD after 8 seconds
+                setTimeout(() => {
+                    IndiaMapPlanner.dismissPreTollPopup();
+                }, 8000);
+            }
+        });
+    },
+
+    updateTripPosition: (lat, lng, stepIndex = 0, coords = null) => {
         IndiaMapPlanner.currentLiveLat = lat;
         IndiaMapPlanner.currentLiveLng = lng;
 
@@ -2808,13 +2989,29 @@ const IndiaMapPlanner = {
             IndiaMapPlanner.map.panTo(newPos, { animate: true, duration: 0.5 });
         }
 
-        // ADD THIS LINE — broadcast live position to server
+        // Calculate heading/bearing
+        let headingDeg = 0;
+        if (coords && stepIndex < coords.length - 1) {
+            const next = coords[stepIndex + 1];
+            const dY = next[1] - lat;
+            const dX = (next[0] - lng) * Math.cos(lat * Math.PI / 180);
+            headingDeg = (Math.atan2(dX, dY) * 180 / Math.PI + 360) % 360;
+        }
+
+        // Dynamic Cruising Speed simulation (78 - 104 km/h)
+        const totalDist = parseFloat(IndiaMapPlanner.selectedRouteData?.totalDist) || 100;
+        const progressKm = coords && coords.length > 0 ? (stepIndex / coords.length) * totalDist : 0;
+        const fluctuatingSpeed = 82 + (Math.sin(stepIndex * 0.4) * 14);
+        IndiaMapPlanner.currentSpeedKmh = fluctuatingSpeed;
+
+        IndiaMapPlanner.updateCockpitSpeedometer(fluctuatingSpeed, headingDeg, progressKm, totalDist);
+        IndiaMapPlanner.updateRoadHud(lat, lng, stepIndex, coords);
+
+        // Broadcast live position to server
         if (IndiaMapPlanner.currentTripId && window.RealtimeService) {
             RealtimeService.updatePosition(IndiaMapPlanner.currentTripId, lat, lng);
         }
 
-        // Also update notifications with current position every few seconds
-        // (don't call on every frame — only every ~5 seconds to avoid spam)
         if (!IndiaMapPlanner._lastNotifUpdate || Date.now() - IndiaMapPlanner._lastNotifUpdate > 5000) {
             IndiaMapPlanner._lastNotifUpdate = Date.now();
             if (window.Notifications) Notifications.updateAdvisory();
@@ -2831,6 +3028,7 @@ const IndiaMapPlanner = {
             }
         }
 
+        IndiaMapPlanner.checkApproachingTolls(lat, lng);
         IndiaMapPlanner.checkTollGeofence(lat, lng);
         IndiaMapPlanner.updateUpcomingTollBox(lat, lng);
     },
@@ -2839,6 +3037,12 @@ const IndiaMapPlanner = {
         if (IndiaMapPlanner.tripInterval) clearInterval(IndiaMapPlanner.tripInterval);
         IndiaMapPlanner.stopRealGps();
         
+        // Speed = 0 km/h: Auto-restore panels smoothly
+        document.body.classList.remove('navigating-3d-hud');
+        document.getElementById('driving-cockpit-hud')?.classList.add('hidden');
+        document.getElementById('pre-toll-hud-modal')?.classList.add('hidden');
+        IndiaMapPlanner.updateCockpitSpeedometer(0);
+
         if (IndiaMapPlanner.currentTripId && IndiaMapPlanner.isTripLive) {
             const dist = IndiaMapPlanner.selectedRouteData?.totalDist || 0;
             const tripData = {
@@ -2909,12 +3113,12 @@ const IndiaMapPlanner = {
         
         IndiaMapPlanner.selectedRouteData.tolls.forEach(routeToll => {
             if (IndiaMapPlanner.chargedTollIds.has(routeToll.id)) return;
-            const toll = window.TollSeedData?.find(s => s.id === routeToll.id);
-            if (!toll) return;
+            const toll = window.TollSeedData?.find(s => s.id === routeToll.id) || routeToll;
+            if (!toll.lat || !toll.lng) return;
             
             const dLat = (toll.lat - lat) * 111;
             const dLng = (toll.lng - lng) * 111 * Math.cos(lat * Math.PI / 180);
-            if (Math.sqrt(dLat*dLat + dLng*dLng) < 1.0) {
+            if (Math.sqrt(dLat*dLat + dLng*dLng) < 0.8) {
                 IndiaMapPlanner.chargedTollIds.add(toll.id);
                 let cost = TollData.getTollCost(toll.id, vehicleType);
                 if (IndiaMapPlanner.isSpecialVerified) cost = 0;
@@ -2929,6 +3133,13 @@ const IndiaMapPlanner = {
                         IndiaMapPlanner.tripTollsPassed.push(toll.name);
                         IndiaMapPlanner.tripTotalCost += cost;
                         if (IndiaMapPlanner.currentTripId) Storage.logTollPassage(IndiaMapPlanner.currentTripId, toll.name, cost);
+
+                        const curBal = Storage.get(Storage.KEYS.FASTAG_BALANCE, 1250);
+                        Utils.showToast(`⛩️ FASTag ₹${cost} paid at ${toll.name} (Bal: ₹${curBal})`, 'success');
+                        
+                        if (window.VoiceAssistant && typeof VoiceAssistant.speak === 'function') {
+                            VoiceAssistant.speak(`Toll payment of rupees ${cost} successful at ${toll.name}. Remaining FASTag balance is rupees ${curBal}.`);
+                        }
                     }
                 }
                 IndiaMapPlanner.updateUpcomingTollBox(lat, lng);
