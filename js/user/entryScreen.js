@@ -303,3 +303,21 @@ window.handleSidebarAuthClick = () => {
 };
 
 window.EntryScreen = EntryScreen;
+
+(function initStatCardTilt() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.entry-stat-tilt').forEach((card) => {
+            const MAX_TILT_DEG = 6;
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const px = (e.clientX - rect.left) / rect.width - 0.5;
+                const py = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `perspective(600px) rotateY(${px * 12}deg) rotateX(${-py * 12}deg) translateZ(4px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(600px) rotateY(0deg) rotateX(0deg) translateZ(0px)';
+            });
+        });
+    });
+})();

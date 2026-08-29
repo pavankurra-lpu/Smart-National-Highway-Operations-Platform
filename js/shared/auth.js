@@ -35,16 +35,20 @@ const Auth = {
             // Backend offline or sleeping - will fall through to standard credential check
         }
 
-        // Grant seamless access if standard credentials matched
-        if (isStandardCreds) {
-            const fallbackToken = 'nhai_admin_offline_' + btoa(JSON.stringify({ id: cleanId, role: 'admin', ts: Date.now() }));
-            sessionStorage.setItem('nhai_admin_auth', fallbackToken);
-            sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
-            sessionStorage.setItem('nhai_admin_id', cleanId);
-            return { success: true, token: fallbackToken };
+        try {
+            if (isStandardCreds) {
+                const safeBase64 = (str) => btoa(unescape(encodeURIComponent(str)));
+                const fallbackToken = 'nhai_admin_offline_' + safeBase64(JSON.stringify({ id: cleanId, role: 'admin', ts: Date.now() }));
+                sessionStorage.setItem('nhai_admin_auth', fallbackToken);
+                sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
+                sessionStorage.setItem('nhai_admin_id', cleanId);
+                return { success: true, token: fallbackToken };
+            }
+            return { success: false, error: 'Access Denied: Invalid Staff ID or Passcode (Default: admin@nhai / NHAI@2026).' };
+        } catch (e) {
+            console.error('[Auth.login] Non-network failure:', e);
+            return { success: false, error: `Login failed: ${e.message || 'unexpected error'}. This is not a network issue - check the browser console.` };
         }
-
-        return { success: false, error: 'Access Denied: Invalid Staff ID or Passcode (Default: admin@nhai / NHAI@2026).' };
     },
 
     getAdminLoginUrl: () => {

@@ -104,6 +104,15 @@
     box-shadow: 0 0 8px #eab308;
 }
 
+.entry-stat-tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, border-color 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform;
+}
+.entry-stat-tilt:hover {
+    box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.5);
+}
+
 .entry-icon-emblem {
     width: 54px;
     height: 54px;
