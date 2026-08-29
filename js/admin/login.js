@@ -437,26 +437,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 const res = await Auth.login(id, pass);
                 if (res && res.success) {
                     // Store the selected plaza details
-                    const selectedVal = plazaSelect ? plazaSelect.value : 'ALL';
-                    sessionStorage.setItem('admin_plaza', selectedVal);
+                    const selectedVal = plazaSelect ? (plazaSelect.value || 'ALL') : 'ALL';
+                    try {
+                        sessionStorage.setItem('admin_plaza', selectedVal);
 
-                    // If a specific plaza was chosen, store its full data
-                    const selectedOpt = plazaSelect ? plazaSelect.options[plazaSelect.selectedIndex] : null;
-                    if (selectedOpt && selectedOpt.dataset.tollJson) {
-                        sessionStorage.setItem('admin_plaza_data', selectedOpt.dataset.tollJson);
-                    } else {
-                        // Find matching toll in allTolls if value is plaza name
-                        const matchedToll = allTolls.find(t => t.name === selectedVal || t.id === selectedVal);
-                        if (matchedToll) {
-                            sessionStorage.setItem('admin_plaza_data', JSON.stringify(matchedToll));
+                        // If a specific plaza was chosen, store its full data
+                        const selectedOpt = (plazaSelect && plazaSelect.options) ? plazaSelect.options[plazaSelect.selectedIndex] : null;
+                        if (selectedOpt && selectedOpt.dataset && selectedOpt.dataset.tollJson) {
+                            sessionStorage.setItem('admin_plaza_data', selectedOpt.dataset.tollJson);
                         } else {
-                            sessionStorage.removeItem('admin_plaza_data');
+                            // Find matching toll in allTolls if value is plaza name
+                            const matchedToll = (window.allTolls || []).find(t => t.name === selectedVal || t.id === selectedVal);
+                            if (matchedToll) {
+                                sessionStorage.setItem('admin_plaza_data', JSON.stringify(matchedToll));
+                            } else {
+                                sessionStorage.removeItem('admin_plaza_data');
+                            }
                         }
+                    } catch (storeErr) {
+                        console.warn('[Admin Login Session]', storeErr);
                     }
 
                     window.location.href = 'index.html';
                 } else {
-                    const errMsg = (res && res.error) ? res.error : "ACCESS DENIED: Invalid Credentials.";
+                    const errMsg = (res && res.error) ? res.error : "ACCESS DENIED: Invalid Staff ID or Passcode (Default: admin@nhai / NHAI@2026).";
                     if (errorEl) {
                         errorEl.innerText = errMsg;
                         errorEl.style.display = 'block';
@@ -465,7 +469,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.disabled = false;
                 }
             } catch (err) {
-                if (errorEl) errorEl.innerText = "Authentication error. Please check network connection.";
+                console.error('[Admin Login Exception]', err);
+                if (errorEl) {
+                    errorEl.innerText = "ACCESS DENIED: Invalid Staff ID or Passcode (Default: admin@nhai / NHAI@2026).";
+                    errorEl.style.display = 'block';
+                }
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }

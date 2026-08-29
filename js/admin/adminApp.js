@@ -162,11 +162,19 @@ const AdminApp = {
             worldCopyJump: false
         });
 
-        // CartoDB Dark Tarmac Tile Layer
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        // High-Definition Satellite Imagery Layer (Esri World Imagery)
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             maxZoom: 19,
             minZoom: 4,
-            subdomains: 'abcd'
+            attribution: 'Esri Satellite'
+        }).addTo(AdminApp.map);
+
+        // High-Contrast Road & City Labels Overlay on Satellite
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            minZoom: 4,
+            subdomains: 'abcd',
+            opacity: 0.95
         }).addTo(AdminApp.map);
 
         // Render Toll Plaza Markers

@@ -8,11 +8,31 @@ const Auth = {
 
         const isStandardCreds = validIds.includes(cleanId) && validPasses.some(p => p.toLowerCase() === cleanPass.toLowerCase());
 
-        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
+        // Fast-path: Standard credentials authenticate instantly without waiting for network/cold starts
+        if (isStandardCreds) {
+            const safeBase64 = (str) => {
+                try {
+                    return btoa(unescape(encodeURIComponent(str)));
+                } catch(e) {
+                    return btoa(str);
+                }
+            };
+            const fallbackToken = 'nhai_admin_offline_' + safeBase64(JSON.stringify({ id: cleanId, role: 'admin', ts: Date.now() }));
+            try {
+                sessionStorage.setItem('nhai_admin_auth', fallbackToken);
+                sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
+                sessionStorage.setItem('nhai_admin_id', cleanId);
+            } catch(e) {
+                console.warn('SessionStorage warning:', e);
+            }
+            return { success: true, token: fallbackToken };
+        }
 
+        // Custom credentials: attempt backend verification with 3s timeout
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
         try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
             
             const response = await fetch(`${backendUrl}/api/auth/admin/login`, {
                 method: 'POST',
@@ -32,23 +52,10 @@ const Auth = {
                 }
             }
         } catch (e) {
-            // Backend offline or sleeping - will fall through to standard credential check
+            // Backend offline or timeout
         }
 
-        try {
-            if (isStandardCreds) {
-                const safeBase64 = (str) => btoa(unescape(encodeURIComponent(str)));
-                const fallbackToken = 'nhai_admin_offline_' + safeBase64(JSON.stringify({ id: cleanId, role: 'admin', ts: Date.now() }));
-                sessionStorage.setItem('nhai_admin_auth', fallbackToken);
-                sessionStorage.setItem('nhai_admin_login_time', new Date().toISOString());
-                sessionStorage.setItem('nhai_admin_id', cleanId);
-                return { success: true, token: fallbackToken };
-            }
-            return { success: false, error: 'Access Denied: Invalid Staff ID or Passcode (Default: admin@nhai / NHAI@2026).' };
-        } catch (e) {
-            console.error('[Auth.login] Non-network failure:', e);
-            return { success: false, error: `Login failed: ${e.message || 'unexpected error'}. This is not a network issue - check the browser console.` };
-        }
+        return { success: false, error: 'Access Denied: Invalid Staff ID or Passcode (Default: admin@nhai / NHAI@2026).' };
     },
 
     getAdminLoginUrl: () => {

@@ -279,36 +279,47 @@
             color: #ffffff;
         }
 
-        /* .card-user/.card-admin were in the HTML class list with zero matching
-           CSS anywhere - both cards rendered identically. This gives them real,
-           distinct identities: gold for the citizen-facing Traveller portal,
-           deep crimson for Admin/Operations (a different shade from the brighter
-           in-app SOS red, so it won't compete with emergency alerts). */
+        /* .card-user/.card-admin Distinct Luxury Identities */
         .portal-card.card-user {
             border-color: rgba(234, 179, 8, 0.25);
+            background: linear-gradient(145deg, rgba(28, 24, 12, 0.45) 0%, rgba(18, 26, 33, 0.85) 100%);
         }
         .portal-card.card-user .card-icon-box {
             background: rgba(234, 179, 8, 0.12);
             border-color: rgba(234, 179, 8, 0.35);
-            color: #eab308;
+            color: #fde047;
         }
         .portal-card.card-user:hover {
             border-color: rgba(234, 179, 8, 0.55);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(234, 179, 8, 0.15);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(234, 179, 8, 0.2);
         }
         .portal-card.card-user:hover .card-icon-box {
             background: rgba(234, 179, 8, 0.22);
             border-color: rgba(234, 179, 8, 0.6);
-            color: #facc15;
+            color: #fde047;
         }
-        .portal-card.card-user .portal-badge-silver {
-            background: rgba(234, 179, 8, 0.1);
-            color: #eab308;
-            border-color: rgba(234, 179, 8, 0.3);
+        .portal-card.card-user .card-title-text {
+            background: linear-gradient(135deg, #ffffff 0%, #fde047 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        .portal-badge-gold {
+            font-size: 8px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background: rgba(234, 179, 8, 0.12);
+            color: #fde047;
+            border: 1px solid rgba(234, 179, 8, 0.35);
+            letter-spacing: 0.5px;
+            font-family: var(--font-display);
         }
 
         .portal-card.card-admin {
             border-color: rgba(190, 18, 60, 0.3);
+            background: linear-gradient(145deg, rgba(38, 12, 16, 0.45) 0%, rgba(18, 26, 33, 0.85) 100%);
         }
         .portal-card.card-admin .card-icon-box {
             background: rgba(190, 18, 60, 0.14);
@@ -317,17 +328,30 @@
         }
         .portal-card.card-admin:hover {
             border-color: rgba(190, 18, 60, 0.6);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(190, 18, 60, 0.18);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(190, 18, 60, 0.22);
         }
         .portal-card.card-admin:hover .card-icon-box {
             background: rgba(190, 18, 60, 0.24);
             border-color: rgba(190, 18, 60, 0.65);
             color: #fda4af;
         }
-        .portal-card.card-admin .portal-badge-silver {
-            background: rgba(190, 18, 60, 0.12);
-            color: #fb7185;
-            border-color: rgba(190, 18, 60, 0.35);
+        .portal-card.card-admin .card-title-text {
+            background: linear-gradient(135deg, #ffffff 0%, #fda4af 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        .portal-badge-crimson {
+            font-size: 8px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background: rgba(190, 18, 60, 0.15);
+            color: #fda4af;
+            border: 1px solid rgba(190, 18, 60, 0.4);
+            letter-spacing: 0.5px;
+            font-family: var(--font-display);
         }
         .portal-card:hover .card-arrow {
             color: #ffffff;
@@ -570,12 +594,12 @@
 
         /* Reactbits: Shiny Text Gradient */
         .reactbits-shiny-text {
-            background: linear-gradient(120deg, #ffffff 0%, #cbd5e1 25%, #ffffff 50%, #94a3b8 75%, #ffffff 100%);
+            background: linear-gradient(120deg, #fde047 0%, #ffffff 25%, #eab308 50%, #ffffff 75%, #facc15 100%);
             background-size: 200% auto;
             color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
-            animation: shineText 3s linear infinite;
+            animation: shineText 4s linear infinite;
         }
         @keyframes shineText {
             to { background-position: 200% center; }
@@ -706,8 +730,8 @@
                     </div>
                     <div class="card-details">
                         <h3>
-                            <span>Traveller Portal</span>
-                            <span class="portal-badge-silver">● CITIZEN TRANSIT</span>
+                            <span class="card-title-text">Traveller Portal</span>
+                            <span class="portal-badge-gold">● CITIZEN TRANSIT</span>
                         </h3>
                         <p>Plan routes dynamically, manage digital FASTag wallet balance, simulate trips, and request rapid emergency road assistance.</p>
                     </div>
@@ -723,8 +747,8 @@
                     </div>
                     <div class="card-details">
                         <h3>
-                            <span>Operations Control</span>
-                            <span class="portal-badge-silver">● LEVEL-4 COMMAND</span>
+                            <span class="card-title-text">Operations Control</span>
+                            <span class="portal-badge-crimson">● LEVEL-4 COMMAND</span>
                         </h3>
                         <p>Monitor live vehicle journeys, analyze revenue figures, oversee CCTV streams, broadcast highway alerts, and dispatch emergency responders.</p>
                     </div>
