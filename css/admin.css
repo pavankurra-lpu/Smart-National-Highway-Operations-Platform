@@ -235,16 +235,16 @@
     text-align: center;
 }
 .admin-nav-btn:hover { 
-    background: rgba(234, 179, 8, 0.08); 
-    border-color: rgba(234, 179, 8, 0.25);
-    color: #f8fafc; 
+    background: rgba(255, 255, 255, 0.06); 
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff; 
     transform: translateX(2px);
 }
 .admin-nav-btn.active { 
-    background: rgba(234, 179, 8, 0.15); 
-    border-color: rgba(234, 179, 8, 0.4);
-    color: #eab308;
-    box-shadow: 0 0 12px rgba(234, 179, 8, 0.25);
+    background: rgba(255, 255, 255, 0.12); 
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
 }
 
 /* Dashboard Area - Smooth Hardware-Accelerated Scrolling */
@@ -268,26 +268,27 @@
     display: inline-flex; 
     align-items: center; 
     gap: 6px;
-    color: var(--primary); 
+    color: #ffffff; 
     font-size: 10.5px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    background: rgba(234, 179, 8, 0.1);
+    background: rgba(255, 255, 255, 0.06);
     padding: 4px 10px;
     border-radius: 9999px;
-    border: 1px solid rgba(234, 179, 8, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .live-indicator:hover {
-    background: rgba(234, 179, 8, 0.18);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
     transform: scale(1.04);
 }
 .live-dot {
     width: 6px; 
     height: 6px; 
-    background: var(--primary);
+    background: #22c55e;
     border-radius: 50%; 
-    box-shadow: 0 0 8px var(--primary);
+    box-shadow: 0 0 8px #22c55e;
     animation: blink 1.5s infinite;
 }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -300,7 +301,7 @@
     margin-bottom: 12px; 
 }
 .stat-card {
-    background: rgba(19, 27, 32, 0.85); 
+    background: rgba(18, 26, 33, 0.85); 
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 9px 12px; 
     border-radius: 8px;
@@ -309,9 +310,9 @@
     position: relative;
 }
 .stat-card:hover {
-    border-color: rgba(234, 179, 8, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(234, 179, 8, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 255, 255, 0.06);
 }
 .stat-card h3 { 
     font-size: 9.5px; 

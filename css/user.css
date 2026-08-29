@@ -218,7 +218,7 @@
     white-space: nowrap;
 }
 .entry-marquee-item i {
-    color: #eab308;
+    color: #ffffff;
     font-size: 9.5px;
 }
 
@@ -226,12 +226,12 @@
     width: 100%;
     padding: 13px 20px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
     border-radius: 12px;
-    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 24px rgba(234, 179, 8, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: #ffffff;
+    color: #090d10;
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,8 +241,9 @@
 }
 .btn-enter-portal:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(234, 179, 8, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    background: linear-gradient(135deg, #22a35d 0%, #047857 100%);
+    box-shadow: 0 8px 28px rgba(255, 255, 255, 0.35);
+    background: #e2e8f0;
+    color: #090d10;
 }
 
 /* ===== FULLSCREEN MAP ===== */

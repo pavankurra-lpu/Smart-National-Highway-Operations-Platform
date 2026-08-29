@@ -1,39 +1,37 @@
 /* ====================================================================
    NHAI SMART HIGHWAY OPERATIONS PLATFORM (SNHOP) - GLOBAL DESIGN SYSTEM
-   Theme: Warm Asphalt (#090d10), Highway Yellow (#eab308), Highway Green (#22a35d)
-   Authority Reference: National Highway Yellow-and-White Milestone Convention
+   Theme: Deep Obsidian (#090d10), Titanium White (#ffffff), Cyber Slate (#94a3b8)
+   Authority: Clean High-Precision National Infrastructure Monochrome Design System
    ==================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
 
-/* ===== WARM ASPHALT & HIGHWAY YELLOW PALETTE ===== */
+/* ===== DEEP OBSIDIAN & TITANIUM WHITE PALETTE ===== */
 :root {
-    --bg-dark:        #090d10; /* Warm Asphalt */
-    --bg-darker:      #06090c; /* Night Tarmac */
-    --bg-card:        rgba(19, 27, 32, 0.94); /* Warm Asphalt Solid Glass */
-    --bg-panel:       rgba(14, 20, 24, 0.98);
+    --bg-dark:        #090d10; /* Deep Obsidian */
+    --bg-darker:      #06090c; /* Night Asphalt */
+    --bg-card:        rgba(18, 26, 33, 0.88); /* Frosted Structural Glass */
+    --bg-panel:       rgba(14, 20, 26, 0.95);
     
-    --primary:        #eab308; /* National Highway Yellow — Primary / Action */
-    --primary-dim:    rgba(234, 179, 8, 0.12);
-    --primary-hover:  #ca8a04; /* Deep Highway Gold */
-    --primary-glow:   rgba(234, 179, 8, 0.35);
+    --primary:        #ffffff; /* Titanium White — Primary / Action */
+    --primary-dim:    rgba(255, 255, 255, 0.08);
+    --primary-hover:  #e2e8f0; /* Platinum Silver */
+    --primary-glow:   rgba(255, 255, 255, 0.25);
     
-    --accent-green:   #22a35d; /* Highway Green — routes, live status, 'go' */
+    --accent-green:   #22c55e; /* Online Status Green Dot */
     --accent-red:     #ef4444; /* Signal Red — emergency/SOS only */
-    --accent-yellow:  #fde047; /* Bright Caution Yellow */
-    --accent-amber:   #eab308; /* Milestone Yellow */
     
-    --text-main:      #f8fafc; /* Warm Reflector White */
-    --text-sec:       #94a3b8; /* Warm Slate */
-    --text-muted:     #64748b; /* Tarmac Muted */
+    --text-main:      #f8fafc; /* Crisp Reflector White */
+    --text-sec:       #94a3b8; /* Cyber Slate */
+    --text-muted:     #64748b; /* Gunmetal Muted */
     
-    --border:         rgba(255, 255, 255, 0.08); /* Subtle Structural Line */
-    --border-light:   rgba(255, 255, 255, 0.04);
-    --border-glow:    rgba(234, 179, 8, 0.25);
+    --border:         rgba(255, 255, 255, 0.1); /* 1px Structural Line */
+    --border-light:   rgba(255, 255, 255, 0.05);
+    --border-glow:    rgba(255, 255, 255, 0.3);
     
     --shadow:         0 10px 30px -8px rgba(0, 0, 0, 0.75);
     --shadow-lg:      0 20px 45px -10px rgba(0, 0, 0, 0.9);
-    --shadow-glow:    0 0 25px -4px rgba(234, 179, 8, 0.2);
+    --shadow-glow:    0 0 25px -4px rgba(255, 255, 255, 0.15);
     
     --font-main:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display:   'Oswald', 'Inter', sans-serif;
@@ -43,7 +41,7 @@
     --radius-lg:      18px;
     --radius-xl:      24px;
 
-    --ring:           #eab308;
+    --ring:           #ffffff;
     --ring-offset:    #090d10;
 
     --transition:     all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -55,7 +53,7 @@
     display: none !important;
 }
 
-/* Map canvas warm asphalt styling */
+/* Map canvas deep obsidian styling */
 .leaflet-container {
     background: #090d10 !important;
 }
@@ -74,24 +72,24 @@ html, body {
     border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(234, 179, 8, 0.45) 0%, rgba(202, 138, 4, 0.55) 100%);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #facc15 0%, #eab308 100%);
-    box-shadow: 0 0 14px rgba(234, 179, 8, 0.85);
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
 }
 * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(234, 179, 8, 0.4) transparent;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
 
-/* ===== EMBLEM / LOGO LEVITATION & AURA (KokonutUI & AnimeJS) ===== */
+/* ===== EMBLEM / LOGO LEVITATION & CLEAN LUMINOUS HOVER ===== */
 @keyframes emblemLevitate {
-    0%   { transform: translateY(0px); filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4)); }
-    100% { transform: translateY(-3px); filter: drop-shadow(0 6px 16px rgba(234, 179, 8, 0.35)); }
+    0%   { transform: translateY(0px); filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)); }
+    100% { transform: translateY(-3px); filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.2)); }
 }
 
 .nhai-emblem-unit img,
@@ -101,20 +99,19 @@ html, body {
 .snhop-brand-icon,
 .card-icon-box {
     animation: emblemLevitate 3.5s ease-in-out infinite alternate;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
 }
 
 .nhai-emblem-unit:hover img,
 .nhai-authority-unit:hover svg,
 .nhai-gandhi-unit:hover img,
 .entry-icon-emblem:hover,
-.snhop-brand-icon:hover,
-.card-icon-box:hover {
-    transform: perspective(300px) rotateY(6deg) scale(1.1) translateY(-2px);
-    box-shadow: 0 0 20px rgba(234, 179, 8, 0.5), inset 0 0 8px rgba(255, 255, 255, 0.3);
+.snhop-brand-icon:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.45));
 }
 
-/* Official NHAI Header Bar with Satyameva Jayate */
+/* Official NHAI Header Bar */
 .nhai-official-header {
     display: flex;
     justify-content: space-between;
@@ -157,7 +154,7 @@ html, body {
 .nhai-auth-eng {
     font-size: 8px;
     font-weight: 700;
-    color: #eab308;
+    color: #94a3b8;
     line-height: 1.2;
     letter-spacing: 0.5px;
     font-family: var(--font-display);
@@ -172,30 +169,31 @@ html, body {
 .nhai-central-pill {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    background: rgba(234, 179, 8, 0.08);
-    border: 1px solid rgba(234, 179, 8, 0.25);
+    gap: 7px;
+    padding: 5px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 9999px;
     font-size: 10px;
     font-weight: 800;
-    color: #eab308;
+    color: #ffffff !important;
     letter-spacing: 0.8px;
     font-family: var(--font-display);
     transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(8px);
 }
 .nhai-central-pill:hover {
-    background: rgba(234, 179, 8, 0.16);
-    border-color: rgba(234, 179, 8, 0.5);
-    transform: scale(1.04);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.03);
 }
 
 .nhai-central-dot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: #eab308;
-    box-shadow: 0 0 8px #eab308;
+    background: #22c55e !important;
+    box-shadow: 0 0 10px #22c55e !important;
     animation: livePulse 2s infinite;
 }
 
@@ -236,13 +234,13 @@ html, body {
         display: none;
     }
     .nhai-central-pill::after {
-        content: 'LIVE';
+        content: 'ONLINE';
         font-size: 8.5px;
         font-weight: 800;
-        color: #eab308;
+        color: #ffffff;
     }
     .nhai-central-pill {
-        padding: 3px 6px;
+        padding: 3px 8px;
     }
 }
 
@@ -422,39 +420,39 @@ body.light-mode .glass-panel {
     opacity: 1;
     left: 130%;
     transition: all 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-    color: #1a1400;
+}.btn-primary {
+    background: #ffffff;
+    color: #090d10;
     font-weight: 800;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35);
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
 }
 .btn-primary:hover {
-    background: linear-gradient(135deg, #facc15 0%, #d97706 100%);
-    color: #1a1400;
+    background: #e2e8f0;
+    color: #090d10;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(234, 179, 8, 0.5);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.35);
 }
 .btn-primary:active { transform: scale(0.95); }
 
 body.light-mode .btn-primary {
+    background: #090d10;
     color: #ffffff;
+    border-color: #090d10;
 }
 
 .btn-go {
-    background: linear-gradient(135deg, #22a35d 0%, #166534 100%);
-    color: #ffffff;
-    font-weight: 700;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 16px rgba(34, 163, 93, 0.35);
+    background: #ffffff;
+    color: #090d10;
+    font-weight: 800;
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
 }
 .btn-go:hover {
-    background: linear-gradient(135deg, #2ecc71 0%, #15803d 100%);
-    color: #ffffff;
+    background: #e2e8f0;
+    color: #090d10;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(34, 163, 93, 0.45);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.35);
 }
 .btn-go:active { transform: scale(0.95); }
 
@@ -463,28 +461,29 @@ body.light-mode .btn-primary {
     color: #ffffff;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 16px rgba(224, 69, 58, 0.35);
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.35);
 }
 .btn-danger:hover {
     background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(224, 69, 58, 0.45);
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45);
 }
 .btn-danger:active { transform: scale(0.95); }
 
 .btn-cyan {
-    background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+    background: rgba(255, 255, 255, 0.08);
     color: #ffffff;
     font-weight: 700;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 .btn-cyan:hover {
-    background: linear-gradient(135deg, #22d3ee 0%, #0369a1 100%);
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.3);
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 .btn-cyan:active { transform: scale(0.95); }
 
@@ -495,11 +494,11 @@ body.light-mode .btn-primary {
     backdrop-filter: blur(8px);
 }
 .btn-outline:hover {
-    background: var(--primary-dim);
-    border-color: var(--primary);
-    color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(234, 179, 8, 0.2);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 .btn-outline:active { transform: scale(0.95); }
 
@@ -535,9 +534,9 @@ body.light-mode .btn-primary {
     letter-spacing: 0.5px;
     font-family: var(--font-display);
 }
-.badge-success { background: rgba(34, 163, 93, 0.15); color: #22a35d; border: 1px solid rgba(34, 163, 93, 0.35); }
-.badge-warning { background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.35); }
-.badge-danger  { background: rgba(224, 69, 58, 0.18); color: #ef4444; border: 1px solid rgba(224, 69, 58, 0.35); }
+.badge-success { background: rgba(34, 197, 94, 0.15); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.35); }
+.badge-warning { background: rgba(255, 255, 255, 0.12); color: #f8fafc; border: 1px solid rgba(255, 255, 255, 0.25); }
+.badge-danger  { background: rgba(239, 68, 68, 0.18); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.35); }
 
 /* ===== TYPOGRAPHY ===== */
 h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; font-family: var(--font-display); letter-spacing: 0.3px; }
@@ -558,8 +557,8 @@ input, select, textarea {
     transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
 }
 input:focus, select:focus, textarea:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 2px var(--ring-offset), 0 0 0 4px rgba(234, 179, 8, 0.25);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 0 2px var(--ring-offset), 0 0 0 4px rgba(255, 255, 255, 0.15);
     background: rgba(19, 27, 32, 0.95);
 }
 input::placeholder, textarea::placeholder { color: var(--text-muted); }

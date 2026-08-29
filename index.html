@@ -166,7 +166,7 @@
             min-height: 76px;
             max-height: 76px;
             box-sizing: border-box;
-            background: rgba(19, 27, 32, 0.9);
+            background: rgba(18, 26, 33, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             padding: 10px 14px;
@@ -180,9 +180,10 @@
             position: relative;
         }
         .l-stat:hover {
-            border-color: rgba(234, 179, 8, 0.5);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(234, 179, 8, 0.18);
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 255, 255, 0.08);
             transform: translateY(-2px);
+            background: rgba(24, 34, 44, 0.85);
         }
 
         .l-stat-val {
@@ -191,7 +192,7 @@
             font-feature-settings: "tnum";
             font-size: 17px;
             font-weight: 800;
-            color: #f8fafc;
+            color: #ffffff;
             line-height: 1;
             margin: 0;
             white-space: nowrap;
@@ -222,15 +223,15 @@
             align-items: center;
             gap: 16px;
             border-radius: 16px;
-            padding: 16px 20px;
+            padding: 18px 22px;
             text-decoration: none;
             text-align: left;
             transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
             backdrop-filter: blur(20px);
             position: relative;
-            background: linear-gradient(145deg, rgba(19, 27, 32, 0.95), rgba(12, 17, 21, 0.98));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            background: rgba(18, 26, 33, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             overflow: hidden;
         }
         
@@ -245,7 +246,7 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.12),
+                rgba(255, 255, 255, 0.1),
                 transparent
             );
             transform: rotate(25deg);
@@ -259,28 +260,29 @@
         }
 
         .portal-card:hover {
-            border-color: rgba(234, 179, 8, 0.6);
-            background: linear-gradient(145deg, rgba(25, 36, 44, 0.98), rgba(15, 22, 28, 0.98));
+            border-color: rgba(255, 255, 255, 0.45);
+            background: rgba(24, 34, 44, 0.85);
             transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(234, 179, 8, 0.2);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.08);
         }
         .portal-card .card-icon-box {
-            background: linear-gradient(135deg, rgba(234, 179, 8, 0.18), rgba(202, 138, 4, 0.3));
-            border: 1px solid rgba(234, 179, 8, 0.35);
-            color: #eab308;
-            box-shadow: 0 0 14px rgba(234, 179, 8, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
         }
         .portal-card:hover .card-icon-box {
-            transform: scale(1.1);
-            background: linear-gradient(135deg, rgba(234, 179, 8, 0.3), rgba(202, 138, 4, 0.45));
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.45);
+            transform: scale(1.08);
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 18px rgba(255, 255, 255, 0.3);
             color: #ffffff;
         }
         .portal-card:hover .card-arrow {
-            color: #eab308;
-            border-color: rgba(234, 179, 8, 0.6);
-            background: rgba(234, 179, 8, 0.18);
-            transform: translateX(3px);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
         }
         
         .card-icon-box {
@@ -312,14 +314,14 @@
             margin: 0;
         }
         
-        .portal-badge-gold {
+        .portal-badge-silver {
             font-size: 8px;
             font-weight: 800;
             padding: 2px 7px;
             border-radius: 4px;
-            background: rgba(234, 179, 8, 0.12);
-            color: #eab308;
-            border: 1px solid rgba(234, 179, 8, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: #f8fafc;
+            border: 1px solid rgba(255, 255, 255, 0.18);
             letter-spacing: 0.5px;
             font-family: var(--font-display);
         }
@@ -517,7 +519,7 @@
 
         /* Reactbits: Shiny Text Gradient */
         .reactbits-shiny-text {
-            background: linear-gradient(120deg, #eab308 0%, #fef08a 25%, #eab308 50%, #ca8a04 75%, #fde047 100%);
+            background: linear-gradient(120deg, #ffffff 0%, #cbd5e1 25%, #ffffff 50%, #94a3b8 75%, #ffffff 100%);
             background-size: 200% auto;
             color: transparent;
             -webkit-background-clip: text;
@@ -542,7 +544,7 @@
     <!-- Header Navigation (Official Government of India, NHAI & Mahatma Gandhi Heritage Bar) -->
     <header class="nhai-official-header">
         <div class="nhai-header-left">
-            <!-- 1. Government of India Official Ashoka Capital & Satyameva Jayate Emblem -->
+            <!-- 1. Government of India Official Ashoka Capital Emblem -->
             <div class="nhai-emblem-unit" style="display:flex; align-items:center; gap:9px;">
                 <img src="assets/gov_india_emblem.png" alt="Government of India Lion Capital" style="width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); padding:1px;">
 
@@ -553,11 +555,8 @@
                 </div>
 
                 <div class="nhai-text-govt">
-                    <div style="font-size:11.5px; font-weight:800; color:#f8fafc; line-height:1.2; display:flex; align-items:center; gap:6px;">
-                        <span>भारत सरकार</span>
-                        <span style="color:#eab308; font-weight:900; font-size:11px; letter-spacing:0.3px;">• सत्यमेव जयते</span>
-                    </div>
-                    <div style="font-size:7.5px; font-weight:700; color:#94a3b8; line-height:1.2; letter-spacing:0.5px;">GOVERNMENT OF INDIA • SATYAMEVA JAYATE</div>
+                    <div style="font-size:11.5px; font-weight:800; color:#f8fafc; line-height:1.2;">भारत सरकार</div>
+                    <div style="font-size:7.5px; font-weight:700; color:#94a3b8; line-height:1.2; letter-spacing:0.5px;">GOVERNMENT OF INDIA</div>
                 </div>
             </div>
 
@@ -566,10 +565,10 @@
             <!-- 2. NHAI Realistic Authority Emblem -->
             <div class="nhai-authority-unit" style="display:flex; align-items:center; gap:9px;">
                 <svg viewBox="0 0 100 100" width="34" height="34" style="flex-shrink:0;">
-                    <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#eab308" stroke-width="2.5"/>
-                    <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#eab308"/>
-                    <line x1="50" y1="28" x2="50" y2="84" stroke="#ffffff" stroke-width="2" stroke-dasharray="4,3"/>
-                    <text x="50" y="56" font-family="'Oswald', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#ffffff" text-anchor="middle" letter-spacing="1">NHAI</text>
+                    <circle cx="50" cy="50" r="46" fill="#090d10" stroke="#ffffff" stroke-width="2.5"/>
+                    <path d="M 50 16 L 24 84 L 34 84 L 50 26 L 66 84 L 76 84 Z" fill="#ffffff"/>
+                    <line x1="50" y1="28" x2="50" y2="84" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,3"/>
+                    <text x="50" y="56" font-family="'Oswald', 'Inter', sans-serif" font-weight="900" font-size="12" fill="#090d10" text-anchor="middle" letter-spacing="1">NHAI</text>
                 </svg>
 
                 <div class="nhai-text-authority">
@@ -580,12 +579,12 @@
 
             <div style="width:1px; height:22px; background:rgba(255,255,255,0.12); flex-shrink:0;"></div>
 
-            <!-- 3. Mahatma Gandhi National Heritage Unit -->
+            <!-- 3. Mahatma Gandhi Satyameva Jayate Commemoration Unit -->
             <div class="nhai-gandhi-unit" style="display:flex; align-items:center; gap:8px;">
-                <img src="assets/gandhiji.png" alt="Mahatma Gandhi" style="width:30px; height:30px; border-radius:50%; object-fit:cover; border:1.5px solid #eab308; box-shadow:0 0 10px rgba(234, 179, 8,0.35); flex-shrink:0;" onerror="this.src='assets/gandhiji.jpg'">
+                <img src="assets/gandhiji.png" alt="Mahatma Gandhi" style="width:30px; height:30px; border-radius:50%; object-fit:cover; border:1.5px solid rgba(255,255,255,0.4); box-shadow:0 0 10px rgba(255,255,255,0.2); flex-shrink:0;" onerror="this.src='assets/gandhiji.jpg'">
                 <div class="nhai-text-gandhi">
-                    <div style="font-size:11px; font-weight:800; color:#f8fafc; line-height:1.2;">महात्मा गांधी</div>
-                    <div style="font-size:7.5px; font-weight:700; color:#94a3b8; line-height:1.2; letter-spacing:0.5px;">MAHATMA GANDHI • 1869-1948</div>
+                    <div style="font-size:11.5px; font-weight:800; color:#f8fafc; line-height:1.2;">सत्यमेव जयते</div>
+                    <div style="font-size:7.5px; font-weight:700; color:#94a3b8; line-height:1.2; letter-spacing:0.5px;">SATYAMEVA JAYATE</div>
                 </div>
             </div>
         </div>
@@ -610,26 +609,26 @@
                     Building National Highways, Building the Nation. Welcome to India's unified transit operations hub. Seamlessly manage digital FASTag wallets, plan pathfinding routes, and monitor emergency dispatches in real-time.
                 </p>
                 
-                <!-- NHAI System-Wide Stats Widget (Milestone Amber & Platinum) -->
+                <!-- NHAI System-Wide Stats Widget (Titanium White & Cyber Slate) -->
                 <div class="landing-stats-box">
                     
                     <!-- Active Plazas Bento Card -->
                     <div class="l-stat">
                         <div class="l-stat-lbl">
                             <span>National Plazas</span>
-                            <i class="fa-solid fa-archway" style="color: #eab308; font-size: 10px;"></i>
+                            <i class="fa-solid fa-archway" style="color: #ffffff; font-size: 10px;"></i>
                         </div>
-                        <div class="l-stat-val" id="stat-plazas" style="color: #eab308;">1,185 NETC</div>
+                        <div class="l-stat-val" id="stat-plazas" style="color: #ffffff;">1,185 NETC</div>
                     </div>
                     
                     <!-- Real-Time Clock Card -->
                     <div class="l-stat">
                         <div class="l-stat-lbl">
                             <span id="stat-date">DATE</span>
-                            <i class="fa-regular fa-clock" style="color: #eab308; font-size: 10px;"></i>
+                            <i class="fa-regular fa-clock" style="color: #ffffff; font-size: 10px;"></i>
                         </div>
                         <div style="display: flex; align-items: baseline; gap: 4px; line-height: 1;">
-                            <div id="stat-time-only" style="color: #eab308; font-size: 18px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
+                            <div id="stat-time-only" style="color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
                             <div id="stat-ampm" style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: lowercase;">am</div>
                         </div>
                     </div>
@@ -638,9 +637,9 @@
                     <div class="l-stat">
                         <div class="l-stat-lbl">
                             <span>Highway Grid</span>
-                            <i class="fa-solid fa-route" style="color: #eab308; font-size: 10px;"></i>
+                            <i class="fa-solid fa-route" style="color: #ffffff; font-size: 10px;"></i>
                         </div>
-                        <div class="l-stat-val" id="stat-network" style="color: #eab308;">1.5L+ KM</div>
+                        <div class="l-stat-val" id="stat-network" style="color: #ffffff;">1.5L+ KM</div>
                     </div>
                 </div>
 
@@ -657,7 +656,7 @@
                     <div class="card-details">
                         <h3>
                             <span>Traveller Portal</span>
-                            <span class="portal-badge-gold">● CITIZEN TRANSIT</span>
+                            <span class="portal-badge-silver">● CITIZEN TRANSIT</span>
                         </h3>
                         <p>Plan routes dynamically, manage digital FASTag wallet balance, simulate trips, and request rapid emergency road assistance.</p>
                     </div>
@@ -674,7 +673,7 @@
                     <div class="card-details">
                         <h3>
                             <span>Operations Control</span>
-                            <span class="portal-badge-gold">● LEVEL-4 COMMAND</span>
+                            <span class="portal-badge-silver">● LEVEL-4 COMMAND</span>
                         </h3>
                         <p>Monitor live vehicle journeys, analyze revenue figures, oversee CCTV streams, broadcast highway alerts, and dispatch emergency responders.</p>
                     </div>
