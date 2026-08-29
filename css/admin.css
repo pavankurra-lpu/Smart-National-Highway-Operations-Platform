@@ -87,6 +87,9 @@
 }
 
 @media (max-width: 900px) {
+    .tc-metrics {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
     .admin-login-fullscreen {
         flex-direction: column;
     }
@@ -99,9 +102,14 @@
         padding: 20px 16px;
     }
 }
+
+.admin-login-body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
     background-image: 
-        linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(234, 179, 8, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 179, 8, 0.04) 1px, transparent 1px);
     background-size: 32px 32px;
     pointer-events: none;
 }
@@ -120,7 +128,7 @@
     width: 4px;
 }
 .district-tolls-card-list::-webkit-scrollbar-thumb {
-    background: rgba(16, 185, 129, 0.5);
+    background: rgba(234, 179, 8, 0.5);
     border-radius: 4px;
 }
 .toll-card-item {

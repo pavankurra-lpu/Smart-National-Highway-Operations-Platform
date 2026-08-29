@@ -623,8 +623,8 @@ body.light-mode textarea:focus {
 }
 .toast-success .shadcn-toast-icon { color: #22a35d; text-shadow: 0 0 10px rgba(34,163,93,0.5); }
 .toast-error .shadcn-toast-icon { color: #ef4444; text-shadow: 0 0 10px rgba(224,69,58,0.5); }
-.toast-warning .shadcn-toast-icon { color: #10b981; text-shadow: 0 0 10px rgba(16,185,129,0.5); }
-.toast-info .shadcn-toast-icon { color: #34d399; text-shadow: 0 0 10px rgba(245,196,81,0.5); }
+.toast-warning .shadcn-toast-icon { color: #eab308; text-shadow: 0 0 10px rgba(234,179,8,0.5); }
+.toast-info .shadcn-toast-icon { color: #facc15; text-shadow: 0 0 10px rgba(250,204,21,0.5); }
 
 .shadcn-toast-content {
     display: flex;
@@ -724,7 +724,7 @@ body.light-mode textarea:focus {
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
 }
 .spotlight-card:hover {
-    border-color: rgba(16, 185, 129, 0.4);
+    border-color: rgba(234, 179, 8, 0.4);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     transform: translateY(-1px);
 }
