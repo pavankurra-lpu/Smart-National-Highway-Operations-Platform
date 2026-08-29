@@ -192,7 +192,7 @@
             font-feature-settings: "tnum";
             font-size: 17px;
             font-weight: 800;
-            color: #ffffff;
+            color: #fde047;
             line-height: 1;
             margin: 0;
             white-space: nowrap;
@@ -277,6 +277,57 @@
             border-color: rgba(255, 255, 255, 0.5);
             box-shadow: 0 0 18px rgba(255, 255, 255, 0.3);
             color: #ffffff;
+        }
+
+        /* .card-user/.card-admin were in the HTML class list with zero matching
+           CSS anywhere - both cards rendered identically. This gives them real,
+           distinct identities: gold for the citizen-facing Traveller portal,
+           deep crimson for Admin/Operations (a different shade from the brighter
+           in-app SOS red, so it won't compete with emergency alerts). */
+        .portal-card.card-user {
+            border-color: rgba(234, 179, 8, 0.25);
+        }
+        .portal-card.card-user .card-icon-box {
+            background: rgba(234, 179, 8, 0.12);
+            border-color: rgba(234, 179, 8, 0.35);
+            color: #eab308;
+        }
+        .portal-card.card-user:hover {
+            border-color: rgba(234, 179, 8, 0.55);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(234, 179, 8, 0.15);
+        }
+        .portal-card.card-user:hover .card-icon-box {
+            background: rgba(234, 179, 8, 0.22);
+            border-color: rgba(234, 179, 8, 0.6);
+            color: #facc15;
+        }
+        .portal-card.card-user .portal-badge-silver {
+            background: rgba(234, 179, 8, 0.1);
+            color: #eab308;
+            border-color: rgba(234, 179, 8, 0.3);
+        }
+
+        .portal-card.card-admin {
+            border-color: rgba(190, 18, 60, 0.3);
+        }
+        .portal-card.card-admin .card-icon-box {
+            background: rgba(190, 18, 60, 0.14);
+            border-color: rgba(190, 18, 60, 0.4);
+            color: #fb7185;
+        }
+        .portal-card.card-admin:hover {
+            border-color: rgba(190, 18, 60, 0.6);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(190, 18, 60, 0.18);
+        }
+        .portal-card.card-admin:hover .card-icon-box {
+            background: rgba(190, 18, 60, 0.24);
+            border-color: rgba(190, 18, 60, 0.65);
+            color: #fda4af;
+        }
+        .portal-card.card-admin .portal-badge-silver {
+            background: rgba(190, 18, 60, 0.12);
+            color: #fb7185;
+            border-color: rgba(190, 18, 60, 0.35);
         }
         .portal-card:hover .card-arrow {
             color: #ffffff;
@@ -609,26 +660,26 @@
                     Building National Highways, Building the Nation. Welcome to India's unified transit operations hub. Seamlessly manage digital FASTag wallets, plan pathfinding routes, and monitor emergency dispatches in real-time.
                 </p>
                 
-                <!-- NHAI System-Wide Stats Widget (Titanium White & Cyber Slate) -->
+                <!-- NHAI System-Wide Stats Widget (Milestone Yellow & Platinum) -->
                 <div class="landing-stats-box">
                     
                     <!-- Active Plazas Bento Card -->
                     <div class="l-stat">
                         <div class="l-stat-lbl">
                             <span>National Plazas</span>
-                            <i class="fa-solid fa-archway" style="color: #ffffff; font-size: 10px;"></i>
+                            <i class="fa-solid fa-archway" style="color: #eab308; font-size: 10px;"></i>
                         </div>
-                        <div class="l-stat-val" id="stat-plazas" style="color: #ffffff;">1,185 NETC</div>
+                        <div class="l-stat-val" id="stat-plazas" style="color: #fde047;">1,185 NETC</div>
                     </div>
                     
                     <!-- Real-Time Clock Card -->
                     <div class="l-stat">
                         <div class="l-stat-lbl">
                             <span id="stat-date">DATE</span>
-                            <i class="fa-regular fa-clock" style="color: #ffffff; font-size: 10px;"></i>
+                            <i class="fa-regular fa-clock" style="color: #eab308; font-size: 10px;"></i>
                         </div>
                         <div style="display: flex; align-items: baseline; gap: 4px; line-height: 1;">
-                            <div id="stat-time-only" style="color: #ffffff; font-size: 18px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
+                            <div id="stat-time-only" style="color: #fde047; font-size: 18px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;">--:--:--</div>
                             <div id="stat-ampm" style="color: #94a3b8; font-size: 10px; font-weight: 600; text-transform: lowercase;">am</div>
                         </div>
                     </div>
@@ -637,9 +688,9 @@
                     <div class="l-stat">
                         <div class="l-stat-lbl">
                             <span>Highway Grid</span>
-                            <i class="fa-solid fa-route" style="color: #ffffff; font-size: 10px;"></i>
+                            <i class="fa-solid fa-route" style="color: #eab308; font-size: 10px;"></i>
                         </div>
-                        <div class="l-stat-val" id="stat-network" style="color: #ffffff;">1.5L+ KM</div>
+                        <div class="l-stat-val" id="stat-network" style="color: #fde047;">1.5L+ KM</div>
                     </div>
                 </div>
 
