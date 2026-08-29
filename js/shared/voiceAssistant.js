@@ -194,6 +194,7 @@ const VoiceAssistant = {
             rec.onstart = () => {
                 VoiceAssistant.isListening = true;
                 VoiceAssistant._recognition = rec;
+                document.querySelectorAll('#btn-voice-search, .btn-voice-search-route, .btn-voice-header').forEach(b => b.classList.add('listening'));
             };
 
             rec.onresult = (e) => {
@@ -213,16 +214,19 @@ const VoiceAssistant = {
                 if (statusEl) statusEl.textContent = 'Could not catch that. Tap below to retry.';
                 VoiceAssistant.isListening = false;
                 if (micEl) micEl.classList.remove('pulse-active');
+                document.querySelectorAll('#btn-voice-search, .btn-voice-search-route, .btn-voice-header').forEach(b => b.classList.remove('listening'));
             };
 
             rec.onend = () => {
                 VoiceAssistant.isListening = false;
                 if (micEl) micEl.classList.remove('pulse-active');
+                document.querySelectorAll('#btn-voice-search, .btn-voice-search-route, .btn-voice-header').forEach(b => b.classList.remove('listening'));
             };
 
             rec.start();
         } catch (e) {
             console.error("SpeechRec start failed:", e);
+            document.querySelectorAll('#btn-voice-search, .btn-voice-search-route, .btn-voice-header').forEach(b => b.classList.remove('listening'));
             Utils.showToast("Microphone permission required for voice search.", "error");
         }
     },
@@ -237,6 +241,7 @@ const VoiceAssistant = {
         if (modal) modal.classList.add('hidden');
         const micEl = document.getElementById('voice-modal-mic');
         if (micEl) micEl.classList.remove('pulse-active');
+        document.querySelectorAll('#btn-voice-search, .btn-voice-search-route, .btn-voice-header').forEach(b => b.classList.remove('listening'));
     },
 
     _handleVoiceRouteQuery: async (query) => {

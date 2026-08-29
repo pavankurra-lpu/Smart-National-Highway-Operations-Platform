@@ -316,14 +316,16 @@
                         </div>
                         <div class="route-inputs-container" style="gap:5px;">
                             <div class="route-input-group">
-                                <label class="route-input-label" style="font-size:8px; font-family:var(--font-display); letter-spacing:0.5px;">ORIGIN</label>
-                                <div class="route-field-wrapper" style="position:relative; display:flex; align-items:center;">
-                                    <input type="text" id="route-origin-input" placeholder="Search city, toll, or landmark..." autocomplete="off" style="font-size:11px; padding:5px 50px 5px 24px; width:100%; box-sizing:border-box;">
-                                    <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon" style="font-size:9.5px; position:absolute; left:7px;"></i>
-                                    <button type="button" id="btn-clear-origin" class="route-field-clear" style="display:none; position:absolute; right:26px;" title="Clear origin"><i class="fa-solid fa-circle-xmark"></i></button>
-                                    <button type="button" onclick="VoiceAssistant.startListening();" class="route-field-mic" title="Voice Search Route (Mic)" style="position:absolute; right:5px; background:rgba(234, 179, 8, 0.15); border:1px solid rgba(234, 179, 8, 0.3); color:#eab308; font-size:9.5px; cursor:pointer; width:19px; height:19px; border-radius:4px; display:flex; align-items:center; justify-content:center;">
-                                        <i class="fa-solid fa-microphone"></i>
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                                    <label class="route-input-label" style="font-size:8px; font-family:var(--font-display); letter-spacing:0.5px; margin:0;">ORIGIN</label>
+                                    <button type="button" id="btn-voice-search" onclick="VoiceAssistant.startListening();" class="btn-voice-search-route" title="Voice Search Route (Speech AI)">
+                                        <i class="fa-solid fa-microphone-lines"></i> Voice Search
                                     </button>
+                                </div>
+                                <div class="route-field-wrapper" style="position:relative; display:flex; align-items:center;">
+                                    <input type="text" id="route-origin-input" placeholder="Search city, toll, or landmark..." autocomplete="off" style="font-size:11px; padding:5px 28px 5px 24px; width:100%; box-sizing:border-box;">
+                                    <i class="fa-solid fa-location-crosshairs route-field-icon origin-icon" style="font-size:9.5px; position:absolute; left:7px;"></i>
+                                    <button type="button" id="btn-clear-origin" class="route-field-clear" style="display:none; position:absolute; right:6px;" title="Clear origin"><i class="fa-solid fa-circle-xmark"></i></button>
                                 </div>
                                 <div id="origin-suggestions" class="autocomplete-dropdown"></div>
                             </div>

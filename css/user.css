@@ -567,15 +567,18 @@ path.leaflet-interactive:focus,
     font-size: 11px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
     white-space: nowrap;
 }
-.snhop-tool-btn:hover,
-.snhop-tool-btn:active {
+.snhop-tool-btn:hover {
     background: rgba(234, 179, 8, 0.2);
-    border-color: rgba(234, 179, 8, 0.4);
-    color: #fff;
-    transform: translateY(-1px);
+    border-color: rgba(234, 179, 8, 0.45);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.25);
+}
+.snhop-tool-btn:active {
+    transform: scale(0.95);
 }
 .snhop-tool-btn i {
     color: #eab308;
@@ -1138,7 +1141,7 @@ input:checked + .slider:before {
     border-color: #eab308;
 }
 
-/* ===== VOICE BUTTON IN TAB PLAN ===== */
+/* ===== VOICE BUTTON IN TAB PLAN & ROUTE BOX ===== */
 .btn-voice-header {
     background: rgba(234, 179, 8, 0.12);
     border: 1px solid rgba(234, 179, 8, 0.35);
@@ -1155,7 +1158,7 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     flex-shrink: 0;
 }
 .btn-voice-header:hover,
@@ -1173,9 +1176,47 @@ input:checked + .slider:before {
     color: #ef4444 !important;
     animation: voicePulse 1s infinite alternate;
 }
+
+/* Dedicated Route Search Box Voice Button */
+.btn-voice-search-route {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.35);
+    color: #eab308;
+    font-size: 8.5px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin-left: auto;
+}
+.btn-voice-search-route:hover {
+    background: rgba(234, 179, 8, 0.25);
+    border-color: #eab308;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.35);
+}
+.btn-voice-search-route:active {
+    transform: scale(0.94);
+}
+.btn-voice-search-route.listening {
+    background: rgba(239, 68, 68, 0.25) !important;
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+    animation: voicePulse 1s infinite alternate;
+}
+
 @keyframes voicePulse {
     from { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
-    to { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    to { transform: scale(1.08); box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
 }
 
 /* ===== GOOGLE MAPS PLACE ACTION CARD ===== */
@@ -1490,14 +1531,21 @@ input:checked + .slider:before {
     font-size: 10.5px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
     -webkit-tap-highlight-color: transparent;
+}
+.place-action-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 .place-action-btn i {
     font-size: 14px;
 }
 .place-action-btn:active {
-    transform: scale(0.92);
+    transform: scale(0.94);
 }
 .place-action-btn.primary {
     background: rgba(234, 179, 8, 0.12);
@@ -1505,14 +1553,22 @@ input:checked + .slider:before {
     color: #eab308;
 }
 .place-action-btn.primary:hover {
-    background: rgba(234, 179, 8, 0.2);
+    background: rgba(234, 179, 8, 0.25);
+    border-color: #eab308;
     color: #ffffff;
+    box-shadow: 0 6px 18px rgba(234, 179, 8, 0.35);
 }
 .place-action-btn.start {
     background: linear-gradient(135deg, #eab308, #ca8a04);
-    border-color: rgba(234, 179, 8, 0.4);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(234, 179, 8, 0.35);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #1a1400;
+    font-weight: 800;
+    box-shadow: 0 4px 16px rgba(234, 179, 8, 0.4);
+}
+.place-action-btn.start:hover {
+    background: linear-gradient(135deg, #facc15, #d97706);
+    color: #1a1400;
+    box-shadow: 0 8px 22px rgba(234, 179, 8, 0.55);
 }
 
 /* Multi-Modal Transit Comparison (Road, Rail, Air) */

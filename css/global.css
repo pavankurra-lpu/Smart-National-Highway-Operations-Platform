@@ -66,25 +66,52 @@ html, body {
     -webkit-overflow-scrolling: touch;
 }
 ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(234, 179, 8, 0.35);
+    background: linear-gradient(180deg, rgba(234, 179, 8, 0.45) 0%, rgba(202, 138, 4, 0.55) 100%);
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: background 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(234, 179, 8, 0.85);
-    box-shadow: 0 0 10px rgba(234, 179, 8, 0.6);
+    background: linear-gradient(180deg, #facc15 0%, #eab308 100%);
+    box-shadow: 0 0 14px rgba(234, 179, 8, 0.85);
 }
 * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(234, 179, 8, 0.35) transparent;
+    scrollbar-color: rgba(234, 179, 8, 0.4) transparent;
+}
+
+/* ===== EMBLEM / LOGO LEVITATION & AURA (KokonutUI & AnimeJS) ===== */
+@keyframes emblemLevitate {
+    0%   { transform: translateY(0px); filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4)); }
+    100% { transform: translateY(-3px); filter: drop-shadow(0 6px 16px rgba(234, 179, 8, 0.35)); }
+}
+
+.nhai-emblem-unit img,
+.nhai-authority-unit svg,
+.nhai-gandhi-unit img,
+.entry-icon-emblem,
+.snhop-brand-icon,
+.card-icon-box {
+    animation: emblemLevitate 3.5s ease-in-out infinite alternate;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nhai-emblem-unit:hover img,
+.nhai-authority-unit:hover svg,
+.nhai-gandhi-unit:hover img,
+.entry-icon-emblem:hover,
+.snhop-brand-icon:hover,
+.card-icon-box:hover {
+    transform: perspective(300px) rotateY(6deg) scale(1.1) translateY(-2px);
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.5), inset 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 /* Official NHAI Header Bar with Satyameva Jayate */
@@ -111,6 +138,7 @@ html, body {
     display: flex;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
 }
 
 .nhai-text-authority {
@@ -154,6 +182,12 @@ html, body {
     color: #eab308;
     letter-spacing: 0.8px;
     font-family: var(--font-display);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.nhai-central-pill:hover {
+    background: rgba(234, 179, 8, 0.16);
+    border-color: rgba(234, 179, 8, 0.5);
+    transform: scale(1.04);
 }
 
 .nhai-central-dot {
@@ -339,7 +373,7 @@ body.light-mode .glass-panel {
     border-color: rgba(217, 143, 34, 0.15);
 }
 
-/* ===== REACTBITS BUTTON DESIGN SYSTEM (Shimmer Sweep) ===== */
+/* ===== REACTBITS & ANIMEJS BUTTON DESIGN SYSTEM (Spring Physics & Shimmer Sweep) ===== */
 .btn {
     padding: 7px 14px;
     border-radius: var(--radius-sm);
@@ -347,7 +381,7 @@ body.light-mode .glass-panel {
     font-size: 11.5px;
     font-family: var(--font-main);
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
     border: 1px solid transparent;
     display: inline-flex;
     align-items: center;
@@ -357,20 +391,25 @@ body.light-mode .glass-panel {
     user-select: none;
     overflow: hidden;
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Diagonal Shimmer Sweep Light Band */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Diagonal Shimmer Sweep Light Band (ReactBits) */
 .btn::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 40%;
-    height: 200%;
+    top: -60%;
+    left: -70%;
+    width: 45%;
+    height: 220%;
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.28),
+        rgba(255, 255, 255, 0.32),
         transparent
     );
     transform: rotate(25deg);
@@ -381,58 +420,73 @@ body.light-mode .glass-panel {
 
 .btn:hover::after {
     opacity: 1;
-    left: 120%;
+    left: 130%;
     transition: all 0.65s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary {
-    background: var(--primary);
+    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
     color: #1a1400;
     font-weight: 800;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35);
 }
 .btn-primary:hover {
-    background: var(--primary-hover);
+    background: linear-gradient(135deg, #facc15 0%, #d97706 100%);
     color: #1a1400;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 22px rgba(234, 179, 8, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(234, 179, 8, 0.5);
 }
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:active { transform: scale(0.95); }
 
 body.light-mode .btn-primary {
     color: #ffffff;
 }
 
 .btn-go {
-    background: var(--accent-green);
+    background: linear-gradient(135deg, #22a35d 0%, #166534 100%);
     color: #ffffff;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 16px rgba(34, 163, 93, 0.35);
 }
 .btn-go:hover {
-    background: #1c884d;
+    background: linear-gradient(135deg, #2ecc71 0%, #15803d 100%);
     color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 22px rgba(34, 163, 93, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(34, 163, 93, 0.45);
 }
-.btn-go:active { transform: translateY(0); }
+.btn-go:active { transform: scale(0.95); }
 
 .btn-danger {
-    background: var(--accent-red);
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
     color: #ffffff;
     font-weight: 700;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 16px rgba(224, 69, 58, 0.35);
 }
 .btn-danger:hover {
-    background: #c8382e;
+    background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
     color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 22px rgba(224, 69, 58, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(224, 69, 58, 0.45);
 }
-.btn-danger:active { transform: translateY(0); }
+.btn-danger:active { transform: scale(0.95); }
+
+.btn-cyan {
+    background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+    color: #ffffff;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.35);
+}
+.btn-cyan:hover {
+    background: linear-gradient(135deg, #22d3ee 0%, #0369a1 100%);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.45);
+}
+.btn-cyan:active { transform: scale(0.95); }
 
 .btn-outline {
     background: rgba(19, 27, 32, 0.6);
@@ -444,9 +498,32 @@ body.light-mode .btn-primary {
     background: var(--primary-dim);
     border-color: var(--primary);
     color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(234, 179, 8, 0.2);
+}
+.btn-outline:active { transform: scale(0.95); }
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
     transform: translateY(-1px);
 }
-.btn-outline:active { transform: translateY(0); }
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-sec);
+    border: 1px solid transparent;
+}
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
 
 /* ===== BADGES ===== */
 .badge {
