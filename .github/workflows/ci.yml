@@ -1,0 +1,38 @@
+﻿name: SNHOP Continuous Integration & Security Suite
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Run Full-Stack & Core Engine Test Suites
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm install
+
+      - name: Run Full-Stack Security & Integration Test Suite
+        run: node tests/test_full_stack.js
+
+      - name: Run Adaptive Lane Engine Mathematical Unit Tests
+        run: node tests/test_adaptive_engine.js
+
+      - name: Run GNSS Toll Matcher Geodesic Unit Tests
+        run: node tests/test_gnss_matcher.js

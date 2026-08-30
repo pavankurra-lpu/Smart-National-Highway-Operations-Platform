@@ -1,0 +1,23 @@
+﻿{
+  "name": "smart-national-highway-operations-platform",
+  "version": "2.0.0",
+  "description": "Smart National Highway Operations Platform (SNHOP) - Intelligent Indian Highway Operations, GNSS Tolling & Dynamic Adaptive Decision Engine",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "node tests/test_full_stack.js && node tests/test_adaptive_engine.js && node tests/test_gnss_matcher.js",
+    "test:stack": "node tests/test_full_stack.js",
+    "test:adaptive": "node tests/test_adaptive_engine.js",
+    "test:gnss": "node tests/test_gnss_matcher.js",
+    "start": "node backend/server.js"
+  },
+  "keywords": [
+    "nhai",
+    "fastag",
+    "smart-highways",
+    "gnss-tolling",
+    "its",
+    "adaptive-decision-engine"
+  ],
+  "author": "SNHOP Engineering Team",
+  "license": "MIT"
+}

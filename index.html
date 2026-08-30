@@ -7,6 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/global.css?v=20260823_v4">
+    <script>
+        // Pre-warmup Render backend immediately upon initial landing page hit
+        (function() {
+            try {
+                fetch('https://smart-national-highway-operations.onrender.com/health', { mode: 'cors', cache: 'no-cache' }).catch(function(){});
+            } catch(e){}
+        })();
+    </script>
     
     <style>
         /* Base Overrides for Premium Portal Gateway */
@@ -774,7 +782,7 @@
                 <h3 style="margin: 0; color: #fff; font-size: 18px; font-weight: 700;">
                     <i class="fa-solid fa-laptop-code" style="color: var(--primary);"></i> About SNHOP
                 </h3>
-                <button onclick="document.getElementById('about-project-modal').classList.add('hidden')" style="background: none; border: none; color: var(--text-sec); cursor: pointer; font-size: 18px;">
+                <button aria-label="Close dialog" onclick="document.getElementById('about-project-modal').classList.add('hidden')" style="background: none; border: none; color: var(--text-sec); cursor: pointer; font-size: 18px;">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>

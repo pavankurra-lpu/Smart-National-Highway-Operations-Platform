@@ -66,6 +66,42 @@ const TrafficEngine = {
         }, 300000);
     },
 
+    /**
+     * Compute real-time highway corridor congestion from OSRM velocity & Open-Meteo weather
+     * @param {number} distanceKm - Route distance in kilometers
+     * @param {number} durationMin - Route estimated duration in minutes
+     * @param {Object} [weather] - Real-time Open-Meteo weather parameters
+     * @returns {Object} Physical congestion metrics, avg velocity, and delay projection
+     */
+    evaluateCorridorCongestion: (distanceKm, durationMin, weather) => {
+        if (!distanceKm || !durationMin) return { score: 0.1, status: 'NORMAL', avgSpeedKmH: 80, delayMinutes: 0 };
+        const avgSpeedKmH = distanceKm / (durationMin / 60);
+        
+        // National Highway Baseline Speed is ~85 km/h
+        const baselineSpeed = 85.0;
+        const speedRatio = Math.min(1.2, avgSpeedKmH / baselineSpeed);
+        
+        // Physical weather impedance from Open-Meteo
+        let weatherImpedance = 0.0;
+        if (weather) {
+            if (weather.precipitation > 5.0 || weather.rain > 5.0) weatherImpedance += 0.15;
+            if (weather.visibility && weather.visibility < 2000) weatherImpedance += 0.12;
+        }
+
+        const congestionScore = Math.min(1.0, Math.max(0.0, (1.0 - speedRatio * 0.85) + weatherImpedance));
+        
+        let status = 'NORMAL';
+        if (congestionScore > 0.48) status = 'HIGH';
+        else if (congestionScore > 0.25) status = 'MODERATE';
+
+        return {
+            score: parseFloat(congestionScore.toFixed(2)),
+            status,
+            avgSpeedKmH: Math.round(avgSpeedKmH),
+            delayMinutes: Math.max(0, Math.round(durationMin - (distanceKm / (baselineSpeed / 60))))
+        };
+    },
+
     // Simulate sending data (for testing)
     simulateTrafficData: () => {
         if (window.RealtimeService && RealtimeService.socket) {

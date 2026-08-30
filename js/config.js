@@ -95,3 +95,16 @@ const NHAI_CONFIG = {
 };
 
 window.NHAI_CONFIG = NHAI_CONFIG;
+
+// Automated Background Backend Warmup & Keep-Alive (Prevents Render cold-start sleep during demos)
+(function initBackendWarmup() {
+    if (typeof window === 'undefined') return;
+    const ping = () => {
+        const backendUrl = window.NHAI_CONFIG?.backend?.url || 'https://smart-national-highway-operations.onrender.com';
+        try {
+            fetch(`${backendUrl}/health`, { mode: 'cors', cache: 'no-cache' }).catch(() => {});
+        } catch (e) {}
+    };
+    ping();
+    setInterval(ping, 4 * 60 * 1000); // 4-minute interval
+})();
