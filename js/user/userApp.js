@@ -30,6 +30,23 @@ const UserApp = {
             });
         });
 
+        // Global switchTab helper for command palette and shortcuts
+        window.switchTab = (tabId) => {
+            const map = {
+                'tab-planner': 'tab-btn-plan',
+                'tab-plan': 'tab-btn-plan',
+                'tab-wallet': 'tab-btn-fastag',
+                'tab-fastag': 'tab-btn-fastag',
+                'tab-sos': 'tab-btn-sos',
+                'tab-garage': 'tab-btn-settings',
+                'tab-settings': 'tab-btn-settings',
+                'tab-analytics': 'tab-btn-analytics'
+            };
+            const btnId = map[tabId] || tabId;
+            const btn = document.getElementById(btnId);
+            if (btn) btn.click();
+        };
+
         // AI Voice Toggle Persistence
         const voiceToggle = document.getElementById('pref-voice-enable');
         if (voiceToggle) {

@@ -2716,47 +2716,6 @@ body.light-mode .theme-toggle-btn.btn.btn-outline {
     color: var(--primary) !important;
 }
 
-/* ===== TOLL EXPLORER TOOL ===== */
-/* ===== TOLL EXPLORER (TAB-BASED) ===== */
-.explorer-card {
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-light);
-    padding: 20px;
-    margin-bottom: 12px;
-}
-
-.explorer-tab-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-
-.explorer-tab-desc {
-    font-size: 11px;
-    color: var(--text-sec);
-    line-height: 1.5;
-    margin-bottom: 18px;
-}
-
-.ex-stat-card {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border-light);
-    padding: 14px;
-    border-radius: var(--radius-sm);
-    text-align: center;
-}
-
-.ex-stat-val {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--primary);
-}
-
 /* Selection Mode Cursor */
 .selection-mode-active #map {
     cursor: crosshair !important;

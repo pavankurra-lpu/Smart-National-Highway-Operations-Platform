@@ -22,7 +22,6 @@ const Notifications = {
         // 3. Listen to Realtime WebSocket if connected
         if (window.RealtimeService && RealtimeService.socket) {
             RealtimeService.socket.on('admin-broadcast', (data) => {
-                console.log('[Notifications] Received live admin broadcast over socket:', data);
                 if (data && data.alertData) {
                     Storage.addAdminAlert(data.alertData);
                     Notifications.updateAdvisory();

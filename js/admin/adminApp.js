@@ -132,7 +132,7 @@ const AdminApp = {
                     AdminApp.updateVehicleMarker({ tripId, ...data[tripId] });
                 }
             })
-            .catch(() => console.log('Active journeys server offline'));
+            .catch(() => {});
     },
 
     initMap: () => {

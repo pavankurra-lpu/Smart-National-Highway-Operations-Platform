@@ -6,7 +6,6 @@ const RealtimeService = {
 
     init: () => {
         if (typeof io === 'undefined') {
-            console.log('[Realtime] Socket.io client not loaded. Running in local simulation mode.');
             return;
         }
 
@@ -18,12 +17,11 @@ const RealtimeService = {
                 timeout: 5000
             });
         } catch (e) {
-            console.warn('[Realtime] Failed to initialize socket connection:', e.message);
+            console.warn('[Realtime] Socket connection error:', e.message);
             return;
         }
 
         RealtimeService.socket.on('connect', () => {
-            console.log('⚡ [Realtime] Connected to SNHOP Live Server:', RealtimeService.socket.id);
             const badge = document.getElementById('connection-status');
             if (badge) { 
                 badge.style.color = '#10b981'; 
@@ -42,8 +40,6 @@ const RealtimeService = {
 
         // 1. Live Incident Events (SOS Emergency Logged)
         RealtimeService.socket.on('incident-created', (incident) => {
-            console.log('🚨 [Realtime] New Incident Raised:', incident);
-            
             // Sync to local storage
             const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
             if (!emergencies.some(e => e.id === incident.id)) {
@@ -67,7 +63,6 @@ const RealtimeService = {
 
         // 2. Incident Status Updates (Dispatched / Acknowledged)
         RealtimeService.socket.on('incident-updated', (incident) => {
-            console.log('ℹ️ [Realtime] Incident Updated:', incident);
             const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
             const idx = emergencies.findIndex(e => e.id === incident.id);
             if (idx !== -1) {
@@ -87,7 +82,6 @@ const RealtimeService = {
 
         // 3. Incident Resolved (Admin closed case with proof)
         RealtimeService.socket.on('incident-resolved', (incident) => {
-            console.log('✅ [Realtime] Incident Resolved by Admin:', incident);
             const emergencies = Storage.get(Storage.KEYS.EMERGENCIES, []);
             const idx = emergencies.findIndex(e => e.id === incident.id);
             if (idx !== -1) {
@@ -125,7 +119,6 @@ const RealtimeService = {
 
         // 5. Live FASTag Financial Balance Sync
         RealtimeService.socket.on('wallet-updated', (data) => {
-            console.log('💳 [Realtime] Wallet Updated:', data);
             if (typeof data.newBalance === 'number') {
                 Storage.set(Storage.KEYS.FASTAG_BALANCE, data.newBalance);
                 
@@ -146,7 +139,6 @@ const RealtimeService = {
 
         // 6. Global Admin Alert Broadcast
         RealtimeService.socket.on('broadcast-alert', (alert) => {
-            console.log('📢 [Realtime] Broadcast Alert Received:', alert);
             const currentAlerts = Storage.get(Storage.KEYS.ADMIN_ALERTS, []);
             if (!currentAlerts.some(a => a.id === alert.id)) {
                 currentAlerts.unshift(alert);
@@ -168,7 +160,6 @@ const RealtimeService = {
         });
 
         RealtimeService.socket.on('disconnect', () => {
-            console.log('[Realtime] Disconnected from server. Operating in offline simulation mode.');
             const badge = document.getElementById('connection-status');
             if (badge) { 
                 badge.style.color = '#ef4444'; 

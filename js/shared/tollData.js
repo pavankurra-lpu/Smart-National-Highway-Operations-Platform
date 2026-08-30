@@ -6,7 +6,6 @@ const TollData = {
         // Remove legacy copy if present to free up localStorage budget
         if (localStorage.getItem('nhai_tolls')) {
             localStorage.removeItem('nhai_tolls');
-            console.log('TollData: cleared legacy localStorage copy to free space.');
         }
         // Filter out any fake/erroneous tolls outside India's bounding box
         if (window.TollSeedData) {
@@ -16,7 +15,6 @@ const TollData = {
                        toll.lng >= 68.0 && toll.lng <= 97.5;
             });
         }
-        console.log(`TollData ready: ${(window.TollSeedData || []).length} plazas loaded.`);
     },
 
     getAllTolls: () => {

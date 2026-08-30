@@ -2504,7 +2504,6 @@ const IndiaMapPlanner = {
             }
         });
 
-        console.log(`[TollEngine] Matched ${tolls.length} tolls in journey order for vehicle ${vehicleType}. Total Cost: ₹${totalTollCost} (Distance: ${realDistKm.toFixed(1)} km)`);
         return { tolls, totalTollCost, totalCost: totalTollCost };
     },
 

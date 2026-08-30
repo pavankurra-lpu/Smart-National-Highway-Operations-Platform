@@ -2,8 +2,7 @@ const PushNotifications = {
     init: () => {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js')
-                .then(() => console.log('Service worker registered'))
-                .catch(err => console.error('Service worker failed:', err));
+                .catch(err => console.warn('Service worker not registered:', err.message));
         }
         
         if (Notification.permission === 'default') {

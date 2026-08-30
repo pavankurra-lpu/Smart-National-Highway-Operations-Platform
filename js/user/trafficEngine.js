@@ -19,7 +19,6 @@ const TrafficEngine = {
 
         // Listen for live traffic intensity updates
         socket.on('traffic-update', (data) => {
-            console.log('[Traffic] Live Update:', data);
             TrafficEngine.updateTrafficOnMap(data);
         });
 

@@ -60,7 +60,6 @@ const Storage = {
                     localStorage.setItem(key, JSON.stringify(val));
                 }
             }
-            console.log('[Storage] Successfully synced state from backend');
             window.dispatchEvent(new Event('local-storage-update'));
         } catch (e) {
             console.warn('[Storage] Backend server unreachable. Falling back to local offline cache.');
@@ -257,8 +256,6 @@ const Storage = {
             'TRP-V5': { lat: 12.9716, lng: 77.5946, timestamp: new Date().toISOString() }  // Bangalore
         };
         Storage.set('nhai_live_positions', livePos);
-
-        console.log('[Storage] Demo data seeded successfully.');
     }
 };
 
