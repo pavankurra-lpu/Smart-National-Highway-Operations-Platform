@@ -1,0 +1,19 @@
+﻿services:
+  - type: web
+    name: smart-national-highway-operations
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: ADMIN_ID
+        value: admin@nhai
+      - key: ADMIN_PASS_HASH
+        value: $2b$10$C8CF7RuY3l69ya.IOrGJpuD2SpWASx9PJoyvJ8E1eN2kVckj4CRei
+      - key: JWT_SECRET
+        generateValue: true
