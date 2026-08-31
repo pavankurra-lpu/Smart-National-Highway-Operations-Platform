@@ -16,9 +16,9 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
-const ADMIN_ID = process.env.ADMIN_ID || 'admin@nhai';
+const ADMIN_ID = (process.env.ADMIN_ID || 'admin@nhai').trim().toLowerCase();
 const ADMIN_PASS = process.env.ADMIN_PASS || 'NHAI@2026';
-const ADMIN_HASH = process.env.ADMIN_HASH || bcrypt.hashSync(ADMIN_PASS, 10);
+const ADMIN_HASH = process.env.ADMIN_PASS_HASH || (process.env.ADMIN_HASH || bcrypt.hashSync(ADMIN_PASS, 10));
 
 app.use(rateLimit({ windowMs: 60 * 1000, max: 600 }));
 
@@ -209,26 +209,13 @@ app.post('/api/auth/admin/login', loginLimiter, (req, res) => {
     const cleanId = id.trim().toLowerCase();
     const cleanPass = pass.trim();
 
-    const validAdminIds = [
-        ADMIN_ID.toLowerCase(),
-        'admin@nhai',
-        'officer@nhai',
-        'admin',
-        'nhai@admin',
-        'superadmin@nhai'
-    ];
-
-    const idMatches = validAdminIds.includes(cleanId);
+    const idMatches = (cleanId === ADMIN_ID);
     let passMatches = false;
 
     try {
         passMatches = bcrypt.compareSync(cleanPass, ADMIN_HASH);
     } catch (e) {
         passMatches = false;
-    }
-
-    if (!passMatches) {
-        passMatches = (cleanPass === ADMIN_PASS || cleanPass === 'NHAI@2026' || cleanPass.toLowerCase() === 'nhai@2026');
     }
 
     if (idMatches && passMatches) {

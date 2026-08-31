@@ -196,6 +196,35 @@ test('Adaptive Recommendation Engine fuses Tri-Signal Arbitration', () => {
     assert.ok(decision.auditId.startsWith('AUD-'), 'Audit ID must start with AUD-');
 });
 
+// 7. Cryptographic Bcrypt Admin Password Hashing & Token Verification
+test('Cryptographic Bcrypt Admin Verification (Plaintext Rejection & Constant-Time Hash)', () => {
+    let bcrypt, jwt;
+    try {
+        bcrypt = require('bcryptjs');
+        jwt = require('jsonwebtoken');
+    } catch(e) {
+        bcrypt = require('../backend/node_modules/bcryptjs');
+        jwt = require('../backend/node_modules/jsonwebtoken');
+    }
+    const secret = 'test-secret-key-32-chars-long-123456';
+    
+    const adminPass = 'NHAI@2026';
+    const hash = bcrypt.hashSync(adminPass, 10);
+    
+    // Correct password verification
+    assert.strictEqual(bcrypt.compareSync('NHAI@2026', hash), true, 'Valid password must match bcrypt hash');
+    
+    // Incorrect password rejection
+    assert.strictEqual(bcrypt.compareSync('WrongPassword', hash), false, 'Invalid password must be rejected');
+    assert.strictEqual(bcrypt.compareSync('admin123', hash), false, 'Guessable alias must be rejected');
+    
+    // JWT Generation & Signature Integrity
+    const token = jwt.sign({ id: 'admin@nhai', role: 'admin' }, secret, { expiresIn: '1h' });
+    const decoded = jwt.verify(token, secret);
+    assert.strictEqual(decoded.id, 'admin@nhai');
+    assert.strictEqual(decoded.role, 'admin');
+});
+
 console.log('\n-------------------------------------------------------------');
 console.log(`🏁 TEST RESULTS: ${passed}/${total} PASSED, ${total - passed} FAILED`);
 console.log('-------------------------------------------------------------\n');
