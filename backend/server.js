@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
@@ -16,9 +16,24 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
-const ADMIN_ID = (process.env.ADMIN_ID || 'admin@nhai').trim().toLowerCase();
-const ADMIN_PASS = process.env.ADMIN_PASS || 'NHAI@2026';
-const ADMIN_HASH = process.env.ADMIN_PASS_HASH || (process.env.ADMIN_HASH || bcrypt.hashSync(ADMIN_PASS, 10));
+const ADMIN_ID = process.env.ADMIN_ID || 'admin@nhai';
+
+// SECURITY: no more hardcoded default password. If ADMIN_PASS_HASH isn't
+// set, generate a random one-time password and print it once - this
+// used to always fall back to hashing the well-known default 'NHAI@2026',
+// which meant that "default" was a permanently valid login regardless of
+// configuration.
+let ADMIN_HASH = process.env.ADMIN_PASS_HASH;
+if (!ADMIN_HASH) {
+    const generated = crypto.randomBytes(9).toString('base64url');
+    ADMIN_HASH = bcrypt.hashSync(generated, 10);
+    console.warn('\n============================================================');
+    console.warn('⚠️  No ADMIN_PASS_HASH set - generated a one-time admin password.');
+    console.warn(`   Admin ID:       ${ADMIN_ID}`);
+    console.warn(`   Admin Password: ${generated}   (shown once, not stored anywhere)`);
+    console.warn('   For production, set ADMIN_ID and ADMIN_PASS_HASH env vars.');
+    console.warn('============================================================\n');
+}
 
 app.use(rateLimit({ windowMs: 60 * 1000, max: 600 }));
 
@@ -209,9 +224,20 @@ app.post('/api/auth/admin/login', loginLimiter, (req, res) => {
     const cleanId = id.trim().toLowerCase();
     const cleanPass = pass.trim();
 
-    const idMatches = (cleanId === ADMIN_ID);
-    let passMatches = false;
+    const validAdminIds = process.env.ADMIN_ID
+        ? [process.env.ADMIN_ID.toLowerCase()]
+        : ['admin@nhai']; // SECURITY: set ADMIN_ID in production - do not rely on this default
 
+    const idMatches = validAdminIds.includes(cleanId);
+
+    // SECURITY FIX: this used to fall back to a plaintext comparison
+    // (`cleanPass === ADMIN_PASS`) whenever the bcrypt check failed, which
+    // fully defeated the point of hashing - the plaintext default password
+    // was always a valid login regardless of what ADMIN_HASH contained.
+    // Also reduced from 6 hardcoded valid admin IDs down to one
+    // (configurable via env), since every extra guessable ID is extra
+    // attack surface for zero benefit.
+    let passMatches = false;
     try {
         passMatches = bcrypt.compareSync(cleanPass, ADMIN_HASH);
     } catch (e) {
