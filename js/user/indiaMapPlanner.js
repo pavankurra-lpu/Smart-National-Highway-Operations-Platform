@@ -1851,13 +1851,15 @@ const IndiaMapPlanner = {
                 const tollIcon = L.divIcon({
                     className: 'snhop-toll-marker-unit',
                     html: `
-                        <div style="display:inline-flex; align-items:center; gap:4px; background:rgba(9,9,11,0.92); border:1px solid #10b981; border-radius:12px; padding:2px 6px; box-shadow:0 4px 12px rgba(0,0,0,0.6); transform:translate(-50%, -50%); cursor:pointer;">
-                            <span style="font-size:12px; line-height:1;">${emoji}</span>
-                            <span style="font-size:10px; font-weight:800; color:#10b981; font-family:var(--font-display),sans-serif; line-height:1;">${displayCost}</span>
+                        <div class="snhop-toll-symbol-marker on-route" style="display:inline-flex; align-items:center; justify-content:center; gap:4px; background:rgba(9, 13, 16, 0.95); border:1.5px solid #10b981; border-radius:12px; padding:3px 7px; box-shadow:0 4px 12px rgba(0,0,0,0.8), 0 0 10px rgba(16,185,129,0.5); transform:translate(-50%, -50%); cursor:pointer; font-family:var(--font-display),sans-serif;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 21h18M5 21V7l7-3 7 3v14M9 21v-6a3 3 0 0 1 6 0v6"/>
+                            </svg>
+                            <span style="font-size:10.5px; font-weight:800; color:#10b981; line-height:1;">${displayCost}</span>
                         </div>
                     `,
-                    iconSize: [50, 20],
-                    iconAnchor: [25, 10]
+                    iconSize: [54, 22],
+                    iconAnchor: [27, 11]
                 });
                 const m = L.marker([markerLat, markerLng], { icon: tollIcon })
                     .bindPopup(IndiaMapPlanner._tollPopup(td, t.cost))
@@ -3216,9 +3218,17 @@ const IndiaMapPlanner = {
             const congColors  = { NORMAL:'#00e5b3', MODERATE:'#fbbf24', HIGH:'#ff4d6d' };
             const cc          = congColors[congestion] || '#00e5b3';
             const icon        = L.divIcon({
-                className: '',
-                html: `<div style='background:${cc};width:10px;height:10px;border-radius:50%;border:1.5px solid #020c18;box-shadow:0 0 6px ${cc};'></div>`,
-                iconSize: [10,10], iconAnchor: [5,5]
+                className: 'snhop-toll-symbol-unit',
+                html: `
+                    <div class="snhop-toll-symbol-marker" style="display:inline-flex; align-items:center; justify-content:center; gap:3px; background:rgba(9, 13, 16, 0.94); border:1.5px solid ${cc}; border-radius:10px; padding:2px 6px; box-shadow:0 3px 8px rgba(0,0,0,0.8), 0 0 8px ${cc}55; transform:translate(-50%, -50%); cursor:pointer; font-family:var(--font-display),sans-serif;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${cc}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18M5 21V7l7-3 7 3v14M9 21v-6a3 3 0 0 1 6 0v6"/>
+                        </svg>
+                        <span style="font-size:9px; font-weight:800; color:${cc}; letter-spacing:0.5px; line-height:1;">TOLL</span>
+                    </div>
+                `,
+                iconSize: [46, 20],
+                iconAnchor: [23, 10]
             });
             try {
                 const m = L.marker([toll.lat, toll.lng], { icon })
