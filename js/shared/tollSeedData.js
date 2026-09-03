@@ -2,8 +2,7 @@ const TollSeedData = [
   {
     "id": "TP_1002",
     "name": "Bharthana Toll Plaza",
-    "lat": 22.8795482,
-    "lng": 88.0131272,
+    "lat": 22.0144231, "lng": 73.11493999999999,
     "state": "Gujarat",
     "district": "Vadodara",
     "nhCorridor": "NH-48 (old NH-8)",
@@ -2074,8 +2073,7 @@ const TollSeedData = [
   {
     "id": "TP_34001",
     "name": "Raikal Toll Plaza",
-    "lat": 26.539,
-    "lng": 74.603,
+    "lat": 17.0059277, "lng": 78.19433699999999,
     "state": "Telangana",
     "district": "Ajmer",
     "nhCorridor": "NH-44",
@@ -2851,8 +2849,7 @@ const TollSeedData = [
   {
     "id": "TP_50001",
     "name": "Niyamatpur Ekrotiya Toll Plaza",
-    "lat": 26.9742,
-    "lng": 75.8383,
+    "lat": 28.814313900000002, "lng": 78.9023043,
     "state": "Uttar Pradesh",
     "district": "Jaipur",
     "nhCorridor": "NH-24 (New NH-9)",
@@ -7698,8 +7695,7 @@ const TollSeedData = [
   {
     "id": "TP_220001",
     "name": "Raipur",
-    "lat": 21.2316,
-    "lng": 81.5678,
+    "lat": 26.0636352, "lng": 74.0594266,
     "state": "Rajasthan",
     "district": "Raipur",
     "nhCorridor": "NH-14",
@@ -12471,8 +12467,7 @@ const TollSeedData = [
   {
     "id": "TP_320058",
     "name": "Fatehpur Rampur",
-    "lat": 25.216851,
-    "lng": 76.539499,
+    "lat": 28.4402062, "lng": 77.5883913,
     "state": "Uttar Pradesh",
     "district": "Fatehpur",
     "nhCorridor": "NH-NE-II",
@@ -12619,8 +12614,7 @@ const TollSeedData = [
   {
     "id": "TP_320063",
     "name": "Katoghan Toll Plaza",
-    "lat": 25.153851,
-    "lng": 76.431499,
+    "lat": 25.7495002, "lng": 81.17042169999999,
     "state": "Uttar Pradesh",
     "district": "Fatehpur",
     "nhCorridor": "NH-2 (New 19)",
@@ -12878,8 +12872,7 @@ const TollSeedData = [
   {
     "id": "TP_320070",
     "name": "Bara Toll Plaza",
-    "lat": 17.609642,
-    "lng": 78.398525,
+    "lat": 26.6298197, "lng": 81.3331651,
     "state": "Uttar Pradesh",
     "district": "Sultanpur",
     "nhCorridor": "NH-56",
@@ -24015,8 +24008,7 @@ const TollSeedData = [
   {
     "id": "TP_350031",
     "name": "Komalla",
-    "lat": 27.620801,
-    "lng": 77.789145,
+    "lat": 17.7774163, "lng": 79.2835625,
     "state": "Telangana",
     "district": "Mathura",
     "nhCorridor": "NH-163",
@@ -24348,8 +24340,7 @@ const TollSeedData = [
   {
     "id": "TP_350043",
     "name": "Baiti Kala Plaza",
-    "lat": 17.592242,
-    "lng": 78.304325,
+    "lat": 26.0544377, "lng": 82.33940419999999,
     "state": "Uttar Pradesh",
     "district": "Sultanpur",
     "nhCorridor": "NH-56 ( New NH-31)",
@@ -24496,8 +24487,7 @@ const TollSeedData = [
   {
     "id": "TP_350047",
     "name": "Baloh fee plaza",
-    "lat": 22.083346,
-    "lng": 82.124231,
+    "lat": 31.420149900000002, "lng": 76.7979751,
     "state": "Himachal Pradesh",
     "district": "Bilaspur",
     "nhCorridor": "NH-21",
@@ -28492,8 +28482,7 @@ const TollSeedData = [
   {
     "id": "TP_360061",
     "name": "Vennathur Toll Plaza",
-    "lat": 16.372337,
-    "lng": 80.395193,
+    "lat": 9.542681499999999, "lng": 78.8635372,
     "state": "Tamil Nadu",
     "district": "Guntur",
     "nhCorridor": "NH-210 (new-536)",
@@ -30046,8 +30035,7 @@ const TollSeedData = [
   {
     "id": "TP_375026",
     "name": "Bideibadkudar Toll Plaza",
-    "lat": 26.3254,
-    "lng": 72.576116,
+    "lat": 21.5057729, "lng": 85.0582817,
     "state": "Odisha",
     "district": "DEOGARH",
     "nhCorridor": "NH-6",
@@ -37594,8 +37582,7 @@ const TollSeedData = [
   {
     "id": "TP_536458",
     "name": "Balani plaza",
-    "lat": 26.2051,
-    "lng": 72.692216,
+    "lat": 21.587733, "lng": 84.9923697,
     "state": "Odisha",
     "district": "DEOGARH",
     "nhCorridor": "NH-143",

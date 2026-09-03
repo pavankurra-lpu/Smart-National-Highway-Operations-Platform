@@ -324,7 +324,7 @@ path.leaflet-interactive:focus,
     padding: 2px 8px !important;
     border-radius: 4px !important;
 }
-.leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before {
+.leaflet-tooltip-top:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before, .leaflet-tooltip-bottom:before {
     display: none !important;
 }
 
@@ -1890,7 +1890,7 @@ body.light-mode #admin-broadcasts-panel {
 }
 
 body.light-mode .fastag-card {
-    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 60%, #e0e7ff 100%) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #fefaf0 60%, #fef3c7 100%) !important;
     border-color: rgba(234, 179, 8, 0.2) !important;
     box-shadow: 0 15px 35px rgba(234, 179, 8, 0.12);
 }
@@ -2239,17 +2239,17 @@ body.light-mode .google-ac-item:hover {
 .google-ac-icon-box.icon-airport   { background: linear-gradient(135deg, #ca8a04, #a16207); color: #ffffff; box-shadow: 0 3px 10px rgba(202,138,4,0.35); }
 .google-ac-icon-box.icon-station   { background: linear-gradient(135deg, #e11d48, #be123c); color: #ffffff; box-shadow: 0 3px 10px rgba(225,29,72,0.35); }
 .google-ac-icon-box.icon-toll      { background: linear-gradient(135deg, #d97706, #b45309); color: #ffffff; box-shadow: 0 3px 10px rgba(217,119,6,0.35); }
-.google-ac-icon-box.icon-shrine    { background: linear-gradient(135deg, #ea580c, #c2410c); color: #ffffff; box-shadow: 0 3px 10px rgba(234,88,12,0.35); }
+.google-ac-icon-box.icon-shrine    { background: linear-gradient(135deg, #a16207, #713f12); color: #ffffff; box-shadow: 0 3px 10px rgba(161,98,7,0.35); }
 .google-ac-icon-box.icon-beach     { background: linear-gradient(135deg, #06b6d4, #0891b2); color: #ffffff; box-shadow: 0 3px 10px rgba(6,182,212,0.35); }
 .google-ac-icon-box.icon-landmark  { background: linear-gradient(135deg, #854d0e, #713f12); color: #ffffff; box-shadow: 0 3px 10px rgba(133,77,14,0.35); }
 .google-ac-icon-box.icon-hospital  { background: linear-gradient(135deg, #dc2626, #991b1b); color: #ffffff; box-shadow: 0 3px 10px rgba(220,38,38,0.35); }
-.google-ac-icon-box.icon-institute { background: linear-gradient(135deg, #0d9488, #0f766e); color: #ffffff; box-shadow: 0 3px 10px rgba(13,148,136,0.35); }
+.google-ac-icon-box.icon-institute { background: linear-gradient(135deg, #0d9488, #0f766e); color: #ffffff; box-shadow: 0 3px 10px rgba(133,77,14,0.35); }
 .google-ac-icon-box.icon-tech      { background: linear-gradient(135deg, #d97706, #b45309); color: #ffffff; box-shadow: 0 3px 10px rgba(217,119,6,0.35); }
-.google-ac-icon-box.icon-mall      { background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: #ffffff; box-shadow: 0 3px 10px rgba(139,92,246,0.35); }
+.google-ac-icon-box.icon-mall      { background: linear-gradient(135deg, #c026d3, #a21caf); color: #ffffff; box-shadow: 0 3px 10px rgba(192,38,211,0.35); }
 .google-ac-icon-box.icon-fuel      { background: linear-gradient(135deg, #ca8a04, #a16207); color: #ffffff; box-shadow: 0 3px 10px rgba(202,138,4,0.35); }
 .google-ac-icon-box.icon-hotel     { background: linear-gradient(135deg, #65a30d, #4d7c0f); color: #ffffff; box-shadow: 0 3px 10px rgba(101,163,13,0.35); }
 .google-ac-icon-box.icon-city      { background: linear-gradient(135deg, #22a35d, #1c884d); color: #ffffff; box-shadow: 0 3px 10px rgba(34, 163, 93,0.35); }
-.google-ac-icon-box.icon-food      { background: linear-gradient(135deg, #f97316, #c2410c); color: #ffffff; box-shadow: 0 3px 10px rgba(249,115,22,0.35); }
+.google-ac-icon-box.icon-food      { background: linear-gradient(135deg, #db2777, #9d174d); color: #ffffff; box-shadow: 0 3px 10px rgba(219,39,119,0.35); }
 .google-ac-icon-box.icon-village   { background: linear-gradient(135deg, #15803d, #14532d); color: #ffffff; box-shadow: 0 3px 10px rgba(21,128,61,0.35); }
 .google-ac-icon-box.icon-building  { background: linear-gradient(135deg, #a16207, #713f12); color: #ffffff; box-shadow: 0 3px 10px rgba(161,98,7,0.35); }
 .google-ac-icon-box.icon-govt      { background: linear-gradient(135deg, #64748b, #334155); color: #ffffff; box-shadow: 0 3px 10px rgba(100,116,139,0.35); }
@@ -2492,8 +2492,6 @@ body.light-mode .google-ac-subtitle {
         font-size: 9.5px !important;
     }
 
-
-
     /* Google Maps Floating Action Buttons (FABs) on Mobile */
     .mobile-fab-stack {
         position: fixed !important;
@@ -2694,8 +2692,6 @@ body.light-mode .leaflet-control-zoom a {
     background: rgba(248,252,255,0.97) !important;
     color: var(--primary) !important;
 }
-
-
 
 /* ===== THEME TOGGLE BUTTON — force circle ===== */
 .theme-toggle-btn.btn.btn-outline {
@@ -3755,7 +3751,7 @@ body.navigating-3d-hud #sidebar-toggle {
 }
 .pre-toll-stat-val.fee { color: #fde047; }
 .pre-toll-stat-val.cur-bal { color: #34d399; }
-.pre-toll-stat-val.rem-bal { color: #38bdf8; }
+.pre-toll-stat-val.rem-bal { color: #fb7185; }
 
 .pre-toll-footer-note {
     font-size: 9px;
