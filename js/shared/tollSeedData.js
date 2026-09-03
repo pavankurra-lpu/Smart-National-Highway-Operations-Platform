@@ -1,11 +1,11 @@
 // NHAI Verified Toll Plazas Master Dataset
-// 1,185 Toll Plazas mapped with precise National Highway coordinates and vehicle class fee schedules
+// 1,185 Toll Plazas mapped with precise National Highway physical canopy coordinates
 const TollSeedData = [
   {
     "id": "TP_1002",
     "name": "Bharthana Toll Plaza",
-    "lat": 22.0144231,
-    "lng": 73.11493999999999,
+    "lat": 22.014659,
+    "lng": 73.11508,
     "state": "Gujarat",
     "district": "Vadodara",
     "nhCorridor": "NH-48 (old NH-8)",
@@ -36,13 +36,15 @@ const TollSeedData = [
       "MAV_4_6": 1090,
       "OVERSIZED": 1345,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_2001",
     "name": "Boriach Toll Plaza",
-    "lat": 20.8851,
-    "lng": 73.052567,
+    "lat": 20.885673,
+    "lng": 73.052127,
     "state": "Gujarat",
     "district": "Navsari",
     "nhCorridor": "NH-48",
@@ -73,13 +75,15 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_2002",
     "name": "Charoti Toll Plaza",
-    "lat": 19.8905644,
-    "lng": 72.9427231,
+    "lat": 19.890434,
+    "lng": 72.942712,
     "state": "Maharashtra",
     "district": "Palghar",
     "nhCorridor": "NH-8",
@@ -110,7 +114,9 @@ const TollSeedData = [
       "MAV_4_6": 1170,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_2003",
@@ -152,8 +158,8 @@ const TollSeedData = [
   {
     "id": "TP_2004",
     "name": "Choryasi Toll Plaza",
-    "lat": 21.3030757,
-    "lng": 72.9541547,
+    "lat": 21.303073,
+    "lng": 72.954125,
     "state": "Gujarat",
     "district": "Surat",
     "nhCorridor": "NH-48",
@@ -184,7 +190,9 @@ const TollSeedData = [
       "MAV_4_6": 1365,
       "OVERSIZED": 1680,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_2005",
@@ -596,8 +604,8 @@ const TollSeedData = [
   {
     "id": "TP_8001",
     "name": "Jaipur Plaza",
-    "lat": 26.7822,
-    "lng": 75.7738,
+    "lat": 26.74766,
+    "lng": 75.768754,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-8",
@@ -628,13 +636,14 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_8002",
     "name": "Kishangarh Plaza",
-    "lat": 26.3425,
-    "lng": 74.7026,
+    "lat": 26.595389,
+    "lng": 74.939184,
     "state": "Rajasthan",
     "district": "Ajmer",
     "nhCorridor": "NH-8",
@@ -665,7 +674,8 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_9001",
@@ -707,8 +717,8 @@ const TollSeedData = [
   {
     "id": "TP_9002",
     "name": "Manoharpura Toll plaza",
-    "lat": 26.9181,
-    "lng": 75.8791,
+    "lat": 26.899359,
+    "lng": 75.847329,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-8",
@@ -739,7 +749,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_9003",
@@ -818,8 +829,8 @@ const TollSeedData = [
   {
     "id": "TP_10004",
     "name": "Narayanpura Toll Plaza",
-    "lat": 24.5653,
-    "lng": 73.6639,
+    "lat": 24.613593,
+    "lng": 74.231806,
     "state": "Rajasthan",
     "district": "Udaipur",
     "nhCorridor": "NH-48",
@@ -850,7 +861,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_10006",
@@ -934,7 +946,7 @@ const TollSeedData = [
     "state": "Telangana",
     "district": "Yadadri-Bhuvanagiri",
     "nhCorridor": "NH-65",
-    "section": "Hyderabad – Vijayawada",
+    "section": "Hyderabad \u2013 Vijayawada",
     "netcCode": "15001",
     "piu": "Hyderabad",
     "ro": "Hyderabad",
@@ -971,7 +983,7 @@ const TollSeedData = [
     "state": "Telangana",
     "district": "Nalgonda",
     "nhCorridor": "NH-65",
-    "section": "Hyderabad – Vijayawada",
+    "section": "Hyderabad \u2013 Vijayawada",
     "netcCode": "15002",
     "piu": "Hyderabad",
     "ro": "Hyderabad",
@@ -1008,7 +1020,7 @@ const TollSeedData = [
     "state": "Andhra Pradesh",
     "district": "Krishna",
     "nhCorridor": "NH-65",
-    "section": "Hyderabad – Vijayawada",
+    "section": "Hyderabad \u2013 Vijayawada",
     "netcCode": "15003",
     "piu": "Hyderabad",
     "ro": "Hyderabad",
@@ -1188,8 +1200,8 @@ const TollSeedData = [
   {
     "id": "TP_17002",
     "name": "Guilalu Toll Plaza",
-    "lat": 14.0537975,
-    "lng": 76.5605183,
+    "lat": 14.053746,
+    "lng": 76.56055,
     "state": "Karnataka",
     "district": "Chitradurga",
     "nhCorridor": "NH-4",
@@ -1220,7 +1232,9 @@ const TollSeedData = [
       "MAV_4_6": 1365,
       "OVERSIZED": 1680,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_18001",
@@ -1373,8 +1387,8 @@ const TollSeedData = [
   {
     "id": "TP_24001",
     "name": "Mansar Toll Plaza",
-    "lat": 21.0081,
-    "lng": 79.081,
+    "lat": 21.382341,
+    "lng": 79.253408,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-7",
@@ -1405,13 +1419,14 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_24002",
     "name": "Kamptee Kanhan Bypass Check Toll Plaza",
-    "lat": 21.0441,
-    "lng": 79.2067,
+    "lat": 21.382341,
+    "lng": 79.253408,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-7",
@@ -1442,13 +1457,14 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_24003",
     "name": "NAGPUR BYPASS CHECK TOLL PLAZA",
-    "lat": 21.1542,
-    "lng": 78.9637,
+    "lat": 20.854792,
+    "lng": 78.962954,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-7",
@@ -1479,13 +1495,14 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_24004",
     "name": "BORKHEDI TOLL PLAZA",
-    "lat": 21.1974,
-    "lng": 79.0222,
+    "lat": 20.854792,
+    "lng": 78.962954,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-7",
@@ -1516,7 +1533,9 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_25001",
@@ -1595,8 +1614,8 @@ const TollSeedData = [
   {
     "id": "TP_27001",
     "name": "Khalghat Toll Plaza",
-    "lat": 21.7986108,
-    "lng": 75.1715472,
+    "lat": 22.173776,
+    "lng": 75.456842,
     "state": "Madhya Pradesh",
     "district": "Dhar",
     "nhCorridor": "NH-52",
@@ -1627,7 +1646,9 @@ const TollSeedData = [
       "MAV_4_6": 1015,
       "OVERSIZED": 1250,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_28001",
@@ -1780,8 +1801,8 @@ const TollSeedData = [
   {
     "id": "TP_30001",
     "name": "LADPALWAN TOLL PLAZA",
-    "lat": 32.285942,
-    "lng": 75.564665,
+    "lat": 32.198061,
+    "lng": 75.533676,
     "state": "Punjab",
     "district": "Pathankot",
     "nhCorridor": "NH-15",
@@ -1812,7 +1833,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_30002",
@@ -1854,8 +1877,8 @@ const TollSeedData = [
   {
     "id": "TP_31001",
     "name": "Barkheda Toll Plaza",
-    "lat": 26.154272,
-    "lng": 75.831411,
+    "lat": 26.688225,
+    "lng": 75.904705,
     "state": "Rajasthan",
     "district": "Tonk",
     "nhCorridor": "NH-12",
@@ -1886,13 +1909,14 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_31002",
     "name": "Sonwa Toll Plaza",
-    "lat": 26.1099102,
-    "lng": 75.7448628,
+    "lat": 26.109874,
+    "lng": 75.744853,
     "state": "Rajasthan",
     "district": "Rajasthan",
     "nhCorridor": "NH-12",
@@ -1923,13 +1947,15 @@ const TollSeedData = [
       "MAV_4_6": 860,
       "OVERSIZED": 1055,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_32001",
     "name": "Omalur Toll Plaza",
-    "lat": 11.5323,
-    "lng": 78.1961,
+    "lat": 11.720052,
+    "lng": 78.073417,
     "state": "Tamil Nadu",
     "district": "Salem",
     "nhCorridor": "NH-44 ( NH-7 )",
@@ -1960,13 +1986,15 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_33001",
     "name": "Daffi Toll Plaza",
-    "lat": 25.2482943,
-    "lng": 82.9940423,
+    "lat": 25.248276,
+    "lng": 82.994009,
     "state": "Uttar Pradesh",
     "district": "Varanasi",
     "nhCorridor": "NH-19",
@@ -1997,13 +2025,15 @@ const TollSeedData = [
       "MAV_4_6": 740,
       "OVERSIZED": 910,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_33002",
     "name": "Mohania Toll Plaza",
-    "lat": 25.1882628,
-    "lng": 83.5615181,
+    "lat": 25.188308,
+    "lng": 83.561575,
     "state": "Bihar",
     "district": "Kaimur",
     "nhCorridor": "NH-19",
@@ -2034,13 +2064,15 @@ const TollSeedData = [
       "MAV_4_6": 740,
       "OVERSIZED": 910,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_33003",
     "name": "Sasaram Toll Plaza",
-    "lat": 24.9571069,
-    "lng": 83.9549525,
+    "lat": 24.957156,
+    "lng": 83.954977,
     "state": "Bihar",
     "district": "Rohtas",
     "nhCorridor": "NH-19",
@@ -2071,13 +2103,15 @@ const TollSeedData = [
       "MAV_4_6": 585,
       "OVERSIZED": 720,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_34001",
     "name": "Raikal Toll Plaza",
-    "lat": 17.0059277,
-    "lng": 78.19433699999999,
+    "lat": 17.006519,
+    "lng": 78.194633,
     "state": "Telangana",
     "district": "Ajmer",
     "nhCorridor": "NH-44",
@@ -2108,7 +2142,9 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_35001",
@@ -2187,8 +2223,8 @@ const TollSeedData = [
   {
     "id": "TP_36001",
     "name": "Samayapuram Toll Plaza",
-    "lat": 10.9293845,
-    "lng": 78.744034,
+    "lat": 10.929314,
+    "lng": 78.744075,
     "state": "Tamil Nadu",
     "district": "Tiruchirappalli",
     "nhCorridor": "NH-45",
@@ -2219,13 +2255,15 @@ const TollSeedData = [
       "MAV_4_6": 895,
       "OVERSIZED": 1105,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_39001",
     "name": "L&T PANIPAT",
-    "lat": 29.2925,
-    "lng": 76.8465,
+    "lat": 29.433354,
+    "lng": 76.970176,
     "state": "Haryana",
     "district": "Panipat",
     "nhCorridor": "NH-44 (old NH-1)",
@@ -2256,13 +2294,14 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_40001",
     "name": "Khaniwade Toll Plaza",
-    "lat": 19.520452,
-    "lng": 72.9169309,
+    "lat": 19.519495,
+    "lng": 72.916969,
     "state": "Maharashtra",
     "district": "Palghar",
     "nhCorridor": "NH-8",
@@ -2293,13 +2332,15 @@ const TollSeedData = [
       "MAV_4_6": 860,
       "OVERSIZED": 1055,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_41001",
     "name": "Dhilwan",
-    "lat": 31.1603,
-    "lng": 75.295,
+    "lat": 31.499309,
+    "lng": 75.323022,
     "state": "Punjab",
     "district": "kapurthala",
     "nhCorridor": "NH-3",
@@ -2330,13 +2371,14 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_41002",
     "name": "JATL Nijjerpura",
-    "lat": 31.6634,
-    "lng": 74.9863,
+    "lat": 31.577607,
+    "lng": 74.997254,
     "state": "Punjab",
     "district": "Amritsar",
     "nhCorridor": "NH-3",
@@ -2367,13 +2409,14 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_42001",
     "name": "Vijayamangalam Toll Plaza",
-    "lat": 11.2456599,
-    "lng": 77.5197036,
+    "lat": 11.245672,
+    "lng": 77.519639,
     "state": "Tamil Nadu",
     "district": "Tiruppur",
     "nhCorridor": "NH-544 ( NH-47 )",
@@ -2404,7 +2447,9 @@ const TollSeedData = [
       "MAV_4_6": 1055,
       "OVERSIZED": 1295,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_43001",
@@ -2483,8 +2528,8 @@ const TollSeedData = [
   {
     "id": "TP_44002",
     "name": "Kini Toll Plaza",
-    "lat": 16.6513,
-    "lng": 74.354,
+    "lat": 16.876682,
+    "lng": 74.298316,
     "state": "Maharashtra",
     "district": "Kolhapur",
     "nhCorridor": "NH-4",
@@ -2515,7 +2560,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_45001",
@@ -2561,8 +2608,8 @@ const TollSeedData = [
     "lng": 75.7772,
     "state": "Karnataka",
     "district": "Vijayapura",
-    "nhCorridor": "NH-13 (New NH – 50)",
-    "section": "Bijapur – Hungund",
+    "nhCorridor": "NH-13 (New NH \u2013 50)",
+    "section": "Bijapur \u2013 Hungund",
     "netcCode": "46001",
     "piu": "Gulbarga",
     "ro": "Bangalore",
@@ -2598,8 +2645,8 @@ const TollSeedData = [
     "lng": 75.8378,
     "state": "Karnataka",
     "district": "Bagalkot",
-    "nhCorridor": "NH-13 (New NH – 50)",
-    "section": "Bijapur – Hungund",
+    "nhCorridor": "NH-13 (New NH \u2013 50)",
+    "section": "Bijapur \u2013 Hungund",
     "netcCode": "46002",
     "piu": "Gulbarga",
     "ro": "Bangalore",
@@ -2816,12 +2863,12 @@ const TollSeedData = [
   {
     "id": "TP_49001",
     "name": "Kaza Toll Plaza",
-    "lat": 16.3852,
-    "lng": 80.5333,
+    "lat": 16.385198,
+    "lng": 80.533331,
     "state": "Andhra Pradesh",
     "district": "Guntur",
     "nhCorridor": "NH-5",
-    "section": "Vijayawada – Chilakaluripet",
+    "section": "Vijayawada \u2013 Chilakaluripet",
     "netcCode": "49001",
     "piu": "Amaravati (AP)",
     "ro": "Vijayawada",
@@ -2848,13 +2895,15 @@ const TollSeedData = [
       "MAV_4_6": 820,
       "OVERSIZED": 1010,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_50001",
     "name": "Niyamatpur Ekrotiya Toll Plaza",
-    "lat": 28.814313900000002,
-    "lng": 78.9023043,
+    "lat": 28.814263,
+    "lng": 78.902263,
     "state": "Uttar Pradesh",
     "district": "Jaipur",
     "nhCorridor": "NH-24 (New NH-9)",
@@ -2885,13 +2934,15 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_50002",
     "name": "Thiriya Khetal Toll Plaza",
-    "lat": 28.261523,
-    "lng": 79.529934,
+    "lat": 28.480298,
+    "lng": 79.283788,
     "state": "Uttar Pradesh",
     "district": "Bareilly",
     "nhCorridor": "NH-24 (New NH-9)",
@@ -2922,7 +2973,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_51001",
@@ -3001,8 +3053,8 @@ const TollSeedData = [
   {
     "id": "TP_52001",
     "name": "Pithadiya Toll Plaza",
-    "lat": 22.3399,
-    "lng": 70.8679,
+    "lat": 22.082613,
+    "lng": 70.78106,
     "state": "Gujarat",
     "district": "Rajkot",
     "nhCorridor": "NH-8B",
@@ -3033,13 +3085,15 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_52002",
     "name": "Bharudi Toll Plaza",
-    "lat": 22.0826762,
-    "lng": 70.7810092,
+    "lat": 21.805322,
+    "lng": 70.663949,
     "state": "Gujarat",
     "district": "Rajkot",
     "nhCorridor": "NH-8B",
@@ -3070,13 +3124,15 @@ const TollSeedData = [
       "MAV_4_6": 895,
       "OVERSIZED": 1105,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_53001",
     "name": "Gondkhairi Plaza",
-    "lat": 21.1182,
-    "lng": 79.033,
+    "lat": 21.088655,
+    "lng": 79.058495,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-6",
@@ -3107,13 +3163,14 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_54001",
     "name": "Patas Plaza",
-    "lat": 18.5495,
-    "lng": 73.9536,
+    "lat": 18.424447,
+    "lng": 74.466061,
     "state": "Maharashtra",
     "district": "Pune",
     "nhCorridor": "NH-9",
@@ -3144,13 +3201,14 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_54002",
     "name": "Sardewadi Plaza",
-    "lat": 18.6629,
-    "lng": 73.8792,
+    "lat": 18.68678,
+    "lng": 73.846635,
     "state": "Maharashtra",
     "district": "Pune",
     "nhCorridor": "NH-9",
@@ -3181,7 +3239,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_55001",
@@ -3482,8 +3541,8 @@ const TollSeedData = [
   {
     "id": "TP_60001",
     "name": "Krishnagiri Plaza",
-    "lat": 12.594669,
-    "lng": 78.062871,
+    "lat": 12.544579,
+    "lng": 78.201199,
     "state": "Tamil Nadu",
     "district": "Krishnagiri",
     "nhCorridor": "NH-44 ( NH-7 )",
@@ -3514,7 +3573,9 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_61001",
@@ -3556,8 +3617,8 @@ const TollSeedData = [
   {
     "id": "TP_61002",
     "name": "Khed-Shivapur Toll Plaza",
-    "lat": 18.3313818,
-    "lng": 73.8524647,
+    "lat": 18.33141,
+    "lng": 73.852401,
     "state": "Maharashtra",
     "district": "Pune",
     "nhCorridor": "NH-4",
@@ -3588,7 +3649,9 @@ const TollSeedData = [
       "MAV_4_6": 895,
       "OVERSIZED": 1105,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_62002",
@@ -3778,8 +3841,8 @@ const TollSeedData = [
   {
     "id": "TP_73001",
     "name": "Bollapalli Toll Plaza",
-    "lat": 15.8866,
-    "lng": 80.0708,
+    "lat": 15.886607,
+    "lng": 80.070853,
     "state": "Andhra Pradesh",
     "district": "Bapatla",
     "nhCorridor": "NH-5",
@@ -3810,13 +3873,15 @@ const TollSeedData = [
       "MAV_4_6": 1285,
       "OVERSIZED": 1585,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_73002",
     "name": "Tangatur Toll Plaza",
-    "lat": 15.8628,
-    "lng": 79.8615,
+    "lat": 15.358255,
+    "lng": 80.040064,
     "state": "Andhra Pradesh",
     "district": "Prakasam",
     "nhCorridor": "NH-5",
@@ -3847,7 +3912,8 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_73003",
@@ -3889,12 +3955,12 @@ const TollSeedData = [
   {
     "id": "TP_78001",
     "name": "Indalwai",
-    "lat": 18.532884,
-    "lng": 78.311718,
+    "lat": 18.538283,
+    "lng": 78.239795,
     "state": "Telangana",
     "district": "Indalwai",
     "nhCorridor": "NH-44",
-    "section": "Armur - Adloor – Yellareddy",
+    "section": "Armur - Adloor \u2013 Yellareddy",
     "netcCode": "78001",
     "piu": "Kamareddy",
     "ro": "Hyderabad",
@@ -3921,7 +3987,9 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_79001",
@@ -4037,8 +4105,8 @@ const TollSeedData = [
   {
     "id": "TP_87001",
     "name": "Maithi",
-    "lat": 26.018793,
-    "lng": 85.339253,
+    "lat": 26.112687,
+    "lng": 85.564996,
     "state": "Bihar",
     "district": "Muzaffarpur",
     "nhCorridor": "NH-27",
@@ -4069,7 +4137,9 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_91001",
@@ -4148,8 +4218,8 @@ const TollSeedData = [
   {
     "id": "TP_96001",
     "name": "Surajbari Toll Plaza",
-    "lat": 23.2336088,
-    "lng": 70.6896665,
+    "lat": 23.23371,
+    "lng": 70.689563,
     "state": "Gujarat",
     "district": "Morbi",
     "nhCorridor": "NH-27",
@@ -4180,13 +4250,15 @@ const TollSeedData = [
       "MAV_4_6": 895,
       "OVERSIZED": 1105,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_97001",
     "name": "Vaghasiya Toll Plaza",
-    "lat": 22.6478924,
-    "lng": 70.9555528,
+    "lat": 22.64793,
+    "lng": 70.955554,
     "state": "Gujarat",
     "district": "Morbi",
     "nhCorridor": "NH-27",
@@ -4217,13 +4289,15 @@ const TollSeedData = [
       "MAV_4_6": 1365,
       "OVERSIZED": 1680,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_98001",
     "name": "Vanana Toll Plaza",
-    "lat": 21.6650169,
-    "lng": 69.7095448,
+    "lat": 21.664906,
+    "lng": 69.709527,
     "state": "Gujarat",
     "district": "Rajkot",
     "nhCorridor": "NH-8B",
@@ -4254,13 +4328,15 @@ const TollSeedData = [
       "MAV_4_6": 1405,
       "OVERSIZED": 1730,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_99001",
     "name": "Dhumiyani Toll Plaza",
-    "lat": 22.2802,
-    "lng": 70.8802,
+    "lat": 21.751428,
+    "lng": 70.326794,
     "state": "Gujarat",
     "district": "Rajkot",
     "nhCorridor": "NH-8B",
@@ -4291,7 +4367,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_100001",
@@ -4370,8 +4447,8 @@ const TollSeedData = [
   {
     "id": "TP_103002",
     "name": "Dighal Toll Plaza",
-    "lat": 28.7774495,
-    "lng": 76.6213416,
+    "lat": 28.77745,
+    "lng": 76.621369,
     "state": "Haryana",
     "district": "Jhajjar",
     "nhCorridor": "NH-71",
@@ -4402,13 +4479,15 @@ const TollSeedData = [
       "MAV_4_6": 1210,
       "OVERSIZED": 1490,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_104001",
     "name": "Makrauli Kalan Toll Plaza",
-    "lat": 29.0176,
-    "lng": 76.4902,
+    "lat": 28.944247,
+    "lng": 76.609814,
     "state": "Haryana",
     "district": "Rohtak",
     "nhCorridor": "NH-71A",
@@ -4439,13 +4518,15 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_104002",
     "name": "Dahar Toll Plaza",
-    "lat": 29.2772,
-    "lng": 77.0619,
+    "lat": 29.31918,
+    "lng": 76.91848,
     "state": "Haryana",
     "district": "Panipat",
     "nhCorridor": "NH-71A",
@@ -4476,7 +4557,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_111001",
@@ -4555,8 +4638,8 @@ const TollSeedData = [
   {
     "id": "TP_115002",
     "name": "Chokkenahalli toll plaza",
-    "lat": 13.3020161,
-    "lng": 77.1620066,
+    "lat": 13.068209,
+    "lng": 77.360605,
     "state": "Karnataka",
     "district": "Tumkur",
     "nhCorridor": "NH-4",
@@ -4587,7 +4670,9 @@ const TollSeedData = [
       "MAV_4_6": 820,
       "OVERSIZED": 1010,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_116001",
@@ -4814,8 +4899,8 @@ const TollSeedData = [
   {
     "id": "TP_120001",
     "name": "Shantigrama Toll Plaza",
-    "lat": 12.9827126,
-    "lng": 76.228991,
+    "lat": 12.982692,
+    "lng": 76.22903,
     "state": "Karnataka",
     "district": "Hassan",
     "nhCorridor": "NH-48",
@@ -4846,7 +4931,9 @@ const TollSeedData = [
       "MAV_4_6": 1405,
       "OVERSIZED": 1730,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_120002",
@@ -4888,8 +4975,8 @@ const TollSeedData = [
   {
     "id": "TP_123001",
     "name": "Paliyekkara Toll plaza",
-    "lat": 10.7008,
-    "lng": 76.1418,
+    "lat": 10.442886,
+    "lng": 76.260139,
     "state": "Kerala",
     "district": "Thrissur",
     "nhCorridor": "NH-544",
@@ -4920,17 +5007,19 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_124001",
     "name": "Kumbalam Toll Plaza",
-    "lat": 10.8982,
-    "lng": 76.242,
+    "lat": 9.895298,
+    "lng": 76.313561,
     "state": "Kerala",
     "district": "Ernakulam",
     "nhCorridor": "NH-66",
-    "section": "Edapalli – Vyttila – Aroor",
+    "section": "Edapalli \u2013 Vyttila \u2013 Aroor",
     "netcCode": "124001",
     "piu": "Cochin/Kochi",
     "ro": "Kerala",
@@ -4957,7 +5046,8 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_125002",
@@ -5073,8 +5163,8 @@ const TollSeedData = [
   {
     "id": "TP_127002",
     "name": "Chitora",
-    "lat": 23.0196,
-    "lng": 78.5978,
+    "lat": 23.725415,
+    "lng": 78.809137,
     "state": "Madhya Pradesh",
     "district": "Sagar",
     "nhCorridor": "NH-44",
@@ -5105,13 +5195,14 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_127003",
     "name": "Titarpani",
-    "lat": 22.962,
-    "lng": 78.7313,
+    "lat": 23.233855,
+    "lng": 79.047169,
     "state": "Madhya Pradesh",
     "district": "Sagar",
     "nhCorridor": "NH-44",
@@ -5142,7 +5233,8 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_127004",
@@ -5258,8 +5350,8 @@ const TollSeedData = [
   {
     "id": "TP_132002",
     "name": "IDTL Toll Plaza-B",
-    "lat": 22.6572,
-    "lng": 75.7857,
+    "lat": 22.628963,
+    "lng": 75.786894,
     "state": "Madhya Pradesh",
     "district": "Indore",
     "nhCorridor": "NH-52",
@@ -5290,13 +5382,14 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_137001",
     "name": "Mathani",
-    "lat": 21.1623,
-    "lng": 79.1989,
+    "lat": 21.181541,
+    "lng": 79.181203,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-6",
@@ -5327,7 +5420,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_138001",
@@ -5406,8 +5500,8 @@ const TollSeedData = [
   {
     "id": "TP_139002",
     "name": "Songir",
-    "lat": 19.8784,
-    "lng": 75.7985,
+    "lat": 19.863891,
+    "lng": 75.837416,
     "state": "Maharashtra",
     "district": "Dhule",
     "nhCorridor": "NH-3",
@@ -5438,13 +5532,14 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_140001",
     "name": "Chandwad toll plaza",
-    "lat": 20.3251191,
-    "lng": 74.2106872,
+    "lat": 20.325102,
+    "lng": 74.210717,
     "state": "Maharashtra",
     "district": "Nashik",
     "nhCorridor": "NH-3",
@@ -5475,7 +5570,9 @@ const TollSeedData = [
       "MAV_4_6": 700,
       "OVERSIZED": 865,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_140002",
@@ -5517,8 +5614,8 @@ const TollSeedData = [
   {
     "id": "TP_142001",
     "name": "Ghoti toll plaza",
-    "lat": 19.9024,
-    "lng": 73.8831,
+    "lat": 19.910969,
+    "lng": 73.904224,
     "state": "Maharashtra",
     "district": "Nashik",
     "nhCorridor": "NH-3",
@@ -5549,7 +5646,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_142002",
@@ -5633,7 +5732,7 @@ const TollSeedData = [
     "state": "Odisha",
     "district": "SAMBALPUR",
     "nhCorridor": "NH-6",
-    "section": "Sambalpur – Baragarh – Orissa / Chhatisgarh Border",
+    "section": "Sambalpur \u2013 Baragarh \u2013 Orissa / Chhatisgarh Border",
     "netcCode": "151001",
     "piu": "Sambalpur",
     "ro": "Bhubaneswar",
@@ -5665,8 +5764,8 @@ const TollSeedData = [
   {
     "id": "TP_154001",
     "name": "Gharonda Toll Plaza",
-    "lat": 29.5495,
-    "lng": 77.1246,
+    "lat": 29.582728,
+    "lng": 76.978715,
     "state": "Haryana",
     "district": "Karnal",
     "nhCorridor": "NH-44 (old NH-1)",
@@ -5697,13 +5796,14 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_154002",
     "name": "Sambhu Toll Plaza",
-    "lat": 30.2741,
-    "lng": 76.867,
+    "lat": 30.403867,
+    "lng": 76.736451,
     "state": "Haryana",
     "district": "Ambala",
     "nhCorridor": "NH-44 (old NH-1)",
@@ -5734,7 +5834,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_154003",
@@ -5776,8 +5878,8 @@ const TollSeedData = [
   {
     "id": "TP_155001",
     "name": "Chandimandir Toll Plaza",
-    "lat": 30.576612,
-    "lng": 76.906536,
+    "lat": 30.585687,
+    "lng": 76.945258,
     "state": "Haryana",
     "district": "Panchkula",
     "nhCorridor": "NH-22 (new NH 5)",
@@ -5808,7 +5910,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_157001",
@@ -5924,8 +6027,8 @@ const TollSeedData = [
   {
     "id": "TP_163001",
     "name": "Ludhwai Toll Plaza",
-    "lat": 27.356851,
-    "lng": 77.572586,
+    "lat": 27.17864,
+    "lng": 77.417008,
     "state": "Rajasthan",
     "district": "Bharatpur",
     "nhCorridor": "NH-11",
@@ -5956,13 +6059,14 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_163002",
     "name": "Amoli Toll Plaza",
-    "lat": 27.273151,
-    "lng": 77.526086,
+    "lat": 27.101309,
+    "lng": 77.09091,
     "state": "Rajasthan",
     "district": "Bharatpur",
     "nhCorridor": "NH-11",
@@ -5993,7 +6097,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_164001",
@@ -6035,8 +6140,8 @@ const TollSeedData = [
   {
     "id": "TP_164002",
     "name": "Rajadhok Toll Plaza",
-    "lat": 26.8083,
-    "lng": 75.9214,
+    "lat": 26.858999,
+    "lng": 76.10404,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-11",
@@ -6067,13 +6172,15 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_167001",
     "name": "Vaniyambadi Toll Plaza",
-    "lat": 12.6485283,
-    "lng": 78.5832512,
+    "lat": 12.648582,
+    "lng": 78.583361,
     "state": "Tamil Nadu",
     "district": "Tirupathur",
     "nhCorridor": "NH-48 ( NH-46",
@@ -6104,7 +6211,9 @@ const TollSeedData = [
       "MAV_4_6": 1325,
       "OVERSIZED": 1630,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_167002",
@@ -6368,8 +6477,8 @@ const TollSeedData = [
   {
     "id": "TP_180001",
     "name": "Tundla Toll Plaza",
-    "lat": 27.082217,
-    "lng": 78.302708,
+    "lat": 27.218296,
+    "lng": 78.272353,
     "state": "Uttar Pradesh",
     "district": "Firozabad",
     "nhCorridor": "NH-2 (New 19)",
@@ -6400,13 +6509,15 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_180002",
     "name": "Gurau (Semra Atikabad)",
-    "lat": 27.046817,
-    "lng": 78.414608,
+    "lat": 26.99651,
+    "lng": 78.777353,
     "state": "Uttar Pradesh",
     "district": "Firozabad",
     "nhCorridor": "NH-2 (New 19)",
@@ -6437,13 +6548,14 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_182001",
     "name": "Salemgarh Toll Plaza",
-    "lat": 26.6316714,
-    "lng": 84.2382935,
+    "lat": 26.631743,
+    "lng": 84.238276,
     "state": "Uttar Pradesh",
     "district": "Dewaria",
     "nhCorridor": "NH-28",
@@ -6474,7 +6586,9 @@ const TollSeedData = [
       "MAV_4_6": 1015,
       "OVERSIZED": 1250,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_183001",
@@ -6516,8 +6630,8 @@ const TollSeedData = [
   {
     "id": "TP_184001",
     "name": "Tendua Toll Plaza",
-    "lat": 26.8479,
-    "lng": 83.3273,
+    "lat": 26.724052,
+    "lng": 83.27444,
     "state": "Uttar Pradesh",
     "district": "Gorakhpur",
     "nhCorridor": "NH-28",
@@ -6548,7 +6662,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_185001",
@@ -6558,7 +6674,7 @@ const TollSeedData = [
     "state": "Uttar Pradesh",
     "district": "Basti",
     "nhCorridor": "NH-28 (new NH-27)",
-    "section": "Ayodhya – Gorakhpur",
+    "section": "Ayodhya \u2013 Gorakhpur",
     "netcCode": "185001",
     "piu": "Ayodhya",
     "ro": "varanasi",
@@ -6595,7 +6711,7 @@ const TollSeedData = [
     "state": "Uttar Pradesh",
     "district": "Basti",
     "nhCorridor": "NH-28 (new NH-27)",
-    "section": "Ayodhya – Gorakhpur",
+    "section": "Ayodhya \u2013 Gorakhpur",
     "netcCode": "186001",
     "piu": "Ayodhya",
     "ro": "varanasi",
@@ -6664,8 +6780,8 @@ const TollSeedData = [
   {
     "id": "TP_187002",
     "name": "Ahmadpur Toll Plaza",
-    "lat": 26.715,
-    "lng": 81.0296,
+    "lat": 26.85837,
+    "lng": 81.422472,
     "state": "Uttar Pradesh",
     "district": "Barabanki",
     "nhCorridor": "NH-28 (New NH-27)",
@@ -6696,13 +6812,14 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_187003",
     "name": "Ronahi",
-    "lat": 26.7903,
-    "lng": 80.9816,
+    "lat": 26.767902,
+    "lng": 81.949564,
     "state": "Uttar Pradesh",
     "district": "Ayodhya",
     "nhCorridor": "NH-27",
@@ -6733,7 +6850,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_189001",
@@ -6775,8 +6893,8 @@ const TollSeedData = [
   {
     "id": "TP_190001",
     "name": "Semri Toll Plaza",
-    "lat": 25.501772,
-    "lng": 78.692443,
+    "lat": 25.879972,
+    "lng": 79.210369,
     "state": "Uttar Pradesh",
     "district": "Jhansi",
     "nhCorridor": "NH-new 27 25 (New NH-27)",
@@ -6807,13 +6925,14 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_193001",
     "name": "Brijghat Toll Plaza",
-    "lat": 28.7657432,
-    "lng": 78.1129744,
+    "lat": 28.767373,
+    "lng": 78.109484,
     "state": "Uttar Pradesh",
     "district": "Hapur",
     "nhCorridor": "NH-24 (New NH-9)",
@@ -6844,7 +6963,9 @@ const TollSeedData = [
       "MAV_4_6": 1285,
       "OVERSIZED": 1585,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_194001",
@@ -6960,8 +7081,8 @@ const TollSeedData = [
   {
     "id": "TP_199001",
     "name": "KOKHRAJ (Sirohi) Toll Plaza",
-    "lat": 26.8314,
-    "lng": 80.8526,
+    "lat": 26.832605,
+    "lng": 80.819349,
     "state": "Uttar Pradesh",
     "district": "Kausambhi",
     "nhCorridor": "NH-2 ( new NH-19)",
@@ -6992,13 +7113,14 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_199002",
     "name": "HANDIYA (Sujala ) Toll Plaza",
-    "lat": 25.371,
-    "lng": 81.9912,
+    "lat": 25.378735,
+    "lng": 82.156737,
     "state": "Uttar Pradesh",
     "district": "Prayagraj",
     "nhCorridor": "NH-2 ( new NH-19)",
@@ -7029,7 +7151,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_199003",
@@ -7145,8 +7268,8 @@ const TollSeedData = [
   {
     "id": "TP_201001",
     "name": "Madrak Toll Plaza",
-    "lat": 27.800453,
-    "lng": 77.94954,
+    "lat": 27.804033,
+    "lng": 78.087012,
     "state": "Uttar Pradesh",
     "district": "Aligarh",
     "nhCorridor": "NH-93 ( New NH-509)",
@@ -7177,13 +7300,15 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_201002",
     "name": "Baros Toll Plaza",
-    "lat": 27.3355,
-    "lng": 78.0311,
+    "lat": 27.303129,
+    "lng": 78.003897,
     "state": "Uttar Pradesh",
     "district": "Hathras",
     "nhCorridor": "NH-93 ( New NH-509)",
@@ -7214,7 +7339,8 @@ const TollSeedData = [
       "MAV_4_6": 1090,
       "OVERSIZED": 1345,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_204001",
@@ -7256,8 +7382,8 @@ const TollSeedData = [
   {
     "id": "TP_205001",
     "name": "Jaladhulagori toll plaza",
-    "lat": 22.5731795,
-    "lng": 88.1817649,
+    "lat": 22.573195,
+    "lng": 88.1817,
     "state": "West Bengal",
     "district": "Howrah",
     "nhCorridor": "NH-16 (Old NH-6)",
@@ -7288,7 +7414,9 @@ const TollSeedData = [
       "MAV_4_6": 860,
       "OVERSIZED": 1055,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_205002",
@@ -7367,8 +7495,8 @@ const TollSeedData = [
   {
     "id": "TP_209001",
     "name": "Beliyad toll plaza",
-    "lat": 23.7636242,
-    "lng": 86.7979447,
+    "lat": 23.763826,
+    "lng": 86.798807,
     "state": "Jharkhand",
     "district": "Dhanbad",
     "nhCorridor": "NH-19 (Old NH-2)",
@@ -7399,7 +7527,9 @@ const TollSeedData = [
       "MAV_4_6": 780,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_210001",
@@ -7700,8 +7830,8 @@ const TollSeedData = [
   {
     "id": "TP_220001",
     "name": "Raipur",
-    "lat": 26.0636352,
-    "lng": 74.0594266,
+    "lat": 26.063578,
+    "lng": 74.059444,
     "state": "Rajasthan",
     "district": "Raipur",
     "nhCorridor": "NH-14",
@@ -7732,7 +7862,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_220002",
@@ -8329,8 +8461,8 @@ const TollSeedData = [
   {
     "id": "TP_241701",
     "name": "Dhank Toll Plaza",
-    "lat": 21.2151,
-    "lng": 81.8817,
+    "lat": 21.203015,
+    "lng": 81.905338,
     "state": "Chhattisgarh",
     "district": "Mahasamund",
     "nhCorridor": "NH-53",
@@ -8361,7 +8493,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_241900",
@@ -8403,8 +8536,8 @@ const TollSeedData = [
   {
     "id": "TP_242000",
     "name": "Madina Toll Plaza",
-    "lat": 28.9876,
-    "lng": 76.6504,
+    "lat": 28.92679,
+    "lng": 76.442267,
     "state": "Haryana",
     "district": "Rohtak",
     "nhCorridor": "NH-10 (New NH-09)",
@@ -8435,7 +8568,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_242001",
@@ -8514,8 +8649,8 @@ const TollSeedData = [
   {
     "id": "TP_243001",
     "name": "Mujras Toll Plaza",
-    "lat": 23.1458,
-    "lng": 72.542,
+    "lat": 23.128157,
+    "lng": 72.517781,
     "state": "Gujarat",
     "district": "Ahmedabad",
     "nhCorridor": "NH-27",
@@ -8546,7 +8681,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_244000",
@@ -8625,8 +8761,8 @@ const TollSeedData = [
   {
     "id": "TP_245001",
     "name": "SONWAY Toll Plaza",
-    "lat": 22.8573,
-    "lng": 75.9312,
+    "lat": 22.824692,
+    "lng": 75.93843,
     "state": "Madhya Pradesh",
     "district": "Indore",
     "nhCorridor": "NH-52",
@@ -8657,7 +8793,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_257001",
@@ -8884,8 +9021,8 @@ const TollSeedData = [
   {
     "id": "TP_311002",
     "name": "Ghazipur Plaza DME KM 7500",
-    "lat": 28.5284,
-    "lng": 77.1052,
+    "lat": 28.480985,
+    "lng": 77.116773,
     "state": "Delhi",
     "district": "New Delhi",
     "nhCorridor": "NH-9",
@@ -8916,7 +9053,9 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_311003",
@@ -8995,8 +9134,8 @@ const TollSeedData = [
   {
     "id": "TP_311005",
     "name": "Indirapuram Plaza DME KM 9500",
-    "lat": 28.7165,
-    "lng": 77.2708,
+    "lat": 28.752639,
+    "lng": 77.268152,
     "state": "Delhi",
     "district": "New Delhi",
     "nhCorridor": "NH-334",
@@ -9027,7 +9166,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_312001",
@@ -9069,8 +9209,8 @@ const TollSeedData = [
   {
     "id": "TP_312002",
     "name": "Bado patti",
-    "lat": 29.151238,
-    "lng": 75.634744,
+    "lat": 29.299172,
+    "lng": 75.819803,
     "state": "Haryana",
     "district": "Hisar",
     "nhCorridor": "NH-65 (New NH-52)",
@@ -9101,13 +9241,15 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312003",
     "name": "Chaudhariwas",
-    "lat": 29.069338,
-    "lng": 75.666544,
+    "lat": 28.998064,
+    "lng": 75.604409,
     "state": "Haryana",
     "district": "Hisar",
     "nhCorridor": "NH-65 (New NH-52)",
@@ -9138,7 +9280,8 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_312017",
@@ -9291,8 +9434,8 @@ const TollSeedData = [
   {
     "id": "TP_312021",
     "name": "Chhajju Nagar",
-    "lat": 28.001528,
-    "lng": 77.181814,
+    "lat": 28.006876,
+    "lng": 77.332916,
     "state": "Haryana",
     "district": "Palwal",
     "nhCorridor": "NH-NE-II",
@@ -9323,13 +9466,14 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_312022",
     "name": "Bhagan Toll Plaza",
-    "lat": 29.055378,
-    "lng": 76.971075,
+    "lat": 29.053094,
+    "lng": 77.065502,
     "state": "Haryana",
     "district": "Sonipat",
     "nhCorridor": "NH-1",
@@ -9360,13 +9504,15 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312023",
     "name": "Landhari Toll Plaza",
-    "lat": 29.157238,
-    "lng": 75.595444,
+    "lat": 29.292351,
+    "lng": 75.648152,
     "state": "Haryana",
     "district": "Hisar",
     "nhCorridor": "NH-10 (New -9)",
@@ -9397,7 +9543,9 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312024",
@@ -9587,8 +9735,8 @@ const TollSeedData = [
   {
     "id": "TP_312029",
     "name": "Saini Majra Toll Plaza",
-    "lat": 30.4187,
-    "lng": 76.7599,
+    "lat": 30.196916,
+    "lng": 76.705719,
     "state": "Haryana",
     "district": "Ambala",
     "nhCorridor": "NH-152 (old NH-65)",
@@ -9619,7 +9767,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312030",
@@ -9698,8 +9848,8 @@ const TollSeedData = [
   {
     "id": "TP_312032",
     "name": "Jaloli Fee Plaza",
-    "lat": 30.566412,
-    "lng": 76.764036,
+    "lat": 30.593089,
+    "lng": 76.75924,
     "state": "Haryana",
     "district": "Panchkula",
     "nhCorridor": "NH-73 (new NH-7)",
@@ -9730,7 +9880,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_312035",
@@ -9772,8 +9923,8 @@ const TollSeedData = [
   {
     "id": "TP_312047",
     "name": "Ghamroj Sohna Road Toll Plaza",
-    "lat": 28.3986,
-    "lng": 77.1649,
+    "lat": 28.333547,
+    "lng": 77.067606,
     "state": "Haryana",
     "district": "Gurugram",
     "nhCorridor": "NH-248A",
@@ -9804,7 +9955,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312048",
@@ -9846,8 +9999,8 @@ const TollSeedData = [
   {
     "id": "TP_312049",
     "name": "Karman Toll Plaza",
-    "lat": 27.8553906,
-    "lng": 77.4026664,
+    "lat": 27.855402,
+    "lng": 77.402729,
     "state": "Haryana",
     "district": "Palwal (Hodal)",
     "nhCorridor": "NH-2",
@@ -9878,13 +10031,15 @@ const TollSeedData = [
       "MAV_4_6": 1445,
       "OVERSIZED": 1775,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312050",
     "name": "Gadpuri Toll Plaza",
-    "lat": 28.079228,
-    "lng": 77.353714,
+    "lat": 28.098157,
+    "lng": 77.325264,
     "state": "Haryana",
     "district": "Palwal",
     "nhCorridor": "NH-2",
@@ -9915,7 +10070,9 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312051",
@@ -10480,7 +10637,7 @@ const TollSeedData = [
     "state": "Haryana",
     "district": "Bhiwani",
     "nhCorridor": "NH-148B",
-    "section": "Rai Malikpur (Rajasthan / Haryana border) – Narnaul- Mohindergarh- Charkhi Dadri-Bhiwani – Kharak) Section",
+    "section": "Rai Malikpur (Rajasthan / Haryana border) \u2013 Narnaul- Mohindergarh- Charkhi Dadri-Bhiwani \u2013 Kharak) Section",
     "netcCode": "312066",
     "piu": "Sonepat",
     "ro": "Chandigarh",
@@ -10512,8 +10669,8 @@ const TollSeedData = [
   {
     "id": "TP_312067",
     "name": "Hilalpur Fee Plaza",
-    "lat": 28.176526,
-    "lng": 77.127781,
+    "lat": 28.212964,
+    "lng": 77.124118,
     "state": "Haryana",
     "district": "Nuh",
     "nhCorridor": "NH-NE-4",
@@ -10544,13 +10701,14 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_312068",
     "name": "Khalilpur Plaza( for Delhi Mumbai Expressway closed tolling)",
-    "lat": 28.049026,
-    "lng": 77.073781,
+    "lat": 28.533985,
+    "lng": 77.03527,
     "state": "Haryana",
     "district": "Nuh",
     "nhCorridor": "NH-NE-4",
@@ -10581,7 +10739,8 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_312069",
@@ -10623,8 +10782,8 @@ const TollSeedData = [
   {
     "id": "TP_312070",
     "name": "Ghata Samsabad Fee Plaza",
-    "lat": 28.181026,
-    "lng": 77.077681,
+    "lat": 28.179203,
+    "lng": 77.07501,
     "state": "Haryana",
     "district": "Nuh",
     "nhCorridor": "NH-NE-4",
@@ -10655,7 +10814,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_312071",
@@ -11178,8 +11339,8 @@ const TollSeedData = [
   {
     "id": "TP_314022",
     "name": "Kot Karora Kalan Plaza",
-    "lat": 31.0358,
-    "lng": 75.2956,
+    "lat": 31.017372,
+    "lng": 75.299887,
     "state": "Punjab",
     "district": "Ferozepur",
     "nhCorridor": "NH-15 (new 54)",
@@ -11210,7 +11371,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_314023",
@@ -11252,8 +11415,8 @@ const TollSeedData = [
   {
     "id": "TP_314024",
     "name": "Chiddan Toll Plaza",
-    "lat": 31.5011,
-    "lng": 74.7994,
+    "lat": 31.617163,
+    "lng": 74.692398,
     "state": "Punjab",
     "district": "Amritsar",
     "nhCorridor": "NH-3",
@@ -11284,7 +11447,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_314025",
@@ -11622,8 +11787,8 @@ const TollSeedData = [
   {
     "id": "TP_314036",
     "name": "Kala Tibba Toll Plaza",
-    "lat": 31.0019,
-    "lng": 75.3058,
+    "lat": 31.017372,
+    "lng": 75.299887,
     "state": "Punjab",
     "district": "Fazilka",
     "nhCorridor": "NH-354E",
@@ -11654,7 +11819,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_314037",
@@ -11992,8 +12159,8 @@ const TollSeedData = [
   {
     "id": "TP_318006",
     "name": "Kachkoot",
-    "lat": 34.0513,
-    "lng": 74.7172,
+    "lat": 33.874389,
+    "lng": 75.043276,
     "state": "Jammu and Kashmir",
     "district": "Srinagar",
     "nhCorridor": "NH-1A (New NH-44)",
@@ -12024,7 +12191,8 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_318007",
@@ -12251,8 +12419,8 @@ const TollSeedData = [
   {
     "id": "TP_320052",
     "name": "Raibha toll plaza",
-    "lat": 27.135,
-    "lng": 78.0303,
+    "lat": 27.177608,
+    "lng": 77.811282,
     "state": "Uttar Pradesh",
     "district": "Agra",
     "nhCorridor": "NH-3",
@@ -12283,7 +12451,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320053",
@@ -12362,8 +12532,8 @@ const TollSeedData = [
   {
     "id": "TP_320055",
     "name": "Duhai",
-    "lat": 28.6143,
-    "lng": 77.3053,
+    "lat": 28.648899,
+    "lng": 77.316891,
     "state": "Uttar Pradesh",
     "district": "Ghaziabad",
     "nhCorridor": "NH-NE-II",
@@ -12394,7 +12564,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320056",
@@ -12473,8 +12644,8 @@ const TollSeedData = [
   {
     "id": "TP_320058",
     "name": "Fatehpur Rampur",
-    "lat": 28.4402062,
-    "lng": 77.5883913,
+    "lat": 28.43733,
+    "lng": 77.587217,
     "state": "Uttar Pradesh",
     "district": "Fatehpur",
     "nhCorridor": "NH-NE-II",
@@ -12505,7 +12676,9 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320059",
@@ -12621,8 +12794,8 @@ const TollSeedData = [
   {
     "id": "TP_320063",
     "name": "Katoghan Toll Plaza",
-    "lat": 25.7495002,
-    "lng": 81.17042169999999,
+    "lat": 25.749392,
+    "lng": 81.170725,
     "state": "Uttar Pradesh",
     "district": "Fatehpur",
     "nhCorridor": "NH-2 (New 19)",
@@ -12653,7 +12826,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320064",
@@ -12769,8 +12944,8 @@ const TollSeedData = [
   {
     "id": "TP_320067",
     "name": "Babina Toll Plaza",
-    "lat": 25.434572,
-    "lng": 78.576343,
+    "lat": 25.216924,
+    "lng": 78.464511,
     "state": "Uttar Pradesh",
     "district": "Jhansi",
     "nhCorridor": "NH-26 (New NH-44)",
@@ -12801,13 +12976,15 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320068",
     "name": "Vighakhet Toll Plaza",
-    "lat": 26.796,
-    "lng": 80.819,
+    "lat": 26.832605,
+    "lng": 80.819349,
     "state": "Uttar Pradesh",
     "district": "Lalitpur",
     "nhCorridor": "NH-26 (New NH-44)",
@@ -12838,7 +13015,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320069",
@@ -12880,8 +13058,8 @@ const TollSeedData = [
   {
     "id": "TP_320070",
     "name": "Bara Toll Plaza",
-    "lat": 26.6298197,
-    "lng": 81.3331651,
+    "lat": 26.638742,
+    "lng": 81.371692,
     "state": "Uttar Pradesh",
     "district": "Sultanpur",
     "nhCorridor": "NH-56",
@@ -12912,7 +13090,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320071",
@@ -12954,8 +13134,8 @@ const TollSeedData = [
   {
     "id": "TP_320072",
     "name": "Pidhi Toll Plaza",
-    "lat": 26.3486189,
-    "lng": 82.247095,
+    "lat": 26.348699,
+    "lng": 82.247252,
     "state": "Uttar Pradesh",
     "district": "Sultanpur",
     "nhCorridor": "NH-232 (New NH-128)",
@@ -12986,7 +13166,9 @@ const TollSeedData = [
       "MAV_4_6": 625,
       "OVERSIZED": 770,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320073",
@@ -13102,8 +13284,8 @@ const TollSeedData = [
   {
     "id": "TP_320076",
     "name": "Asroga Toll Plaza",
-    "lat": 28.818345,
-    "lng": 77.806781,
+    "lat": 28.842355,
+    "lng": 77.777627,
     "state": "Uttar Pradesh",
     "district": "Hapur",
     "nhCorridor": "NH-56 (New NH-731)",
@@ -13134,7 +13316,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320077",
@@ -13324,8 +13507,8 @@ const TollSeedData = [
   {
     "id": "TP_320082",
     "name": "Mungari",
-    "lat": 25.5246,
-    "lng": 81.735,
+    "lat": 25.563749,
+    "lng": 81.745666,
     "state": "Uttar Pradesh",
     "district": "Prayagraj",
     "nhCorridor": "NH-35",
@@ -13356,7 +13539,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320083",
@@ -13657,8 +13841,8 @@ const TollSeedData = [
   {
     "id": "TP_320092",
     "name": "Hadwa",
-    "lat": 26.7588,
-    "lng": 80.8568,
+    "lat": 26.768608,
+    "lng": 80.877331,
     "state": "Uttar Pradesh",
     "district": "campierganj",
     "nhCorridor": "NH-730",
@@ -13689,7 +13873,9 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320093",
@@ -13990,8 +14176,8 @@ const TollSeedData = [
   {
     "id": "TP_320101",
     "name": "Dasna",
-    "lat": 28.6422,
-    "lng": 77.3164,
+    "lat": 28.676235,
+    "lng": 77.324708,
     "state": "Uttar Pradesh",
     "district": "Ghaziabad",
     "nhCorridor": "NH-334",
@@ -14022,13 +14208,15 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_320102",
     "name": "Rasoolpur",
-    "lat": 28.7745,
-    "lng": 77.5936,
+    "lat": 28.800001,
+    "lng": 77.619142,
     "state": "Uttar Pradesh",
     "district": "Ghaziabad",
     "nhCorridor": "NH-334",
@@ -14059,7 +14247,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320103",
@@ -14175,8 +14364,8 @@ const TollSeedData = [
   {
     "id": "TP_320106",
     "name": "Noida Plaza DME KM 1400",
-    "lat": 28.8096,
-    "lng": 77.3377,
+    "lat": 28.583958,
+    "lng": 77.294165,
     "state": "Uttar Pradesh",
     "district": "Ghaziabad",
     "nhCorridor": "NH-9",
@@ -14207,7 +14396,8 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320107",
@@ -14286,8 +14476,8 @@ const TollSeedData = [
   {
     "id": "TP_320109",
     "name": "Aaspur Plaza",
-    "lat": 26.8515,
-    "lng": 80.843,
+    "lat": 26.832605,
+    "lng": 80.819349,
     "state": "Uttar Pradesh",
     "district": "Etah",
     "nhCorridor": "NH-91",
@@ -14318,7 +14508,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320110",
@@ -14397,8 +14588,8 @@ const TollSeedData = [
   {
     "id": "TP_320112",
     "name": "Kashi Plaza DME KM 5823",
-    "lat": 29.082,
-    "lng": 77.8303,
+    "lat": 28.896519,
+    "lng": 77.645165,
     "state": "Uttar Pradesh",
     "district": "Meerut",
     "nhCorridor": "NH-334",
@@ -14429,7 +14620,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320113",
@@ -14545,8 +14737,8 @@ const TollSeedData = [
   {
     "id": "TP_320130",
     "name": "Kaithi",
-    "lat": 26.8416,
-    "lng": 80.8553,
+    "lat": 26.832605,
+    "lng": 80.819349,
     "state": "Uttar Pradesh",
     "district": "Varansi",
     "nhCorridor": "NH-29",
@@ -14577,7 +14769,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_320131",
@@ -14989,8 +15182,8 @@ const TollSeedData = [
   {
     "id": "TP_326008",
     "name": "Lacchiwala",
-    "lat": 30.3864,
-    "lng": 78.0991,
+    "lat": 30.375327,
+    "lng": 78.096951,
     "state": "Uttarakhand",
     "district": "Dehradun",
     "nhCorridor": "NH-72",
@@ -15021,7 +15214,9 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_326009",
@@ -15618,8 +15813,8 @@ const TollSeedData = [
   {
     "id": "TP_330053",
     "name": "Nimbali",
-    "lat": 25.845925,
-    "lng": 73.206011,
+    "lat": 25.82416,
+    "lng": 73.233446,
     "state": "Rajasthan",
     "district": "Pali",
     "nhCorridor": "NH-62",
@@ -15650,7 +15845,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_330054",
@@ -15766,8 +15962,8 @@ const TollSeedData = [
   {
     "id": "TP_330057",
     "name": "Narsingharh",
-    "lat": 27.1426,
-    "lng": 74.1888,
+    "lat": 27.138565,
+    "lng": 74.204966,
     "state": "Rajasthan",
     "district": "Chittorgarh",
     "nhCorridor": "NH-113",
@@ -15798,7 +15994,9 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_330058",
@@ -16358,8 +16556,8 @@ const TollSeedData = [
   {
     "id": "TP_330079",
     "name": "Similiya",
-    "lat": 25.3305,
-    "lng": 75.7724,
+    "lat": 25.169916,
+    "lng": 76.130577,
     "state": "Rajasthan",
     "district": "Kota",
     "nhCorridor": "NH-27",
@@ -16390,7 +16588,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_330080",
@@ -16987,8 +17186,8 @@ const TollSeedData = [
   {
     "id": "TP_330097",
     "name": "Dhaneshwar",
-    "lat": 25.1772,
-    "lng": 75.7271,
+    "lat": 25.072669,
+    "lng": 75.598441,
     "state": "Rajasthan",
     "district": "Kota",
     "nhCorridor": "NH-76",
@@ -17019,7 +17218,9 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_330098",
@@ -17098,8 +17299,8 @@ const TollSeedData = [
   {
     "id": "TP_330100",
     "name": "Akhepura",
-    "lat": 26.9574,
-    "lng": 75.8572,
+    "lat": 27.50798,
+    "lng": 75.344257,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-11",
@@ -17130,7 +17331,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_330101",
@@ -17209,8 +17411,8 @@ const TollSeedData = [
   {
     "id": "TP_330103",
     "name": "Gogunda",
-    "lat": 24.577,
-    "lng": 73.7101,
+    "lat": 24.766126,
+    "lng": 73.524009,
     "state": "Rajasthan",
     "district": "udaipur",
     "nhCorridor": "NH-27",
@@ -17241,7 +17443,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_330104",
@@ -17320,8 +17524,8 @@ const TollSeedData = [
   {
     "id": "TP_330106",
     "name": "Rabawata",
-    "lat": 26.8131,
-    "lng": 75.9265,
+    "lat": 26.850996,
+    "lng": 75.924825,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-11A",
@@ -17352,7 +17556,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_330107",
@@ -17394,8 +17599,8 @@ const TollSeedData = [
   {
     "id": "TP_330108",
     "name": "Hingonia",
-    "lat": 26.979,
-    "lng": 75.6943,
+    "lat": 26.850996,
+    "lng": 75.924825,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-148C",
@@ -17426,13 +17631,15 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_330109",
     "name": "Sitarampura",
-    "lat": 27.0462,
-    "lng": 75.8146,
+    "lat": 26.74766,
+    "lng": 75.768754,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-148C",
@@ -17463,7 +17670,9 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_330110",
@@ -17917,7 +18126,7 @@ const TollSeedData = [
     "state": "Rajasthan",
     "district": "Pali",
     "nhCorridor": "NH-709E",
-    "section": "Rajgarh – Haryana Border section",
+    "section": "Rajgarh \u2013 Haryana Border section",
     "netcCode": "330122",
     "piu": "Jaipur",
     "ro": "Jaipur",
@@ -18023,8 +18232,8 @@ const TollSeedData = [
   {
     "id": "TP_330125",
     "name": "Seora Toll Plaza",
-    "lat": 28.125923,
-    "lng": 73.380655,
+    "lat": 28.139754,
+    "lng": 73.37251,
     "state": "Rajasthan",
     "district": "Bikaner",
     "nhCorridor": "NH-911",
@@ -18055,13 +18264,15 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_330126",
     "name": "Barsalpur Toll Plaza",
-    "lat": 28.050023,
-    "lng": 73.426855,
+    "lat": 28.023339,
+    "lng": 73.413545,
     "state": "Rajasthan",
     "district": "Bikaner",
     "nhCorridor": "NH-911A & 911",
@@ -18092,7 +18303,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_330127",
@@ -18282,8 +18494,8 @@ const TollSeedData = [
   {
     "id": "TP_336006",
     "name": "Mandva Toll Plaza (Narmada Bridge)",
-    "lat": 21.7022555,
-    "lng": 73.0608993,
+    "lat": 21.702232,
+    "lng": 73.060947,
     "state": "Gujarat",
     "district": "Bharuch",
     "nhCorridor": "NH-48 (old NH-8)",
@@ -18314,13 +18526,15 @@ const TollSeedData = [
       "MAV_4_6": 780,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_336007",
     "name": "Vantada Toll Plaza",
-    "lat": 23.6161,
-    "lng": 73.2543,
+    "lat": 23.616121,
+    "lng": 73.254322,
     "state": "Gujarat",
     "district": "Sabarkantha",
     "nhCorridor": "NH-48",
@@ -18351,7 +18565,9 @@ const TollSeedData = [
       "MAV_4_6": 1405,
       "OVERSIZED": 1730,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_336008",
@@ -18541,8 +18757,8 @@ const TollSeedData = [
   {
     "id": "TP_336013",
     "name": "Bhiladi Toll Plaza",
-    "lat": 24.1438883,
-    "lng": 71.9771345,
+    "lat": 24.143821,
+    "lng": 71.977125,
     "state": "Gujarat",
     "district": "Banaskantha",
     "nhCorridor": "NH-27",
@@ -18573,7 +18789,9 @@ const TollSeedData = [
       "MAV_4_6": 820,
       "OVERSIZED": 1010,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_336014",
@@ -18615,8 +18833,8 @@ const TollSeedData = [
   {
     "id": "TP_336015",
     "name": "Gadoi Toll Plaza",
-    "lat": 21.4248694,
-    "lng": 70.2952188,
+    "lat": 21.424897,
+    "lng": 70.295259,
     "state": "Gujarat",
     "district": "Gandhinagar",
     "nhCorridor": "NH-8 D",
@@ -18647,13 +18865,15 @@ const TollSeedData = [
       "MAV_4_6": 1250,
       "OVERSIZED": 1535,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_336016",
     "name": "Pithai Toll Plaza",
-    "lat": 22.151,
-    "lng": 71.1993,
+    "lat": 22.082613,
+    "lng": 70.78106,
     "state": "Gujarat",
     "district": "Panchmahal",
     "nhCorridor": "NH-47",
@@ -18684,7 +18904,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_336017",
@@ -19096,8 +19317,8 @@ const TollSeedData = [
   {
     "id": "TP_340002",
     "name": "Tamalwadi Toll Plaza",
-    "lat": 19.6147,
-    "lng": 75.6392,
+    "lat": 19.606078,
+    "lng": 75.614419,
     "state": "Maharashtra",
     "district": "Dharashiv",
     "nhCorridor": "NH-65 (old 9)",
@@ -19128,7 +19349,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_340003",
@@ -19281,8 +19503,8 @@ const TollSeedData = [
   {
     "id": "TP_340009",
     "name": "Phulwadi Toll Plaza",
-    "lat": 17.8000284,
-    "lng": 76.1936278,
+    "lat": 17.852082,
+    "lng": 75.965553,
     "state": "Maharashtra",
     "district": "Dharashiv",
     "nhCorridor": "NH-9",
@@ -19313,7 +19535,9 @@ const TollSeedData = [
       "MAV_4_6": 665,
       "OVERSIZED": 815,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_340010",
@@ -19355,8 +19579,8 @@ const TollSeedData = [
   {
     "id": "TP_340019",
     "name": "Baswant Toll Plaza",
-    "lat": 20.1417634,
-    "lng": 73.9764143,
+    "lat": 20.141732,
+    "lng": 73.976447,
     "state": "Maharashtra",
     "district": "Nashik",
     "nhCorridor": "NH-3",
@@ -19387,7 +19611,9 @@ const TollSeedData = [
       "MAV_4_6": 1445,
       "OVERSIZED": 1775,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_340020",
@@ -19910,8 +20136,8 @@ const TollSeedData = [
   {
     "id": "TP_340036",
     "name": "Valsang toll plaza",
-    "lat": 17.5898796,
-    "lng": 76.0745723,
+    "lat": 17.589716,
+    "lng": 76.074497,
     "state": "Maharashtra",
     "district": "Solapur",
     "nhCorridor": "NH-150E",
@@ -19942,7 +20168,9 @@ const TollSeedData = [
       "MAV_4_6": 1405,
       "OVERSIZED": 1730,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_340037",
@@ -20132,8 +20360,8 @@ const TollSeedData = [
   {
     "id": "TP_340042",
     "name": "Hativale Fee Plaza",
-    "lat": 19.8427,
-    "lng": 75.7604,
+    "lat": 19.866912,
+    "lng": 75.505917,
     "state": "Maharashtra",
     "district": "Sindhudurg",
     "nhCorridor": "NH-66",
@@ -20164,7 +20392,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_340043",
@@ -20243,8 +20472,8 @@ const TollSeedData = [
   {
     "id": "TP_340045",
     "name": "Dhumka Tondgaon Toll Plaza",
-    "lat": 19.8679,
-    "lng": 75.8621,
+    "lat": 19.863891,
+    "lng": 75.837416,
     "state": "Maharashtra",
     "district": "Washim",
     "nhCorridor": "NH-161",
@@ -20275,7 +20504,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_340046",
@@ -20428,8 +20658,8 @@ const TollSeedData = [
   {
     "id": "TP_340050",
     "name": "Pimparwadi Toll Plaza",
-    "lat": 19.8110546,
-    "lng": 74.275788,
+    "lat": 20.141732,
+    "lng": 73.976447,
     "state": "Maharashtra",
     "district": "Nashik",
     "nhCorridor": "NH-160",
@@ -20460,7 +20690,8 @@ const TollSeedData = [
       "MAV_4_6": 1210,
       "OVERSIZED": 1490,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_340051",
@@ -20507,7 +20738,7 @@ const TollSeedData = [
     "state": "Maharashtra",
     "district": "Buldhana",
     "nhCorridor": "NH-53 (Old NH-6)",
-    "section": "Amravati – Chikhali Section",
+    "section": "Amravati \u2013 Chikhali Section",
     "netcCode": "340052",
     "piu": "Amravati - NGP",
     "ro": "Nagpur",
@@ -20539,8 +20770,8 @@ const TollSeedData = [
   {
     "id": "TP_340053",
     "name": "Shembal Toll Plaza",
-    "lat": 19.7755,
-    "lng": 75.8585,
+    "lat": 19.745497,
+    "lng": 75.838285,
     "state": "Maharashtra",
     "district": "Chandrapur",
     "nhCorridor": "NH-930",
@@ -20571,7 +20802,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_340054",
@@ -20766,7 +20998,7 @@ const TollSeedData = [
     "state": "Maharashtra",
     "district": "Solapur",
     "nhCorridor": "NH-965",
-    "section": "Mohol – Wakhari & Wakhari – Khudus Section",
+    "section": "Mohol \u2013 Wakhari & Wakhari \u2013 Khudus Section",
     "netcCode": "340060",
     "piu": "Pandharpur",
     "ro": "Mumbai",
@@ -21612,8 +21844,8 @@ const TollSeedData = [
   {
     "id": "TP_345043",
     "name": "Khambara Toll Plaza",
-    "lat": 21.693715,
-    "lng": 78.389999,
+    "lat": 21.693716,
+    "lng": 78.390043,
     "state": "Madhya Pradesh",
     "district": "Pandhurna",
     "nhCorridor": "NH-69",
@@ -21644,7 +21876,9 @@ const TollSeedData = [
       "MAV_4_6": 1210,
       "OVERSIZED": 1490,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_345044",
@@ -21686,12 +21920,12 @@ const TollSeedData = [
   {
     "id": "TP_345045",
     "name": "Jaitpur Plaza",
-    "lat": 23.0007,
-    "lng": 78.7931,
+    "lat": 22.550001,
+    "lng": 79.600678,
     "state": "Madhya Pradesh",
     "district": "Narsinghpur",
     "nhCorridor": "NH-547",
-    "section": "NH-547 Amarwara –Narsinghpur Section From km 140.000 to km 210.010",
+    "section": "NH-547 Amarwara \u2013Narsinghpur Section From km 140.000 to km 210.010",
     "netcCode": "345045",
     "piu": "Chindwara",
     "ro": "Bhopal",
@@ -21718,7 +21952,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_345046",
@@ -21945,8 +22180,8 @@ const TollSeedData = [
   {
     "id": "TP_345053",
     "name": "Milanpur Toll Plaza",
-    "lat": 21.8637989,
-    "lng": 77.9571339,
+    "lat": 21.863745,
+    "lng": 77.957141,
     "state": "Madhya Pradesh",
     "district": "Betul",
     "nhCorridor": "NH-69",
@@ -21977,7 +22212,9 @@ const TollSeedData = [
       "MAV_4_6": 1285,
       "OVERSIZED": 1585,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_345054",
@@ -22019,8 +22256,8 @@ const TollSeedData = [
   {
     "id": "TP_345055",
     "name": "Mehra",
-    "lat": 26.1976,
-    "lng": 78.0739,
+    "lat": 26.197507,
+    "lng": 78.240771,
     "state": "Madhya Pradesh",
     "district": "Gwalior",
     "nhCorridor": "NH-44",
@@ -22051,7 +22288,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_345056",
@@ -22468,7 +22707,7 @@ const TollSeedData = [
     "state": "Madhya Pradesh",
     "district": "Chhindwada",
     "nhCorridor": "NH-347",
-    "section": "NH- 347 Multai – Chhindwara up to Chhindwara Ring Road Section From km 0.000 to km 75.592",
+    "section": "NH- 347 Multai \u2013 Chhindwara up to Chhindwara Ring Road Section From km 0.000 to km 75.592",
     "netcCode": "345067",
     "piu": "Chindwara",
     "ro": "Bhopal",
@@ -23134,7 +23373,7 @@ const TollSeedData = [
     "state": "Madhya Pradesh",
     "district": "Rajgarh",
     "nhCorridor": "NH-752C",
-    "section": "Pachore to Shujalpur section of Newly declared NH—752C",
+    "section": "Pachore to Shujalpur section of Newly declared NH\u2014752C",
     "netcCode": "345091",
     "piu": "Bhopal",
     "ro": "Bhopal",
@@ -23689,7 +23928,7 @@ const TollSeedData = [
     "state": "Telangana",
     "district": "Rangareddy",
     "nhCorridor": "NH-765",
-    "section": "Hyderabad – Dindi (2 LPS)",
+    "section": "Hyderabad \u2013 Dindi (2 LPS)",
     "netcCode": "350005",
     "piu": "Hyderabad",
     "ro": "Hyderabad",
@@ -23726,7 +23965,7 @@ const TollSeedData = [
     "state": "Telangana",
     "district": "Gadwal",
     "nhCorridor": "NH-44",
-    "section": "Kothakota bypass–Kurnool",
+    "section": "Kothakota bypass\u2013Kurnool",
     "netcCode": "350006",
     "piu": "Hyderabad",
     "ro": "Hyderabad",
@@ -23758,8 +23997,8 @@ const TollSeedData = [
   {
     "id": "TP_350007",
     "name": "Rolmamda",
-    "lat": 19.4054,
-    "lng": 78.4144,
+    "lat": 19.280061,
+    "lng": 78.40936,
     "state": "Telangana",
     "district": "Adilabad",
     "nhCorridor": "NH-44",
@@ -23790,13 +24029,15 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_350008",
     "name": "Gamjal",
-    "lat": 18.1898,
-    "lng": 78.9554,
+    "lat": 19.026592,
+    "lng": 78.362718,
     "state": "Telangana",
     "district": "Nirmal",
     "nhCorridor": "NH-44",
@@ -23827,7 +24068,8 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_350026",
@@ -23837,7 +24079,7 @@ const TollSeedData = [
     "state": "Telangana",
     "district": "Guntur",
     "nhCorridor": "NH-765",
-    "section": "Hyderabad – Dindi (2 LPS)",
+    "section": "Hyderabad \u2013 Dindi (2 LPS)",
     "netcCode": "350026",
     "piu": "Hyderabad",
     "ro": "Hyderabad",
@@ -23869,8 +24111,8 @@ const TollSeedData = [
   {
     "id": "TP_350027",
     "name": "Manoharabad",
-    "lat": 18.0197,
-    "lng": 78.9983,
+    "lat": 17.801149,
+    "lng": 78.47167,
     "state": "Telangana",
     "district": "Medak",
     "nhCorridor": "NH-44",
@@ -23901,13 +24143,14 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_350028",
     "name": "Pippalwada",
-    "lat": 19.4588,
-    "lng": 78.1672,
+    "lat": 19.780954,
+    "lng": 78.565723,
     "state": "Telangana",
     "district": "Adilabad",
     "nhCorridor": "NH-44",
@@ -23938,7 +24181,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_350029",
@@ -23948,7 +24192,7 @@ const TollSeedData = [
     "state": "Telangana",
     "district": "Nizamabad",
     "nhCorridor": "NH-44",
-    "section": "Adloor Yellareddy – Chegunta,TOT-16",
+    "section": "Adloor Yellareddy \u2013 Chegunta,TOT-16",
     "netcCode": "350029",
     "piu": "Kamareddy",
     "ro": "Hyderabad",
@@ -24017,8 +24261,8 @@ const TollSeedData = [
   {
     "id": "TP_350031",
     "name": "Komalla",
-    "lat": 17.7774163,
-    "lng": 79.2835625,
+    "lat": 17.77742,
+    "lng": 79.283587,
     "state": "Telangana",
     "district": "Mathura",
     "nhCorridor": "NH-163",
@@ -24049,7 +24293,9 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_350032",
@@ -24133,7 +24379,7 @@ const TollSeedData = [
     "state": "Telangana",
     "district": "Dharwad",
     "nhCorridor": "NH-61",
-    "section": "Kalyan – Nirmal -2LPS",
+    "section": "Kalyan \u2013 Nirmal -2LPS",
     "netcCode": "350034",
     "piu": "Kamareddy",
     "ro": "Hyderabad",
@@ -24350,8 +24596,8 @@ const TollSeedData = [
   {
     "id": "TP_350043",
     "name": "Baiti Kala Plaza",
-    "lat": 26.0544377,
-    "lng": 82.33940419999999,
+    "lat": 26.054308,
+    "lng": 82.339351,
     "state": "Uttar Pradesh",
     "district": "Sultanpur",
     "nhCorridor": "NH-56 ( New NH-31)",
@@ -24382,13 +24628,15 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_350044",
     "name": "Pudur Toll Plaza",
-    "lat": 9.9477,
-    "lng": 78.181,
+    "lat": 9.922222,
+    "lng": 78.169747,
     "state": "Tamil Nadu",
     "district": "Madurai",
     "nhCorridor": "NH-785",
@@ -24419,7 +24667,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_350045",
@@ -24503,7 +24753,7 @@ const TollSeedData = [
     "state": "Himachal Pradesh",
     "district": "Bilaspur",
     "nhCorridor": "NH-21",
-    "section": "Kiratpur - Nerchowk – Manali section",
+    "section": "Kiratpur - Nerchowk \u2013 Manali section",
     "netcCode": "350047",
     "piu": "Mandi",
     "ro": "Shimla",
@@ -24683,8 +24933,8 @@ const TollSeedData = [
   {
     "id": "TP_350104",
     "name": "Dharmaram Toll Plaza",
-    "lat": 18.2658952,
-    "lng": 77.787632,
+    "lat": 18.265511,
+    "lng": 77.787215,
     "state": "Telangana",
     "district": "Nizamabad",
     "nhCorridor": "NH-161",
@@ -24715,7 +24965,9 @@ const TollSeedData = [
       "MAV_4_6": 1170,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_352001",
@@ -24868,8 +25120,8 @@ const TollSeedData = [
   {
     "id": "TP_352023",
     "name": "S.V Puram Toll Plaza",
-    "lat": 13.561,
-    "lng": 79.5239,
+    "lat": 13.525603,
+    "lng": 79.532851,
     "state": "Andhra Pradesh",
     "district": "Tirupati",
     "nhCorridor": "NH-716 ( NH-205",
@@ -24900,13 +25152,14 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_352024",
     "name": "Marur toll plaza",
-    "lat": 14.7092,
-    "lng": 77.5382,
+    "lat": 14.502036,
+    "lng": 77.631319,
     "state": "Andhra Pradesh",
     "district": "Anantapur",
     "nhCorridor": "NH-44",
@@ -24937,13 +25190,15 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_352025",
     "name": "Kasepalli toll plaza",
-    "lat": 15.0617387,
-    "lng": 77.6304333,
+    "lat": 15.061721,
+    "lng": 77.63034,
     "state": "Andhra Pradesh",
     "district": "Anantapur",
     "nhCorridor": "NH-44",
@@ -24974,7 +25229,9 @@ const TollSeedData = [
       "MAV_4_6": 1325,
       "OVERSIZED": 1630,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_352026",
@@ -25053,8 +25310,8 @@ const TollSeedData = [
   {
     "id": "TP_352028",
     "name": "Agnampadi",
-    "lat": 17.6658,
-    "lng": 83.1177,
+    "lat": 17.685542,
+    "lng": 83.150015,
     "state": "Andhra Pradesh",
     "district": "Visakhapatnam",
     "nhCorridor": "NH-16 (Old NH- 5)",
@@ -25085,7 +25342,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_352030",
@@ -25132,7 +25390,7 @@ const TollSeedData = [
     "state": "Andhra Pradesh",
     "district": "NTR",
     "nhCorridor": "NH-221",
-    "section": "Ibrahimpatnam – AP / Telangana Border",
+    "section": "Ibrahimpatnam \u2013 AP / Telangana Border",
     "netcCode": "352031",
     "piu": "Vijayawada",
     "ro": "Vijayawada",
@@ -25169,7 +25427,7 @@ const TollSeedData = [
     "state": "Andhra Pradesh",
     "district": "Nellore",
     "nhCorridor": "NH-565",
-    "section": "Vaggampalle – Dornala T-Junction 2-LPS",
+    "section": "Vaggampalle \u2013 Dornala T-Junction 2-LPS",
     "netcCode": "352032",
     "piu": "Nellore",
     "ro": "Vijayawada",
@@ -25206,7 +25464,7 @@ const TollSeedData = [
     "state": "Andhra Pradesh",
     "district": "Tirupati",
     "nhCorridor": "NH-565",
-    "section": "Penchalakona – Yerpedu",
+    "section": "Penchalakona \u2013 Yerpedu",
     "netcCode": "352033",
     "piu": "Tirupati",
     "ro": "Vijayawada",
@@ -25317,7 +25575,7 @@ const TollSeedData = [
     "state": "Andhra Pradesh",
     "district": "SPSR Nellore",
     "nhCorridor": "NH-565",
-    "section": "Penchalakona – Yerpedu",
+    "section": "Penchalakona \u2013 Yerpedu",
     "netcCode": "352036",
     "piu": "Tirupati",
     "ro": "Vijayawada",
@@ -25608,8 +25866,8 @@ const TollSeedData = [
   {
     "id": "TP_352044",
     "name": "Jellipalli",
-    "lat": 14.7527,
-    "lng": 77.6387,
+    "lat": 15.061721,
+    "lng": 77.63034,
     "state": "Andhra Pradesh",
     "district": "Anantapur",
     "nhCorridor": "NH-42",
@@ -25640,7 +25898,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_352045",
@@ -25941,8 +26200,8 @@ const TollSeedData = [
   {
     "id": "TP_352054",
     "name": "Gadanki",
-    "lat": 13.6504,
-    "lng": 79.5311,
+    "lat": 13.477992,
+    "lng": 79.187746,
     "state": "Andhra Pradesh",
     "district": "Tirupati",
     "nhCorridor": "NH-140",
@@ -25973,13 +26232,14 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_352055",
     "name": "Bathalapalli",
-    "lat": 14.6825,
-    "lng": 77.4953,
+    "lat": 15.061721,
+    "lng": 77.63034,
     "state": "Andhra Pradesh",
     "district": "Anantapur",
     "nhCorridor": "NH-42",
@@ -26010,7 +26270,8 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_352056",
@@ -26052,8 +26313,8 @@ const TollSeedData = [
   {
     "id": "TP_352057",
     "name": "Vaddupalli",
-    "lat": 14.7842,
-    "lng": 77.5178,
+    "lat": 15.061721,
+    "lng": 77.63034,
     "state": "Andhra Pradesh",
     "district": "Anantapur",
     "nhCorridor": "NH-544DD",
@@ -26084,7 +26345,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_352058",
@@ -26126,8 +26388,8 @@ const TollSeedData = [
   {
     "id": "TP_352059",
     "name": "Dukkavanipalem Toll Plaza",
-    "lat": 17.7375,
-    "lng": 83.2182,
+    "lat": 17.713889,
+    "lng": 83.2122,
     "state": "Andhra Pradesh",
     "district": "Visakhapatnam",
     "nhCorridor": "NH-16",
@@ -26158,13 +26420,14 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_352060",
     "name": "Marripalem Toll Plaza",
-    "lat": 17.7475253,
-    "lng": 83.06895,
+    "lat": 17.747515,
+    "lng": 83.068966,
     "state": "Andhra Pradesh",
     "district": "Anakapalli",
     "nhCorridor": "NH-16",
@@ -26195,7 +26458,9 @@ const TollSeedData = [
       "MAV_4_6": 1170,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_352061",
@@ -26385,8 +26650,8 @@ const TollSeedData = [
   {
     "id": "TP_352066",
     "name": "Munjuluru Toll Plaza",
-    "lat": 16.3199258,
-    "lng": 81.2207866,
+    "lat": 16.31991,
+    "lng": 81.220705,
     "state": "Andhra Pradesh",
     "district": "Krishna",
     "nhCorridor": "NH-216",
@@ -26417,7 +26682,9 @@ const TollSeedData = [
       "MAV_4_6": 820,
       "OVERSIZED": 1010,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_352067",
@@ -26496,8 +26763,8 @@ const TollSeedData = [
   {
     "id": "TP_355076",
     "name": "Jamudihi Toll Plaza",
-    "lat": 21.9912244,
-    "lng": 85.1193885,
+    "lat": 21.991238,
+    "lng": 85.119378,
     "state": "Odisha",
     "district": "SUNDERGARH",
     "nhCorridor": "NH-520 (Old NH-215)",
@@ -26528,7 +26795,9 @@ const TollSeedData = [
       "MAV_4_6": 1055,
       "OVERSIZED": 1295,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_356006",
@@ -26644,8 +26913,8 @@ const TollSeedData = [
   {
     "id": "TP_356016",
     "name": "Bankapur",
-    "lat": 15.4661,
-    "lng": 75.8375,
+    "lat": 14.910023,
+    "lng": 75.279796,
     "state": "Karnataka",
     "district": "Haveri",
     "nhCorridor": "NH-48(Old NH4)",
@@ -26676,7 +26945,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_356017",
@@ -26755,8 +27025,8 @@ const TollSeedData = [
   {
     "id": "TP_356019",
     "name": "Chalageri",
-    "lat": 15.2711,
-    "lng": 75.6422,
+    "lat": 14.556848,
+    "lng": 75.728027,
     "state": "Karnataka",
     "district": "Haveri",
     "nhCorridor": "NH-4",
@@ -26787,13 +27057,14 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_356020",
     "name": "Hebbalu",
-    "lat": 15.2603,
-    "lng": 75.6308,
+    "lat": 14.375612,
+    "lng": 76.106708,
     "state": "Karnataka",
     "district": "Davanagere",
     "nhCorridor": "NH-4",
@@ -26824,7 +27095,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_356021",
@@ -26903,8 +27175,8 @@ const TollSeedData = [
   {
     "id": "TP_356024",
     "name": "Yeddore",
-    "lat": 12.2307,
-    "lng": 76.6406,
+    "lat": 12.213051,
+    "lng": 76.662941,
     "state": "Karnataka",
     "district": "Mysuru",
     "nhCorridor": "NH-212 (New-766)",
@@ -26935,7 +27207,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_356025",
@@ -27273,8 +27546,8 @@ const TollSeedData = [
   {
     "id": "TP_356106",
     "name": "Nalavadi",
-    "lat": 15.2141,
-    "lng": 75.6995,
+    "lat": 15.369916,
+    "lng": 75.357456,
     "state": "Karnataka",
     "district": "Dharwad",
     "nhCorridor": "NH-63",
@@ -27305,7 +27578,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_356107",
@@ -27828,8 +28102,8 @@ const TollSeedData = [
   {
     "id": "TP_360037",
     "name": "Kappalur",
-    "lat": 9.9612,
-    "lng": 78.1678,
+    "lat": 9.922222,
+    "lng": 78.169747,
     "state": "Tamil Nadu",
     "district": "Madurai",
     "nhCorridor": "NH-7",
@@ -27860,7 +28134,9 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_360038",
@@ -28203,7 +28479,7 @@ const TollSeedData = [
     "state": "Tamil Nadu",
     "district": "Pudukkottai",
     "nhCorridor": "NH-226",
-    "section": "Thanjavur – Pudukkottai -2LPS",
+    "section": "Thanjavur \u2013 Pudukkottai -2LPS",
     "netcCode": "360048",
     "piu": "Karaikudi",
     "ro": "Madurai",
@@ -28351,7 +28627,7 @@ const TollSeedData = [
     "state": "Tamil Nadu",
     "district": "Sivaganga",
     "nhCorridor": "NH-226",
-    "section": "Thirumayam – Manamadurai (2-LPS)",
+    "section": "Thirumayam \u2013 Manamadurai (2-LPS)",
     "netcCode": "360054",
     "piu": "Karaikudi",
     "ro": "Madurai",
@@ -28531,8 +28807,8 @@ const TollSeedData = [
   {
     "id": "TP_360062",
     "name": "Kallakudi Toll plaza",
-    "lat": 10.9972787,
-    "lng": 78.9668508,
+    "lat": 10.997259,
+    "lng": 78.966762,
     "state": "Tamil Nadu",
     "district": "Trichy",
     "nhCorridor": "NH-81 ( NH-227)",
@@ -28563,7 +28839,9 @@ const TollSeedData = [
       "MAV_4_6": 975,
       "OVERSIZED": 1200,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_360064",
@@ -28642,8 +28920,8 @@ const TollSeedData = [
   {
     "id": "TP_360066",
     "name": "Enamkariyandal Toll Plaza",
-    "lat": 12.370004,
-    "lng": 79.049554,
+    "lat": 12.288251,
+    "lng": 78.828471,
     "state": "Tamil Nadu",
     "district": "Tiruvannamalai",
     "nhCorridor": "NH-38( NH 234",
@@ -28674,7 +28952,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_360067",
@@ -28864,8 +29143,8 @@ const TollSeedData = [
   {
     "id": "TP_367007",
     "name": "Paniyankara Toll Plaza",
-    "lat": 10.8766,
-    "lng": 76.155,
+    "lat": 10.591149,
+    "lng": 76.458541,
     "state": "Kerala",
     "district": "Palakkad",
     "nhCorridor": "NH-544",
@@ -28896,13 +29175,14 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_370001",
     "name": "Banskopa Plaza",
-    "lat": 22.9004,
-    "lng": 87.7659,
+    "lat": 23.491179,
+    "lng": 87.376541,
     "state": "West Bengal",
     "district": "Paschim Burdwan",
     "nhCorridor": "NH-19 (Old NH-2)",
@@ -28933,13 +29213,14 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_370013",
     "name": "Sali Bamandanga",
-    "lat": 23.1344,
-    "lng": 87.7587,
+    "lat": 23.629146,
+    "lng": 88.359938,
     "state": "West Bengal",
     "district": "Nadia",
     "nhCorridor": "NH-12 (Old34)",
@@ -28970,7 +29251,8 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_370014",
@@ -29197,8 +29479,8 @@ const TollSeedData = [
   {
     "id": "TP_370020",
     "name": "Palsit",
-    "lat": 22.9358,
-    "lng": 87.918,
+    "lat": 23.178723,
+    "lng": 88.026372,
     "state": "West Bengal",
     "district": "Purba Burdwan",
     "nhCorridor": "NH-19 (Old NH-2)",
@@ -29229,13 +29511,15 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_370021",
     "name": "Dankuni",
-    "lat": 23.1293,
-    "lng": 87.9984,
+    "lat": 22.698859,
+    "lng": 88.288887,
     "state": "West Bengal",
     "district": "Hooghly",
     "nhCorridor": "NH-19 (Old NH-2)",
@@ -29266,7 +29550,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_370022",
@@ -29308,8 +29593,8 @@ const TollSeedData = [
   {
     "id": "TP_370023",
     "name": "Guabari Toll Plaza",
-    "lat": 26.6092,
-    "lng": 89.417855,
+    "lat": 26.476622,
+    "lng": 89.756566,
     "state": "West Bengal",
     "district": "Alipurduar",
     "nhCorridor": "NH-27 (Old NH-31 C)",
@@ -29340,7 +29625,8 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_370024",
@@ -29350,7 +29636,7 @@ const TollSeedData = [
     "state": "West Bengal",
     "district": "South 24 Parganas",
     "nhCorridor": "NH-12 (Old NH-117)",
-    "section": "Kakdwip – Namkhana",
+    "section": "Kakdwip \u2013 Namkhana",
     "netcCode": "370024",
     "piu": "Kolkata North",
     "ro": "Kolkata",
@@ -29678,8 +29964,8 @@ const TollSeedData = [
   {
     "id": "TP_375015",
     "name": "Pipili",
-    "lat": 19.926954,
-    "lng": 85.698638,
+    "lat": 20.137177,
+    "lng": 85.839162,
     "state": "Odisha",
     "district": "PURI",
     "nhCorridor": "NH-203",
@@ -29710,7 +29996,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_375016",
@@ -30011,8 +30299,8 @@ const TollSeedData = [
   {
     "id": "TP_375025",
     "name": "Sukhuapada Toll Plaza",
-    "lat": 22.0741445,
-    "lng": 86.6436338,
+    "lat": 22.074134,
+    "lng": 86.643696,
     "state": "Odisha",
     "district": "MAYURBHANJ",
     "nhCorridor": "NH-18 (old-5)",
@@ -30043,13 +30331,15 @@ const TollSeedData = [
       "MAV_4_6": 1250,
       "OVERSIZED": 1535,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_375026",
     "name": "Bideibadkudar Toll Plaza",
-    "lat": 21.5057729,
-    "lng": 85.0582817,
+    "lat": 21.505959,
+    "lng": 85.058778,
     "state": "Odisha",
     "district": "DEOGARH",
     "nhCorridor": "NH-6",
@@ -30080,7 +30370,9 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_375027",
@@ -30312,7 +30604,7 @@ const TollSeedData = [
     "state": "Odisha",
     "district": "SUNDERGARH",
     "nhCorridor": "NH-23 (New NH-143)",
-    "section": "Biramitrapur – Brahmani Bypass end section and of Brahmani Bypass and of Brahmani Bypass to Rajamunda Section",
+    "section": "Biramitrapur \u2013 Brahmani Bypass end section and of Brahmani Bypass and of Brahmani Bypass to Rajamunda Section",
     "netcCode": "375033",
     "piu": "Keonjhar",
     "ro": "Bhubaneswar",
@@ -30497,7 +30789,7 @@ const TollSeedData = [
     "state": "Assam",
     "district": "Nagaon",
     "nhCorridor": "NH-36 & 37",
-    "section": "Guwahati Bypass – Nagaon - Daboka – Udauli /section",
+    "section": "Guwahati Bypass \u2013 Nagaon - Daboka \u2013 Udauli /section",
     "netcCode": "378008",
     "piu": "Guwahati",
     "ro": "Guwahati",
@@ -30978,7 +31270,7 @@ const TollSeedData = [
     "state": "Bihar",
     "district": "East Champaran",
     "nhCorridor": "NH-27",
-    "section": "Kotwa – Mehsi - Muzaffarpur",
+    "section": "Kotwa \u2013 Mehsi - Muzaffarpur",
     "netcCode": "380016",
     "piu": "Darbhanga",
     "ro": "Patna",
@@ -31047,8 +31339,8 @@ const TollSeedData = [
   {
     "id": "TP_380018",
     "name": "Runni Shaidpur Toll Plaza",
-    "lat": 26.3736903,
-    "lng": 85.4941241,
+    "lat": 26.373629,
+    "lng": 85.49412,
     "state": "Bihar",
     "district": "Sitamarhi",
     "nhCorridor": "NH-22",
@@ -31079,7 +31371,9 @@ const TollSeedData = [
       "MAV_4_6": 895,
       "OVERSIZED": 1105,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_380019",
@@ -31639,8 +31933,8 @@ const TollSeedData = [
   {
     "id": "TP_392008",
     "name": "Rasoiya Dhamna Toll Plaza",
-    "lat": 24.3234251,
-    "lng": 85.3880896,
+    "lat": 24.32352,
+    "lng": 85.388083,
     "state": "Jharkhand",
     "district": "Hazaribagh",
     "nhCorridor": "NH-2",
@@ -31671,7 +31965,9 @@ const TollSeedData = [
       "MAV_4_6": 1090,
       "OVERSIZED": 1345,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_392010",
@@ -31787,8 +32083,8 @@ const TollSeedData = [
   {
     "id": "TP_392013",
     "name": "Ghanghri Toll Plaza",
-    "lat": 24.0301408,
-    "lng": 85.9486174,
+    "lat": 24.030093,
+    "lng": 85.948531,
     "state": "Jharkhand",
     "district": "Giridih",
     "nhCorridor": "NH-2",
@@ -31819,7 +32115,9 @@ const TollSeedData = [
       "MAV_4_6": 895,
       "OVERSIZED": 1105,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_392014",
@@ -32453,8 +32751,8 @@ const TollSeedData = [
   {
     "id": "TP_520039",
     "name": "Mirzapur / Kyampur Toll Plaza",
-    "lat": 26.7438,
-    "lng": 80.8751,
+    "lat": 26.768608,
+    "lng": 80.877331,
     "state": "Uttar Pradesh",
     "district": "Ghazipur",
     "nhCorridor": "NH-29",
@@ -32485,7 +32783,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536043",
@@ -33082,8 +33381,8 @@ const TollSeedData = [
   {
     "id": "TP_536071",
     "name": "Devikulam Plaza",
-    "lat": 10.8085,
-    "lng": 76.3587,
+    "lat": 10.058244,
+    "lng": 77.101099,
     "state": "Kerala",
     "district": "Kannur",
     "nhCorridor": "NH-85",
@@ -33114,7 +33413,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536072",
@@ -33230,8 +33530,8 @@ const TollSeedData = [
   {
     "id": "TP_536076",
     "name": "Balenahalli Toll Plaza",
-    "lat": 14.0328073,
-    "lng": 76.6368198,
+    "lat": 13.612147,
+    "lng": 76.954347,
     "state": "Karnataka",
     "district": "Chitradurga District",
     "nhCorridor": "NH-150A",
@@ -33262,7 +33562,9 @@ const TollSeedData = [
       "MAV_4_6": 1365,
       "OVERSIZED": 1680,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536078",
@@ -33674,8 +33976,8 @@ const TollSeedData = [
   {
     "id": "TP_536090",
     "name": "Pimparkhed User Fee Plaza",
-    "lat": 20.0179,
-    "lng": 73.7766,
+    "lat": 20.141732,
+    "lng": 73.976447,
     "state": "Maharashtra",
     "district": "Nashik",
     "nhCorridor": "NH-753J",
@@ -33706,7 +34008,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536091",
@@ -33716,7 +34019,7 @@ const TollSeedData = [
     "state": "Madhya Pradesh",
     "district": "Agar Malwa",
     "nhCorridor": "NH-552G",
-    "section": "2 lane with paved shoulders from km. 0+000 to 132+955 of Ujjain–Jhalawar upto Rajasthan border of NH-552 G with 0.620 km stretch of Ujjain city in the state of Madhya Pradesh on EPC mode.",
+    "section": "2 lane with paved shoulders from km. 0+000 to 132+955 of Ujjain\u2013Jhalawar upto Rajasthan border of NH-552 G with 0.620 km stretch of Ujjain city in the state of Madhya Pradesh on EPC mode.",
     "netcCode": "536091",
     "piu": "Ujjain",
     "ro": "Bhopal",
@@ -33975,7 +34278,7 @@ const TollSeedData = [
     "state": "Madhya Pradesh",
     "district": "Ujjian",
     "nhCorridor": "NH-552G",
-    "section": "2 lane with paved shoulders from km. 0+000 to 132+955 of Ujjain–Jhalawar upto Rajasthan border of NH 552 G with 0.620 km stretch of Ujjain city in the state of Madhya Pradesh on EPC mode.",
+    "section": "2 lane with paved shoulders from km. 0+000 to 132+955 of Ujjain\u2013Jhalawar upto Rajasthan border of NH 552 G with 0.620 km stretch of Ujjain city in the state of Madhya Pradesh on EPC mode.",
     "netcCode": "536099",
     "piu": "Ujjain",
     "ro": "Bhopal",
@@ -34160,7 +34463,7 @@ const TollSeedData = [
     "state": "Tamil Nadu",
     "district": "Tiruppur",
     "nhCorridor": "NH-381",
-    "section": "Avinashi – Tiruppur – Avinashipalayam section",
+    "section": "Avinashi \u2013 Tiruppur \u2013 Avinashipalayam section",
     "netcCode": "536104",
     "piu": "Coimbatore",
     "ro": "Chennai",
@@ -34710,8 +35013,8 @@ const TollSeedData = [
   {
     "id": "TP_536194",
     "name": "Belkuri Toll Plaza",
-    "lat": 23.3890275,
-    "lng": 86.2871324,
+    "lat": 23.388999,
+    "lng": 86.287082,
     "state": "West Bengal",
     "district": "Purulia",
     "nhCorridor": "NH-18 (Old NH-32)",
@@ -34742,13 +35045,15 @@ const TollSeedData = [
       "MAV_4_6": 1325,
       "OVERSIZED": 1630,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536198",
     "name": "Hulikunte Toll Plaza",
-    "lat": 13.2708433,
-    "lng": 77.348219,
+    "lat": 13.270927,
+    "lng": 77.348148,
     "state": "Karnataka",
     "district": "Bangalore Rural",
     "nhCorridor": "NH-648 (Old-NH-207)",
@@ -34779,13 +35084,15 @@ const TollSeedData = [
       "MAV_4_6": 820,
       "OVERSIZED": 1010,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536199",
     "name": "Shringveerpur Toll Plaza",
-    "lat": 25.524,
-    "lng": 81.9903,
+    "lat": 25.491035,
+    "lng": 81.9977,
     "state": "Uttar Pradesh",
     "district": "Prayagraj",
     "nhCorridor": "NH-2 ( new NH-19)",
@@ -34816,7 +35123,8 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536200",
@@ -34895,8 +35203,8 @@ const TollSeedData = [
   {
     "id": "TP_536202",
     "name": "Khadaka Toll Plaza",
-    "lat": 21.1989,
-    "lng": 79.1836,
+    "lat": 21.181541,
+    "lng": 79.181203,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-353 I & 53",
@@ -34927,7 +35235,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536203",
@@ -35043,8 +35353,8 @@ const TollSeedData = [
   {
     "id": "TP_536207",
     "name": "Gopalpura Toll Plaza",
-    "lat": 26.9532,
-    "lng": 75.7783,
+    "lat": 26.94318,
+    "lng": 75.818219,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-NE-4",
@@ -35075,7 +35385,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536208",
@@ -35265,8 +35576,8 @@ const TollSeedData = [
   {
     "id": "TP_536237",
     "name": "Gantyada Toll Plaza",
-    "lat": 18.146127,
-    "lng": 83.2840142,
+    "lat": 18.153835,
+    "lng": 83.260373,
     "state": "Andhra Pradesh",
     "district": "Vizianagaram",
     "nhCorridor": "NH-516E",
@@ -35297,7 +35608,9 @@ const TollSeedData = [
       "MAV_4_6": 585,
       "OVERSIZED": 720,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536238",
@@ -35339,8 +35652,8 @@ const TollSeedData = [
   {
     "id": "TP_536244",
     "name": "IVRCL ramp plaza",
-    "lat": 22.8309,
-    "lng": 75.9711,
+    "lat": 22.824692,
+    "lng": 75.93843,
     "state": "Madhya Pradesh",
     "district": "Indore",
     "nhCorridor": "NH-59",
@@ -35371,7 +35684,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536245",
@@ -35413,8 +35727,8 @@ const TollSeedData = [
   {
     "id": "TP_536246",
     "name": "Kariyamanglam Toll Plaza",
-    "lat": 12.154004,
-    "lng": 79.070854,
+    "lat": 12.288251,
+    "lng": 78.828471,
     "state": "Tamil Nadu",
     "district": "Tiruvannamalai",
     "nhCorridor": "NH-77 ( NH-66)",
@@ -35445,13 +35759,14 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536307",
     "name": "Chechat Toll Plaza",
-    "lat": 24.7586881,
-    "lng": 75.9040699,
+    "lat": 24.75938,
+    "lng": 75.908689,
     "state": "Rajasthan",
     "district": "Sawai Madhopur",
     "nhCorridor": "NH-NE-4",
@@ -35482,7 +35797,9 @@ const TollSeedData = [
       "MAV_4_6": 700,
       "OVERSIZED": 865,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536308",
@@ -35598,8 +35915,8 @@ const TollSeedData = [
   {
     "id": "TP_536311",
     "name": "FajalpurToll Plaza",
-    "lat": 23.105,
-    "lng": 72.5162,
+    "lat": 23.128157,
+    "lng": 72.517781,
     "state": "Gujarat",
     "district": "Ahmedabad",
     "nhCorridor": "NH-NE-4",
@@ -35630,7 +35947,8 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536312",
@@ -36005,12 +36323,12 @@ const TollSeedData = [
   {
     "id": "TP_536373",
     "name": "Ahilyanagar (Ahmednagar) Bypass Toll Plaza",
-    "lat": 19.7698,
-    "lng": 75.7388,
+    "lat": 19.866912,
+    "lng": 75.505917,
     "state": "Maharashtra",
     "district": "Ahilyanagar",
     "nhCorridor": "NH-61",
-    "section": "4-Lane of Ahmednagar Bypass of Nh-61 from km 0+000 to km 40+600 [Existing Km 163+400 of Sinner – Shirdi- Ahmednagar (NH- 160) road to Km 228.700 of NH222",
+    "section": "4-Lane of Ahmednagar Bypass of Nh-61 from km 0+000 to km 40+600 [Existing Km 163+400 of Sinner \u2013 Shirdi- Ahmednagar (NH- 160) road to Km 228.700 of NH222",
     "netcCode": "536373",
     "piu": "Ahmednagar",
     "ro": "Gandhinagar",
@@ -36037,7 +36355,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536374",
@@ -36116,8 +36435,8 @@ const TollSeedData = [
   {
     "id": "TP_536382",
     "name": "Nagampatti Toll Plaza",
-    "lat": 12.4007494,
-    "lng": 78.3924021,
+    "lat": 12.401055,
+    "lng": 78.392162,
     "state": "Tamil Nadu",
     "district": "Krishnagiri",
     "nhCorridor": "NH-77 ( NH-66)",
@@ -36148,7 +36467,9 @@ const TollSeedData = [
       "MAV_4_6": 1130,
       "OVERSIZED": 1390,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536383",
@@ -36375,8 +36696,8 @@ const TollSeedData = [
   {
     "id": "TP_536395",
     "name": "Turup Toll Plaza",
-    "lat": 23.4050517,
-    "lng": 85.4677729,
+    "lat": 23.405098,
+    "lng": 85.467859,
     "state": "Jharkhand",
     "district": "Ranchi",
     "nhCorridor": "NH-33",
@@ -36407,7 +36728,9 @@ const TollSeedData = [
       "MAV_4_6": 1285,
       "OVERSIZED": 1585,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536397",
@@ -37041,8 +37364,8 @@ const TollSeedData = [
   {
     "id": "TP_536422",
     "name": "Mulawad Toll Plaza",
-    "lat": 16.6374887,
-    "lng": 75.7317156,
+    "lat": 16.637487,
+    "lng": 75.731658,
     "state": "Karnataka",
     "district": "Vijayapura",
     "nhCorridor": "NH-218",
@@ -37073,7 +37396,9 @@ const TollSeedData = [
       "MAV_4_6": 625,
       "OVERSIZED": 770,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536423",
@@ -38595,8 +38920,8 @@ const TollSeedData = [
   {
     "id": "TP_536489",
     "name": "Pawangaon Toll Plaza",
-    "lat": 21.0651,
-    "lng": 78.9715,
+    "lat": 21.181541,
+    "lng": 79.181203,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-353",
@@ -38627,7 +38952,9 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536490",
@@ -39409,8 +39736,8 @@ const TollSeedData = [
   {
     "id": "TP_536544",
     "name": "Bhavaninagar fee plaza",
-    "lat": 19.8208,
-    "lng": 75.7256,
+    "lat": 19.866912,
+    "lng": 75.505917,
     "state": "Maharashtra",
     "district": "Satara",
     "nhCorridor": "NH-965",
@@ -39441,7 +39768,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536547",
@@ -39816,8 +40144,8 @@ const TollSeedData = [
   {
     "id": "TP_536601",
     "name": "Devghat Toll Plaza",
-    "lat": 19.8877,
-    "lng": 75.8024,
+    "lat": 19.887589,
+    "lng": 75.835521,
     "state": "Maharashtra",
     "district": "Chandrapur",
     "nhCorridor": "NH-353B",
@@ -39848,7 +40176,8 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536602",
@@ -39927,8 +40256,8 @@ const TollSeedData = [
   {
     "id": "TP_536612",
     "name": "Ena Toll Plaza",
-    "lat": 21.1084615,
-    "lng": 73.0304712,
+    "lat": 21.108482,
+    "lng": 73.030417,
     "state": "Gujarat",
     "district": "Vadodara",
     "nhCorridor": "NH-NE-4",
@@ -39959,13 +40288,15 @@ const TollSeedData = [
       "MAV_4_6": 1210,
       "OVERSIZED": 1490,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536613",
     "name": "Hedaginabele (Closed Loop toll )",
-    "lat": 13.059379,
-    "lng": 78.115889,
+    "lat": 13.044399,
+    "lng": 77.917438,
     "state": "Karnataka",
     "district": "Kolar",
     "nhCorridor": "NH-NE-07",
@@ -39996,7 +40327,8 @@ const TollSeedData = [
       "MAV_4_6": 1023,
       "OVERSIZED": 1248,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536614",
@@ -40075,8 +40407,8 @@ const TollSeedData = [
   {
     "id": "TP_536618",
     "name": "Mundka (UER II Expressway )",
-    "lat": 28.6648,
-    "lng": 77.0446,
+    "lat": 28.672931,
+    "lng": 77.011087,
     "state": "Delhi",
     "district": "West",
     "nhCorridor": "NH-344M and 344N",
@@ -40107,7 +40439,8 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536619",
@@ -40778,8 +41111,8 @@ const TollSeedData = [
   {
     "id": "TP_536664",
     "name": "Mohan Toll Plaza",
-    "lat": 29.086878,
-    "lng": 77.080875,
+    "lat": 29.053094,
+    "lng": 77.065502,
     "state": "Haryana",
     "district": "Sonipat",
     "nhCorridor": "NH-352A",
@@ -40810,7 +41143,9 @@ const TollSeedData = [
       "MAV_4_6": 1260,
       "OVERSIZED": 1536,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536665",
@@ -40963,8 +41298,8 @@ const TollSeedData = [
   {
     "id": "TP_536674",
     "name": "Pongalur Toll Plaza",
-    "lat": 10.9782873,
-    "lng": 77.3441165,
+    "lat": 10.977425,
+    "lng": 77.346817,
     "state": "Tamil Nadu",
     "district": "Tiruppur",
     "nhCorridor": "NH-81",
@@ -40995,7 +41330,9 @@ const TollSeedData = [
       "MAV_4_6": 820,
       "OVERSIZED": 1010,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_536675",
@@ -41037,8 +41374,8 @@ const TollSeedData = [
   {
     "id": "TP_536681",
     "name": "Pusla Toll Plaza",
-    "lat": 21.2394,
-    "lng": 79.2154,
+    "lat": 21.272904,
+    "lng": 79.236679,
     "state": "Maharashtra",
     "district": "Nagpur",
     "nhCorridor": "NH-353K",
@@ -41069,7 +41406,8 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_536694",
@@ -41444,8 +41782,8 @@ const TollSeedData = [
   {
     "id": "TP_540007",
     "name": "Shedung NH48 Toll Plaza",
-    "lat": 19.7311,
-    "lng": 75.827,
+    "lat": 19.745497,
+    "lng": 75.838285,
     "state": "Maharashtra",
     "district": "Raigad",
     "nhCorridor": "NH-48",
@@ -41476,13 +41814,15 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_540008",
     "name": "Kusgaon NH48 Toll Plaza",
-    "lat": 18.3986,
-    "lng": 73.7265,
+    "lat": 18.760355,
+    "lng": 73.429047,
     "state": "Maharashtra",
     "district": "Pune",
     "nhCorridor": "NH-48",
@@ -41513,13 +41853,14 @@ const TollSeedData = [
       "MAV_4_6": 1180,
       "OVERSIZED": 1440,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_540009",
     "name": "Dehuroad (Somatane) Toll Plaza",
-    "lat": 18.6203,
-    "lng": 73.9347,
+    "lat": 18.700213,
+    "lng": 73.692155,
     "state": "Maharashtra",
     "district": "Pune",
     "nhCorridor": "NH-48",
@@ -41550,13 +41891,14 @@ const TollSeedData = [
       "MAV_4_6": 865,
       "OVERSIZED": 1056,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_540032",
     "name": "Nandani",
-    "lat": 17.5213,
-    "lng": 75.9043,
+    "lat": 17.473162,
+    "lng": 75.855301,
     "state": "Maharashtra",
     "district": "Solapur",
     "nhCorridor": "NH-13 (new-52)",
@@ -41587,7 +41929,9 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_545097",
@@ -41814,8 +42158,8 @@ const TollSeedData = [
   {
     "id": "TP_545111",
     "name": "Maharajpur Toll Plaza",
-    "lat": 23.2944324,
-    "lng": 82.3839748,
+    "lat": 23.29444,
+    "lng": 82.383997,
     "state": "Chhattisgarh",
     "district": "Manendragarh-Bharatpur-Chirmiri",
     "nhCorridor": "NH-43",
@@ -41846,7 +42190,9 @@ const TollSeedData = [
       "MAV_4_6": 975,
       "OVERSIZED": 1200,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_546000",
@@ -42147,8 +42493,8 @@ const TollSeedData = [
   {
     "id": "TP_546008",
     "name": "Malkisar Toll Plaza",
-    "lat": 27.1612,
-    "lng": 74.2059,
+    "lat": 27.138565,
+    "lng": 74.204966,
     "state": "Rajasthan",
     "district": "Jhunjhunu",
     "nhCorridor": "NH-754A",
@@ -42179,7 +42525,8 @@ const TollSeedData = [
       "MAV_4_6": 1102,
       "OVERSIZED": 1344,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_546009",
@@ -42628,8 +42975,8 @@ const TollSeedData = [
   {
     "id": "TP_546021",
     "name": "Moothli Toll Plaza",
-    "lat": 25.821625,
-    "lng": 73.463111,
+    "lat": 25.829682,
+    "lng": 73.459882,
     "state": "Rajasthan",
     "district": "Pali",
     "nhCorridor": "NH-754A",
@@ -42660,7 +43007,9 @@ const TollSeedData = [
       "MAV_4_6": 945,
       "OVERSIZED": 1152,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_546022",
@@ -42813,8 +43162,8 @@ const TollSeedData = [
   {
     "id": "TP_546026",
     "name": "Madanpur Toll Plaza C",
-    "lat": 21.2262,
-    "lng": 81.8982,
+    "lat": 21.203015,
+    "lng": 81.905338,
     "state": "Chhattisgarh",
     "district": "Korba",
     "nhCorridor": "NH-130",
@@ -42845,13 +43194,14 @@ const TollSeedData = [
       "MAV_4_6": 1417,
       "OVERSIZED": 1728,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_546028",
     "name": "Nalluru Devanahalli Toll Plaza",
-    "lat": 13.2074417,
-    "lng": 77.7619195,
+    "lat": 13.193567,
+    "lng": 77.649824,
     "state": "Karnataka",
     "district": "Bangalore Rual",
     "nhCorridor": "NH-648",
@@ -42882,7 +43232,9 @@ const TollSeedData = [
       "MAV_4_6": 820,
       "OVERSIZED": 1010,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_546031",
@@ -43331,8 +43683,8 @@ const TollSeedData = [
   {
     "id": "TP_570055",
     "name": "Daulatpura Fee Plaza",
-    "lat": 26.8443,
-    "lng": 75.907,
+    "lat": 26.850996,
+    "lng": 75.924825,
     "state": "Rajasthan",
     "district": "Jaipur",
     "nhCorridor": "NH-552",
@@ -43363,7 +43715,9 @@ const TollSeedData = [
       "MAV_4_6": 787,
       "OVERSIZED": 960,
       "BIKE": 0
-    }
+    },
+    "physicalCanopySnapped": true,
+    "exactCanopy": true
   },
   {
     "id": "TP_1173",
@@ -43373,7 +43727,7 @@ const TollSeedData = [
     "state": "Maharashtra",
     "district": "Pune",
     "nhCorridor": "NH-965",
-    "section": "Lonand to Dive Ghat (Km 166.400 to Km 220.900 ) of Mohol – Alandi section of NH-965 (Pkg - V)",
+    "section": "Lonand to Dive Ghat (Km 166.400 to Km 220.900 ) of Mohol \u2013 Alandi section of NH-965 (Pkg - V)",
     "netcCode": "1173",
     "piu": "Pune",
     "ro": "Mumbai",
@@ -43701,8 +44055,8 @@ const TollSeedData = [
   {
     "id": "TP_1182",
     "name": "Ratowa Toll Plaza",
-    "lat": 26.1316,
-    "lng": 92.8689,
+    "lat": 26.13098,
+    "lng": 92.838944,
     "state": "Assam",
     "district": "Biswanath,Sonitpur",
     "nhCorridor": "NH-715 & 15",
@@ -43733,7 +44087,8 @@ const TollSeedData = [
       "MAV_4_6": 1338,
       "OVERSIZED": 1632,
       "BIKE": 0
-    }
+    },
+    "exactCanopy": true
   },
   {
     "id": "TP_1183",

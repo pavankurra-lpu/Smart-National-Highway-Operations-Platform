@@ -3204,6 +3204,8 @@ const IndiaMapPlanner = {
 
         TollSeedData.forEach(toll => {
             if (rendered >= 120 || !toll.lat || !toll.lng) return;
+            // If this toll is already on the active route, the snapped route marker is used
+            if (IndiaMapPlanner.selectedRouteData?.tolls?.some(rt => rt.id === toll.id)) return;
             if (bounds) {
                 try {
                     const ne = bounds.getNorthEast(), sw = bounds.getSouthWest();
