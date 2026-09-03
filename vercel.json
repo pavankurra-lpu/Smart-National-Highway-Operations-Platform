@@ -3,6 +3,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.js" },
+    { "source": "/health", "destination": "/api/index.js" },
     { "source": "/login", "destination": "/admin/login.html" },
     { "source": "/login.html", "destination": "/admin/login.html" },
     { "source": "/admin", "destination": "/admin/index.html" },

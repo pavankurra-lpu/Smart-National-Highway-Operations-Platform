@@ -1842,7 +1842,9 @@ const IndiaMapPlanner = {
         // Draw toll markers along the active route with unique emojis and price pill
         rData.tolls.forEach(t => {
             const td = window.TollSeedData?.find(s => s.id === t.id) || t;
-            if (!td || !td.lat || !td.lng) return;
+            const markerLat = (t.lat !== undefined && t.lat !== null) ? t.lat : td.lat;
+            const markerLng = (t.lng !== undefined && t.lng !== null) ? t.lng : td.lng;
+            if (!markerLat || !markerLng) return;
             try {
                 const emoji = getTollEmoji(td);
                 const displayCost = t.cost ? `₹${t.cost}` : 'Toll';
@@ -1857,7 +1859,7 @@ const IndiaMapPlanner = {
                     iconSize: [50, 20],
                     iconAnchor: [25, 10]
                 });
-                const m = L.marker([td.lat, td.lng], { icon: tollIcon })
+                const m = L.marker([markerLat, markerLng], { icon: tollIcon })
                     .bindPopup(IndiaMapPlanner._tollPopup(td, t.cost))
                     .addTo(IndiaMapPlanner.map);
                 IndiaMapPlanner.routeTollMarkers.push(m);
@@ -2456,6 +2458,39 @@ const IndiaMapPlanner = {
                     const singleCost = isExempt ? 0 : ((toll.tollRatesByVehicleClass && toll.tollRatesByVehicleClass[vehicleType]) || toll.baseRate || 65);
                     const returnCost = isExempt ? 0 : ((toll.returnRatesByVehicleClass && toll.returnRatesByVehicleClass[vehicleType]) || Math.round((singleCost * 1.5)/5)*5);
 
+                    // High precision orthogonal snapping to nearest road polyline segment
+                    let bestLat = coords[i][1];
+                    let bestLng = coords[i][0];
+                    let minProjDistSq = Infinity;
+                    const searchWindow = Math.max(15, sampleStep * 2);
+                    const startIdx = Math.max(0, i - searchWindow);
+                    const endIdx = Math.min(coords.length - 1, i + searchWindow);
+
+                    for (let k = startIdx; k < endIdx; k++) {
+                        const p1 = coords[k];
+                        const p2 = coords[k + 1];
+                        const x1 = p1[0], y1 = p1[1];
+                        const x2 = p2[0], y2 = p2[1];
+                        const dx = x2 - x1, dy = y2 - y1;
+                        const lenSq = dx * dx + dy * dy;
+
+                        let u = 0;
+                        if (lenSq > 0) {
+                            u = Math.max(0, Math.min(1, ((toll.lng - x1) * dx + (toll.lat - y1) * dy) / lenSq));
+                        }
+                        const pLng = x1 + u * dx;
+                        const pLat = y1 + u * dy;
+                        const pDLa = (pLat - toll.lat) * 111;
+                        const pDLn = (pLng - toll.lng) * 111 * Math.cos(toll.lat * Math.PI / 180);
+                        const pDistSq = pDLa * pDLa + pDLn * pDLn;
+
+                        if (pDistSq < minProjDistSq) {
+                            minProjDistSq = pDistSq;
+                            bestLat = pLat;
+                            bestLng = pLng;
+                        }
+                    }
+
                     rawMatched.push({ 
                         id: toll.id, 
                         name: toll.name || toll.tollName || 'NH Toll Plaza', 
@@ -2465,8 +2500,10 @@ const IndiaMapPlanner = {
                         baseRate: toll.baseRate || 65,
                         state: toll.state || 'India',
                         nhCorridor: toll.nhCorridor || 'N/A',
-                        lat: toll.lat,
-                        lng: toll.lng,
+                        lat: bestLat,
+                        lng: bestLng,
+                        origLat: toll.lat,
+                        origLng: toll.lng,
                         coordIndex: i
                     });
                     break;
@@ -2927,10 +2964,12 @@ const IndiaMapPlanner = {
             if (IndiaMapPlanner.approachedTollIds.has(tollId) || IndiaMapPlanner.chargedTollIds.has(tollId)) return;
 
             const toll = window.TollSeedData?.find(s => s.id === tollId) || routeToll;
-            if (!toll.lat || !toll.lng) return;
+            const tLat = (routeToll.lat !== undefined && routeToll.lat !== null) ? routeToll.lat : toll.lat;
+            const tLng = (routeToll.lng !== undefined && routeToll.lng !== null) ? routeToll.lng : toll.lng;
+            if (!tLat || !tLng) return;
 
-            const dLat = (toll.lat - lat) * 111;
-            const dLng = (toll.lng - lng) * 111 * Math.cos(lat * Math.PI / 180);
+            const dLat = (tLat - lat) * 111;
+            const dLng = (tLng - lng) * 111 * Math.cos(lat * Math.PI / 180);
             const distKm = Math.sqrt(dLat*dLat + dLng*dLng);
 
             // Trigger Pre-Toll Approaching Alert when within 2.5km and >= 0.8km
@@ -3113,10 +3152,12 @@ const IndiaMapPlanner = {
         IndiaMapPlanner.selectedRouteData.tolls.forEach(routeToll => {
             if (IndiaMapPlanner.chargedTollIds.has(routeToll.id)) return;
             const toll = window.TollSeedData?.find(s => s.id === routeToll.id) || routeToll;
-            if (!toll.lat || !toll.lng) return;
+            const tLat = (routeToll.lat !== undefined && routeToll.lat !== null) ? routeToll.lat : toll.lat;
+            const tLng = (routeToll.lng !== undefined && routeToll.lng !== null) ? routeToll.lng : toll.lng;
+            if (!tLat || !tLng) return;
             
-            const dLat = (toll.lat - lat) * 111;
-            const dLng = (toll.lng - lng) * 111 * Math.cos(lat * Math.PI / 180);
+            const dLat = (tLat - lat) * 111;
+            const dLng = (tLng - lng) * 111 * Math.cos(lat * Math.PI / 180);
             if (Math.sqrt(dLat*dLat + dLng*dLng) < 0.8) {
                 IndiaMapPlanner.chargedTollIds.add(toll.id);
                 let cost = TollData.getTollCost(toll.id, vehicleType);

@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
@@ -681,7 +681,11 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {});
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-    console.log(`SNHOP Server running on port ${PORT}`);
-});
+module.exports = { app, server, io };
+
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    server.listen(PORT, () => {
+        console.log(`SNHOP Server running on port ${PORT}`);
+    });
+}
